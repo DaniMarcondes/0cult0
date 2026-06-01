@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Sagrado — Arquivos do Conhecimento Oculto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ════════════════════════════════════════════════════════
+       PORTAL SAGRADO — Grimório Radioativo
+       Paleta: amarelo elétrico → verde-choque, sobre vazio negro-verde
+       Fonte de corpo: Futura (fallback Jost) — alto contraste p/ leitura
+    ════════════════════════════════════════════════════════ */
+    :root {
+      --void:      #050b07;
+      --deep:      #081310;
+      --panel:     #0a1b12;
+      --panel-2:   #0d2417;
+      --line:      rgba(120, 255, 140, 0.14);
+      --line-soft: rgba(120, 255, 140, 0.07);
+
+      --yellow:    #fff200;
+      --lime:      #c6ff00;
+      --green:     #39ff14;
+      --green-2:   #00ff9d;
+
+      --text:      #eafff0;   /* corpo — contraste altíssimo no escuro */
+      --text-2:    #aef0bd;
+      --dim:       #6fb487;
+      --ink:       #03130b;   /* texto escuro sobre fundo neon */
+
+      --grad:      linear-gradient(115deg, #fff200 0%, #c6ff00 36%, #39ff14 68%, #00ff9d 100%);
+      --glow-y:    0 0 18px rgba(255, 242, 0, 0.45);
+      --glow-g:    0 0 18px rgba(57, 255, 20, 0.45);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'Futura', 'Jost', 'Century Gothic', system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: crosshair;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── FUNDO: nebulosa neon + grade radioativa ── */
+    #cosmos { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    #cosmos::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 12% 8%,  rgba(255,242,0,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 60% at 92% 96%, rgba(0,255,157,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 50% 50%, rgba(57,255,20,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 90% 90% at 50% 50%, rgba(5,11,7,0.6) 0%, transparent 100%);
+      animation: nebula-drift 22s ease-in-out infinite alternate;
+    }
+    @keyframes nebula-drift {
+      0%   { transform: scale(1)    translate(0,0);     opacity: 1;    }
+      50%  { transform: scale(1.06) translate(1%, -1%); opacity: 0.82; }
+      100% { transform: scale(1.03) translate(-1%, 1%); opacity: 1;    }
+    }
+    #cosmos::after {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--line-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(ellipse 85% 85% at center, black 0%, transparent 78%);
+      animation: grid-pan 30s linear infinite;
+    }
+    @keyframes grid-pan { from { background-position: 0 0; } to { background-position: 54px 54px; } }
+
+    /* Linhas de varredura sutis (scanlines) */
+    .scanlines {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.5;
+      background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,0.18) 2px 4px);
+      mix-blend-mode: multiply;
+    }
+
+    .stars-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+
+    /* Geometria sagrada de fundo (Flor da Vida) — neon discreto */
+    .sacred-bg-symbol {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 1; pointer-events: none; opacity: 0.06;
+      width: min(92vw, 92vh); height: min(92vw, 92vh);
+      animation: symbol-rotate 140s linear infinite;
+      filter: drop-shadow(0 0 6px rgba(57,255,20,0.4));
+    }
+    @keyframes symbol-rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to   { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* ── WRAPPER ── */
+    .portal-wrapper {
+      position: relative; z-index: 10;
+      max-width: 1180px; margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem) 4rem;
+    }
+
+    /* ════ HEADER ════ */
+    header { text-align: center; margin-bottom: 2.4rem; }
+    .header-sigil { width: 96px; margin: 0 auto 1.1rem; filter: drop-shadow(0 0 14px rgba(198,255,0,0.55)); animation: sigil-pulse 4s ease-in-out infinite; }
+    @keyframes sigil-pulse { 0%,100% { opacity: 0.9; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+    .header-sigil svg { width: 100%; height: auto; display: block; }
+
+    .portal-subtitle {
+      display: inline-block; font-family: 'Jost', sans-serif; font-weight: 500;
+      font-size: 0.72rem; letter-spacing: 0.55em; text-transform: uppercase;
+      color: var(--green-2); text-indent: 0.55em;
+    }
+
+    .portal-title {
+      font-family: 'Orbitron', sans-serif; font-weight: 900;
+      font-size: clamp(2.6rem, 8vw, 5.4rem); line-height: 0.96;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin: 0.35rem 0 0.2rem; position: relative;
+      background: var(--grad); background-size: 220% 220%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: grad-flow 7s ease infinite;
+      filter: drop-shadow(0 0 22px rgba(57,255,20,0.35)) drop-shadow(0 0 8px rgba(255,242,0,0.3));
+    }
+    @keyframes grad-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    .header-divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.1rem auto 0.9rem; max-width: 320px; }
+    .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
+    .divider-symbol { color: var(--yellow); font-size: 1rem; text-shadow: var(--glow-y); }
+
+    .moon-phase { display: block; font-size: 1.6rem; margin: 0.2rem 0 0.7rem; filter: drop-shadow(0 0 10px rgba(0,255,157,0.5)); }
+
+    .portal-intro { color: var(--text-2); font-size: 0.98rem; font-style: italic; max-width: 560px; margin: 0 auto; }
+    .portal-intro em { color: var(--lime); font-style: normal; font-size: 0.85rem; }
+
+    /* ════ BARRA DE BUSCA ════ */
+    .search-wrap { max-width: 540px; margin: 2rem auto 0.4rem; position: relative; }
+    .search-box {
+      width: 100%; padding: 0.85rem 2.8rem 0.85rem 1.2rem;
+      background: rgba(10, 27, 18, 0.85); color: var(--text);
+      border: 1px solid var(--line); border-radius: 4px;
+      font-family: 'Jost', sans-serif; font-size: 0.95rem; letter-spacing: 0.04em;
+      outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .search-box::placeholder { color: var(--dim); letter-spacing: 0.08em; }
+    .search-box:focus { border-color: var(--green); box-shadow: 0 0 0 1px var(--green), 0 0 22px rgba(57,255,20,0.25); }
+    .search-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: var(--green-2); font-size: 1.05rem; pointer-events: none; }
+    .search-count { text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-top: 0.6rem; min-height: 1em; }
+
+    /* ════ SEÇÕES ════ */
+    .section-block { margin-bottom: 2.6rem; }
+    .section-title {
+      display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+      font-family: 'Jost', sans-serif; font-weight: 700;
+      font-size: clamp(1.15rem, 2.6vw, 1.6rem); letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 1rem; padding-bottom: 0.55rem;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    .section-title::after {
+      content: ''; position: absolute; left: 0; bottom: -1px; width: 88px; height: 2px;
+      background: var(--grad); box-shadow: 0 0 12px rgba(57,255,20,0.6);
+    }
+    .section-title .section-label {
+      background: var(--grad); background-size: 200% 200%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: grad-flow 9s ease infinite;
+    }
+    .section-icon { font-size: 1.15em; -webkit-text-fill-color: initial; filter: drop-shadow(0 0 8px rgba(198,255,0,0.5)); }
+    .section-count {
+      margin-left: auto; font-family: 'Space Mono', monospace; font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--ink); background: var(--lime);
+      padding: 0.18em 0.6em; border-radius: 999px; box-shadow: var(--glow-g);
+      -webkit-text-fill-color: var(--ink);
+    }
+
+    /* ── SUBGRUPOS (subpastas) ── */
+    .subgroup { margin: 1.2rem 0 0.4rem; }
+    .subgroup-title {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-2);
+      margin: 0.6rem 0 0.8rem; opacity: 0.95;
+    }
+    .subgroup-title::before { content: '⟡'; color: var(--yellow); text-shadow: var(--glow-y); font-size: 0.9em; }
+    .subgroup-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+
+    /* ════ GRADE DE BOTÕES (compactos) ════ */
+    .grimoire-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .scroll-link {
+      position: relative; display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 0.75rem; min-height: 56px;
+      background: linear-gradient(150deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--line); border-radius: 5px;
+      text-decoration: none; color: var(--text);
+      overflow: hidden; isolation: isolate;
+      transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.25s ease, background 0.25s;
+    }
+    /* halo de gradiente que acende no hover */
+    .scroll-link::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+      background: var(--grad); filter: blur(14px); transition: opacity 0.3s;
+    }
+    /* barra lateral neon */
+    .scroll-link::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--grad); transform: scaleY(0.18); transform-origin: center;
+      transition: transform 0.25s ease; box-shadow: 0 0 10px rgba(57,255,20,0.5);
+    }
+    .scroll-link:hover, .scroll-link:focus-visible {
+      transform: translateY(-3px);
+      border-color: var(--green);
+      box-shadow: 0 8px 26px rgba(0,0,0,0.55), 0 0 22px rgba(57,255,20,0.28);
+      background: linear-gradient(150deg, #0c2317, #103019);
+      outline: none;
+    }
+    .scroll-link:hover::before, .scroll-link:focus-visible::before { opacity: 0.16; }
+    .scroll-link:hover::after, .scroll-link:focus-visible::after { transform: scaleY(1); }
+
+    .scroll-icon {
+      font-size: 1.25rem; line-height: 1; flex-shrink: 0;
+      filter: drop-shadow(0 0 6px rgba(198,255,0,0.45));
+      transition: transform 0.25s, filter 0.25s;
+    }
+    .scroll-link:hover .scroll-icon { transform: scale(1.15) rotate(-6deg); filter: drop-shadow(0 0 12px rgba(57,255,20,0.8)); }
+
+    .scroll-name {
+      font-family: 'Futura', 'Jost', sans-serif; font-weight: 600;
+      font-size: 0.86rem; line-height: 1.2; letter-spacing: 0.01em;
+      color: var(--text);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .scroll-link:hover .scroll-name { color: #f8ffe0; }
+
+    /* caminho fica oculto na tela (botão menor), mas continua no DOM p/ busca */
+    .scroll-path { display: none; }
+
+    .scroll-corner {
+      position: absolute; top: 5px; right: 7px; font-size: 0.6rem; color: var(--green-2);
+      opacity: 0.35; transition: opacity 0.25s, transform 0.25s;
+    }
+    .scroll-link:hover .scroll-corner { opacity: 1; transform: rotate(90deg); text-shadow: var(--glow-g); }
+
+    .empty-state { grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--dim); border: 1px dashed var(--line); border-radius: 6px; }
+    .empty-state .empty-icon { font-size: 2.6rem; display: block; margin-bottom: 0.8rem; }
+    .no-results { display: none; text-align: center; padding: 2.5rem 1rem; color: var(--dim); font-family: 'Space Mono', monospace; letter-spacing: 0.1em; }
+
+    /* ════ RODAPÉ ════ */
+    footer { text-align: center; margin-top: 3.4rem; }
+    .footer-divider { width: 140px; height: 1px; margin: 0 auto 1.1rem; background: var(--grad); box-shadow: 0 0 12px rgba(57,255,20,0.5); }
+    .footer-text { font-family: 'Orbitron', sans-serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--lime); }
+    .footer-sigils { color: var(--green-2); letter-spacing: 0.5em; margin: 0.7rem 0; opacity: 0.6; }
+    .regen-hint { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--dim); letter-spacing: 0.04em; }
+    .regen-hint code { background: rgba(57,255,20,0.1); color: var(--lime); padding: 0.1em 0.45em; border-radius: 3px; }
+
+    /* ════ ENTRADA ESCALONADA ════ */
+    .fade-in { opacity: 0; transform: translateY(14px); animation: fade-up 0.6s ease forwards; }
+    @keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+    .scroll-link { animation: fade-up 0.5s ease both; }
+
+    @media (max-width: 480px) {
+      .grimoire-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 0.55rem; }
+      .scroll-link { min-height: 50px; padding: 0.5rem 0.6rem; }
+      body { cursor: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .fade-in, .scroll-link { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cosmos"></div>
+  <canvas class="stars-layer" id="stars"></canvas>
+  <div class="scanlines"></div>
+
+  <!-- Flor da Vida de fundo -->
+  <svg class="sacred-bg-symbol" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#39ff14" stroke-width="0.8">
+      <circle cx="400" cy="400" r="80"/><circle cx="400" cy="320" r="80"/><circle cx="469" cy="360" r="80"/>
+      <circle cx="469" cy="440" r="80"/><circle cx="400" cy="480" r="80"/><circle cx="331" cy="440" r="80"/>
+      <circle cx="331" cy="360" r="80"/><circle cx="400" cy="240" r="80"/><circle cx="538" cy="280" r="80"/>
+      <circle cx="607" cy="400" r="80"/><circle cx="538" cy="520" r="80"/><circle cx="400" cy="560" r="80"/>
+      <circle cx="262" cy="520" r="80"/><circle cx="193" cy="400" r="80"/><circle cx="262" cy="280" r="80"/>
+      <circle cx="400" cy="400" r="160"/><circle cx="400" cy="400" r="240"/><circle cx="400" cy="400" r="320"/>
+      <polygon points="400,80 573,614 157,314 643,314 227,614" stroke="#fff200" stroke-width="0.6" opacity="0.5"/>
+    </g>
+  </svg>
+
+  <div class="portal-wrapper">
+    <header class="fade-in">
+      <div class="header-sigil">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="neonGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"  stop-color="#fff200"/>
+              <stop offset="55%" stop-color="#c6ff00"/>
+              <stop offset="100%" stop-color="#00ff9d"/>
+            </radialGradient>
+          </defs>
+          <g fill="none" stroke="url(#neonGrad)" stroke-width="1.4">
+            <polygon points="60,10 72,46 110,46 79,69 91,105 60,82 29,105 41,69 10,46 48,46" fill="rgba(57,255,20,0.08)" stroke-width="1.6"/>
+            <circle cx="60" cy="60" r="52" opacity="0.6"/>
+            <circle cx="60" cy="60" r="48" opacity="0.3"/>
+            <ellipse cx="60" cy="60" rx="16" ry="10" fill="rgba(255,242,0,0.12)" stroke-width="1"/>
+            <circle cx="60" cy="60" r="5" fill="url(#neonGrad)"/>
+            <circle cx="62" cy="58" r="1.6" fill="#fff" opacity="0.9"/>
+          </g>
+        </svg>
+      </div>
+
+      <span class="portal-subtitle">Grimório Digital</span>
+      <h1 class="portal-title">Portal Sagrado</h1>
+      <span class="portal-subtitle" style="font-size:0.66rem; letter-spacing:0.42em; color:var(--dim);">Arquivos do Conhecimento Oculto</span>
+
+      <div class="header-divider">
+        <div class="divider-line"></div>
+        <span class="divider-symbol">✦</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <span class="moon-phase" id="moonPhase">🌕</span>
+      <p class="portal-intro">
+        “Aquilo que está em cima é como aquilo que está embaixo.”
+        <br><em>— Tábua de Esmeralda, Hermes Trismegisto</em>
+      </p>
+
+      <div class="search-wrap">
+        <input type="text" class="search-box" id="search" placeholder="buscar pergaminho ou tema…" autocomplete="off" spellcheck="false" />
+        <span class="search-icon">⌕</span>
+      </div>
+      <div class="search-count" id="searchCount"></div>
+    </header>
+
+    <!-- ═══ CONTEÚDO DINÂMICO ═══ -->
+    <!-- INÍCIO DOS ARQUIVOS — NÃO REMOVA ESTE COMENTÁRIO -->
+    <!-- Gerado automaticamente por generate.py em 01/06/2026 17:55 | 75 arquivo(s) -->
+    <p class="portal-intro fade-in" style="text-align:center; margin:0 auto 2.4rem; animation-delay:0.2s">
+      <span style="font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--lime); text-shadow:0 0 14px rgba(57,255,20,0.4);">
+        ✦ 75 pergaminhos no acervo ✦
+      </span>
+    </p>
+
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">🃏</span><span class="section-label">Tarô, Oráculos &amp; Sistemas Divinatórios</span><span class="section-count">6</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="01_ORACULOS/01_Arcanos-Maiores.html" title="Arcanos Maiores" data-search="arcanos maiores 01_oraculos/01_arcanos-maiores.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Arcanos Maiores</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_Arcanos-Maiores.html</span>
+        </a>
+        <a class="scroll-link" href="01_ORACULOS/01_Baralho-Cigano.html" title="Baralho Cigano" data-search="baralho cigano 01_oraculos/01_baralho-cigano.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Baralho Cigano</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_Baralho-Cigano.html</span>
+        </a>
+        <a class="scroll-link" href="01_ORACULOS/01_I-Ching.html" title="I Ching" data-search="i ching 01_oraculos/01_i-ching.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">I Ching</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_I-Ching.html</span>
+        </a>
+        <a class="scroll-link" href="01_ORACULOS/01_Simbolos-Arcanos-Maiores.html" title="Símbolos Arcanos Maiores" data-search="símbolos arcanos maiores 01_oraculos/01_simbolos-arcanos-maiores.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Símbolos Arcanos Maiores</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_Simbolos-Arcanos-Maiores.html</span>
+        </a>
+        <a class="scroll-link" href="01_ORACULOS/01_Tarot-Mitologico.html" title="Tarot Mitológico" data-search="tarot mitológico 01_oraculos/01_tarot-mitologico.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Tarot Mitológico</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_Tarot-Mitologico.html</span>
+        </a>
+        <a class="scroll-link" href="01_ORACULOS/01_Tarot-Sexual.html" title="Tarot Sexual" data-search="tarot sexual 01_oraculos/01_tarot-sexual.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Tarot Sexual</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">01_ORACULOS/01_Tarot-Sexual.html</span>
+        </a>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">🕯</span><span class="section-label">Ocultismo, Magia &amp; Hermetismo</span><span class="section-count">8</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_Agrippa.html" title="Agrippa" data-search="agrippa 02_ocultismo_magia/02_agrippa.html">
+          <span class="scroll-icon">☿</span>
+          <span class="scroll-name">Agrippa</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_Agrippa.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_cabala-completa.html" title="Cabala Completa" data-search="cabala completa 02_ocultismo_magia/02_cabala-completa.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Cabala Completa</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_cabala-completa.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_Livro-das-Mentiras.html" title="Livro Das Mentiras" data-search="livro das mentiras 02_ocultismo_magia/02_livro-das-mentiras.html">
+          <span class="scroll-icon">🃏</span>
+          <span class="scroll-name">Livro Das Mentiras</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_Livro-das-Mentiras.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_lovecraft.html" title="Lovecraft" data-search="lovecraft 02_ocultismo_magia/02_lovecraft.html">
+          <span class="scroll-icon">🐙</span>
+          <span class="scroll-name">Lovecraft</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_lovecraft.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_magia_sexual.html" title="Magia Sexual" data-search="magia sexual 02_ocultismo_magia/02_magia_sexual.html">
+          <span class="scroll-icon">✦</span>
+          <span class="scroll-name">Magia Sexual</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_magia_sexual.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_magia_sexual_solo.html" title="Magia Sexual Solo" data-search="magia sexual solo 02_ocultismo_magia/02_magia_sexual_solo.html">
+          <span class="scroll-icon">✦</span>
+          <span class="scroll-name">Magia Sexual Solo</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_magia_sexual_solo.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_sefer-yetzirah.html" title="Sefer Yetzirah" data-search="sefer yetzirah 02_ocultismo_magia/02_sefer-yetzirah.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Sefer Yetzirah</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_sefer-yetzirah.html</span>
+        </a>
+        <a class="scroll-link" href="02_OCULTISMO_MAGIA/02_trabalhos_espirituais.html" title="Trabalhos Espirituais" data-search="trabalhos espirituais 02_ocultismo_magia/02_trabalhos_espirituais.html">
+          <span class="scroll-icon">🕯</span>
+          <span class="scroll-name">Trabalhos Espirituais</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">02_OCULTISMO_MAGIA/02_trabalhos_espirituais.html</span>
+        </a>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">♑</span><span class="section-label">Astrologia</span><span class="section-count">5</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="04_ASTROLOGIA/04_astrologia-parte1.html" title="Astrologia Parte1" data-search="astrologia parte1 04_astrologia/04_astrologia-parte1.html">
+          <span class="scroll-icon">♑</span>
+          <span class="scroll-name">Astrologia Parte1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">04_ASTROLOGIA/04_astrologia-parte1.html</span>
+        </a>
+        <a class="scroll-link" href="04_ASTROLOGIA/04_astrologia-parte2.html" title="Astrologia Parte2" data-search="astrologia parte2 04_astrologia/04_astrologia-parte2.html">
+          <span class="scroll-icon">♑</span>
+          <span class="scroll-name">Astrologia Parte2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">04_ASTROLOGIA/04_astrologia-parte2.html</span>
+        </a>
+        <a class="scroll-link" href="04_ASTROLOGIA/04_astrologia-parte3.html" title="Astrologia Parte3" data-search="astrologia parte3 04_astrologia/04_astrologia-parte3.html">
+          <span class="scroll-icon">♑</span>
+          <span class="scroll-name">Astrologia Parte3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">04_ASTROLOGIA/04_astrologia-parte3.html</span>
+        </a>
+        <a class="scroll-link" href="04_ASTROLOGIA/04_astrologia-parte4.html" title="Astrologia Parte4" data-search="astrologia parte4 04_astrologia/04_astrologia-parte4.html">
+          <span class="scroll-icon">♑</span>
+          <span class="scroll-name">Astrologia Parte4</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">04_ASTROLOGIA/04_astrologia-parte4.html</span>
+        </a>
+        <a class="scroll-link" href="04_ASTROLOGIA/04_mapa-astral-danieli.html" title="Mapa Astral Danieli" data-search="mapa astral danieli 04_astrologia/04_mapa-astral-danieli.html">
+          <span class="scroll-icon">🗺</span>
+          <span class="scroll-name">Mapa Astral Danieli</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">04_ASTROLOGIA/04_mapa-astral-danieli.html</span>
+        </a>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">✦</span><span class="section-label">Energia, Chakras &amp; Meditação</span><span class="section-count">4</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="05_CRAKRAS_MEDITACAO/05_chakras.html" title="Chakras" data-search="chakras 05_crakras_meditacao/05_chakras.html">
+          <span class="scroll-icon">🌀</span>
+          <span class="scroll-name">Chakras</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">05_CRAKRAS_MEDITACAO/05_chakras.html</span>
+        </a>
+        <a class="scroll-link" href="05_CRAKRAS_MEDITACAO/05_chakras-trabalho-e-tratamento.html" title="Chakras Trabalho E Tratamento" data-search="chakras trabalho e tratamento 05_crakras_meditacao/05_chakras-trabalho-e-tratamento.html">
+          <span class="scroll-icon">🕯</span>
+          <span class="scroll-name">Chakras Trabalho E Tratamento</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">05_CRAKRAS_MEDITACAO/05_chakras-trabalho-e-tratamento.html</span>
+        </a>
+        <a class="scroll-link" href="05_CRAKRAS_MEDITACAO/05_Exercicios-Kundalini.html" title="Exercícios Kundalini" data-search="exercícios kundalini 05_crakras_meditacao/05_exercicios-kundalini.html">
+          <span class="scroll-icon">🐍</span>
+          <span class="scroll-name">Exercícios Kundalini</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">05_CRAKRAS_MEDITACAO/05_Exercicios-Kundalini.html</span>
+        </a>
+        <a class="scroll-link" href="05_CRAKRAS_MEDITACAO/05_violao_meditativo.html" title="Violão Meditativo" data-search="violão meditativo 05_crakras_meditacao/05_violao_meditativo.html">
+          <span class="scroll-icon">🎼</span>
+          <span class="scroll-name">Violão Meditativo</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">05_CRAKRAS_MEDITACAO/05_violao_meditativo.html</span>
+        </a>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">💫</span><span class="section-label">Projeção, Metafísica &amp; Cosmologia</span><span class="section-count">18</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/06_geometria-sagrada.html" title="Geometria Sagrada" data-search="geometria sagrada 06_projecao_metafisica_cosmologia/06_geometria-sagrada.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Geometria Sagrada</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/06_geometria-sagrada.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/06_inteligencias_cosmicas.html" title="Inteligências Cosmicas" data-search="inteligências cosmicas 06_projecao_metafisica_cosmologia/06_inteligencias_cosmicas.html">
+          <span class="scroll-icon">🌌</span>
+          <span class="scroll-name">Inteligências Cosmicas</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/06_inteligencias_cosmicas.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/06_projecao_astral.html" title="Projeção Astral" data-search="projeção astral 06_projecao_metafisica_cosmologia/06_projecao_astral.html">
+          <span class="scroll-icon">♑</span>
+          <span class="scroll-name">Projeção Astral</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/06_projecao_astral.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/06_Vale_da_estranheza.html" title="Vale Da Estranheza" data-search="vale da estranheza 06_projecao_metafisica_cosmologia/06_vale_da_estranheza.html">
+          <span class="scroll-icon">💫</span>
+          <span class="scroll-name">Vale Da Estranheza</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/06_Vale_da_estranheza.html</span>
+        </a>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Metafísica · Design Antigo</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica1.html" title="Consciência Metafísica 1" data-search="consciência metafísica 1 06_projecao_metafisica_cosmologia/metafisica/design antigo/06_conciencia-metafisica1.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Consciência Metafísica 1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica1.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica2.html" title="Consciência Metafisica2" data-search="consciência metafisica2 06_projecao_metafisica_cosmologia/metafisica/design antigo/06_conciencia-metafisica2.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Consciência Metafisica2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica2.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica3.html" title="Consciência Metafisica3" data-search="consciência metafisica3 06_projecao_metafisica_cosmologia/metafisica/design antigo/06_conciencia-metafisica3.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Consciência Metafisica3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN ANTIGO/06_Conciencia-Metafisica3.html</span>
+        </a>
+      </div>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Metafísica · Design Novo</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte1.html" title="Cosmo Parte1" data-search="cosmo parte1 06_projecao_metafisica_cosmologia/metafisica/design novo/cosmo-parte1.html">
+          <span class="scroll-icon">🌌</span>
+          <span class="scroll-name">Cosmo Parte1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte1.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte2.html" title="Cosmo Parte2" data-search="cosmo parte2 06_projecao_metafisica_cosmologia/metafisica/design novo/cosmo-parte2.html">
+          <span class="scroll-icon">🌌</span>
+          <span class="scroll-name">Cosmo Parte2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte2.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte3.html" title="Cosmo Parte3" data-search="cosmo parte3 06_projecao_metafisica_cosmologia/metafisica/design novo/cosmo-parte3.html">
+          <span class="scroll-icon">🌌</span>
+          <span class="scroll-name">Cosmo Parte3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/METAFISICA/DESIGN NOVO/cosmo-parte3.html</span>
+        </a>
+      </div>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Raças · Design Antigo</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol1.html" title="Raças Vol1" data-search="raças vol1 06_projecao_metafisica_cosmologia/racas/design antigo/09_racas-vol1.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Raças Vol1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol1.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol2.html" title="Raças Vol2" data-search="raças vol2 06_projecao_metafisica_cosmologia/racas/design antigo/09_racas-vol2.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Raças Vol2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol2.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol3.html" title="Raças Vol3" data-search="raças vol3 06_projecao_metafisica_cosmologia/racas/design antigo/09_racas-vol3.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Raças Vol3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol3.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol4.html" title="Raças Vol4" data-search="raças vol4 06_projecao_metafisica_cosmologia/racas/design antigo/09_racas-vol4.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Raças Vol4</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN ANTIGO/09_Racas-vol4.html</span>
+        </a>
+      </div>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Raças · Design Novo</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol1.html" title="Ufo Esotérico Vol1" data-search="ufo esotérico vol1 06_projecao_metafisica_cosmologia/racas/design novo/ufo-esoterico-vol1.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Ufo Esotérico Vol1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol1.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol2.html" title="Ufo Esotérico Vol2" data-search="ufo esotérico vol2 06_projecao_metafisica_cosmologia/racas/design novo/ufo-esoterico-vol2.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Ufo Esotérico Vol2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol2.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol3.html" title="Ufo Esotérico Vol3" data-search="ufo esotérico vol3 06_projecao_metafisica_cosmologia/racas/design novo/ufo-esoterico-vol3.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Ufo Esotérico Vol3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol3.html</span>
+        </a>
+        <a class="scroll-link" href="06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol4.html" title="Ufo Esotérico Vol4" data-search="ufo esotérico vol4 06_projecao_metafisica_cosmologia/racas/design novo/ufo-esoterico-vol4.html">
+          <span class="scroll-icon">🛸</span>
+          <span class="scroll-name">Ufo Esotérico Vol4</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">06_PROJECAO_METAFISICA_COSMOLOGIA/RACAS/DESIGN NOVO/ufo-esoterico-vol4.html</span>
+        </a>
+      </div>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">☸</span><span class="section-label">Religiões, Mitologias &amp; Civilizações Antigas</span><span class="section-count">6</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="07_MITOLOGIA/07_hinduismo.html" title="Hinduísmo" data-search="hinduísmo 07_mitologia/07_hinduismo.html">
+          <span class="scroll-icon">🕉</span>
+          <span class="scroll-name">Hinduísmo</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_hinduismo.html</span>
+        </a>
+        <a class="scroll-link" href="07_MITOLOGIA/07_livro_dos_mortos-Egipcio.html" title="Livro Dos Mortos Egípcio" data-search="livro dos mortos egípcio 07_mitologia/07_livro_dos_mortos-egipcio.html">
+          <span class="scroll-icon">☥</span>
+          <span class="scroll-name">Livro Dos Mortos Egípcio</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_livro_dos_mortos-Egipcio.html</span>
+        </a>
+        <a class="scroll-link" href="07_MITOLOGIA/07_mitologia-egipcia.html" title="Mitologia Egípcia" data-search="mitologia egípcia 07_mitologia/07_mitologia-egipcia.html">
+          <span class="scroll-icon">☥</span>
+          <span class="scroll-name">Mitologia Egípcia</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_mitologia-egipcia.html</span>
+        </a>
+        <a class="scroll-link" href="07_MITOLOGIA/07_mitologia-grega.html" title="Mitologia Grega" data-search="mitologia grega 07_mitologia/07_mitologia-grega.html">
+          <span class="scroll-icon">⚡</span>
+          <span class="scroll-name">Mitologia Grega</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_mitologia-grega.html</span>
+        </a>
+        <a class="scroll-link" href="07_MITOLOGIA/07_mitologias-correlacionadas.html" title="Mitologias Correlacionadas" data-search="mitologias correlacionadas 07_mitologia/07_mitologias-correlacionadas.html">
+          <span class="scroll-icon">☸</span>
+          <span class="scroll-name">Mitologias Correlacionadas</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_mitologias-correlacionadas.html</span>
+        </a>
+        <a class="scroll-link" href="07_MITOLOGIA/07_mitos-esoterismo.html" title="Mitos Esoterismo" data-search="mitos esoterismo 07_mitologia/07_mitos-esoterismo.html">
+          <span class="scroll-icon">☸</span>
+          <span class="scroll-name">Mitos Esoterismo</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">07_MITOLOGIA/07_mitos-esoterismo.html</span>
+        </a>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">👁</span><span class="section-label">Gnosticismo, Apócrifos &amp; Mística Cristã</span><span class="section-count">24</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="08_GNOSTICISMO/08_genesis.html" title="Gênesis" data-search="gênesis 08_gnosticismo/08_genesis.html">
+          <span class="scroll-icon">👁</span>
+          <span class="scroll-name">Gênesis</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/08_genesis.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/08_maria-madalena.html" title="Maria Madalena" data-search="maria madalena 08_gnosticismo/08_maria-madalena.html">
+          <span class="scroll-icon">👁</span>
+          <span class="scroll-name">Maria Madalena</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/08_maria-madalena.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/08_Phisis-Sophia1.html" title="Phisis Sophia1" data-search="phisis sophia1 08_gnosticismo/08_phisis-sophia1.html">
+          <span class="scroll-icon">👁</span>
+          <span class="scroll-name">Phisis Sophia1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/08_Phisis-Sophia1.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/08_Phisis-Sophia2.html" title="Phisis Sophia2" data-search="phisis sophia2 08_gnosticismo/08_phisis-sophia2.html">
+          <span class="scroll-icon">👁</span>
+          <span class="scroll-name">Phisis Sophia2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/08_Phisis-Sophia2.html</span>
+        </a>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Estudo Apócrifo (Claro)</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte1.html" title="Estudo Apócrifo Parte1" data-search="estudo apócrifo parte1 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte1.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte1.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte2.html" title="Estudo Apócrifo Parte2" data-search="estudo apócrifo parte2 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte2.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte2.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte3.html" title="Estudo Apócrifo Parte3" data-search="estudo apócrifo parte3 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte3.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte3.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte4.html" title="Estudo Apócrifo Parte4" data-search="estudo apócrifo parte4 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte4.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte4</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte4.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte5.html" title="Estudo Apócrifo Parte5" data-search="estudo apócrifo parte5 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte5.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte5</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte5.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte6.html" title="Estudo Apócrifo Parte6" data-search="estudo apócrifo parte6 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte6.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte6</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte6.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte7.html" title="Estudo Apócrifo Parte7" data-search="estudo apócrifo parte7 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte7.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte7</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte7.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte8.html" title="Estudo Apócrifo Parte8" data-search="estudo apócrifo parte8 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte8.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte8</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte8.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte9.html" title="Estudo Apócrifo Parte9" data-search="estudo apócrifo parte9 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte9.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte9</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte9.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte10.html" title="Estudo Apócrifo Parte10" data-search="estudo apócrifo parte10 08_gnosticismo/estudo apocrifo (claro)/08_estudo-apocrifo-parte10.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte10</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (CLARO)/08_Estudo-Apocrifo-Parte10.html</span>
+        </a>
+      </div>
+      </div>
+      <div class="subgroup">
+        <h3 class="subgroup-title">Estudo Apócrifo (Preto)</h3>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte1.html" title="Estudo Apócrifo Parte1" data-search="estudo apócrifo parte1 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte1.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte1.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte2.html" title="Estudo Apócrifo Parte2" data-search="estudo apócrifo parte2 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte2.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte2.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte3.html" title="Estudo Apócrifo Parte3" data-search="estudo apócrifo parte3 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte3.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte3</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte3.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte4.html" title="Estudo Apócrifo Parte4" data-search="estudo apócrifo parte4 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte4.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte4</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte4.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte5.html" title="Estudo Apócrifo Parte5" data-search="estudo apócrifo parte5 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte5.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte5</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte5.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte6.html" title="Estudo Apócrifo Parte6" data-search="estudo apócrifo parte6 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte6.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte6</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte6.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte7.html" title="Estudo Apócrifo Parte7" data-search="estudo apócrifo parte7 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte7.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte7</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte7.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte8.html" title="Estudo Apócrifo Parte8" data-search="estudo apócrifo parte8 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte8.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte8</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte8.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte9.html" title="Estudo Apócrifo Parte9" data-search="estudo apócrifo parte9 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte9.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte9</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte9.html</span>
+        </a>
+        <a class="scroll-link" href="08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte10.html" title="Estudo Apócrifo Parte10" data-search="estudo apócrifo parte10 08_gnosticismo/estudo apocrifo (preto)/08_estudo-apocrifo-parte10.html">
+          <span class="scroll-icon">📖</span>
+          <span class="scroll-name">Estudo Apócrifo Parte10</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">08_GNOSTICISMO/ESTUDO APOCRIFO (PRETO)/08_Estudo-Apocrifo-Parte10.html</span>
+        </a>
+      </div>
+      </div>
+    </section>
+    <section class="section-block fade-in">
+      <h2 class="section-title"><span class="section-icon">📜</span><span class="section-label">Estudos Gerais &amp; Materiais Mistos</span><span class="section-count">4</span></h2>
+      <div class="grimoire-grid">
+        <a class="scroll-link" href="10_GERAL/10_Mapa-esoterico.html" title="Mapa Esotérico" data-search="mapa esotérico 10_geral/10_mapa-esoterico.html">
+          <span class="scroll-icon">🗺</span>
+          <span class="scroll-name">Mapa Esotérico</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">10_GERAL/10_Mapa-esoterico.html</span>
+        </a>
+        <a class="scroll-link" href="10_GERAL/10_mapa-ocultismo.html" title="Mapa Ocultismo" data-search="mapa ocultismo 10_geral/10_mapa-ocultismo.html">
+          <span class="scroll-icon">🗺</span>
+          <span class="scroll-name">Mapa Ocultismo</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">10_GERAL/10_mapa-ocultismo.html</span>
+        </a>
+        <a class="scroll-link" href="10_GERAL/10_Simbolos1.html" title="Simbolos1" data-search="simbolos1 10_geral/10_simbolos1.html">
+          <span class="scroll-icon">✶</span>
+          <span class="scroll-name">Simbolos1</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">10_GERAL/10_Simbolos1.html</span>
+        </a>
+        <a class="scroll-link" href="10_GERAL/10_Simbolos2.html" title="Simbolos2" data-search="simbolos2 10_geral/10_simbolos2.html">
+          <span class="scroll-icon">✶</span>
+          <span class="scroll-name">Simbolos2</span>
+          <span class="scroll-corner">✦</span>
+          <span class="scroll-path">10_GERAL/10_Simbolos2.html</span>
+        </a>
+      </div>
+    </section>
+    <!-- FIM DOS ARQUIVOS — NÃO REMOVA ESTE COMENTÁRIO -->
+
+    <div class="no-results" id="noResults">⌀ nenhum pergaminho corresponde à busca</div>
+
+    <footer class="fade-in" style="animation-delay:0.5s">
+      <div class="footer-divider"></div>
+      <p class="footer-text">Omnia In Unum — Tudo em Um</p>
+      <div class="footer-sigils">⚕ ✶ ☽ ✦ ☾ ✶ ⚕</div>
+      <div class="regen-hint">⟳&nbsp; Para atualizar: execute <code>python generate.py</code></div>
+    </footer>
+  </div>
+
+  <script>
+    /* ── ESTRELAS NEON ── */
+    (function () {
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      function resize() { canvas.width = innerWidth; canvas.height = innerHeight; gen(); }
+      function gen() {
+        stars = [];
+        const count = Math.floor((canvas.width * canvas.height) / 4200);
+        for (let i = 0; i < count; i++) {
+          const roll = Math.random();
+          stars.push({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            r: Math.random() * 1.4 + 0.2, o: Math.random() * 0.7 + 0.1,
+            speed: Math.random() * 0.008 + 0.002, phase: Math.random() * Math.PI * 2,
+            color: roll > 0.82 ? 'rgba(255,242,0,' : roll > 0.5 ? 'rgba(57,255,20,' : 'rgba(0,255,157,'
+          });
+        }
+      }
+      let t = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); t += 0.016;
+        for (const s of stars) {
+          const op = s.o * (0.5 + 0.5 * Math.sin(t * s.speed * 60 + s.phase));
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color + op + ')'; ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      addEventListener('resize', resize); resize(); draw();
+    })();
+
+    /* ── FASE DA LUA ── */
+    (function () {
+      const moons = ['🌑','🌒','🌓','🌔','🌕','🌖','🌗','🌘'];
+      const ref = new Date('2000-01-06'), cycle = 29.53058867, now = new Date();
+      const diff = (now - ref) / 86400000;
+      const phase = ((diff % cycle) + cycle) % cycle;
+      document.getElementById('moonPhase').textContent = moons[Math.round((phase / cycle) * 8) % 8];
+    })();
+
+    /* ── ATRASO ESCALONADO ── */
+    document.querySelectorAll('.scroll-link').forEach((el, i) => {
+      el.style.animationDelay = (0.03 * i + 0.1).toFixed(2) + 's';
+    });
+
+    /* ── BUSCA / FILTRO ── */
+    (function () {
+      const input = document.getElementById('search');
+      const countEl = document.getElementById('searchCount');
+      const noRes = document.getElementById('noResults');
+      const links = Array.from(document.querySelectorAll('.scroll-link'));
+      const sections = Array.from(document.querySelectorAll('.section-block'));
+      const subgroups = Array.from(document.querySelectorAll('.subgroup'));
+      const total = links.length;
+
+      function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      links.forEach(l => l.dataset._s = norm((l.dataset.search || '') + ' ' + l.textContent));
+
+      function render() {
+        const q = norm(input.value.trim());
+        let visible = 0;
+        links.forEach(l => {
+          const show = !q || l.dataset._s.includes(q);
+          l.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        subgroups.forEach(g => {
+          const any = g.querySelectorAll('.scroll-link:not([style*="display: none"])').length;
+          g.style.display = any ? '' : 'none';
+        });
+        sections.forEach(s => {
+          const any = s.querySelectorAll('.scroll-link:not([style*="display: none"])').length;
+          s.style.display = any ? '' : 'none';
+        });
+        noRes.style.display = visible ? 'none' : 'block';
+        countEl.textContent = q ? (visible + ' de ' + total + ' pergaminhos') : '';
+      }
+      input.addEventListener('input', render);
+      render();
+    })();
+  </script>
+</body>
+</html>
