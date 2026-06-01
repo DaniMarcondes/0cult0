@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarô Mitológico — Grimório Completo das 78 Cartas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070408;
+  --gold: #C8A030;
+  --gold-l: #F0CC60;
+  --gold-d: rgba(200,160,48,0.12);
+  --terra: #7A3E1A;
+  --terra-l: #E06830;
+  --olive: #4A5820;
+  --olive-l: #90B840;
+  --azure: #1A3860;
+  --azure-l: #4080C0;
+  --wine: #580828;
+  --wine-l: #C04060;
+  --sand: #8A6A3A;
+  --sand-l: #D0A860;
+  --marble: #C0B890;
+  --marble-d: rgba(192,184,144,0.12);
+  --text: #EDE4CC;
+  --text-d: rgba(237,228,204,0.68);
+  --text-dd: rgba(237,228,204,0.42);
+  --border: rgba(200,160,48,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 100% 60% at 50% 0%,rgba(122,62,26,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 80%,rgba(26,56,96,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 90% 40%,rgba(88,8,40,0.05) 0%,transparent 60%);
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text);
+  line-height:1.88;
+  overflow-x:hidden;
+}
+
+/* PARCHMENT TEXTURE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+/* STARS */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 7% 9%,rgba(240,204,96,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 21% 33%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 53% 7%,rgba(240,204,96,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 74% 19%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 87% 43%,rgba(240,204,96,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 34% 87%,rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 62% 76%,rgba(240,204,96,.4) 0%,transparent 100%);
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:2;max-width:1040px;margin:0 auto;padding:0 18px 120px}
+
+/* ═══════════════ HEADER ═══════════════ */
+header{text-align:center;padding:80px 20px 60px;position:relative}
+.hdr-border{
+  width:90%;max-width:700px;margin:0 auto;
+  padding:40px 40px 36px;
+  border:2px solid rgba(200,160,48,0.35);
+  border-radius:4px;
+  position:relative;
+}
+.hdr-border::before,.hdr-border::after{
+  content:'✦';
+  position:absolute;font-size:1.4rem;
+  color:var(--gold);opacity:.6;
+}
+.hdr-border::before{top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 12px;}
+.corner-tl,.corner-tr,.corner-bl,.corner-br{
+  position:absolute;width:20px;height:20px;
+  border-color:var(--gold);border-style:solid;
+  opacity:.5;
+}
+.corner-tl{top:-2px;left:-2px;border-width:2px 0 0 2px}
+.corner-tr{top:-2px;right:-2px;border-width:2px 2px 0 0}
+.corner-bl{bottom:-2px;left:-2px;border-width:0 0 2px 2px}
+.corner-br{bottom:-2px;right:-2px;border-width:0 2px 2px 0}
+
+.hdr-glyph{
+  font-size:3.5rem;display:block;margin-bottom:14px;
+  filter:drop-shadow(0 0 20px var(--gold));
+  animation:golden 7s ease-in-out infinite;
+}
+@keyframes golden{
+  0%,100%{filter:drop-shadow(0 0 16px var(--gold))}
+  50%{filter:drop-shadow(0 0 40px var(--gold-l)) drop-shadow(0 0 80px rgba(200,160,48,.25))}
+}
+h1{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.3rem,4vw,2.6rem);
+  color:var(--gold-l);
+  letter-spacing:.1em;
+  text-shadow:0 0 40px rgba(200,160,48,.4);
+  line-height:1.3;
+}
+.h1-sub{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(.82rem,2vw,1rem);
+  color:rgba(200,160,48,.5);
+  letter-spacing:.25em;margin-top:10px;
+}
+.hdr-rule{
+  height:1px;margin:18px 0;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.hdr-intro{
+  font-size:.93rem;line-height:2.05;
+  color:var(--text-d);font-style:italic;
+}
+
+/* ═══════════════ CHAPTER HEADERS ═══════════════ */
+.chapter{
+  text-align:center;margin:70px 0 30px;
+  position:relative;
+}
+.chapter::before,.chapter::after{
+  content:'';display:block;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:14px 0;
+}
+.chapter-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.9rem,2.5vw,1.4rem);
+  letter-spacing:.18em;color:var(--gold-l);
+  text-shadow:0 0 20px rgba(200,160,48,.3);
+}
+.chapter-sub{
+  font-family:'IM Fell English',serif;
+  font-style:italic;font-size:.88rem;
+  color:var(--text-dd);margin-top:6px;
+}
+
+/* ═══════════════ SUIT BANNERS ═══════════════ */
+.suit-banner{
+  border-radius:12px;padding:22px 26px;
+  margin:30px 0 20px;
+  position:relative;overflow:hidden;
+}
+.suit-banner::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+}
+.sb-wands{background:linear-gradient(135deg,rgba(90,36,8,.7),rgba(12,6,2,.9));border:1px solid rgba(200,100,40,.3)}
+.sb-wands::after{background:linear-gradient(90deg,transparent,rgba(200,100,40,.6),transparent)}
+.sb-cups{background:linear-gradient(135deg,rgba(20,40,80,.7),rgba(4,8,18,.9));border:1px solid rgba(64,128,200,.3)}
+.sb-cups::after{background:linear-gradient(90deg,transparent,rgba(64,128,200,.6),transparent)}
+.sb-swords{background:linear-gradient(135deg,rgba(40,40,60,.7),rgba(8,8,14,.9));border:1px solid rgba(140,140,200,.3)}
+.sb-swords::after{background:linear-gradient(90deg,transparent,rgba(140,140,200,.6),transparent)}
+.sb-pent{background:linear-gradient(135deg,rgba(20,50,16,.7),rgba(4,12,4,.9));border:1px solid rgba(80,160,64,.3)}
+.sb-pent::after{background:linear-gradient(90deg,transparent,rgba(80,160,64,.6),transparent)}
+
+.sb-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.85rem,2vw,1.1rem);
+  letter-spacing:.15em;margin-bottom:8px;
+}
+.sb-wands .sb-title{color:var(--terra-l)}
+.sb-cups .sb-title{color:var(--azure-l)}
+.sb-swords .sb-title{color:#B0B0E0}
+.sb-pent .sb-title{color:var(--olive-l)}
+.sb-myth{font-size:.9rem;color:var(--text-d);line-height:1.85}
+.sb-myth strong{color:var(--gold-l)}
+
+/* ═══════════════ CARD BLOCKS ═══════════════ */
+.card-block{
+  border-radius:16px;
+  margin-bottom:20px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(200,160,48,.2);
+  background:linear-gradient(145deg,rgba(20,14,6,.85),rgba(8,4,2,.95));
+  animation:emerge .6s ease forwards;opacity:0;
+}
+.card-block.vis{opacity:1}
+@keyframes emerge{to{opacity:1;transform:none}from{opacity:0;transform:translateY(12px)}}
+
+/* color accent per suit / type */
+.card-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.acc-major::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.acc-wands::before{background:linear-gradient(90deg,transparent,var(--terra-l),transparent)}
+.acc-cups::before{background:linear-gradient(90deg,transparent,var(--azure-l),transparent)}
+.acc-swords::before{background:linear-gradient(90deg,transparent,#B0B0E0,transparent)}
+.acc-pent::before{background:linear-gradient(90deg,transparent,var(--olive-l),transparent)}
+
+/* left gutter */
+.card-block::after{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:3px;
+  border-radius:3px 0 0 3px;
+}
+.acc-major::after{background:linear-gradient(180deg,var(--gold-l),rgba(200,160,48,0))}
+.acc-wands::after{background:linear-gradient(180deg,var(--terra-l),rgba(200,100,40,0))}
+.acc-cups::after{background:linear-gradient(180deg,var(--azure-l),rgba(64,128,200,0))}
+.acc-swords::after{background:linear-gradient(180deg,#B0B0E0,rgba(140,140,200,0))}
+.acc-pent::after{background:linear-gradient(180deg,var(--olive-l),rgba(80,160,64,0))}
+
+/* card header */
+.card-head{
+  padding:20px 22px 0 26px;
+  display:flex;align-items:flex-start;gap:16px;
+}
+.card-numeral{
+  flex-shrink:0;
+  width:64px;height:64px;
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(200,160,48,.2);
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:1.2rem;color:var(--gold);
+}
+.card-numeral span{font-size:.55rem;font-family:'Cinzel Decorative',serif;letter-spacing:.1em;opacity:.6;margin-top:2px}
+.card-title-block{flex:1}
+.card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  font-weight:700;line-height:1.15;
+  color:var(--gold-l);
+}
+.card-figure{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:.88rem;color:var(--text-dd);
+  margin-top:3px;
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ctag{
+  font-size:.65rem;padding:2px 8px;
+  border-radius:20px;
+  font-family:'Cinzel Decorative',serif;
+  letter-spacing:.08em;
+  border:1px solid;
+}
+.ctag-gold{color:var(--gold);border-color:rgba(200,160,48,.3);background:rgba(200,160,48,.07)}
+.ctag-terra{color:var(--terra-l);border-color:rgba(200,100,40,.3);background:rgba(200,100,40,.07)}
+.ctag-azure{color:var(--azure-l);border-color:rgba(64,128,200,.3);background:rgba(64,128,200,.07)}
+.ctag-steel{color:#B0B0E0;border-color:rgba(140,140,200,.3);background:rgba(140,140,200,.07)}
+.ctag-olive{color:var(--olive-l);border-color:rgba(80,160,64,.3);background:rgba(80,160,64,.07)}
+
+/* card body */
+.card-body{padding:16px 22px 24px 26px}
+.section{margin-bottom:16px}
+.section:last-child{margin-bottom:0}
+.sec-label{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.58rem;letter-spacing:.2em;
+  color:var(--gold);opacity:.65;
+  margin-bottom:6px;display:block;
+}
+.sec-text{
+  font-size:.9rem;line-height:1.97;
+  color:var(--text-d);
+}
+.sec-text p{margin-bottom:8px}
+.sec-text p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+em.myth{color:var(--gold-l);font-style:italic}
+
+/* symbol grid */
+.sym-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:8px;margin-top:6px;
+}
+.sym-item{
+  background:rgba(200,160,48,.04);
+  border:1px solid rgba(200,160,48,.12);
+  border-radius:8px;padding:9px 11px;
+}
+.sym-title{
+  font-family:'IM Fell English',serif;
+  font-size:.85rem;color:var(--gold-l);
+  margin-bottom:3px;font-style:italic;
+}
+.sym-desc{font-size:.78rem;color:var(--text-dd);line-height:1.7}
+
+/* dividers */
+.card-divider{
+  height:1px;margin:12px 0;
+  background:linear-gradient(90deg,transparent,rgba(200,160,48,.12),transparent);
+}
+
+/* meaning box */
+.meaning-box{
+  margin-top:10px;padding:12px 14px;
+  border-radius:8px;
+  background:rgba(200,160,48,.05);
+  border-left:2px solid rgba(200,160,48,.3);
+  font-size:.83rem;font-style:italic;
+  color:rgba(200,160,48,.8);
+  line-height:1.85;
+}
+
+/* narrative box */
+.narrative{
+  padding:14px 16px;border-radius:8px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.06);
+  font-size:.88rem;color:var(--text-d);
+  line-height:2;
+  position:relative;
+}
+.narrative::before{
+  content:'❝';
+  position:absolute;top:6px;left:10px;
+  font-size:2rem;opacity:.15;
+  font-family:'Cinzel Decorative',serif;
+}
+
+/* fixed nav */
+.nav-toc{
+  position:fixed;top:50%;right:14px;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:6px;
+  z-index:100;max-height:85vh;overflow-y:auto;
+  scrollbar-width:none;
+}
+.nav-toc::-webkit-scrollbar{display:none}
+.ndot{
+  width:9px;height:9px;border-radius:50%;
+  background:rgba(200,160,48,.2);
+  border:1px solid rgba(200,160,48,.35);
+  transition:all .25s;display:block;
+  text-decoration:none;
+}
+.ndot:hover,.ndot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.nav-toc{display:none}}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .65s ease,transform .65s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* 2-col grid for card pairs */
+.card-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.card-pair{grid-template-columns:1fr}}
+
+/* footer */
+footer{
+  text-align:center;padding:70px 20px 40px;
+  border-top:1px solid var(--border);
+  margin-top:60px;
+}
+.foot-glyph{font-size:3rem;display:block;margin-bottom:14px;animation:golden 7s infinite}
+.foot-text{
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:.87rem;color:rgba(200,160,48,.3);
+  letter-spacing:.1em;line-height:2.4;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-toc">
+  <a class="ndot" href="#major" title="Arcanos Maiores"></a>
+  <a class="ndot" href="#a0" title="0 Louco"></a>
+  <a class="ndot" href="#a1" title="I Mago"></a>
+  <a class="ndot" href="#a2" title="II Sacerdotisa"></a>
+  <a class="ndot" href="#a3" title="III Imperatriz"></a>
+  <a class="ndot" href="#a4" title="IV Imperador"></a>
+  <a class="ndot" href="#a5" title="V Hierofante"></a>
+  <a class="ndot" href="#a6" title="VI Amantes"></a>
+  <a class="ndot" href="#a7" title="VII Carruagem"></a>
+  <a class="ndot" href="#a8" title="VIII Força"></a>
+  <a class="ndot" href="#a9" title="IX Eremita"></a>
+  <a class="ndot" href="#a10" title="X Roda"></a>
+  <a class="ndot" href="#a11" title="XI Justiça"></a>
+  <a class="ndot" href="#a12" title="XII Pendurado"></a>
+  <a class="ndot" href="#a13" title="XIII Morte"></a>
+  <a class="ndot" href="#a14" title="XIV Temperança"></a>
+  <a class="ndot" href="#a15" title="XV Diabo"></a>
+  <a class="ndot" href="#a16" title="XVI Torre"></a>
+  <a class="ndot" href="#a17" title="XVII Estrela"></a>
+  <a class="ndot" href="#a18" title="XVIII Lua"></a>
+  <a class="ndot" href="#a19" title="XIX Sol"></a>
+  <a class="ndot" href="#a20" title="XX Julgamento"></a>
+  <a class="ndot" href="#a21" title="XXI Mundo"></a>
+  <a class="ndot" href="#wands" title="Ouros/Wands"></a>
+  <a class="ndot" href="#cups" title="Copas/Cups"></a>
+  <a class="ndot" href="#swords" title="Espadas/Swords"></a>
+  <a class="ndot" href="#pent" title="Pentáculos"></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <div class="hdr-border">
+    <div class="corner-tl"></div><div class="corner-tr"></div>
+    <div class="corner-bl"></div><div class="corner-br"></div>
+    <span class="hdr-glyph">🏛</span>
+    <h1>Tarô Mitológico</h1>
+    <p class="h1-sub">Grimório Completo das 78 Cartas</p>
+    <div class="hdr-rule"></div>
+    <p class="hdr-intro">
+      O Tarô Mitológico (The Mythic Tarot — Juliet Sharman-Burke &amp; Liz Greene, 1986) é o mais preciso espelho entre a psicologia do Tarô e a sabedoria dos mitos gregos. Cada carta é uma porta para um mito vivo. Os 22 Arcanos Maiores retratam deuses, deusas e heróis do panteão helênico. Os 56 Arcanos Menores narram, em quatro histórias completas, as jornadas de Jasão (Ouros/Wands), Eros e Psique (Copas/Cups), Orestes e a Casa de Atreu (Espadas/Swords) e Dédalo (Pentáculos). Cada mito é contado aqui carta por carta, símbolo por símbolo — para que o baralho se torne um livro vivo entre suas mãos.
+    </p>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     ARCANOS MAIORES
+══════════════════════════════════════════ -->
+<div id="major" class="chapter reveal">
+  <div class="chapter-title">✦ OS 22 ARCANOS MAIORES ✦</div>
+  <p class="chapter-sub">Os Deuses e Heóis do Olimpo — A Jornada do Louco pelos Arquétipos</p>
+</div>
+
+<!-- 0 — O LOUCO / DIONÍSIO -->
+<div id="a0" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">0<span>LOUCO</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Louco — Dionísio</div>
+      <div class="card-figure">Ο Μωρός · Deus do Vinho, do Êxtase e das Fronteiras Dissolvidas</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Urano · Espírito Livre</span>
+        <span class="ctag ctag-gold">Ar · Éter</span>
+        <span class="ctag ctag-gold">Puro Potencial</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — DIONÍSIO, O DEUS DUAS VEZES NASCIDO</span>
+      <div class="sec-text">
+        <p>Dionísio é o filho de Zeus e da mortal Sêmele, filha do rei Cadmo de Tebas. Hera, furiosa com o caso do marido, disfarçou-se de ama de Sêmele e a convenceu a pedir que Zeus se revelasse em sua verdadeira forma divina. Zeus implorou que ela não fizesse isso — os humanos não suportam a glória plena de um deus — mas era uma promessa feita pelo Estige, que não podia ser quebrada. Quando Zeus se revelou, a glória de seu raio incinerou Sêmele instantaneamente. Mas Zeus, em um ato de amor desesperado, retirou o feto do ventre da mãe e o costurou em sua própria coxa, onde Dionísio terminou a gestação. Por isso ele é chamado <em class="myth">"o duas vezes nascido"</em> — primeiro da mãe, depois do pai.</p>
+        <p>Dionísio cresceu diferente de todos os olimpianos: era o único deus que tinha uma mãe mortal, que conhecia tanto o mundo dos imortais quanto o dos mortais, que viajou até os confins do mundo sem nunca pertencer completamente a nenhum lugar. Seu cortejo, o Tíaso, era formado por Mênades (mulheres em transe sagrado), Sátiros e Silênio — seres à margem da ordem estabelecida. Onde Dionísio passava, as convenções se dissolviam: escravos dançavam com amos, mulheres saíam de casa e corriam pelas florestas, os limites entre o sagrado e o profano desapareciam.</p>
+        <p>Hera, mesmo assim, perseguiu-o e lançou sobre ele a loucura. Dionísio vagou pelo Egito, pela Síria, pela Frígia — e em cada terra, ensinava o cultivo da videira e os mistérios do vinho sagrado. Eventualmente foi curado pela Deusa Reia e iniciado nos mistérios da Grande Mãe. Retornou à Grécia e à própria Tebas, onde seu culto encontrou resistência — especialmente do rei Penteu, que foi literalmente despedaçado pelas Mênades (lideradas por sua própria mãe Ágave, em transe dionisíaco).</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">A CENA NA CARTA — O QUE CADA SÍMBOLO SIGNIFICA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌿 A Coroa de Hera e Uvas</div>
+          <div class="sym-desc">Dionísio usa uma coroa de hera e cachos de uva — seus dois símbolos sagrados. A hera é a planta que vira quando cortada, símbolo de ressurreição. As uvas representam a transformação: fruta que morre e ressurge como vinho que altera a consciência.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🐆 O Leopardo ou Pele Animal</div>
+          <div class="sym-desc">Dionísio veste pele de leopardo ou de veado — animais que representam o mundo selvagem, instintivo, fora da civilização. Ele não é o deus da ordem (Zeus), mas do que existe além e antes dela.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌄 O Precipício / A Borda</div>
+          <div class="sym-desc">O Louco está sempre à beira de algo — um penhasco, um limiar. Dionísio é sempre liminar: nasceu na fronteira da vida e da morte, viveu na fronteira entre divino e mortal, presidia os ritos de fronteira (nascimento, morte, iniciação).</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🎒 O Tirso / Cajado</div>
+          <div class="sym-desc">O tirso de Dionísio — vara com pinha no topo — é sua arma e seu cetro. A pinha simboliza a glândula pineal, o centro da consciência expandida. O Louco carrega seus pertences levemente: apenas o necessário para a jornada que começa.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🜂 <strong>A essência:</strong> Dionísio como O Louco representa o potencial puro antes da forma. Ele é o espírito que ainda não cristalizou em identidade fixa — cheio de força criativa, sem medo do novo, disposto a cruzar qualquer fronteira. O Louco começa a jornada com o coração aberto e os olhos voltados para o horizonte, não para o chão.
+    </div>
+  </div>
+</div>
+
+<!-- I — O MAGO / HERMES -->
+<div id="a1" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">I<span>MAGO</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Mago — Hermes</div>
+      <div class="card-figure">Ἑρμῆς · Mensageiro dos Deuses · Psicopompo · Inventor e Trickster</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Mercúrio ☿</span>
+        <span class="ctag ctag-gold">Kether→Binah</span>
+        <span class="ctag ctag-gold">Vontade Criadora</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — HERMES, O VELOZ E ASTUTO</span>
+      <div class="sec-text">
+        <p>Hermes nasceu numa caverna do Monte Cilene, filho de Zeus e da Plêiade Maia. Já no seu primeiro dia de vida, enquanto Maia dormia, enrolou-se em faixas para parecer um bebê comum — mas ao anoitecer, escapou silenciosamente. Encontrou uma tartaruga e, com sua carapaça e cordas de intestino de boi, criou a primeira lira. Depois, seguindo o cheiro, encontrou o rebanho de gado de Apolo e o roubou todo — caminhando de ré para confundir as pegadas.</p>
+        <p>Quando Apolo descobriu e confrontou o bebê-ladrão, Hermes negou tudo com olhos inocentes. Apolo o levou a Zeus para julgamento. Zeus ria vendo o bebê mentir com tamanha desenvoltura. Mas quando Hermes tocou a lira, Apolo se apaixonou pela música — e aceitou o rebanho em troca do instrumento. Assim, no único dia em que existia, Hermes inventou a música, cometeu o primeiro roubo olímpico, enganou um deus maior, foi a julgamento e saiu em paz fazendo um negócio.</p>
+        <p>Hermes é o mensageiro que transita livremente entre o Olimpo, a terra e o submundo. É o único ser que pode guiar almas ao reino de Hades e retornar. Seu Caduceu (vara com duas serpentes entrelaçadas) tornou-se símbolo da medicina — a vara que equilibra as forças opostas. Protegia comerciantes, viajantes, ladrões, atletas, poetas e oradores — todos que dependem de palavras hábeis ou movimentos rápidos.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⚕ Caduceu — A Vara das Serpentes</div>
+          <div class="sym-desc">Duas serpentes enlaçadas representam Idá e Pingalá (os canais energéticos), o consciente e inconsciente, o yin e yang em equilíbrio dinâmico. As asas no topo = a comunicação que transcende os planos. Hermes manipula as forças opostas com maestria.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">👟 Sandálias e Capacete Alados</div>
+          <div class="sym-desc">As Tálaras (sandálias com asas) e o Pétasos (chapéu alado) permitem que Hermes viaje à velocidade do pensamento. Simbolizam a mente que se move sem obstáculos entre reinos. O Mago usa seus talentos com agilidade que parece mágica.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🔮 Os Quatro Instrumentos na Mesa</div>
+          <div class="sym-desc">No Tarô Mitológico, Hermes tem diante de si as ferramentas dos quatro elementos: lira/flauta (Ar), cálice (Água), disco/escudo (Terra), tocha/fogo (Fogo). Hermes domina todos os planos — como o Mago que tem em mãos todos os recursos.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">∞ O Lemniscato</div>
+          <div class="sym-desc">O infinito sobre a cabeça representa o fluxo eterno entre o Olimpo e o mundo. Hermes nunca para — é o movimento constante da consciência entre estados. O Mago não possui — transmite e canaliza.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ⚡ <strong>A essência:</strong> Hermes é a Vontade em ação hábil. Como O Mago, ele não apenas deseja — ele age com precisão cirúrgica, usando cada ferramenta no momento certo. O roubo das vacas de Apolo é a metáfora perfeita: ele criou do nada (a lira), tomou o que precisava (o rebanho) e transformou o conflito em aliança (troca com Apolo). O Mago transforma intenção em manifestação.
+    </div>
+  </div>
+</div>
+
+<!-- II — SACERDOTISA / PERSÉFONE -->
+<div id="a2" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">II<span>SACER.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Alta Sacerdotisa — Perséfone</div>
+      <div class="card-figure">Περσεφόνη · Coré · Rainha do Submundo · A Donzela e a Rainha</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Lua ☽</span>
+        <span class="ctag ctag-gold">Gimel · Kether→Tiferet</span>
+        <span class="ctag ctag-gold">Mundo Interior e Intuição</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — PERSÉFONE, A DUPLA NATUREZA</span>
+      <div class="sec-text">
+        <p>Perséfone era chamada <em class="myth">Coré</em> (a jovem), filha de Zeus e Deméter. Era jovem, pura, passava seus dias nos campos da Sicília colhendo flores. Hades a avistou e se apaixonou — e com a permissão secreta de Zeus (pai dela), abriu a terra e a raptou para o submundo enquanto ela se debruçava sobre um narciso.</p>
+        <p>Sua transformação no submundo é o núcleo do mito: ela desceu como Coré (a inocente) e emergiu como Perséfone (a Rainha). No submundo, comeu seis sementes de romã — e por isso precisava retornar seis meses por ano ao reino de Hades. Quando está no submundo, é a Rainha poderosa que preside os mortos junto com Hades. Quando retorna à terra, é a jovem que faz a primavera florescer.</p>
+        <p>Perséfone se tornou uma figura de compaixão no submundo — foi ela que escutou Orfeu tocar sua lira e convenceu Hades a libertar Eurídice. Foi ela que guardou Psique quando Afrodite a enviou ao submundo em missão. A Rainha do Hades não é cruel — é a figura que conhece os dois mundos e guarda os segredos de ambos.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌹 A Romã</div>
+          <div class="sym-desc">A romã que Perséfone come é o fruto do submundo — quem come o alimento dos mortos, pertence aos mortos. Cada semente = um mês no submundo. A romã é símbolo dos mistérios ocultos, da fertilidade oculta, de conhecimentos que só se obtêm descendo às profundezas.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌙 A Dualidade Flor/Trono</div>
+          <div class="sym-desc">A carta mostra Perséfone com atributos duplos — flores de primavera E o trono do submundo. Ela não é nem apenas jovem nem apenas rainha. É o limiar entre os dois mundos, a consciência que habita os dois reinos simultaneamente.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">📜 O Livro Fechado</div>
+          <div class="sym-desc">Como a Alta Sacerdotisa tradicional, Perséfone guarda um livro (a Tora, os Mistérios de Elêusis). Seus segredos não são revelados a quem não passou pela iniciação da descida. Saber sem ter descido é saber vazio.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏛 As Colunas do Submundo</div>
+          <div class="sym-desc">Os pilares negros e brancos (Jachin e Boaz) enquadram Perséfone — ela é o Sushumna, o canal do meio que equilibra os dois mundos. Ela não é trevas nem luz: é a ponte.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🌑 <strong>A essência:</strong> Perséfone representa o conhecimento que só vem da descida. Não se pode conhecer os mistérios do inconsciente sem primeiro neles mergulhar. A Alta Sacerdotisa guarda segredos que só se revelam a quem teve coragem (ou foi forçado) de descer à própria profundidade. Ela é a intuição, o sonho, o que emerge das águas do inconsciente.
+    </div>
+  </div>
+</div>
+
+<!-- III — IMPERATRIZ / DEMÉTER -->
+<div id="a3" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">III<span>IMPER.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Imperatriz — Deméter</div>
+      <div class="card-figure">Δημήτηρ · Mãe da Terra · Deusa das Estações · A Grande Mãe</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Vênus ♀</span>
+        <span class="ctag ctag-gold">Daleth · Chokmah→Binah</span>
+        <span class="ctag ctag-gold">Fertilidade · Criação · Abundância</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — DEMÉTER E O CICLO DO MUNDO</span>
+      <div class="sec-text">
+        <p>Deméter é a terra fértil personificada. Irmã de Zeus, ela governa a agricultura, os cereais e o ritmo das estações. Sua filha Perséfone (Coré) é a extensão de sua própria fertilidade — e por isso o rapto de Perséfone por Hades é o mito mais dramático de Deméter. Quando a filha desapareceu, Deméter a procurou por nove dias e noites sem parar, sem comer nem beber, segurando duas tochas flamejantes. Ninguém — nem deuses nem mortais — ousou dizer-lhe a verdade por medo de Hades.</p>
+        <p>Quando finalmente Hélio (o Sol, que tudo vê) revelou o que havia acontecido, Deméter ficou tão furiosa e enlutada que decretou que a terra não produziria mais nada enquanto Perséfone não voltasse. Flores morreram, grãos não germinaram, animais não se reproduziram. A humanidade ameaçava morrer de fome — e sem humanos, não haveria sacrifícios aos deuses. Zeus foi obrigado a intervir.</p>
+        <p>Enquanto vagava disfarçada de velha mortal, Deméter chegou a Elêusis e foi recebida pelo rei Céleo e sua esposa Metanira. Em gratidão, tornou-se ama do filho mais novo deles, Demofonte, e decidiu torná-lo imortal — passando-o pelo fogo sagrado à noite. Metanira a surpreendeu num desses rituais e gritou de horror. Deméter se revelou em toda sua glória e exigiu que um templo fosse construído em sua honra em Elêusis. Ali ela estabeleceu os Mistérios de Elêusis — os ritos mais sagrados de toda a Grécia, prometendo aos iniciados o conhecimento do que vem após a morte.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌾 A Gravidez e as Espigas</div>
+          <div class="sym-desc">No Tarô Mitológico, Deméter está grávida ou rodeada de grãos de trigo em crescimento — a fertilidade material em seu pico. A gravidez não é fraqueza: é o poder supremo da criação. A espiga é o símbolo de Ceres (nome romano) e de toda civilização agrícola.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌺 Papoias e Flores de Campo</div>
+          <div class="sym-desc">As papoias são sagradas de Deméter — crescem nos campos de trigo, têm propriedades soporíferas (o sono que antecede a morte e o renascimento). As flores representam a abundância natural que ela gera e que seca quando sofre.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🐍 Serpente Sagrada</div>
+          <div class="sym-desc">Deméter era associada a serpentes — símbolos da terra, da renovação (que muda de pele) e dos Mistérios ctônicos. Nos Mistérios de Elêusis, uma serpente sagrada representava o ciclo de morte e renascimento.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">♀ O Escudo de Vênus</div>
+          <div class="sym-desc">O símbolo de Vênus (♀) na carta representa não apenas amor, mas o princípio da criação através do amor — a força que atrai, gera e sustenta a vida. Deméter nutre não por dever, mas por amor absoluto.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🌱 <strong>A essência:</strong> Deméter é a Mãe em seu sentido mais pleno: criativa, protetora, feroz quando seus filhos são ameaçados. A Imperatriz no Tarô Mitológico lembra que a verdadeira abundância não vem do controle, mas do amor que se expande naturalmente como as colheitas na primavera. Ela também lembra que a perda temporária (inverno) é parte do ciclo, não o fim de tudo.
+    </div>
+  </div>
+</div>
+
+<!-- IV — IMPERADOR / ZEUS -->
+<div id="a4" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">IV<span>IMPER.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Imperador — Zeus</div>
+      <div class="card-figure">Ζεύς · Rei dos Deuses · Pai do Céu · O Legislador Cósmico</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Júpiter ♃</span>
+        <span class="ctag ctag-gold">Heh · Chokmah→Tiferet</span>
+        <span class="ctag ctag-gold">Autoridade · Lei · Estrutura</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — ZEUS, O REI QUE DERRUBOU O PAI</span>
+      <div class="sec-text">
+        <p>Zeus é o filho mais jovem de Cronos e Reia. Cronos, o Titã do Tempo, havia castrado seu próprio pai Urano para tomar o poder — e sabia que o mesmo poderia acontecer a ele. Por isso devorava cada filho ao nascer. Reia, exausta de dor, enganou Cronos quando Zeus nasceu: embrulhou uma pedra em faixas e a deu ao marido, que a engoliu pensando ser o bebê. Zeus cresceu em Creta, protegido pelas Curétes (que mascaravam seu choro com o barulho de espadas) e alimentado pela cabra Amalteia, cujo chifre partido se tornou a Cornucópia.</p>
+        <p>Quando adulto, Zeus administrou a Cronos um emético que o forçou a vomitar os irmãos engolidos (Héstia, Deméter, Hera, Hades, Poseidon — todos plenamente adultos, pois os deuses não envelhecem no ventre). Com os irmãos libertos, começou a Titanomaquia — dez anos de guerra cósmica. Zeus libertou também os Ciclopes (que lhe deram o raio) e os Hecatônquiros (gigantes de cem braços), cuja força virou a maré da batalha. Ao fim, Zeus aprisionou os Titãs no Tártaro e dividiu o cosmos com os irmãos: ele ficou com o céu e a autoridade suprema, Poseidon com o mar, Hades com o submundo.</p>
+        <p>Como soberano, Zeus é paradoxal: garante da lei e da justiça, protetor dos suplicantes e viajantes, árbitro dos deuses — e ao mesmo tempo sedutor compulsivo que transforma-se em animais, chuvas de ouro e chamas para conquistar mortais e deusas. Suas aventuras amorosas gerariam a maioria dos heróis e deusas que viriam depois. A psicologia junguiana vê nisso a natureza da autoridade: o poder que estrutura e o instinto que transgride coexistem no mesmo ser.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⚡ O Raio Triplo</div>
+          <div class="sym-desc">O keraunos (raio) forjado pelos Ciclopes é a arma de Zeus. O raio triplo representa os três mundos (céu, terra, submundo) que ele governa. É a força do pensamento divino que se manifesta instantaneamente na realidade.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🦅 A Águia Dourada</div>
+          <div class="sym-desc">A águia é o animal sagrado de Zeus — o ser que voa mais alto, que vê tudo de cima, que não tem inimigo no céu. Representa a visão estratégica do soberano e a ligação com os princípios mais elevados. Zeus às vezes assume a forma de águia (raptou Ganimedes assim).</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌳 O Carvalho de Dodona</div>
+          <div class="sym-desc">O carvalho sagrado do oráculo de Dodona — os sussurros do vento nas folhas revelavam a vontade de Zeus. O carvalho é a árvore mais resistente aos raios, paradoxalmente o alvo preferido do trovão: quem sustenta o poder, sustenta também seus golpes.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🪨 O Trono de Pedra</div>
+          <div class="sym-desc">Zeus se senta num trono de pedra ou mármore — a autoridade que não se move, que é permanente. A pedra também lembra a pedra embrulhada que Cronos engoliu: a mentira criativa que fundou a ordem divina.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ♃ <strong>A essência:</strong> Zeus como O Imperador representa a estrutura necessária que mantém o cosmos funcionando. Ele não é perfeito — é humano em suas falhas, divino em sua função. A carta convoca a assumir responsabilidade, estabelecer ordem, agir a partir de princípios éticos. Mas também lembra: quem tem poder, tem a tentação de abusá-lo.
+    </div>
+  </div>
+</div>
+
+<!-- V — HIEROFANTE / QUÍRON -->
+<div id="a5" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">V<span>HIEROF.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Hierofante — Quíron</div>
+      <div class="card-figure">Χείρων · O Centauro Sábio · O Mentor Ferido · O Curador Incurável</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Vênus ♀ / Touro ♉</span>
+        <span class="ctag ctag-gold">Vav · Chokmah→Chesed</span>
+        <span class="ctag ctag-gold">Sabedoria Transmitida · Tradição</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — QUÍRON, O MENTOR DE TODOS OS HERÓIS</span>
+      <div class="sec-text">
+        <p>Quíron era diferente dos outros Centauros. Enquanto seus irmãos (Nessos, Folo e outros) eram criaturas selvagens e violentas, Quíron era filho de Cronos (não de Ixíon, como os demais) — filho de um Titã e uma ninfa, metade humano de natureza elevada, metade cavalo (a força animal). Era imortal, extremamente sábio e dedicou sua vida à transmissão do conhecimento.</p>
+        <p>Em sua caverna no Monte Pelion, Quíron ensinou medicina, música, ética, caça e as artes da guerra a praticamente todos os grandes heróis da mitologia grega: Aquiles (seu pupilo mais famoso), Asclépio (que se tornaria o deus da medicina), Jasão (protagonista dos Argonautas), Hércules, Teseu, Perseu, Eneias e muitos outros. Era o grande professor, o mentor supremo — o Hierofante que transmitia o conhecimento sagrado para a próxima geração.</p>
+        <p>O paradoxo de Quíron: o maior curador do mundo antigo foi ferido por uma flecha envenenada que não podia curar. Em uma briga entre Hércules e outros centauros, uma flecha de Hércules — envenenada com o sangue da Hidra — acertou Quíron acidentalmente. Como era imortal, não podia morrer — apenas sofrer eternamente. Por compaixão, Prometeu (que seria libertado por Hércules) cedeu sua imortalidade a Quíron, permitindo que ele finalmente descansasse em morte digna. Zeus o transformou na constelação do Centauro ou de Sagitário.</p>
+        <p>Quíron é o arquétipo do "curador ferido" — aquele que ensina a cura que não pôde aplicar a si mesmo. Seu sofrimento não anula seu conhecimento: pelo contrário, o aprofunda. Quem cura por experiência de dor tem mais sabedoria do que quem cura apenas por teoria.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🐎 A Forma Centauro</div>
+          <div class="sym-desc">Quíron é metade humano, metade cavalo — a integração do instinto animal com a sabedoria humana. O Hierofante une o plano terrestre (o cavalo, a natureza, o corpo) com o espiritual (o humano, a mente, a alma). Ele não nega nenhum dos dois.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏹 A Flecha / A Ferida</div>
+          <div class="sym-desc">A flecha que o feriu é sempre presente, visível ou latente. A ferida incurável é o que o torna especialmente sábio — ele conhece a dor de dentro. O Hierofante transmite não apenas conhecimento acadêmico, mas sabedoria nascida da experiência vivida.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">📚 Os Jovens Discípulos</div>
+          <div class="sym-desc">A cena da carta frequentemente mostra Quíron com um ou dois discípulos — a transmissão é o ato central. O conhecimento sagrado não pode ser guardado: deve circular. O Hierofante existe para ser ponte entre gerações.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">⭐ A Constelação / O Céu</div>
+          <div class="sym-desc">Quíron foi transformado em estrela — seu conhecimento foi eternizado no céu. As chaves cruzadas do Hierofante tradicional tornam-se, no Mitológico, as chaves do conhecimento natural e do sagrado que Quíron portava.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🐎 <strong>A essência:</strong> Quíron como O Hierofante representa a transmissão do conhecimento através da experiência, não apenas da teoria. O verdadeiro mestre não apenas sabe — ele viveu, sofreu e transformou esse sofrimento em ensinamento. A carta convoca a buscar (ou a ser) um guia que conhece o caminho pelo qual passou.
+    </div>
+  </div>
+</div>
+
+<!-- VI — AMANTES / JULGAMENTO DE PÁRIS -->
+<div id="a6" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">VI<span>AMANTES</span></div>
+    <div class="card-title-block">
+      <div class="card-title">Os Amantes — O Julgamento de Páris</div>
+      <div class="card-figure">Κρίσις τοῦ Πάριδος · Páris, Hera, Atena e Afrodite · A Escolha que Destruiu Troia</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Gêmeos ♊</span>
+        <span class="ctag ctag-gold">Zain · Binah→Tiferet</span>
+        <span class="ctag ctag-gold">A Escolha Fundamental · Valores</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — A MAÇÃ DE OURO E A GUERRA DE TROIA</span>
+      <div class="sec-text">
+        <p>No casamento de Peleu e Tétis (pais de Aquiles), todos os deuses foram convidados — exceto Éris, a deusa da Discórdia. Ofendida, Éris apareceu assim mesmo e jogou uma maçã de ouro no meio dos convidados, inscrita: <em class="myth">"Para a mais bela."</em> Hera, Atena e Afrodite imediatamente disputaram a maçã. Zeus recusou julgá-las — seria um desastre para ele, qualquer que fosse sua escolha. Designou Páris, o príncipe troiano famoso por sua beleza e equanimidade, como árbitro.</p>
+        <p>Cada deusa ofereceu um suborno: <strong>Hera</strong> prometeu poder absoluto e o domínio sobre reinos; <strong>Atena</strong> prometeu sabedoria suprema e habilidade guerreira insuperável; <strong>Afrodite</strong> prometeu o amor da mulher mais bela do mundo — Helena, esposa do rei Menelau de Esparta. Páris escolheu Afrodite. Foi à Esparta, foi recebido como hóspede (violando a lei sagrada da hospitalidade) e partiu com Helena.</p>
+        <p>A escolha de Páris — amor sobre poder e sabedoria — desencadeou a Guerra de Troia: mil navios, dez anos de guerra, a destruição de uma cidade inteira, a morte de Aquiles, de Heitor, de Páris, da própria Troia. Hera e Atena, humilhadas pelo julgamento, apoiaram ativamente os gregos durante toda a guerra. Afrodite protegeu Páris até o fim. Uma escolha individual alterou o curso do mundo.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🍎 A Maçã de Ouro</div>
+          <div class="sym-desc">A maçã de Éris é o objeto da escolha impossível — a tentação que força a revelar os valores reais de quem escolhe. Páris poderia ter escolhido poder ou sabedoria. Escolheu o amor — e com isso revelou quem era. A maçã representa: toda escolha real revela quem somos.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">👑 As Três Deusas</div>
+          <div class="sym-desc">Hera (poder mundano), Atena (intelecto e estratégia), Afrodite (amor e beleza) representam os três caminhos fundamentais da existência humana. O Arcano VI é sempre uma escolha entre valores igualmente sedutores mas mutuamente exclusivos.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏔 O Monte Ida</div>
+          <div class="sym-desc">O julgamento ocorreu no Monte Ida, na Frígia, onde Páris pastoreava ovelhas — longe de Troia, em seu mundo simples. A escolha fundamental muitas vezes nos encontra em lugares inesperados, fora de nossa zona de conforto.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">💫 O Anjo / Éros Presentes</div>
+          <div class="sym-desc">No Tarô Mitológico, Eros (o deus do amor) paira acima da cena, assim como o anjo Rafael no RWS. Amor não como sentimento passivo, mas como força ativa que intervém nas escolhas humanas e as dirige.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      💘 <strong>A essência:</strong> Os Amantes no Tarô Mitológico não é uma carta apenas de romance — é a carta da escolha que define quem somos. Páris poderia ter dito que não judiciaria — mas aceitou. Poderia ter escolhido poder ou sabedoria — mas escolheu amor. A carta pergunta: quando você é forçado a escolher, o que você revela sobre seus valores reais?
+    </div>
+  </div>
+</div>
+
+<!-- VII — CARRUAGEM / ARES -->
+<div id="a7" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">VII<span>CARRUAG.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Carruagem — Ares</div>
+      <div class="card-figure">Ἄρης · Deus da Guerra · O Conquistador · A Vontade em Ação</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Câncer ♋</span>
+        <span class="ctag ctag-gold">Chet · Binah→Geburah</span>
+        <span class="ctag ctag-gold">Triunfo · Controle · Direção</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — ARES E A DUALIDADE DA GUERRA</span>
+      <div class="sec-text">
+        <p>Ares, filho de Zeus e Hera, é o único olímpico que foi genuinamente odiado pelos próprios pais. Zeus o chamou de "o deus mais odioso do Olimpo". E no entanto, Ares é força pura — não é malévolo, é simplesmente guerra em sua forma mais direta: sem estratégia, sem política, sem misericórdia. Onde Atena era a guerra pela vitória da civilização, Ares era a guerra pelo prazer da batalha.</p>
+        <p>Ares era amante de Afrodite — a mais bela deusa escolheu o mais violento dos deuses. Seu marido legítimo, Hefesto, o descobriu e os armadilhou numa rede invisível, expondo o casal perante todos os deuses. Ares, poderoso mas humilhado, foi liberto depois que os deuses concordaram em ser fiadoras de um pagamento a Hefesto. O mito mostra que pura força bruta sempre encontra sua vulnerabilidade.</p>
+        <p>Na Guerra de Troia, Ares apoiou os troianos. Foi ferido pelo mortal Diomedes (auxiliado por Atena) — e gritou com uma voz que ecoou como dez mil guerreiros. Fugiu ao Olimpo e se queixou a Zeus, que o repreendeu duramente. Até no campo de batalha, a guerra bruta perde para a guerra estratégica quando Atena está no campo.</p>
+        <p>A Carruagem escolhe Ares (não Atena) porque a carta não é sobre sabedoria — é sobre a vontade que avança implacavelmente, que não hesita, que não olha para os lados. O triunfo da Carruagem é do guerreiro que impõe sua direção às forças ao redor.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⚔ A Armadura Completa</div>
+          <div class="sym-desc">Ares está sempre em armadura completa — não como defesa, mas como identidade. A armadura é a persona do guerreiro, o escudo que o separa do sofrimento alheio. A Carruagem avança porque não sente o impacto do que atravessa.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏇 Os Cavalos de Deimos e Fobos</div>
+          <div class="sym-desc">Os filhos de Ares e Afrodite — Deimos (Terror) e Fobos (Medo) — puxam sua carruagem. O guerreiro que conduz Medo e Terror a seu serviço: o oposto de ser dominado por eles. A Carruagem usa as energias que assustam os outros como combustível próprio.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌙 As Luas nos Ombros</div>
+          <div class="sym-desc">Como na carta RWS tradicional, há símbolos lunares — Câncer é o signo da carta. Ares, o deus solar-marcial, com símbolos lunares: o guerreiro que integrou intuição (lua) à ação (sol). O controle das emoções a serviço da direção clara.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ⚔ <strong>A essência:</strong> Ares como A Carruagem representa a vontade que avança sem hesitar, que dirige as forças internas (mesmo as turbulentas) em uma única direção. Não é a guerra pelo prazer da destruição — é a determinação inabalável do propósito. A pergunta da carta: você dirige seus medos e impulsos, ou eles dirigem você?
+    </div>
+  </div>
+</div>
+
+<!-- VIII — FORÇA / HÉRCULES -->
+<div id="a8" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">VIII<span>FORÇA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Força — Héracles</div>
+      <div class="card-figure">Ἡρακλῆς · O mais forte dos mortais · O Herói dos Doze Trabalhos · O Filho do Relâmpago</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Leão ♌</span>
+        <span class="ctag ctag-gold">Tet · Chesed→Geburah</span>
+        <span class="ctag ctag-gold">Domínio Pelo Amor · Força Interior</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — HÉRCULES E O LEÃO DE NEMEIA</span>
+      <div class="sec-text">
+        <p>Hércules nasceu da união de Zeus com Alcmena, esposa de Anfitrião. Zeus se disfarçou de Anfitrião para passar uma noite com ela — noite que ele magicamente estendeu ao triplo. Hera, famosa por sua ciúme implacável, perseguiu Hércules desde o nascimento: enviou duas serpentes para a cuna do bebê. O bebê as estrangulou com as mãos, rindo.</p>
+        <p>Adulto, Hércules casou-se com Mégara e teve filhos. Hera lançou sobre ele uma loucura temporária — e nessa cegueira, Hércules matou mulher e filhos. Quando a consciência voltou e ele viu o que havia feito, foi ao oráculo de Delfos em desespero. A Pítia ordenou: deves servir ao rei Euristeu por doze anos e cumprir qualquer tarefa que ele impuser. Como recompensa, alcançarás a imortalidade.</p>
+        <p>O Primeiro Trabalho foi matar o Leão de Nemeia — uma fera de pele impenetrável que aterrorizava a região. Hércules descobriu que nenhuma arma o feria. Então caçou o leão até sua caverna, bloqueou uma das saídas e o enfrentou corpo a corpo — sufocando-o com os braços. Após matá-lo, usou as próprias garras do leão para cortar a pele e passou a usá-la como armadura. A pele impenetrável do inimigo tornou-se sua maior proteção.</p>
+        <p>A Força no Tarô Mitológico mostra Hércules (não uma mulher delicada) dominando o leão — não pela violência, mas pela maestria. No Tarô Mitológico, a "força" não é suavidade fingida (como no RWS) mas a força real que sabe quando usar a violência e quando não precisa dela.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🦁 A Pele do Leão de Nemeia</div>
+          <div class="sym-desc">Hércules usa a pele do leão que venceu — o inimigo transformado em proteção. O maior obstáculo vencido torna-se o maior recurso. A força real não elimina o desafio — o integra. A pele impenetrável é o ego fortalecido pela prova.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🍃 A Clava (Porrete)</div>
+          <div class="sym-desc">A clava de Hércules — feita de madeira de oliveira selvagem — é sua arma primária. Não é a espada refinada de um rei, mas a força bruta transformada em instrumento. A clava representa a sabedoria simples, direta e eficaz.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">∞ O Lemniscato</div>
+          <div class="sym-desc">Sobre a cabeça de Hércules (como na carta RWS sobre a mulher) — o fluxo eterno que integra instinto animal e consciência humana. Hércules não suprime o leão — ele o domina com amor genuíno pela vida, não com medo da morte.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🦁 <strong>A essência:</strong> Hércules como A Força representa o domínio pelo amor e pelo propósito, não pela supressão. Os doze trabalhos não foram punições — foram a via da transformação de um guerreiro impulsivo em herói consciente. A força que a carta convoca não é muscular: é a coragem de continuar quando tudo desmorona.
+    </div>
+  </div>
+</div>
+
+<!-- IX — EREMITA / CRONOS -->
+<div id="a9" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">IX<span>EREMITA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Eremita — Cronos</div>
+      <div class="card-figure">Κρόνος · Titã do Tempo · O Ancião que Devora · Rei dos Titãs Deposto</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Saturno ♄</span>
+        <span class="ctag ctag-gold">Yod · Chesed→Tiferet</span>
+        <span class="ctag ctag-gold">Tempo · Sabedoria · Isolamento</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — CRONOS, O TEMPO QUE DEVORA TUDO</span>
+      <div class="sec-text">
+        <p>Cronos, o mais jovem e mais astuto dos Titãs, castrou o próprio pai Urano com uma foice de adamanto — e assim tomou o trono do cosmos. Casou-se com sua irmã Reia e gerou os primeiros Olímpicos. Mas uma profecia o assombrava: como ele derrubara o pai, seria derrubado pelo filho. Por isso devorava cada filho ao nascer.</p>
+        <p>Após ser vencido por Zeus na Titanomaquia, Cronos foi aprisionado no Tártaro — mas em algumas versões, Zeus eventualmente o perdoou e ele foi enviado aos Campos Elísios como rei dos bem-aventurados. Cronos tornou-se, paradoxalmente, um governante sábio e justo depois de não ter mais poder para exercer. O exilado aprende o que o soberano não conseguia ver.</p>
+        <p>Como Saturno no panteão romano, Cronos presidia a época dourada da humanidade — antes da civilização e de seus problemas. Seus devotos romanos celebravam as Saturnais — um festival onde as hierarquias sociais eram temporariamente invertidas (escravos eram servidos pelos amos) em memória do tempo em que todos eram iguais.</p>
+        <p>O Eremita é Cronos em seu aspecto de sabedoria temporal: o ancião que acumulou conhecimento pelo simples fato de ter durado, de ter sobrevivido ao tempo que pensava controlar, de ter sido deposto e ter encontrado paz além do poder.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⏳ A Foice / O Cajado</div>
+          <div class="sym-desc">A foice de Cronos (que castrou Urano) transformou-se no cajado do Eremita — o instrumento do ato radical tornou-se apoio para a jornada longa. O ancião que outrora cortou transformou-se no ancião que sustenta.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🔆 A Lanterna com Estrela</div>
+          <div class="sym-desc">A lanterna de Cronos ilumina apenas um passo à frente — o tempo não revela o futuro inteiro, apenas o próximo momento. A sabedoria do Eremita é que basta a luz para o próximo passo; os demais virão com o caminhar.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">❄ O Pico Nevado</div>
+          <div class="sym-desc">Cronos-Eremita habita as alturas geladas — longe do mundo quente dos prazeres e poderes. O frio do isolamento é também clareza: a emoção não interfere no discernimento quando há distância suficiente.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ♄ <strong>A essência:</strong> Cronos como O Eremita representa a sabedoria que só o tempo confere. O Titã que pensava controlar o tempo foi controlado por ele — e na derrota encontrou uma verdade mais profunda do que qualquer vitória. A carta convoca ao isolamento fértil, ao recolhimento necessário, ao silêncio onde a verdade fala.
+    </div>
+  </div>
+</div>
+
+<!-- X — RODA DA FORTUNA / AS MOIRAS -->
+<div id="a10" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">X<span>RODA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Roda da Fortuna — As Moiras</div>
+      <div class="card-figure">Μοῖραι · Cloto · Láquesis · Átropos · As Fiandeiras do Destino</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Júpiter ♃</span>
+        <span class="ctag ctag-gold">Caf · Chesed→Netzach</span>
+        <span class="ctag ctag-gold">Destino · Ciclos · Karma</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — AS TRÊS TECELÃS DO FADO</span>
+      <div class="sec-text">
+        <p>As Moiras (Parcas, em latim) eram três irmãs filhas de Zeus e Témis — embora versões mais antigas as apresentem como filhas de Nix (a Noite), anteriores ao próprio Zeus. Esse detalhe é crucial: mesmo o rei dos deuses não pode alterar o que as Moiras determinam. Nem os deuses escapam do fio.</p>
+        <p><strong>Cloto</strong> (a Fiandeira) fia o fio da vida de cada ser desde o nascimento — com que material, com que espessura, com que cor. <strong>Láquesis</strong> (a Sorteadora) determina o comprimento desse fio — o tempo de vida, o destino geral. <strong>Átropos</strong> (a Inflexível — literalmente "a que não se pode mudar") corta o fio quando chega a hora — e não há argumento, súplica ou suborno que a demova.</p>
+        <p>Quando Meleagro nasceu, as Moiras apareceram para sua mãe Alteia e anunciaram que ele viveria enquanto um tição ardesse no fogo. Alteia apagou imediatamente o tição e o guardou. Anos depois, em raiva, ela atirou o tição ao fogo — e Meleagro morreu naquele instante, em plena batalha, sem ferimento visível. O destino não admite postergação: apenas o momento da sua execução pode ser adiado.</p>
+        <p>As Moiras aparecem nos momentos decisivos da vida grega: no nascimento (para determinar o fado), no casamento (como testemunhas do voto que não pode ser quebrado), na morte (como executoras do corte inevitável). São o princípio de que a vida tem uma forma, um começo e um fim — e que isso não é tragédia, mas estrutura.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🧵 O Fio, a Roca e a Tesoura</div>
+          <div class="sym-desc">Os três instrumentos das Moiras são a roca (de onde o fio é puxado — o potencial bruto da vida), o fuso (que o fia — a forma que a vida toma) e a tesoura (que o corta — o fim). Cada vida é literalmente uma obra têxtil.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🎡 A Roda Giratória</div>
+          <div class="sym-desc">As Moiras eram representadas junto a rodas de fiar. A Roda da Fortuna é a roca de Cloto vista de outro ângulo — o ciclo que gira e sobre o qual a maioria tem a ilusão de controle. Quem sobe desce, quem está em baixo sobe: o fio é tecido em ambas as direções.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">✦ TARO nas Letras</div>
+          <div class="sym-desc">As quatro letras TARO na roda correspondem também ao nome das Moiras em código: T-empos, A-ção, R-otação, O-bra. As Moiras não são caprichosas — são a lei profunda de que cada ação tem consequência mensurada.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ♃ <strong>A essência:</strong> As Moiras como A Roda da Fortuna representam o ciclo inevitável e a sabedoria de fluir com ele. Não é fatalismo — é reconhecimento de que a vida tem uma estrutura mais profunda do que o ego pode controlar. A resposta sábia à Roda não é resistência nem passividade, mas participação lúcida no ciclo.
+    </div>
+  </div>
+</div>
+
+<!-- XI — JUSTIÇA / ATENA -->
+<div id="a11" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XI<span>JUSTIÇA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Justiça — Atena</div>
+      <div class="card-figure">Ἀθηνᾶ · Palas Atena · Deusa da Sabedoria e da Guerra Justa · Filha da Cabeça de Zeus</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Libra ♎</span>
+        <span class="ctag ctag-gold">Lamed · Geburah→Tiferet</span>
+        <span class="ctag ctag-gold">Equilíbrio · Discernimento · Lei</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — ATENA, A NASCIDA DO PENSAMENTO</span>
+      <div class="sec-text">
+        <p>Atena nasceu da maneira mais extraordinária de todos os olimpianos. Zeus havia engolido sua primeira esposa Métis (cujo nome significa "sabedoria prática e astúcia") porque a profecia dizia que o filho de Métis seria mais poderoso do que o pai. Mas a deusa estava grávida — e dentro do ventre de Zeus, continuou a forjar armas e armaduras para o bebê que crescia. As marteladas ressoavam dentro da cabeça de Zeus, causando-lhe dores insuportáveis.</p>
+        <p>Hefesto, a pedido de Zeus (ou por compaixão, dependendo da versão), golpeou a cabeça do pai com seu martelo. E de lá emergiu Atena — plenamente adulta, em armadura completa, gritando o brado de guerra, agitando escudo e lança. A deusa que nasceu do pensamento divino, que não passou pelo ventre materno, que chegou ao mundo já como guerreira e já como sábia.</p>
+        <p>Atena era a guerra estratégica (em oposição ao caos bruto de Ares), a sabedoria prática (em oposição à especulação abstrata), a arte e o artesanato (em oposição à bruta força). Presidiu o famoso julgamento de Orestes — quando a questão era se matar a própria mãe (Clitemnestra, que havia matado seu pai Agamenon) para vingar o pai era crime ou dever sagrado. Atena votou pelo perdão, criando o primeiro tribunal de júri e substituindo a lei do sangue (vingança pessoal) pela lei da justiça coletiva.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⚖ A Balança e a Espada</div>
+          <div class="sym-desc">A balança de Atena não pesa apenas ações — pesa intenções, contextos, circunstâncias. A espada de dois gumes é o discernimento: corta em ambas as direções, não favorece ninguém. A deusa que fundou o tribunal usa esses instrumentos com mãos firmes e olhos abertos.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🦉 A Coruja</div>
+          <div class="sym-desc">A coruja de Atena vê no escuro — símbolo da sabedoria que enxerga o que outros não veem, que ilumina os ângulos ocultos do problema. A Justiça no Tarô Mitológico não é cega: ela vê tudo, incluindo o que é inconveniente.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏛 A Égide</div>
+          <div class="sym-desc">O escudo de Atena (com a Medusa no centro) é a proteção divina da lei. Quem age em justiça está sob a proteção de Atena. O Gorgoneion (cabeça da Medusa) no escudo petrifica os inimigos da justiça.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ⚖ <strong>A essência:</strong> Atena como A Justiça não representa apenas lei humana — representa o princípio cósmico de que toda ação tem peso e medida. Ela fundou o tribunal para substituir a vingança primitiva pela deliberação racional: a lei da justiça como evolução da consciência coletiva.
+    </div>
+  </div>
+</div>
+
+<!-- XII — PENDURADO / PROMETEU -->
+<div id="a12" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XII<span>PENDUR.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Pendurado — Prometeu</div>
+      <div class="card-figure">Προμηθεύς · O Previsor · Ladrão do Fogo Divino · O Mártir da Humanidade</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Netuno ♆ / Água</span>
+        <span class="ctag ctag-gold">Mem · Geburah→Hod</span>
+        <span class="ctag ctag-gold">Sacrifício · Nova Perspectiva · Rendição</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — PROMETEU ACORRENTADO</span>
+      <div class="sec-text">
+        <p>Prometeu, cujo nome significa <em class="myth">"aquele que pensa antes"</em>, era o Titã mais inteligente e o mais amoroso para com os humanos. Quando Zeus decidiu privar a humanidade do fogo — mantendo os mortais em dependência e fraqueza — Prometeu subiu ao Olimpo, acendeu uma tocha no carro solar de Hélio e desceu à terra com o fogo escondido num talo de funcho oco. Não foi um roubo de impulso: foi um ato deliberado de desobediência consciente ao poder, para beneficiar os que nada tinham.</p>
+        <p>Zeus, furioso, não pôde simplesmente matar Prometeu (os Titãs são imortais), então criou para ele o pior dos tormentos possíveis: foi acorrentado numa rocha do Cáucaso, com correntes de adamanto (o metal mais duro, inquebrável). Todos os dias, uma águia — às vezes descrita como a própria águia de Zeus — descia e devorava seu fígado. Todas as noites, o fígado regenerava (pois Prometeu era imortal). E ao amanhecer, a águia retornava.</p>
+        <p>Prometeu suportou esse suplício por séculos — os textos divergem entre 30 mil anos e 30 anos, mas o ponto é a eternidade do sofrimento sem possibilidade de morte. Durante todo esse tempo, ele nunca se arrependeu. Nunca pediu perdão a Zeus. Sabia que Zeus eventualmente precisaria de sua sabedoria (ele conhecia a profecia de quem derrubaria Zeus) — e guardou esse segredo como barganha, mesmo no meio da tortura.</p>
+        <p>A libertação veio por Hércules: durante o décimo primeiro trabalho, Hércules matou a águia com uma flecha. Zeus permitiu a libertação, em parte porque Prometeu concordou em revelar a profecia e em parte porque Hércules era seu filho favorito. Prometeu foi acorrentado — e suportou — por amor à humanidade.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⛓ As Correntes de Adamanto</div>
+          <div class="sym-desc">As correntes inquebrável representam o aprisionamento voluntário — Prometeu poderia ter evitado o roubo do fogo. Ele sabia o preço e o pagou. O Pendurado não está preso por acidente: está suspenso pela escolha de um valor maior que a liberdade pessoal.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🦅 A Águia de Zeus</div>
+          <div class="sym-desc">A águia que devora o fígado é o poder estabelecido tentando destruir o que o desafia. Mas o fígado regenera — a fonte do fogo interior não pode ser extinta. O mártir suporta porque o que o sustenta é inexaurível.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🔥 O Funcho com o Fogo</div>
+          <div class="sym-desc">O talo de funcho — vegetal comum, fácil de ignorar — foi o instrumento pelo qual Prometeu burlou a vigilância divina. O fogo escondido no ordinário: a sabedoria espiritual não vive nos grandes templos, mas no simples e ignorado.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">☀ A Auréola Invertida</div>
+          <div class="sym-desc">No Tarô Mitológico, Prometeu pendurado tem a cabeça iluminada — como o Pendurado RWS. A perspectiva invertida (cabeça abaixo) é a nova visão que o sacrifício proporciona. Prometeu vê o cosmos de um ângulo que Zeus jamais considerou.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🔥 <strong>A essência:</strong> Prometeu como O Pendurado é o mártir lúcido — aquele que escolhe o sacrifício em plena consciência de seu custo, porque o valor pelo qual luta supera a dor. A carta não é sobre vitimização: é sobre a perspectiva radicalmente nova que só o sacrifício voluntário proporciona.
+    </div>
+  </div>
+</div>
+
+<!-- XIII — MORTE / ARES (MORTE) ou TÂNATOS -->
+<div id="a13" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XIII<span>MORTE</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Morte — Ares como Ceifeiro / Tânatos</div>
+      <div class="card-figure">Θάνατος · Deus da Morte Gentil · Irmão de Hipnos · A Transformação Inevitável</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Escorpião ♏</span>
+        <span class="ctag ctag-gold">Nun · Netzach→Tiferet</span>
+        <span class="ctag ctag-gold">Transformação · Fim de Ciclo · Renovação</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — TÂNATOS E A MORTE COMO GÊMEO DO SONO</span>
+      <div class="sec-text">
+        <p>Tânatos (Morte) e Hipnos (Sono) eram gêmeos filhos de Nix (a Noite). Viviam juntos nas cavernas do submundo — irmãos inseparáveis que presidiam as duas formas de inconsciência: o sono temporário e o sono eterno. Os gregos os representavam como jovens alados — não como figuras aterrorizantes. Tânatos especificamente era um jovem belo e alado, com uma tocha invertida (a chama da vida apagada). Sua presença era suave, inevitável e justa — ele não discriminava.</p>
+        <p>O mito que mais revela o caráter de Tânatos é o de Sísifo: o rei mais astuto dos mortais conseguiu acorrentar o próprio Tânatos numa sala, deixando toda a humanidade temporariamente incapaz de morrer. Feridos em batalha não morriam, velhos não terminavam seu sofrimento, o ciclo natural da vida parou. O caos foi tão grande que os deuses intervieram e libertaram Tânatos — que foi direto buscar Sísifo, que havia fugido ao mundo dos vivos com uma desculpa.</p>
+        <p>No Tarô Mitológico, a Morte às vezes é mostrada como Ares em seu aspecto de ceifeiro de vidas no campo de batalha — não por crueldade, mas porque a guerra é o agente mais visível da transformação coletiva. Mas a essência é sempre a mesma: não a destruição gratuita, mas o fim necessário que permite o começo.</p>
+        <p>A morte grega não é o fim absoluto: as almas continuam no submundo de Hades. É uma transformação, uma travessia — como Perséfone que desce e sobe, como os grãos que são enterrados e renascem. O Arcano XIII não tem nome nas cartas porque o nome da Morte não se pronuncia facilmente — como os gregos evitavam pronunciar o nome de Hades.</div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🏇 O Cavaleiro Negro</div>
+          <div class="sym-desc">A Morte cavalga um cavalo branco no RWS — no Tarô Mitológico, pode ser Ares ou Tânatos em sua carruagem. O branco simboliza a pureza da transformação — a morte não é suja, é limpa. É o fim que prepara o novo começo.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌹 A Rosa de Ísis</div>
+          <div class="sym-desc">A rosa branca no estandarte da Morte é símbolo de Ísis — a deusa que ressuscitou Osíris. A morte carrega consigo a semente da ressurreição. O fim carrega o começo dentro de si, como a romã carrega sementes.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌅 O Sol Entre as Torres</div>
+          <div class="sym-desc">O sol que nasce (ou se põe) entre dois portais ao fundo: a morte é uma passagem, não um muro. O sol continua seu ciclo independentemente de quem termina seu tempo. Há algo além das torres — mas só se passa por elas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ♏ <strong>A essência:</strong> A Morte no Tarô Mitológico não é fim: é a fronteira que Perséfone cruzou e voltou, que Orfeu quase atravessou, que Hércules desceu e voltou, que todos os heróis precisam enfrentar. A carta anuncia o fim de uma fase — necessário, inevitável e, em última análise, libertador.
+    </div>
+  </div>
+</div>
+
+<!-- XIV — TEMPERANÇA / ÍRIS -->
+<div id="a14" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XIV<span>TEMPER.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Temperança — Íris</div>
+      <div class="card-figure">Ἶρις · A Deusa do Arco-Íris · Mensageira dos Olimpianos · A Ponte Entre os Mundos</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Sagitário ♐</span>
+        <span class="ctag ctag-gold">Samekh · Yesod→Tiferet</span>
+        <span class="ctag ctag-gold">Integração · Equilíbrio · Fluxo</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — ÍRIS, A PONTE DE SETE CORES</span>
+      <div class="sec-text">
+        <p>Íris é filha de Taumante (o Maravilhoso, deus das maravilhas do mar) e de Electra (a âmbar, uma Oceânide). Ela é a personificação do arco-íris — o fenômeno que aparece exatamente quando dois mundos opostos (chuva e sol) se encontram. Por isso foi escolhida como mensageira dos deuses: ela transita naturalmente entre o Olimpo (alto) e a terra (baixo), entre o divino e o humano, exatamente como o arco-íris transita entre o céu e a terra.</p>
+        <p>Íris carrega uma jarras de água do rio Estige — o único instrumento que os deuses usavam para fazer juramentos inquebráveis. Quem jurava pelo Estige e quebrasse o voto ficava inconsciente por um ano e depois era exilado dos deuses por nove anos. Íris era a guardiã dessa água sagrada — a que garantia que a verdade permanecesse verdade entre os imortais.</p>
+        <p>Ao contrário de Hermes (que também é mensageiro), Íris nunca mente, nunca manipula, nunca usa de astúcia. Ela transmite a mensagem com fidelidade absoluta — é a comunicação pura, sem distorção. O arco-íris que ela personifica não tem sombra: é pura luz decomposta em suas frequências essenciais, cada cor no seu lugar exato.</p>
+        <p>A Temperança escolhe Íris porque o equilíbrio que essa carta representa não é supressão ou moderação forçada — é o fenômeno natural de dois opostos (chuva e sol) se encontrando e criando algo mais belo do que qualquer um dos dois poderia criar sozinho. A integração como arte, como o arco-íris.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌈 O Arco-Íris</div>
+          <div class="sym-desc">O arco-íris de Íris é o símbolo da integração de opostos: chuva e sol, água e fogo, terra e céu. Cada cor é a mesma luz branca em frequência diferente — todos os aparentes opostos são aspectos de uma única realidade.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">💧🔥 Os Dois Vasos</div>
+          <div class="sym-desc">Íris verte líquido de um vaso para outro — como a Temperança tradicional. Mas seu vaso especial contém a água do Estige: a verdade que flui entre os mundos. O equilíbrio que ela representa não é estático — é dinâmico, sempre em fluxo.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌊 A Postura Sobre a Água</div>
+          <div class="sym-desc">Íris está sobre ou junto à água, com um pé em terra e outro na água ou no ar — ela habita os limiares. A Temperança é sempre a carta do limiar, do momento entre dois estados, da transformação em andamento.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🌈 <strong>A essência:</strong> Íris como A Temperança representa a alquimia da vida cotidiana — a capacidade de manter fluxo entre mundos aparentemente incompatíveis sem forçar uma síntese artificial. O arco-íris não "resolve" a tensão entre chuva e sol: ele a revela como bela. O equilíbrio que Íris traz é a graça natural de quem aprendeu a fluir.
+    </div>
+  </div>
+</div>
+
+<!-- XV — DIABO / PAN -->
+<div id="a15" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XV<span>DIABO</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Diabo — Pan</div>
+      <div class="card-figure">Πάν · Deus dos Campos e Florestas · O Deus do Pânico · Filho de Hermes</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Capricórnio ♑</span>
+        <span class="ctag ctag-gold">Ayin · Hod→Tiferet</span>
+        <span class="ctag ctag-gold">Instinto · Sombra · Apego ao Material</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — PAN, O TERROR E O ÊXTASE DA NATUREZA</span>
+      <div class="sec-text">
+        <p>Pan era filho de Hermes e uma ninfa (ou de Penélope, dependendo da versão). Nasceu com chifres de bode, patas de bode, barba e orelhas pontudas — tão grotesco que a própria mãe fugiu ao vê-lo. Hermes, encantado, o levou ao Olimpo e apresentou aos deuses, que riram e o adoraram. Dionísio o tomou como companheiro de festivais.</p>
+        <p>Pan habitava as florestas da Arcádia, perseguindo ninfas e pastoreando rebanhos. Era sensual, preguiçoso no calor do meio-dia, dado ao vinho e à música. Mas havia algo perturbador nele: quem o encontrava inesperadamente no silêncio do bosque durante o meio-dia (a "hora de Pan") podia ser tomado por um terror irracional, paralisante e inexplicável. Daí vem a palavra <em class="myth">"pânico"</em> — literalmente "o que Pan faz".</p>
+        <p>Pan se apaixonou pela ninfa Sírinx, que fugiu e pediu às irmãs que a transformassem. Quando Pan alcançou-a, seus braços se fecharam sobre um maço de canas de junco ao vento — que produziu uma música haunting. Pan colheu as canas e criou a flauta de Pan (sírinx), tocando sempre a música do amor impossível. A beleza nascida da perda.</p>
+        <p>No Tarô Mitológico, Pan representa a sombra — não o mal absoluto, mas o instinto que domina quando não é integrado conscientemente. Ele não é monstruoso: é a natureza em sua forma não domesticada. O aprisionamento que o Diabo representa não é causado pelo diabo — é causado pelo apego que o ser humano desenvolve às satisfações instintivas quando não conhece outra coisa.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🐐 A Forma Bode</div>
+          <div class="sym-desc">Os chifres, patas e barba de bode de Pan representam o instinto animal não sublimado. O bode não é mau — é o instinto em seu estado natural. O problema não é Pan: é o humano que fica preso nesse nível de consciência sem avançar.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🎵 A Flauta de Sírinx</div>
+          <div class="sym-desc">A flauta de Pan — feita das canas da ninfa que amou — é o instrumento que seduz. A música do Diabo não é horrível: é irresistível. O aprisionamento pela sombra começa sempre com algo que parece belo ou satisfatório.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">⛓ As Correntes Largas</div>
+          <div class="sym-desc">As figuras acorrentadas ao pedestal de Pan poderiam se libertar — as correntes são largas. Estão ali porque não percebem a própria liberdade. Pan não os prende à força: é o hábito, o conforto do familiar, que mantém os acorrentados.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🐐 <strong>A essência:</strong> Pan como O Diabo representa a sombra de si mesmo — não o inimigo externo, mas o instinto não integrado que assume o controle quando não é reconhecido. O pânico (o medo de Pan) é o medo da própria natureza instintiva. Integrar Pan não é suprimí-lo — é aceitá-lo como parte de si, domando o bode para que a flauta possa cantar.
+    </div>
+  </div>
+</div>
+
+<!-- XVI — TORRE / ZEUS RAIO -->
+<div id="a16" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XVI<span>TORRE</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Torre — A Torre de Bábel Grega / O Raio de Zeus</div>
+      <div class="card-figure">Ἀστραπή · O Raio que Purifica · Sêmele e a Gloria Divina · A Destruição Necessária</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Marte ♂</span>
+        <span class="ctag ctag-gold">Peh · Hod→Netzach</span>
+        <span class="ctag ctag-gold">Revelação Súbita · Queda do Ego</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — SÊMELE E O RAIO QUE DESTRÓI E CRIA</span>
+      <div class="sec-text">
+        <p>A mãe de Dionísio, Sêmele, foi manipulada por Hera (disfarçada de sua ama) a pedir que Zeus se revelasse em sua verdadeira forma divina. Zeus sabia o que aconteceria — implorou que ela mudasse de ideia. Mas uma promessa pelo Estige não pode ser quebrada. Quando Zeus se revelou em toda sua glória — o raio em sua forma plena, a energia divina pura — Sêmele foi instantaneamente incinerada.</p>
+        <p>A estrutura do mito da Torre está aqui: alguém construiu algo (a confiança no relacionamento com Zeus) sem fundamento sólido (sem entender a natureza real do divino). A revelação da verdade plena destruiu o que havia sido construído na ilusão. E do centro da destruição nasceu Dionísio — o que estava dentro da estrutura destruída era mais valioso do que a estrutura.</p>
+        <p>Outros mitos da Torre: Ícaro e as asas de cera (estrutura construída sobre material inadequado para o nível de ambição); Faetonte que insistiu em guiar o carro solar de seu pai Hélio (estrutura de ego inflado acima da capacidade real) — Zeus o abateu com o raio antes que incendiasse o mundo inteiro. A Torre sempre cai quando foi construída além do fundamento real.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⚡ O Raio Dourado</div>
+          <div class="sym-desc">O raio de Zeus que destrói a Torre não é malévolo — é a luz divina em sua forma mais concentrada e intensa. O que não pode sustentar a verdade não pode subsistir. O raio é misericórdia travestida de destruição.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">👑 A Coroa que Voa</div>
+          <div class="sym-desc">A coroa voando = o ego-rei destronado. Em Sêmele: a ilusão de ser amada pelo deus em seus próprios termos voa pelo ar. O que fica é o essencial: Dionísio no ventre, a verdade no centro.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🔥 As Chamas</div>
+          <div class="sym-desc">O fogo que destrói a Torre é o mesmo fogo que Prometeu roubou para dar à humanidade. A destruição criativa — o mesmo elemento que aquece e cozinha pode queimar e purificar. Fogo de Prometeu e Raio de Zeus: dois aspectos da mesma força.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ⚡ <strong>A essência:</strong> A Torre no Tarô Mitológico é a revelação súbita que destrói a ilusão. Como o raio de Zeus que incinerou Sêmele — e de seus cinzas emergiu Dionísio. O que a queda destrói era, por definição, insustentável. O que sobrevive à queda é real.
+    </div>
+  </div>
+</div>
+
+<!-- XVII — ESTRELA / PANDORA -->
+<div id="a17" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XVII<span>ESTRELA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Estrela — Pandora</div>
+      <div class="card-figure">Πανδώρα · A Primeira Mulher · A Portadora de Todos os Dons · A Guardiã da Esperança</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Aquário ♒</span>
+        <span class="ctag ctag-gold">Tzaddi · Netzach→Yesod</span>
+        <span class="ctag ctag-gold">Esperança · Renovação · Dons Divinos</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — PANDORA E A ESPERANÇA NO FUNDO DO JARRO</span>
+      <div class="sec-text">
+        <p>Pandora foi criada por Hefesto com argila e água, por ordem de Zeus, para ser enviada à humanidade como "presente" — na verdade, uma punição velada pelo roubo do fogo por Prometeu. Seu nome significa "todos os dons": cada deus lhe deu um: Afrodite deu beleza e charme; Hermes deu persuasão e astúcia (mas também mentira); Atena deu habilidade manual; Apolo deu música; as Graças deram elegância; as Horas lhe puseram um vestido florido. Era a criatura mais perfeita do mundo mortal.</p>
+        <p>Junto com ela, Zeus enviou um jarro (pithos — nunca foi uma "caixa" até Erasmo de Rotterdam traduzir erradamente no séc. XVI) lacrado. Epimeteu, irmão de Prometeu e seu contrário em previdência, ignorou os avisos do irmão e aceitou Pandora como esposa. A curiosidade de Pandora (também dom divino, dado por Hermes) a levou a abrir o jarro — e todos os males do mundo escaparam: doença, velhice, trabalho árduo, guerra, inveja, loucura, vício.</p>
+        <p>Mas no fundo do jarro, quando Pandora o fechou aterrorizada, restou uma coisa: Elpis — a Esperança. Os estudiosos debatem se Esperança ficar no jarro é algo bom (resta esperança ao humano) ou algo cruel (ela também fica aprisionada, inacessível). Mas a tradição esotérica e o Tarô escolhem a leitura mais luminosa: a Esperança permaneceu com a humanidade, dentro do próprio recipiente que guardava os males.</p>
+        <p>A Estrela escolhe Pandora porque, após a Torre (a queda, a destruição, a revelação brutal), vem a renovação. Pandora é o ser de dons divinos que chegou após a catástrofe de Prometeu — ela não criou os males, apenas abriu o que já estavam ali. E a Esperança que ela guarda é o dom mais fundamental: a capacidade de imaginar um futuro diferente do presente.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">⭐ A Estrela de Oito Pontas</div>
+          <div class="sym-desc">A estrela de oito pontas = Vênus/Afrodite, o dom mais visível de Pandora. Mas também: 8 = renovação e poder. Após a destruição da Torre, a estrela é o primeiro sinal de que algo persiste além da catástrofe — como a estrela que brilha após a tempestade.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏺 O Jarro Aberto</div>
+          <div class="sym-desc">Pandora verte líquido de dois jarros — um para a terra, um para a água. Como Íris, ela distribui sem reservar. A generosidade que verte os dons divinos à terra sem medir. O Jarro de Pandora virado transforma-se nos vasos da Temperança: o mal já saiu — agora o bem pode fluir.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌈 A Nudez e os Dons</div>
+          <div class="sym-desc">Pandora nua (ou levemente velada) = a humanidade sem defesas, vulnerável mas presente. Os dons divinos que ela carrega não são armas — são potenciais. A Estrela oferece sem garantia de uso: os dons estão ali para quem tiver coragem de recebê-los.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ⭐ <strong>A essência:</strong> Pandora como A Estrela representa o dom mais fundamental após a catástrofe: a capacidade de renovação. Os males já escaparam do jarro da vida — mas a Esperança permanece. A carta convoca a confiar nos próprios dons, a verter generosamente o que se tem, a reconhecer que mesmo após a maior destruição, algo valioso permanece.
+    </div>
+  </div>
+</div>
+
+<!-- XVIII — LUA / ÁRTEMIS / HÉCATE -->
+<div id="a18" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XVIII<span>LUA</span></div>
+    <div class="card-title-block">
+      <div class="card-title">A Lua — Hécate Tríplice</div>
+      <div class="card-figure">Ἑκάτη · A Três Faces · Ártemis-Selene-Hécate · Senhora das Encruzilhadas</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Peixes ♓</span>
+        <span class="ctag ctag-gold">Qoph · Netzach→Malkuth</span>
+        <span class="ctag ctag-gold">Inconsciente · Ilusão · Os Mistérios da Noite</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — AS TRÊS FACES DA LUA</span>
+      <div class="sec-text">
+        <p>Os gregos reconheciam três aspectos da lua em três deusas: <strong>Ártemis</strong> (a lua crescente — a virgem caçadora, o aspecto da novidade e possibilidade), <strong>Selene</strong> (a lua cheia — a deusa que puxa as marés, que ilumina a noite, o aspecto pleno e receptivo) e <strong>Hécate</strong> (a lua minguante e negra — a senhora das encruzilhadas, dos espíritos, da magia, o aspecto que conhece o que a luz não alcança). As três são a mesma deusa em tempos diferentes.</p>
+        <p>Hécate é a mais misteriosa das três. Filha de Perses e Astéria (ou diretamente de Nix), foi honrada por Zeus com poderes sobre terra, mar e céu — ela é anterior à divisão olímpica do cosmos. Aparece nas encruzilhadas (lugares onde três caminhos se cruzam) na lua nova, acompanhada de cães que uivam para o invisível e de almas errantes. É a deusa que Medeia invocava em seus feitiços. É quem ilumina com suas tochas o caminho de Perséfone entre os mundos.</p>
+        <p>A Lua como carta representa tudo o que Hécate governa: o inconsciente, os medos sem forma, as ilusões, os sonhos perturbadores, o que existe entre a realidade cotidiana e o mundo invisível. A encruzilhada de Hécate é o ponto onde três caminhos se abrem — e no escuro, sem guia visível, é impossível saber qual tomar. A carta convoca a navegar esse território sem o mapa habitual.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌑 As Três Fases Lunares</div>
+          <div class="sym-desc">A lua cheia entre duas meias-luas = as três Hécates. A tríplice deusa representa o ciclo completo do feminino: nascimento (crescente), plena vida (cheia), sabedoria (minguante) e mistério (escura). Nenhuma fase é melhor — todas são necessárias.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🐕 Os Cães Uivantes</div>
+          <div class="sym-desc">Os cães de Hécate uivam para o que os humanos não veem. No RWS: um cão e um lobo. O domesticado e o selvagem reconhecem o poder lunar. O instinto animal detecta o invisível antes que a razão perceba.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🦀 O Caranguejo das Profundezas</div>
+          <div class="sym-desc">O caranguejo emerge das águas do inconsciente — Câncer, signo lunar. Representa o material reprimido que sobe à superfície quando a lua cheia ilumina o inconsciente. O caranguejo anda de lado: os processos inconscientes não seguem lógica linear.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏰 As Duas Torres</div>
+          <div class="sym-desc">As duas torres enquadram a encruzilhada de Hécate. São as portas entre o mundano e o outro mundo. O caminho entre elas leva ao desconhecido — e Hécate não garante que seja seguro, apenas que é possível.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🌑 <strong>A essência:</strong> Hécate como A Lua representa o território que existe além da consciência racional — não como ameaça, mas como realidade que demanda um tipo diferente de navegação. Os medos que surgem nesse território raramente correspondem ao perigo real: são projeções do inconsciente pedindo para serem reconhecidas e integradas.
+    </div>
+  </div>
+</div>
+
+<!-- XIX — SOL / APOLO -->
+<div id="a19" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XIX<span>SOL</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Sol — Apolo</div>
+      <div class="card-figure">Ἀπόλλων · Febo · O Radiante · O Arqueiro de Prata · Senhor de Delfos</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Sol ☀</span>
+        <span class="ctag ctag-gold">Resh · Hod→Yesod</span>
+        <span class="ctag ctag-gold">Clareza · Alegria · Realização</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — APOLO, A PERFEIÇÃO SOLAR</span>
+      <div class="sec-text">
+        <p>Apolo nasceu na ilha de Delos, junto com sua gêmea Ártemis, filhos de Zeus e Leto. Sua mãe Leto foi perseguida pela fúria de Hera por todo o mundo — nenhuma terra a recebia por medo da rainha dos deuses. Apenas Delos, uma ilha flutuante sem raízes (e portanto tecnicamente não "terra"), a acolheu. Apolo nasceu agarrando uma palmeira — e a ilha se tornou fixa no mar, sagrada para sempre.</p>
+        <p>Ainda bebê, Apolo obteve um arco e flechas de ouro e foi buscar a serpente Python, que havia perseguido sua mãe grávida pelo mundo a mando de Hera. Matou Python e tomou o templo de Delfos para si — mas precisou ser purificado desse primeiro assassinato. Esse detalhe é central ao caráter de Apolo: ele é o deus da lei moral, da pureza e da purificação — e mesmo ele precisou ser purificado de seu próprio ato de violência.</p>
+        <p>Em Delfos, Apolo estabeleceu o oráculo mais importante do mundo antigo — onde sua sacerdotisa (a Pítia) transmitia oráculos em transe. Seu templo em Delfos trazia inscrições: "Conhece-te a ti mesmo" (Γνῶθι σεαυτόν) e "Nada em excesso" (Μηδὲν ἄγαν). Esses dois mandamentos definem o espírito apolíneo: autoconsciência e equilíbrio.</p>
+        <p>Apolo é o deus mais próximo ao ideal grego do kalós kagathós — belo e bom, exterior e interior em harmonia. É a música, a poesia, a medicina, o sol, a profecia — tudo o que transforma o caos em forma, o desconhecido em conhecido, a doença em saúde. Mas também Apolo tinha sombra: suas histórias de amor terminam sempre em tragédia (Dáfne virou árvore, Hiácinto morreu, Corônis foi morta). O sol que tudo ilumina às vezes também queima.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">☀ O Carro Solar</div>
+          <div class="sym-desc">Apolo conduz o carro do sol pelo céu — cada amanhecer é ele que abre as portas da aurora. O sol não nasce por acidente: é um ato consciente, repetido com perfeição, todos os dias. A disciplina do Sol é a alegria que nasce do comprometimento com o ritmo.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌿 O Louros</div>
+          <div class="sym-desc">A coroa de louros de Apolo veio da ninfa Dáfne — que foi transformada em loureiro ao fugir dele. O louros simboliza a vitória conquistada mesmo através da perda. A glória de Apolo carrega em si o amor não correspondido que a gerou.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🎵 A Lira de Ouro</div>
+          <div class="sym-desc">A lira que Hermes lhe deu — e depois Apolo a elevou à forma mais perfeita. A música de Apolo não é o êxtase dionisíaco: é a harmonia matemática, a proporção perfeita, o cosmos como música. A lira do Sol é a lira do equilíbrio.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🏹 O Arco de Prata</div>
+          <div class="sym-desc">O arco de Apolo dispara a verdade com precisão: oráculos, profecias, a flecha que mata Python, a flecha que guiou Páris ao calcanhar de Aquiles. A verdade de Apolo não tem desvio — vai direto ao alvo. Às vezes isso é crueldade, mas sempre é exatidão.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      ☀ <strong>A essência:</strong> Apolo como O Sol representa a clareza que vem após todos os desafios dos arcanos anteriores — a lua, as sombras, a morte, a transformação. O sol não julga o que ilumina: apenas ilumina. A consciência solar vê tudo como é, sem acrescentar nem subtrair. É o estado de presença plena, de alegria sem causa, de luz que não precisa de justificativa.
+    </div>
+  </div>
+</div>
+
+<!-- XX — JULGAMENTO / HERMES PSICOPOMPO -->
+<div id="a20" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XX<span>JULG.</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Julgamento — Hermes Psicopompo</div>
+      <div class="card-figure">Ψυχοπομπός · O Guia das Almas · O Chamado do Divino · O Despertar Final</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Plutão ♇ / Fogo Shin</span>
+        <span class="ctag ctag-gold">Shin · Malkuth→Hod</span>
+        <span class="ctag ctag-gold">Despertar · Chamado · Ressurreição</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — HERMES E O CHAMADO DAS ALMAS</span>
+      <div class="sec-text">
+        <p>Hermes Psicopompo (guia das almas) era o único ser capaz de transitar livremente entre o mundo dos vivos e o dos mortos. Quando alguém morria, era Hermes que aparecia para guiar a alma até a margem do rio Estige, onde Caronte aguardava. Ele não julgava — apenas guiava. Mas sua presença era o chamado irresistível: quando Hermes aparece, é impossível não atender.</p>
+        <p>O Julgamento grego das almas acontecia no submundo: três juízes (Minos, Radamanto e Éaco — todos filhos de Zeus com mortais distintas) pesavam a vida de cada alma e determinavam seu destino. Minos, rei de Creta em vida, tornou-se o mais temido dos três por sua inflexibilidade. As almas que viveram virtuosamente iam aos Campos Elísios; as que viveram com vícios, ao Tártaro; as intermediárias, ao Asfódelo.</p>
+        <p>Mas o Julgamento como Arcano XX vai além do tribunal dos mortos. No Tarô Mitológico, ele representa o chamado divino — o momento em que algo maior do que o ego individual convoca para um propósito mais elevado. É o momento em que as almas adormecidas nos próprios hábitos e medos escutam a trombeta (o caduceu de Hermes) que as desperta para o que são realmente.</p>
+        <p>A ressurreição grega não é cristã — é o retorno à consciência plena, o despertar da alma que estava parcialmente dormindo, o reconhecimento do próprio nome divino. Hermes não apenas guia ao submundo — também guia de volta. É o guia bidirecional da transformação.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">📯 A Trombeta / O Caduceu</div>
+          <div class="sym-desc">A trombeta do Julgamento tradicional corresponde ao caduceu de Hermes no Tarô Mitológico — o instrumento que anuncia a passagem entre estados. O som que não pode ser ignorado, que atravessa o sono mais profundo e o mais espesso dos véus.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">⚕ As Almas que Emergem</div>
+          <div class="sym-desc">As figuras que emergem dos caixões (RWS) correspondem, no Mitológico, às almas respondendo ao chamado de Hermes. Não é morte que elas vivem — é o despertar para o que esteve adormecido. A vida retomada com consciência plena de seu propósito.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🌊 As Águas do Estige</div>
+          <div class="sym-desc">O rio Estige ao fundo — a fronteira que foi cruzada e que agora se cruza de volta. O Julgamento acontece depois da morte (Arcano XIII) e da renovação (XVII, XVIII, XIX). É o reconhecimento, após toda a jornada, do que se tornou.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      📯 <strong>A essência:</strong> Hermes Psicopompo como O Julgamento representa o chamado irresistível da vocação mais profunda. Não é punição nem recompensa: é o reconhecimento. A carta diz: "Você percorreu toda essa jornada. Veja o que se tornou. Responda ao chamado que sempre soube que estava lá."
+    </div>
+  </div>
+</div>
+
+<!-- XXI — MUNDO / GAIA -->
+<div id="a21" class="card-block acc-major reveal">
+  <div class="card-head">
+    <div class="card-numeral">XXI<span>MUNDO</span></div>
+    <div class="card-title-block">
+      <div class="card-title">O Mundo — Gaia / A Dançarina do Cosmos</div>
+      <div class="card-figure">Γαῖα · A Mãe-Terra · O Cosmos Completo · A Grande Síntese</div>
+      <div class="card-tags">
+        <span class="ctag ctag-gold">Saturno ♄</span>
+        <span class="ctag ctag-gold">Tav · Yesod→Malkuth</span>
+        <span class="ctag ctag-gold">Realização · Completude · Anima Mundi</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <span class="sec-label">O MITO — GAIA, A MÃE DE TUDO</span>
+      <div class="sec-text">
+        <p>Gaia é a primeira manifestação de forma no cosmos grego — emergiu do Caos e tornou-se o fundamento de toda existência. Ela não nasceu: emergiu. Ela não foi criada: simplesmente é. Sua presença é tão fundamental que sem ela não existe nada — ela é o solo sob os pés dos deuses, a base do Olimpo, o fundo do Tártaro, o substrato de toda criação.</p>
+        <p>Gaia era também profética: alertou seus filhos Titãs sobre Cronos, alertou Cronos sobre Zeus, alertou Zeus sobre o filho de Métis. Ela viu tudo — não porque fosse onisciente como conceito abstrato, mas porque toda ação acontece sobre ela e em ela. A terra literalmente guarda a memória de tudo.</p>
+        <p>Como O Mundo, Gaia representa não apenas o começo (ela é a primeira manifestação), mas também a síntese completa. O Louco partiu de Dionísio (o potencial que escapa às formas) e chegou a Gaia (a forma que contém todos os potenciais). A jornada completa retorna ao fundamento — mas agora com toda a consciência da jornada integrada.</p>
+        <p>No Tarô Mitológico, a dançarina do Mundo às vezes é Afrodite (a força que mantém o cosmos unido pelo amor), às vezes é Gaia-Anima Mundi (a alma do mundo), às vezes é a própria figura andrógina — todos os princípios integrados em um ser que dança livremente no centro de toda manifestação.</p>
+      </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="section">
+      <span class="sec-label">SÍMBOLOS DA CARTA</span>
+      <div class="sym-grid">
+        <div class="sym-item">
+          <div class="sym-title">🌿 A Guirlanda Oval</div>
+          <div class="sym-desc">A guirlanda de flores que circunda a dançarina = a Vesica Piscis, o Lingam-Yoni em geometria sagrada. Gaia como O Mundo é o receptáculo de toda criação — a forma que contém todas as outras formas. A guirlanda é eterna: não tem começo nem fim.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">🦅🦁👤🐂 Os Quatro Querubins</div>
+          <div class="sym-desc">Os quatro animais nos cantos = os quatro elementos que Gaia contém: Águia (Ar/Escorpião), Leão (Fogo/Leo), Humano (Água/Aquário), Touro (Terra/Touro). Gaia contém todos os elementos porque é a terra que os sustenta.</div>
+        </div>
+        <div class="sym-item">
+          <div class="sym-title">💃 A Dança Livre</div>
+          <div class="sym-desc">A dançarina do Mundo se move livremente — não há coreografia imposta, não há palco limitado. Ela dança porque a jornada foi completada e a dança é a expressão natural da integração. Gaia não esforça: flui.</div>
+        </div>
+      </div>
+    </div>
+    <div class="meaning-box">
+      🌍 <strong>A essência:</strong> Gaia como O Mundo é o arcano da realização — não como chegada a um ponto fixo, mas como integração de toda a jornada. O Louco (Dionísio) que partiu do Olimpo sem forma retorna a Gaia (a terra que sustenta tudo) com toda a experiência integrada. A jornada não termina: espirala para o próximo nível.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ARCANOS MENORES
+══════════════════════════════════════════ -->
+<div class="chapter reveal" style="margin-top:80px">
+  <div class="chapter-title">✦ OS 56 ARCANOS MENORES ✦</div>
+  <p class="chapter-sub">Quatro Mitos Narrados Carta por Carta · Jason · Eros &amp; Psique · Orestes · Dédalo</p>
+</div>
+
+<!-- ══════════ OUROS / WANDS — JASÃO ══════════ -->
+<div id="wands" class="suit-banner sb-wands reveal">
+  <div class="sb-title">🏺 OUROS / WANDS — A Saga de Jasão e os Argonautas</div>
+  <div class="sb-myth">
+    <strong>O mito central:</strong> Jasão, filho destronado do rei de Iolcos, precisa buscar o Velocino de Ouro (tosão de um carneiro alado dourado, guardado por um dragão que nunca dorme) na distante Cólquida para recuperar seu trono. Reúne cinquenta heróis na nau Argo — os Argonautas — e parte numa das maiores aventuras coletivas da mitologia. O naipe de Ouros/Wands é o naipe do Fogo, da vontade, da ação, da ambição e da criatividade. Cada carta mostra um momento da jornada de Jasão, do entusiasmo inicial à sobrecarga final — a curva completa do projeto humano ambicioso.
+  </div>
+</div>
+
+<div class="card-block acc-wands reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">As<span>WANDS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--terra-l)">Ás de Ouros — A Profecia e a Decisão</div>
+      <div class="card-figure">O momento em que Jasão decide partir · A Faísca Original</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text">
+      <p>O Ás de Ouros mostra a vara/tocha de Apolo — o fogo da inspiração divina que desceu sobre Jasão quando o oráculo de Delfos confirmou sua missão. Jasão havia chegado à corte do usurpador Pélias (tio que tomara o trono de seu pai) com uma sandália só — cumprindo a profecia de que "um homem de sandália única" seria sua ruína. Pélias, para se livrar de Jasão, enviou-o na missão "impossível" de buscar o Velocino de Ouro.</p>
+      <p>O Ás é o momento da faísca pura — antes de qualquer complicação. Jasão diz sim. A vara flamejante é a Vontade em sua forma mais concentrada, o início de toda jornada de fogo. O fundo dourado da carta é o Olimpo — a origem divina do impulso criativo.</p>
+    </div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Inspiração inicial, novo projeto, clareza de propósito. A faísca que aguarda manifestação. Tudo começa aqui.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">2<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Dois de Ouros — O Planejamento</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Jasão contempla o mapa do mundo conhecido. Dois bastões cruzados = dois caminhos, dois poderes, a tensão criativa entre o que é e o que pode ser. Ele olha para o horizonte além do Mediterrâneo — a Cólquida está além do fim do mundo conhecido. O dois é o primeiro momento de hesitação real: a visão existe, agora é preciso transformá-la em plano concreto. Jasão começa a recrutar os Argonautas — manda mensageiros a todos os cantos da Grécia.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Planejamento, visão de longo prazo, primeira extensão do poder além do familiar. O domínio do território que ainda não foi tocado.</div>
+  </div>
+</div>
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">3<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Três de Ouros — A Construção da Argo</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>O arquiteto Argos (com a ajuda de Atena, que inseriu uma viga do carvalho de Dodona com o poder da profecia) constrói a nau Argo — o primeiro grande navio de aventura da mitologia. Três ouros = o tripé da realização: visão, habilidade, trabalho colaborativo. Jasão observa o trabalho sendo feito — ele não constrói sozinho. A grandeza de Jasão não é técnica: é a capacidade de reunir e liderar quem sabe mais do que ele.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Trabalho colaborativo, habilidade artesanal, progresso visível no projeto. O primeiro fruto tangível da visão.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">4<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Quatro de Ouros — A Celebração da Partida</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Os Argonautas celebram antes de partir — cinquenta heróis reunidos em Iolcos, flores, libações aos deuses, a Argo no porto com as velas prontas. Hércules, Orfeu, Castor e Pólux, Peleo, Telamão, Atalanta — todos presentes. O quatro de ouros é a celebração da fundação sólida: o grupo está formado, o navio está pronto, os deuses aprovaram. É o momento mais alegre da jornada — antes dos obstáculos reais.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Celebração, estabilidade construída, harmonia no grupo. O momento de apreciar o que foi criado antes de partir ao desafio.</div>
+  </div>
+</div>
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">5<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Cinco de Ouros — A Batalha de Cízico</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Os Argonautas chegam à ilha de Cízico, onde o rei os recebe bem. À noite, voltando de uma expedição, confundem o navio na escuridão e atacam — acreditando serem invasores. Matam o rei Cízico, que era seu amigo. Quando o sol nasce e percebem o erro, a dor é insuportável. Conflito e confusão — o cinco sempre perturba o equilíbrio do quatro. A violência que vem da falta de visão clara no escuro.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Conflito, confusão, luta desnecessária. A competição que desgasta sem resultado. O caos que vem quando falta clareza de propósito.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">6<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Seis de Ouros — Jasão Triunfante com o Velocino</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>O momento central da saga: Jasão ergue o Velocino de Ouro dourado ao sol — finalmente em suas mãos, após todas as provas. Com a ajuda de Medeia (que adormeceu o dragão com um feitiço e guiou Jasão entre as chamas), o objetivo foi alcançado. O seis de ouros é o ápice da vitória — o cavalo branco, a coroa de flores, os Argonautas em aclamação. O herói que retorna com o troféu, a missão cumprida.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Vitória, reconhecimento, sucesso após esforço. O líder que retorna triunfante. O objetivo alcançado e reconhecido.</div>
+  </div>
+</div>
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">7<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Sete de Ouros — A Defesa Contra Absirto</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Na fuga da Cólquida com o Velocino, o rei Aeetes envia seu filho Absirto com uma frota para recuperar o tesouro. Os Argonautas defendem a Argo contra um número superior de perseguidores. Jasão está em posição vantajosa (no alto do navio) mas numericamente inferior. O sete de ouros é a defesa obstinada de uma posição conquistada — manter o que se ganhou contra quem quer retomá-lo.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Desafio, defesa de posição, coragem diante de oposição. Sustentação do terreno conquistado mesmo sob pressão.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">8<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Oito de Ouros — A Fuga Veloz com Golfinhos</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>A Argo escapa dos perseguidores com velocidade incrível — golfinhos (animais sagrados de Apolo e Poseidon) guiam o navio pelas águas. Tudo vai rápido: as velas cheias de vento, o casco cortando as ondas, a missão convergindo para o fim. O oito é a velocidade, a aceleração, o movimento que não encontra resistência. A fuga que se torna voo.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Velocidade, movimento rápido, notícias que chegam depressa. As coisas se movem — é hora de agir sem hesitar.</div>
+  </div>
+</div>
+<div class="card-block acc-wands">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">9<span>WANDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--terra-l)">Nove de Ouros — As Rochas Cianéas / Esgotamento</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>As Rochas Simplegades (que se chocavam destruindo tudo que passasse): Fineu o adivinho aconselhou que soltassem uma pomba primeiro. A pomba passou — as rochas se chocaram, cortando apenas a ponta da cauda. A Argo passou enquanto as rochas se abriam — e a popa foi levemente atingida. Chegaram! Mas o nove mostra um Jasão exausto, ferido, na iminência de cruzar o último obstáculo. O guerreiro que deu tudo mas ainda precisa de mais uma gota de força.</p></div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Resistência obstinada, cansaço que não cede, o guardião ferido que não abandona o posto. Uma reserva oculta ainda existe — mas o custo já é visível.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-block acc-wands reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--terra-l)">10<span>WANDS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--terra-l)">Dez de Ouros — O Retorno e o Peso da Vitória</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text">
+      <p>Jasão retorna a Iolcos com o Velocino de Ouro — e com Medeia, a feiticeira que o ajudou e com quem se casou. Carrega o troféu mais o peso de tudo que custou: os companheiros mortos, as traições cometidas (o assassinato de Absirto, que foi cumplicidade de Medeia para desacelerar a perseguição), a responsabilidade de reinos agora que o objetivo foi alcançado. O dez de ouros mostra o herói sobrecarregado — a vitória veio, mas trouxe consigo tudo o que a precedeu.</p>
+    </div>
+    <div class="meaning-box">🔥 <strong>Significado:</strong> Sobrecarga, responsabilidade excessiva, o peso do sucesso. É preciso delegar ou depor parte do fardo — não tudo pode ser carregado por um único par de ombros.</div>
+  </div>
+</div>
+
+<!-- ══════════ COPAS / CUPS — EROS E PSIQUE ══════════ -->
+<div id="cups" class="suit-banner sb-cups reveal">
+  <div class="sb-title">🏺 COPAS / CUPS — Eros e Psique: O Amor que Eleva a Alma</div>
+  <div class="sb-myth">
+    <strong>O mito central:</strong> Psique (cujo nome significa "Alma") era uma princesa mortal de beleza incomparável — tão bela que as pessoas paravam de adorar Afrodite e a adoravam a ela. Afrodite, furiosa, enviou seu filho Eros para fazê-la se apaixonar por um monstro. Mas Eros se feriu com sua própria flecha e se apaixonou por Psique. Casaram-se em segredo, no escuro — Eros nunca podia ser visto. A desconfiança, as tarefas impossíveis e a busca pelo amor perdido formam a jornada completa da Alma humana em direção ao divino. O naipe de Copas é o naipe da Água, das emoções, dos relacionamentos e do amor.
+  </div>
+</div>
+
+<div class="card-block acc-cups reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">As<span>CUPS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--azure-l)">Ás de Copas — O Cálice do Amor Divino</div>
+      <div class="card-figure">O momento em que Eros encontra Psique · A Abertura do Coração</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text">
+      <p>Eros desceu para ferir Psique com a flecha do desamor — e se feriu com sua própria flecha dourada ao contemplá-la. O Ás de Copas é esse instante: o cálice transbordando amor que não foi pedido, que não foi planejado, que simplesmente acontece como a chuva. O cálice de ouro florido que transborda representa o coração aberto pela surpresa do amor genuíno — não o amor dos planos e cálculos, mas o que simplesmente surge.</p>
+    </div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Novo amor, abertura emocional, intuição, relacionamento que surge. O coração disponível para receber o que não esperava.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">2<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Dois de Copas — O Encontro no Escuro</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique foi levada por Zéfiro ao palácio de Eros — esplendoroso, misterioso, invisível de dia. À noite, Eros chegava e se unia a ela no escuro — nunca podia ser visto. Dois cálices trocados entre dois amantes que se encontram mas um permanece velado: a união que existe no sentir, não no ver. O amor que é real mesmo sem toda a informação. A confiança como fundamento da parceria.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Parceria, conexão mútua, amor correspondido. A união que se baseia em sentimento real, não em aparência.</div>
+  </div>
+</div>
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">3<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Três de Copas — A Celebração Secreta</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique e Eros vivem em perfeita felicidade no palácio invisível. Três cálices erguidos — celebração, alegria, abundância de amor. Mas Psique sente falta de suas irmãs e pede que as visite. O três de copas é o auge da felicidade — antes do conflito que virá quando as irmãs chegarem com suas dúvidas e inveja. A alegria compartilhada que contém a semente da próxima prova.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Celebração com amigos, alegria compartilhada, amizade e apoio. O coração pleno que transborda para os outros.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">4<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Quatro de Copas — A Inquietação da Dúvida</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>As irmãs de Psique chegam e plantam a dúvida: "Você nunca viu seu marido — como sabe que não é um monstro?" Psique está sentada, observando três cálices à sua frente mas sem os ver — um quarto cálice lhe é oferecido (pela oportunidade de saber a verdade), e ela hesita. O quatro de copas é a indiferença do coração satisfeito demais para ver o que está sendo oferecido — mas também a inquietação que começa a minar a confiança.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Apatia, contemplação sem ação, a oportunidade que não é aproveitada. Algo valioso sendo oferecido enquanto o foco está alhures.</div>
+  </div>
+</div>
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">5<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Cinco de Copas — A Lamparina e a Queda</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique acende uma lamparina enquanto Eros dorme — e vê o deus mais belo que existe. Uma gota de azeite cai de sua mão trêmula e queima o ombro de Eros. Ele desperta, vê que foi visto e parte: "Amor não convive com desconfiança." Três cálices derramados no chão — o que foi perdido. Dois permanecem de pé — o que resta. O cinco de copas é a perda por quebra de confiança, o luto real pela ruptura causada pela própria mão.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Perda, luto, arrependimento. O foco no que se perdeu em vez do que permanece. A dor necessária que precede a busca.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">6<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Seis de Copas — A Memória do Amor</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique vaga pelo mundo procurando Eros. Encontra um templo de Deméter e um de Hera — e ambas as deusas a recusam ajuda (não querendo contrariar Afrodite). Mas ela se lembra de cada momento feliz com Eros — a memória do amor é o que a sustenta na busca. O seis de copas é a nostalgia que nutre em vez de paralisar, o passado como raiz da resiliência presente.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Nostalgia, memórias afetivas, conexão com o passado. O que foi pode nutrir o que virá.</div>
+  </div>
+</div>
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">7<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Sete de Copas — As Tarefas de Afrodite</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique vai ao templo de Afrodite e se submete a quatro tarefas impossíveis. No sete de copas, ela contempla sete possibilidades de saída — sete cálices com imagens de diferentes caminhos: fugir, resistir, suplicar, enganar, aceitar, sacrificar, confiar nos deuses. O sete é a ilusão de infinitas opções que paralisa. Psique precisa escolher um único caminho: a submissão voluntária.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Ilusão, fantasias, múltiplas possibilidades confusas. Cuidado com o que parece tentador mas não tem substância real.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-block acc-cups reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">8<span>CUPS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--azure-l)">Oito de Copas — A Descida ao Submundo</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text">
+      <p>A quarta e mais perigosa tarefa de Afrodite: descer ao submundo de Perséfone e trazer uma caixinha com "beleza divina". Psique parte à noite, sozinha, deixando para trás oito cálices — tudo o que era familiar. A descida ao submundo para cumprir o que a deusa exige. O oito de copas é a partida deliberada do que estava estabelecido em direção a algo mais profundo e desconhecido.</p>
+    </div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Partida do que não serve mais, busca de algo mais profundo. Deixar para trás a estabilidade por uma verdade maior.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">9<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Nove de Copas — A Caixinha Aberta / A Queda</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Psique voltou do submundo com a caixinha intacta — mas a curiosidade venceu: abriu a caixa para tomar um pouco de beleza divina para si antes de reencontrar Eros. Uma "beleza" mortal escapou: era o sono eterno do submundo. Psique caiu em sono profundo. O nove de copas: a satisfação que estava tão perto — e o último erro que quase destruiu tudo. Mas Eros, curado do ombro queimado, veio buscá-la.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Satisfação, desejo realizado, mas também: o prazer que pode vir antes da hora. O maior bem está a um passo — não o sabote.</div>
+  </div>
+</div>
+<div class="card-block acc-cups">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--azure-l)">10<span>CUPS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--azure-l)">Dez de Copas — A Imortalidade e o Casamento Eterno</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Zeus, convencido por Eros, concedeu a imortalidade a Psique. Afrodite foi reconciliada. O casamento de Eros e Psique foi celebrado no Olimpo com todos os deuses. A Alma (Psique) uniu-se ao Amor (Eros) para sempre — e de sua união nasceu Hedonê (Prazer). Dez cálices em arco brilhante: a perfeição emocional, o amor realizado em todos os seus aspectos, a família divina completa.</p></div>
+    <div class="meaning-box">💧 <strong>Significado:</strong> Felicidade familiar, realização emocional plena, amor que superou todas as provas. O lar do coração encontrado.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ ESPADAS / SWORDS — ORESTES ══════════ -->
+<div id="swords" class="suit-banner sb-swords reveal">
+  <div class="sb-title">⚔ ESPADAS / SWORDS — Orestes e a Maldição da Casa de Atreu</div>
+  <div class="sb-myth">
+    <strong>O mito central:</strong> A Casa de Atreu é a família mais amaldiçoada da mitologia grega. Tudo começa com Tântalo (que serviu seu filho Pélops como banquete aos deuses). Pélops gerou Atreu e Tiestes, cujas disputas geraram novas tragédias. Agamenon (filho de Atreu) sacrificou sua filha Ifigênia para ir à Guerra de Troia. Sua esposa Clitemnestra, em vingança, o assassinou com o amante Egisto. Orestes, filho de Agamenon, é convocado pelo oráculo de Apolo a vingar o pai matando a mãe — e depois é perseguido pelas Erínias por matricídio. O naipe de Espadas/Swords narra essa tragédia implacável: pensamento, conflito, dor e — no final — a possibilidade de redenção através da lei.
+  </div>
+</div>
+
+<div class="card-block acc-swords reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">As<span>SWORDS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:#B0B0E0">Ás de Espadas — A Espada de Atena / A Verdade</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>O Ás de Espadas mostra a espada de Atena — a verdade que corta o véu da ilusão. Antes da história de Orestes começar, há a espada da claridade que vai revelar toda a maldição da família. A espada coroada de louros e palmeira: vitória pelo discernimento, pela palavra justa, pelo pensamento que não se deixa enganar. É também a espada da lei que Atena eventualmente usará para criar o tribunal que julgará Orestes.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Clareza mental, verdade revelada, poder do pensamento. A mente que corta a confusão com precisão.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">2<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Dois de Espadas — Clitemnestra Aguarda</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Clitemnestra aguarda o retorno de Agamenon por dez anos, enquanto a maldição da família pesa. Dois espadas cruzadas = a decisão que não foi tomada ainda, o impasse. Ela planejou a vingança (pela morte de Ifigênia) mas ainda não agiu. Os olhos vendados no RWS correspondem aqui à recusa em olhar para as consequências do que vai fazer.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Impasse, decisão adiada, equilibrio instável. Evitar uma escolha não a dissolve.</div>
+  </div>
+</div>
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">3<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Três de Espadas — O Assassinato de Agamenon</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Agamenon retorna de Troia. Clitemnestra o recebe com honras — e o assassina enquanto ele se banha (enrolando-o numa rede para imobilizá-lo, ou golpeando-o com um machado). Três espadas no coração: traição, assassinato e a dor que se propaga. A chuva de sangue no fundo da carta. O coração partido de Electra e Orestes, filhos que assistem impotentes.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Dor, separação, traição, coração partido. A ferida que não tem como não acontecer.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">4<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Quatro de Espadas — Orestes no Exílio</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Orestes, salvo por Electra antes que Egisto o matasse, foi enviado para o exílio na Fócis. Cresce longe de casa, carregando o peso do que aconteceu. Quatro espadas na parede de um templo: o guerreiro que descansa, que acumula força, que aguarda o momento de agir. O repouso não é abandono — é preparação para o que deve ser feito.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Descanso forçado, reclusão, recuperação. É preciso poupar energia para quando ela for necessária.</div>
+  </div>
+</div>
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">5<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Cinco de Espadas — A Vitória Vazia de Egisto</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Egisto governa Argos com Clitemnestra — os vencedores do assassinato de Agamenon. Mas a vitória é vazia: nenhum dos dois dorme em paz. Egisto carrega três espadas roubadas, enquanto dois guerreiros derrotados recuam. A vitória que se obteve por desonra não satisfaz — apenas cria novos medos.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Vitória desonrosa, conflito vazio, perda que fica mesmo quando se vence. Perguntar se o preço valeu.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">6<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Seis de Espadas — O Retorno de Orestes</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Apolo ordena: Orestes deve retornar e vingar o pai. Ele parte com seu amigo Pílades numa barca discreta — atravessando as águas do exílio para o destino. Seis espadas no barco, a água calma mas carregada: a transição entre o mundo do exílio e o mundo onde a obrigação espera. Deixar para trás o que foi para enfrentar o que precisa ser.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Transição, mudança necessária, saída de situação difícil. Aguas calmas, mas a jornada é séria.</div>
+  </div>
+</div>
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">7<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Sete de Espadas — O Disfarce e o Engano</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Orestes e Pílades chegam a Argos disfarçados — fingem ser estrangeiros trazendo notícia da morte de Orestes. Clitemnestra acredita e relaxa a guarda. Sete espadas carregadas: o plano do enganador que usa a astúcia (não a força) para penetrar a fortaleza do inimigo. Como Hermes com Argos — a estratégia do disfarce a serviço do objetivo.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Estratégia, astúcia, plano cuidadoso. Cuidado: pode ser traição em curso, ou inteligência necessária.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-block acc-swords reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">8<span>SWORDS</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:#B0B0E0">Oito de Espadas — A Paralisia de Orestes</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>No momento de matar a mãe, Orestes hesita. Clitemnestra expõe o peito que o amamentou: "Como você pode matar quem te amamentou?" Orestes congela. Consulta Pílades — que lembra: "Apolo ordenou. Toda a lei divina está com você." Orestes está cercado por espadas-obrigações, os olhos vendados pela dúvida, preso entre o amor maternal e o dever sagrado. O oito de espadas é a paralisia auto-imposta, a prisão que é feita de pensamentos, não de grades reais.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Paralisia, sensação de aprisionamento, restrição que vem da mente. As correntes são mais frouxas do que parecem.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">9<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Nove de Espadas — As Erínias</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Após matar a mãe (cumprindo o mandato de Apolo), Orestes é imediatamente perseguido pelas Erínias — as Fúrias, deusas da vingança do sangue materno. Elas aparecem com cabelos de serpente, olhos de fogo, tochas e chicotes. Orestes acorda de pesadelos com elas ao redor de sua cama. O nove de espadas é o pesadelo vivo — a culpa que não diminui mesmo quando o ato foi "certo" segundo a lei divina.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Angústia, pesadelo, culpa, ansiedade noturna. O que perturba não é necessariamente o que parece.</div>
+  </div>
+</div>
+<div class="card-block acc-swords">
+  <div class="card-head">
+    <div class="card-numeral" style="color:#B0B0E0">10<span>SWORDS</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:#B0B0E0">Dez de Espadas — O Julgamento Final e a Redenção</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Atena cria o primeiro tribunal de júri (o Areópago em Atenas) para julgar Orestes. O júri empata — metade condena, metade absolve. Atena vota pelo perdão: a lei da vingança pessoal (das Erínias) é substituída pela lei da justiça coletiva. Orestes é absolvido. As Erínias, furiosamente convencidas por Atena a aceitar um novo papel, tornam-se as Eumênides (as Benevolentes) — protetoras de Atenas. Dez espadas cravadas nas costas: o fim total, o colapso absoluto — mas o horizonte à frente anuncia o amanhecer. O fim mais doloroso possível que, paradoxalmente, abre caminho para a nova ordem.</p></div>
+    <div class="meaning-box">⚔ <strong>Significado:</strong> Fim doloroso, derrota total — mas inevitável e necessária. O pior já passou. O horizonte começa a clarear.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ PENTÁCULOS / PENT — DÉDALO ══════════ -->
+<div id="pent" class="suit-banner sb-pent reveal">
+  <div class="sb-title">🌿 PENTÁCULOS — A Saga de Dédalo, o Artesão Divino</div>
+  <div class="sb-myth">
+    <strong>O mito central:</strong> Dédalo era o maior artesão e inventor do mundo antigo — ateniense de nascimento, artista de renome que construiu maravilhas mecânicas. Mas sua vida foi marcada pela alternância entre o sucesso brilhante e as consequências de sua própria genialidade mal usada. O naipe de Pentáculos é o naipe da Terra, do trabalho concreto, dos recursos materiais, do artesanato e da prosperidade construída com as mãos. Cada carta mostra um momento diferente da carreira de Dédalo: o talento que brilha, os erros que custam caro, o trabalho que redime e a nova fundação que nasce da crise.
+  </div>
+</div>
+
+<div class="card-block acc-pent reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">As<span>PENT</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--olive-l)">Ás de Pentáculos — O Dom de Atena</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Atena presenteia Dédalo com o dom supremo do artesanato — a habilidade que vai além do aprendido, o talento que é dádiva divina. O pentáculo de ouro numa mão divina descendo das nuvens: a oportunidade material que surge de origem superior. Dédalo, jovem e genial, recebe seu talento como o Ás — o potencial em sua forma mais pura, o início de toda construção.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Nova oportunidade material, talento reconhecido, fundação sólida para o que virá. O dom que precisa ser cultivado.</div>
+  </div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">2<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Dois de Pentáculos — Equilíbrio dos Projetos</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo em Atenas, malabarizando múltiplos projetos — esculturas, inventos, encomendas reais. Dois pentáculos numa fita em forma de lemniscato: o equilíbrio do artesão entre criatividade e praticidade, entre o que quer fazer e o que precisa fazer para sobreviver. A dança da adaptação — manter o curso mesmo quando os ventos mudam.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Equilíbrio entre múltiplas responsabilidades, adaptação, gestão de recursos. Manter o curso com flexibilidade.</div>
+  </div>
+</div>
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">3<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Três de Pentáculos — O Trabalho no Templo</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo é contratado para obras no templo de Atena em Atenas — o maior templo da cidade. Ele trabalha com mestre-de-obras e aprendizes. Três pentáculos num arco arquitetural: o artesanato a serviço do sagrado, o trabalho que transcende o ego, a habilidade reconhecida por quem entende. A planta arquitetônica revisada com quem financia: colaboração entre o artista, o sacerdote e o mecenas.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Habilidade reconhecida, trabalho colaborativo de qualidade, maestria que começa a encontrar seu público.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">4<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Quatro de Pentáculos — O Ciúme do Mestre</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo recebeu como aprendiz seu sobrinho Talos — que revelou um talento extraordinário: inventou a serra de carpinteiro usando a mandíbula de uma cobra (ou espinha de peixe). Dédalo, com ciúme de ser superado, jogou o menino de um precipício do Acrópolís. Atena, compadecida, o transformou em perdiz antes que morresse. Dédalo foi exilado de Atenas e foi para Creta. O quatro de pentáculos é o apego ao que se possui — o controle que vira asfixia, o ciúme que mata o que poderia enriquecer.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Apego material, controle excessivo, avareza que sufoca. O que é segurado com muita força acaba se perdendo.</div>
+  </div>
+</div>
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">5<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Cinco de Pentáculos — O Exílio em Creta</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo chega a Creta exilado — sem casa, sem reputação em terra nova, sem o workshop que tinha em Atenas. Dois mendigos no frio, olhando uma janela iluminada: é a queda após o crime, a pobreza que vem após o sucesso mal usado. Mas Dédalo ainda tem seu talento — e o rei Minos de Creta logo descobrirá seu valor. A crise material que antecede o recomeço.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Dificuldade material, sensação de exclusão, crise financeira ou de reputação. O apoio existe — mas precisa ser buscado.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">6<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Seis de Pentáculos — Sob o Patronato de Minos</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>O rei Minos reconhece o talento de Dédalo e o contrata como arquiteto real. Dédalo distribui sua habilidade — projeta palácios, cria autômatos de bronze, inventa mecanismos que surpreendem. O seis de pentáculos: o mecenas que distribui recursos ao artista; o artista que distribui talento ao patrono. A generosidade que gera abundância para ambos.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Generosidade, partilha de recursos, filantropia. Dar e receber em equilíbrio. O sucesso que inclui os outros.</div>
+  </div>
+</div>
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">7<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Sete de Pentáculos — O Labirinto em Construção</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo projeta e constrói o Labirinto de Cnossos — a obra mais genial e mais ambígua de sua vida. Uma estrutura tão complexa que nem seu criador conseguiria sair sem ajuda. Sete pentáculos numa parede em construção: o artesão que observa seu trabalho no meio do processo, avaliando se o resultado vai corresponder ao esforço. O Labirinto está crescendo — mas Dédalo não sabe ainda que será sua própria prisão.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Paciência, avaliação do trabalho em progresso, investimento de longo prazo. O que se planta agora, colhe depois.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-pair reveal">
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">8<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Oito de Pentáculos — O Aprendizado das Asas</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Após o Labirinto, Minos aprisionou Dédalo e Ícaro na própria construção (para guardar o segredo do projeto). Dédalo observa os pássaros por meses e planeja as asas. Oito pentáculos: o artesão que repete o gesto até a perfeição, que aprende uma nova habilidade pelo método de tentativa e erro. As penas coladas uma a uma com cera. É trabalho paciente, metódico, obsessivo — o artesão como praticante, não apenas como criador.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Maestria através da prática, aprendizado, dedicação ao ofício. O trabalho repetido que leva à excelência.</div>
+  </div>
+</div>
+<div class="card-block acc-pent">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">9<span>PENT</span></div>
+    <div class="card-title-block"><div class="card-title" style="color:var(--olive-l)">Nove de Pentáculos — A Chegada à Sicília</div></div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text"><p>Dédalo voa e chega à Sicília — livre! O rei Cocalos o recebe com honras. Ele está sozinho (Ícaro morreu na travessia), mas está vivo e livre. Nove pentáculos: a abundância conquistada pela própria habilidade, a autossuficiência do artesão que nunca depende de mais nada além de seu talento. O jardim de prazeres sob o sol da Sicília — o merecido descanso após a crise.</p></div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Independência conquistada, frutos do próprio trabalho, prazer refinado. A prosperidade que se sustenta sozinha.</div>
+  </div>
+</div>
+</div>
+
+<div class="card-block acc-pent reveal">
+  <div class="card-head">
+    <div class="card-numeral" style="color:var(--olive-l)">10<span>PENT</span></div>
+    <div class="card-title-block">
+      <div class="card-title" style="color:var(--olive-l)">Dez de Pentáculos — A Nova Dinastia</div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="sec-text">
+      <p>Na Sicília, Dédalo construiu templos, banheiros com aquedutos, obras de engenharia que transformaram a ilha. Fundou uma escola de artesãos que perpetuou seus métodos. Dez pentáculos em toda a composição familiar: três gerações juntas, a riqueza que atravessa o tempo, o legado que supera o criador. Dédalo não morreu — continuou em tudo o que construiu e em todos os que aprenderam com ele. O dez de pentáculos é a herança, o patrimônio, a riqueza que se transmite.</p>
+    </div>
+    <div class="meaning-box">🌿 <strong>Significado:</strong> Herança, legado familiar, prosperidade duradoura. O que foi construído com excelência e integridade permanece através do tempo.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-glyph">🏛</span>
+  <p class="foot-text">
+    "Os mitos gregos foram atribuídos a cada carta<br>
+    e as histórias destinam-se a ser usadas como trampolim<br>
+    para enriquecer a compreensão do uso psicológico do Tarô."<br><br>
+    — Juliet Sharman-Burke, criadora do Mythic Tarot (1986)<br><br>
+    <em>Baseado em: The Mythic Tarot (Juliet Sharman-Burke &amp; Liz Greene, 1986)<br>
+    The New Mythic Tarot (Giovanni Caselli, 2009)<br>
+    Hesíodo · Homero · Ovídio · Ésquilo · Sófocles · Eurípides</em>
+  </p>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis')}})
+},{threshold:.05})
+document.querySelectorAll('.reveal,.card-block').forEach(el=>io.observe(el))
+
+// Nav dots active
+const secs=[...document.querySelectorAll('[id]')]
+const dots=[...document.querySelectorAll('.ndot')]
+const io2=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      const id=x.target.id
+      dots.forEach(d=>{
+        d.classList.toggle('act',d.getAttribute('href')==='#'+id)
+      })
+    }
+  })
+},{threshold:.4})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

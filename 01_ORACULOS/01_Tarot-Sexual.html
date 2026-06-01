@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot · Magia Sexual · Kundalini · Tantra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0D0008;
+  --bg2: #160010;
+  --gold: #C8A84B;
+  --gold-light: #F0D080;
+  --gold-dim: #6B5820;
+  --scarlet: #C01030;
+  --scarlet-light: #FF4060;
+  --scarlet-dim: #5A0818;
+  --white-tantra: #40B8A0;
+  --white-tantra-light: #80FFE8;
+  --black-tantra: #8030D0;
+  --black-tantra-light: #C880FF;
+  --serpent: #208050;
+  --serpent-light: #50F080;
+  --solar: #E88020;
+  --lunar: #8090C8;
+  --rose: #C04080;
+  --rose-light: #FF80B0;
+  --crowley: #E04040;
+  --samael: #40B860;
+  --place: #6080E0;
+  --text: #EEE8D8;
+  --text-dim: rgba(238,232,216,0.6);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* === ANIMATED BACKGROUND === */
+body::before {
+  content:'';
+  position: fixed; inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(192,16,48,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(128,48,208,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 80% 60%, rgba(64,184,96,0.05) 0%, transparent 60%);
+  pointer-events:none; z-index:0;
+  animation: breathe 12s ease-in-out infinite alternate;
+}
+@keyframes breathe {
+  0% { opacity:0.5; }
+  100% { opacity:1; }
+}
+
+/* Stars */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 35%, rgba(200,168,75,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 37% 7%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 52% 28%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 15%, rgba(200,168,75,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 83% 42%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 91% 18%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 14% 68%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 58% 72%, rgba(200,168,75,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 76% 82%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 33% 88%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 4% 52%, rgba(200,168,75,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 44% 55%, rgba(192,64,128,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 45%, rgba(128,48,208,0.3) 0%, transparent 100%);
+  pointer-events:none; z-index:0;
+}
+
+/* === LAYOUT === */
+.page { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 16px 80px; }
+
+/* === HEADER === */
+header {
+  text-align:center;
+  padding: 60px 20px 40px;
+  position:relative;
+}
+
+.header-symbol {
+  font-size: 4rem;
+  display:block;
+  margin-bottom:12px;
+  filter: drop-shadow(0 0 20px var(--scarlet));
+  animation: flicker 5s ease-in-out infinite;
+}
+@keyframes flicker {
+  0%,100% { filter: drop-shadow(0 0 20px var(--scarlet)); }
+  30% { filter: drop-shadow(0 0 40px var(--scarlet-light)) drop-shadow(0 0 80px var(--scarlet)); }
+  60% { filter: drop-shadow(0 0 15px var(--scarlet)); }
+}
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem, 4vw, 2.6rem);
+  color: var(--gold);
+  letter-spacing:0.12em;
+  text-shadow: 0 0 40px rgba(200,168,75,0.5), 0 0 80px rgba(200,168,75,0.2);
+  line-height:1.3;
+}
+.header-sub {
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:clamp(0.85rem,2vw,1.1rem);
+  color: rgba(200,168,75,0.55);
+  letter-spacing:0.25em;
+  margin-top:10px;
+}
+.header-line {
+  width:400px; max-width:90%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--scarlet),var(--gold),var(--scarlet),transparent);
+  margin:20px auto;
+}
+.header-intro {
+  max-width:680px; margin:0 auto;
+  font-size:0.95rem; line-height:1.9; color:var(--text-dim);
+  font-style:italic;
+}
+
+/* === SOURCE BADGES === */
+.badge {
+  display:inline-flex; align-items:center; gap:5px;
+  font-family:'Cinzel Decorative',serif;
+  font-size:0.55rem; letter-spacing:0.15em;
+  padding:3px 8px; border-radius:20px;
+  vertical-align:middle; margin-left:4px;
+  font-style:normal;
+}
+.badge-crowley { background:rgba(224,64,64,0.2); border:1px solid rgba(224,64,64,0.5); color:var(--crowley); }
+.badge-samael  { background:rgba(64,184,96,0.2);  border:1px solid rgba(64,184,96,0.5);  color:var(--samael); }
+.badge-place   { background:rgba(96,128,224,0.2); border:1px solid rgba(96,128,224,0.5); color:var(--place); }
+.badge-hermetica { background:rgba(200,168,75,0.15); border:1px solid rgba(200,168,75,0.4); color:var(--gold); }
+
+/* === SECTION HEADER === */
+.section-head {
+  display:flex; align-items:center; gap:14px;
+  margin:50px 0 24px;
+}
+.section-head-line {
+  flex:1; height:1px;
+}
+.section-head h2 {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(0.8rem,2vw,1.1rem);
+  letter-spacing:0.2em; white-space:nowrap;
+}
+.section-head p {
+  font-style:italic; font-size:0.78rem; letter-spacing:0.15em;
+  margin-top:3px; opacity:0.55; text-align:center;
+}
+
+/* Section color themes */
+.theme-serpent .section-head-line  { background:linear-gradient(90deg,transparent,var(--serpent)); }
+.theme-serpent .section-head h2    { color:var(--serpent-light); text-shadow:0 0 20px rgba(80,240,128,0.4); }
+.theme-scarlet .section-head-line  { background:linear-gradient(90deg,transparent,var(--scarlet)); }
+.theme-scarlet .section-head h2    { color:var(--scarlet-light); text-shadow:0 0 20px rgba(255,64,96,0.4); }
+.theme-white   .section-head-line  { background:linear-gradient(90deg,transparent,var(--white-tantra)); }
+.theme-white   .section-head h2    { color:var(--white-tantra-light); text-shadow:0 0 20px rgba(128,255,232,0.4); }
+.theme-black   .section-head-line  { background:linear-gradient(90deg,transparent,var(--black-tantra)); }
+.theme-black   .section-head h2    { color:var(--black-tantra-light); text-shadow:0 0 20px rgba(200,128,255,0.4); }
+.theme-gold    .section-head-line  { background:linear-gradient(90deg,transparent,var(--gold)); }
+.theme-gold    .section-head h2    { color:var(--gold-light); text-shadow:0 0 20px rgba(240,208,128,0.4); }
+.theme-rose    .section-head-line  { background:linear-gradient(90deg,transparent,var(--rose)); }
+.theme-rose    .section-head h2    { color:var(--rose-light); text-shadow:0 0 20px rgba(255,128,176,0.4); }
+
+/* === CARD GRID === */
+.cards { display:grid; gap:14px; }
+.cards-2 { grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); }
+.cards-3 { grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+
+/* === ARCANA CARD === */
+.arc {
+  border-radius:14px; padding:22px 20px;
+  position:relative; overflow:hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor:default;
+  animation: fade-up 0.6s ease forwards; opacity:0;
+}
+.arc:hover { transform:translateY(-5px) scale(1.01); }
+@keyframes fade-up { to { opacity:1; transform:none; } }
+.arc:nth-child(1){animation-delay:.05s} .arc:nth-child(2){animation-delay:.1s}
+.arc:nth-child(3){animation-delay:.15s} .arc:nth-child(4){animation-delay:.2s}
+.arc:nth-child(5){animation-delay:.25s} .arc:nth-child(6){animation-delay:.3s}
+
+/* Color variants */
+.arc-scarlet {
+  background:linear-gradient(145deg,rgba(90,8,24,0.85),rgba(13,0,8,0.95));
+  border:1px solid rgba(192,16,48,0.4);
+  box-shadow: 0 6px 30px rgba(192,16,48,0.15), inset 0 1px 0 rgba(255,64,96,0.1);
+}
+.arc-scarlet:hover { box-shadow:0 14px 50px rgba(192,16,48,0.3), 0 0 0 1px rgba(255,64,96,0.3); }
+
+.arc-serpent {
+  background:linear-gradient(145deg,rgba(10,40,24,0.85),rgba(5,20,12,0.95));
+  border:1px solid rgba(32,128,80,0.4);
+  box-shadow:0 6px 30px rgba(32,128,80,0.12), inset 0 1px 0 rgba(80,240,128,0.1);
+}
+.arc-serpent:hover { box-shadow:0 14px 50px rgba(32,128,80,0.25), 0 0 0 1px rgba(80,240,128,0.3); }
+
+.arc-white {
+  background:linear-gradient(145deg,rgba(8,40,36,0.85),rgba(4,20,18,0.95));
+  border:1px solid rgba(64,184,160,0.4);
+  box-shadow:0 6px 30px rgba(64,184,160,0.1), inset 0 1px 0 rgba(128,255,232,0.1);
+}
+.arc-white:hover { box-shadow:0 14px 50px rgba(64,184,160,0.22), 0 0 0 1px rgba(128,255,232,0.3); }
+
+.arc-black {
+  background:linear-gradient(145deg,rgba(30,8,56,0.85),rgba(12,4,22,0.95));
+  border:1px solid rgba(128,48,208,0.4);
+  box-shadow:0 6px 30px rgba(128,48,208,0.12), inset 0 1px 0 rgba(200,128,255,0.08);
+}
+.arc-black:hover { box-shadow:0 14px 50px rgba(128,48,208,0.25), 0 0 0 1px rgba(200,128,255,0.3); }
+
+.arc-gold {
+  background:linear-gradient(145deg,rgba(40,30,8,0.85),rgba(18,12,4,0.95));
+  border:1px solid rgba(200,168,75,0.35);
+  box-shadow:0 6px 30px rgba(200,168,75,0.1), inset 0 1px 0 rgba(240,208,128,0.1);
+}
+.arc-gold:hover { box-shadow:0 14px 50px rgba(200,168,75,0.2), 0 0 0 1px rgba(240,208,128,0.3); }
+
+.arc-rose {
+  background:linear-gradient(145deg,rgba(50,12,28,0.85),rgba(22,4,12,0.95));
+  border:1px solid rgba(192,64,128,0.4);
+  box-shadow:0 6px 30px rgba(192,64,128,0.12), inset 0 1px 0 rgba(255,128,176,0.08);
+}
+
+/* Left accent bar */
+.arc::before {
+  content:''; position:absolute; top:0; left:0; bottom:0; width:3px;
+  border-radius:3px 0 0 3px;
+  transition:width .3s;
+}
+.arc:hover::before { width:5px; }
+.arc-scarlet::before { background:linear-gradient(180deg,var(--scarlet-light),var(--scarlet)); }
+.arc-serpent::before { background:linear-gradient(180deg,var(--serpent-light),var(--serpent)); }
+.arc-white::before   { background:linear-gradient(180deg,var(--white-tantra-light),var(--white-tantra)); }
+.arc-black::before   { background:linear-gradient(180deg,var(--black-tantra-light),var(--black-tantra)); }
+.arc-gold::before    { background:linear-gradient(180deg,var(--gold-light),var(--gold)); }
+.arc-rose::before    { background:linear-gradient(180deg,var(--rose-light),var(--rose)); }
+
+/* Card header */
+.arc-header {
+  display:flex; align-items:flex-start; gap:12px;
+  margin-bottom:14px;
+}
+.arc-icon { font-size:2.2rem; line-height:1; flex-shrink:0; }
+.arc-meta { flex:1; }
+.arc-num {
+  font-family:'Cinzel Decorative',serif;
+  font-size:0.55rem; letter-spacing:0.25em; opacity:0.5; margin-bottom:2px;
+}
+.arc-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  font-weight:600; line-height:1.2;
+}
+.arc-scarlet .arc-name { color:var(--scarlet-light); }
+.arc-serpent .arc-name { color:var(--serpent-light); }
+.arc-white   .arc-name { color:var(--white-tantra-light); }
+.arc-black   .arc-name { color:var(--black-tantra-light); }
+.arc-gold    .arc-name { color:var(--gold-light); }
+.arc-rose    .arc-name { color:var(--rose-light); }
+
+.arc-letter {
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:0.85rem; opacity:0.55; margin-top:2px;
+}
+
+/* Card body */
+.arc-body { font-size:0.88rem; line-height:1.85; color:var(--text-dim); }
+.arc-body p { margin-bottom:10px; }
+.arc-body p:last-child { margin-bottom:0; }
+
+/* Symbol highlight */
+.sym {
+  background:rgba(200,168,75,0.12); border:1px solid rgba(200,168,75,0.2);
+  border-radius:4px; padding:1px 6px; margin:1px;
+  font-style:normal; color:var(--gold-light); font-weight:600;
+}
+
+/* Quote block */
+.qblock {
+  margin:10px 0;
+  padding:10px 14px;
+  border-radius:8px;
+  font-style:italic;
+  font-size:0.83rem;
+  line-height:1.8;
+  position:relative;
+}
+.qblock::before {
+  content:'"'; position:absolute; top:-2px; left:8px;
+  font-size:2.5rem; opacity:0.25; font-family:'Cormorant Garamond',serif;
+  line-height:1;
+}
+.qblock-crowley { background:rgba(224,64,64,0.08); border-left:3px solid rgba(224,64,64,0.4); color:rgba(255,160,160,0.8); }
+.qblock-samael  { background:rgba(64,184,96,0.08);  border-left:3px solid rgba(64,184,96,0.4);  color:rgba(128,240,160,0.8); }
+.qblock-place   { background:rgba(96,128,224,0.08); border-left:3px solid rgba(96,128,224,0.4); color:rgba(160,192,255,0.8); }
+
+.qsource {
+  font-style:normal; font-size:0.72rem; letter-spacing:0.1em;
+  opacity:0.7; margin-top:4px; display:block;
+}
+
+/* Comparison table */
+.compare {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:8px; margin:10px 0;
+}
+.compare-col {
+  padding:10px 12px; border-radius:8px;
+  font-size:0.8rem; line-height:1.7;
+}
+.compare-white { background:rgba(64,184,160,0.1); border:1px solid rgba(64,184,160,0.25); }
+.compare-black { background:rgba(128,48,208,0.1);  border:1px solid rgba(128,48,208,0.25); }
+.compare-label {
+  font-family:'Cinzel Decorative',serif;
+  font-size:0.6rem; letter-spacing:0.15em; margin-bottom:6px; display:block;
+}
+.compare-white .compare-label { color:var(--white-tantra-light); }
+.compare-black .compare-label { color:var(--black-tantra-light); }
+
+/* Tags */
+.tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+.tag {
+  font-size:0.7rem; padding:3px 8px; border-radius:20px;
+  font-style:italic;
+}
+.tag-s { background:rgba(192,16,48,0.15); border:1px solid rgba(192,16,48,0.3); color:rgba(255,96,128,0.9); }
+.tag-w { background:rgba(64,184,160,0.12); border:1px solid rgba(64,184,160,0.3); color:rgba(128,255,232,0.9); }
+.tag-b { background:rgba(128,48,208,0.15); border:1px solid rgba(128,48,208,0.3); color:rgba(200,128,255,0.9); }
+.tag-g { background:rgba(200,168,75,0.12); border:1px solid rgba(200,168,75,0.3); color:rgba(240,208,128,0.9); }
+.tag-r { background:rgba(192,64,128,0.15); border:1px solid rgba(192,64,128,0.3); color:rgba(255,128,176,0.9); }
+
+/* Divider */
+.divider {
+  height:1px; margin:8px 0;
+  background:rgba(200,168,75,0.1);
+}
+
+/* Full-width banner card */
+.banner {
+  border-radius:14px; padding:26px 24px; margin:14px 0;
+  position:relative; overflow:hidden;
+}
+.banner-scarlet {
+  background:linear-gradient(135deg,rgba(90,8,24,0.7),rgba(30,8,48,0.85));
+  border:1px solid rgba(192,16,48,0.35);
+}
+.banner-white {
+  background:linear-gradient(135deg,rgba(8,50,44,0.7),rgba(8,20,30,0.85));
+  border:1px solid rgba(64,184,160,0.35);
+}
+.banner-gold {
+  background:linear-gradient(135deg,rgba(50,36,8,0.7),rgba(20,12,4,0.85));
+  border:1px solid rgba(200,168,75,0.3);
+}
+
+.banner h3 {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(0.75rem,1.8vw,0.95rem);
+  letter-spacing:0.18em; margin-bottom:12px;
+}
+.banner-scarlet h3 { color:var(--scarlet-light); }
+.banner-white h3   { color:var(--white-tantra-light); }
+.banner-gold h3    { color:var(--gold-light); }
+
+.banner p { font-size:0.88rem; line-height:1.85; color:var(--text-dim); }
+.banner p strong { font-style:normal; font-weight:600; }
+.banner-scarlet p strong { color:var(--scarlet-light); }
+.banner-white p strong   { color:var(--white-tantra-light); }
+.banner-gold p strong    { color:var(--gold-light); }
+
+/* Chakra strip */
+.chakra-strip {
+  display:flex; gap:6px; flex-wrap:wrap; margin:12px 0;
+}
+.chakra {
+  flex:1; min-width:70px;
+  border-radius:8px; padding:8px 6px; text-align:center;
+  font-size:0.68rem; line-height:1.5;
+}
+.chakra-icon { font-size:1.2rem; display:block; margin-bottom:3px; }
+.chakra-name { font-family:'Cinzel Decorative',serif; font-size:0.5rem; letter-spacing:0.1em; display:block; margin-bottom:2px; }
+
+/* Legend */
+.legend {
+  display:flex; flex-wrap:wrap; gap:8px;
+  padding:14px 16px; border-radius:10px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(200,168,75,0.12);
+  margin:20px 0;
+}
+.legend-item { display:flex; align-items:center; gap:6px; font-size:0.75rem; }
+.legend-dot { width:10px; height:10px; border-radius:50%; }
+
+/* Responsive */
+@media(max-width:680px) {
+  .cards-2, .cards-3 { grid-template-columns:1fr; }
+  .compare { grid-template-columns:1fr; }
+}
+
+/* Reveal animation */
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.vis { opacity:1; transform:none; }
+
+/* Scroll nav */
+.nav {
+  position:fixed; top:50%; right:16px; transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:8px;
+  z-index:100;
+}
+.nav a {
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(200,168,75,0.25); border:1px solid rgba(200,168,75,0.4);
+  transition:all .3s; display:block;
+}
+.nav a:hover { background:var(--gold); transform:scale(1.3); }
+@media(max-width:900px) { .nav { display:none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navegação de seções">
+  <a href="#kundalini" title="Kundalini & Serpente"></a>
+  <a href="#arcanos" title="Arcanos Maiores"></a>
+  <a href="#lust" title="Volúpia/Lust"></a>
+  <a href="#tantra" title="Tantra Branco vs Negro"></a>
+  <a href="#sacerdotisa" title="Alta Sacerdotisa"></a>
+  <a href="#outros" title="Outros Arcanos"></a>
+  <a href="#chakras" title="Chakras & Cartas"></a>
+  <a href="#sintese" title="Síntese"></a>
+</nav>
+
+<div class="page">
+
+<!-- ======= HEADER ======= -->
+<header>
+  <span class="header-symbol">🜂</span>
+  <h1>Tarot · Magia Sexual · Kundalini</h1>
+  <p class="header-sub">o véu que oculta o fogo sagrado</p>
+  <div class="header-line"></div>
+  <p class="header-intro">
+    O Tarot não é um baralho — é um mapa cifrado da Força Vital que pulsa em toda criação.
+    Cada símbolo, cada figura, cada cor carrega a linguagem da Alquimia Sexual.
+    Este mapa desvela esses segredos a partir de três grandes vozes:
+    <strong style="color:var(--crowley)">Aleister Crowley</strong> (Tarô de Thoth),
+    <strong style="color:var(--samael)">Samael Aun Weor</strong> (Tarô e Kabala / Gnose),
+    e <strong style="color:var(--place)">Robert M. Place</strong> (Tarô Alquímico).
+  </p>
+  <div style="margin-top:16px">
+    <span class="badge badge-crowley">🔴 Crowley · Thoth</span>
+    <span class="badge badge-samael">🟢 Samael · Gnose</span>
+    <span class="badge badge-place">🔵 Place · Alquímico</span>
+    <span class="badge badge-hermetica">⚜ Tradição Hermética</span>
+  </div>
+</header>
+
+<!-- ======= LEGENDA ======= -->
+<div class="legend reveal">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--crowley)"></div>Crowley / Thoth Tarot</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--samael)"></div>Samael Aun Weor / Gnose</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--place)"></div>Robert M. Place / Alquímico</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--white-tantra)"></div>Tantra Branco</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--black-tantra)"></div>Tantra Negro</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--serpent)"></div>Kundalini / Serpente</div>
+</div>
+
+<!-- ======= SEÇÃO 1: KUNDALINI ======= -->
+<div id="kundalini" class="theme-serpent">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>🐍 A Serpente Kundalini no Tarot</h2>
+      <p>O fio de fogo que percorre toda a baralhada</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--serpent),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-2 reveal">
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">🐍</span>
+      <div class="arc-meta">
+        <div class="arc-num">FUNDAMENTO</div>
+        <div class="arc-name">O que é a Kundalini <span class="badge badge-samael">Samael</span></div>
+        <div class="arc-letter">Letra: Shin ש · Fogo</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>A <span class="sym">Kundalini</span> é a Força Sexual Sagrada adormecida na base da coluna — no <span class="sym">Chakra Muladhara</span>, no cóccix. É representada como uma serpente enrolada três vezes e meia, dormindo.</p>
+      <div class="qblock qblock-samael">
+        "A Kundalini é o Fogo Elétrico Solar, o Poder Sexual em seu estado mais sutil. Quando desperta, sobe pela coluna vertebral, abrindo os chakras como flores de lótus."
+        <span class="qsource">— Samael Aun Weor, <em>Tarot e Kabala</em></span>
+      </div>
+      <p>No Tarot, essa serpente aparece <strong>explicitamente</strong> em pelo menos 8 Arcanos Maiores. Ela é ora símbolo de elevação (serpente de bronze de Moisés), ora símbolo de queda (serpente do Éden).</p>
+      <p>Para Samael, existem <strong>duas serpentes</strong>: a que <span class="sym">sobe</span> (Vara de Esculápio / Caduceu) e a que <span class="sym">desce</span> (Órgão Kundartiguador — a cauda de Satã).</p>
+      <div class="tags">
+        <span class="tag tag-g">Muladhara</span><span class="tag tag-g">Cóccix</span>
+        <span class="tag tag-w">Fogo Sagrado</span><span class="tag tag-s">Duas Serpentes</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">⚕</span>
+      <div class="arc-meta">
+        <div class="arc-num">O CADUCEU</div>
+        <div class="arc-name">Idá, Pingalá e Sushumna <span class="badge badge-crowley">Crowley</span></div>
+        <div class="arc-letter">Símbolo do Caduceu de Hermes</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Caduceu de Mercúrio</span> é a chave central da anatomia esotérica. Os dois canais serpentinos que o enrolam são:</p>
+      <p>• <span class="sym">Idá</span> — canal lunar (esquerdo), átomos lunares, feminino<br>
+         • <span class="sym">Pingalá</span> — canal solar (direito), átomos solares, masculino<br>
+         • <span class="sym">Sushumna</span> — canal central (coluna), por onde a Kundalini sobe</p>
+      <div class="qblock qblock-crowley">
+        "A bêbada Babalon está bêbada em sua fonte de poder: o canal Sushumna da Kundalini, o objetivo primário de muitos tipos de yoga."
+        <span class="qsource">— Análise do ATU XI, <em>Thoth Tarot</em></span>
+      </div>
+      <p>No Arcano I (O Mago / Prestidigitador), o báculo na mão esquerda simboliza exatamente a medula espinal com o Caduceu — os dois cordões ganglionares que sobem até a <span class="sym">Glândula Pineal</span>.</p>
+      <div class="tags">
+        <span class="tag tag-w">Canal Solar</span><span class="tag tag-b">Canal Lunar</span>
+        <span class="tag tag-g">Sushumna</span><span class="tag tag-r">Pineal</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SEÇÃO 2: ARCANOS CHAVE ======= -->
+<div id="arcanos" class="theme-scarlet">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>🃏 Os Arcanos da Magia Sexual</h2>
+      <p>Cada símbolo é uma chave — por que está ali?</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--scarlet),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-2 reveal">
+  <!-- ARCANO I: O MAGO -->
+  <div class="arc arc-gold">
+    <div class="arc-header">
+      <span class="arc-icon">🪄</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO I · BETH ב · MERCÚRIO</div>
+        <div class="arc-name">O Mago / O Prestidigitador</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> O Mago está de <span class="sym">perfil direito</span> — o lado manifestado. Sobre sua fronte: a <span class="sym">Serpente Levantada</span>, indicando que é um Mestre Realizado, a Kundalini já erguida.</p>
+      <p><strong>Na mesa (em desordem):</strong> <span class="sym">Espada de Poder</span>, <span class="sym">Lingam</span> (falo — órgão sexual masculino), <span class="sym">Cáliz</span> (cérebro físico), <span class="sym">Yoni</span> (órgão sexual feminino), e uma <span class="sym">Lua</span> que deve ser convertida em Sol.</p>
+      <p>A desordem da mesa = os elementos não transmutados. <span class="sym">Sob a mesa</span>: o <span class="sym">Ibis Imortal</span> (Ave Fênix, Cisne Kala-Hamsa = Espírito Santo), que ordena o que está desordenado pelo Fogo Sagrado.</p>
+      <p><span class="badge badge-crowley">Crowley</span> A letra <span class="sym">Beth</span> significa "casa" — a casa onde o Mago opera, que é o próprio Corpo. O sinal do infinito (∞) sobre sua cabeça = os 8 Kabires, o eterno fluxo entre Cérebro e Sexo.</p>
+      <div class="qblock qblock-samael">
+        "Sobre este símbolo giran todos os organismos: sempre há uma eterna luta — Cérebro contra Sexo, Sexo contra Cérebro, Coração contra Coração."
+        <span class="qsource">— Samael Aun Weor, <em>Tarot e Kabala</em>, Arcano I</span>
+      </div>
+      <div class="tags"><span class="tag tag-g">Lingam · Yoni</span><span class="tag tag-w">Serpente erguida</span><span class="tag tag-s">Cérebro vs Sexo</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO II: A SACERDOTISA -->
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">🌙</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO II · GIMEL ג · LUA</div>
+        <div class="arc-name">A Alta Sacerdotisa</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> A Sacerdotisa é o <span class="sym">Arcano AZF</span> em sua forma feminina: a Mulher como Sacerdotisa no Altar. Ela é o <span class="sym">desdobramento do Mago</span> — se o Mago é o Uno, a Sacerdotisa é o Dois (masculino + feminino).</p>
+      <p>O <span class="sym">livro fechado</span> em seu colo (Tora / Sefer Yetzirah) = os Mistérios Ocultos da Sexualidade que não se revelam a quem não está iniciado. O <span class="sym">véu</span> = a Paroket, o véu do Templo que separa o profano do sagrado.</p>
+      <p><span class="badge badge-crowley">Crowley</span> A Sacerdotisa é a <span class="sym">Lua em seu aspecto mais elevado</span>. O caminho de Gimel desce de Kether a Tiferet — é o canal mais direto da Coroa ao Coração. Ela é a <span class="sym">Virgem Pura</span> e também a <span class="sym">Lua Cheia</span>: o princípio de receptividade divina.</p>
+      <p>No Tarô de Thoth, ela segura a <span class="sym">Flecha</span> (Kundalini como flecha de Eros), com o <span class="sym">arco</span> da Lua — o arco que dispara a energia sexual em direção ao espírito.</p>
+      <p><span class="badge badge-place">Place</span> No Tarô Alquímico, ela corresponde à <span class="sym">Albedo</span> — a fase de purificação lunar da Grande Obra, após a morte do Nigredo.</p>
+      <div class="tags"><span class="tag tag-w">Véu do Templo</span><span class="tag tag-b">Lua Plena</span><span class="tag tag-g">Arcano AZF</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO III: A IMPERATRIZ -->
+  <div class="arc arc-rose">
+    <div class="arc-header">
+      <span class="arc-icon">👑</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO III · DALETH ד · VÊNUS</div>
+        <div class="arc-name">A Imperatriz</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> A Imperatriz é a <span class="sym">Mãe Divina Kundalini</span> — a Grande Mãe Cósmica, Isis, Maria, Tonantzin, Shakti. O número 3 é a <span class="sym">Tríade Criadora</span>: Enxofre (Fogo), Mercúrio (Água) e Sal (Terra).</p>
+      <div class="qblock qblock-samael">
+        "O Arcano Três da Kabala é essa Mulher Vestida de Sol, com a Lua a seus pés, coroada com Doze Estrelas. O símbolo da Rainha do Céu é a Imperatriz do Tarot."
+        <span class="qsource">— Samael Aun Weor, comentário ao Arcano III</span>
+      </div>
+      <p>A <span class="sym">cruz de Vênus</span> (♀) em sua mão = a Matéria governada pelo Amor. Ela está <span class="sym">grávida</span> no Thoth Tarot de Crowley = a Natureza em plena gestação criativa.</p>
+      <p><span class="badge badge-crowley">Crowley</span> No Thoth, a Imperatriz está <span class="sym">coberta de escudos</span> com a pomba de Vênus e o escudo de armas. A pomba = o Espírito Santo, o Terceiro Logos — a energia sexual criadora.</p>
+      <p><span class="badge badge-place">Place</span> No Alquímico, ela é a <span class="sym">Anima Mundi</span> — a alma do mundo manifestada na Natureza. Seus frutos são o produto da Obra Alquímica.</p>
+      <div class="tags"><span class="tag tag-r">Divina Mãe</span><span class="tag tag-w">Shakti / Isis</span><span class="tag tag-g">Tríade Criadora</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO IV: O IMPERADOR -->
+  <div class="arc arc-gold">
+    <div class="arc-header">
+      <span class="arc-icon">♦</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO IV · HEH ה · ÁRIES</div>
+        <div class="arc-name">O Imperador</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> Da testa do Imperador sobressai a <span class="sym">Serpente</span> — símbolo de Maestria. A coroa formada por um <span class="sym">áspide</span> (Thermuthis) pertence a Isis, a Mãe Divina Kundalini.</p>
+      <p>O <span class="sym">boné de 4 pontas</span> = os 4 Elementos, os 4 Evangelhos, os 4 Vedas. Sobre o boné: o <span class="sym">Alambique</span> e o <span class="sym">Recipiente</span> = os órgãos sexuais. O <span class="sym">Hornillo</span> (Fornalha) = o Chakra Muladhara (a base da coluna).</p>
+      <div class="qblock qblock-samael">
+        "É inquestionável que somente mediante o Sahaja Maithuna (Magia Sexual) pode ser despertada a Serpente."
+        <span class="qsource">— Samael Aun Weor, <em>Tarot e Kabala</em>, Arcano IV</span>
+      </div>
+      <p>Ele se senta sobre a <span class="sym">Pedra Cúbica</span> perfeitamente lavrada = resultado da Obra dos 3 arcanos anteriores. Dentro da pedra: o <span class="sym">gato</span> (Fogo oculto). Nas Águas da Vida: o Bastão de Mando = a Coluna Vertebral.</p>
+      <div class="tags"><span class="tag tag-s">Sahaja Maithuna</span><span class="tag tag-g">Pedra Cúbica</span><span class="tag tag-w">Serpente Levantada</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO VI: OS AMANTES -->
+  <div class="arc arc-scarlet">
+    <div class="arc-header">
+      <span class="arc-icon">💫</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO VI · ZAIN ז · GÊMEOS</div>
+        <div class="arc-name">Os Amantes / Os Irmãos</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> O <span class="sym">Arcano VI</span> é o <span class="sym">Sêxtuplo</span> — o <span class="sym">Selo de Salomão</span> (Estrela de Davi). As 6 pontas = masculinas; os 6 espaços entre as pontas = femininos. Aqui estão sintetizados todos os Mistérios do Arcano AZF.</p>
+      <div class="qblock qblock-samael">
+        "O Enamorado deve roubar a Luz das Trevas. Hay que praticar Magia Sexual intensamente com a mulher. Hemos entrado no mundo da Vontade e do Amor."
+        <span class="qsource">— Samael Aun Weor, <em>Tarot e Kabala</em>, Arcano VI</span>
+      </div>
+      <p><span class="badge badge-crowley">Crowley</span> No Thoth, a carta é chamada "Os Irmãos" — o casamento alquímico entre o Rei (Sol) e a Rainha (Lua), entre o Enxofre e o Mercúrio. O Anjo acima (Perseus / Eros) representa a <span class="sym">Vontade Divina</span> que preside a união.</p>
+      <p>A figura da <span class="sym">mulher de escamas (serpente)</span> à esquerda e a figura da mulher pura à direita = a dualidade do princípio feminino: Lilith e Eva, energia sexual transmutada ou desperdiçada.</p>
+      <div class="tags"><span class="tag tag-s">Arcano AZF</span><span class="tag tag-g">Selo de Salomão</span><span class="tag tag-r">Casamento Alquímico</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO IX: O EREMITA -->
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">🔦</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO IX · YOD י · VIRGEM</div>
+        <div class="arc-name">O Eremita</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-crowley">Crowley</span> A letra <span class="sym">Yod</span> (י) é a menor letra hebraica — mas é a letra da qual todas as outras são derivadas. Yod = o Sêmen, a Semente, o <span class="sym">Ens Seminis</span>. O Eremita <em>segura</em> sua lanterna = guarda o fogo sagrado dentro de si.</p>
+      <p>No Thoth, o Eremita carrega a <span class="sym">Lanterna com o Ovo de Hermes</span> = o sêmen como veículo de luz. A <span class="sym">Serpente</span> enrolada em seu cajado = a Kundalini em estado de guarda. O manto cinza = o manto da castidade que preserva a energia.</p>
+      <p><span class="badge badge-samael">Samael</span> O Eremita está na <span class="sym">Nona Esfera</span> (o número 9 = Yesod = Sexo). "Bajar para subir" — o iniciado desce à Nona Esfera (o Sexo) para subir à Coroa. O cajado = a coluna vertebral com o Caduceu.</p>
+      <p>A <span class="sym">lanterna</span> que ele segura = o cérebro iluminado pela energia sexual transmutada que subiu pelo canal Sushumna.</p>
+      <div class="tags"><span class="tag tag-w">Castidade / Guarda</span><span class="tag tag-g">Yod · Sêmen</span><span class="tag tag-s">Nona Esfera</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= ARCANO XI: VOLÚPIA / LUST ======= -->
+<div id="lust" class="theme-scarlet">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>♌ Arcano XI · Volúpia / Lust — O Grande Segredo de Crowley</h2>
+      <p>A carta mais eroticamente carregada do Tarô — e a mais profunda</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--scarlet),transparent)"></div>
+  </div>
+</div>
+
+<div class="reveal">
+<div class="banner banner-scarlet">
+  <h3>🦁 BABALON CAVALGA A BESTA — A SIMBOLOGIA COMPLETA <span class="badge badge-crowley">Crowley · Livro de Thoth</span></h3>
+  <p>Esta é a carta mais densamente carregada de simbolismo sexual do Tarô de Thoth. Crowley renomeou a tradicional "Força" para <strong>Lust (Volúpia)</strong> deliberadamente: não é contenção da força animal, mas a <strong>união extática com ela</strong>.</p>
+</div>
+</div>
+
+<div class="cards cards-2 reveal">
+  <div class="arc arc-scarlet">
+    <div class="arc-header">
+      <span class="arc-icon">🌹</span>
+      <div class="arc-meta">
+        <div class="arc-num">LETRA TETH ט · LEÃO · LEO · TIFERET→GEBURAH</div>
+        <div class="arc-name">Babalon — A Mulher Escarlate <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="sym">Teth</span> (ט) significa <strong>serpente</strong>. O número 419 (valor da letra expandida) = "serpente" em hebraico. A cobra e o leão se fundem na imagem: a <span class="sym">Serpente-Leão</span> (Kundalini + Força Solar).</p>
+      <p><strong>Babalon</strong> está <span class="sym">nua</span> sobre a Besta — a nudez = despojamento de todas as máscaras do ego. Sua cabeça <span class="sym">jogada para trás</span> em êxtase = o orgasmo espiritual da transmutação. Ela toca seus seios = o princípio nutridor da Grande Mãe.</p>
+      <p>Na mão direita (espiritual): o <span class="sym">Cálice Sagrado</span> (Santo Graal), que contém o <span class="sym">sangue dos santos</span> = as energias sexuais transmutadas dos iniciados. Na mão esquerda (carnal): as <span class="sym">rédeas vermelhas</span> da Besta = ela controla (não suprime) a força instintiva.</p>
+      <div class="qblock qblock-crowley">
+        "Há nesta carta uma embriaguez ou êxtase divino. A mulher está mais que um pouco bêbada, e mais que um pouco louca; e o leão também está flamejante de desejo. Isto significa que o tipo de energia descrita é da ordem primitiva, criativa; é completamente independente da crítica da razão."
+        <span class="qsource">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+      </div>
+      <div class="tags"><span class="tag tag-s">Teth · Serpente</span><span class="tag tag-r">Babalon · Graal</span><span class="tag tag-b">Êxtase Divino</span></div>
+    </div>
+  </div>
+
+  <div class="arc arc-scarlet">
+    <div class="arc-header">
+      <span class="arc-icon">🦁</span>
+      <div class="arc-meta">
+        <div class="arc-num">AS 7 CABEÇAS DA BESTA</div>
+        <div class="arc-name">Os Chakras como Cabeças <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>A Besta de 7 cabeças que Babalon cavalga = os <span class="sym">7 Chakras</span> da coluna vertebral, todos abertos e ativos. Crowley identificou as 7 cabeças como aspectos de si mesmo:</p>
+      <p>
+        1. Cabeça de <span class="sym">Anjo</span> (Sahasrara / Coroa)<br>
+        2. Cabeça de <span class="sym">Santo</span> (Ajna / Pineal)<br>
+        3. Cabeça de <span class="sym">Poeta</span> (Vishuddha / Garganta)<br>
+        4. Cabeça de <span class="sym">Mulher Adúltera</span> (Anahata / Coração)<br>
+        5. Cabeça de <span class="sym">Homem de Valor</span> (Manipura / Plexo)<br>
+        6. Cabeça de <span class="sym">Sátiro</span> (Svadhisthana / Sacro)<br>
+        7. Cabeça de <span class="sym">Serpente-Leão</span> (Muladhara / Base)
+      </p>
+      <p>Os <span class="sym">10 chifres</span> no topo da carta = serpentes enviadas em todas as direções para <strong>destruir e recriar o mundo</strong>. A luz no horizonte = o Novo Éon que desperta.</p>
+      <div class="qblock qblock-crowley">
+        "Sete são as cabeças DA BESTA sobre a qual Ela cavalga. [...] Sete letras tem Seu santíssimo nome; e é BABALON."
+        <span class="qsource">— Aleister Crowley, <em>O Livro das Mentiras</em></span>
+      </div>
+      <div class="tags"><span class="tag tag-w">7 Chakras abertos</span><span class="tag tag-s">10 Chifres · Serpentes</span><span class="tag tag-b">Kundalini completa</span></div>
+    </div>
+  </div>
+
+  <div class="arc arc-black">
+    <div class="arc-header">
+      <span class="arc-icon">🜃</span>
+      <div class="arc-meta">
+        <div class="arc-num">PERSPECTIVA TANTRA BRANCO</div>
+        <div class="arc-name">A Leitura de Samael Aun Weor <span class="badge badge-samael">Samael</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>Para Samael, o Arcano XI (chamado <strong>Força</strong> / Persuasão no Tarô de Marselha que ele usava) trata do <span class="sym">domínio das forças instintivas</span> pela Via da Castidade — a transmutação da energia sexual SEM derramar o Vaso de Hermes.</p>
+      <p>A mulher que doma o leão = a <span class="sym">Vontade Espiritual</span> que governa o instinto sexual, não pela repressão, mas pela <span class="sym">transmutação alquímica</span>. O leão = o Fogo sexual bruto; a mulher = o Iniciado que o cavalga para cima.</p>
+      <p>Samael via <strong>Crowley como praticante de Tantrismo Negro</strong> — pois Crowley preconizava o orgasmo e a ejaculação como sacramentos mágicos (VIII° e IX° da O.T.O.). Para Samael, isso <span class="sym">desce</span> a serpente em vez de subi-la.</p>
+      <div class="qblock qblock-samael">
+        "A verdadeira força não reside na violência ou agressão, mas na energia sexual sublimada, que flui para o coração e o cérebro como Luz."
+        <span class="qsource">— Samael Aun Weor, sobre o Arcano XI</span>
+      </div>
+      <div class="tags"><span class="tag tag-w">Via da Castidade</span><span class="tag tag-g">Sublimação</span><span class="tag tag-s">Contra Tantra Negro</span></div>
+    </div>
+  </div>
+
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">🔥</span>
+      <div class="arc-meta">
+        <div class="arc-num">O LEÃO ALQUÍMICO</div>
+        <div class="arc-name">Três Formas do Leão <span class="badge badge-place">Place</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>No <strong>Tarô Alquímico de Place</strong>, o símbolo do Leão aparece em três formas que correspondem a estágios da Opus Magnum:</p>
+      <p>
+        1. <span class="sym">Leão Verde</span> — energia da Natureza antes de ser purificada. A libido bruta, não direcionada. Corresponde ao <em>Nigredo</em>.
+      </p>
+      <p>
+        2. <span class="sym">Leão Vermelho</span> — Força da Natureza sob controle perfeito, Enxofre Alquímico (energia solar) + Mercúrio (vontade). Kundalini em ascensão ativa. Corresponde ao <em>Rubedo</em>.
+      </p>
+      <p>
+        3. <span class="sym">Leão Velho</span> — Consciência completamente purificada, unida ao Ser Superior. O resultado da Grande Obra sexual.
+      </p>
+      <p>Babalon cavalga o Leão Vermelho = ela está no estágio do <span class="sym">Rubedo</span>, dominando a força solar já purificada.</p>
+      <div class="tags"><span class="tag tag-g">Leão Verde / Vermelho / Velho</span><span class="tag tag-w">Rubedo</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SEÇÃO TANTRA BRANCO vs NEGRO ======= -->
+<div id="tantra" class="theme-white">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>☯ Tantra Branco × Tantra Negro × Tantra Cinza</h2>
+      <p>O mesmo fogo, direções opostas — como o Tarot representa cada via</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--white-tantra),transparent)"></div>
+  </div>
+</div>
+
+<div class="reveal">
+<div class="banner banner-white">
+  <h3>🌊 O ARCANO AZF — A CHAVE DAS CHAVES <span class="badge badge-samael">Samael Aun Weor</span></h3>
+  <p>O <strong>Arcano A.Z.F.</strong> (Água, Fogo, Fusão) é o grande segredo gnóstico: a prática do <strong>Sahaja Maithuna</strong> — a união sexual sagrada <em>sem ejaculação e sem orgasmo</em>. "Na união do falo e do útero acha-se a chave do Arcano A.Z.F. O importante é retirar-se do ato sexual sem derramar o sêmen." O Ens Seminis (o sêmen espiritual) contém toda a Virtude do Fogo. Retido, ele sobe pelo Sushumna e desperta os chakras. Derramado, ele desce e alimenta o Kundartiguador.</p>
+</div>
+</div>
+
+<div class="cards cards-2 reveal">
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">🕊</span>
+      <div class="arc-meta">
+        <div class="arc-num">VIA DA LUZ</div>
+        <div class="arc-name">Tantra Branco <span class="badge badge-samael">Samael</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Tantra Branco</span> (Sahaja Maithuna sem ejaculação / sem orgasmo) é o caminho da <span class="sym">Serpente que Sobe</span>. A energia sexual é transmutada em Fogo Espiritual que percorre a coluna vertebral.</p>
+      <div class="compare">
+        <div class="compare-col compare-white">
+          <span class="compare-label">☼ ARCANOS QUE REPRESENTAM</span>
+          II — Alta Sacerdotisa (guarda os mistérios)<br>
+          IX — Eremita (guarda o fogo)<br>
+          XIV — Arte/Temperança (transmutação)<br>
+          XIX — O Sol (resultado final)<br>
+          XXI — O Universo (Realização)
+        </div>
+        <div class="compare-col compare-black">
+          <span class="compare-label">◉ PRINCÍPIOS</span>
+          Castidade como arma<br>
+          União = Matrimônio Perfeito<br>
+          Sem orgasmo, sem ejaculação<br>
+          Kundalini sobe 33 vértebras<br>
+          Cria Corpos Solares (Crísticos)
+        </div>
+      </div>
+      <div class="qblock qblock-samael">
+        "A Kundalini não sobe uma só vértebra, se as condições de santidade requeridas para tal vértebra não tenham sido conquistadas. A Kundalini não é uma força cega. É controlada pela Divina Mãe Kundalini."
+        <span class="qsource">— V.M. Samael Aun Weor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="arc arc-black">
+    <div class="arc-header">
+      <span class="arc-icon">🌑</span>
+      <div class="arc-meta">
+        <div class="arc-num">VIA DO ABISMO</div>
+        <div class="arc-name">Tantra Negro <span class="badge badge-samael">Samael</span> <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Tantra Negro</span> = a ejaculação e o orgasmo como sacramentos mágicos. No sistema de Crowley (O.T.O., IX°), os fluidos sexuais são usados como <span class="sym">talismãs mágicos</span> — a mistura dos fluidos é chamada de <span class="sym">Elixir</span> ou <span class="sym">Amrita</span>.</p>
+      <div class="compare">
+        <div class="compare-col compare-white">
+          <span class="compare-label">☼ ARCANOS QUE REPRESENTAM</span>
+          XI — Lust/Volúpia (Thoth: êxtase total)<br>
+          XV — O Diabo (força instintiva)<br>
+          XVI — A Torre (descida do fogo)<br>
+          XVIII — A Lua (ilusão, inconsciente)
+        </div>
+        <div class="compare-col compare-black">
+          <span class="compare-label">◉ PRINCÍPIOS (Crowley)</span>
+          "Faz tua Vontade" (Thelema)<br>
+          Elixir dos fluidos sexuais<br>
+          Orgasmo como sacramente<br>
+          Kundalini desperta pela via oposta<br>
+          Kundartiguador (Samael) = queda
+        </div>
+      </div>
+      <div class="qblock qblock-samael">
+        "Os tântricos negros cometem o crime de derramar o Vaso de Hermes Trismegisto durante o Sahaja Maithuna. Dessa forma desenvolvem o abominável Órgão Kundartiguador. A serpente, ao invés de subir, desce para os infernos atômicos do homem."
+        <span class="qsource">— V.M. Samael Aun Weor</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SEÇÃO: ALTA SACERDOTISA DETALHADA ======= -->
+<div id="sacerdotisa" class="theme-rose">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>🌙 A Alta Sacerdotisa · O Véu de Ísis</h2>
+      <p>A carta da Energia Sexual em estado de Guarda Sagrada</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--rose),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-3 reveal">
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">📜</span>
+      <div class="arc-meta">
+        <div class="arc-num">O LIVRO FECHADO</div>
+        <div class="arc-name">A Tora e os Mistérios</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>O livro (Tora / Sefer Yetzirah) está <span class="sym">meio oculto</span> sob seu manto = os Mistérios Sexuais não se revelam a quem não está pronto. A Tora começa com a letra <span class="sym">Beth</span> (בְּרֵאשִׁית = "No Princípio") = o mesmo princípio do Arcano I, o Mago.</p>
+      <p>No Thoth (Crowley), ela empunha o <span class="sym">arco e flecha</span> = Eros, Sagita, a energia sexual direcionada com precisão ao centro espiritual.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">🏛</span>
+      <div class="arc-meta">
+        <div class="arc-num">AS COLUNAS JACHIN E BOAZ</div>
+        <div class="arc-name">Os Dois Pilares do Templo</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="sym">Jachin</span> (Pilar Branco / Força) = Idá, o canal lunar, princípio feminino.<br>
+      <span class="sym">Boaz</span> (Pilar Negro / Estabelecer) = Pingalá, o canal solar, princípio masculino.</p>
+      <p>A Sacerdotisa se senta <span class="sym">entre os dois pilares</span> = ela é o Sushumna, o canal central, o equilíbrio entre os dois princípios. O <span class="sym">véu</span> entre as colunas = o véu que separa o mundo manifestado do não-manifestado.</p>
+      <p><span class="sym">Romãs</span> no véu = fertilidade, os mistérios de Proserpina, o fruto sagrado da iniciação sexual.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">🌊</span>
+      <div class="arc-meta">
+        <div class="arc-num">A ÁGUA E A LUA</div>
+        <div class="arc-name">Yesod e o Sêmen Cósmico</div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>A Sacerdotisa corresponde a <span class="sym">Yesod</span> (9ª Sefirá = Fundamento = Sexo) na Cabala. É a Lua no topo de sua cabeça = o princípio de reflexão e guarda da luz solar.</p>
+      <p><span class="badge badge-samael">Samael</span> Yesod é o reservatório de todas as energias do universo. Nele reside a <span class="sym">Pedra Cúbica</span> (Jesod = pedra fundamental). A Sacerdotisa é a guardiã dessa pedra, que é o próprio Sexo.</p>
+      <p>O <span class="sym">manto azul</span> que flui em ondas = as Águas de Vida (o sêmen espiritual / Ens Seminis) correndo livremente quando não retidas — ela nos convida a reter e transmutar.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= OUTROS ARCANOS CHAVE ======= -->
+<div id="outros" class="theme-gold">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>⚗ Outros Arcanos da Grande Obra Sexual</h2>
+      <p>Arte, Diabo, Torre, Estrela, Universo</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-2 reveal">
+  <!-- ARCANO XIV: ARTE -->
+  <div class="arc arc-gold">
+    <div class="arc-header">
+      <span class="arc-icon">⚗</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO XIV · SAMEKH ס · SAGITÁRIO</div>
+        <div class="arc-name">Arte / Temperança <span class="badge badge-crowley">Crowley</span> <span class="badge badge-place">Place</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-crowley">Crowley</span> No Thoth, esta carta se chama <strong>Arte</strong> (não Temperança) — a Arte da Alquimia Sexual. A figura central é hermafrodita: <span class="sym">metade sol, metade lua</span> = a Conjunção Alquímica, o <em>Solve et Coagula</em>.</p>
+      <p>A figura verte líquido de dois vasos (branco e vermelho = fluidos sexuais masculino e feminino) sobre o <span class="sym">fogo e a água</span> = a transmutação acontecendo. A <span class="sym">Águia</span> no escudo vermelho = Mercúrio / Água purificada. O <span class="sym">Leão</span> no escudo branco = Enxofre / Fogo purificado.</p>
+      <p><span class="badge badge-place">Place</span> No Alquímico, esta é a carta da <span class="sym">Coniunctio</span> — a União Sagrada dos opostos que produz a Pedra Filosofal. Os opostos são o Rei Solar e a Rainha Lunar em união mística.</p>
+      <div class="qblock qblock-crowley">
+        "Esta é a fórmula da Grande Obra: unir os fluidos, combinar os opostos, e no cadinho da transmissão sexual, criar a Pedra Filosofal da Consciência."
+        <span class="qsource">— Crowley, comentário ao ATU XIV, <em>Livro de Thoth</em></span>
+      </div>
+      <div class="tags"><span class="tag tag-g">Solve et Coagula</span><span class="tag tag-w">Coniunctio</span><span class="tag tag-r">Hermafrodita</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO XV: O DIABO -->
+  <div class="arc arc-black">
+    <div class="arc-header">
+      <span class="arc-icon">🐐</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO XV · AYIN ע · CAPRICÓRNIO</div>
+        <div class="arc-name">O Diabo / Lucifer <span class="badge badge-samael">Samael</span> <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-samael">Samael</span> O Arcano XV representa <span class="sym">Lucifer</span> — mas não o Diabo popular. Lucifer é o <span class="sym">Treinador Psicológico</span>, o reflexo do Ego que deve ser vencido. Ele é o <span class="sym">Guardião do Limiar</span> que testa o iniciado.</p>
+      <p>O <span class="sym">Macho Bode de Mendes</span> (Baphomet) no Thoth = a <span class="sym">força sexual bruta não transmutada</span>. As correntes que prendem as duas figuras humanas abaixo = os grilhões do desejo não sublimado, a fornicação que prende a alma ao ciclo kármico.</p>
+      <p>O falo ereto do bode = a <span class="sym">Força Solar não direcionada</span>. A <span class="sym">tocha invertida</span> = o fogo que desce em vez de subir. A <span class="sym">estrela de 5 pontas invertida</span> = o Pentagrama caído, o iniciado que cedeu à tentação sexual.</p>
+      <p><span class="badge badge-crowley">Crowley</span> A letra <span class="sym">Ayin</span> significa "olho" = o Terceiro Olho aberto (positivo) ou cego (negativo). O olho da luxúria que vê apenas o plano físico, ou o olho que vê além.</p>
+      <div class="tags"><span class="tag tag-s">Baphomet</span><span class="tag tag-b">Ego não vencido</span><span class="tag tag-g">Pentagrama invertido</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO XVII: A ESTRELA -->
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">⭐</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO XVII · HEH ה · AQUÁRIO</div>
+        <div class="arc-name">A Estrela / Nuit <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-crowley">Crowley</span> No Thoth, a Estrela é <span class="sym">Nuit</span> — a Deusa do Céu Noturno, o princípio infinito do feminino cósmico. Ela está <span class="sym">nua</span>, arqueada sobre o cosmos, derramando a <span class="sym">Água da Vida</span> (o fluido seminal cósmico) de duas taças.</p>
+      <p>A taça dourada = o fluido do <span class="sym">Sol</span> (sêmen solar). A taça prateada = o fluido da <span class="sym">Lua</span> (sêmen lunar). Ela os verte sobre a terra e sobre o oceano = a fecundação do universo pela Força Sexual Divina.</p>
+      <p>A <span class="sym">estrela de 8 pontas</span> = a estrela de Vênus (Ishtar), a estrela do amor sagrado. As <span class="sym">7 estrelas menores</span> = os 7 chakras que se iluminam com a transmutação sexual bem realizada.</p>
+      <p><span class="badge badge-samael">Samael</span> A mulher que verte as águas = a <span class="sym">Divina Mãe Kundalini</span> em sua manifestação cósmica. A estrela principal é Sirius = a estrela da iniciação e do despertar.</p>
+      <div class="tags"><span class="tag tag-r">Nuit · Céu Noturno</span><span class="tag tag-w">Fluidos Sagrados</span><span class="tag tag-g">7 Chakras</span></div>
+    </div>
+  </div>
+
+  <!-- ARCANO XXI: O UNIVERSO -->
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">🌌</span>
+      <div class="arc-meta">
+        <div class="arc-num">ARCANO XXI · TAV ת · SATURNO</div>
+        <div class="arc-name">O Universo / O Mundo <span class="badge badge-crowley">Crowley</span> <span class="badge badge-place">Place</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p><span class="badge badge-crowley">Crowley</span> No Thoth, a dançarina do Universo é a <span class="sym">mesma Babalon do Arcano XI</span> — mas agora ela <em>dança com a serpente</em>, não apenas a cavalga. É a conclusão: a Kundalini foi completamente integrada. Ela segura dois <span class="sym">Bastões de Poder</span> (duas colunas, Jachin e Boaz) = equilibrou os opostos.</p>
+      <p>A <span class="sym">guirlanda oval</span> ao redor = o Lingam-Yoni, o <em>Vesica Piscis</em> — a forma geométrica da união dos dois círculos, símbolo do ato sexual sagrado que gera a criação.</p>
+      <p><span class="badge badge-place">Place</span> No Tarô Alquímico, o Universo é a <span class="sym">Pedra Filosofal</span> em sua realização plena. A figura central é a <span class="sym">Anima Mundi</span> — a Alma do Mundo que o verso das cartas também ilustra (Lady Alchemia). A Grande Obra está completa.</p>
+      <p>As 4 figuras nos cantos (o homem, o leão, o touro, a águia) = os 4 Evangelistas, os 4 Querubins do Ezequiel, os 4 elementos alquímicos, os 4 naipes do Tarot = tudo transmutado e integrado.</p>
+      <div class="tags"><span class="tag tag-g">Pedra Filosofal</span><span class="tag tag-w">Vesica Piscis</span><span class="tag tag-s">Kundalini integrada</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= CHAKRAS E CARTAS ======= -->
+<div id="chakras" class="theme-gold">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>🌺 Os 7 Chakras · As 7 Cartas Correspondentes</h2>
+      <p>A anatomia sutil mapeada nos Arcanos</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+  </div>
+</div>
+
+<div class="reveal">
+<div class="chakra-strip">
+  <div class="chakra" style="background:rgba(255,0,0,0.12);border:1px solid rgba(255,80,80,0.3)">
+    <span class="chakra-icon">🌹</span>
+    <span class="chakra-name">MULADHARA</span>
+    <span style="font-size:.65rem;color:#ff8080">Base · Cóccix<br>Fogo bruto</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">XV · O Diabo</span>
+  </div>
+  <div class="chakra" style="background:rgba(255,128,0,0.12);border:1px solid rgba(255,160,80,0.3)">
+    <span class="chakra-icon">🌊</span>
+    <span class="chakra-name">SVADHISTHANA</span>
+    <span style="font-size:.65rem;color:#ffb080">Sacro · Água<br>Criatividade</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">II · Sacerdotisa</span>
+  </div>
+  <div class="chakra" style="background:rgba(255,200,0,0.12);border:1px solid rgba(255,220,80,0.3)">
+    <span class="chakra-icon">☀</span>
+    <span class="chakra-name">MANIPURA</span>
+    <span style="font-size:.65rem;color:#ffe080">Plexo Solar<br>Vontade / Fogo</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">XIV · Arte</span>
+  </div>
+  <div class="chakra" style="background:rgba(0,200,80,0.12);border:1px solid rgba(80,220,120,0.3)">
+    <span class="chakra-icon">💚</span>
+    <span class="chakra-name">ANAHATA</span>
+    <span style="font-size:.65rem;color:#80ff80">Coração<br>Amor / Tiferet</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">VI · Amantes</span>
+  </div>
+  <div class="chakra" style="background:rgba(80,160,255,0.12);border:1px solid rgba(120,180,255,0.3)">
+    <span class="chakra-icon">🎵</span>
+    <span class="chakra-name">VISHUDDHA</span>
+    <span style="font-size:.65rem;color:#80c0ff">Garganta<br>Verbo / Criação</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">XVII · Estrela</span>
+  </div>
+  <div class="chakra" style="background:rgba(80,80,255,0.12);border:1px solid rgba(120,120,255,0.3)">
+    <span class="chakra-icon">👁</span>
+    <span class="chakra-name">AJNA</span>
+    <span style="font-size:.65rem;color:#a0a0ff">Terceiro Olho<br>Visão Astral</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">IX · Eremita</span>
+  </div>
+  <div class="chakra" style="background:rgba(180,80,255,0.12);border:1px solid rgba(200,120,255,0.3)">
+    <span class="chakra-icon">👑</span>
+    <span class="chakra-name">SAHASRARA</span>
+    <span style="font-size:.65rem;color:#d0a0ff">Coroa · Kether<br>União com Deus</span>
+    <span style="font-size:.7rem;color:var(--gold-light);margin-top:3px;display:block">XXI · Universo</span>
+  </div>
+</div>
+</div>
+
+<!-- ======= SÍMBOLOS ESPECÍFICOS ======= -->
+<div class="theme-gold">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>🔍 Dicionário Simbólico — Por que está ali?</h2>
+      <p>Cada símbolo recorrente no Tarot e seu significado sexual-espiritual</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-3 reveal">
+  <div class="arc arc-gold">
+    <div class="arc-header"><span class="arc-icon">🏺</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">O Cálice / Cáliz / Santo Graal</div></div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Cálice</span> aparece em: Ás de Copas, Arcano XIV (Arte), Arcano XI (Lust), Arcano III (Imperatriz), Arcano XVII (Estrela).</p>
+      <p>Representa o <span class="sym">útero / Yoni</span> — o receptáculo feminino sagrado. No Tantra, é o <span class="sym">Kalas</span> — os fluidos sexuais femininos. No Thoth, o cálice de Babalon contém os "sangues dos santos" = as energias sexuais transmutadas de iniciados.</p>
+      <p><span class="badge badge-samael">Samael</span> O cálice = o cérebro físico, para onde a energia sexual deve subir e ser depositada como Luz.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-gold">
+    <div class="arc-header"><span class="arc-icon">⚔</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">A Espada / Bastão / Cajado</div></div>
+    </div>
+    <div class="arc-body">
+      <p>A <span class="sym">Espada</span> e o <span class="sym">Bastão</span> = o <span class="sym">Falo / Lingam</span> em suas formas mais espiritualizadas. O Bastão do Mago = a Coluna Vertebral com o Caduceu. A espada = o falo como instrumento de discernimento e corte das ilusões.</p>
+      <p>No <span class="sym">Ás de Bastões</span> do Thoth (Crowley): o bastão chama-se explicitamente "a Raiz dos Poderes de Fogo" — é o Falo Divino, o Yod, a faísca criadora.</p>
+      <p>O cajado do Eremita = a coluna vertebral em estado de guarda, com a serpente enrolada nele = castidade ativa.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-gold">
+    <div class="arc-header"><span class="arc-icon">🥚</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">O Ovo / O Anel / A Romã</div></div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Ovo Órfico / Ovo de Hermes</span> = o sêmen, a semente do ser. No Eremita (Thoth), a lanterna contém o ovo = ele guarda a semente sagrada.</p>
+      <p>O <span class="sym">anel ou guirlanda oval</span> do Arcano XXI = a <span class="sym">Vesica Piscis</span>, o símbolo do ato de criação sexual. É também o <span class="sym">Lingam-Yoni</span> em geometria.</p>
+      <p>As <span class="sym">Romãs</span> no véu da Sacerdotisa = o fruto da fertilidade, os Mistérios de Perséfone (descida e retorno), e a multidão de sementes = o potencial criativo da energia sexual não desperdiçada.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-scarlet">
+    <div class="arc-header"><span class="arc-icon">🌹</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">A Rosa / O Lótus</div></div>
+    </div>
+    <div class="arc-body">
+      <p>A <span class="sym">Rosa</span> = o <span class="sym">Yoni</span> em plena abertura. A Rosa de 5 pétalas = Vênus (pentágono de Vênus). No Arcano 0 (O Louco / Thoth), ele segura a rosa branca = pureza sexual, castidade que ele carrega como ideal.</p>
+      <p>O <span class="sym">Lótus</span> = o chakra em florescimento pela transmutação sexual. No Ás de Copas (Thoth), o lótus floresce sobre as águas do cálice = o chakra do coração aberto pela energia sexual purificada.</p>
+      <p><span class="badge badge-place">Place</span> No Tarô Alquímico, rosas brancas e vermelhas coexistem = a Rosa Branca (Mercúrio / Princípio Lunar) e a Rosa Vermelha (Enxofre / Princípio Solar) em conjunção.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-serpent">
+    <div class="arc-header"><span class="arc-icon">☀🌙</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">Sol e Lua nos Ombros</div></div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Sol</span> (☀) = o Princípio Masculino, o Fogo, o Enxofre, Pingalá, o fluido seminal solar.<br>
+      A <span class="sym">Lua</span> (☽) = o Princípio Feminino, a Água, o Mercúrio, Idá, o fluido seminal lunar.</p>
+      <p>Quando aparecem juntos (como no Arcano XIV, Arte / Thoth), indicam a <span class="sym">Coniunctio Oppositorum</span> — a Grande Conjunção Alquímica dos fluidos, a criação do Elixir da Vida.</p>
+      <p><span class="badge badge-samael">Samael</span> No Arcano XIV, a figura tem um lado branco (Lua) e um lado negro (Sol escondido) = os dois princípios ainda em processo de fusão. O resultado será o hermafrodita áureo.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-black">
+    <div class="arc-header"><span class="arc-icon">🌀</span>
+      <div class="arc-meta"><div class="arc-num">SÍMBOLO</div>
+        <div class="arc-name">O Infinito (∞) / Ouroboros</div></div>
+    </div>
+    <div class="arc-body">
+      <p>O <span class="sym">Lemniscato</span> (∞) sobre a cabeça do Mago e da Força/Volúpia = o eterno fluxo cíclico entre os dois princípios sexuais (masculino-feminino), o Cérebro e o Sexo em equilíbrio dinâmico.</p>
+      <p><span class="badge badge-samael">Samael</span> Os 8 Kabires = as 8 forças que governam o planeta, representadas pelo Santo Oito. Ele está "no centro da Terra, na Nona Esfera" = no centro do Sexo.</p>
+      <p>O <span class="sym">Ouroboros</span> (serpente que morde a própria cauda) = o ciclo eterno, mas também o <span class="sym">sêmen que retorna a si mesmo</span> quando transmutado — não é perdido, volta como Luz ao topo da coluna.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ======= SÍNTESE FINAL ======= -->
+<div id="sintese" class="theme-gold">
+  <div class="section-head reveal">
+    <div class="section-head-line"></div>
+    <div>
+      <h2>✦ A Grande Síntese · Três Vozes, Um Fogo</h2>
+      <p>O que Crowley, Samael e Place revelam sobre o mesmo segredo</p>
+    </div>
+    <div class="section-head-line" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+  </div>
+</div>
+
+<div class="cards cards-3 reveal">
+  <div class="arc arc-scarlet">
+    <div class="arc-header">
+      <span class="arc-icon">🔴</span>
+      <div class="arc-meta">
+        <div class="arc-num">VIA DA BESTA</div>
+        <div class="arc-name">Aleister Crowley — Thelema <span class="badge badge-crowley">Crowley</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>Para Crowley, a Magia Sexual é a <span class="sym">Via da Total Expressão</span>. "Faz tua Vontade — esta é a totalidade da Lei." A energia sexual é o combustível da Vontade Verdadeira (<em>True Will</em>). O Elixir dos fluidos = o talismã supremo.</p>
+      <p>Seus arcanos-chave: <strong>XI Lust</strong> (Babalon/Besta), <strong>XIV Arte</strong> (coniunctio dos fluidos), <strong>XXI Universo</strong> (Babalon dançando com a serpente). O caminho de Crowley é dionisíaco: <span class="sym">a serpente desce para subir</span> pela via do êxtase total.</p>
+      <p>Livros: <em>Liber ABA, Rituais e Documentos de Magia Sexual, O Livro de Thoth</em>.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-serpent">
+    <div class="arc-header">
+      <span class="arc-icon">🟢</span>
+      <div class="arc-meta">
+        <div class="arc-num">VIA DA LUZ</div>
+        <div class="arc-name">Samael Aun Weor — Gnose <span class="badge badge-samael">Samael</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>Para Samael, a Magia Sexual é a <span class="sym">Via da Castidade Ativa</span>. O Arcano AZF: a união sexual sagrada sem ejaculação, onde a energia não é desperdiçada mas transmutada em Fogo Espiritual que sobe pela coluna.</p>
+      <p>Seus arcanos-chave: <strong>I O Mago</strong> (o Iniciado que guarda seu fogo), <strong>II Sacerdotisa</strong> (a mulher como sacerdotisa), <strong>IV Imperador</strong> (a serpente na testa), <strong>XI Força</strong> (domínio pelo amor). A <span class="sym">Divina Mãe Kundalini</span> é quem decide e controla a ascensão.</p>
+      <p>Livros: <em>Tarot e Kabala, Manual de Magia Prática, Magnus Opus, Matrimônio Perfeito</em>.</p>
+    </div>
+  </div>
+
+  <div class="arc arc-white">
+    <div class="arc-header">
+      <span class="arc-icon">🔵</span>
+      <div class="arc-meta">
+        <div class="arc-num">VIA DA OPUS</div>
+        <div class="arc-name">Robert M. Place — Alquimia <span class="badge badge-place">Place</span></div>
+      </div>
+    </div>
+    <div class="arc-body">
+      <p>Para Place, o Tarot é um <span class="sym">mapa da Grande Obra Alquímica</span> — que é intrinsecamente um processo de transformação psicológica e sexual. A Pedra Filosofal é o resultado da <em>Coniunctio</em> — a união sagrada dos opostos.</p>
+      <p>Seus arcanos-chave: <strong>0 O Louco</strong> (neófito alquimista, a Prima Materia), <strong>XIV Arte/Temperança</strong> (coniunctio), <strong>XXI Mundo</strong> (Anima Mundi = Pedra Filosofal). Cada arcano maior é um <span class="sym">processo alquímico</span> da transmutação sexual-espiritual.</p>
+      <p>Livro: <em>The Alchemical Tarot, Alchemy & Tarot (Robert M. Place, 1995-2024)</em>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="reveal" style="margin-top:20px">
+<div class="banner banner-gold">
+  <h3>⚜ A FÓRMULA UNIVERSAL · I.A.O.</h3>
+  <p>A fórmula <strong>I.A.O.</strong> (Isis, Apophis, Osiris) unifica as três vias. <strong>Isis</strong> = o princípio feminino receptivo (Sacerdotisa, Imperatriz, Estrela). <strong>Apophis</strong> = a força destruidora/transmutadora (Torre, Morte, Diabo). <strong>Osiris</strong> = o resultado glorioso (Sol, Universo, Arte). O ato sexual sagrado percorre esse ciclo: a Força Criativa (Isis) desce ao abismo (Apophis) e renasce transfigurada (Osiris). <em>Samael Aun Weor</em> usava "I.A.O." como um mantram da alquimia sexual. <em>Crowley</em> via nesse trinômio a fórmula completa de toda magia. <em>Place</em> via nele as três fases do Opus Magnum: Nigredo (Apophis), Albedo (Isis), Rubedo (Osiris).</p>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center;padding:60px 20px 30px">
+  <span style="font-size:2.5rem;display:block;margin-bottom:12px;animation:flicker 5s ease-in-out infinite">🜂</span>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:rgba(200,168,75,0.35);letter-spacing:0.15em;line-height:2">
+    "O Sexo é a Porta do Paraíso. Mas poucos sabem como abrir essa Porta sem cair no Abismo."<br>
+    — Tradição Hermética
+  </p>
+</footer>
+
+</div><!-- /.page -->
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Nav dots active
+const sections = document.querySelectorAll('[id]');
+const dots = document.querySelectorAll('.nav a');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const id = e.target.id;
+      dots.forEach((d,i) => {
+        d.style.background = d.getAttribute('href') === '#'+id
+          ? 'var(--gold)' : 'rgba(200,168,75,0.25)';
+      });
+    }
+  });
+}, { threshold: 0.5 });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>

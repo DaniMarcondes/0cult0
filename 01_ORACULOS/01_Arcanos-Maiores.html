@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Os 22 Arcanos Maiores — O Tarot Desvelado</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08040E;
+  --bg2: #0F0818;
+  --gold: #C8A84B;
+  --gold-l: #F0D080;
+  --gold-d: #6B5820;
+  --crimson: #8B1020;
+  --ruby: #C01830;
+  --violet: #5B1A8E;
+  --violet-l: #A860F0;
+  --teal: #0A7060;
+  --teal-l: #40D0B0;
+  --cobalt: #1A2880;
+  --cobalt-l: #5080E0;
+  --emerald: #0A5830;
+  --emerald-l: #40C060;
+  --orange: #C05010;
+  --orange-l: #F08030;
+  --rose: #901850;
+  --rose-l: #E060A0;
+  --slate: #304860;
+  --slate-l: #80A8D0;
+  --text: #EEE8D8;
+  --text-dim: rgba(238,232,216,0.65);
+  --text-faint: rgba(238,232,216,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* Atmospheric bg */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(91,26,142,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(139,16,32,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 60%, rgba(10,112,96,0.06) 0%, transparent 50%);
+  pointer-events:none; z-index:0;
+  animation: atm 14s ease-in-out infinite alternate;
+}
+@keyframes atm { 0%{opacity:.5} 100%{opacity:1} }
+
+/* Stars */
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(1px 1px at 7% 11%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 21% 38%,rgba(200,168,75,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 38% 6%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 53% 27%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 69% 14%,rgba(200,168,75,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 84% 44%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 93% 19%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 16% 65%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 59% 73%,rgba(200,168,75,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 77% 83%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 34% 87%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(2px 2px at 46% 52%,rgba(168,64,192,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 72% 42%,rgba(64,192,128,.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 4% 52%,rgba(200,168,75,.3) 0%,transparent 100%);
+  pointer-events:none; z-index:0;
+}
+
+/* Layout */
+.wrap { position:relative; z-index:2; max-width:1060px; margin:0 auto; padding:0 16px 80px; }
+
+/* === HEADER === */
+header {
+  text-align:center;
+  padding:60px 20px 30px;
+}
+.hdr-glyph {
+  font-size:3.5rem;
+  display:block; margin-bottom:14px;
+  filter: drop-shadow(0 0 24px var(--gold));
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%,100% { filter: drop-shadow(0 0 20px var(--gold)); }
+  50% { filter: drop-shadow(0 0 50px var(--gold-l)) drop-shadow(0 0 90px var(--gold)); }
+}
+h1.main-title {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.3rem,4vw,2.5rem);
+  color: var(--gold);
+  letter-spacing:.12em;
+  text-shadow: 0 0 40px rgba(200,168,75,.5), 0 0 80px rgba(200,168,75,.2);
+  line-height:1.3;
+}
+.hdr-sub {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(.85rem,2vw,1.1rem);
+  color:rgba(200,168,75,.55);
+  letter-spacing:.25em;
+  margin-top:10px;
+}
+.hdr-line {
+  width:500px; max-width:90%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--crimson),var(--gold),var(--crimson),transparent);
+  margin:20px auto;
+}
+.hdr-intro {
+  max-width:720px; margin:0 auto;
+  font-size:1.0rem; line-height:1.9; color:var(--text-dim);
+  font-style:italic;
+  text-align:left;
+}
+
+/* === TABLE OF CONTENTS === */
+.toc {
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(200,168,75,.15);
+  border-radius:14px;
+  padding:24px 28px;
+  margin:30px 0;
+}
+.toc h3 {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.75rem;
+  color:var(--gold);
+  letter-spacing:.2em;
+  margin-bottom:14px;
+  text-align:center;
+}
+.toc-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:6px;
+}
+.toc a {
+  text-decoration:none;
+  font-size:.8rem;
+  color:var(--text-dim);
+  padding:4px 8px;
+  border-radius:6px;
+  transition:all .25s;
+  font-style:italic;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  border:1px solid transparent;
+}
+.toc a:hover {
+  background:rgba(200,168,75,.1);
+  border-color:rgba(200,168,75,.2);
+  color:var(--gold-l);
+}
+.toc-num {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.65rem;
+  opacity:.6;
+  min-width:24px;
+}
+
+/* === SECTION HEADER === */
+.sec-hdr {
+  display:flex; align-items:center; gap:14px;
+  margin:60px 0 30px;
+}
+.sec-hdr-line { flex:1; height:1px; }
+.sec-hdr h2 {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.75rem,1.8vw,.95rem);
+  letter-spacing:.18em;
+  white-space:nowrap;
+}
+.sec-hdr p {
+  font-style:italic; font-size:.75rem;
+  letter-spacing:.12em; opacity:.5;
+  margin-top:3px; text-align:center;
+}
+
+/* === ARCANA CARD === */
+.arc {
+  border-radius:16px;
+  padding:30px 28px;
+  margin-bottom:32px;
+  position:relative;
+  overflow:hidden;
+  animation:fadeup .7s ease forwards; opacity:0;
+}
+@keyframes fadeup { to { opacity:1; transform:none; } }
+
+/* color themes for each arcanum */
+.arc-0   { background:linear-gradient(145deg,rgba(12,8,24,.92),rgba(6,4,12,.97)); border:1.5px solid rgba(91,26,142,.45); box-shadow:0 8px 40px rgba(91,26,142,.15); }
+.arc-1   { background:linear-gradient(145deg,rgba(10,24,12,.92),rgba(4,12,6,.97)); border:1.5px solid rgba(10,112,96,.45); box-shadow:0 8px 40px rgba(10,112,96,.15); }
+.arc-2   { background:linear-gradient(145deg,rgba(6,10,24,.92),rgba(4,6,16,.97)); border:1.5px solid rgba(26,40,128,.45); box-shadow:0 8px 40px rgba(26,40,128,.15); }
+.arc-3   { background:linear-gradient(145deg,rgba(20,8,16,.92),rgba(10,4,8,.97)); border:1.5px solid rgba(144,24,80,.45); box-shadow:0 8px 40px rgba(144,24,80,.15); }
+.arc-4   { background:linear-gradient(145deg,rgba(24,10,4,.92),rgba(12,6,2,.97)); border:1.5px solid rgba(192,80,16,.45); box-shadow:0 8px 40px rgba(192,80,16,.15); }
+.arc-5   { background:linear-gradient(145deg,rgba(14,10,4,.92),rgba(8,6,2,.97)); border:1.5px solid rgba(160,128,32,.45); box-shadow:0 8px 40px rgba(160,128,32,.15); }
+.arc-6   { background:linear-gradient(145deg,rgba(20,6,6,.92),rgba(10,4,4,.97)); border:1.5px solid rgba(192,24,48,.45); box-shadow:0 8px 40px rgba(192,24,48,.15); }
+.arc-7   { background:linear-gradient(145deg,rgba(4,10,24,.92),rgba(2,6,16,.97)); border:1.5px solid rgba(26,80,192,.45); box-shadow:0 8px 40px rgba(26,80,192,.15); }
+.arc-8   { background:linear-gradient(145deg,rgba(4,14,10,.92),rgba(2,8,6,.97)); border:1.5px solid rgba(10,128,80,.45); box-shadow:0 8px 40px rgba(10,128,80,.15); }
+.arc-9   { background:linear-gradient(145deg,rgba(10,10,10,.92),rgba(6,6,6,.97)); border:1.5px solid rgba(100,100,120,.45); box-shadow:0 8px 40px rgba(100,100,120,.15); }
+.arc-10  { background:linear-gradient(145deg,rgba(16,8,2,.92),rgba(8,4,2,.97)); border:1.5px solid rgba(200,120,24,.45); box-shadow:0 8px 40px rgba(200,120,24,.15); }
+.arc-11  { background:linear-gradient(145deg,rgba(22,6,2,.92),rgba(12,4,2,.97)); border:1.5px solid rgba(220,48,16,.45); box-shadow:0 8px 40px rgba(220,48,16,.15); }
+.arc-12  { background:linear-gradient(145deg,rgba(4,10,20,.92),rgba(2,6,12,.97)); border:1.5px solid rgba(32,64,160,.45); box-shadow:0 8px 40px rgba(32,64,160,.15); }
+.arc-13  { background:linear-gradient(145deg,rgba(6,6,6,.92),rgba(4,4,4,.97)); border:1.5px solid rgba(60,60,80,.45); box-shadow:0 8px 40px rgba(60,60,80,.15); }
+.arc-14  { background:linear-gradient(145deg,rgba(4,14,14,.92),rgba(2,8,8,.97)); border:1.5px solid rgba(10,140,140,.45); box-shadow:0 8px 40px rgba(10,140,140,.15); }
+.arc-15  { background:linear-gradient(145deg,rgba(16,4,20,.92),rgba(8,2,12,.97)); border:1.5px solid rgba(120,16,160,.45); box-shadow:0 8px 40px rgba(120,16,160,.15); }
+.arc-16  { background:linear-gradient(145deg,rgba(22,8,2,.92),rgba(12,4,2,.97)); border:1.5px solid rgba(200,64,16,.45); box-shadow:0 8px 40px rgba(200,64,16,.15); }
+.arc-17  { background:linear-gradient(145deg,rgba(2,8,20,.92),rgba(2,4,12,.97)); border:1.5px solid rgba(24,96,192,.45); box-shadow:0 8px 40px rgba(24,96,192,.15); }
+.arc-18  { background:linear-gradient(145deg,rgba(4,4,20,.92),rgba(2,2,12,.97)); border:1.5px solid rgba(40,40,160,.45); box-shadow:0 8px 40px rgba(40,40,160,.15); }
+.arc-19  { background:linear-gradient(145deg,rgba(22,12,2,.92),rgba(12,6,2,.97)); border:1.5px solid rgba(220,160,16,.45); box-shadow:0 8px 40px rgba(220,160,16,.15); }
+.arc-20  { background:linear-gradient(145deg,rgba(16,2,2,.92),rgba(8,2,2,.97)); border:1.5px solid rgba(160,16,16,.45); box-shadow:0 8px 40px rgba(160,16,16,.15); }
+.arc-21  { background:linear-gradient(145deg,rgba(2,14,2,.92),rgba(2,8,2,.97)); border:1.5px solid rgba(16,160,48,.45); box-shadow:0 8px 40px rgba(16,160,48,.15); }
+
+/* Left accent bar */
+.arc::before {
+  content:''; position:absolute; top:0; left:0; bottom:0; width:4px;
+  border-radius:4px 0 0 4px;
+}
+.arc-0::before   { background:linear-gradient(180deg,var(--violet-l),var(--violet)); }
+.arc-1::before   { background:linear-gradient(180deg,var(--teal-l),var(--teal)); }
+.arc-2::before   { background:linear-gradient(180deg,var(--cobalt-l),var(--cobalt)); }
+.arc-3::before   { background:linear-gradient(180deg,var(--rose-l),var(--rose)); }
+.arc-4::before   { background:linear-gradient(180deg,var(--orange-l),var(--orange)); }
+.arc-5::before   { background:linear-gradient(180deg,#D4A840,#806020); }
+.arc-6::before   { background:linear-gradient(180deg,var(--ruby),var(--crimson)); }
+.arc-7::before   { background:linear-gradient(180deg,var(--cobalt-l),#102060); }
+.arc-8::before   { background:linear-gradient(180deg,var(--emerald-l),var(--emerald)); }
+.arc-9::before   { background:linear-gradient(180deg,#B0B0C0,#505060); }
+.arc-10::before  { background:linear-gradient(180deg,#F0A030,#805010); }
+.arc-11::before  { background:linear-gradient(180deg,#FF6030,#A02010); }
+.arc-12::before  { background:linear-gradient(180deg,#6090E0,#1030A0); }
+.arc-13::before  { background:linear-gradient(180deg,#808090,#303040); }
+.arc-14::before  { background:linear-gradient(180deg,var(--teal-l),var(--teal)); }
+.arc-15::before  { background:linear-gradient(180deg,var(--violet-l),var(--violet)); }
+.arc-16::before  { background:linear-gradient(180deg,#F06020,#A03010); }
+.arc-17::before  { background:linear-gradient(180deg,#60A0F0,#2050C0); }
+.arc-18::before  { background:linear-gradient(180deg,#6080E0,#202080); }
+.arc-19::before  { background:linear-gradient(180deg,#F0D040,#C09010); }
+.arc-20::before  { background:linear-gradient(180deg,#F04040,#A01010); }
+.arc-21::before  { background:linear-gradient(180deg,#40E060,#108030); }
+
+/* Card header */
+.arc-hdr {
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  gap:16px;
+  align-items:start;
+  margin-bottom:20px;
+}
+.arc-icon { font-size:2.8rem; line-height:1; text-align:center; min-width:48px; }
+.arc-title-block {}
+.arc-num {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.55rem; letter-spacing:.3em; opacity:.5; margin-bottom:3px;
+}
+.arc-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,3vw,1.6rem);
+  font-weight:600; line-height:1.1;
+}
+.arc-subtitle {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:.82rem; opacity:.6; margin-top:3px; letter-spacing:.06em;
+}
+
+/* Correspondence pill cluster */
+.corr-pills {
+  display:flex; flex-wrap:wrap; gap:5px;
+  justify-content:flex-end;
+}
+.pill {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.52rem; letter-spacing:.12em;
+  padding:3px 8px; border-radius:20px;
+  border:1px solid; white-space:nowrap;
+}
+.pill-heb   { border-color:rgba(200,168,75,.4); color:var(--gold); background:rgba(200,168,75,.08); }
+.pill-plan  { border-color:rgba(200,200,100,.35); color:#D8D890; background:rgba(200,200,100,.06); }
+.pill-seph  { border-color:rgba(120,80,200,.4); color:#C090F0; background:rgba(120,80,200,.08); }
+.pill-alch  { border-color:rgba(64,192,128,.35); color:#80E0A0; background:rgba(64,192,128,.06); }
+.pill-elem  { border-color:rgba(200,80,32,.35); color:#F09060; background:rgba(200,80,32,.06); }
+.pill-world { border-color:rgba(80,120,200,.35); color:#90B0E8; background:rgba(80,120,200,.06); }
+
+/* Divider */
+.arc-div {
+  height:1px; margin:18px 0;
+  background:rgba(200,168,75,.1);
+}
+
+/* Body text */
+.arc-body { font-size:.95rem; line-height:1.9; color:var(--text-dim); }
+.arc-body p { margin-bottom:14px; }
+.arc-body p:last-child { margin-bottom:0; }
+.arc-body strong { font-style:normal; font-weight:600; }
+
+/* Section labels within card */
+.subsec {
+  font-family:'Cinzel Decorative',serif;
+  font-size:.62rem; letter-spacing:.2em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin:18px 0 8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.subsec::after {
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg,rgba(200,168,75,.3),transparent);
+}
+
+/* Symbol analysis box */
+.sym-box {
+  background:rgba(255,255,255,.025);
+  border-radius:10px;
+  padding:14px 16px;
+  margin:12px 0;
+  border-left:3px solid rgba(200,168,75,.3);
+}
+.sym-box h4 {
+  font-family:'IM Fell English',serif;
+  font-size:1rem;
+  color:var(--gold-l);
+  margin-bottom:6px;
+  display:flex; gap:8px; align-items:baseline;
+}
+.sym-box h4 span.sym-icon { font-size:1.1rem; }
+.sym-box p { font-size:.87rem; color:var(--text-dim); line-height:1.8; }
+
+/* Highlight inline term */
+em.term {
+  font-style:normal;
+  color:var(--gold-l);
+  background:rgba(200,168,75,.08);
+  border-bottom:1px solid rgba(200,168,75,.3);
+  padding:0 3px;
+  border-radius:2px;
+}
+
+/* Quote block */
+.qblock {
+  margin:14px 0;
+  padding:12px 16px 12px 20px;
+  border-radius:8px;
+  font-style:italic;
+  font-size:.88rem;
+  line-height:1.85;
+  position:relative;
+}
+.qblock::before {
+  content:'"';
+  position:absolute; top:-4px; left:10px;
+  font-size:3rem; opacity:.2; line-height:1;
+}
+.qblock-c { background:rgba(192,24,48,.07); border-left:3px solid rgba(192,24,48,.4); color:rgba(255,130,150,.8); }
+.qblock-p { background:rgba(80,120,200,.07); border-left:3px solid rgba(80,120,200,.4); color:rgba(160,190,255,.8); }
+.qblock-g { background:rgba(200,168,75,.07); border-left:3px solid rgba(200,168,75,.4); color:rgba(240,210,120,.8); }
+.qsrc {
+  font-style:normal; font-size:.72rem; letter-spacing:.08em;
+  opacity:.7; margin-top:5px; display:block;
+}
+
+/* Connections block */
+.connects {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;
+}
+.tag {
+  font-size:.72rem; padding:3px 9px; border-radius:20px;
+  font-style:italic; border:1px solid;
+}
+.tag-myth { border-color:rgba(192,80,16,.35); color:rgba(240,150,80,.9); background:rgba(192,80,16,.08); }
+.tag-kab  { border-color:rgba(120,80,200,.35); color:rgba(200,150,255,.9); background:rgba(120,80,200,.08); }
+.tag-alch { border-color:rgba(64,192,128,.35); color:rgba(128,230,170,.9); background:rgba(64,192,128,.08); }
+.tag-psy  { border-color:rgba(80,140,200,.35); color:rgba(150,200,255,.9); background:rgba(80,140,200,.08); }
+.tag-life { border-color:rgba(200,168,75,.35); color:rgba(240,210,128,.9); background:rgba(200,168,75,.08); }
+.tag-astr { border-color:rgba(168,200,80,.35); color:rgba(210,240,128,.9); background:rgba(168,200,80,.08); }
+
+/* Worlds table */
+.worlds-row {
+  display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;
+}
+.world-pill {
+  flex:1; min-width:120px;
+  padding:8px 10px; border-radius:8px; text-align:center;
+  font-size:.75rem; line-height:1.5;
+}
+.world-atz { background:rgba(200,168,75,.1); border:1px solid rgba(200,168,75,.25); color:var(--gold-l); }
+.world-ber { background:rgba(120,80,200,.1); border:1px solid rgba(120,80,200,.25); color:var(--violet-l); }
+.world-yet { background:rgba(26,40,128,.12); border:1px solid rgba(80,120,200,.25); color:var(--cobalt-l); }
+.world-ass { background:rgba(10,80,40,.12); border:1px solid rgba(40,160,80,.25); color:var(--emerald-l); }
+.world-name { font-family:'Cinzel Decorative',serif; font-size:.55rem; letter-spacing:.12em; display:block; margin-bottom:3px; }
+
+/* Responsive */
+@media(max-width:640px) {
+  .arc-hdr { grid-template-columns:auto 1fr; }
+  .corr-pills { display:none; }
+  .arc-icon { min-width:36px; font-size:2rem; }
+}
+
+/* Reveal on scroll */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.vis { opacity:1; transform:none; }
+
+/* Sticky nav dot */
+.sidenav {
+  position:fixed; top:50%; right:14px; transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:5px; z-index:100;
+}
+.sidenav a {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(200,168,75,.2); border:1px solid rgba(200,168,75,.35);
+  display:block; transition:all .3s;
+}
+.sidenav a:hover, .sidenav a.active { background:var(--gold); transform:scale(1.4); }
+@media(max-width:900px) { .sidenav { display:none; } }
+</style>
+</head>
+<body>
+
+<nav class="sidenav" id="sidenav">
+  <a href="#arc-0" title="0 · O Louco"></a>
+  <a href="#arc-1" title="I · O Mago"></a>
+  <a href="#arc-2" title="II · A Sacerdotisa"></a>
+  <a href="#arc-3" title="III · A Imperatriz"></a>
+  <a href="#arc-4" title="IV · O Imperador"></a>
+  <a href="#arc-5" title="V · O Hierofante"></a>
+  <a href="#arc-6" title="VI · Os Amantes"></a>
+  <a href="#arc-7" title="VII · A Carruagem"></a>
+  <a href="#arc-8" title="VIII · Ajustamento"></a>
+  <a href="#arc-9" title="IX · O Eremita"></a>
+  <a href="#arc-10" title="X · A Roda"></a>
+  <a href="#arc-11" title="XI · Volúpia"></a>
+  <a href="#arc-12" title="XII · O Pendurado"></a>
+  <a href="#arc-13" title="XIII · Morte"></a>
+  <a href="#arc-14" title="XIV · Arte"></a>
+  <a href="#arc-15" title="XV · O Diabo"></a>
+  <a href="#arc-16" title="XVI · A Torre"></a>
+  <a href="#arc-17" title="XVII · A Estrela"></a>
+  <a href="#arc-18" title="XVIII · A Lua"></a>
+  <a href="#arc-19" title="XIX · O Sol"></a>
+  <a href="#arc-20" title="XX · O Æon"></a>
+  <a href="#arc-21" title="XXI · O Universo"></a>
+</nav>
+
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <span class="hdr-glyph">✦ ✧ ✦</span>
+  <h1 class="main-title">Os 22 Arcanos Maiores</h1>
+  <p class="hdr-sub">O Tarot Completamente Desvelado</p>
+  <div class="hdr-line"></div>
+  <p class="hdr-intro">
+    O Tarot não é um baralho de adivinhação — é um <em>Livro de Iniciação</em> em forma pictórica. Cada carta é um glifo vivo que contém em si os mistérios da Cabala, da Alquimia, da Astrologia, da Numerologia e dos Mitos de todas as civilizações. Os 22 Arcanos Maiores correspondem às 22 letras do alfabeto hebraico e aos 22 caminhos da Árvore da Vida. Este documento é uma análise profunda e desveladora de cada carta — seus símbolos, por que estão ali, o que significam, como se conectam à Cabala e aos quatro mundos, às mitologias, à vida real e à manifestação do divino na Terra. Fontes primárias incluem o <strong>Tarô de Thoth de Aleister Crowley</strong> (O Livro de Thoth, 1944), o <strong>Tarô Alquímico de Robert M. Place</strong> (1995–2024), o <strong>Tarô da Golden Dawn</strong>, o <strong>Rider-Waite Tarot</strong> (Arthur E. Waite/Pamela Coleman Smith, 1909), o <strong>Tarô Egípcio/dos Boêmios</strong> e as tradições cabalísticas de Éliphas Lévi, Mathers e Regardie.
+  </p>
+</header>
+
+<!-- TOC -->
+<div class="toc reveal">
+  <h3>✦ ÍNDICE DOS 22 ARCANOS ✦</h3>
+  <div class="toc-grid">
+    <a href="#arc-0"><span class="toc-num">0</span> O Louco · Aleph</a>
+    <a href="#arc-1"><span class="toc-num">I</span> O Mago · Beth</a>
+    <a href="#arc-2"><span class="toc-num">II</span> A Alta Sacerdotisa · Gimel</a>
+    <a href="#arc-3"><span class="toc-num">III</span> A Imperatriz · Daleth</a>
+    <a href="#arc-4"><span class="toc-num">IV</span> O Imperador · Tzaddi</a>
+    <a href="#arc-5"><span class="toc-num">V</span> O Hierofante · Vau</a>
+    <a href="#arc-6"><span class="toc-num">VI</span> Os Amantes · Zain</a>
+    <a href="#arc-7"><span class="toc-num">VII</span> A Carruagem · Cheth</a>
+    <a href="#arc-8"><span class="toc-num">VIII</span> O Ajustamento · Lamed</a>
+    <a href="#arc-9"><span class="toc-num">IX</span> O Eremita · Yod</a>
+    <a href="#arc-10"><span class="toc-num">X</span> A Roda da Fortuna · Kaph</a>
+    <a href="#arc-11"><span class="toc-num">XI</span> Volúpia / Lust · Teth</a>
+    <a href="#arc-12"><span class="toc-num">XII</span> O Pendurado · Mem</a>
+    <a href="#arc-13"><span class="toc-num">XIII</span> Morte · Nun</a>
+    <a href="#arc-14"><span class="toc-num">XIV</span> Arte / Temperança · Samekh</a>
+    <a href="#arc-15"><span class="toc-num">XV</span> O Diabo · Ayin</a>
+    <a href="#arc-16"><span class="toc-num">XVI</span> A Torre · Peh</a>
+    <a href="#arc-17"><span class="toc-num">XVII</span> A Estrela · Hé</a>
+    <a href="#arc-18"><span class="toc-num">XVIII</span> A Lua · Qoph</a>
+    <a href="#arc-19"><span class="toc-num">XIX</span> O Sol · Resh</a>
+    <a href="#arc-20"><span class="toc-num">XX</span> O Æon / Julgamento · Shin</a>
+    <a href="#arc-21"><span class="toc-num">XXI</span> O Universo · Tau</a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO 0 — O LOUCO -->
+<!-- ============================================================ -->
+<div id="arc-0" class="arc arc-0 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🌀</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO 0 · ALEPH א · LETRA-MÃE</div>
+      <div class="arc-name">O Louco — <em style="font-size:.75em;opacity:.7">The Fool · Le Mat</em></div>
+      <div class="arc-subtitle">O Sopro do Espírito · O Zero Cabalístico · O Príncipe Errante</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Aleph · Boi/Relha</span>
+      <span class="pill pill-plan">Ar Primordial</span>
+      <span class="pill pill-seph">Kether → Chokmah</span>
+      <span class="pill pill-alch">Prima Materia</span>
+      <span class="pill pill-elem">Ar · Éter</span>
+      <span class="pill pill-world">Atziluth</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>O Louco é a carta-chave de todo o Tarot — e seu número não é 1, mas <em class="term">zero</em>. Isto é revolucionário. O zero qabalístico não significa "nada" no sentido comum: significa o <em class="term">Ain Sof</em>, o Ilimitado que precede toda manifestação. É o equilíbrio perfeito de todos os opostos antes de qualquer diferenciação. Como ensina Crowley, "ele representa o negativo acima da Árvore da Vida, a fonte de todas as coisas." O Louco é o universo antes de qualquer coisa — e também o universo depois que tudo retorna ao zero. É tanto o início quanto o fim, o alfa e o ômega, a equação do cosmos.</p>
+
+    <p>A letra hebraica <em class="term">Aleph</em> (א) significa <em>boi</em>, mas por sua forma representa uma relha de arado — simbolismo primariamente fálico, o instrumento que fende a terra virgem para plantar a semente da criação. É a primeira das três letras-mãe do alfabeto (Aleph, Mem, Shin), correspondendo respectivamente ao Ar, à Água e ao Fogo. Aleph = Ar = o vácuo, a quintessência que precede os quatro elementos. Não por acaso, em inglês, "Fool" deriva de <em>follis</em> (latim = "saco de vento"), e "silly" (tolo) vem do alemão antigo <em>selig</em> (santo, abençoado). O Louco é o Santo Tolo.</p>
+
+    <div class="subsec">✦ Análise Simbólica — Por que cada símbolo está ali?</div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏔</span> O Precipício à sua Frente</h4>
+      <p>O Louco está prestes a dar um passo no abismo — e não se importa. Para o profano, é loucura irresponsável. Para o iniciado, é a doutrina do "salto de fé" — a entrega total ao fluxo da Vontade Divina. O precipício representa o <em class="term">Abismo Daath</em> da Árvore da Vida: o espaço entre o manifestado e o não-manifestado. Só o Louco (o Espírito Puro) pode atravessá-lo sem medo porque não possui ego a perder.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌈</span> A Vestimenta Multicolorida / A Capa de José</h4>
+      <p>As vestes coloridas — presentes em quase todos os Tarots — têm raiz na tradição do <em class="term">bufão real</em> e na capa de José (filho de Jacó) com seus 12 irmãos = o Sol entre os 12 signos do zodíaco. É um simbolismo solar e mercurial ao mesmo tempo. No Tarô de Thoth, Crowley mostra o Louco trajado de verde (a cor da primavera, do renascimento, do "não maduro ainda") com sapatos dourados = a base fálica solar. O verde = o <em class="term">Homem Verde</em> dos festivais pagãos da primavera.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🎒</span> O Saco / A Bolsa ao Ombro</h4>
+      <p>A bolsa pendurada no bastão contém todo o passado acumulado — memórias, experiências, karma. O fato de estar pendurada <em>atrás</em> dele, que ele carrega levemente, indica que não está preso ao passado. No Rider-Waite, a bolsa tem a forma de uma bolsa de viajante medieval. No Thoth, Crowley substitui a bolsa pelo cacho de uvas púrpuras: a fertilidade, a doçura, a base do êxtase dionisíaco.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌹</span> A Rosa Branca (Rider-Waite)</h4>
+      <p>A rosa branca que ele segura = pureza da intenção, inocência espiritual. A rosa branca é o símbolo do <em class="term">Yoni puro</em>, do princípio feminino não contaminado. Em contraste com a rosa vermelha da manifestação, a branca pertence ao mundo de Atziluth — o mundo da emanação pura. É também a rosa da Rosacruz no grau mais elevado de iniciação: o Louco ainda não "conheceu" (no sentido bíblico) a rosa — está em estado pré-iniciático.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐕</span> O Cão que Morde seus Calcanhar</h4>
+      <p>No Rider-Waite, um cão (ou lobinho) late e morde a barra das calças do Louco. Este animal representa o mundo material, os instintos, o passado, os medos — tudo que tenta reter o espírito em sua jornada. Curiosamente, o Louco não parece se incomodar. No Tarot egípcio, a criatura é um crocodilo (Sebek, filho de Set) — o Devorador, símbolo do retorno ao caos original. Crowley explica: o crocodilo não é ameaça mas co-participante: ele representa o "processo da Hé final no Tetragrammaton" — o retorno do Filho à posição do Pai, o ciclo eterno.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">☀</span> O Sol por Trás dele (Rider-Waite)</h4>
+      <p>O sol brilhante atrás do Louco = ele vem da Luz Divina e está a caminho do mundo. É o Sol de Tiferet (6ª Sefirá, o coração da Árvore) projetando-se para a manifestação. Também indica que ele age pela manhã — na aurora, no começo de um ciclo — antes que o sol alto do meio-dia (o conhecimento racionalista) o "queime".</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦁🐊</span> O Tigre e o Crocodilo (Thoth)</h4>
+      <p>No Tarô de Thoth, um tigre salta sobre ele por trás e um crocodilo o aguarda por baixo. Crowley extraiu isso diretamente do mito de <em class="term">Dionísio Baco</em>: "o tigre ou pantera saltando sobre ele por trás, enquanto o crocodilo está pronto para devorá-lo pela frente." Esses são os animais de Dionísio — o tigre representa a energia do caos vital que empurra o Louco adiante; o crocodilo é o Devorador-Criador (Sebek), o vazio criativo que aguarda para reabsorvê-lo. Longe de ser uma ameaça, eles são seus companheiros de viagem.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦅</span> O Abutre de Maut (Thoth)</h4>
+      <p>No Thoth, acima do Louco paira o abutre de <em class="term">Maut</em> — a deusa-abutre egípcia, forma mais arcaica de Nuit. Segundo a lenda, o abutre se reproduz pelo vento (sem macho) — tornando-o símbolo perfeito de concepção imaculada, de criação sem causa exterior. Crowley escreve que "o ar é considerado como o pai de toda a existência manifestada." O abutre também tem o pescoço em espiral — referência à teoria de Einstein (e antes dele, de Zoroastro) de que o universo tem forma espiral.</p>
+    </div>
+
+    <div class="subsec">✦ Correspondências Cabalísticas</div>
+
+    <div class="worlds-row">
+      <div class="world-pill world-atz">
+        <span class="world-name">ATZILUTH</span>
+        O Louco como Emanação Pura — antes da forma, o Espírito Absoluto, Ain Sof se tocando a si mesmo
+      </div>
+      <div class="world-pill world-ber">
+        <span class="world-name">BERIAH</span>
+        A Ideia do Louco — o Arquétipo do Inocente, o Potencial Puro Não-Manifestado
+      </div>
+      <div class="world-pill world-yet">
+        <span class="world-name">YETZIRAH</span>
+        O Louco como Formação Astral — o Anjo da Inocência, o sopro entre mundos
+      </div>
+      <div class="world-pill world-ass">
+        <span class="world-name">ASSIAH</span>
+        No mundo material: o vagabundo, o artista excêntrico, o revolucionário, o neófito
+      </div>
+    </div>
+
+    <p>O caminho de <em class="term">Aleph</em> na Árvore da Vida une <em class="term">Kether</em> (a Coroa, o Ponto Primordial) a <em class="term">Chokmah</em> (a Sabedoria, o Primeiro Pai). É o caminho mais elevado de toda a Árvore, anterior ao Abismo. Portanto, o Louco não é um "tolo" — é literalmente a manifestação do Uno que se lança ao Dois para criar o universo. É o gesto da criação primordial.</p>
+
+    <div class="subsec">✦ Conexões Mitológicas e Arquetípicas</div>
+
+    <div class="qblock qblock-c">
+      "O Louco pertence ao ouro do ar. Possui os chifres de Dionísio Zagreus e entre eles se acha o cone fálico de luz branca representando a influência proveniente da Coroa atuando sobre ele. Ele é mostrado contra o fundo do ar, rompendo como aurora do espaço."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em>, 1944</span>
+    </div>
+
+    <div class="qblock qblock-p">
+      "O Louco representa o alquimista neófito, que começa a Opus e persistirá até o fim para obter a Pedra Filosofal. Ele começa na ignorância e veste verde, a cor dos começos porque é verde. Conforme persiste, sua tolice irá amadurecer para se tornar um tipo de sabedoria."
+      <span class="qsrc">— Robert M. Place, <em>The Alchemical Tarot</em>, 6ª ed.</span>
+    </div>
+
+    <p>O Louco aparece em múltiplas tradições mitológicas como o mesmo arquétipo: <em class="term">Parsifal</em> (o Louco Puro que conquista o Graal), <em class="term">Dionísio Baco</em> (o deus da loucura sagrada que atravessa a Ásia), <em class="term">Harpócrates</em> (o bebê divino no ovo azul sobre o lótus), <em class="term">Hércules</em> em sua juventude, o jovem Krishna, o <em class="term">Enoch</em> bíblico que caminha com Deus e desaparece. O ponto comum: máxima inocência = máxima virilidade espiritual. A loucura é sagrada porque transcende a razão que aprisiona.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Dionísio Baco</span>
+      <span class="tag tag-myth">Parsifal · Graal</span>
+      <span class="tag tag-myth">Harpócrates</span>
+      <span class="tag tag-myth">Homem Verde da Primavera</span>
+      <span class="tag tag-kab">Aleph · Zero Qabalístico</span>
+      <span class="tag tag-kab">Ain Sof Aur</span>
+      <span class="tag tag-alch">Prima Materia</span>
+      <span class="tag tag-psy">Arquétipo do Self Junguiano</span>
+      <span class="tag tag-life">Novos Inícios · Saltos de Fé</span>
+      <span class="tag tag-life">A Criança Interior</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO I — O MAGO -->
+<!-- ============================================================ -->
+<div id="arc-1" class="arc arc-1 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🪄</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO I · BETH ב · MERCÚRIO</div>
+      <div class="arc-name">O Mago — <em style="font-size:.75em;opacity:.7">The Magician · Le Bateleur</em></div>
+      <div class="arc-subtitle">A Palavra Criadora · O Logos · A Vontade em Ação</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Beth · Casa</span>
+      <span class="pill pill-plan">Mercúrio ☿</span>
+      <span class="pill pill-seph">Kether → Binah</span>
+      <span class="pill pill-alch">Mercúrio Alquímico</span>
+      <span class="pill pill-world">Atziluth/Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>O Mago é a primeira manifestação positiva — a Vontade que rompe o silêncio do zero. É o <em class="term">Logos</em> (a Palavra) de São João: "No princípio era o Verbo." A letra <em class="term">Beth</em> (ב) significa <em>casa</em> — e a "casa" aqui é o próprio Universo: o Mago é o construtor do cosmos através da palavra e da vontade. O título francês original, <em>Le Bateleur</em>, significa "o portador do bâton" — e Mercúrio é o portador do bastão (caduceu): energia emitida, criação contínua.</p>
+
+    <p>O caminho de Beth une <em class="term">Kether</em> (a Coroa) a <em class="term">Binah</em> (a Compreensão, o Terceiro Sefira, a Grande Mãe). Portanto, o Mago é aquele que traz a faísca do Pai para o ventre da Mãe — é o ato sexual cósmico em sua forma mais espiritual. Ele é "o Filho, a manifestação em ato da ideia do Pai... o correlativo masculino da Alta Sacerdotisa."</p>
+
+    <div class="subsec">✦ Os Quatro Instrumentos sobre a Mesa — O Tetragrammaton em Miniatura</div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⚡</span> O Bastão / Varinha (Fogo · Yod · Atziluth)</h4>
+      <p>O bastão = o falo cósmico, o Lingam, o princípio criativo masculino em sua forma mais pura. É também a coluna vertebral com o Caduceu de Mercúrio. Crowley escreve que é "o bastão oco de Prometeu que traz fogo do céu." No Liber Magi: "Com a baqueta, Ele cria." Corresponde a Kether como ponto de origem do fogo vital.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏺</span> O Cálice / Taça (Água · Hé · Beriah)</h4>
+      <p>O cálice = o Yoni, o útero sagrado, o receptáculo da água da vida. É o Santo Graal. No Liber Magi: "Com a Taça, Ele preserva." Corresponde ao segundo mundo cabalístico, Beriah, o Mundo da Criação, onde as formas são geradas. O cálice contém a água = a Consciência Passiva, o Inconsciente Profundo.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⚔</span> A Espada / Adaga (Ar · Vau · Yetzirah)</h4>
+      <p>A espada = o intelecto cortante, o Logos que discrimina e separa o verdadeiro do falso. No Liber Magi: "Com a Adaga, Ele destrói." É o Filho (Vau do Tetragrammaton) em seu aspecto analítico. Corresponde a Yetzirah, o Mundo da Formação. A espada na tradição gnóstica também é a língua (o Verbo cortante de Deus no Apocalipse).</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🪙</span> O Disco / Pentáculo (Terra · Hé Final · Assiah)</h4>
+      <p>O disco = a matéria, o manifesto, o resultado final da vontade tornada realidade. No Liber Magi: "Com a Moeda, Ele redime." É a Hé final do Tetragrammaton — a Filha que retorna ao Pai para recomeçar o ciclo. Corresponde a Assiah, o Mundo Material. O Mago os tem <em>todos sobre a mesa em desordem</em> (no Tarô de Marselha) = os elementos da criação ainda não organizados — aguardando que o Iniciado os coloque em ordem pela Vontade.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">∞</span> O Lemniscato (Símbolo do Infinito ∞) sobre a Cabeça</h4>
+      <p>O sinal do infinito horizontal (∞) que flutua sobre a cabeça do Mago (no Rider-Waite) ou que surge de seu chapéu = o fluxo eterno da consciência entre polos opostos (masculino-feminino, ativo-passivo, criação-dissolução). Também representa os 8 Kabires — as oito forças que governam o planeta na tradição gnóstica. Numerologicamente, 8 = o poder do Executivo Divino. A lemniscata também indica que o Mago transcende o tempo linear.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">☿</span> Thoth / Hermes Trismegisto — A Identidade Oculta</h4>
+      <p>O Mago é Thoth egípcio, Hermes grego, Mercúrio romano — o mesmo deus em três culturas. Thoth com cabeça de íbis (concentração absoluta) segurava o bastão da fênix (ressurreição) e o Ankh (a Cruz Ansata = Rosacruz = o meio de progressão através dos mundos). Thoth é o escriba dos deuses, o mensageiro — mas também carrega o macaco cinocéfalo atrás de si (Maya, a ilusão que distorce a Palavra). O Mago cria e ilude simultaneamente — pois toda manifestação implica em ilusão.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌷🌹</span> As Flores (Rider-Waite) — Rosas e Lírios</h4>
+      <p>Na versão Rider-Waite, o jardim atrás do Mago tem rosas vermelhas (Geburah, desejo, força) e lírios brancos (Chesed, pureza, paz) em igual número. Isso indica que ele domina os dois pilares da Árvore — o da Rigor e o da Misericórdia — sendo o fio de equilíbrio do Pilar do Meio. As flores também representam a natureza manifestada aguardando que ele a ordene.</p>
+    </div>
+
+    <div class="subsec">✦ Postura Hermética — "Como em Cima, Assim Embaixo"</div>
+
+    <p>Uma mão do Mago aponta para o céu, a outra para a terra — esta é a postura da <em class="term">Tábua de Esmeralda</em> de Hermes. É o gesto do mediador entre mundos, aquele que canaliza as forças superiores para o plano inferior. No contexto cabalístico, ele está fazendo a força fluir de Kether (apontado para o alto) até Malkuth (apontado para a terra), percorrendo toda a Árvore da Vida.</p>
+
+    <div class="qblock qblock-c">
+      "Mercúrio representa ação em todas as formas e fases. É a base fluídica de toda transmissão de atividade e na teoria dinâmica do universo é, ele mesmo, a substância do universo. É a carga elétrica que é a primeira manifestação do anel de dez ideias indefiníveis."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Hermes Trismegisto</span>
+      <span class="tag tag-myth">Thoth Egípcio</span>
+      <span class="tag tag-myth">Prometeu (fogo roubado)</span>
+      <span class="tag tag-myth">Mercúrio Romano</span>
+      <span class="tag tag-kab">Beth · Kether-Binah</span>
+      <span class="tag tag-kab">YHVH — 4 elementos</span>
+      <span class="tag tag-alch">Mercúrio Alquímico</span>
+      <span class="tag tag-alch">Caduceu / Solve et Coagula</span>
+      <span class="tag tag-psy">Ego Consciente (Jung)</span>
+      <span class="tag tag-life">Manifestação da Vontade</span>
+      <span class="tag tag-life">Comunicação / Criatividade</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO II — A ALTA SACERDOTISA -->
+<!-- ============================================================ -->
+<div id="arc-2" class="arc arc-2 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🌙</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO II · GIMEL ג · LUA</div>
+      <div class="arc-name">A Alta Sacerdotisa — <em style="font-size:.75em;opacity:.7">The High Priestess · La Papesse</em></div>
+      <div class="arc-subtitle">O Véu de Ísis · A Virgem Eterna · O Camelo que Atravessa o Deserto</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Gimel · Camelo</span>
+      <span class="pill pill-plan">Lua 🌙</span>
+      <span class="pill pill-seph">Kether → Tiferet</span>
+      <span class="pill pill-alch">Albedo · Prata</span>
+      <span class="pill pill-world">Beriah / Abismo</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>Se o Mago é a Palavra, a Alta Sacerdotisa é o Silêncio. Se ele é a Luz, ela é o Véu. A letra <em class="term">Gimel</em> (ג) significa <em>camelo</em> — o animal que atravessa o deserto sem água, carregando suas reservas internas. O deserto que o Gimel atravessa é o <em class="term">Abismo</em> da Árvore da Vida — o vazio entre a Tríade Superior (Kether, Chokmah, Binah) e o resto da Árvore. A Sacerdotisa é o único caminho direto entre a Coroa (Kether) e o Coração (Tiferet), descendo verticalmente pelo Pilar do Meio.</p>
+
+    <p>Crowley a descreve como "a forma mais espiritual de Ísis, a virgem eterna, a Ártemis dos gregos." Ela é "luz e o corpo de luz. A verdade atrás do véu de luz. A alma de luz." Para o iniciado, a Luz não é a perfeita manifestação do Espírito Eterno — é justamente o <em>véu</em> que o oculta. Quanto mais brilhante a Sacerdotisa, mais ela esconde o que está por trás.</p>
+
+    <div class="subsec">✦ Os Símbolos Estruturais</div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏛</span> As Duas Colunas — Jachin e Boaz</h4>
+      <p><em class="term">Jachin</em> (pilar branco, à direita) = a coluna da Misericórdia, Chokmah, o princípio masculino, o canal solar Pingalá, o sêmen solar. <em class="term">Boaz</em> (pilar negro, à esquerda) = a coluna da Rigor, Binah, o princípio feminino, o canal lunar Idá, o fluido lunar. A Sacerdotisa se senta exatamente <em>entre</em> os dois pilares — ela é o <em class="term">Sushumna</em>, o canal central, o equilíbrio perfeito. São as colunas do Templo de Salomão; são os dois pilares que todo iniciado deve aprender a equilibrar em si mesmo.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌊</span> O Véu com Romãs e o Mistério de Perséfone</h4>
+      <p>O véu entre as colunas (Rider-Waite) é bordado com romãs (תפוחים) e folhas de palmeira em padrão alternado. A romã é o fruto de Perséfone — ela comeu 6 sementes no Hades e foi condenada a retornar 6 meses por ano. As sementes da romã = as sementes do potencial não-manifestado, os mundos em germe. O número de sementes (muitas centenas) = a multidão de possibilidades que a Sacerdotisa carrega em seu véu. A palmeira = a vitória, o masculino fálico que complementa o feminino da romã.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">📜</span> O Livro Fechado (Torah / Sefer Yetzirah)</h4>
+      <p>Ela segura (ou tem no colo) o Livro da Lei — parcialmente revelado, parcialmente oculto sob seu manto. Isso é a doutrina da iniciação em si: o conhecimento sagrado é revelado progressivamente, apenas na medida em que o iniciado está pronto. O livro = o Universo como Texto — toda a criação é uma escrita divina que só o iniciado sabe decifrar. No Thoth, o livro é substituído pelo <em class="term">arco e flecha de Ártemis</em> — pois ela é caçadora que caça por encantamento, e o arco = a Kundalini como flecha de Eros disparada em direção ao espírito.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌙</span> A Lua nos Pés (Rider-Waite) / Na Testa (algumas versões)</h4>
+      <p>A lua crescente aos pés ou na testa da Sacerdotisa = ela governa os ciclos. É também a referência direta a <em class="term">Maria Madalena</em> e à "mulher vestida de sol com a lua a seus pés e uma coroa de 12 estrelas" do Apocalipse (cap. 12). A lua tem três fases visíveis correspondendo às três fases da Deusa: crescente (virgem), cheia (mãe), minguante (sábia/anciã). A Sacerdotisa é primariamente a fase cheia — o máximo de receptividade e potência.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">💧</span> As Águas por Baixo do Trono</h4>
+      <p>No Rider-Waite, abaixo do trono da Sacerdotisa há um corpo de água (um lago ou mar). As águas = o Inconsciente Coletivo (Jung), as águas primordiais de Beriah, o <em class="term">Ens Seminis</em> da tradição gnóstica, as Águas da Vida que fluem de Yesod. A Sacerdotisa rege essas águas — ela está acima delas mas também as contém. É também referência ao <em class="term">Nilo</em> egípcio fertilizado anualmente, com o lótus crescendo nas suas margens.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐪</span> O Camelo — Por que esta letra?</h4>
+      <p>O camelo atravessa o deserto (o Abismo) sem água porque carrega suas reservas internas. A Sacerdotisa é o caminho de retorno do aspirante ao Sagrado Anjo Guardião através do Abismo — é o único caminho de subida de Tiferet até Kether. O camelo não precisa de fontes externas porque a Sacerdotisa é em si mesma a Fonte. Ela é a <em class="term">Princesa da Estrela Prateada</em> — o pensamento inteligível do Sagrado Anjo Guardião quando ele se volta para o aspirante.</p>
+    </div>
+
+    <div class="subsec">✦ As Três Formas da Deusa (Gimel, Daleth, Hé)</div>
+
+    <p>Crowley revela que as três letras consecutivas <em class="term">Gimel (II), Daleth (III) e Hé (XVII)</em> formam a trindade da Deusa: A Sacerdotisa = Ísis Celeste (virgem, espírito puro); A Imperatriz = Ísis como Natureza (mãe, terra, manifestação); A Estrela = Nuit (o cosmos infinito, a possibilidade ilimitada). Os três Pais correspondentes são Vau (V), Tzaddi (IV) e Yod (IX).</p>
+
+    <div class="qblock qblock-c">
+      "A Alta Sacerdotisa é a primeira carta que liga a Tríade Superior com a Héxade, e seu caminho produz uma conexão direta entre o Pai em seu aspecto mais elevado e o Filho em sua manifestação mais perfeita. Este caminho está em equilíbrio exato no Pilar do Meio."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Ísis Celeste · Ártemis</span>
+      <span class="tag tag-myth">Hécate · Perséfone</span>
+      <span class="tag tag-myth">Papisa Joana</span>
+      <span class="tag tag-myth">Nossa Senhora das Águas</span>
+      <span class="tag tag-kab">Gimel · Kether-Tiferet</span>
+      <span class="tag tag-kab">Yesod (Fundamento/Sexo)</span>
+      <span class="tag tag-alch">Albedo · Prata · Luna</span>
+      <span class="tag tag-psy">Inconsciente Coletivo</span>
+      <span class="tag tag-life">Intuição · Mistério</span>
+      <span class="tag tag-astr">Lua · Câncer</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO III — A IMPERATRIZ -->
+<!-- ============================================================ -->
+<div id="arc-3" class="arc arc-3 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">👑</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO III · DALETH ד · VÊNUS</div>
+      <div class="arc-name">A Imperatriz — <em style="font-size:.75em;opacity:.7">The Empress · L'Impératrice</em></div>
+      <div class="arc-subtitle">A Porta do Céu · A Grande Mãe · O Sal Alquímico</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Daleth · Porta</span>
+      <span class="pill pill-plan">Vênus ♀</span>
+      <span class="pill pill-seph">Chokmah → Binah</span>
+      <span class="pill pill-alch">Sal · Ísis-Néftis</span>
+      <span class="pill pill-world">Atziluth/Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A Imperatriz é o princípio feminino em sua manifestação mais total e universal. Enquanto a Sacerdotisa é a virgem etérea acima do Abismo, a Imperatriz é a <em>Mãe</em> — concreta, fértil, múltipla, abundante. A letra <em class="term">Daleth</em> (ד) significa <em>porta</em> — e a Imperatriz é literalmente a <em class="term">Porta do Céu</em>: o útero divino pelo qual toda vida passa ao entrar no mundo. O caminho de Daleth une <em class="term">Chokmah</em> (o Pai) a <em class="term">Binah</em> (a Mãe) — é o ato de amor cósmico entre os dois princípios primordiais acima do Abismo.</p>
+
+    <p>O símbolo alquímico de Vênus (♀) é único entre os planetas: é o único que abraça todas as dez Sefirot da Árvore da Vida. O círculo toca Kether, Chokmah, Geburah, Tiferet, Binah e Chesed; a cruz é formada pelos caminhos 6, 9, 10 e 7, 8. Isso revela que "a fórmula fundamental do universo é o Amor." Vênus não é apenas um planeta — é o princípio ontológico que une todo o cosmos.</p>
+
+    <div class="subsec">✦ Análise dos Símbolos</div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌾</span> O Campo de Trigo / A Natureza Abundante</h4>
+      <p>No Rider-Waite, a Imperatriz está sentada com campos de trigo maduro à sua volta = a colheita, a fertilidade da terra, a abundância material como resultado do amor divino. O trigo é sagrado a <em class="term">Deméter/Ceres</em> — a Mãe Grega que fez florescer ou murchar a terra conforme o ciclo de sua filha Perséfone. A Imperatriz governa esses ciclos naturais: plantio, crescimento, colheita, morte e renascimento.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌊</span> A Cascata d'Água atrás do Trono</h4>
+      <p>As águas que fluem por trás dela = as Águas da Vida emanando de Binah (o Grande Mar, o Mareb HaGadol da Cabala). Binah é a Mãe Suprema que governa as águas da existência. As cachoeiras = o fluxo generoso e constante da Vida que a Imperatriz distribui sem cessar. São também as lágrimas de Binah (chamada "a Contempladora", a Mãe que chora pelos seus filhos).</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">♀</span> O Escudo com o Símbolo de Vênus</h4>
+      <p>O escudo coração com o símbolo ♀ = a armadura do Amor como escudo. A Imperatriz não usa espada como arma (diferente do Imperador) — sua proteção é o Amor incondicional. No Tarô de Thoth, Crowley mostra as <em>abelhas</em> no manto (Vênus como Rainha das Abelhas, a colmeia como organização social perfeita) e os <em>dominós</em> (espirais de criação contínua). As flores-de-lis = a flor do sagrado feminino francês/real.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌸</span> O Lótus de Ísis e o Santo Graal</h4>
+      <p>No Thoth, ela segura o lótus de Ísis com a mão direita: "o lótus representando o feminino ou poder passivo; suas raízes na terra mas abrindo as pétalas para o Sol." E aqui Crowley revela algo profundo: "cuja imagem é o bojo do cálice. É, portanto, uma forma viva do Cálice Sagrado (O Santo Graal) santificada pelo sangue do Sol." A Imperatriz = o Graal em pessoa. O sangue do Sol = a luz solar que fecunda o lótus = a vida que ela sustenta.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦅🦢</span> O Pelicano e a Águia Branca (Thoth)</h4>
+      <p>O pelicano fêmea alimentando seus filhos com o sangue de seu próprio coração = o sacrifício amoroso da Grande Mãe, o amor que dá de si mesma sem reservas. Este simbolismo era secreto até o 5° grau da O.T.O. A águia branca = a tintura lunar do alquimista (prata), o complemento da águia vermelha do Imperador (ouro). As duas juntas formam a <em class="term">Coniunctio</em> alquímica.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">♎</span> O Zodíaco como Cinto</h4>
+      <p>No Thoth, o zodíaco envolve a Imperatriz "como um cinto" — ela contém todos os 12 signos, todos os ciclos do tempo, todas as manifestações do cosmos. Ela é maior que qualquer signo individual porque é a Mãe de todos eles. O zodíaco como cinto = ela não está presa ao tempo, ela o usa como ornamento.</p>
+    </div>
+
+    <div class="subsec">✦ O Sal Alquímico — A Terceira Essência</div>
+
+    <p>Na Alquimia (Tria Prima de Paracelsus), existem três princípios: <em class="term">Enxofre</em> (alma/fogo = Imperador), <em class="term">Mercúrio</em> (espírito/água = Mago) e <em class="term">Sal</em> (corpo/terra = Imperatriz). O Sal é o princípio inativo da natureza, a matéria que precisa ser energizada. A posição dos braços e do tronco da Imperatriz no Thoth "sugere a forma do símbolo alquímico do Sal." Ela é a matéria prima que aguarda ser transmurada — mas é também a matéria já santificada, a <em class="term">Terra Mater</em> sagrada.</p>
+
+    <div class="qblock qblock-g">
+      "O Arcano Três da Kabala é essa Mulher Vestida de Sol, com a Lua a seus pés, coroada com Doze Estrelas. O símbolo da Rainha do Céu é a Imperatriz do Tarot. A mulher oficia no altar da bendita Deusa Mãe do Mundo."
+      <span class="qsrc">— Samael Aun Weor, comentário ao Arcano III, <em>Tarô e Kabala</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Deméter / Ceres</span>
+      <span class="tag tag-myth">Vênus / Afrodite</span>
+      <span class="tag tag-myth">Ísis / Hator</span>
+      <span class="tag tag-myth">Maria, Rainha do Céu</span>
+      <span class="tag tag-myth">Shekinah</span>
+      <span class="tag tag-kab">Daleth · Chokmah-Binah</span>
+      <span class="tag tag-kab">Binah — a Grande Mãe</span>
+      <span class="tag tag-alch">Sal Alquímico</span>
+      <span class="tag tag-alch">Pelicano / Sacrifício</span>
+      <span class="tag tag-psy">Anima (Jung)</span>
+      <span class="tag tag-life">Fertilidade · Abundância</span>
+      <span class="tag tag-astr">Vênus · Touro · Libra</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO IV — O IMPERADOR -->
+<!-- ============================================================ -->
+<div id="arc-4" class="arc arc-4 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">⚜</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO IV · TZADDI צ · ÁRIES · MARTE / SOL EXALTADO</div>
+      <div class="arc-name">O Imperador — <em style="font-size:.75em;opacity:.7">The Emperor · L'Empereur</em></div>
+      <div class="arc-subtitle">O Pai Eterno · O Enxofre Alquímico · A Autoridade Divina</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Tzaddi · Anzol/Cabeça</span>
+      <span class="pill pill-plan">Áries ♈ · Marte ♂</span>
+      <span class="pill pill-seph">Chokmah → Tiferet</span>
+      <span class="pill pill-alch">Enxofre · Ouro</span>
+      <span class="pill pill-world">Atziluth</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A nota de Crowley sobre o Imperador guarda um segredo histórico: a atribuição correta desta carta à letra <em class="term">Tzaddi</em> só foi revelada em 1904 no <em>Livro da Lei</em>. Antes, todos os Tarots atribuíam Tzaddi à Estrela (Arcano XVII) — e Crowley percebeu que estavam errados. A troca Imperador↔Estrela cria uma simetria perfeita: Áries e Aquário flanqueando Peixes, espelhando Leão e Libra flanqueando Virgem. A etimologia de Tzaddi (TS, TZ) aparece nas palavras Caesar, Tsar, Kaiser, Czar, Señor, Seigneur — todas significando cabeça, governante, autoridade. O Imperador é o arquétipo do Pai-Governante em sua forma mais primordial.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐏</span> O Carneiro / Trono com Cabeças de Carneiro (Áries)</h4>
+      <p>O trono do Imperador é encimado por cabeças de carneiro selvagem do Himalaia (no Thoth) — não o carneiro doméstico, mas o <em>ibex</em> selvagem e feroz. Crowley explica a diferença: "o carneiro, por natureza, é um animal selvagem e corajoso se solitário em sítios solitários, enquanto que quando domesticado é reduzido a um animal dócil, covarde, gregário e suculento. Esta é a teoria do governo." O Imperador é o carneiro selvagem — não o governante cordeiro que apazigua, mas o guerreiro que protege com força real.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">△</span> A Postura Alquímica — Símbolo do Enxofre</h4>
+      <p>"Seus braços e cabeça formam um triângulo ereto; abaixo, as pernas cruzadas representam a cruz. Esta figura é o símbolo alquímico do Enxofre." O Enxofre = a Alma, o princípio ígneo masculino, o <em class="term">Rajas</em> da filosofia hindu — a energia criativa ágil, a iniciativa de todo o Ser. No Tarô de Thoth, junto com a Sacerdotisa (Mercúrio) e a Imperatriz (Sal), o Imperador completa a Tria Prima.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦅</span> A Águia Bicéfala Coroada no Escudo</h4>
+      <p>O escudo do Imperador (Thoth) traz a águia bicéfala coroada por um disco carmesim = a tintura vermelha do alquimista, o ouro. A águia bicéfala é símbolo de Zeus Arrhenothelus — o Zeus hermafrodita que unifica os opostos em si mesmo. Aparece repetidamente na alquimia como símbolo da conjunção perfeita. O carmesim/vermelho = Rubedo, o estágio final da Grande Obra — o Imperador já chegou lá.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">✝</span> O Cetro e a Orbe com Cruz de Malta</h4>
+      <p>O cetro (encimado por cabeça de carneiro) = a vontade que governa. A orbe com a Cruz de Malta = o mundo material (esfera) governado pela cruz dos quatro elementos. Que ele segura a esfera = ele já "estabeleceu seu governo" sobre a matéria. No Rider-Waite ele segura o <em>Ankh</em> (a chave da vida egípcia) como cetro — indicando que seu poder é o poder da Vida, não apenas da morte ou destruição.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌄</span> As Montanhas Áridas ao Fundo</h4>
+      <p>No Rider-Waite, por trás do Imperador há montanhas avermelhadas e áridas — a dureza do mundo material, a austeridade do Princípio Paterno. Ao contrário da paisagem verde e lush da Imperatriz, o Imperador governa o mundo das pedras, da estrutura, da lei física. Isso também refere à <em class="term">Pedra Cúbica</em> — o símbolo maçônico da matéria perfeitamente trabalhada, o produto do esforço iniciático.</p>
+    </div>
+
+    <div class="subsec">✦ O Mistério da Serpente na Testa</div>
+
+    <p>Na leitura de Samael Aun Weor (tradição Gnóstica), o Imperador tem uma serpente emergindo de sua testa — o <em class="term">Thermuthis</em>, o áspide sagrado de Ísis. Isso indica que a Kundalini está erguida, que é um Mestre Realizado. A coroa formada pelo áspide "pertence a Ísis, nossa Mãe Divina Kundalini particular." O boné de 4 pontas = os 4 elementos, os 4 Evangelhos, os 4 Vedas. O alambique e o recipiente sobre o boné = os órgãos sexuais (o instrumento da Grande Obra).</p>
+
+    <div class="qblock qblock-c">
+      "A autoridade do Imperador provém de Chokmah, a sabedoria criativa, a Palavra, e é exercida sobre Tiphareth, o homem organizado. O Imperador representa atividade súbita, violenta, porém não pertinente. Se persistir tempo demais, queima e destrói."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Zeus Pai / Júpiter</span>
+      <span class="tag tag-myth">Marte / Ares</span>
+      <span class="tag tag-myth">Osiris como Rei</span>
+      <span class="tag tag-myth">Henrique IV / Carlos Magno</span>
+      <span class="tag tag-kab">Tzaddi · Chokmah-Tiferet</span>
+      <span class="tag tag-kab">Chokmah — o Grande Pai</span>
+      <span class="tag tag-alch">Enxofre / Ouro / Rubedo</span>
+      <span class="tag tag-psy">Figura Paterna / Super-ego</span>
+      <span class="tag tag-life">Autoridade · Estrutura · Lei</span>
+      <span class="tag tag-astr">Áries · Saturno (exaltado)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO V — O HIEROFANTE -->
+<!-- ============================================================ -->
+<div id="arc-5" class="arc arc-5 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🔱</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO V · VAU ו · TOURO</div>
+      <div class="arc-name">O Hierofante — <em style="font-size:.75em;opacity:.7">The Hierophant · Le Pape</em></div>
+      <div class="arc-subtitle">O Manifestador do Mistério · A União do Microcosmo ao Macrocosmo</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Vau · Prego/Gancho</span>
+      <span class="pill pill-plan">Touro ♉ · Vênus</span>
+      <span class="pill pill-seph">Chokmah → Chesed</span>
+      <span class="pill pill-alch">Prego que une mundos</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Vau</em> (ו) significa <em>prego</em> ou <em>gancho</em> — e nove pregos aparecem no topo da carta de Crowley, fixando o oriel (vitral ou abertura) atrás da figura principal. O Vau é o terceiro elemento do <em class="term">Tetragrammaton</em> (יהוה — YHVH): Yod (Pai), Hé (Mãe), Vau (Filho), Hé Final (Filha). O Hierofante é o Filho — a manifestação da Vontade Divina que se dirige ao mundo, a luz que atravessa o vitral e chega às pessoas.</p>
+
+    <p>O Hierofante era originalmente <em class="term">Osíris</em> no Tarô egípcio (como indica a tiara triforme). Na Renascença tornou-se o Papa. Para Crowley, ele representa o "arcano particular que constitui o negócio maior, o essencial, de todo trabalho mágico: a <em>união do microcosmo ao macrocosmo.</em>"</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐘🐂</span> Os Elefantes e o Touro no Trono</h4>
+      <p>No Thoth, o Hierofante está assentado sobre (ou rodeado por) elefantes — animais que "participam da natureza de Touro": força, memória, sabedoria ancestral, paciência. O touro (Touro zodiacal) é o signo de Vênus exaltado na lua — força do mundo material governada pelo amor. Os quatro Kerubs (anjo, leão, boi, águia) em cada canto = os quatro evangelistas, os quatro Querubins de Ezequiel, os quatro naipes do Tarot.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔯</span> O Hexagrama e o Pentagrama</h4>
+      <p>Diante do Hierofante no Thoth há um hexagrama representando o macrocosmo, e dentro dele um pentagrama contendo uma criança masculina dançando. O hexagrama = os 6 planetas clássicos, Tiferet, o coração cósmico. O pentagrama = o microcosmo, o ser humano (a figura vitruviana). A criança dançando = a lei do Novo Æon (Horus), que substituiu o Æon do Deus que Morre (Osíris). Esta criança é o produto da união Macro-Microcosmo que o Hierofante preside.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌹</span> A Rosa de Cinco Pétalas no Oriel</h4>
+      <p>Por trás da cobertura fálica de cabeça do Hierofante, a rosa de cinco pétalas desabrocha. Cinco = Vênus (o pentágono é a figura da órbita de Vênus vista da Terra). A rosa de 5 pétalas = o sagrado feminino, o princípio criativo que floresce na transmissão da sabedoria. Que está <em>atrás</em> da cobertura fálica = o feminino está sempre oculto atrás do masculino visível — mas é ele a verdadeira fonte.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⚓</span> A Mulher Escarlate com Espada</h4>
+      <p>Diante do Hierofante no Thoth está a Mulher Escarlate portando espada = Babalon na hierarquia do Novo Æon. Ela representa a energia feminina que foi libertada do velamento patriarcal — que agora é ativa, guerreira, com espada própria. É o signo de que no Æon de Horus, a hierarquia do Tarot mudou: a sacerdotisa não está mais atrás do véu mas diante do altar.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🕊🐍</span> A Pomba e a Serpente</h4>
+      <p>O Hierofante no Thoth exibe o simbolismo da pomba e da serpente, referência ao Livro da Lei I, 57: "pois existe amor e amor. Existe a pomba, e existe a serpente." Dois tipos de amor: a pomba = o amor puro, espiritual, do Espírito Santo; a serpente = o amor selvagem, instintivo, da energia vital. O Hierofante é o guardião de ambas as vias — não suprime uma em favor da outra.</p>
+    </div>
+
+    <div class="subsec">✦ Os Dois Sacerdotes Ajoelhados (Rider-Waite)</div>
+
+    <p>No Rider-Waite, dois sacerdotes estão ajoelhados diante do Papa/Hierofante, um com rosas bordadas no manto e outro com lírios — novamente a dualidade de Geburah (rigor/desejo) e Chesed (misericórdia/paz). O Hierofante usa a coroa triforme = os três mundos superiores (Kether, Chokmah, Binah), os três estados de consciência (acordado, sonho, sono profundo), as três formas da consciência divina.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Osíris como Rei dos Mortos</span>
+      <span class="tag tag-myth">O Papa / Hierarquia Sagrada</span>
+      <span class="tag tag-myth">Zaratustra / Zoroastro</span>
+      <span class="tag tag-myth">Moisés com as Tábuas</span>
+      <span class="tag tag-kab">Vau · YHVH / O Filho</span>
+      <span class="tag tag-kab">Chesed — Misericórdia</span>
+      <span class="tag tag-alch">Prego — liga Céu e Terra</span>
+      <span class="tag tag-psy">Persona Social / Tradição</span>
+      <span class="tag tag-life">Ensino · Iniciação · Igreja</span>
+      <span class="tag tag-astr">Touro · Vênus exaltada</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANOS VI — XXI: Continuação compacta mas densa -->
+<!-- ============================================================ -->
+
+<div id="arc-6" class="arc arc-6 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">💫</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO VI · ZAIN ז · GÊMEOS</div>
+      <div class="arc-name">Os Amantes / Os Irmãos — <em style="font-size:.75em;opacity:.7">The Lovers</em></div>
+      <div class="arc-subtitle">O Casamento Alquímico · A Escolha · A Voz da Intuição</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Zain · Espada</span>
+      <span class="pill pill-plan">Gêmeos ♊ · Mercúrio</span>
+      <span class="pill pill-seph">Binah → Tiferet</span>
+      <span class="pill pill-alch">Conjunctio / Rosa-cruz</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Zain</em> (ז) significa <em>espada</em> — e esta é a carta do discernimento supremo. O caminho de Zain une <em class="term">Binah</em> (Compreensão, a Grande Mãe) a <em class="term">Tiferet</em> (Beleza, o Coração/Sol). É literalmente a voz da intuição materna descendo sobre a consciência humana — "a iluminação da mente e do coração pela Grande Mãe." Crowley nomeia esta carta "Os Filhos da Voz, o Oráculo dos Poderosos Deuses."</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔯</span> O Selo de Salomão / Sela Seis-Pontas</h4>
+      <p>Para Samael Aun Weor, o Arcano VI é essencialmente o Selo de Salomão. "As seis pontas da Estrela são Masculinas. As seis hondas entradas entre ponta e ponta, são Femininas... neles estão resumidos e sintetizados os mistérios do Arcano A.Z.F." O hexagrama = Lingam + Yoni em geometria sagrada, a interpenetração dos triângulos do fogo e da água. O Rei (Sol) em descida + a Rainha (Lua) em ascensão = a Coniunctio alquímica perfeita.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">👼</span> O Anjo Acima (Rider-Waite e Thoth)</h4>
+      <p>Sobre o casal paira o anjo <em class="term">Raphael/Perseus/Eros</em> com asas solares abertas = a Vontade Divina que preside a união. Ele é o Sol que ilumina o casamento. No Thoth, a figura é mais complexa: o Rei e a Rainha nus frente a frente, com uma mulher de escamas (Lilith/serpente = energia não transmutada) à esquerda e a mulher pura à direita. É a dualidade do princípio feminino que o iniciado deve reconhecer.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌳🌵</span> A Árvore do Conhecimento com Serpente (Rider-Waite)</h4>
+      <p>Atrás de Eva, a Árvore do Conhecimento com a serpente enrolada = o Éden antes da queda — mas no contexto iniciático, não como pecado mas como <em>potencial</em>. A serpente na árvore = a Kundalini em estado de espera. Os cinco frutos vermelhos = os cinco sentidos aguardando ser despertados pela experiência. Atrás de Adão, uma árvore em chamas = o enxofre alquímico, o desejo em sua pureza original.</p>
+    </div>
+
+    <div class="subsec">✦ A Escolha — A Dimensão Moral</div>
+
+    <p>No Tarot de Marselha, o jovem está entre duas mulheres (a virtuosa e a tentadora) — é a carta da Escolha Fundamental: entre o caminho da facilidade e o do crescimento. No contexto cabalístico, é a escolha entre os dois pilares da Árvore: Geburah (rigor, disciplina) e Chesed (amor, expansão). A espada de Zain corta no momento decisivo — a intuição divina nos aponta o caminho verdadeiro em situações de dúvida.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Adão e Eva no Éden</span>
+      <span class="tag tag-myth">Paris e o Julgamento (Hera/Atena/Afrodite)</span>
+      <span class="tag tag-myth">Parsifal e Kundry</span>
+      <span class="tag tag-kab">Zain · Binah-Tiferet</span>
+      <span class="tag tag-alch">Conjunctio / Casamento Alquímico</span>
+      <span class="tag tag-psy">Integração da Sombra</span>
+      <span class="tag tag-life">Escolhas de Vida · Relacionamentos</span>
+      <span class="tag tag-astr">Gêmeos · Dualidade</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-7" class="arc arc-7 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🏛</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO VII · CHETH ח · CÂNCER</div>
+      <div class="arc-name">A Carruagem — <em style="font-size:.75em;opacity:.7">The Chariot</em></div>
+      <div class="arc-subtitle">O Graal em Movimento · A Vitória pelo Equilíbrio · O Cercado</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Cheth · Cerca/Campo</span>
+      <span class="pill pill-plan">Câncer ♋ · Lua</span>
+      <span class="pill pill-seph">Binah → Geburah</span>
+      <span class="pill pill-alch">A Obra em Progresso</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Cheth</em> (ח) significa <em>cerca</em> ou <em>campo cercado</em> — o recipiente que contém a força. Esta é a carta do <em class="term">Graal como Veículo</em>: o iniciado que se tornou um vaso sagrado capaz de conter e dirigir a força divina. O carruageiro não usa rédeas visíveis — ele conduz os esfinges (ou animais) pela pura força da vontade e do equilíbrio interno.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦁🦅</span> Os Dois Esfinges / Animais Opostos</h4>
+      <p>No Rider-Waite, dois esfinges (um preto, um branco) puxam a carruagem em direções opostas. No Thoth, dois animais de naturezas opostas. Eles não são conduzidos por rédeas mas pela <em>vontade concentrada</em> do Carruageiro — ele os equilibra pelos opostos que habitam dentro de si. O preto = o inconsciente, a lua, a noite, os instintos; o branco = a consciência, o sol, o dia, a razão. Juntos = a totalidade psíquica dirigida.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌙⭐</span> A Couraça Estrelada e a Tiara Lunar</h4>
+      <p>O Carruageiro usa couraça pontilhada de estrelas e uma tiara com meia-lua = ele é ao mesmo tempo guerreiro e sacerdote, homem de ação e de contemplação. A armadura estrelar = o manto do cosmos, ele está vestido do universo. A tiara lunar = ele serve à Lua (Binah, a Grande Mãe) — toda sua ação é dedica a ela.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏰</span> A Cidade atrás dele</h4>
+      <p>Atrás da Carruagem, no Rider-Waite, há uma cidade amuralhada = o mundo que ele deixou para trás. Ele já completou o estágio da vida sedentária e da socialização — agora parte rumo ao desconhecido. A carruagem parte da cidade: toda jornada iniciática começa com o abandono da zona de conforto.</p>
+    </div>
+
+    <div class="subsec">✦ O Graal como Carruagem</div>
+
+    <p>No Thoth, a própria forma quadrada da carruagem sugere o Graal como recipiente cúbico — o Santo dos Santos do Templo era cúbico. O Carruageiro <em>é</em> o Graal: ele contém o sangue sagrado (a experiência iniciática acumulada) e o carrega com ele pelo mundo. Câncer rege o peito e o coração = o centro emocional do ser. Que a carta pertence a Câncer indica que a verdadeira vitória não é intelectual mas afetiva — vencer a si mesmo no plano emocional.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Helios conduzindo o carro solar</span>
+      <span class="tag tag-myth">Arjuna e Krishna no Mahabharata</span>
+      <span class="tag tag-myth">Élia (Elias) arrebatado em carro de fogo</span>
+      <span class="tag tag-kab">Cheth · Binah-Geburah</span>
+      <span class="tag tag-alch">O Graal como Receptáculo</span>
+      <span class="tag tag-psy">Controle do Ego · Self Dirigente</span>
+      <span class="tag tag-life">Vitória · Controle · Jornada</span>
+      <span class="tag tag-astr">Câncer · Luna</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-8" class="arc arc-8 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">⚖</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO VIII · LAMED ל · LIBRA (Thoth) / LEÃO (R-W)</div>
+      <div class="arc-name">O Ajustamento / A Justiça — <em style="font-size:.75em;opacity:.7">Adjustment / Justice</em></div>
+      <div class="arc-subtitle">O Karma Absoluto · A Lei do Equilíbrio · Maat</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Lamed · Aguilhão/Boi</span>
+      <span class="pill pill-plan">Libra ♎ · Vênus</span>
+      <span class="pill pill-seph">Geburah → Tiferet</span>
+      <span class="pill pill-alch">Equilíbrio dos opostos</span>
+      <span class="pill pill-world">Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Lamed</em> (ל) significa <em>aguilhão do boi</em> — o instrumento que direciona a força bruta (o boi) para o caminho reto. É a lei que canaliza a energia. No sistema de Crowley, esta carta é chamada de <em class="term">Ajustamento</em> (não Justiça) — porque não se trata de julgamento moral humano mas do <em>ajustamento automático e absoluto</em> de toda ação com sua consequência. É o karma Hindu, o Ma'at Egípcio, a Lei Cósmica.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🪶</span> A Balança e a Pena de Maat</h4>
+      <p>A balança é o símbolo central — mas ela está em perfeito equilíbrio, não inclinada. No sistema egípcio do Pesagem do Coração: o coração do morto era pesado contra a pena de <em class="term">Ma'at</em> (a deusa da verdade, equilíbrio e ordem cósmica). Se o coração era mais pesado que a pena — era devorado por Ammut. Se igual = libertação. O ajuste é sempre automático: o universo corrige qualquer desequilíbrio com precisão matemática.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⚔🔵</span> A Figura Suspensa / Diamante (Thoth)</h4>
+      <p>No Thoth, a figura de Ajustamento é uma mulher suspensa entre dois pesos de balança, em forma de diamante — o <em class="term">Lapis</em>, a Pedra Filosofal em sua forma geométrica. Ela usa uma máscara = a Lei é impessoal, não reconhece faces. Dois globos equilibrados = os dois pilares da Árvore. A espada e a pluma = discernimento e verdade.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔄</span> O Elo com a Força/Lust (VIII-XI)</h4>
+      <p>Crowley trocou VIII (Força/Lust) com XI (Ajustamento/Justiça) da ordem tradicional, pois Libra (Ajustamento) e Leão (Lust) flanqueiam Virgem no zodíaco, criando simetria perfeita. São as duas cartas que, juntas, descrevem o equilíbrio perfeito entre Rigor (Ajustamento = Geburah) e Misericórdia (Lust = Chesed). Uma sem a outra produz tirania ou caos.</p>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Ma'at Egípcia / Pesagem do Coração</span>
+      <span class="tag tag-myth">Têmis / Diké Grega</span>
+      <span class="tag tag-myth">Karma Hindu</span>
+      <span class="tag tag-kab">Lamed · Geburah-Tiferet</span>
+      <span class="tag tag-alch">Solve et Coagula / Equilíbrio</span>
+      <span class="tag tag-psy">Lei de Causa e Efeito</span>
+      <span class="tag tag-life">Justiça · Responsabilidade</span>
+      <span class="tag tag-astr">Libra · Vênus</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-9" class="arc arc-9 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🔦</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO IX · YOD י · VIRGEM</div>
+      <div class="arc-name">O Eremita — <em style="font-size:.75em;opacity:.7">The Hermit</em></div>
+      <div class="arc-subtitle">A Semente Sagrada · Yod como Lanterna · O Guia Interior</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Yod · Mão/Semente</span>
+      <span class="pill pill-plan">Virgem ♍ · Mercúrio</span>
+      <span class="pill pill-seph">Chesed → Tiferet</span>
+      <span class="pill pill-alch">Sêmen / Ovo de Hermes</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Yod</em> (י) é a menor de todas as letras hebraicas — e, paradoxalmente, a mais sagrada: é a letra de onde todas as outras são derivadas. Yod = 10 = a mão. Na tradição cabalística, é a letra da <em>semente</em>, do Ens Seminis, do sêmen espiritual. O Eremita guarda e irradia esta semente como a lanterna que segura.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🥚</span> A Lanterna com o Ovo de Hermes</h4>
+      <p>No Thoth, a lanterna do Eremita contém o <em class="term">Ovo de Hermes</em> = o sêmen, a semente do ser, a Prima Materia em sua forma luminosa. O Eremita <em>guarda</em> a lanterna = ele pratica a castidade ativa, protegendo a energia vital para transmutá-la em Luz espiritual. No Rider-Waite, a estrela de 6 pontas na lanterna = o Selo de Salomão, o equilíbrio dos opostos que ele ilumina para os outros.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏔</span> O Topo da Montanha</h4>
+      <p>O Eremita está no topo de uma montanha coberta de neve — isolado, acima das massas. A montanha = os três triangulos da Árvore da Vida; o topo = a Tríade Superior. Ele está no ponto mais alto da experiência humana comum, olhando para baixo e iluminando os que ainda sobem. A neve = a pureza atingida, o Albedo alquímico.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐍</span> A Serpente no Cajado</h4>
+      <p>No Thoth e em versões egípcias, a serpente enrolada no cajado do Eremita = a Kundalini em estado de guarda ativa. Não está adormecida — está consciente e contida. O cajado = a coluna vertebral. Serpente no cajado = a Kundalini que sobe lentamente, permanecendo sob controle da vontade.</p>
+    </div>
+
+    <div class="subsec">✦ A Nona Esfera — O Sexo Sagrado</div>
+
+    <p>Samael Aun Weor ensina que o Arcano IX se refere à <em class="term">Nona Esfera</em> (Yesod = 9 = Sexo = o Fundamento). "Bajar para subir" — o iniciado desce à Nona Esfera (o Sexo) para subir à Coroa. A lanterna que o Eremita carrega = o cérebro iluminado pela energia sexual transmutada que subiu pelo Sushumna. O cajado apontando para cima = a coluna com a energia ascendendo.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Cronos / Saturno com foice</span>
+      <span class="tag tag-myth">Zaratustra no deserto</span>
+      <span class="tag tag-myth">São João Batista</span>
+      <span class="tag tag-myth">O sábio ermitão da montanha</span>
+      <span class="tag tag-kab">Yod · Chesed-Tiferet</span>
+      <span class="tag tag-kab">Yesod — 9ª Sefirá / Sexo</span>
+      <span class="tag tag-alch">Ovo Órfico / Sêmen Sagrado</span>
+      <span class="tag tag-psy">O Velho Sábio (Jung)</span>
+      <span class="tag tag-life">Introspecção · Solidão Frutífera</span>
+      <span class="tag tag-astr">Virgem · Mercúrio</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-10" class="arc arc-10 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">☸</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO X · KAPH כ · JÚPITER</div>
+      <div class="arc-name">Fortuna / A Roda — <em style="font-size:.75em;opacity:.7">Fortune / Wheel of Fortune</em></div>
+      <div class="arc-subtitle">A Grande Roda de Samsara · O Enxofre Alquímico · O Ponto Imóvel</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Kaph · Palma da Mão</span>
+      <span class="pill pill-plan">Júpiter ♃</span>
+      <span class="pill pill-seph">Chesed → Netzach</span>
+      <span class="pill pill-alch">Roda da Alquimia</span>
+      <span class="pill pill-world">Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Kaph</em> (כ) significa <em>palma da mão</em> — a mão aberta recebendo e doando. Crowley abre o Livro de Thoth com esta carta: "A Grande Roda de Samsara. A Roda da Lei (Dhamma). A Roda do Tarô. A Roda dos Céus. A Roda da Vida. Todas estas Rodas são uma." Medita nesta Roda, ele exorta — e perceberás a Vontade que a moveu primeiro.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">♐♌♎♏</span> Os Quatro Kerubs nos Cantos</h4>
+      <p>Nos quatro cantos da Roda (Rider-Waite) estão os quatro Kerubs alados: o homem (Aquário = Ar), o leão (Leão = Fogo), o touro (Touro = Terra), a águia (Escorpião = Água). São os quatro elementos, os quatro evangelistas, os quatro Querubins do trono de Ezequiel — o que permanece imóvel enquanto a Roda gira. A Roda gira mas eles permanecem fixos = o ponto imóvel no centro do cosmos.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐍🐶⚡</span> Tifon, Anubis, Esfinge no Topo (Rider-Waite)</h4>
+      <p>Subindo à roda: <em class="term">Anubis</em> (dourado = a ascensão, a luz, Jachin) sobe pelo lado esquerdo. Descendo: <em class="term">Tifon/Set</em> (serpente vermelha = a descida, o caos, Boaz) pelo lado direito. No topo: a <em class="term">Esfinge</em> com espada = o mistério que permanece impassível. A Roda = o karma em movimento; a Esfinge no topo = a Vontade que transcende o karma.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⊕</span> T.A.R.O. = R.O.T.A. = Roda</h4>
+      <p>Nas letras na roda do Rider-Waite encontramos T-A-R-O e entre elas Y-H-V-H. Lidas em sentido horário: TARO = Tarot (as cartas). Em sentido anti-horário: ROTA (latim = Roda). A Roda do Tarot = o Tarot como Roda Cósmica. E nos quatro cantos: YHVH, o Tetragrammaton, o Nome Inefável que move tudo.</p>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Roda de Fortuna Romana</span>
+      <span class="tag tag-myth">Samsara Budista</span>
+      <span class="tag tag-myth">Ezequiel e os Ofanim</span>
+      <span class="tag tag-myth">Ixion na Roda (punição)</span>
+      <span class="tag tag-kab">Kaph · Chesed-Netzach</span>
+      <span class="tag tag-alch">Rota / Círculo / Eternidade</span>
+      <span class="tag tag-psy">O Ciclo · Impermanência</span>
+      <span class="tag tag-life">Mudanças de Ciclo · Sorte</span>
+      <span class="tag tag-astr">Júpiter · Expansão</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-11" class="arc arc-11 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🦁</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XI · TETH ט · LEÃO</div>
+      <div class="arc-name">Volúpia / Lust — <em style="font-size:.75em;opacity:.7">Lust (Thoth) · Strength (R-W)</em></div>
+      <div class="arc-subtitle">Babalon sobre a Besta · A Kundalini Despertada · O Êxtase Divino</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Teth · Serpente</span>
+      <span class="pill pill-plan">Leão ♌ · Sol</span>
+      <span class="pill pill-seph">Chesed → Geburah</span>
+      <span class="pill pill-alch">Leão Vermelho / Rubedo</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Teth</em> (ט) significa <em>serpente</em>. O valor numérico expandido (TYTH = טית) = 419 = "serpente" em hebraico. Toda esta carta é a serpente. Crowley renomeou deliberadamente "Força" para <em class="term">Lust (Volúpia)</em> — pois não é sobre reprimir a força animal, mas sobre o <em>êxtase da força exercida</em>, a "alegria da força em movimento." Esta é a carta da Kundalini despertada em toda a sua glória.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌹</span> Babalon — A Mulher Escarlate</h4>
+      <p>A mulher nua sobre a Besta é <em class="term">Babalon</em> — a Mulher Escarlate do Apocalipse, a divindade feminina de Thelema. Ela é o princípio do amor e da receptividade infinitos: ela recebe todos os iniciados em sua Taça, sem julgamento. Cabeça jogada para trás = êxtase espiritual total, não êxtase sexual vulgar. Na mão direita (espiritual): o Graal = as energias sagradas acumuladas. Na mão esquerda (carnal): rédeas vermelhas = ela controla, não suprime, a força instintiva.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐲</span> A Besta com 7 Cabeças = Os 7 Chakras</h4>
+      <p>As 7 cabeças da Besta = os 7 chakras da coluna vertebral, todos abertos e ativos pela Kundalini despertada. Crowley identificou as 7 cabeças como 7 aspectos de si mesmo (anjo, santo, poeta, mulher adúltera, homem de valor, sátiro, leão-serpente). Os 10 chifres = serpentes enviadas em todas as direções = a energia espiritual irradiando pelo cosmos transformado. Ao fundo, uma nova luz no horizonte = o Novo Æon que desperta.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">♾</span> A Lemniscata / Santo Graal na Copa</h4>
+      <p>A Taça que Babalon levanta = o Graal transbordando de experiência e amor. No Rider-Waite (como Força), a mulher fecha a boca do leão gentilmente = domínio pelo amor, não pela força. O lemniscato sobre a cabeça dela = o fluxo eterno entre os dois princípios. A coroa de flores = ela não usa coroa de metal mas de vida viva.</p>
+    </div>
+
+    <div class="subsec">✦ Tiferet através de Teth — O Caminho do Coração</div>
+
+    <p>O caminho de <em class="term">Teth</em> une <em class="term">Chesed</em> (Misericórdia, o 4) a <em class="term">Geburah</em> (Rigor, o 5). "Mostrando que o pilar do meio da consciência deve primeiro conhecer seus extremos antes de verdadeiramente se equilibrar." É o caminho da superação dos opostos pela integração amorosa — o leão (força) e Babalon (amor) devem se unir para gerar a Luz.</p>
+
+    <div class="qblock qblock-c">
+      "O caminho de Teth, Leo, a casa do Sol, corta o caminho de Gimel, a Lua, de modo que a Mulher na carta pode ser vista como uma forma da Lua, plenamente iluminada pelo Sol, intimamente unida a ele de forma a produzir, encarnado em forma humana, o representante do Senhor do Æon."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Babalon / A Prostituta Sagrada</span>
+      <span class="tag tag-myth">Lilith / Ereshkigal</span>
+      <span class="tag tag-myth">Hércules e o Leão de Nemeia</span>
+      <span class="tag tag-myth">Inanna descendo ao submundo</span>
+      <span class="tag tag-kab">Teth · Chesed-Geburah</span>
+      <span class="tag tag-alch">Leão Vermelho · Rubedo</span>
+      <span class="tag tag-psy">Integração da Sombra/Self</span>
+      <span class="tag tag-life">Criatividade · Paixão sagrada</span>
+      <span class="tag tag-astr">Leão · Sol</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-12" class="arc arc-12 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🙃</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XII · MEM מ · ÁGUA · LETRA-MÃE</div>
+      <div class="arc-name">O Pendurado — <em style="font-size:.75em;opacity:.7">The Hanged Man · Le Pendu</em></div>
+      <div class="arc-subtitle">O Sacrifício Reverso · O Martírio Iniciático · A Inversão do Mundo</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Mem · Água/Morte</span>
+      <span class="pill pill-plan">Água · Netuno</span>
+      <span class="pill pill-seph">Geburah → Hod</span>
+      <span class="pill pill-alch">Dissolutio / Nigredo</span>
+      <span class="pill pill-world">Beriah/Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Mem</em> (מ) é a segunda letra-mãe do alfabeto, correspondendo à <em>Água</em> — o elemento da dissolução, do inconsciente, do sacrifício e da renovação. O Pendurado representa o máximo da paradoxo iniciático: o sábio que aparece derrotado está, na verdade, no ponto de maior iluminação. Invertido, ele vê o mundo de cabeça para baixo — e no mundo esotérico, isso significa <em>ver a realidade como ela é</em>, não como a ilusão ordinária apresenta.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌿</span> A Árvore com Raízes para Cima</h4>
+      <p>No Thoth, o Pendurado está suspenso por uma corda ou serpente-raiz de uma <em>Árvore da Vida invertida</em> = a Árvore de Daath, a Árvore do Conhecimento que desce ao invés de subir. Isso é a doutrina da descida iniciática — você deve descer ao mais fundo para realmente subir. É o mito de Osíris esquartejado, de Dionísio despedaçado, de Orfeu descendo ao Hades.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">✝</span> A Cruz Formada pelo Corpo</h4>
+      <p>O corpo suspenso forma uma cruz de cabeça para baixo = a Cruz de São Pedro (que pediu ser crucificado de cabeça para baixo por humildade). A perna dobrada = o número 4 (o Imperador), enquanto o corpo estendido = a cruz. Juntos: o número 4 sobre a cruz = a matéria (4 elementos) suspensa sobre o espírito. A auréola ao redor da cabeça = iluminação através do sacrifício.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌟</span> O Rosto Sereno — A Iluminação Paradoxal</h4>
+      <p>O rosto do Pendurado está sereno, até beatífico — não há dor nem angústia. Isso revela o verdadeiro segredo da carta: o que parece derrota do exterior é, internamente, o estado de paz máxima. O sofrimento voluntário = o ritual de passagem. No Rider-Waite, uma aura dourada envolve sua cabeça = a halo do santo, do iniciado que completou a morte do ego.</p>
+    </div>
+
+    <div class="subsec">✦ Oden e a Dádiva do Conhecimento</div>
+
+    <p>Esta carta ecoa diretamente o mito nórdico de <em class="term">Odin/Wotan</em>: o deus que se pendurou voluntariamente à Árvore do Mundo (Yggdrasil) por 9 dias e 9 noites, ferido pela própria lança, para receber o conhecimento das runas. O número 9 = Yesod = o Fundamento = a Nona Esfera do Sexo. E também Cristo na cruz, Osíris na arca, Inanna pendurada num gancho no Submundo. O sacrifício é sempre o sacrifício do ego pela iluminação.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Odin na Yggdrasil</span>
+      <span class="tag tag-myth">Cristo na Cruz / Osíris na Arca</span>
+      <span class="tag tag-myth">Inanna pendurada no gancho</span>
+      <span class="tag tag-myth">Prometeu acorrentado</span>
+      <span class="tag tag-kab">Mem · Geburah-Hod</span>
+      <span class="tag tag-kab">Daath — o Abismo</span>
+      <span class="tag tag-alch">Dissolutio / Nigredo</span>
+      <span class="tag tag-psy">Suspensão · Rendição</span>
+      <span class="tag tag-life">Espera · Perspectiva invertida</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-13" class="arc arc-13 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">💀</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XIII · NUN נ · ESCORPIÃO</div>
+      <div class="arc-name">Morte — <em style="font-size:.75em;opacity:.7">Death · La Mort</em></div>
+      <div class="arc-subtitle">A Grande Transformação · O Recolhedor · Fim e Renascimento</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Nun · Peixe/Cobra</span>
+      <span class="pill pill-plan">Escorpião ♏ · Marte/Plutão</span>
+      <span class="pill pill-seph">Netzach → Tiferet</span>
+      <span class="pill pill-alch">Nigredo / Putrefactio</span>
+      <span class="pill pill-world">Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Nun</em> (נ) significa <em>peixe</em> — e o peixe é desde a antiguidade o símbolo da renovação, da vida que emerge das águas e retorna a elas. Escorpião governa os órgãos sexuais e a morte = as duas forças mais poderosas da natureza. A carta Morte no Tarot não representa a morte física mas a <em>transmutação fundamental</em> — a dissolução de uma forma para que uma nova possa emergir. É a carta do Scorpião que muda de pele tornando-se a Fênix.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌿🌻</span> O Campo de Flores e o Barco Solar (Thoth)</h4>
+      <p>No Thoth, a morte não é um esqueleto com foice — é uma figura em movimento entre flores que crescem em cada passo que ela dá. A morte fertiliza a vida. Um barco solar ao fundo = Rá na barca cruzando o duat (o mundo subterrâneo egípcio) = a morte como jornada de renovação solar. As flores crescendo onde a morte pisa = cada fim contém as sementes de novo começo.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏳</span> A Bandeira com a Rosa Branca (Rider-Waite)</h4>
+      <p>O cavaleiro esquelético carrega uma bandeira negra com uma rosa branca de cinco pétalas = pureza florescendo em meio ao mais absoluto escuro. O preto = o Nigredo alquímico, a fase da putrefação necessária. A rosa branca = a pureza que emerge do processo. É a mesma rosa que o Louco carrega no Arcano 0 = o ciclo completa-se: vida → morte → renascimento.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌅</span> O Sol Nascente entre as Torres (Rider-Waite)</h4>
+      <p>Ao fundo da carta Morte, um sol nascente entre duas torres = o renascimento garantido após a morte. As duas torres = os pilares do Templo (Jachin e Boaz), as portas do Além que o sol atravessa. Um papa, uma criança e uma mulher diante do cavaleiro = morte não discrimina por status, idade ou gênero.</p>
+    </div>
+
+    <div class="subsec">✦ O Escorpião, a Águia e a Fênix</div>
+
+    <p>O signo de Escorpião tem três formas de manifestação: o <em class="term">escorpião</em> (força rastejante que se autodestrói com seu próprio veneno), a <em class="term">águia</em> (o mesmo veneno transformado em voo), e a <em class="term">fênix</em> (a morte e renascimento em chamas). A carta Morte representa esta sequência: o que não se transforma, morre. O que aceita a transformação, voa. O que mergulha no fogo, renascea imortal.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Osíris esquartejado</span>
+      <span class="tag tag-myth">Fênix / Benu Egípcio</span>
+      <span class="tag tag-myth">Anubes / Guia dos Mortos</span>
+      <span class="tag tag-myth">Kali a Destruidora</span>
+      <span class="tag tag-kab">Nun · Netzach-Tiferet</span>
+      <span class="tag tag-alch">Nigredo / Putrefação</span>
+      <span class="tag tag-psy">Morte simbólica / Individuação</span>
+      <span class="tag tag-life">Encerramentos · Transformações</span>
+      <span class="tag tag-astr">Escorpião · Plutão</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-14" class="arc arc-14 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">⚗</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XIV · SAMEKH ס · SAGITÁRIO</div>
+      <div class="arc-name">Arte / Temperança — <em style="font-size:.75em;opacity:.7">Art (Thoth) · Temperance (R-W)</em></div>
+      <div class="arc-subtitle">A Coniunctio Alquímica · Solve et Coagula · O Hermafrodita Sagrado</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Samekh · Pilar/Suporte</span>
+      <span class="pill pill-plan">Sagitário ♐ · Júpiter</span>
+      <span class="pill pill-seph">Tiferet → Yesod</span>
+      <span class="pill pill-alch">Conjunctio / Albedo→Rubedo</span>
+      <span class="pill pill-world">Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Samekh</em> (ס) significa <em>pilar</em> ou <em>suporte</em> — a estrutura que sustenta a obra. Crowley chamou de <em>Arte</em> (não Temperança) porque este arcano descreve a arte suprema: a Alquimia como processo criativo. O caminho de Samekh une <em class="term">Tiferet</em> (o Sol/Coração) a <em class="term">Yesod</em> (a Lua/Fundamento/Sexo) — é o eixo central da Árvore, o canal pelo qual a consciência solar desce ao inconsciente lunar para se fundir e criar o ouro.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔆🌑</span> A Figura Hermafrodita — Metade Sol, Metade Lua</h4>
+      <p>No Thoth, a figura central tem um lado solar e um lado lunar: "metade sol, metade lua." É o <em class="term">Rebis</em> alquímico — o hermafrodita sagrado que resulta da fusão dos opostos. Uma cabeça feminina branca (Lua/prata) e uma cabeça negra com coroa solar (Sol/ouro). Juntos, completados, são a Coniunctio perfeita. Esta é a figura que o iniciado deve tornar-se — não suprimindo o feminino nem o masculino, mas integrando ambos.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦅🦁</span> A Águia e o Leão Trocando de Cor</h4>
+      <p>No Thoth, a águia (Mercúrio/Água, que era branca) torna-se preta, e o leão (Enxofre/Fogo, que era vermelho) torna-se branco. É a operação de <em class="term">Solve et Coagula</em> em imagem: o que era sólido dissolve-se, o que era líquido coagula-se. Os elementos trocam de natureza — o fogo resfria e o gelo ferve. Isso é a Grande Transmutação.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌊🔥</span> Os Dois Vasos Vertendo (Rider-Waite e Thoth)</h4>
+      <p>A figura verte líquido de dois vasos em operação cruzada — ou verte sobre fogo e água ao mesmo tempo. No Rider-Waite, o anjo transvasa entre dois cálices com um pé em terra e outro na água = transitando entre os dois reinos. No Thoth, os fluidos são vermelho e branco = sangue solar e prata lunar, a mistura dos dois produz o Elixir da Vida, a Quinta Essência.</p>
+    </div>
+
+    <div class="subsec">✦ A Fórmula I.A.O.</div>
+
+    <p>No Thoth, na caldeira de Arte está escrita a fórmula <em class="term">V.I.T.R.I.O.L.</em> (Visita Interiora Terrae Rectificando Invenies Occultum Lapidem = "Visita o interior da Terra e, retificando, encontrarás a Pedra Oculta"). Toda a Grande Obra é descrita nesta carta: descer ao interno (Yesod), retificar (ajustar os opostos), e encontrar a Pedra = a iluminação.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Íris, deusa do arco-íris</span>
+      <span class="tag tag-myth">Rebis / Hermafrodito</span>
+      <span class="tag tag-myth">Rafael, anjo curador</span>
+      <span class="tag tag-kab">Samekh · Tiferet-Yesod</span>
+      <span class="tag tag-alch">Coniunctio / V.I.T.R.I.O.L.</span>
+      <span class="tag tag-alch">Rebis / Hermafrodita</span>
+      <span class="tag tag-psy">Integração de Anima/Animus</span>
+      <span class="tag tag-life">Equilíbrio · Moderação criativa</span>
+      <span class="tag tag-astr">Sagitário · Júpiter</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-15" class="arc arc-15 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🐐</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XV · AYIN ע · CAPRICÓRNIO</div>
+      <div class="arc-name">O Diabo — <em style="font-size:.75em;opacity:.7">The Devil · Le Diable</em></div>
+      <div class="arc-subtitle">Baphomet · Pan Pamphage · A Força Instintiva não Transmutada</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Ayin · Olho</span>
+      <span class="pill pill-plan">Capricórnio ♑ · Saturno</span>
+      <span class="pill pill-seph">Hod → Tiferet</span>
+      <span class="pill pill-alch">Nigredo / Chumbo</span>
+      <span class="pill pill-world">Yetzirah/Assiah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Ayin</em> (ע) significa <em>olho</em> — o olho que pode ver a verdade (Terceiro Olho aberto) ou que só enxerga a ilusão material (olho cego). O Diabo não é o conceito cristão de demônio — é <em class="term">Pan Pamphage, Pangenetor</em>: o Devorador de Tudo, o Gerador de Tudo. Crowley diz que "o valor numérico de Pan é 131, como o é o de Samael, o anjo destruidor hebraico." Pan = o universo material em toda sua densidade e intensidade. Ele é o mesmo aspecto de Shiva que destrói e cria.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐐</span> Baphomet — O Bode de Mendes</h4>
+      <p><em class="term">Baphomet</em> (nome dos Templários) = "Pai Mithras" segundo Crowley. É a síntese do masculino e feminino, humano e divino, matéria e espírito = o símbolo hermético perfeito. Mas em sua versão invertida (cabeça de bode apontando para baixo), representa o pentagrama invertido = a matéria dominando o espírito. A tocha entre os chifres = o fogo descendo ao invés de subir.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⛓</span> Os Acorrentados — A Ilusão da Prisão</h4>
+      <p>No Rider-Waite, um homem e uma mulher estão acorrentados ao pedestal de Baphomet — mas olhando com atenção, as correntes são <em>frouxas</em>: eles poderiam sair a qualquer momento. A prisão é da mente, não da matéria. Eles também têm chifrinhos e rabos = estão começando a se tornar como o Diabo = estão sendo consumidos pelo que os prende.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">👆</span> A Mão Erguida com SOLVE</h4>
+      <p>Baphomet tem uma mão apontando para cima com SOLVE (dissolver) e outra para baixo com COAGULA (condensar) — o mesmo gesto do Mago! A diferença: o Mago usa essa fórmula conscientemente a serviço da Vontade; o Diabo usa-a automaticamente a serviço do instinto. A diferença entre Magia e automatismo é a consciência.</p>
+    </div>
+
+    <div class="subsec">✦ Pan como Divindade — O Diabo Reabilitado</div>
+
+    <p>Para os iniciados, o Diabo não é o inimigo mas o <em>professor mais severo</em>. Na visão de Samael Aun Weor, o Arcano XV representa Lucifer como "Treinador Psicológico" — aquele que nos testa para que nos fortaleçamos. Para Crowley, é o aspecto de Pã, a força vital da natureza que não tem moral — é amoral e, portanto, total. A questão não é matar o Diabo em nós mas torná-lo consciente.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Pan / Capricórnio</span>
+      <span class="tag tag-myth">Baphomet / Mithras</span>
+      <span class="tag tag-myth">Dionísio Zagreus (aspecto escuro)</span>
+      <span class="tag tag-myth">Set / Typhon</span>
+      <span class="tag tag-kab">Ayin · Hod-Tiferet</span>
+      <span class="tag tag-kab">Qliphoth / O Avesso da Árvore</span>
+      <span class="tag tag-alch">Chumbo / Nigredo</span>
+      <span class="tag tag-psy">A Sombra (Jung)</span>
+      <span class="tag tag-life">Obsessões · Vícios · Ilusões</span>
+      <span class="tag tag-astr">Capricórnio · Saturno</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-16" class="arc arc-16 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">⚡</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XVI · PEH פ · MARTE</div>
+      <div class="arc-name">A Torre / A Guerra — <em style="font-size:.75em;opacity:.7">The Tower · La Maison Dieu</em></div>
+      <div class="arc-subtitle">A Fulminação Divina · A Queda das Estruturas Falsas · O Raio de Kether</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Peh · Boca</span>
+      <span class="pill pill-plan">Marte ♂ · Urano</span>
+      <span class="pill pill-seph">Netzach → Hod</span>
+      <span class="pill pill-alch">Calcination / Fogo</span>
+      <span class="pill pill-world">Assiah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Peh</em> (פ) significa <em>boca</em> — a boca que fala, que cria, mas também que destrói pela palavra. O título francês original é <em>La Maison Dieu</em> = A Casa de Deus — indicando que o que está sendo destruído não é a Torre mas a <em>falsa ideia de Deus</em>, o ídolo de pedra construído pelo ego. O raio que cai de Kether (a Coroa) destrói o cume da Torre que os humanos construíram para "alcançar Deus" — como Babel.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">👑⚡</span> A Coroa Caindo</h4>
+      <p>No Rider-Waite, a coroa que voa da torre ao ser atingida pelo raio = o ego real destronado. A coroa = a pretensão de soberania espiritual antes de ser merecida. O raio Divino não destrói a torre inteira — destrói apenas a coroa (o topo, o ego inflado). O que permanece de pé = a estrutura essencial que pode ser reconstruída honestamente.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌩</span> O Raio de Kether — Yod-Heh-Vau-Heh em Fogo</h4>
+      <p>Os 22 pontos de fogo caindo = 22 caminhos da Árvore da Vida em chamas = toda a estrutura cabalística sendo varrida pela Energia Primordial. É a <em class="term">Fulminação do Abismo</em> — quando Kether (a Coroa) desce diretamente até Malkuth (o Reino) sem seguir os caminhos normais da Árvore. É uma descida de choque, de crise, de revelação fulminante.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏗⚔</span> A Torre de Guerra (Thoth)</h4>
+      <p>No Thoth, Crowley chama de "A Torre ou a Guerra" — pois a destruição desta carta é sempre uma espécie de guerra contra as próprias ilusões. A torre = a estrutura de crenças e identidade construída ao longo de anos. O raio = a revelação súbita que a destrói em um instante. A guerra = o conflito interno entre o ser verdadeiro e a persona social construída.</p>
+    </div>
+
+    <div class="subsec">✦ Marte e a Purificação pelo Fogo</div>
+
+    <p>Marte é o planeta desta carta — mas não o Marte da guerra destrutiva. É o <em class="term">Marte da purificação</em>: o fogo que queima o que é impuro para que o ouro puro sobressaia. Na Alquimia, a Calcinação é o primeiro processo = queimar a matéria bruta até as cinzas para encontrar o sal inerte que será o ponto de partida da Grande Obra. A Torre é a Calcinação pessoal — dolorosa mas absolutamente necessária.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Torre de Babel</span>
+      <span class="tag tag-myth">Prometeu roubando o fogo</span>
+      <span class="tag tag-myth">Sodoma e Gomorra</span>
+      <span class="tag tag-myth">Ícaro e o Sol</span>
+      <span class="tag tag-kab">Peh · Netzach-Hod</span>
+      <span class="tag tag-alch">Calcinação / Purificação pelo fogo</span>
+      <span class="tag tag-psy">Colapso de defesas / Crise</span>
+      <span class="tag tag-life">Ruptura súbita · Revelação</span>
+      <span class="tag tag-astr">Marte · Áries · Escorpião</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-17" class="arc arc-17 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">⭐</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XVII · HÉ ה · AQUÁRIO</div>
+      <div class="arc-name">A Estrela — <em style="font-size:.75em;opacity:.7">The Star · L'Étoile</em></div>
+      <div class="arc-subtitle">Nuit · A Deusa do Céu Estrelado · A Esperança Eterna</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Hé · Janela/Respiração</span>
+      <span class="pill pill-plan">Aquário ♒ · Saturno/Urano</span>
+      <span class="pill pill-seph">Chokmah → Tiferet</span>
+      <span class="pill pill-alch">Destilação / Éter</span>
+      <span class="pill pill-world">Atziluth</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Hé</em> (ה) é a letra da respiração — a segunda letra do Tetragrammaton, correspondendo à Mãe (Binah) na posição alta e à Filha na posição baixa. Crowley atribuiu esta carta a Aquário (e não ao Imperador como era tradicional, depois da revelação do Livro da Lei). No Thoth, a Estrela é <em class="term">Nuit</em> — a Deusa do Céu Noturno, o princípio do infinito feminino cósmico, a mãe de todas as estrelas.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⭐🌟</span> A Estrela Central de 8 Pontas</h4>
+      <p>A estrela de 8 pontas = a Estrela de Vênus/Ishtar (o pentágono de Vênus visto da Terra tem 5 pontas, mas a estrela de 8 pontas é o ciclo de aparecimentos de Vênus em 8 anos). É também a estrela dos ventos (os 8 pontos cardeais e intercardinais), o sinal de Inanna/Ishtar, a Rainha do Céu. As 7 menores ao redor = os 7 chakras, os 7 planetas clássicos, os 7 dias da semana.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">💧💧</span> Os Dois Vasos — Verte e Reabsorve</h4>
+      <p>A mulher nua verte água de dois vasos simultaneamente — um sobre a terra (fertilização), um sobre o mar (circulação cósmica). No Thoth: "Ele [o universo] verte continuamente energia e continuamente a reabsorve. É a realização do movimento perpétuo." Um vaso dourado = fluido solar; um prateado = fluido lunar. A mulher é ao mesmo tempo a fonte e o vaso = ela é o cosmos em forma de mulher.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌊🦜</span> O Pé na Terra, o Pé na Água (Rider-Waite)</h4>
+      <p>A mulher tem um pé firme na terra (o manifestado, o concreto) e o outro mergulhado na água (o inconsciente, o potencial). É a postura do equilíbrio entre os dois mundos — ela não está completamente em nenhum dos dois, mas flui entre eles. Esse é o ensinamento de Aquário: a água derramada ao ar (Aquário é um signo de Ar, não de Água!) = a ideia que se manifesta.</p>
+    </div>
+
+    <div class="subsec">✦ A Esperança Após a Torre</div>
+
+    <p>Depois da destruição da Torre (XVI), a Estrela (XVII) emerge como a luz de esperança no escuro. Esta sequência (Torre → Estrela → Lua → Sol) é a jornada alquímica completa: Calcinação → Destilação → Condensação → Iluminação. A Estrela é o momento imediatamente após a grande crise — quando, no silêncio deixado pela destruição, a luz verdadeira finalmente pode ser vista.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Nuit / Nut Egípcia</span>
+      <span class="tag tag-myth">Aquário / Ganymede portador de água</span>
+      <span class="tag tag-myth">Inanna / Ishtar</span>
+      <span class="tag tag-myth">Andrômeda / Vênus nascendo do mar</span>
+      <span class="tag tag-kab">Hé · Chokmah-Tiferet</span>
+      <span class="tag tag-alch">Destilação / Quinta Essência</span>
+      <span class="tag tag-psy">Esperança · Renovação</span>
+      <span class="tag tag-life">Visão · Esperança após crise</span>
+      <span class="tag tag-astr">Aquário · Urano</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-18" class="arc arc-18 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🌑</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XVIII · QOPH ק · PEIXES</div>
+      <div class="arc-name">A Lua — <em style="font-size:.75em;opacity:.7">The Moon · La Lune</em></div>
+      <div class="arc-subtitle">O Limiar da Ilusão · A Grande Ilusão · O Abismo de Qoph</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Qoph · Nuca da Cabeça</span>
+      <span class="pill pill-plan">Peixes ♓ · Lua/Netuno</span>
+      <span class="pill pill-seph">Netzach → Malkuth</span>
+      <span class="pill pill-alch">Luna / Prata Turva</span>
+      <span class="pill pill-world">Yetzirah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Qoph</em> (ק) significa <em>nuca da cabeça</em> — o ponto mais vulnerável, o lugar onde os pesadelos entram. É a carta da ilusão, do sonho, das águas turvas do inconsciente que distorcem a realidade. Enquanto a Alta Sacerdotisa (Gimel) era a Lua em seu aspecto mais elevado e puro, a carta Lua (Qoph) é a Lua em seu aspecto mais sombrio e desconcertante — "no outro extremo da escala."</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦞</span> O Camarão / Lagostim saindo da água</h4>
+      <p>O ser que emerge das profundezas = a "criatura" do inconsciente profundo, a vida subaquática que emerge ao plano da consciência. No Tarot de Marselha é um carangueijo/lagostim (Câncer = a Lua). No Rider-Waite é um lagostim = crustáceo, animal que tem carapaça externa dura mas mole por dentro. Representa as forças do inconsciente emergindo à consciência — podem ser criativas ou destrutivas.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🐕🐺</span> O Cão e o Lobo</h4>
+      <p>Um cão domesticado e um lobo selvagem uivam à lua = os dois aspectos do instinto: civilizado vs primitivo. O caminho entre as duas torres tem que ser percorrido entre esses dois extremos sem ser devorado por nenhum deles. No Thoth, essas criaturas são substituídas por formas mais abstratas.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🏰🏰</span> As Duas Torres</h4>
+      <p>Duas torres idênticas flanqueiam o caminho da Lua = Jachin e Boaz novamente, mas desta vez o caminho entre eles é cheio de perigos e ilusões. Na linguagem iniciática, as torres = os portais da morte, o Julgamento de Pesagem do Coração egípcio. A lua = a reflectora, não a emissora. Peixes = a ilusão última antes da dissolução total em Netuno.</p>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Hécate da Lua Negra</span>
+      <span class="tag tag-myth">Selene / Lua Cheia</span>
+      <span class="tag tag-myth">Os Peixes de Afrodite e Eros</span>
+      <span class="tag tag-myth">O Duat Egípcio (mundo subterrâneo)</span>
+      <span class="tag tag-kab">Qoph · Netzach-Malkuth</span>
+      <span class="tag tag-alch">Prata Turva / Antes do Albedo</span>
+      <span class="tag tag-psy">O Inconsciente / Projeção</span>
+      <span class="tag tag-life">Ilusões · Medo · Confusão</span>
+      <span class="tag tag-astr">Peixes · Netuno · Lua</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-19" class="arc arc-19 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">☀</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XIX · RESH ר · SOL</div>
+      <div class="arc-name">O Sol — <em style="font-size:.75em;opacity:.7">The Sun · Le Soleil</em></div>
+      <div class="arc-subtitle">Tiferet Manifestado · A Iluminação · O Rubedo da Grande Obra</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Resh · Cabeça</span>
+      <span class="pill pill-plan">Sol ☀</span>
+      <span class="pill pill-seph">Hod → Yesod</span>
+      <span class="pill pill-alch">Ouro / Rubedo</span>
+      <span class="pill pill-world">Atziluth/Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Resh</em> (ר) significa <em>cabeça</em> — e o Sol é a "cabeça" do sistema solar, o centro consciente ao redor do qual tudo orbita. O Sol no Tarot é <em class="term">Tiferet manifestado plenamente</em> — a 6ª Sefirá, o Coração/Beleza/Harmonia, o filho divino. É a carta da iluminação conquistada, da clareza absoluta, do amor generoso que irradia sem restrições.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">👦👧</span> As Duas Crianças Nuas (Rider-Waite)</h4>
+      <p>Duas crianças nuas dançando sob o sol = a inocência recuperada após a longa jornada iniciática. A nudez = nada mais a esconder, nenhuma máscara. No Thoth, são as crianças-gêmeos de Apolo = Artur e Merlin, Sol e Lua em seus aspectos mais jovens e puros. As crianças ainda não têm gênero definido = a unidade andrógina antes da separação. O número 2 = os opostos finalmente reconciliados sem perder sua individualidade.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🌻</span> Os Girassóis</h4>
+      <p>No Rider-Waite, uma parede de girassóis atrás das crianças = os seres que voltam sempre seu rosto ao Sol. São o povo iniciado: aqueles que, como os girassóis, se orientam automaticamente pelo centro luminoso (Tiferet). Os girassóis têm 21 espirais em um sentido e 34 no outro = a sequência Fibonacci = os padrões matemáticos da natureza emanando do Sol.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⭐☀</span> Os Raios do Sol — Alternados Retos e Ondulados</h4>
+      <p>No Rider-Waite, os raios do Sol alternam entre retos e ondulados = a dualidade da energia solar: a irradiação direta (reta = ativa, positiva) e a irradiação reflexiva (ondulada = passiva, receptiva). Todo o cosmos é animado por esta pulsação dual do Sol.</p>
+    </div>
+
+    <div class="subsec">✦ O Sol como Tiferet — O Coração da Árvore</div>
+
+    <p>O Sol corresponde a <em class="term">Tiferet</em>, o centro da Árvore da Vida. De Tiferet partem 8 caminhos = 8 direções = os 8 pontos da Rosa dos Ventos. No Rider-Waite, no centro do sol há um rosto humano = o Sol é consciente, é uma presença inteligente e amorosa. Na tradição gnóstica, o Sol = Cristo como Princípio Cósmico (não Jesus histórico), o Logos Solar que ilumina todos igualmente.</p>
+
+    <div class="connects">
+      <span class="tag tag-myth">Rá / Hórus Solar</span>
+      <span class="tag tag-myth">Apolo / Helios</span>
+      <span class="tag tag-myth">Cristo como Sol da Justiça</span>
+      <span class="tag tag-myth">Mithras Sol Invictus</span>
+      <span class="tag tag-kab">Resh · Hod-Yesod</span>
+      <span class="tag tag-kab">Tiferet — o Centro/Coração</span>
+      <span class="tag tag-alch">Ouro / Rubedo / Pedra Filossoal</span>
+      <span class="tag tag-psy">Consciência plena / Individuação</span>
+      <span class="tag tag-life">Alegria · Clareza · Sucesso</span>
+      <span class="tag tag-astr">Sol · Leão</span>
+    </div>
+  </div>
+</div>
+
+<div id="arc-20" class="arc arc-20 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">📯</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XX · SHIN ש · FOGO · LETRA-MÃE</div>
+      <div class="arc-name">O Æon / O Julgamento — <em style="font-size:.75em;opacity:.7">The Aeon (Thoth) · Judgement (R-W)</em></div>
+      <div class="arc-subtitle">O Novo Æon de Horus · A Ressurreição · O Fogo Primordial</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Shin · Dente/Fogo</span>
+      <span class="pill pill-plan">Fogo · Plutão</span>
+      <span class="pill pill-seph">Hod → Malkuth</span>
+      <span class="pill pill-alch">Calcinação Final</span>
+      <span class="pill pill-world">Beriah</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Shin</em> (ש) é a terceira letra-mãe = Fogo. O fogo que transforma, que purifica, que ilumina e que destrói. No Rider-Waite, esta carta se chama "O Julgamento" — o anjo toca a trombeta e os mortos ressuscitam. Para Crowley, em 1904, um novo <em class="term">Æon</em> (era cósmica) havia começado — o Æon de Hórus. E a carta XX não poderia mais representar o Julgamento Final cristão mas o <em>início de uma nova era</em>.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">☀🔱</span> Nuit, Hadit e Ra-Hoor-Khuit (Thoth)</h4>
+      <p>No Thoth, esta carta apresenta os três deuses do Novo Æon: <em class="term">Nuit</em> (o céu infinito, o espaço) curvada acima de tudo; <em class="term">Hadit</em> (o ponto de luz, a consciência individual) como o companheiro de Nuit; e <em class="term">Ra-Hoor-Khuit</em> (Hórus, o Deus Guerreiro da Luz) = o resultado da união de Nuit e Hadit. Essa tríade substitui as trindardes mais antigas — não é mais Pai/Mãe/Filho mas Espaço/Ponto/Radiação.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🎺</span> A Trombeta e os Mortos que Ressuscitam (Rider-Waite)</h4>
+      <p>No Rider-Waite, o anjo <em class="term">Gabriel</em> toca a trombeta e os mortos emergem dos caixões abertos sobre as águas. A cruz vermelha na bandeira branca = o sacrifício (vermelho) purificado (branco) = o Rubedo final. Os mortos ressuscitados = as partes da psyche que foram "enterradas" durante a vida, agora finalmente integradas e reconhecidas.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔥</span> O Fogo da Pentecostes</h4>
+      <p>Shin = Fogo = o fogo da Pentecostes que desceu sobre os discípulos como "línguas de fogo" = Shin = a letra que aparece entre Yod-Heh-Vau-Heh para formar IHShVH = Yeheshuah = Jesus. O Julgamento é o momento em que o fogo do espírito finalmente penetra completamente a matéria = a iluminação corporal.</p>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Julgamento Final / Apocalipse</span>
+      <span class="tag tag-myth">Hórus / Novo Æon</span>
+      <span class="tag tag-myth">Gabriel e a Trombeta</span>
+      <span class="tag tag-myth">A Fênix / Ressurreição</span>
+      <span class="tag tag-kab">Shin · Hod-Malkuth</span>
+      <span class="tag tag-kab">IHShVH = Yeheshuah</span>
+      <span class="tag tag-alch">Calcinação Final / Rubedo</span>
+      <span class="tag tag-psy">Reavaliação Total de Vida</span>
+      <span class="tag tag-life">Chamado · Despertar · Propósito</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ARCANO XXI — O UNIVERSO -->
+<!-- ============================================================ -->
+<div id="arc-21" class="arc arc-21 reveal">
+  <div class="arc-hdr">
+    <span class="arc-icon">🌌</span>
+    <div class="arc-title-block">
+      <div class="arc-num">ARCANO XXI · TAU ת · SATURNO / TERRA</div>
+      <div class="arc-name">O Universo / O Mundo — <em style="font-size:.75em;opacity:.7">The Universe (Thoth) · The World (R-W)</em></div>
+      <div class="arc-subtitle">A Pedra Filosofal · A Anima Mundi · A Grande Obra Completa</div>
+    </div>
+    <div class="corr-pills">
+      <span class="pill pill-heb">Tau · Cruz/Marca</span>
+      <span class="pill pill-plan">Saturno ♄ · Terra</span>
+      <span class="pill pill-seph">Yesod → Malkuth</span>
+      <span class="pill pill-alch">Pedra Filosofal / Lapis</span>
+      <span class="pill pill-world">Assiah / Todos os Mundos</span>
+    </div>
+  </div>
+  <div class="arc-div"></div>
+  <div class="arc-body">
+
+    <p>A letra <em class="term">Tau</em> (ת) é a última letra do alfabeto hebraico = o ponto de chegada, a consumação. Significa <em>cruz</em> ou <em>marca</em> = a assinatura divina sobre toda a criação. O caminho de Tau une <em class="term">Yesod</em> (o Fundamento/Sexo/Lua) a <em class="term">Malkuth</em> (o Reino/Terra) — o último passo antes da manifestação completa. Esta carta = a <em class="term">Pedra Filosofal</em> em pessoa: o cosmos como obra perfeita da consciência.</p>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">💃</span> A Dançarina — Babalon com as Serpentes (Thoth)</h4>
+      <p>No Thoth, a mesma mulher do Arcano XI (Babalon) agora <em>dança livremente com a serpente</em>, não mais a domando mas integrada com ela. É a Kundalini completamente integrada. Ela segura dois bastões (Jachin e Boaz) = equilibrou os dois pilares. A guirlanda oval ao redor = a <em class="term">Vesica Piscis</em> = o Lingam-Yoni em geometria = o ato sexual sagrado que gera a criação = o cosmos como Orgasmo Divino eterno.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🔷</span> A Guirlanda Oval / Vesica Piscis (Rider-Waite)</h4>
+      <p>A guirlanda de louro que envolve a dançarina = o círculo de vitória, o ouroboros da completude. Sua forma oval = a Vesica Piscis, símbolo do yoni e da mandorla sagrada (a forma de amêndoa ao redor de figuras divinas). Os 22 folhas de louro = os 22 caminhos da Árvore da Vida, os 22 Arcanos = a Dançarina porta o Tarot inteiro em torno de si.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">🦅🦁🐂👼</span> Os Quatro Kerubs nos Cantos</h4>
+      <p>Os mesmos quatro Kerubs da Roda da Fortuna reaparecem: águia (Escorpião/Água), leão (Leão/Fogo), touro (Touro/Terra), anjo (Aquário/Ar). Agora, ao invés de orbitar uma roda em movimento, eles <em>emolduram a dançarina imóvel</em> = o mundo manifestado sustenta o espírito iluminado. Os quatro evangelistas contemplam o Cristo ressuscitado — a mesma doutrina em quatro idiomas simbólicos.</p>
+    </div>
+
+    <div class="sym-box">
+      <h4><span class="sym-icon">⊕</span> T-A-R-O nos Cantos do Verso (Place)</h4>
+      <p>Robert Place revela que no verso das cartas do Tarô Alquímico, a Anima Mundi (<em>Lady Alchemia</em>) ocupa o centro com as letras T-A-R-O nos quatro cantos, formando um quincunce (5 pontos = 4 cantos + centro). Isso torna o verso do baralho um glifo da mesma mandala sagrada que aparece na carta do Mundo. O Tarot inteiro tem sua imagem de conclusão inscrita no verso de cada carta.</p>
+    </div>
+
+    <div class="subsec">✦ A Anima Mundi — Lady Alchemia</div>
+
+    <div class="qblock qblock-p">
+      "Lady Alchemia está sobre a Terra; seus cabelos são Fogo; sua respiração é Ar; e seus seios derramam Leite da Virgem, que é a Água da Vida. Seus olhos são o Sol e a Lua, e sua testa ostenta a estrela de sete pontas. Ela segura os animais Fixos e Voláteis, um lagarto e uma águia; seu vestido é composto pelos sete metais mais o Enxofre."
+      <span class="qsrc">— Robert M. Place, <em>The Alchemical Tarot</em>, 6ª ed. (baseado em Collectanea Chymica, 1693)</span>
+    </div>
+
+    <div class="subsec">✦ A Síntese dos 22 Arcanos — O Círculo se Fecha</div>
+
+    <p>O Universo fecha o ciclo que o Louco abriu. O Louco = zero, o potencial puro, o espírito antes da experiência. O Universo = o plenitude realizada, o espírito após ter percorrido todos os 22 caminhos. A dançarina do Universo é o Louco que completou sua jornada — mas não parou aqui: no próximo momento ela retorna ao zero e recomeça o ciclo, porque a Rota não tem fim. O Tarot é uma espiral ascendente, não um círculo fechado.</p>
+
+    <p>Cada vez que você completa os 22 Arcanos, você os relê em um nível diferente — como os 4 mundos da Cabala (Atziluth, Beriah, Yetzirah, Assiah): cada volta do espiral aprofunda a compreensão. O Universo é ao mesmo tempo a carta mais simples (a dança livre) e a mais complexa (a totalidade do cosmos) — porque o cosmos é simples para quem alcançou a iluminação.</p>
+
+    <div class="qblock qblock-c">
+      "A carta do Universo e a carta do Louco se correspondem: uma representa o Ponto Primordial no Espaço, a outra representa o Espaço em que o Ponto se move. Todo este sistema é a expressão do 0 = 2, a doutrina filosófica mais satisfatória do cosmos, sua origem, modo e objeto."
+      <span class="qsrc">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+    </div>
+
+    <div class="connects">
+      <span class="tag tag-myth">Anima Mundi / Alma do Mundo</span>
+      <span class="tag tag-myth">Babalon como cosmos integrado</span>
+      <span class="tag tag-myth">Dançarina de Shiva (Nataraja)</span>
+      <span class="tag tag-myth">Gaia / Terra como ser vivo</span>
+      <span class="tag tag-kab">Tau · Yesod-Malkuth</span>
+      <span class="tag tag-kab">Malkuth = o Reino = a Terra</span>
+      <span class="tag tag-alch">Pedra Filosofal / Lapis / Opus completo</span>
+      <span class="tag tag-psy">Individuação completa (Jung)</span>
+      <span class="tag tag-life">Completude · Integração · Libertação</span>
+      <span class="tag tag-astr">Saturno · Terra · Todos os planetas</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:60px 20px 30px" class="reveal">
+  <span style="font-size:3rem;display:block;margin-bottom:14px;animation:glow-pulse 4s ease-in-out infinite">✦ ✧ ✦</span>
+  <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;color:rgba(200,168,75,.35);letter-spacing:.15em;line-height:2.2">
+    Meditai longa e larga e profundamente sobre esta Roda, revolvendo-a em vossa mente.<br>
+    Sede esta a vossa tarefa: ver como cada carta brota necessariamente de outra carta,<br>
+    na devida ordem, do Louco ao Dez de Ouros.<br>
+    <span style="font-size:.78rem;opacity:.7">— Aleister Crowley, <em>O Livro de Thoth</em></span>
+  </p>
+</div>
+
+</div><!-- /.wrap -->
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Stagger arc animations
+document.querySelectorAll('.arc').forEach((el, i) => {
+  el.style.animationDelay = (i * 0.05) + 's';
+});
+
+// Sidenav active state
+const sections = document.querySelectorAll('[id^="arc-"]');
+const navLinks = document.querySelectorAll('.sidenav a');
+const sectionObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach((a, i) => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+sections.forEach(s => sectionObs.observe(s));
+</script>
+</body>
+</html>

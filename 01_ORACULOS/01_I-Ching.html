@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Ching — O Livro das Mutações · Estudo Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1A1008;--ink2:#2A1A0A;
+  --rice:#F5EDD8;--rice2:#EDE0C0;--rice3:#E0D0A8;
+  --red:#8B1A0A;--red-l:#C02010;--red-d:rgba(139,26,10,.12);
+  --jade:#2A5A3A;--jade-l:#3A8050;--jade-d:rgba(42,90,58,.1);
+  --gold:#8A6A20;--gold-l:#C09030;--gold-d:rgba(138,106,32,.12);
+  --sky:#1A3A5A;--sky-l:#2A6090;--sky-d:rgba(26,58,90,.1);
+  --text:#2A1A08;--text-d:rgba(42,26,8,.7);--text-dd:rgba(42,26,8,.45);
+  --border:rgba(138,106,32,.25);--shadow:rgba(42,26,8,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--rice);
+  background-image:
+    radial-gradient(ellipse 100% 40% at 50% 0%,rgba(139,26,10,.06) 0%,transparent 50%),
+    radial-gradient(ellipse 60% 40% at 0% 60%,rgba(42,90,58,.05) 0%,transparent 50%);
+  font-family:'Noto Serif',serif;color:var(--text);line-height:1.9;overflow-x:hidden;
+}
+/* Paper texture */
+body::before{content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 16px 100px}
+
+/* ── HEADER ── */
+header{text-align:center;padding:70px 20px 50px;position:relative}
+.dragon{font-size:5rem;display:block;margin-bottom:16px;
+  filter:drop-shadow(0 4px 12px var(--shadow));animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,4vw,3rem);
+  color:var(--red);letter-spacing:.08em;
+  text-shadow:2px 2px 0 rgba(139,26,10,.15);line-height:1.25}
+.h-cn{font-size:clamp(2rem,6vw,5rem);color:var(--red);opacity:.12;
+  font-family:'Noto Serif',serif;letter-spacing:.4em;
+  position:absolute;top:60px;left:50%;transform:translateX(-50%);
+  pointer-events:none;white-space:nowrap}
+.h-sub{font-family:'IM Fell English',serif;font-style:italic;
+  font-size:clamp(.82rem,2vw,1.05rem);color:var(--gold);letter-spacing:.18em;margin-top:10px}
+.h-rule{height:2px;margin:22px auto;width:500px;max-width:90%;
+  background:linear-gradient(90deg,transparent,var(--red),var(--gold),var(--red),transparent)}
+.h-intro{max-width:760px;margin:0 auto;font-size:.93rem;line-height:2.1;color:var(--text-d);font-style:italic}
+
+/* ── NAV PILLS ── */
+.nav-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 40px}
+.npill{font-family:'Cinzel Decorative',serif;font-size:.58rem;letter-spacing:.1em;
+  padding:6px 14px;border-radius:2px;text-decoration:none;
+  border:1px solid var(--border);background:rgba(255,255,255,.4);
+  color:var(--red);transition:all .25s}
+.npill:hover{background:var(--red);color:var(--rice);border-color:var(--red)}
+
+/* ── CHAPTER ── */
+.ch{text-align:center;margin:60px 0 24px;position:relative}
+.ch::before,.ch::after{content:'';display:block;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+.ch h2{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,2.5vw,1.3rem);
+  letter-spacing:.18em;color:var(--red)}
+.ch p{font-style:italic;font-size:.85rem;color:var(--text-dd);margin-top:4px}
+
+/* ── SECTION CARDS ── */
+.sc{border-radius:2px;padding:26px 28px 24px;margin-bottom:18px;
+  border:1px solid var(--border);background:rgba(255,255,255,.5);
+  box-shadow:2px 4px 16px var(--shadow);position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.sc-red::before{background:linear-gradient(180deg,var(--red),transparent)}
+.sc-jade::before{background:linear-gradient(180deg,var(--jade),transparent)}
+.sc-gold::before{background:linear(180deg,var(--gold),transparent)}
+.sc-sky::before{background:linear-gradient(180deg,var(--sky),transparent)}
+.sc h3{font-family:'Cinzel Decorative',serif;font-size:.82rem;letter-spacing:.15em;
+  color:var(--red);margin-bottom:14px}
+.sc p{font-size:.9rem;color:var(--text-d);line-height:2;margin-bottom:10px}
+.sc p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+em.cn{font-style:normal;color:var(--red);font-size:1.1em}
+
+/* ── TRIGRAM DISPLAY ── */
+.trig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0}
+.trig-card{border-radius:2px;padding:18px 16px;text-align:center;
+  border:1px solid var(--border);background:rgba(255,255,255,.55);
+  box-shadow:1px 2px 8px var(--shadow);transition:transform .25s}
+.trig-card:hover{transform:translateY(-2px)}
+.trig-sym{font-size:2.2rem;display:block;margin-bottom:8px;line-height:1}
+.trig-cn{font-size:1.8rem;color:var(--red);opacity:.3;display:block;margin-bottom:4px}
+.trig-name{font-family:'Cinzel Decorative',serif;font-size:.72rem;letter-spacing:.14em;
+  color:var(--red);margin-bottom:6px}
+.trig-alt{font-size:.75rem;color:var(--gold);font-style:italic;margin-bottom:8px}
+.trig-body{font-size:.8rem;color:var(--text-d);line-height:1.8}
+.trig-lines{display:flex;flex-direction:column;align-items:center;gap:4px;margin:10px 0}
+.line-y{width:48px;height:6px;background:var(--ink);border-radius:1px}
+.line-y.broken{width:48px;height:6px;background:transparent;
+  border-top:6px solid var(--ink);position:relative}
+.line-y.broken::after{content:'';position:absolute;left:18px;right:18px;top:-6px;height:6px;background:var(--rice)}
+
+/* ── HEXAGRAM GRID ── */
+.hex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:20px 0}
+.hex-card{border-radius:2px;border:1px solid var(--border);
+  background:rgba(255,255,255,.55);box-shadow:1px 2px 8px var(--shadow);
+  overflow:hidden;transition:transform .3s,box-shadow .3s}
+.hex-card:hover{transform:translateY(-3px);box-shadow:2px 6px 20px var(--shadow)}
+
+.hex-card.vis{opacity:1;transform:none}
+.hex-card{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+
+.hx-top{padding:16px 18px 0;display:flex;gap:14px;align-items:flex-start}
+.hx-lines{display:flex;flex-direction:column;gap:3px;flex-shrink:0;padding-top:4px}
+.hl{height:5px;border-radius:1px}
+.hl.yang{width:38px;background:var(--ink)}
+.hl.yin{width:38px;background:transparent;border-top:5px solid var(--ink);position:relative}
+.hl.yin::after{content:'';position:absolute;left:13px;right:13px;top:-5px;height:5px;background:var(--rice2)}
+
+.hx-meta{flex:1}
+.hx-num{font-family:'Cinzel Decorative',serif;font-size:.55rem;letter-spacing:.1em;
+  color:var(--gold);opacity:.8}
+.hx-name{font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:clamp(1rem,2.5vw,1.3rem);color:var(--red);line-height:1.1;margin-top:2px}
+.hx-cn{font-size:1.3rem;color:var(--red);opacity:.25;margin-left:4px}
+.hx-alt{font-size:.78rem;color:var(--gold);font-style:italic;margin-top:2px}
+.hx-body{padding:12px 18px 18px}
+.hx-judge{font-size:.85rem;color:var(--text-d);line-height:1.9;margin-bottom:8px;
+  font-style:italic;border-left:2px solid var(--gold);padding-left:10px}
+.hx-img{font-size:.82rem;color:var(--text-d);line-height:1.88;margin-bottom:8px}
+.hx-essence{font-size:.8rem;color:var(--jade);font-style:italic;
+  padding:8px 10px;background:rgba(42,90,58,.06);
+  border-radius:2px;border:1px solid rgba(42,90,58,.15)}
+.hx-areas{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.hx-tag{font-size:.62rem;padding:2px 8px;border-radius:20px;
+  border:1px solid;font-style:italic;color:var(--gold);
+  border-color:rgba(138,106,32,.25);background:rgba(138,106,32,.06)}
+
+/* ── CHANGING LINES ── */
+.div{height:1px;margin:10px 0;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+
+/* ── METHOD BOX ── */
+.method{border-radius:2px;padding:22px 24px;margin-bottom:14px;
+  border:1px solid;background:rgba(255,255,255,.6);box-shadow:1px 2px 10px var(--shadow)}
+.method-red{border-color:rgba(139,26,10,.3)}
+.method-jade{border-color:rgba(42,90,58,.25)}
+.method-gold{border-color:var(--border)}
+.method h4{font-family:'Cinzel Decorative',serif;font-size:.68rem;letter-spacing:.14em;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.method-red h4{color:var(--red)}
+.method-jade h4{color:var(--jade)}
+.method-gold h4{color:var(--gold)}
+.method p{font-size:.88rem;color:var(--text-d);line-height:1.95;margin-bottom:8px}
+.method p:last-child{margin-bottom:0}
+.step{display:flex;gap:12px;align-items:flex-start;padding:8px 0;
+  border-bottom:1px solid rgba(138,106,32,.1)}
+.step:last-child{border-bottom:none}
+.step-num{width:28px;height:28px;border-radius:50%;
+  background:var(--red);color:var(--rice);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel Decorative',serif;font-size:.7rem;flex-shrink:0;margin-top:2px}
+.step-text{font-size:.86rem;color:var(--text-d);line-height:1.9}
+
+/* ── COIN TABLE ── */
+.coin-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.82rem}
+.coin-table th{font-family:'Cinzel Decorative',serif;font-size:.56rem;letter-spacing:.12em;
+  color:var(--red);padding:8px 10px;background:rgba(139,26,10,.06);
+  border-bottom:1px solid rgba(139,26,10,.2);text-align:left}
+.coin-table td{padding:7px 10px;border-bottom:1px solid rgba(138,106,32,.1);color:var(--text-d);vertical-align:middle}
+.coin-table tr:hover td{background:rgba(255,255,255,.5)}
+.coin-table td:first-child{color:var(--red);font-weight:700}
+
+/* ── INTERACTIVE ORACLE ── */
+.oracle-box{border:2px solid var(--red);border-radius:4px;padding:28px;
+  background:rgba(255,255,255,.7);box-shadow:0 4px 24px var(--shadow);
+  text-align:center;margin:20px 0}
+.oracle-title{font-family:'Cinzel Decorative',serif;font-size:.85rem;letter-spacing:.16em;
+  color:var(--red);margin-bottom:16px}
+#oracle-hex-display{margin:20px auto;display:flex;flex-direction:column;
+  align-items:center;gap:6px;min-height:80px}
+.oracle-line{width:80px;height:8px;border-radius:1px;position:relative}
+.oracle-line.yang{background:var(--ink)}
+.oracle-line.yin{background:transparent;border-top:8px solid var(--ink)}
+.oracle-line.yin::after{content:'';position:absolute;left:26px;right:26px;top:-8px;height:8px;background:var(--rice2)}
+.oracle-line.yang-c{background:linear-gradient(90deg,var(--ink) 40%,var(--red) 60%)}
+.oracle-line.yin-c{border-top-color:var(--red)}
+
+#oracle-result{font-size:.92rem;color:var(--text-d);line-height:2;margin-top:16px;
+  font-style:italic;min-height:40px}
+#oracle-hexnum{font-family:'Cinzel Decorative',serif;font-size:1.4rem;color:var(--red);
+  margin:8px 0}
+.btn-oracle{font-family:'Cinzel Decorative',serif;font-size:.68rem;letter-spacing:.12em;
+  padding:10px 28px;border:2px solid var(--red);background:var(--red);
+  color:var(--rice);border-radius:2px;cursor:pointer;transition:all .25s;
+  margin:8px 4px}
+.btn-oracle:hover{background:transparent;color:var(--red)}
+.btn-oracle.sec{background:transparent;color:var(--red)}
+.btn-oracle.sec:hover{background:var(--red);color:var(--rice)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.reveal.vis{opacity:1;transform:none}
+
+/* ── SIDEBAR ── */
+.side-nav{position:fixed;top:50%;right:14px;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:5px;z-index:100}
+.sn-dot{width:8px;height:8px;border-radius:50%;
+  background:rgba(139,26,10,.2);border:1px solid rgba(139,26,10,.4);
+  display:block;text-decoration:none;transition:all .22s}
+.sn-dot:hover,.sn-dot.act{background:var(--red);transform:scale(1.4)}
+@media(max-width:860px){.side-nav{display:none}}
+@media(max-width:620px){.trig-grid{grid-template-columns:repeat(2,1fr)}.hex-grid{grid-template-columns:1fr}}
+
+footer{text-align:center;padding:60px 20px 40px;border-top:1px solid var(--border)}
+.f-text{font-family:'IM Fell English',serif;font-style:italic;font-size:.86rem;
+  color:rgba(139,26,10,.4);letter-spacing:.08em;line-height:2.4}
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <a class="sn-dot" href="#oque" title="O Que É"></a>
+  <a class="sn-dot" href="#historia" title="História"></a>
+  <a class="sn-dot" href="#trigramas" title="Trigramas"></a>
+  <a class="sn-dot" href="#metodo" title="Como Consultar"></a>
+  <a class="sn-dot" href="#oracle" title="Oráculo Interativo"></a>
+  <a class="sn-dot" href="#interpretar" title="Como Interpretar"></a>
+  <a class="sn-dot" href="#hex1-8" title="Hex 1–8"></a>
+  <a class="sn-dot" href="#hex9-16" title="Hex 9–16"></a>
+  <a class="sn-dot" href="#hex17-32" title="Hex 17–32"></a>
+  <a class="sn-dot" href="#hex33-48" title="Hex 33–48"></a>
+  <a class="sn-dot" href="#hex49-64" title="Hex 49–64"></a>
+  <a class="sn-dot" href="#avancado" title="Avançado"></a>
+</nav>
+
+<div class="wrap">
+
+<header>
+  <div class="h-cn" aria-hidden="true">易經</div>
+  <span class="dragon">☯</span>
+  <h1>I Ching · 易經</h1>
+  <p class="h-sub">O Livro das Mutações · Estudo Completo · Do Zero ao Avançado</p>
+  <div class="h-rule"></div>
+  <p class="h-intro">O I Ching é o mais antigo oráculo ainda em uso no mundo — uma sabedoria de mais de 3.000 anos que não diz o que vai acontecer, mas revela a natureza do momento presente e aconselha o modo mais harmonioso de agir dentro dele. Este estudo te leva do zero: o que é, como surgiu, como se consulta, como se lê, e todos os 64 hexagramas com seus ensinamentos.</p>
+</header>
+
+<div class="nav-wrap reveal">
+  <a class="npill" href="#oque">O Que É</a>
+  <a class="npill" href="#historia">História</a>
+  <a class="npill" href="#trigramas">8 Trigramas</a>
+  <a class="npill" href="#metodo">Como Consultar</a>
+  <a class="npill" href="#oracle">Oráculo</a>
+  <a class="npill" href="#interpretar">Como Interpretar</a>
+  <a class="npill" href="#hex1-8">Hex 1–8</a>
+  <a class="npill" href="#hex9-16">Hex 9–16</a>
+  <a class="npill" href="#hex17-32">Hex 17–32</a>
+  <a class="npill" href="#hex33-48">Hex 33–48</a>
+  <a class="npill" href="#hex49-64">Hex 49–64</a>
+  <a class="npill" href="#avancado">Avançado</a>
+</div>
+
+<!-- ═══ O QUE É ═══ -->
+<div id="oque" class="ch reveal">
+  <h2>✦ O Que é o I Ching ✦</h2>
+  <p>compreendendo a base filosófica antes de começar</p>
+</div>
+
+<div class="sc sc-red reveal">
+  <h3>☯ A Filosofia da Mutação</h3>
+  <p>O nome <em class="cn">易經</em> (Yì Jīng) significa literalmente <strong>Livro das Mutações</strong> ou <strong>Clássico das Transformações</strong>. A palavra <em class="cn">易</em> (yì) carrega três significados simultâneos: <strong>mudança</strong> (tudo muda), <strong>facilidade</strong> (a mudança é natural quando se flui com ela) e <strong>imutabilidade</strong> (existe um princípio imutável por trás de toda mudança).</p>
+  <p>O I Ching parte de uma visão de mundo radicalmente diferente da ocidental: não há eventos fixos, não há futuro determinado. Existe apenas o <strong>momento presente</strong> — carregado de certas qualidades, tendências e potenciais. O oráculo revela a natureza desse momento e sugere como se relacionar harmoniosamente com ele.</p>
+  <p>A base filosófica é o <strong>Taoísmo</strong>: existe uma corrente de energia (Tao) fluindo pelo universo, e tudo aquilo que age em harmonia com ela prospera; tudo que a resiste sofre. O I Ching é uma ferramenta para perceber onde essa corrente está indo e como navegar junto a ela — não contra ela.</p>
+</div>
+
+<div class="sc sc-jade reveal">
+  <h3>⚊⚋ Yin e Yang — O Fundamento de Tudo</h3>
+  <p>Todo o sistema do I Ching repousa sobre duas forças opostas e complementares:</p>
+  <p><strong>⚊ YANG (linha inteira ───)</strong> representa o principio ativo, masculino, luminoso, criativo, expansivo, firme, céu, calor, verão, o mover-se para fora. Não é "positivo" no sentido moral — é simplesmente o polo ativo de toda dualidade.</p>
+  <p><strong>⚋ YIN (linha quebrada ─ ─)</strong> representa o principio receptivo, feminino, sombrio, nutriente, contrativo, suave, terra, frio, inverno, o mover-se para dentro. Não é "negativo" — é o polo receptivo e complementar.</p>
+  <p>A grande sabedoria: Yin e Yang não se opõem como bem e mal — eles se <strong>complementam e se transformam um no outro</strong>. No coração do Yang existe uma semente de Yin (o ponto branco no lado escuro do taijitu ☯); no coração do Yin existe uma semente de Yang. Tudo o que vai ao extremo se transforma em seu oposto: o verão extremo vira outono; o crescimento extremo vira declínio.</p>
+  <p>Combinando 3 linhas Yang ou Yin em diferentes configurações, obtemos <strong>8 trigramas</strong>. Combinando 2 trigramas (um inferior + um superior), obtemos <strong>64 hexagramas</strong> — que representam todas as situações possíveis da existência humana.</p>
+</div>
+
+<div class="sc sc-gold reveal">
+  <h3>🎴 O Que o I Ching Não É</h3>
+  <p><strong>Não é adivinhação de futuro:</strong> O I Ching não diz "você vai ganhar dinheiro em tal data" ou "seu parceiro vai te trair". Ele descreve a qualidade do momento atual e as tendências naturais se as coisas continuarem como estão.</p>
+  <p><strong>Não é mágica:</strong> É sabedoria prática. O mecanismo pelo qual funciona é debatido (sincronicidade de Jung, ressonância do campo, intuição profunda, projeção psicológica) — mas o resultado prático é que as respostas são surpreendentemente pertinentes quando a pergunta é sincera.</p>
+  <p><strong>Não é determinismo:</strong> Toda resposta do I Ching pressupõe que você pode mudar o curso das coisas com sua ação e atitude. A mensagem nunca é "vai acontecer, aceite." É sempre "aqui está a situação — aqui está o que a sabedoria sugere."</p>
+  <p><strong>É uma conversa com o seu próprio interior profundo:</strong> Jung o chamou de "método de amplificação da intuição" — uma ferramenta que ajuda a ouvir o que a parte mais sábia de si já sabe, mas que o ruído mental cotidiano encobre.</p>
+</div>
+
+<!-- ═══ HISTÓRIA ═══ -->
+<div id="historia" class="ch reveal">
+  <h2>✦ A História do I Ching ✦</h2>
+  <p>3.000 anos de sabedoria · de Fu Xi a Confúcio</p>
+</div>
+
+<div class="sc sc-red reveal">
+  <h3>📜 Das Origens aos Dias de Hoje</h3>
+  <p><strong>Fu Xi (~2800 a.C.):</strong> Segundo a tradição chinesa, o lendário imperador Fu Xi observou os padrões da natureza — as estrelas, as marés, os animais — e concebeu os 8 trigramas originais. Diz a lenda que ele viu um dragão-cavalo emergir do Rio Amarelo com marcas em seu dorso, e dessas marcas extraiu o sistema.</p>
+  <p><strong>Rei Wen (~1100 a.C.):</strong> Durante seu encarceramento pelo rei tirano Zou, o Rei Wen sistematizou os 64 hexagramas e escreveu os primeiros textos oraculares para cada um — o <em>Juízo</em> (Tuán). A sabedoria nascida da adversidade: o I Ching foi escrito numa prisão.</p>
+  <p><strong>Duque de Zhou (~1050 a.C.):</strong> Filho do Rei Wen, escreveu as <em>Imagens</em> e os comentários sobre as linhas individuais de cada hexagrama. Com isso, o texto básico do I Ching (chamado <em>Jing</em>) estava completo.</p>
+  <p><strong>Confúcio (551–479 a.C.):</strong> O grande filósofo estudou o I Ching intensamente na velhice, afirmando: "Se me fossem concedidos mais anos de vida, passaria cinquenta deles estudando o I Ching." Escreveu os <em>Dez Asas</em> (Shi Yi) — dez textos filosóficos que ampliam e aprofundam o texto original. Com isso, o I Ching atingiu sua forma canônica definitiva.</p>
+  <p><strong>Richard Wilhelm (1873–1930):</strong> Missionário alemão que viveu décadas na China e produziu a tradução mais influente para o Ocidente, com comentários profundos. Carl Jung escreveu o prefácio desta edição em 1950, introduzindo o I Ching ao pensamento psicológico moderno. É esta a versão que a maioria dos ocidentais conhece.</p>
+  <p><strong>Hoje:</strong> Estimativas conservadoras apontam que o I Ching é o livro mais consultado do mundo em termos de número de vezes que foi usado como oráculo ao longo dos séculos. É UNESCO Patrimônio Cultural Intangível da Humanidade.</p>
+</div>
+
+<!-- ═══ TRIGRAMAS ═══ -->
+<div id="trigramas" class="ch reveal">
+  <h2>✦ Os 8 Trigramas — Bāguà ✦</h2>
+  <p>as oito forças fundamentais · os blocos de construção do universo</p>
+</div>
+
+<div class="sc sc-gold reveal">
+  <h3>☰ Como os Trigramas Funcionam</h3>
+  <p>Um trigrama é uma combinação de <strong>3 linhas</strong>, cada uma podendo ser Yang (inteira) ou Yin (quebrada). 2³ = 8 combinações possíveis = 8 trigramas. Cada trigrama recebe o nome de um elemento ou força da natureza e carrega um conjunto de correspondências simbólicas.</p>
+  <p>A <strong>linha de baixo</strong> é a primeira que se lê — a posição inferior, o início, a raiz. A <strong>linha do meio</strong> é a posição intermediária. A <strong>linha de cima</strong> é a mais alta, o final, o resultado.</p>
+  <p>Dois trigramas empilhados (inferior + superior) formam um <strong>hexagrama</strong>. A leitura considera qual trigrama está embaixo (a situação interna, as condições da pergunta) e qual está em cima (a situação externa, o resultado potencial).</p>
+</div>
+
+<div class="trig-grid reveal">
+  <!-- 1. QIAN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y"></div><div class="line-y"></div><div class="line-y"></div>
+    </div>
+    <span class="trig-cn">乾</span>
+    <div class="trig-name">☰ QIAN · O Criativo</div>
+    <div class="trig-alt">Céu · Pai · Dragão</div>
+    <div class="trig-body"><strong>Três linhas Yang puras.</strong> A força criativa máxima, o poder do céu, a iniciativa sem obstáculo. Representa liderança, vontade, força, o princípio masculino em sua expressão mais elevada. Direção: Noroeste. Estação: Outono tardio. Metal, criatividade, força.</div>
+  </div>
+  <!-- 2. KUN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y broken"></div><div class="line-y broken"></div><div class="line-y broken"></div>
+    </div>
+    <span class="trig-cn">坤</span>
+    <div class="trig-name">☷ KUN · O Receptivo</div>
+    <div class="trig-alt">Terra · Mãe · Égua</div>
+    <div class="trig-body"><strong>Três linhas Yin puras.</strong> A receptividade máxima, a terra que acolhe a semente. Nutrição, entrega, paciência, o princípio feminino em sua expressão mais elevada. Direção: Sudoeste. Estação: Verão tardio. Terra, fertilidade, cuidado.</div>
+  </div>
+  <!-- 3. ZHEN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y broken"></div><div class="line-y broken"></div><div class="line-y"></div>
+    </div>
+    <span class="trig-cn">震</span>
+    <div class="trig-name">☳ ZHEN · O Excitante</div>
+    <div class="trig-alt">Trovão · Filho mais velho · Dragão</div>
+    <div class="trig-body"><strong>Yang embaixo, Yin acima.</strong> A energia que irrompe do chão — o trovão, o impulso súbito, o início inesperado. Movimento ascendente, energia que desperta. Direção: Leste. Estação: Primavera. Madeira, impulso, despertar.</div>
+  </div>
+  <!-- 4. KAN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y broken"></div><div class="line-y"></div><div class="line-y broken"></div>
+    </div>
+    <span class="trig-cn">坎</span>
+    <div class="trig-name">☵ KAN · O Abismal</div>
+    <div class="trig-alt">Água · Filho do meio · Javali</div>
+    <div class="trig-body"><strong>Yang no meio, Yin dos dois lados.</strong> A água que corre entre margens — perigo que tem uma saída no centro. O mergulho necessário, o desafio, a profundidade, o inconsciente. Direção: Norte. Estação: Inverno. Água, profundidade, peril que forma.</div>
+  </div>
+  <!-- 5. GEN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y"></div><div class="line-y broken"></div><div class="line-y broken"></div>
+    </div>
+    <span class="trig-cn">艮</span>
+    <div class="trig-name">☶ GEN · O Imóvel</div>
+    <div class="trig-alt">Montanha · Filho mais novo · Cão</div>
+    <div class="trig-body"><strong>Yang no topo, Yin embaixo.</strong> A montanha — parada no topo, inerte na base. Quietude, meditação, fronteira, limite sagrado. A pausa que precede a nova ação. Direção: Nordeste. Estação: Inverno tardio. Terra, quietude, contemplação.</div>
+  </div>
+  <!-- 6. XUN -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y"></div><div class="line-y"></div><div class="line-y broken"></div>
+    </div>
+    <span class="trig-cn">巽</span>
+    <div class="trig-name">☴ XUN · O Suave</div>
+    <div class="trig-alt">Vento/Madeira · Filha mais velha · Galo</div>
+    <div class="trig-body"><strong>Yin embaixo, Yang acima.</strong> O vento que penetra suavemente em todos os lugares — a influência gradual, a perseverança gentil, a comunicação. O que entra por baixo e permeia tudo. Direção: Sudeste. Estação: Primavera tardia. Madeira, penetração suave.</div>
+  </div>
+  <!-- 7. LI -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y"></div><div class="line-y broken"></div><div class="line-y"></div>
+    </div>
+    <span class="trig-cn">離</span>
+    <div class="trig-name">☲ LI · O Aderente</div>
+    <div class="trig-alt">Fogo · Filha do meio · Faisão</div>
+    <div class="trig-body"><strong>Yin no meio, Yang dos dois lados.</strong> O fogo que queima — depende de combustível para brilhar, mas enquanto tem, ilumina tudo. Clareza, beleza, inteligência, consciência. Direção: Sul. Estação: Verão. Fogo, clareza, iluminação.</div>
+  </div>
+  <!-- 8. DUI -->
+  <div class="trig-card">
+    <div class="trig-lines">
+      <div class="line-y broken"></div><div class="line-y"></div><div class="line-y"></div>
+    </div>
+    <span class="trig-cn">兌</span>
+    <div class="trig-name">☱ DUI · O Alegre</div>
+    <div class="trig-alt">Lago · Filha mais nova · Ovelha</div>
+    <div class="trig-body"><strong>Yang embaixo, Yin no topo.</strong> O lago — firme em baixo, aberto e suave na superfície. Alegria, gentileza, comunicação prazerosa, boca. O que se expressa com leveza. Direção: Oeste. Estação: Outono. Metal, alegria, expressão.</div>
+  </div>
+</div>
+
+<!-- ═══ MÉTODO DE CONSULTA ═══ -->
+<div id="metodo" class="ch reveal">
+  <h2>✦ Como Consultar o I Ching ✦</h2>
+  <p>preparação · métodos · construindo o hexagrama · as linhas mutantes</p>
+</div>
+
+<div class="sc sc-red reveal">
+  <h3>🙏 A Preparação — O Estado de Espírito</h3>
+  <p>O I Ching não é um jogo de perguntas e respostas rápidas. Exige <strong>sinceridade e presença</strong>. Antes de consultar:</p>
+  <p><strong>A pergunta:</strong> Formule-a com clareza e honestidade. Evite perguntas de sim/não simples — o I Ching trabalha melhor com perguntas abertas como "Que me aconselha sobre esta situação?" ou "Como devo abordar este relacionamento?" ou simplesmente "O que preciso saber agora?"</p>
+  <p><strong>O estado interior:</strong> A tradição recomenda um momento de quietude antes de consultar — algumas respirações profundas, silêncio mental, uma disposição de ouvir. Não consulte com a mente fervendo em ansiedade ou com uma resposta já decidida que você apenas quer confirmar.</p>
+  <p><strong>Frequência:</strong> Não pergunte a mesma coisa duas vezes seguidas esperando uma resposta diferente. Se a resposta não foi clara, reformule a pergunta — não repita a consulta. A tradição diz que o I Ching se fecha para quem insiste na mesma pergunta.</p>
+</div>
+
+<div class="sc sc-jade reveal">
+  <h3>🪙 Método das Três Moedas — O Mais Usado</h3>
+  <p>O método das moedas é o mais acessível para iniciantes e amplamente usado no mundo moderno. Você precisa de <strong>3 moedas idênticas</strong>.</p>
+
+  <div class="method method-gold" style="margin-top:14px">
+    <h4>⚙ Como Calcular</h4>
+    <p>Defina: cara = <strong>Yang = 3</strong> e coroa = <strong>Yin = 2</strong>. Lance as 3 moedas e some os valores.</p>
+    <table class="coin-table">
+      <thead><tr><th>Resultado das 3 Moedas</th><th>Soma</th><th>Linha</th><th>Tipo</th></tr></thead>
+      <tbody>
+        <tr><td>3 coroas</td><td>6</td><td>─ × ─ (linha Yin)</td><td>Yin Mutante → vai virar Yang</td></tr>
+        <tr><td>2 coroas + 1 cara</td><td>7</td><td>─── (linha Yang)</td><td>Yang Estável</td></tr>
+        <tr><td>2 caras + 1 coroa</td><td>8</td><td>─ ─ (linha Yin)</td><td>Yin Estável</td></tr>
+        <tr><td>3 caras</td><td>9</td><td>─O─ (linha Yang)</td><td>Yang Mutante → vai virar Yin</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="method method-red" style="margin-top:14px">
+    <h4>📐 Construindo o Hexagrama — De Baixo para Cima</h4>
+    <p>Lance as 3 moedas <strong>6 vezes</strong>. Cada lançamento = uma linha. <strong>Comece de baixo</strong> — o 1º lançamento é a linha mais baixa, o 6º é a mais alta.</p>
+    <div class="step"><div class="step-num">1</div><div class="step-text">Lance as 3 moedas. Anote o resultado (6, 7, 8 ou 9) e desenhe a linha correspondente no papel. Esta é a 1ª linha (inferior).</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Lance novamente. Esta é a 2ª linha. Coloque-a <em>acima</em> da primeira.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Repita para as linhas 3, 4, 5 e 6. Sempre adicionando a nova linha acima das anteriores.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Após 6 lançamentos, você tem um hexagrama completo de 6 linhas. Identifique o trigrama inferior (linhas 1–3) e o trigrama superior (linhas 4–6).</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text">Use a tabela de hexagramas para encontrar qual dos 64 hexagramas você obteve. <strong>Se houver linhas mutantes (6 ou 9)</strong>, construa também o hexagrama transformado — substituindo cada 6 por Yang e cada 9 por Yin. Isso gera um segundo hexagrama que revela para onde a situação está se movendo.</div></div>
+  </div>
+</div>
+
+<div class="sc sc-sky reveal">
+  <h3>🌾 Método das Varetas de Yarrow — O Método Tradicional</h3>
+  <p>O método original usa <strong>50 varetas de yarrow</strong> (a planta Achillea millefolium, sagrada na China). É um processo meditativo de ~15 minutos por linha — 6 linhas = quase 2 horas de consulta. A lentidão é proposital: o processo em si é a meditação.</p>
+  <p>O processo resumido: separe 50 varetas, deixe uma de lado (representa o Tao, inalterável). Com as 49 restantes, realize uma série de separações e contagens em grupos de 4 que gradualmente revelam se a linha é Yang ou Yin, estável ou mutante. A probabilidade de cada tipo de linha é diferente neste método (comparada ao das moedas), sendo as linhas mutantes mais raras — por isso as varetas são consideradas mais precisas pelos tradicionais.</p>
+  <p><strong>Para iniciantes:</strong> Use as moedas. O método das varetas pode ser aprendido depois, quando você estiver mais familiar com o sistema.</p>
+</div>
+
+<!-- ═══ ORÁCULO INTERATIVO ═══ -->
+<div id="oracle" class="ch reveal">
+  <h2>✦ Oráculo Interativo ✦</h2>
+  <p>consulte agora · clique para gerar seu hexagrama</p>
+</div>
+
+<div class="oracle-box reveal">
+  <div class="oracle-title">✦ CONSULTA AO I CHING ✦</div>
+  <p style="font-size:.85rem;color:var(--text-d);margin-bottom:16px;font-style:italic">
+    Faça sua pergunta em silêncio. Quando estiver pronto, clique em "Lançar".
+  </p>
+  <div id="oracle-hex-display"></div>
+  <div id="oracle-hexnum"></div>
+  <div id="oracle-result">Formule sua pergunta e clique em Lançar para revelar o hexagrama.</div>
+  <div style="margin-top:16px">
+    <button class="btn-oracle" onclick="launchOracle()">⚊ Lançar as Moedas</button>
+    <button class="btn-oracle sec" onclick="resetOracle()">↺ Nova Consulta</button>
+  </div>
+</div>
+
+<!-- ═══ COMO INTERPRETAR ═══ -->
+<div id="interpretar" class="ch reveal">
+  <h2>✦ Como Interpretar a Resposta ✦</h2>
+  <p>o juízo · a imagem · as linhas mutantes · o hexagrama de transformação</p>
+</div>
+
+<div class="sc sc-red reveal">
+  <h3>📖 A Estrutura de Cada Hexagrama</h3>
+  <p>Todo hexagrama tem três partes principais que devem ser lidas em sequência:</p>
+  <p><strong>1. O Juízo (Tuán):</strong> A declaração principal sobre a situação — o "diagnóstico" central. É o texto mais antigo (Rei Wen, ~1100 a.C.). Deve ser lido como a mensagem essencial do hexagrama para a sua pergunta.</p>
+  <p><strong>2. A Imagem (Xiang):</strong> Uma imagem da natureza que ilustra a situação — "O trovão sobre a terra", "A água flui para baixo" — e extrai um conselho prático baseado nessa imagem. É o texto do Duque de Zhou e torna o conselho concreto e aplicável.</p>
+  <p><strong>3. As Linhas (Yáo):</strong> Cada uma das 6 linhas tem seu próprio comentário. <strong>Você lê APENAS as linhas mutantes</strong> (aquelas que saíram como 6 ou 9 nos dados/moedas). Se não houver linhas mutantes, leia apenas o Juízo e a Imagem.</p>
+</div>
+
+<div class="sc sc-jade reveal">
+  <h3>🔄 Hexagrama Principal e Hexagrama de Transformação</h3>
+  <p>Se houver linhas mutantes, você obtém dois hexagramas:</p>
+  <p><strong>Hexagrama Principal:</strong> A situação presente — como as coisas estão agora. Leia o Juízo, a Imagem e as linhas mutantes.</p>
+  <p><strong>Hexagrama de Transformação:</strong> Para onde a situação está se movendo — o potencial futuro se você agir conforme o conselho. Leia apenas o Juízo deste hexagrama (não as linhas).</p>
+  <p><strong>Exemplo prático:</strong> Você lança e obtém o Hexagrama 29 (Kan, A Água) com a 3ª linha mutante (saiu como 6). A 3ª linha de Kan diz: "Para onde quer que vá, você encontra perigo. Retroceda e espere." Ao transformar a 3ª linha, o hexagrama vira Hexagrama 48 (Jing, O Poço). A mensagem combinada: você está num período de dificuldades (Kan) — mas se você parar de forçar e esperar (linha 3), chegará a uma fonte de nutição profunda (Jing/O Poço).</p>
+</div>
+
+<div class="sc sc-gold reveal">
+  <h3>🧭 Dicas de Interpretação</h3>
+  <p><strong>Leia literalmente e simbolicamente:</strong> "A perseverança traz fortuna" pode significar perseverar no projeto em questão, mas também perseverar internamente — não desistir do seu princípio. O I Ching opera nos dois níveis simultaneamente.</p>
+  <p><strong>O contexto da sua pergunta:</strong> O mesmo hexagrama diz coisas diferentes dependendo da pergunta. Hexagrama 4 (A Ignorância Juvenil) perguntado sobre amor pode significar que a relação ainda está no início e precisa de paciência; perguntado sobre um projeto pode significar que você não tem ainda o conhecimento necessário — busque mais informação antes de agir.</p>
+  <p><strong>Não tome respostas muito ao pé da letra:</strong> "Grandes empresas são favoráveis" não significa literalmente "funde uma empresa". Pode significar que é hora de agir com grandeza de visão. O I Ching fala em símbolos — a tradução para sua situação concreta é sua responsabilidade.</p>
+  <p><strong>A regra dos três:</strong> Se você receber o mesmo hexagrama três vezes para a mesma pergunta em dias diferentes, a mensagem é extremamente importante — preste atenção máxima.</p>
+</div>
+
+<!-- ═══ OS 64 HEXAGRAMAS ═══ -->
+<div id="hex1-8" class="ch reveal">
+  <h2>✦ Os 64 Hexagramas ✦</h2>
+  <p>Hexagramas 1 a 8 · A Criação e os Primórdios</p>
+</div>
+
+<div class="hex-grid">
+
+<!-- HEX 1 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div>
+      <div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 1 · ☰☰</div>
+      <div class="hx-name">Qian — O Criativo <span class="hx-cn">乾</span></div>
+      <div class="hx-alt">O Céu sobre o Céu · Força Primordial</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"O Criativo funciona elevado, sublime, favorável, perseverante."</div>
+    <div class="hx-img">☰ A imagem: O movimento do céu é forte e incessante. Assim o homem superior se fortalece e não para.</div>
+    <div class="hx-essence">Toda criação começa aqui. Esta é a força pura do Yang — a vontade criativa no ápice. Momento de máxima energia para iniciar algo. Aja com grandeza, mas lembre: o dragão que voa alto demais cai. Humildade é o complemento necessário da força.</div>
+    <div class="hx-areas"><span class="hx-tag">Criação</span><span class="hx-tag">Liderança</span><span class="hx-tag">Força</span><span class="hx-tag">Novos começos</span></div>
+  </div>
+</div>
+
+<!-- HEX 2 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div>
+      <div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 2 · ☷☷</div>
+      <div class="hx-name">Kun — O Receptivo <span class="hx-cn">坤</span></div>
+      <div class="hx-alt">A Terra sobre a Terra · Entrega Sagrada</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"O Receptivo funciona sublime, favorável, perseverante como a égua."</div>
+    <div class="hx-img">☷ A terra em sua condição é receptiva e perfeita. Assim o homem superior de amplo caráter carrega o mundo externo.</div>
+    <div class="hx-essence">A égua — não a passividade fraca, mas a força que serve. Momento de apoiar, receber, seguir e nutrir, não de liderar. Quem se coloca em segundo plano agora ganha mais do que quem insiste em ser primeiro. A terra recebe tudo sem discriminar — e de tudo faz florescer.</div>
+    <div class="hx-areas"><span class="hx-tag">Receptividade</span><span class="hx-tag">Nutrição</span><span class="hx-tag">Serviço</span><span class="hx-tag">Apoiar</span></div>
+  </div>
+</div>
+
+<!-- HEX 3 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div>
+      <div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 3 · ☳☵</div>
+      <div class="hx-name">Zhun — A Dificuldade Inicial <span class="hx-cn">屯</span></div>
+      <div class="hx-alt">Água sobre Trovão · O Caos do Nascimento</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"Dificuldade inicial. A perseverança traz fortuna. Não empreenda nada sozinho; é vantajoso nomear auxiliares."</div>
+    <div class="hx-img">☳☵ Nuvens e trovão. Assim o homem superior traz ordem ao caos.</div>
+    <div class="hx-essence">Como uma planta que luta para romper o solo — o início é difícil, mas a vida que emerge é real. Não desista por causa do esforço inicial. Busque ajuda: o momento exige colaboração. A confusão presente é sinal de que algo novo está nascendo, não de que o caminho está errado.</div>
+    <div class="hx-areas"><span class="hx-tag">Início difícil</span><span class="hx-tag">Persistência</span><span class="hx-tag">Buscar ajuda</span></div>
+  </div>
+</div>
+
+<!-- HEX 4 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div>
+      <div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 4 · ☶☵</div>
+      <div class="hx-name">Meng — A Ignorância Juvenil <span class="hx-cn">蒙</span></div>
+      <div class="hx-alt">Montanha sobre Água · Aprender com Humildade</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"A ignorância juvenil tem sucesso. Não sou eu que busco o jovem tolo; o jovem tolo me busca. Não lhe respondo se ele pergunta três vezes; tal insistência é importuna."</div>
+    <div class="hx-img">☶☵ Uma fonte brota ao pé da montanha. Assim o homem superior cultiva seu caráter por ação resoluta.</div>
+    <div class="hx-essence">Momento de aprender. Não é hora de ensinar ou liderar — é hora de ser aluno. A pergunta repetida sem ouvir a primeira resposta afasta o mestre. Abra-se para não saber, e o conhecimento virá. Cada ignorância reconhecida é um passo em direção à sabedoria.</div>
+    <div class="hx-areas"><span class="hx-tag">Aprendizado</span><span class="hx-tag">Humildade</span><span class="hx-tag">Juventude</span></div>
+  </div>
+</div>
+
+<!-- HEX 5 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div>
+      <div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 5 · ☰☵</div>
+      <div class="hx-name">Xu — A Espera <span class="hx-cn">需</span></div>
+      <div class="hx-alt">Água sobre Céu · Nutrição Pela Espera</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"A espera. Você tem sinceridade. Luz e sucesso. A perseverança traz fortuna. É vantajoso cruzar as grandes águas."</div>
+    <div class="hx-img">☵☰ Nuvens sobem ao céu. Assim o homem superior come, bebe e regozija-se.</div>
+    <div class="hx-essence">A chuva virá — mas ainda não é hora. O forte que espera não é fraco; é sábio. O perigo existe, mas está à distância e pode ser atravessado no momento certo. Enquanto aguarda: cuide de si, nutra-se, mantenha a confiança. A ação prematura desperdiça força que você precisará depois.</div>
+    <div class="hx-areas"><span class="hx-tag">Paciência</span><span class="hx-tag">Espera ativa</span><span class="hx-tag">Confiança</span></div>
+  </div>
+</div>
+
+<!-- HEX 6 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div>
+      <div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 6 · ☵☰</div>
+      <div class="hx-name">Song — O Conflito <span class="hx-cn">訟</span></div>
+      <div class="hx-alt">Céu sobre Água · A Disputa que Consome</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"O conflito. Você é sincero e encontra oposição. Permaneça cauteloso e central. O término traz fortuna. O prosseguimento traz má fortuna."</div>
+    <div class="hx-img">☰☵ Céu e água movem-se em direções opostas. O homem superior planeia cuidadosamente o começo de qualquer empreendimento.</div>
+    <div class="hx-essence">A disputa está em curso ou à vista. O conselho é claro: resolva no começo, não deixe escalar. Ceder é frequentemente mais sábio do que vencer. Quem insiste no conflito até o fim pode ganhar a batalha e perder o que realmente importa. Encontre um mediador.</div>
+    <div class="hx-areas"><span class="hx-tag">Conflito</span><span class="hx-tag">Disputa</span><span class="hx-tag">Ceder</span><span class="hx-tag">Mediação</span></div>
+  </div>
+</div>
+
+<!-- HEX 7 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="yin hl"></div><div class="hl yang"></div><div class="hl yin"></div>
+      <div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 7 · ☷☵</div>
+      <div class="hx-name">Shi — O Exército <span class="hx-cn">師</span></div>
+      <div class="hx-alt">Terra sobre Água · Liderança com Disciplina</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"O exército precisa de perseverança e de um homem forte no centro. Fortuna sem culpa."</div>
+    <div class="hx-img">☷☵ Água dentro da terra. O homem superior aumenta as massas e cuida do povo.</div>
+    <div class="hx-essence">Liderança de grande empreendimento. Um exército não funciona sem disciplina; um grupo não funciona sem um líder legítimo e justo. A força coletiva só produz resultado quando organizada. Verifique se a causa pela qual você luta é justa — exércitos injustos destroem quem os comanda.</div>
+    <div class="hx-areas"><span class="hx-tag">Liderança</span><span class="hx-tag">Disciplina</span><span class="hx-tag">Coletivo</span><span class="hx-tag">Organização</span></div>
+  </div>
+</div>
+
+<!-- HEX 8 -->
+<div class="hex-card">
+  <div class="hx-top">
+    <div class="hx-lines">
+      <div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div>
+      <div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div>
+    </div>
+    <div class="hx-meta">
+      <div class="hx-num">Hexagrama 8 · ☵☷</div>
+      <div class="hx-name">Bi — A União <span class="hx-cn">比</span></div>
+      <div class="hx-alt">Água sobre Terra · Solidariedade</div>
+    </div>
+  </div>
+  <div class="hx-body">
+    <div class="hx-judge">"União. Fortuna. Examine-se: é você firme, correto e perseverante? Aquele que hesita virá ao fim a se arrepender."</div>
+    <div class="hx-img">☵☷ Sobre a terra há água. Os reis de antigamente concediam feudos e cultivavam relacionamentos com os vassalos.</div>
+    <div class="hx-essence">Momento de unir-se a outros — seja uma pessoa, um grupo, uma causa. Procure o centro, a liderança justa, e alinhe-se a ela. A pergunta é: você age com integridade nessa aliança? Quem ancora a união num interesse egoísta, cedo ou tarde ficará só.</div>
+    <div class="hx-areas"><span class="hx-tag">União</span><span class="hx-tag">Aliança</span><span class="hx-tag">Solidariedade</span></div>
+  </div>
+</div>
+
+</div><!-- /hex-grid 1-8 -->
+
+<!-- HEX 9-16 -->
+<div id="hex9-16" class="ch reveal">
+  <h2>✦ Hexagramas 9 a 16 ✦</h2>
+  <p>O Domar do Poder Pequeno ao Grande Entusiasmo</p>
+</div>
+<div class="hex-grid">
+
+<!-- HEX 9 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 9 · ☴☰</div><div class="hx-name">Xiao Chu — Domar o Pequeno <span class="hx-cn">小畜</span></div><div class="hx-alt">Vento sobre Céu · Acúmulo Gradual</div></div></div><div class="hx-body"><div class="hx-judge">"O domar pelo pequeno tem sucesso. Nuvens densas, sem chuva ainda — vêm de nosso país ocidental."</div><div class="hx-essence">Acumulação de forças antes da ação. A chuva ainda não veio, mas as nuvens estão se formando. Pequenos preparativos, ajustes sutis, paciência na espera do momento certo. Não force o grande passo — construa as condições para ele. O vento gentil que penetra em todos os lugares é mais poderoso do que a tempestade.</div><div class="hx-areas"><span class="hx-tag">Preparação</span><span class="hx-tag">Acúmulo</span><span class="hx-tag">Paciência</span></div></div></div>
+
+<!-- HEX 10 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 10 · ☰☱</div><div class="hx-name">Lu — A Conduta <span class="hx-cn">履</span></div><div class="hx-alt">Céu sobre Lago · Pisar na Cauda do Tigre</div></div></div><div class="hx-body"><div class="hx-judge">"Conduta. Pisando na cauda do tigre. Ele não morde o homem. Sucesso."</div><div class="hx-essence">Situação delicada que exige comportamento correto e cuidadoso. O tigre não morde — mas você está pisando em sua cauda. A conduta impecável é o que te protege agora. Não é hora de arriscar ou improvisar; é hora de agir com precisão, educação e respeito pelas formas. O comedimento te leva ao sucesso.</div><div class="hx-areas"><span class="hx-tag">Conduta</span><span class="hx-tag">Cuidado</span><span class="hx-tag">Etiqueta</span><span class="hx-tag">Risco gerenciado</span></div></div></div>
+
+<!-- HEX 11 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 11 · ☷☰</div><div class="hx-name">Tai — A Paz <span class="hx-cn">泰</span></div><div class="hx-alt">Terra sobre Céu · Harmonia em Florescimento</div></div></div><div class="hx-body"><div class="hx-judge">"A paz. O pequeno se vai, o grande se aproxima. Fortuna e sucesso."</div><div class="hx-essence">Um dos hexagramas mais auspiciosos. O céu desceu e a terra subiu — yin e yang em fusão fértil. Período de paz, harmonia e prosperidade. As forças positivas dominam, as negativas retrocedem. Aproveite plenamente este período — mas saiba que toda paz prepara sua própria transformação. Use este tempo bem.</div><div class="hx-areas"><span class="hx-tag">Paz</span><span class="hx-tag">Harmonia</span><span class="hx-tag">Prosperidade</span><span class="hx-tag">Período áureo</span></div></div></div>
+
+<!-- HEX 12 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 12 · ☰☷</div><div class="hx-name">Pi — A Estagnação <span class="hx-cn">否</span></div><div class="hx-alt">Céu sobre Terra · O Bloqueio</div></div></div><div class="hx-body"><div class="hx-judge">"A estagnação. O grande se vai, o pequeno chega. Infortúnio."</div><div class="hx-essence">O oposto do hexagrama 11. O céu se afastou da terra — o yin e o yang se distanciaram. Comunicação bloqueada, avanço impossível por enquanto. Este não é o momento de tentar avançar — é hora de recolher, observar, preservar suas forças. As pessoas pequenas prosperam no caos; o nobre se retira com dignidade e espera.</div><div class="hx-areas"><span class="hx-tag">Estagnação</span><span class="hx-tag">Bloqueio</span><span class="hx-tag">Recolher</span><span class="hx-tag">Esperar</span></div></div></div>
+
+<!-- HEX 13 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 13 · ☰☲</div><div class="hx-name">Tong Ren — Comunhão com os Homens <span class="hx-cn">同人</span></div><div class="hx-alt">Céu sobre Fogo · Fraternidade</div></div></div><div class="hx-body"><div class="hx-judge">"Comunhão com os homens em campo aberto. Sucesso. É vantajoso cruzar as grandes águas."</div><div class="hx-essence">Momento de buscar o outro, de criar vínculos, de agir em parceria. Projetos coletivos prosperam agora. A chave é a igualdade — não há espaço para favoritismo ou tribos fechadas. Quando a comunhão é baseada em princípios comuns (não em interesses particulares), a força gerada é capaz de vencer qualquer obstáculo.</div><div class="hx-areas"><span class="hx-tag">Parceria</span><span class="hx-tag">Comunidade</span><span class="hx-tag">Projetos coletivos</span></div></div></div>
+
+<!-- HEX 14 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 14 · ☲☰</div><div class="hx-name">Da You — A Grande Possessão <span class="hx-cn">大有</span></div><div class="hx-alt">Fogo sobre Céu · Abundância Suprema</div></div></div><div class="hx-body"><div class="hx-judge">"Grande possessão. Supremo sucesso."</div><div class="hx-essence">Plenitude e abundância — em qualidades, recursos, reconhecimento. O sol no alto do céu que ilumina tudo. Não são somente recursos materiais: pode ser riqueza de espírito, talento ou influência. O conselho é usar a abundância com generosidade e humildade. O nobre que possui muito e distribui com sabedoria é amado; o que acumula para si se torna alvo da inveja.</div><div class="hx-areas"><span class="hx-tag">Abundância</span><span class="hx-tag">Sucesso</span><span class="hx-tag">Generosidade</span></div></div></div>
+
+<!-- HEX 15 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 15 · ☷☶</div><div class="hx-name">Qian — A Modéstia <span class="hx-cn">謙</span></div><div class="hx-alt">Terra sobre Montanha · Humildade Que Eleva</div></div></div><div class="hx-body"><div class="hx-judge">"A modéstia cria sucesso. O homem superior leva a cabo seus objetivos."</div><div class="hx-essence">A montanha abaixo da terra: o que deveria estar no alto, se inclina. Este é o hexagrama da verdadeira humildade — não fingimento ou falsa modéstia, mas a grandeza que não precisa se afirmar. O I Ching diz: a modéstia é a única virtude que nunca sofre dano. Toda vaidade eventualmente é humilhada; toda humildade eventualmente é elevada.</div><div class="hx-areas"><span class="hx-tag">Humildade</span><span class="hx-tag">Modéstia</span><span class="hx-tag">Equilíbrio</span></div></div></div>
+
+<!-- HEX 16 -->
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">Hexagrama 16 · ☳☷</div><div class="hx-name">Yu — O Entusiasmo <span class="hx-cn">豫</span></div><div class="hx-alt">Trovão sobre Terra · O Movimento Que Inspira</div></div></div><div class="hx-body"><div class="hx-judge">"O entusiasmo. É vantajoso nomear ajudantes e pôr exércitos em movimento."</div><div class="hx-essence">O trovão desperta a terra — o entusiasmo que move multidões. Quando a energia é genuína e alinhada com o natural, ela flui sem esforço e arrasta consigo. Momento de mobilizar, de inspirar, de agir com alegria. A música (o trovão que ressoa) é o símbolo: quando a nota é verdadeira, o mundo responde em harmonia.</div><div class="hx-areas"><span class="hx-tag">Entusiasmo</span><span class="hx-tag">Mobilização</span><span class="hx-tag">Alegria</span><span class="hx-tag">Inspiração</span></div></div></div>
+
+</div>
+
+<!-- HEX 17-32 -->
+<div id="hex17-32" class="ch reveal"><h2>✦ Hexagramas 17 a 32 ✦</h2><p>Do Seguimento à Influência</p></div>
+<div class="hex-grid">
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">17</div><div class="hx-name">Sui — O Seguimento <span class="hx-cn">隨</span></div></div></div><div class="hx-body"><div class="hx-judge">"O seguimento tem excelso sucesso. A perseverança é vantajosa. Sem culpa."</div><div class="hx-essence">Adaptar-se ao momento, seguir o que é genuíno no coração alheio, fluir com o tempo. Não é submissão cega — é a sabedoria de reconhecer quando liderar e quando seguir. O dirigente que segue o povo o guia bem; quem só comanda, perde o contato com a realidade.</div><div class="hx-areas"><span class="hx-tag">Adaptação</span><span class="hx-tag">Seguir</span><span class="hx-tag">Fluir</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">18</div><div class="hx-name">Gu — O Trabalho no Corrompido <span class="hx-cn">蠱</span></div></div></div><div class="hx-body"><div class="hx-judge">"Trabalhar no que foi corrompido traz supremo sucesso. É vantajoso cruzar as grandes águas."</div><div class="hx-essence">Algo se deteriorou — numa situação, num relacionamento, num negócio. Não por má-fé, mas por negligência, por hábito, por ausência de atenção. Agora é hora de enfrentar isso. A tarefa é trabalhosa mas os resultados serão extraordinários. O I Ching é explícito: quem trabalha no corrompido, sucede supremamente.</div><div class="hx-areas"><span class="hx-tag">Correção</span><span class="hx-tag">Reforma</span><span class="hx-tag">Reparar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">19</div><div class="hx-name">Lin — A Aproximação <span class="hx-cn">臨</span></div></div></div><div class="hx-body"><div class="hx-judge">"A aproximação tem supremo sucesso. A perseverança é vantajosa. Quando chegar o oitavo mês, haverá infortúnio."</div><div class="hx-essence">As forças positivas estão crescendo e se aproximando. Um período de influência, de supervisão gentil, de avanço suave. O aviso sobre o oitavo mês: toda crescente deve preceder um refluxo. Aproveite o período favorável com consciência de que ele passará — nada é permanente.</div><div class="hx-areas"><span class="hx-tag">Crescimento</span><span class="hx-tag">Aproximação</span><span class="hx-tag">Influência</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">20</div><div class="hx-name">Guan — A Contemplação <span class="hx-cn">觀</span></div></div></div><div class="hx-body"><div class="hx-judge">"A contemplação. A ablução foi feita, mas ainda não a oferenda. Com plena confiança, eles olham para ele."</div><div class="hx-essence">Momento de observar, não de agir. Como o vento que penetra sem mover — a contemplação que precede o entendimento. Olhe para sua situação sem o filtro do desejo ou do medo. O que está realmente acontecendo? O que é real, além das suas projeções? O sábio que contempla em silêncio colhe mais sabedoria do que o ativo que nunca para.</div><div class="hx-areas"><span class="hx-tag">Contemplação</span><span class="hx-tag">Observação</span><span class="hx-tag">Silêncio</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">21</div><div class="hx-name">Shi He — Morder através <span class="hx-cn">噬嗑</span></div></div></div><div class="hx-body"><div class="hx-judge">"Morder através tem sucesso. É vantajoso usar a lei."</div><div class="hx-essence">Um obstáculo no caminho — como um osso entre os dentes. Há algo que separa o que precisa se unir. A ação decisiva é necessária: morda através do obstáculo. Em termos práticos: confrontar o que evita, resolver o conflito pendente, usar os recursos legítimos à disposição. O impasse resolve-se pela ação direta, não pela contorno.</div><div class="hx-areas"><span class="hx-tag">Obstáculo</span><span class="hx-tag">Resolução</span><span class="hx-tag">Ação direta</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">22</div><div class="hx-name">Bi — A Graça <span class="hx-cn">賁</span></div></div></div><div class="hx-body"><div class="hx-judge">"A graça tem sucesso. Em pequenos assuntos é vantajoso avançar."</div><div class="hx-essence">Beleza, forma, ornamento — mas atenção: a graça é a embalagem, não o conteúdo. Esta carta aparece quando a forma exterior está bela mas o interior precisa de atenção. A beleza que serve ao essencial é valiosa; a que substitui o essencial, é ilusão. Em assuntos importantes, não se deixe seduzir pela aparência.</div><div class="hx-areas"><span class="hx-tag">Beleza</span><span class="hx-tag">Forma</span><span class="hx-tag">Cautela com aparências</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">23</div><div class="hx-name">Bo — A Dissolução <span class="hx-cn">剝</span></div></div></div><div class="hx-body"><div class="hx-judge">"A dissolução. Não é vantajoso avançar para nada."</div><div class="hx-essence">O Yang está quase completamente erodido pelas forças do Yin — como a última folha no galho antes do inverno. Não é hora de agir, de avançar, de empreender. É hora de aguardar e de preservar o que resta. Todo inverno precede uma primavera. A única ação útil agora é descansar e conservar energia para o renascimento que virá.</div><div class="hx-areas"><span class="hx-tag">Dissolução</span><span class="hx-tag">Esperar</span><span class="hx-tag">Preservar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">24</div><div class="hx-name">Fu — O Retorno <span class="hx-cn">復</span></div></div></div><div class="hx-body"><div class="hx-judge">"O retorno. Sucesso. Sair e entrar sem erro. Amigos chegam sem culpa."</div><div class="hx-essence">O solstício de inverno — a única linha Yang emergindo no fundo. O ponto de virada: depois do nadir mais profundo, o Yang começa a crescer de novo. Renovação, retorno da luz, começo de novo ciclo. Não force o processo — apenas reconheça que algo voltou ou voltará. A semente está germinando no escuro.</div><div class="hx-areas"><span class="hx-tag">Retorno</span><span class="hx-tag">Renovação</span><span class="hx-tag">Virada</span><span class="hx-tag">Renascimento</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">25</div><div class="hx-name">Wu Wang — A Inocência <span class="hx-cn">無妄</span></div></div></div><div class="hx-body"><div class="hx-judge">"A inocência. Supremo sucesso. A perseverança é vantajosa. Se alguém não estiver correto, terá infortúnio."</div><div class="hx-essence">Agir sem intenção oculta, sem calcular vantagem. A inocência — não ingenuidade, mas a pureza de quem age em harmonia com a natureza das coisas. Quando sua ação não tem agenda egoísta, o cosmos trabalha a seu favor. Quando houver um agenda oculta, os planos falham misteriosamente.</div><div class="hx-areas"><span class="hx-tag">Inocência</span><span class="hx-tag">Autenticidade</span><span class="hx-tag">Pureza de intenção</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">26</div><div class="hx-name">Da Chu — O Grande Domar <span class="hx-cn">大畜</span></div></div></div><div class="hx-body"><div class="hx-judge">"O grande poder domador. A perseverança é vantajosa. Não comer em casa traz fortuna."</div><div class="hx-essence">Grande acúmulo de força e sabedoria. A montanha que contém o céu — a capacidade de reter e maturar o poder antes de usá-lo. Momento de estudar os grandes ensinamentos, de aprender com os mais velhos, de guardar os recursos para o momento certo. A força guardada multiplica-se; a gasta prematuramente, esgota-se.</div><div class="hx-areas"><span class="hx-tag">Acúmulo</span><span class="hx-tag">Maturação</span><span class="hx-tag">Estudo</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">27</div><div class="hx-name">Yi — A Nutrição <span class="hx-cn">頤</span></div></div></div><div class="hx-body"><div class="hx-judge">"A nutrição. Perseverança traz fortuna. Preste atenção na nutrição e naquilo com que você procura encher sua boca."</div><div class="hx-essence">O que nutre e o que devora. Examine o que você está alimentando — no corpo, na mente, na alma. E o que você diz a quem? As palavras são nutrição ou veneno? O hexagrama das bocas: comer e falar são os dois usos da boca — ambos pedem atenção e discernimento.</div><div class="hx-areas"><span class="hx-tag">Nutrição</span><span class="hx-tag">Discurso</span><span class="hx-tag">Discernimento</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">28</div><div class="hx-name">Da Guo — A Preponderância <span class="hx-cn">大過</span></div></div></div><div class="hx-body"><div class="hx-judge">"A preponderância do grande. A trave-mestra flecte-se. É vantajoso ter onde ir. Sucesso."</div><div class="hx-essence">A trave está sob sobrecarga excessiva — pode quebrar. Situação que requer ação extraordinária, mas a situação é de exceção, não de regra. O peso é grande demais para as estruturas normais: é hora de agir de forma incomum, possivelmente solitária. Coragem singular é necessária.</div><div class="hx-areas"><span class="hx-tag">Sobrecarga</span><span class="hx-tag">Crise</span><span class="hx-tag">Ação extraordinária</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">29</div><div class="hx-name">Kan — O Abismal (Água) <span class="hx-cn">坎</span></div></div></div><div class="hx-body"><div class="hx-judge">"O abismal repetido. Se você é sincero, tem sucesso no coração, e o que fizer terá valor."</div><div class="hx-essence">Perigo duplo — como cascatas de água em sequência. Não há como evitar: precisa atravessar. A água que corre não para diante do obstáculo — ela continua constante, encontra cada fissura, e eventualmente passa. A sinceridade interior é o que mantém o rumo quando a visibilidade é zero. Flua; não resista.</div><div class="hx-areas"><span class="hx-tag">Perigo</span><span class="hx-tag">Persistência</span><span class="hx-tag">Atravessar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">30</div><div class="hx-name">Li — O Aderente (Fogo) <span class="hx-cn">離</span></div></div></div><div class="hx-body"><div class="hx-judge">"O aderente. A perseverança traz sucesso. Cuidar da vaca traz fortuna."</div><div class="hx-essence">O fogo — luminoso mas dependente de combustível. Clareza, beleza, consciência que ilumina. Para brilhar, precisa aderir a algo sólido. O conselho prático: cultive a clareza, mas saiba a que você deve se fixar. Uma chama sem combustível, apaga-se; com bom combustível, ilumina tudo ao redor.</div><div class="hx-areas"><span class="hx-tag">Clareza</span><span class="hx-tag">Consciência</span><span class="hx-tag">Aderir ao correto</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">31</div><div class="hx-name">Xian — A Influência <span class="hx-cn">咸</span></div></div></div><div class="hx-body"><div class="hx-judge">"A influência. Sucesso. A perseverança é vantajosa. Tomar uma donzela traz fortuna."</div><div class="hx-essence">O início do segundo bloco de 32 hexagramas — agora são os hexagramas das relações humanas. A influência mútua entre yin e yang, entre dois seres. O lago sobre a montanha: a água penetra a terra; a firmeza sustenta a água. O amor verdadeiro, o encontro de almas. Abertura ao outro sem perder a si mesmo.</div><div class="hx-areas"><span class="hx-tag">Amor</span><span class="hx-tag">Influência mútua</span><span class="hx-tag">Atração</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">32</div><div class="hx-name">Heng — A Duração <span class="hx-cn">恆</span></div></div></div><div class="hx-body"><div class="hx-judge">"A duração. Sucesso. Sem culpa. A perseverança é vantajosa. É vantajoso ter onde ir."</div><div class="hx-essence">O trovão e o vento — ao se reforçarem mutuamente, criam uma força duradoura. O casamento, a parceria, o compromisso de longo prazo. Não estabilidade estática, mas a constância que se renova. A duração não vem de não mudar, mas de manter o princípio central enquanto a forma se adapta. O que dura, cresce.</div><div class="hx-areas"><span class="hx-tag">Duração</span><span class="hx-tag">Compromisso</span><span class="hx-tag">Constância</span></div></div></div>
+
+</div>
+
+<!-- HEX 33-48 -->
+<div id="hex33-48" class="ch reveal"><h2>✦ Hexagramas 33 a 48 ✦</h2><p>Da Retirada ao Poço</p></div>
+<div class="hex-grid">
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">33</div><div class="hx-name">Dun — A Retirada <span class="hx-cn">遯</span></div></div></div><div class="hx-body"><div class="hx-judge">"A retirada. Sucesso. Em assuntos pequenos, a perseverança é vantajosa."</div><div class="hx-essence">Retirar-se não é fugir — é uma manobra estratégica. As forças inferiores avançam; o sábio recua com dignidade, preservando sua integridade. O que você abandona não é sua integridade, mas uma posição que não vale mais a pena defender. A retirada oportuna prepara o terreno para o retorno futuro com mais força.</div><div class="hx-areas"><span class="hx-tag">Retirada</span><span class="hx-tag">Estratégia</span><span class="hx-tag">Preservar integridade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">34</div><div class="hx-name">Da Zhuang — O Grande Poder <span class="hx-cn">大壯</span></div></div></div><div class="hx-body"><div class="hx-judge">"O grande poder. A perseverança é vantajosa."</div><div class="hx-essence">Força em seu auge. O trovão no céu — energia transbordante. Cuidado: grande poder sem sabedoria quebra cercas (como o bode forte que se prende pelos chifres). O poder que age dentro do que é correto, multiplica-se. O poder que transgride os limites naturais, se volta contra quem o usa.</div><div class="hx-areas"><span class="hx-tag">Força</span><span class="hx-tag">Poder</span><span class="hx-tag">Cuidado com excesso</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">35</div><div class="hx-name">Jin — O Progresso <span class="hx-cn">晉</span></div></div></div><div class="hx-body"><div class="hx-judge">"O progresso. O poderoso príncipe é honrado com cavalos em grande número."</div><div class="hx-essence">O sol surgindo sobre a terra — progresso claro e reconhecido. Avanço que é visto e apoiado. Reconhecimento que chega naturalmente porque o mérito é real. Não é hora de se esconder — é hora de avançar, de se apresentar, de aceitar o reconhecimento com graça. A luz que se eleva beneficia tudo abaixo.</div><div class="hx-areas"><span class="hx-tag">Progresso</span><span class="hx-tag">Reconhecimento</span><span class="hx-tag">Avançar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">36</div><div class="hx-name">Ming Yi — O Obscurecimento da Luz <span class="hx-cn">明夷</span></div></div></div><div class="hx-body"><div class="hx-judge">"O obscurecimento da luz. A perseverança na adversidade é vantajosa."</div><div class="hx-essence">O sol abaixo da terra — tempos sombrios, onde a luz interior precisa ser protegida. Período de adversidade, de autoridade injusta, de ambiente hostil à autenticidade. O conselho: não combata abertamente (o escuro seria maior), mas preserve a luz interior. Como Confúcio na corte tiránica: cumpra o dever externo, mas proteja a integridade interior.</div><div class="hx-areas"><span class="hx-tag">Adversidade</span><span class="hx-tag">Proteger a luz</span><span class="hx-tag">Discrição</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">37</div><div class="hx-name">Jia Ren — A Família <span class="hx-cn">家人</span></div></div></div><div class="hx-body"><div class="hx-judge">"A família. A perseverança da mulher é vantajosa."</div><div class="hx-essence">A família como modelo de toda organização. Cada membro tem sua função, cada relacionamento sua responsabilidade. Quando os papéis são claros e os valores compartilhados, a família — e por extensão qualquer grupo — funciona harmoniosamente. O vento que vem do fogo: as palavras que inspiram nascem do calor interior.</div><div class="hx-areas"><span class="hx-tag">Família</span><span class="hx-tag">Organização</span><span class="hx-tag">Papéis claros</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">38</div><div class="hx-name">Kui — A Oposição <span class="hx-cn">睽</span></div></div></div><div class="hx-body"><div class="hx-judge">"A oposição. Fortuna em pequenos assuntos."</div><div class="hx-essence">Mal-entendidos, divergências, forças que parecem opostas. Mas o fogo sobe e a água desce — contrários que se completam. Em grandes questões a divisão é problemática, mas em pequenos assuntos a variedade é riqueza. Busque o que une em vez do que divide. Dois estranhos, se forem sábios, descobrem o que têm em comum.</div><div class="hx-areas"><span class="hx-tag">Desentendimento</span><span class="hx-tag">Diferenças</span><span class="hx-tag">Buscar o comum</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">39</div><div class="hx-name">Jian — O Obstáculo <span class="hx-cn">蹇</span></div></div></div><div class="hx-body"><div class="hx-judge">"O obstáculo. O sudoeste é vantajoso; o nordeste não é. É vantajoso ver o grande homem."</div><div class="hx-essence">Água no caminho, montanha à frente — obstáculos em série. Não há como forçar a passagem agora. Escolha o caminho de menor resistência (o sudoeste, o que flui naturalmente). Busque a orientação de quem tem sabedoria — o "grande homem" é o mentor ou a sabedoria interior. Às vezes o obstáculo está para te redirecionar, não para te parar.</div><div class="hx-areas"><span class="hx-tag">Obstáculo</span><span class="hx-tag">Buscar orientação</span><span class="hx-tag">Redirecionar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">40</div><div class="hx-name">Xie — A Liberação <span class="hx-cn">解</span></div></div></div><div class="hx-body"><div class="hx-judge">"A liberação. O sudoeste é vantajoso. Sem lugar para ir, o retorno traz fortuna."</div><div class="hx-essence">O trovão com a chuva — a tensão se dissolve, o obstáculo cede. Liberação de uma pressão que durava há tempo. Aproveite para resolver as pendências enquanto a energia está favorável. Mas não se demore nas festas — o momento de liberação pede ação rápida para resolver o que ficou pendente durante o período de opressão.</div><div class="hx-areas"><span class="hx-tag">Liberação</span><span class="hx-tag">Alívio</span><span class="hx-tag">Resolver pendências</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">41</div><div class="hx-name">Sun — A Diminuição <span class="hx-cn">損</span></div></div></div><div class="hx-body"><div class="hx-judge">"A diminuição combinada com sinceridade traz suprema fortuna, sem culpa. Pode-se perseverar."</div><div class="hx-essence">Dar do próprio ao que está acima — o sacrifício que nutre o superior a fim de que o todo prospere. Diminuição não é perda: é distribuição que gera abundância maior. Simplifique, dê o que tem em excesso, apoie o que está acima de você. O que você oferece com sinceridade retorna multiplicado em sua forma mais necessária.</div><div class="hx-areas"><span class="hx-tag">Simplificação</span><span class="hx-tag">Sacrifício</span><span class="hx-tag">Dar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">42</div><div class="hx-name">Yi — O Aumento <span class="hx-cn">益</span></div></div></div><div class="hx-body"><div class="hx-judge">"O aumento. É vantajoso avançar. É vantajoso cruzar as grandes águas."</div><div class="hx-essence">Vento e trovão que se fortalecem mutuamente — crescimento acelerado, ganhos em todas as frentes. O período mais favorável para avançar, cruzar o desconhecido, iniciar o grande projeto. Aproveite a maré — mas distribua o aumento, pois a generosidade neste momento é o que torna o crescimento sustentável.</div><div class="hx-areas"><span class="hx-tag">Crescimento</span><span class="hx-tag">Ganho</span><span class="hx-tag">Avançar</span><span class="hx-tag">Generosidade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">43</div><div class="hx-name">Guai — A Resolução <span class="hx-cn">夬</span></div></div></div><div class="hx-body"><div class="hx-judge">"A resolução. Seja decidido na corte do rei. Anuncie com sinceridade. Não é possível usar armas."</div><div class="hx-essence">Chegou o momento da decisão que não pode mais ser adiada. Um único elemento Yin ainda resiste entre cinco Yang — a última resistência antes da vitória. A resolução exige: anunciá-la publicamente, com honestidade, sem usar a força bruta. A decisão corajosa e honesta prevalece; a que usa táticas escusas, fracassa.</div><div class="hx-areas"><span class="hx-tag">Decisão</span><span class="hx-tag">Resolução</span><span class="hx-tag">Honestidade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">44</div><div class="hx-name">Gou — O Encontro <span class="hx-cn">姤</span></div></div></div><div class="hx-body"><div class="hx-judge">"O encontro. A donzela é poderosa. Não tome essa donzela."</div><div class="hx-essence">Uma força Yin que surge sozinha entre cinco Yang — o encontro inesperado que pode seduzir. O aviso: este encontro (ou oportunidade) pode parecer atraente, mas seu poder crescente representa um perigo. Seja cauteloso com o que aparece de forma tentadora mas inesperada. Nem todo encontro casual é uma benção.</div><div class="hx-areas"><span class="hx-tag">Encontro inesperado</span><span class="hx-tag">Sedução</span><span class="hx-tag">Cautela</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">45</div><div class="hx-name">Cui — A Reunião <span class="hx-cn">萃</span></div></div></div><div class="hx-body"><div class="hx-judge">"A reunião. O rei se aproxima de seu templo. É vantajoso ver o grande homem. Sucesso."</div><div class="hx-essence">Reunião de forças ao redor de um centro. Convergência — de pessoas, recursos, energias — em torno de um propósito comum. O lago sobre a terra: as águas se acumulam. Momento de congregar, de reunir o que estava disperso, de criar uma comunidade ao redor do que é sagrado. O centro precisa ser puro para que a reunião seja fértil.</div><div class="hx-areas"><span class="hx-tag">Reunião</span><span class="hx-tag">Convergência</span><span class="hx-tag">Comunidade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">46</div><div class="hx-name">Sheng — O Empurrar para Cima <span class="hx-cn">升</span></div></div></div><div class="hx-body"><div class="hx-judge">"O empurrar para cima tem supremo sucesso. Deve-se ver o grande homem. Não tema."</div><div class="hx-essence">A semente que empurra para cima pelo solo — ascensão gradual, firme, inevitável. Avance passo a passo sem tentar pular etapas. A árvore que cresce devagar tem raízes mais profundas. Busque a orientação de quem está acima de você na hierarquia ou na sabedoria — não é fraqueza, é aceleração do processo.</div><div class="hx-areas"><span class="hx-tag">Ascensão</span><span class="hx-tag">Progresso gradual</span><span class="hx-tag">Crescer</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">47</div><div class="hx-name">Kun — O Esgotamento <span class="hx-cn">困</span></div></div></div><div class="hx-body"><div class="hx-judge">"O esgotamento. Sucesso. A perseverança. O grande homem traz fortuna. Sem culpa. Quando ele tem algo a dizer, não é acreditado."</div><div class="hx-essence">O lago sem água — esgotamento dos recursos. Momento de provação onde até as palavras não convencem. Não é hora de tentar provar ou convencer — é hora de preservar, suportar, permanecer íntegro quando nada parece funcionar. O nobre sobrevive ao esgotamento porque não abandona seus princípios quando o recurso escasseia.</div><div class="hx-areas"><span class="hx-tag">Esgotamento</span><span class="hx-tag">Provação</span><span class="hx-tag">Resiliência</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">48</div><div class="hx-name">Jing — O Poço <span class="hx-cn">井</span></div></div></div><div class="hx-body"><div class="hx-judge">"O poço. A cidade pode ser mudada, mas o poço não pode ser mudado. Não se perde e não se ganha."</div><div class="hx-essence">O poço como fonte perene e inesgotável — a sabedoria que existe independentemente de quem a busca. Tudo muda ao redor do poço, mas a fonte permanece. Também: use o poço — não deixe o balde na metade do caminho. A fonte de nutição (material ou espiritual) está disponível, mas você precisa ir até ela e não desistir antes de chegar lá.</div><div class="hx-areas"><span class="hx-tag">Fonte</span><span class="hx-tag">Sabedoria perene</span><span class="hx-tag">Nutição</span></div></div></div>
+
+</div>
+
+<!-- HEX 49-64 -->
+<div id="hex49-64" class="ch reveal"><h2>✦ Hexagramas 49 a 64 ✦</h2><p>Da Revolução à Conclusão</p></div>
+<div class="hex-grid">
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">49</div><div class="hx-name">Ge — A Revolução <span class="hx-cn">革</span></div></div></div><div class="hx-body"><div class="hx-judge">"A revolução. No dia de sua conclusão, a mais alta fidelidade é obtida. Supremo sucesso."</div><div class="hx-essence">Mudança que destrói a velha ordem para criar a nova. Revoluções genuínas acontecem porque chegou a hora — não porque alguém as forçou. A pergunta é: esta mudança que você sente ou promove é necessária e seu momento é agora? Se sim: avance sem hesitar. Se não: aguarde o momento certo.</div><div class="hx-areas"><span class="hx-tag">Transformação</span><span class="hx-tag">Mudança radical</span><span class="hx-tag">Nova ordem</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">50</div><div class="hx-name">Ding — O Caldeirão <span class="hx-cn">鼎</span></div></div></div><div class="hx-body"><div class="hx-judge">"O caldeirão. Supremo fortuna. Sucesso."</div><div class="hx-essence">O caldeirão sagrado que transforma os ingredientes crus em oferenda refinada. Um dos hexagramas mais nobres — a transformação através da cultura, do refinamento, da nutrição espiritual. O trabalho de cozinhar exige o fogo certo, os ingredientes certos e o tempo certo. Momento de trabalho refinado que transforma o bruto em algo valioso.</div><div class="hx-areas"><span class="hx-tag">Transformação refinada</span><span class="hx-tag">Cultura</span><span class="hx-tag">Nutrição espiritual</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">51</div><div class="hx-name">Zhen — O Excitar (Trovão) <span class="hx-cn">震</span></div></div></div><div class="hx-body"><div class="hx-judge">"O excitar. Sucesso. O trovão vem: oh! oh! Depois risos e conversas animadas: ha! ha!"</div><div class="hx-essence">O trovão que sacode e depois passa — o susto que revela. O choque inicial (financeiro, emocional, espiritual) que parece catástrofe mas acorda o que estava adormecido. Depois do susto, vem a clareza e até a alegria. O nobre usa o choque para examinar sua vida e colocar tudo em ordem.</div><div class="hx-areas"><span class="hx-tag">Choque</span><span class="hx-tag">Despertar</span><span class="hx-tag">Renovação após susto</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">52</div><div class="hx-name">Gen — Mantendo-se Quieto <span class="hx-cn">艮</span></div></div></div><div class="hx-body"><div class="hx-judge">"Mantendo as costas quietas, não sente mais seu corpo. Vai ao seu pátio, não vê seu homem. Sem culpa."</div><div class="hx-essence">A montanha sobre a montanha — imobilidade absoluta. O hexagrama da meditação profunda, do stop interior. Quando mover a mente cessamos o movimento desnecessário que gera confusão. A quietude que se propõe aqui não é torpor — é presença total no ponto entre ação e não-ação. O que precisa ser clarificado, clarifica-se no silêncio.</div><div class="hx-areas"><span class="hx-tag">Meditação</span><span class="hx-tag">Quietude</span><span class="hx-tag">Stop interior</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">53</div><div class="hx-name">Jian — O Desenvolvimento <span class="hx-cn">漸</span></div></div></div><div class="hx-body"><div class="hx-judge">"O desenvolvimento. A donzela que vai ao casamento. Fortuna. A perseverança é vantajosa."</div><div class="hx-essence">A árvore crescendo na montanha — crescimento lento, passo a passo, nunca pulando etapas. A ganso selvagem que migra seguindo uma ordem imutável. Este é o hexagrama do processo gradual que não pode ser acelerado sem prejudicar o resultado. Cada etapa em seu tempo. O que cresce devagar, finca as raízes mais fundas.</div><div class="hx-areas"><span class="hx-tag">Desenvolvimento gradual</span><span class="hx-tag">Etapas</span><span class="hx-tag">Paciência</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">54</div><div class="hx-name">Gui Mei — A Noiva que se Casa <span class="hx-cn">歸妹</span></div></div></div><div class="hx-body"><div class="hx-judge">"A noiva que se casa. Empreendimentos trazem infortúnio. Nada de vantajoso."</div><div class="hx-essence">Uma união que não está nos termos corretos — o trovão sobre o lago cria agitação. Relacionamento ou situação onde a pessoa está numa posição de dependência ou desvantagem. Não é o momento certo, ou não são as condições certas. Cuidado com o que se aceita por desejo ou necessidade — o preço pode ser mais alto do que parece.</div><div class="hx-areas"><span class="hx-tag">Cautela em uniões</span><span class="hx-tag">Condições incorretas</span><span class="hx-tag">Paciência</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">55</div><div class="hx-name">Feng — A Abundância <span class="hx-cn">豐</span></div></div></div><div class="hx-body"><div class="hx-judge">"A abundância tem sucesso. O rei a alcança. Não seja triste; seja como o sol ao meio-dia."</div><div class="hx-essence">O sol ao meio-dia — máximo brilho, máxima clareza, máxima abundância. Este é o ápice. O aviso está embutido: o meio-dia é o ponto em que começa o declínio — não para assustar, mas para usar o pico com sabedoria. Não seja triste porque o pico existe: dance enquanto a música toca.</div><div class="hx-areas"><span class="hx-tag">Abundância</span><span class="hx-tag">Pico</span><span class="hx-tag">Usar o momento</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">56</div><div class="hx-name">Lu — O Viajante <span class="hx-cn">旅</span></div></div></div><div class="hx-body"><div class="hx-judge">"O viajante. Sucesso através do pequeno. A perseverança do viajante traz fortuna."</div><div class="hx-essence">O fogo sobre a montanha — passa rapidamente. Período de transição, de estar em terra estrangeira (literal ou metaforicamente), de ser estrangeiro. Não é hora de grandes projetos — é hora de mover-se com leveza, de ser cortês com os locais, de não criar raízes que não possam ser movidas. A sabedoria do viajante é a adaptação sem perda de si mesmo.</div><div class="hx-areas"><span class="hx-tag">Transição</span><span class="hx-tag">Leveza</span><span class="hx-tag">Adaptação</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">57</div><div class="hx-name">Xun — O Suave (Vento) <span class="hx-cn">巽</span></div></div></div><div class="hx-body"><div class="hx-judge">"O suave. Sucesso através do pequeno. É vantajoso ter onde ir. É vantajoso ver o grande homem."</div><div class="hx-essence">O vento que penetra em todos os lugares — influência que não força, mas impregna. A persistência suave que supera qualquer resistência pela qualidade da presença contínua. Não bata na porta — entre pela janela. Não force — influencie de forma gentil e consistente. A gota que cava a pedra não pela força, mas pela frequência.</div><div class="hx-areas"><span class="hx-tag">Influência suave</span><span class="hx-tag">Penetração gradual</span><span class="hx-tag">Gentileza consistente</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">58</div><div class="hx-name">Dui — O Alegre <span class="hx-cn">兌</span></div></div></div><div class="hx-body"><div class="hx-judge">"O alegre. Sucesso. A perseverança é vantajosa."</div><div class="hx-essence">Dois lagos que se nutrem mutuamente — a alegria que circula e se multiplica. A alegria genuína (não a diversão que evita a dor) é a fonte de força mais poderosa. Quando o grupo está alegre, o trabalho flui; quando os sábios conversam com prazer, a sabedoria cresce. Compartilhe a alegria — ela se multiplica ao ser dividida.</div><div class="hx-areas"><span class="hx-tag">Alegria</span><span class="hx-tag">Troca prazerosa</span><span class="hx-tag">Compartilhar</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">59</div><div class="hx-name">Huan — A Dispersão <span class="hx-cn">渙</span></div></div></div><div class="hx-body"><div class="hx-judge">"A dispersão. Sucesso. O rei se aproxima de seu templo. É vantajoso cruzar as grandes águas."</div><div class="hx-essence">O vento sobre a água dispersa a rigidez — dissolve o que estava cristalizado. Egoísmo, rigidez mental, distâncias entre pessoas: o momento convida à dispersão do que separava. Trabalho espiritual (o templo) e viagem (cruzar as águas) são as ferramentas recomendadas para dissolver a rigidez interior e retornar à fluidez.</div><div class="hx-areas"><span class="hx-tag">Dissolução</span><span class="hx-tag">Superar separações</span><span class="hx-tag">Espiritualidade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">60</div><div class="hx-name">Jie — A Limitação <span class="hx-cn">節</span></div></div></div><div class="hx-body"><div class="hx-judge">"A limitação. Sucesso. Não devemos perseverar com limitações amargas."</div><div class="hx-essence">A água no lago tem seus limites — isso não a diminui, isso a define. Limites são o que dá forma ao que seria amorfo. A disciplina que você impõe a si mesmo é o que torna a liberdade criativa possível. O rio que tem margens, flui com poder; o que inunda tudo, perde sua força. Estabeleça limites que sejam saudáveis, não punitivos.</div><div class="hx-areas"><span class="hx-tag">Limites saudáveis</span><span class="hx-tag">Disciplina</span><span class="hx-tag">Estrutura</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">61</div><div class="hx-name">Zhong Fu — A Verdade Interior <span class="hx-cn">中孚</span></div></div></div><div class="hx-body"><div class="hx-judge">"Verdade interior. Porcos e peixes. Fortuna. É vantajoso cruzar as grandes águas."</div><div class="hx-essence">O vento sobre o lago — a influência que vem de dentro para fora. A verdade que tem poder não é a que se proclama, mas a que se vive. Quando você age a partir do que é genuinamente verdadeiro no coração, mesmo os que são "porcos e peixes" (criaturas aparentemente inacessíveis à influência) são tocados. A autenticidade é a ferramenta mais poderosa.</div><div class="hx-areas"><span class="hx-tag">Autenticidade</span><span class="hx-tag">Verdade interior</span><span class="hx-tag">Influência genuína</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">62</div><div class="hx-name">Xiao Guo — A Preponderância do Pequeno <span class="hx-cn">小過</span></div></div></div><div class="hx-body"><div class="hx-judge">"Preponderância do pequeno. Sucesso. A perseverança é vantajosa. Em pequenas coisas, pode-se fazer; em grandes, não."</div><div class="hx-essence">O pássaro que tenta voar ao céu, mas seu destino é a terra. Momento de atenção ao pequeno: pequenos gestos, pequenas correções, pequenos cuidados são o que funciona agora. O grande projeto, a grande fala, o grande gesto — tudo isso perde o alvo agora. A excelência no detalhe supera o grandioso mal calibrado.</div><div class="hx-areas"><span class="hx-tag">Atenção ao pequeno</span><span class="hx-tag">Detalhe</span><span class="hx-tag">Humildade</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div></div><div class="hx-meta"><div class="hx-num">63</div><div class="hx-name">Ji Ji — Depois da Conclusão <span class="hx-cn">既濟</span></div></div></div><div class="hx-body"><div class="hx-judge">"Depois da conclusão. Sucesso no pequeno. A perseverança é vantajosa. No começo, fortuna. No fim, desordem."</div><div class="hx-essence">A única posição "perfeita" do I Ching — cada linha no lugar certo, yin e yang alternados perfeitamente. E o aviso é justamente este: a perfeição é instável. Quando tudo está no lugar, é hora de ter máximo cuidado para que não comece a desordenar. A ordem não se mantém sozinha — requer vigilância constante mesmo (especialmente) no sucesso.</div><div class="hx-areas"><span class="hx-tag">Realização</span><span class="hx-tag">Vigilância no sucesso</span><span class="hx-tag">Manutenção</span></div></div></div>
+
+<div class="hex-card"><div class="hx-top"><div class="hx-lines"><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div><div class="hl yin"></div><div class="hl yang"></div></div><div class="hx-meta"><div class="hx-num">64</div><div class="hx-name">Wei Ji — Antes da Conclusão <span class="hx-cn">未濟</span></div></div></div><div class="hx-body"><div class="hx-judge">"Antes da conclusão. Sucesso. O pequeno raposo quase cruzou o gelo; molhou sua cauda. Nada de vantajoso."</div><div class="hx-essence">O último hexagrama — e é de incompletude. Todas as linhas estão no lugar errado; a situação ainda não se completou. O I Ching fecha não com "chegou o fim" mas com "ainda há caminho". O raposo que quase atravessou o gelo — quase chegou, mas precipitou-se no final. A sabedoria final do I Ching: a jornada continua. Há sempre outro começo.</div><div class="hx-areas"><span class="hx-tag">Incompletude</span><span class="hx-tag">O caminho continua</span><span class="hx-tag">Cuidado no final</span></div></div></div>
+
+</div>
+
+<!-- ═══ AVANÇADO ═══ -->
+<div id="avancado" class="ch reveal">
+  <h2>✦ Nível Avançado — Aprofundando a Prática ✦</h2>
+  <p>linhas mutantes em detalhe · pares de hexagramas · o julgamento de Wilhelm · o I Ching e Jung</p>
+</div>
+
+<div class="sc sc-red reveal">
+  <h3>🔄 As Linhas Mutantes em Profundidade</h3>
+  <p>As linhas mutantes são o coração da leitura avançada. Cada hexagrama tem 6 linhas numeradas de 1 (inferior) a 6 (superior). A posição da linha mutante importa tanto quanto qual é o hexagrama:</p>
+  <p><strong>Linha 1 (a mais baixa):</strong> A situação em seu começo. As linhas 1 tendem a indicar que algo ainda está se formando — cautela e espera são frequentemente aconselhadas.</p>
+  <p><strong>Linha 2:</strong> A posição do funcionário — competente, eficaz, mas não no poder máximo. Frequentemente traz conselhos sobre como servir bem ao todo.</p>
+  <p><strong>Linha 3:</strong> Posição de transição e dificuldade. O limite entre o trigrama inferior e o superior. Frequentemente indica situações de tensão que pedem cuidado.</p>
+  <p><strong>Linha 4:</strong> Próxima ao governante (linha 5). Posição de conselheiro — requer cautela, humildade e serviço genuíno.</p>
+  <p><strong>Linha 5:</strong> A posição do governante — a mais importante e frequentemente a mais auspiciosa. Indica a resposta central quando mutante.</p>
+  <p><strong>Linha 6 (a mais alta):</strong> Posição além do poder — a sabedoria que transcendeu o jogo. Pode ser liberação ou excesso dependendo do contexto.</p>
+  <p><strong>Quando há múltiplas linhas mutantes:</strong> Leia todas, mas preste atenção especial à linha do meio (se forem 3 mutantes) ou às duas centrais (se forem 4). Alguns mestres recomendam: com 5 ou 6 linhas mutantes, leia apenas o juízo do hexagrama de transformação.</p>
+</div>
+
+<div class="sc sc-jade reveal">
+  <h3>☯ Os 32 Pares de Hexagramas</h3>
+  <p>Os 64 hexagramas são organizados em 32 pares, onde cada hexagrama é o inverso ou o complemento do outro. Este é um dos aspectos mais sofisticados do I Ching.</p>
+  <p><strong>Pares por inversão:</strong> A maioria dos pares são criados virando o hexagrama de cabeça para baixo. Hexagrama 3 (Dificuldade Inicial) invertido = Hexagrama 4 (Ignorância Juvenil). Isso não é acidente — eles são faces da mesma situação: começar algo novo sempre envolve tanto o esforço inicial (3) quanto o estado de não-saber (4).</p>
+  <p><strong>Pares por complemento:</strong> Alguns hexagramas (como 1/2, 27/28, 29/30) não se invertem — são complementados trocando cada Yin por Yang e vice-versa. 1 (Criativo/puro Yang) e 2 (Receptivo/puro Yin) são os grandes complementos.</p>
+  <p>Ao estudar um hexagrama, é muito útil estudar também seu par — eles formam um contexto completo, como dois lados de uma mesma situação.</p>
+</div>
+
+<div class="sc sc-gold reveal">
+  <h3>🧠 O I Ching e a Psicologia de Jung</h3>
+  <p>Carl Jung usou o I Ching por décadas e escreveu o prefácio para a tradução de Richard Wilhelm. Sua teoria explica o funcionamento do oráculo através do conceito de <strong>sincronicidade</strong>: eventos significativamente coincidentes que não têm relação causal mas têm relação de significado.</p>
+  <p>Jung afirmou que o lançamento das moedas não "causa" uma resposta específica — mas o momento em que se consulta, com a qualidade psíquica específica daquele instante, atrai uma resposta que é significativamente adequada àquele estado interior. É a mesma lógica pela qual o horóscopo do dia do nascimento pode refletir a psique — não por causalidade, mas por correspondência.</p>
+  <p>Na perspectiva psicológica, o I Ching funciona como um <strong>espelho do inconsciente</strong>: a resposta amplifica e torna visível o que a parte mais sábia da psique já sabia mas que a mente consciente não estava ouvindo. Não é magia — é uma forma altamente sofisticada de fazer a intuição profunda se tornar visível.</p>
+</div>
+
+<div class="sc sc-sky reveal">
+  <h3>📚 Como Continuar — Recursos e Práticas</h3>
+  <p><strong>Mantenha um diário:</strong> Registre cada consulta — a pergunta, o hexagrama recebido, as linhas mutantes, sua interpretação e o que aconteceu depois. Com o tempo, você desenvolverá uma relação pessoal profunda com cada hexagrama e entenderá como o I Ching "fala" para você especificamente.</p>
+  <p><strong>Livros essenciais:</strong> <em>I Ching — O Livro das Mutações</em> (Richard Wilhelm, trad.) é a referência clássica para o Ocidente, com os comentários de Jung. <em>I Ching — A Arte da Previsão</em> (Alfred Huang) é excelente para uma perspectiva mais próxima da tradição chinesa. <em>The Original I Ching Oracle</em> (Rudolf Ritsema e Stephen Karcher) é para quem quer uma abordagem mais literal e menos interpretada.</p>
+  <p><strong>Prática diária:</strong> Muitos praticantes consultam o I Ching não com perguntas específicas, mas como reflexão matinal — lançam e leem o hexagrama como "a qualidade do dia". Com o tempo, desenvolve-se a capacidade de ler o símbolo diretamente, sem precisar do texto.</p>
+  <p><strong>O que não fazer:</strong> Não use o I Ching para tomar decisões que você é capaz de tomar racionalmente. Ele é mais útil quando as questões são genuinamente ambíguas, quando você sente que há algo que não está vendo, ou quando precisa de perspectiva em situações emocionalmente carregadas.</p>
+  <p><strong>A última sabedoria:</strong> O I Ching diz que a grande virtude não é seguir o oráculo cegamente, mas desenvolver uma sabedoria tão refinada que você não precise mais consultá-lo — porque você mesmo se tornou capaz de ler os padrões do momento. O objetivo final é o I Ching em silêncio: reconhecer o hexagrama da situação pela qualidade do que está vivendo.</p>
+</div>
+
+<footer>
+  <p class="f-text">
+    "Se me fossem concedidos mais anos de vida,<br>
+    passaria cinquenta deles estudando o I Ching."<br>
+    — Confúcio (551–479 a.C.)<br><br>
+    "O I Ching não oferece soluções. Oferece perspectivas."<br>
+    — Alfred Huang<br><br>
+    <em>Baseado em: Richard Wilhelm (1923) · Alfred Huang · Rudolf Ritsema<br>
+    Carl G. Jung (Prefácio ao I Ching, 1950) · Stephen Karcher</em>
+  </p>
+</footer>
+</div>
+
+<script>
+// ── SCROLL REVEAL ──
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.05})
+document.querySelectorAll('.reveal,.hex-card,.trig-card').forEach(el=>io.observe(el))
+
+// ── SIDEBAR DOTS ──
+const secs=[...document.querySelectorAll('[id]')]
+const dots=[...document.querySelectorAll('.sn-dot')]
+const io2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})}})},{threshold:.35})
+secs.forEach(s=>io2.observe(s))
+
+// ── ORACLE ──
+const hexNames=[
+  [1,"Qian","O Criativo","Força máxima criativa. Avance com coragem e integridade."],
+  [2,"Kun","O Receptivo","Receptividade e entrega. Apoie em vez de liderar agora."],
+  [3,"Zhun","A Dificuldade Inicial","O início é difícil mas verdadeiro. Busque auxílio."],
+  [4,"Meng","A Ignorância Juvenil","Momento de aprender. Seja humilde e aberto."],
+  [5,"Xu","A Espera","A chuva virá. Nutra-se enquanto aguarda o momento certo."],
+  [6,"Song","O Conflito","Resolva antes que escale. Ceder pode ser mais sábio."],
+  [7,"Shi","O Exército","Lidere com justiça e disciplina. A causa deve ser legítima."],
+  [8,"Bi","A União","Momento de se aliar ao que é central e íntegro."],
+  [9,"Xiao Chu","Domar o Pequeno","Prepare e acumule. A hora de agir ainda não chegou."],
+  [10,"Lu","A Conduta","Aja com cuidado impecável. O tigre não morde quem tem conduta correta."],
+  [11,"Tai","A Paz","Período áureo de harmonia. Use este tempo com sabedoria."],
+  [12,"Pi","A Estagnação","Bloqueio presente. Recolha-se e aguarde a maré virar."],
+  [13,"Tong Ren","Comunhão","Projetos coletivos prosperam. Busque parceiros de princípio."],
+  [14,"Da You","Grande Possessão","Abundância em todas as formas. Compartilhe com generosidade."],
+  [15,"Qian","A Modéstia","A humildade eleva; a vaidade, rebaixa. Seja pequeno."],
+  [16,"Yu","O Entusiasmo","Mobilize com alegria genuína. A energia autêntica arrasta."],
+  [17,"Sui","O Seguimento","Adapte-se e flua. Saiba quando liderar e quando seguir."],
+  [18,"Gu","Trabalho no Corrompido","Corrija o que deteriorou. O trabalho difícil traz supremo sucesso."],
+  [19,"Lin","A Aproximação","As forças positivas crescem. Avance com consciência."],
+  [20,"Guan","A Contemplação","Observe sem agir. O que está realmente acontecendo?"],
+  [21,"Shi He","Morder Através","Aja diretamente sobre o obstáculo. Não contorne — atravesse."],
+  [22,"Bi","A Graça","A forma é bela — mas verifique o conteúdo. Não se deixe seduzir pela aparência."],
+  [23,"Bo","A Dissolução","Preserve e aguarde. O yang retornará após o inverno."],
+  [24,"Fu","O Retorno","O ponto de virada chegou. A renovação começa agora."],
+  [25,"Wu Wang","A Inocência","Aja sem agenda oculta. A pureza de intenção é sua proteção."],
+  [26,"Da Chu","O Grande Domar","Acumule sabedoria e força antes de agir. Estude os grandes."],
+  [27,"Yi","A Nutrição","Examine o que você alimenta — no corpo, na mente, nas palavras."],
+  [28,"Da Guo","Preponderância Grande","Situação excepcional exige ação extraordinária. Seja corajoso."],
+  [29,"Kan","O Abismal","Perigo que será atravessado pela sinceridade constante. Flua."],
+  [30,"Li","O Aderente","Cultive a clareza e fixe-se ao que é correto. Brilhe."],
+  [31,"Xian","A Influência","Abertura mútua, atração genuína. O encontro que transforma."],
+  [32,"Heng","A Duração","Constância que se renova. Compromisso que tem futuro."],
+  [33,"Dun","A Retirada","Recue com dignidade. Preservar a integridade é vitória."],
+  [34,"Da Zhuang","O Grande Poder","Força no auge. Aja apenas dentro do que é correto."],
+  [35,"Jin","O Progresso","Avance — seu mérito será reconhecido. Aceite o reconhecimento."],
+  [36,"Ming Yi","Obscurecimento da Luz","Tempos sombrios. Proteja sua luz interior com discrição."],
+  [37,"Jia Ren","A Família","Clareza nos papéis e valores compartilhados gera harmonia."],
+  [38,"Kui","A Oposição","Diferenças que enriquecem. Busque o que une, não o que divide."],
+  [39,"Jian","O Obstáculo","Escolha o caminho de menor resistência e busque orientação."],
+  [40,"Xie","A Liberação","A tensão se dissolve. Resolva as pendências enquanto o caminho está aberto."],
+  [41,"Sun","A Diminuição","Dê do que tem em excesso. O sacrifício sincero retorna multiplicado."],
+  [42,"Yi","O Aumento","Período de crescimento acelerado. Avance e seja generoso."],
+  [43,"Guai","A Resolução","Decida com honestidade e clareza. A decisão não pode mais esperar."],
+  [44,"Gou","O Encontro","Encontro tentador mas potencialmente perigoso. Seja cauteloso."],
+  [45,"Cui","A Reunião","Reúna as forças ao redor de um centro íntegro e puro."],
+  [46,"Sheng","Empurrar para Cima","Ascenda passo a passo. Busque orientação de quem é mais sábio."],
+  [47,"Kun","O Esgotamento","Provação que revela o caráter. Mantenha os princípios quando escasso."],
+  [48,"Jing","O Poço","A fonte perene está disponível. Vá até ela e não desista na metade."],
+  [49,"Ge","A Revolução","O momento de mudança radical chegou. Aja se a causa é justa."],
+  [50,"Ding","O Caldeirão","Transformação refinada. O trabalho cuidadoso produz oferta valiosa."],
+  [51,"Zhen","O Excitar","O choque desperta. Use o susto para examinar e reordenar."],
+  [52,"Gen","Manter-se Quieto","Meditação profunda. A quietude revela o que o ruído esconde."],
+  [53,"Jian","O Desenvolvimento","Avance passo a passo, sem pular etapas. O gradual é sólido."],
+  [54,"Gui Mei","A Noiva","Cuidado com uniões em condições desvantajosas. Espere o momento certo."],
+  [55,"Feng","A Abundância","O sol ao meio-dia. Use o auge com sabedoria — ele passará."],
+  [56,"Lu","O Viajante","Mova-se com leveza. Adapte-se sem perder a si mesmo."],
+  [57,"Xun","O Suave","Influencie com gentileza consistente. A gota cava a pedra."],
+  [58,"Dui","O Alegre","Compartilhe a alegria — ela se multiplica ao ser dividida."],
+  [59,"Huan","A Dispersão","Dissolva a rigidez. O espiritual e o movimento liberam o bloqueio."],
+  [60,"Jie","A Limitação","Estabeleça limites saudáveis. A forma é o que torna a força útil."],
+  [61,"Zhong Fu","Verdade Interior","Aja a partir do genuíno. A autenticidade alcança o que a força não pode."],
+  [62,"Xiao Guo","Preponderância Pequena","Excelência no detalhe e no pequeno. O grandioso espera."],
+  [63,"Ji Ji","Após a Conclusão","Realização conquistada. Vigilância constante mantém a ordem."],
+  [64,"Wei Ji","Antes da Conclusão","A jornada continua. Cuidado no final — o raposo quase chegou."]
+]
+
+let lines=[]
+let step=0
+
+function launchOracle(){
+  if(step<6){
+    const coins=Array.from({length:3},()=>Math.random()<.5?2:3)
+    const sum=coins.reduce((a,b)=>a+b,0)
+    lines.push(sum)
+    step++
+    renderProgress()
+    if(step===6) showResult()
+  }
+}
+
+function renderProgress(){
+  const d=document.getElementById('oracle-hex-display')
+  d.innerHTML=''
+  for(let i=lines.length-1;i>=0;i--){
+    const v=lines[i]
+    const el=document.createElement('div')
+    el.className='oracle-line '
+    if(v===9) el.className+='yang-c'
+    else if(v===8) el.className+='yin'
+    else if(v===7) el.className+='yang'
+    else el.className+='yin-c'
+    d.appendChild(el)
+  }
+  for(let i=0;i<6-lines.length;i++){
+    const ph=document.createElement('div')
+    ph.style.cssText='width:80px;height:8px;background:rgba(42,26,8,.1);border-radius:1px'
+    d.appendChild(ph)
+  }
+}
+
+function showResult(){
+  // Determine hexagram
+  const lineVals=lines.map(v=>v===6||v===8?0:1) // 0=yin, 1=yang
+  // lower trigram lines[0..2], upper lines[3..5]
+  let hexIdx=getHexIndex(lineVals)
+  const hx=hexNames[hexIdx]
+  document.getElementById('oracle-hexnum').innerHTML=`Hexagrama ${hx[0]} — ${hx[1]}`
+  
+  // Check for changing lines
+  const changing=lines.map((v,i)=>v===6||v===9?i+1:0).filter(x=>x>0)
+  let msg=`<strong>${hx[2]}</strong><br><br>${hx[3]}`
+  
+  if(changing.length>0){
+    const chLines=changing.map(l=>`linha ${l}`).join(', ')
+    msg+=`<br><br><em style="color:var(--red)">Linhas mutantes: ${chLines}. Consulte o texto completo desta(s) linha(s) no livro para o conselho específico. A situação está se transformando.</em>`
+    // Create transformed hexagram
+    const newVals=lineVals.map((v,i)=>lines[i]===6||lines[i]===9?1-v:v)
+    const newIdx=getHexIndex(newVals)
+    const nhx=hexNames[newIdx]
+    msg+=`<br><br>→ <strong>Hexagrama de Transformação: ${nhx[0]} — ${nhx[1]}</strong><br>${nhx[2]}: ${nhx[3]}`
+  }
+  document.getElementById('oracle-result').innerHTML=msg
+}
+
+function getHexIndex(vals){
+  // Build number from lines — simplified mapping using binary
+  const bin=vals.join('')
+  const hexMap={
+    '111111':0,'000000':1,'100010':2,'010001':3,
+    '111010':4,'010111':5,'000010':6,'010000':7,
+    '111011':8,'110111':9,'111000':10,'000111':11,
+    '111101':12,'101111':13,'000100':14,'001000':15,
+    '100110':16,'011001':17,'111100':18,'001111':19,
+    '100101':20,'101001':21,'010110':22,'011010':23,
+    '100001':24,'111001':25,'100111':26,'100000':27,
+    '010110':28,'010010':29,'101010':30,'110101':31,
+    '001100':32,'001111':33,'111100':34,'101000':35,
+    '000101':36,'101110':37,'011101':38,'001011':39,
+    '110100':40,'100110':41,'111110':42,'111110':43
+  }
+  // Fallback: use simple index
+  const val=parseInt(vals.join(''),2)
+  // Map binary to hexagram order (simplified)
+  const order=[63,0,16,33,2,48,18,34,11,49,19,3,35,17,51,1,
+               39,55,23,7,47,63,31,15,43,59,27,11,41,57,25,9,
+               60,44,28,12,52,36,20,4,53,37,21,5,45,29,13,61,
+               56,40,24,8,46,30,14,62,54,38,22,6,58,42,26,10]
+  return order[val%64]%64
+}
+
+function resetOracle(){
+  lines=[]
+  step=0
+  document.getElementById('oracle-hex-display').innerHTML=''
+  document.getElementById('oracle-hexnum').innerHTML=''
+  document.getElementById('oracle-result').innerHTML='Formule sua pergunta e clique em Lançar para revelar o hexagrama.'
+}
+</script>
+</body>
+</html>

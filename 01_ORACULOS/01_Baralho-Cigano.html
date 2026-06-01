@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baralho Cigano · Grimório das 36 Cartas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #1A1008;
+  --bg2:     #231509;
+  --sepia:   #C8A060;
+  --sepia-l: #F0C880;
+  --sepia-d: rgba(200,160,96,0.12);
+  --wine:    #7A2010;
+  --wine-l:  #C84030;
+  --teal:    #1A4840;
+  --teal-l:  #30A080;
+  --cream:   #F0E8D0;
+  --cream-d: rgba(240,232,208,0.7);
+  --cream-dd:rgba(240,232,208,0.42);
+  --border:  rgba(200,160,96,0.22);
+  --shadow:  rgba(0,0,0,0.6);
+  --gold:    #C8A030;
+  --gold-l:  #F0C840;
+}
+
+* { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(122,32,16,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 10% 80%, rgba(26,72,64,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 90% 40%, rgba(200,160,48,0.06) 0%, transparent 55%);
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--cream);
+  line-height: 1.88;
+  overflow-x: hidden;
+}
+
+/* Parchment texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(200,160,96,0.012) 2px,
+      rgba(200,160,96,0.012) 4px
+    );
+  pointer-events: none; z-index: 0;
+}
+
+.wrap { position:relative; z-index:2; max-width:1080px; margin:0 auto; padding:0 16px 100px }
+
+/* ════════════ HEADER ════════════ */
+header {
+  text-align: center;
+  padding: 60px 20px 50px;
+}
+.hdr-wrap {
+  display: inline-block;
+  padding: 36px 50px 32px;
+  border: 2px solid var(--sepia);
+  border-radius: 2px;
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+}
+.hdr-wrap::before, .hdr-wrap::after {
+  content: '✦';
+  position: absolute;
+  color: var(--sepia);
+  font-size: 1.2rem;
+  background: var(--bg2);
+  padding: 0 6px;
+}
+.hdr-wrap::before { top: -14px; left: 50%; transform: translateX(-50%) }
+.hdr-wrap::after  { bottom: -14px; left: 50%; transform: translateX(-50%) }
+
+/* corner ornaments */
+.hdr-wrap .c { position:absolute; width:16px; height:16px; border-color:var(--sepia); border-style:solid; opacity:.7 }
+.hdr-wrap .c.tl { top:-2px; left:-2px; border-width:2px 0 0 2px }
+.hdr-wrap .c.tr { top:-2px; right:-2px; border-width:2px 2px 0 0 }
+.hdr-wrap .c.bl { bottom:-2px; left:-2px; border-width:0 0 2px 2px }
+.hdr-wrap .c.br { bottom:-2px; right:-2px; border-width:0 2px 2px 0 }
+
+.hdr-symbol {
+  font-size: 3.2rem;
+  display: block;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 16px var(--gold));
+  animation: glow 6s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,100% { filter: drop-shadow(0 0 12px var(--gold)) }
+  50%      { filter: drop-shadow(0 0 32px var(--gold-l)) drop-shadow(0 0 60px var(--gold)) }
+}
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem, 4vw, 2.6rem);
+  color: var(--sepia-l);
+  letter-spacing: .12em;
+  text-shadow: 0 0 30px rgba(200,160,96,.4);
+  line-height: 1.25;
+}
+.h1-sub {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: clamp(.8rem,1.8vw,.98rem);
+  color: rgba(200,160,96,.5);
+  letter-spacing: .22em;
+  margin-top: 8px;
+}
+.hdr-rule {
+  height: 1px; margin: 16px 0;
+  background: linear-gradient(90deg, transparent, var(--sepia), transparent);
+}
+.hdr-intro {
+  font-size: .92rem; line-height: 2.05;
+  color: var(--cream-d); font-style: italic;
+}
+
+/* ════════════ CHAPTER ════════════ */
+.chapter {
+  text-align: center;
+  margin: 60px 0 28px;
+  position: relative;
+}
+.chapter::before, .chapter::after {
+  content: '';
+  display: block; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sepia), transparent);
+  margin: 12px 0;
+}
+.chapter h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(.8rem, 2vw, 1.2rem);
+  letter-spacing: .2em;
+  color: var(--sepia-l);
+  text-shadow: 0 0 14px rgba(200,160,96,.3);
+}
+.chapter p {
+  font-style: italic; font-size: .85rem;
+  color: var(--cream-dd); margin-top: 4px;
+}
+
+/* ════════════ GRAMMAR BOX ════════════ */
+.grammar-box {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 24px 26px;
+  margin: 20px 0 40px;
+  background: rgba(200,160,96,.04);
+  position: relative;
+}
+.grammar-box::before {
+  content: '📜';
+  position: absolute; top: -14px; left: 20px;
+  font-size: 1.4rem; background: var(--bg2); padding: 0 6px;
+}
+.grammar-box h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .75rem; letter-spacing: .18em;
+  color: var(--sepia-l); margin-bottom: 12px;
+}
+.grammar-box p {
+  font-size: .88rem; color: var(--cream-d); line-height: 1.95; margin-bottom: 8px;
+}
+.grammar-box p:last-child { margin-bottom: 0 }
+.grammar-box strong { color: var(--sepia-l) }
+
+/* ════════════ CARD GRID ════════════ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.card-grid.wide {
+  grid-template-columns: 1fr;
+}
+
+/* ════════════ CARTA (the main element) ════════════ */
+.carta {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+  background: linear-gradient(160deg, var(--bg2), var(--bg));
+  transition: transform .3s ease, box-shadow .3s ease;
+  animation: reveal .6s ease forwards; opacity: 0;
+}
+.carta:hover { transform: translateY(-3px) }
+.carta.vis   { opacity: 1 }
+@keyframes reveal { to { opacity:1; transform:translateY(0) } from { opacity:0; transform:translateY(14px) } }
+
+/* Delay cascade */
+.carta:nth-child(1){animation-delay:.04s} .carta:nth-child(2){animation-delay:.08s}
+.carta:nth-child(3){animation-delay:.12s} .carta:nth-child(4){animation-delay:.16s}
+.carta:nth-child(5){animation-delay:.2s}  .carta:nth-child(6){animation-delay:.24s}
+.carta:nth-child(7){animation-delay:.28s} .carta:nth-child(8){animation-delay:.32s}
+
+/* top ornament bar */
+.carta::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+/* color themes */
+.c-pos::after  { background: linear-gradient(90deg, transparent, var(--teal-l), transparent) }
+.c-neg::after  { background: linear-gradient(90deg, transparent, var(--wine-l), transparent) }
+.c-neu::after  { background: linear-gradient(90deg, transparent, var(--sepia), transparent) }
+
+.c-pos { border-color: rgba(48,160,128,.25) }
+.c-neg { border-color: rgba(200,64,48,.25) }
+.c-neu { border-color: var(--border) }
+
+/* card top header */
+.carta-head {
+  padding: 18px 18px 0 18px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.carta-num {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: rgba(200,160,96,.07);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: 'UnifrakturMaguntia', serif;
+  font-size: 1.1rem; color: var(--sepia);
+}
+.carta-num span {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .42rem; letter-spacing: .08em;
+  opacity: .55; margin-top: 1px;
+}
+.carta-meta { flex: 1 }
+.carta-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 700; line-height: 1.15;
+  color: var(--sepia-l);
+}
+.carta-naipe {
+  font-size: .72rem; color: var(--cream-dd);
+  font-style: italic; margin-top: 2px;
+}
+.carta-energia {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .5rem; letter-spacing: .1em;
+  padding: 2px 7px; border-radius: 20px;
+  margin-top: 5px;
+}
+.e-pos { color: var(--teal-l); border: 1px solid rgba(48,160,128,.3); background: rgba(48,160,128,.07) }
+.e-neg { color: var(--wine-l); border: 1px solid rgba(200,64,48,.3);  background: rgba(200,64,48,.07)  }
+.e-neu { color: var(--sepia);  border: 1px solid var(--border);        background: var(--sepia-d) }
+
+/* card body */
+.carta-body { padding: 14px 18px 20px 18px }
+
+/* keywords */
+.kw-strip {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  margin-bottom: 12px;
+}
+.kw {
+  font-size: .68rem; padding: 2px 8px;
+  border-radius: 20px; font-style: italic;
+  border: 1px solid rgba(200,160,96,.2);
+  background: rgba(200,160,96,.05);
+  color: var(--cream-d);
+}
+
+/* section headings */
+.sec {
+  margin-bottom: 14px;
+}
+.sec-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .56rem; letter-spacing: .18em;
+  color: var(--sepia); opacity: .7;
+  margin-bottom: 5px; display: flex; align-items: center; gap: 6px;
+}
+.sec-title::before { content: '◆'; font-size: .5rem }
+.sec-text {
+  font-size: .86rem; line-height: 1.95; color: var(--cream-d);
+}
+.sec-text p { margin-bottom: 6px }
+.sec-text p:last-child { margin-bottom: 0 }
+
+/* combination rows */
+.comb-grid {
+  display: flex; flex-direction: column; gap: 5px;
+  margin-top: 6px;
+}
+.comb-row {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: .8rem; line-height: 1.75;
+}
+.comb-cards {
+  flex-shrink: 0;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .6rem; letter-spacing: .06em;
+  color: var(--sepia-l);
+  min-width: 120px;
+  padding-top: 2px;
+}
+.comb-cards .plus { opacity: .4; margin: 0 3px }
+.comb-meaning { color: var(--cream-d) }
+
+/* life area pills */
+.areas { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 }
+.area {
+  font-size: .65rem; padding: 2px 9px;
+  border-radius: 3px;
+  font-family: 'Cinzel Decorative', serif;
+  letter-spacing: .08em;
+  border: 1px solid;
+}
+.a-amor  { color: #E08090; border-color: rgba(224,128,144,.3); background: rgba(224,128,144,.06) }
+.a-trab  { color: #90C080; border-color: rgba(144,192,128,.3); background: rgba(144,192,128,.06) }
+.a-din   { color: #D4A840; border-color: rgba(212,168,64,.3);  background: rgba(212,168,64,.06)  }
+.a-saude { color: #80C0D0; border-color: rgba(128,192,208,.3); background: rgba(128,192,208,.06) }
+.a-esp   { color: #B090D0; border-color: rgba(176,144,208,.3); background: rgba(176,144,208,.06) }
+.a-fis   { color: #D0A080; border-color: rgba(208,160,128,.3); background: rgba(208,160,128,.06) }
+.a-cons  { color: #80A0C0; border-color: rgba(128,160,192,.3); background: rgba(128,160,192,.06) }
+
+/* the grammar pill for before/after */
+.before-after {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-top: 6px;
+}
+.ba-col {
+  padding: 8px 10px; border-radius: 4px;
+  font-size: .78rem; line-height: 1.75;
+  color: var(--cream-d);
+}
+.ba-before { background: rgba(200,160,96,.06); border: 1px solid rgba(200,160,96,.15) }
+.ba-after  { background: rgba(200,100,80,.06); border: 1px solid rgba(200,100,80,.15) }
+.ba-label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: .5rem; letter-spacing: .12em;
+  display: block; margin-bottom: 4px;
+  color: var(--sepia);
+}
+
+/* divider */
+.cdiv {
+  height: 1px; margin: 10px 0;
+  background: linear-gradient(90deg, transparent, rgba(200,160,96,.15), transparent);
+}
+
+/* console tip */
+.tip {
+  padding: 10px 12px; border-radius: 4px;
+  background: rgba(200,160,96,.05);
+  border-left: 2px solid rgba(200,160,96,.3);
+  font-size: .8rem; font-style: italic;
+  color: rgba(200,160,96,.75);
+  line-height: 1.8; margin-top: 8px;
+}
+
+/* Fixed nav */
+.nav-side {
+  position: fixed; top: 50%; right: 14px;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 5px;
+  z-index: 100; max-height: 86vh;
+  overflow-y: auto; scrollbar-width: none;
+}
+.nav-side::-webkit-scrollbar { display: none }
+.ndot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(200,160,96,.2);
+  border: 1px solid rgba(200,160,96,.35);
+  transition: all .22s; display: block; text-decoration: none;
+}
+.ndot:hover, .ndot.act { background: var(--sepia); transform: scale(1.4) }
+@media(max-width:860px) { .nav-side { display:none } }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .65s,transform .65s }
+.reveal.vis { opacity:1; transform:none }
+
+/* RESPONSIVE */
+@media(max-width:640px) {
+  .card-grid { grid-template-columns: 1fr }
+  .before-after { grid-template-columns: 1fr }
+}
+
+/* FOOTER */
+footer {
+  text-align:center; padding:70px 20px 40px;
+  border-top: 1px solid var(--border); margin-top: 60px;
+}
+.foot-glyph { font-size:2.8rem; display:block; margin-bottom:12px; animation: glow 6s infinite }
+.foot-text {
+  font-family: 'IM Fell English', serif; font-style:italic;
+  font-size:.86rem; color:rgba(200,160,96,.3);
+  letter-spacing:.1em; line-height:2.4;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-side">
+  <a class="ndot" href="#intro"   title="Introdução"></a>
+  <a class="ndot" href="#c01"  title="1 Cavaleiro"></a>
+  <a class="ndot" href="#c02"  title="2 Trevo"></a>
+  <a class="ndot" href="#c03"  title="3 Navio"></a>
+  <a class="ndot" href="#c04"  title="4 Casa"></a>
+  <a class="ndot" href="#c05"  title="5 Árvore"></a>
+  <a class="ndot" href="#c06"  title="6 Nuvens"></a>
+  <a class="ndot" href="#c07"  title="7 Serpente"></a>
+  <a class="ndot" href="#c08"  title="8 Caixão"></a>
+  <a class="ndot" href="#c09"  title="9 Buquê"></a>
+  <a class="ndot" href="#c10"  title="10 Foice"></a>
+  <a class="ndot" href="#c11"  title="11 Chicote"></a>
+  <a class="ndot" href="#c12"  title="12 Pássaros"></a>
+  <a class="ndot" href="#c13"  title="13 Criança"></a>
+  <a class="ndot" href="#c14"  title="14 Raposa"></a>
+  <a class="ndot" href="#c15"  title="15 Urso"></a>
+  <a class="ndot" href="#c16"  title="16 Estrelas"></a>
+  <a class="ndot" href="#c17"  title="17 Cegonha"></a>
+  <a class="ndot" href="#c18"  title="18 Cão"></a>
+  <a class="ndot" href="#c19"  title="19 Torre"></a>
+  <a class="ndot" href="#c20"  title="20 Jardim"></a>
+  <a class="ndot" href="#c21"  title="21 Montanha"></a>
+  <a class="ndot" href="#c22"  title="22 Encruzilhada"></a>
+  <a class="ndot" href="#c23"  title="23 Ratos"></a>
+  <a class="ndot" href="#c24"  title="24 Coração"></a>
+  <a class="ndot" href="#c25"  title="25 Anel"></a>
+  <a class="ndot" href="#c26"  title="26 Livro"></a>
+  <a class="ndot" href="#c27"  title="27 Carta"></a>
+  <a class="ndot" href="#c28"  title="28 Homem"></a>
+  <a class="ndot" href="#c29"  title="29 Mulher"></a>
+  <a class="ndot" href="#c30"  title="30 Lírio"></a>
+  <a class="ndot" href="#c31"  title="31 Sol"></a>
+  <a class="ndot" href="#c32"  title="32 Lua"></a>
+  <a class="ndot" href="#c33"  title="33 Chave"></a>
+  <a class="ndot" href="#c34"  title="34 Peixes"></a>
+  <a class="ndot" href="#c35"  title="35 Âncora"></a>
+  <a class="ndot" href="#c36"  title="36 Cruz"></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════ HEADER ══════ -->
+<header>
+  <div class="hdr-wrap">
+    <div class="c tl"></div><div class="c tr"></div>
+    <div class="c bl"></div><div class="c br"></div>
+    <span class="hdr-symbol">🃏</span>
+    <h1>Baralho Cigano · Lenormand</h1>
+    <p class="h1-sub">Grimório Completo das 36 Cartas</p>
+    <div class="hdr-rule"></div>
+    <p class="hdr-intro">
+      O Lenormand não fala em metáforas — ele fala em frases. Cada carta é uma palavra, e é a combinação entre elas que cria a mensagem real. Este grimório desvela todas as 36 cartas em profundidade total: o que cada uma significa em amor, trabalho, dinheiro, saúde, aparência física, espiritualidade e consciência — e como o que vem antes e o que vem depois transforma completamente o sentido de cada uma delas.
+    </p>
+  </div>
+</header>
+
+<!-- ══════ GRAMÁTICA DO LENORMAND ══════ -->
+<div id="intro" class="reveal">
+<div class="grammar-box">
+  <h3>✦ A GRAMÁTICA DO BARALHO CIGANO — COMO LER ✦</h3>
+  <p>O Lenormand funciona como uma língua. A <strong>primeira carta é o substantivo</strong> — o tema central, o sujeito. A <strong>segunda carta é o adjetivo ou verbo</strong> — ela modifica, colore, direciona o sujeito. Em três cartas, a <strong>carta central é o foco</strong>, modificada pelas cartas à esquerda (passado/causa) e à direita (futuro/consequência).</p>
+  <p><strong>Regra fundamental:</strong> cartas positivas ao lado de cartas negativas são suavizadas. Cartas negativas ao lado de cartas negativas se intensificam. O <strong>que vem antes</strong> revela de onde vem a situação ou o que a influenciou. O <strong>que vem depois</strong> mostra para onde ela vai ou o que resultará.</p>
+  <p><strong>Cartas Naturalmente Positivas:</strong> Cavaleiro, Trevo, Navio, Casa, Buquê, Estrelas, Cegonha, Cão, Sol, Lua, Chave, Peixes, Âncora, Lírio, Coração, Anel, Criança.</p>
+  <p><strong>Cartas Naturalmente Negativas:</strong> Nuvens, Serpente, Caixão, Foice, Chicote, Ratos, Montanha, Cruz, Coffin (Caixão).</p>
+  <p><strong>Cartas Neutras/Contextuais:</strong> Árvore, Raposa, Urso, Jardim, Encruzilhada, Torre, Livro, Carta, Pássaros, Homem, Mulher.</p>
+</div>
+</div>
+
+<!-- ══════ AS 36 CARTAS ══════ -->
+<div class="chapter reveal">
+  <h2>✦ As 36 Cartas — Da Primeira à Última ✦</h2>
+  <p>Cada carta revelada em todas as suas faces</p>
+</div>
+
+<!-- ═══ 1. CAVALEIRO ═══ -->
+<div class="card-grid reveal" id="c01">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">1<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐎 O Cavaleiro</div>
+      <div class="carta-naipe">9 de Ouros · Mercúrio / Gêmeos · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">notícias</span><span class="kw">movimento</span><span class="kw">rapidez</span>
+      <span class="kw">mensageiro</span><span class="kw">chegada</span><span class="kw">impulso</span>
+      <span class="kw">jovem</span><span class="kw">visita</span>
+    </div>
+    <div class="areas">
+      <span class="area a-amor">Amor</span><span class="area a-trab">Trabalho</span>
+      <span class="area a-din">Dinheiro</span><span class="area a-fis">Aparência</span>
+      <span class="area a-cons">Consciência</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Cavaleiro é o <strong>portador de notícias</strong> — tudo que chega, que se move, que avança. É a velocidade, a novidade, a chegada iminente de algo ou alguém. Historicamente era o mensageiro a cavalo; hoje é o e-mail que chega, a mensagem no celular, a pessoa que aparece sem anunciar, o projeto que começa a andar.</p>
+        <p>Como pessoa: <strong>aparência física</strong> — é alguém jovem, esportivo, de movimentos ágeis, frequentemente moreno de cabelos e olhos escuros ou de aparência dinâmica e vibrante. Pode indicar alguém que trabalha com comunicação, entrega, tecnologia ou esporte.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Uma notícia boa chega — mensagem, declaração, reativação. Um pretendente se aproxima rapidamente. Relacionamento com movimento: se está estagnado, ele se move agora.</p>
+        <p><strong>💼 Trabalho:</strong> Proposta chega logo. Entrevista, convocação, oportunidade que não pode esperar. Resultado de processo seletivo. Notícias do chefe ou de clientes.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro em trânsito — transferência chegando, pagamento a caminho, não na conta ainda mas a ponto de chegar. Investimento que se move.</p>
+        <p><strong>🌿 Aparência:</strong> Pessoa ágil, jovem, de rosto vivo e expressivo. Move-se com energia. Pode indicar cabelos escuros, feições marcadas, olhos brilhantes.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Não adie. Aja agora — a janela é pequena. O universo está te dando sinal verde: ande.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Coração</div><div class="comb-meaning">Notícia de amor; declaração chegando</div></div>
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Peixes</div><div class="comb-meaning">Transferência financeira chegando logo</div></div>
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Notícias confusas ou contraditórias</div></div>
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Caixão</div><div class="comb-meaning">Notícia de fim, encerramento ou doença</div></div>
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Chave</div><div class="comb-meaning">A solução chega; resposta certa a caminho</div></div>
+        <div class="comb-row"><div class="comb-cards">Cavaleiro <span class="plus">+</span> Livro</div><div class="comb-meaning">Notícia secreta; revelação chega</div></div>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">O QUE VEM ANTES E DEPOIS</div>
+      <div class="before-after">
+        <div class="ba-col ba-before">
+          <span class="ba-label">◂ ANTES DO CAVALEIRO</span>
+          A carta anterior revela <strong>de onde vem</strong> a notícia ou o movimento. Sol antes = ótima notícia. Nuvens antes = notícia confusa ou atrasada. Ratos antes = notícia que veio corroída, não completa.
+        </div>
+        <div class="ba-col ba-after">
+          <span class="ba-label">DEPOIS DO CAVALEIRO ▸</span>
+          A carta seguinte revela <strong>o conteúdo</strong> da notícia. Cavaleiro + Coração = notícia amorosa. Cavaleiro + Cruz = notícia pesada, sofrimento chegando.
+        </div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Imediato — em dias. O Cavaleiro é a carta de maior velocidade do baralho.</div>
+  </div>
+</div>
+
+<!-- ═══ 2. TREVO ═══ -->
+<div class="carta c-pos" id="c02">
+  <div class="carta-head">
+    <div class="carta-num">2<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🍀 O Trevo</div>
+      <div class="carta-naipe">6 de Ouros · Júpiter / Sagitário · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">sorte</span><span class="kw">oportunidade</span><span class="kw">otimismo</span>
+      <span class="kw">leveza</span><span class="kw">chances</span><span class="kw">coincidência</span><span class="kw">pequenas alegrias</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Trevo é a <strong>sorte simples e inesperada</strong> — não a fortuna grandiosa, mas o inesperado agradável que muda o dia. É o encontro casual que se torna importante, o desconto que aparece, a vaga de estacionamento no lugar certo. No Lenormand, o Trevo tem um papel especial: ele <strong>suaviza as cartas negativas ao redor</strong>. Caixão + Trevo = fim que tem lado bom. Serpente + Trevo = a complicação passa rápido.</p>
+        <p>É a carta do "vai dar certo" — não porque há um plano, mas porque as circunstâncias se alinham a seu favor de forma ligeiramente providencial.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Encontro casual que se torna significativo. Boa fase no relacionamento — leve, sem drama. Sorte no amor: quem está solteiro tem boas chances.</p>
+        <p><strong>💼 Trabalho:</strong> O trabalho vai bem, mas sem grandes conquistas. Sorte pequena que ajuda — um cliente aparece na hora certa, um colega ajuda sem ser pedido.</p>
+        <p><strong>💰 Dinheiro:</strong> Ganho pequeno e inesperado. Desconto, reembolso, dinheiro achado, presente em dinheiro. Não é o jackpot — é o dinheiro feliz que aparece.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Aproveite o momento. Não é hora de forçar — é hora de colher o que o acaso oferece. Esteja atento às coincidências.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Trevo <span class="plus">+</span> Cavaleiro</div><div class="comb-meaning">Boa notícia chega rapidamente</div></div>
+        <div class="comb-row"><div class="comb-cards">Trevo <span class="plus">+</span> Sol</div><div class="comb-meaning">Sorte extraordinária; sucesso garantido</div></div>
+        <div class="comb-row"><div class="comb-cards">Trevo <span class="plus">+</span> Peixes</div><div class="comb-meaning">Ganho financeiro inesperado</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Trevo</div><div class="comb-meaning">Fim que traz alívio; saída inesperada</div></div>
+        <div class="comb-row"><div class="comb-cards">Trevo <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor feliz e leve; romance casual e doce</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Breve — dias a uma semana. Oportunidade que não espera.</div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<!-- ═══ 3. NAVIO ═══ -->
+<div class="card-grid reveal" id="c03">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">3<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⛵ O Navio</div>
+      <div class="carta-naipe">10 de Espadas · Saturno / Capricórnio · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">viagem</span><span class="kw">mudança</span><span class="kw">distância</span>
+      <span class="kw">exterior</span><span class="kw">comércio</span><span class="kw">partida</span><span class="kw">longe</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Navio é a <strong>carta da distância e da mudança de horizonte</strong>. Pode ser literal (viagem, mudança de país, trabalho no exterior) ou metafórico (mudança de perspectiva, de fase de vida, de rumo). Representa também o <strong>comércio internacional</strong>, negócios com o exterior, pessoas de outras culturas ou países.</p>
+        <p>Como pessoa: alguém de <strong>origem estrangeira</strong> ou que viajou muito, de traços étnicos diversos, que fala outras línguas ou tem ligação com o exterior. Porte elegante, visão de mundo ampla.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento à distância. Amor com alguém de outra cidade ou país. Saudade de alguém que partiu. Em algumas leituras: o relacionamento vai mudar de rumo — ou termina, ou se aprofunda.</p>
+        <p><strong>💼 Trabalho:</strong> Trabalho com importação/exportação, turismo, tecnologia com clientes internacionais. Viagem a negócios. Oportunidade fora da cidade ou do país. Home office com empresa de outro estado.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro vindo de fora ou indo para fora. Câmbio, remessa internacional, investimento em empresa estrangeira. Pode indicar despesa com viagem.</p>
+        <p><strong>🌿 Saúde:</strong> Tratamento no exterior. Cura que vem de longe — remédio importado, médico de outra cidade, método alternativo.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Expanda seu horizonte. Olhe além do que é familiar. A resposta pode estar onde você não pensou em procurar.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Navio <span class="plus">+</span> Cegonha</div><div class="comb-meaning">Mudança internacional definitiva; emigração</div></div>
+        <div class="comb-row"><div class="comb-cards">Navio <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor à distância; romance com estrangeiro</div></div>
+        <div class="comb-row"><div class="comb-cards">Navio <span class="plus">+</span> Peixes</div><div class="comb-meaning">Negócio internacional; dinheiro vindo de fora</div></div>
+        <div class="comb-row"><div class="comb-cards">Navio <span class="plus">+</span> Âncora</div><div class="comb-meaning">Fixar residência no exterior; estabilidade lá fora</div></div>
+        <div class="comb-row"><div class="comb-cards">Navio <span class="plus">+</span> Ratos</div><div class="comb-meaning">Problemas na viagem; projeto no exterior fracassa</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Médio a longo — semanas a meses. Mudanças que exigem planejamento.</div>
+  </div>
+</div>
+
+<!-- ═══ 4. CASA ═══ -->
+<div class="carta c-pos" id="c04">
+  <div class="carta-head">
+    <div class="carta-num">4<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🏠 A Casa</div>
+      <div class="carta-naipe">Valete de Ouros · Vênus / Touro · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">lar</span><span class="kw">família</span><span class="kw">imóvel</span>
+      <span class="kw">segurança</span><span class="kw">privacidade</span><span class="kw">tradição</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Casa é o <strong>centro de tudo que é seguro, familiar e privado</strong>. Literalmente: a casa física, o imóvel, o endereço. Metaforicamente: a família, o lar emocional, o lugar onde se pertence. A Casa traz estabilidade e tradição — mas pode também indicar apego excessivo ao que é familiar.</p>
+        <p>Como pessoa: alguém <strong>aconchegante, familiar, protetor</strong>. Pode ser um parente próximo, alguém que cuida do lar, um síndico, corretor de imóveis ou arquiteto. Feições suaves, tipo caseiro, que gosta de estar em casa.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento que visa construir lar. Parceiro que quer estabilidade, família, vida doméstica. Pode indicar coabitação ou casamento. Em alguns contextos: amor seguro mas sem aventura.</p>
+        <p><strong>💼 Trabalho:</strong> Trabalho em casa (home office), negócio familiar, imobiliária, construção, decoração. Trabalho em empresa que é como uma família.</p>
+        <p><strong>💰 Dinheiro:</strong> Investimento em imóvel. Compra ou aluguel de propriedade. Dinheiro da família. Herança. Gastos com a casa.</p>
+        <p><strong>🌿 Saúde:</strong> Saúde tratada em casa, cuidados domésticos. Bem-estar que vem do ambiente familiar.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Cuide do seu lar — tanto o físico quanto o emocional. Onde você se sente em casa? Talvez seja hora de criar esse espaço.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Casa <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Confusão no lar; problemas familiares</div></div>
+        <div class="comb-row"><div class="comb-cards">Casa <span class="plus">+</span> Peixes</div><div class="comb-meaning">Negócio imobiliário; compra de imóvel</div></div>
+        <div class="comb-row"><div class="comb-cards">Casa <span class="plus">+</span> Chave</div><div class="comb-meaning">Conquista do lar; imóvel próprio finalmente</div></div>
+        <div class="comb-row"><div class="comb-cards">Casa <span class="plus">+</span> Coração</div><div class="comb-meaning">Lar feliz; amor que se construiu</div></div>
+        <div class="comb-row"><div class="comb-cards">Casa <span class="plus">+</span> Ratos</div><div class="comb-meaning">Problema no imóvel; família em crise</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Estável — situações de longa duração. A Casa não tem pressa.</div>
+  </div>
+</div>
+</div><!-- /grid -->
+
+<!-- ═══ 5. ÁRVORE ═══ -->
+<div class="card-grid reveal" id="c05">
+<div class="carta c-neu">
+  <div class="carta-head">
+    <div class="carta-num">5<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🌳 A Árvore</div>
+      <div class="carta-naipe">7 de Copas · Saturno / Capricórnio · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">saúde</span><span class="kw">raízes</span><span class="kw">lentidão</span>
+      <span class="kw">permanência</span><span class="kw">ancestralidade</span><span class="kw">espiritualidade</span><span class="kw">karma</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Árvore é a carta da <strong>saúde e das raízes</strong> — tanto físicas quanto ancestrais, kármicas e espirituais. É a permanência que vem de ter raízes profundas. No contexto de saúde, é a carta mais direta: a doença, a cura, o estado do corpo, a vitalidade. Sozinha, a Árvore é simplesmente "saúde" — é o que vem ao lado dela que revela se é boa ou ruim.</p>
+        <p>Também representa <strong>coisas lentas e duradouras</strong> — como uma árvore que cresce devagar mas vive séculos. Processos demorados, situações que se enraizaram há muito tempo e não mudam facilmente.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>💚 Saúde (área principal):</strong> Estado geral de saúde do consulente. Com cartas positivas: boa saúde, recuperação, vitalidade. Com cartas negativas: doença crônica, condição que demorou para se formar, processo de cura lento. A Árvore indica que leva tempo.</p>
+        <p><strong>❤ Amor:</strong> Relacionamento antigo, de raízes profundas. Amor que sobreviveu ao tempo. Também: padrões repetitivos no amor (amorosos kármicos, o mesmo tipo de pessoa que volta). Raízes familiares que influenciam o amor.</p>
+        <p><strong>💼 Trabalho:</strong> Carreira estável e de longa data. Empresa com tradição. Trabalho na área de saúde, meio ambiente, agricultura, genealogia ou espiritualidade.</p>
+        <p><strong>🧘 Espiritualidade:</strong> Karma familiar, ancestrais, padrões que vêm de gerações passadas. Trabalho espiritual de limpeza de linhagem. Rituais e práticas de longa duração.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Seja paciente. As coisas mais verdadeiras levam tempo para se formar. Cuide das suas raízes — físicas, emocionais, espirituais.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Doença de diagnóstico incerto; dúvida sobre saúde</div></div>
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Sol</div><div class="comb-meaning">Saúde excelente; recuperação completa</div></div>
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Foice</div><div class="comb-meaning">Cirurgia; intervenção médica necessária</div></div>
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Ratos</div><div class="comb-meaning">Doença que vai esgotando; condição que piora lentamente</div></div>
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Chave</div><div class="comb-meaning">A cura foi encontrada; diagnóstico certo</div></div>
+        <div class="comb-row"><div class="comb-cards">Árvore <span class="plus">+</span> Cruz</div><div class="comb-meaning">Doença kármica; sofrimento ligado a padrão ancestral</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Lento — meses a anos. A Árvore é a carta da espera necessária.</div>
+  </div>
+</div>
+
+<!-- ═══ 6. NUVENS ═══ -->
+<div class="carta c-neg" id="c06">
+  <div class="carta-head">
+    <div class="carta-num">6<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">☁ As Nuvens</div>
+      <div class="carta-naipe">Rei de Paus · Netuno / Peixes · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">confusão</span><span class="kw">incerteza</span><span class="kw">dúvida</span>
+      <span class="kw">engano</span><span class="kw">ilusão</span><span class="kw">opacidade</span><span class="kw">névoa</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>As Nuvens são a <strong>falta de clareza</strong> — a névoa que impede de ver o que está à frente. Representa confusão mental, engano, autoengano, situações que não estão claras, pessoas que mentem ou ocultam, fases de incerteza. A carta tem dois lados literais: o lado claro (esquerdo) e o lado escuro (direito) — observe qual fica ao lado do que na tiragem.</p>
+        <p>Como pessoa: <strong>aparência física</strong> — alguém de expressão vaga, olhar difícil de decifrar, que não mostra o que sente. Pode ser alguém emotivo e instável, que muda de ideia constantemente, ou deliberadamente evasivo.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento confuso — não sabe o que quer, não comunica, mensagens duplas. A outra pessoa pode estar ocultando algo. Ciúme sem fundamento. Fase de névoa onde nada está claro entre o casal.</p>
+        <p><strong>💼 Trabalho:</strong> Situação profissional obscura — não sabe se ficará no emprego, se o projeto vai, se o chefe está satisfeito. Colegas que não são transparentes. Falta de direção clara.</p>
+        <p><strong>💰 Dinheiro:</strong> Confusão financeira — não sabe exatamente quanto tem ou deve. Possível fraude. Investimento obscuro. Contador ou sócio que não está sendo transparente.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Não tome decisões importantes agora — você não tem todas as informações. Espere a névoa dissipar. Peça clareza antes de agir.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Sol</div><div class="comb-meaning">Confusão que se resolve; névoa passa</div></div>
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Chave</div><div class="comb-meaning">A verdade emerge; clareza vem</div></div>
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor confuso; sentimentos nebulosos</div></div>
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Peixes</div><div class="comb-meaning">Finanças obscuras; possível golpe</div></div>
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Livro</div><div class="comb-meaning">Segredo que ninguém conta; informação escondida</div></div>
+        <div class="comb-row"><div class="comb-cards">Nuvens <span class="plus">+</span> Serpente</div><div class="comb-meaning">Enganação deliberada; armadilha preparada</div></div>
+      </div>
+    </div>
+    <div class="before-after">
+      <div class="ba-col ba-before">
+        <span class="ba-label">◂ ANTES DAS NUVENS</span>
+        A carta antes indica <strong>o que está sendo obscurecido</strong>. Coração antes = o amor está confuso. Peixes antes = as finanças estão na névoa.
+      </div>
+      <div class="ba-col ba-after">
+        <span class="ba-label">DEPOIS DAS NUVENS ▸</span>
+        A carta depois indica <strong>o resultado da confusão</strong>. Nuvens + Sol = resolução. Nuvens + Ratos = piora da situação obscura.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 7-8 SERPENTE e CAIXÃO ═══ -->
+<div class="card-grid reveal" id="c07">
+<div class="carta c-neg">
+  <div class="carta-head">
+    <div class="carta-num">7<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐍 A Serpente</div>
+      <div class="carta-naipe">9 de Paus · Plutão / Escorpião · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">traição</span><span class="kw">manipulação</span><span class="kw">rival</span>
+      <span class="kw">complicação</span><span class="kw">sedução</span><span class="kw">inveja</span><span class="kw">intriga</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Serpente é a <strong>carta da traição inteligente e da manipulação</strong>. Não é a violência direta (isso é o Chicote) — é a torpeza calculada. Ela representa a pessoa que sorri enquanto sabota, o plano por trás do plano, a rival que aparece sorridente. No sentido literal, pode ser um <strong>inimigo velado</strong> — alguém que o consulente conhece e confia, mas que está agindo contra ele.</p>
+        <p>Como pessoa: <strong>aparência física</strong> — costuma ser associada a mulheres de cabelos escuros, sedutoras, de olhos penetrantes. Mas pode ser qualquer pessoa que use a inteligência e o charme para manipular. Gosta de poder e sabe como obtê-lo.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Rival amorosa/o. Terceira pessoa no relacionamento — não necessariamente física, pode ser uma ex que não foi embora de vez. Parceiro manipulador. A sedução como controle.</p>
+        <p><strong>💼 Trabalho:</strong> Colega que sabota. Chefe que usa o consulente. Ambiente tóxico de intrigas. Alguém que rouba ideia ou mérito. Cuidado com quem sorri muito.</p>
+        <p><strong>💰 Dinheiro:</strong> Golpe elaborado. Sócio que estava planejando a saída e levando o que podia. Manipulação em contrato. Cuidado com investimentos que parecem perfeitos demais.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Confie menos. Não revele seus planos a todos. Quem você não deveria ter deixado tão perto? A serpente está onde você menos espera.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Serpente <span class="plus">+</span> Coração</div><div class="comb-meaning">Rival amorosa; triângulo amoroso</div></div>
+        <div class="comb-row"><div class="comb-cards">Serpente <span class="plus">+</span> Raposa</div><div class="comb-meaning">Traição no trabalho; sabotagem calculada</div></div>
+        <div class="comb-row"><div class="comb-cards">Serpente <span class="plus">+</span> Livro</div><div class="comb-meaning">Segredo perigoso; complot oculto</div></div>
+        <div class="comb-row"><div class="comb-cards">Serpente <span class="plus">+</span> Cão</div><div class="comb-meaning">Amigo que trai; amizade falsa</div></div>
+        <div class="comb-row"><div class="comb-cards">Chave <span class="plus">+</span> Serpente</div><div class="comb-meaning">A traição é descoberta; a verdade sobre o inimigo</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 8. CAIXÃO ═══ -->
+<div class="carta c-neg" id="c08">
+  <div class="carta-head">
+    <div class="carta-num">8<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⚰ O Caixão</div>
+      <div class="carta-naipe">9 de Ouros · Saturno / Escorpião · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">fim</span><span class="kw">encerramento</span><span class="kw">doença</span>
+      <span class="kw">perda</span><span class="kw">morte simbólica</span><span class="kw">luto</span><span class="kw">transformação</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Caixão é o <strong>encerramento</strong> — o fim de um ciclo. Pode ser morte literal (em contextos específicos de saúde), mas na maioria das leituras é o fim de um relacionamento, de um emprego, de uma fase. É também a <strong>doença que incapacita</strong>, o esgotamento total, a depressão profunda. Não é necessariamente trágico — às vezes é o fim que liberta.</p>
+        <p>Importante: o Caixão com cartas positivas transforma seu significado. <strong>Caixão + Buquê</strong> = fim que traz beleza nova. <strong>Caixão + Sol</strong> = fim glorioso de algo. É a morte que antecede a ressurreição.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Fim do relacionamento. Período de luto após separação. Pode indicar pessoa enlutada (perdeu parceiro). Em casos raros e contextos específicos: morte do cônjuge.</p>
+        <p><strong>💼 Trabalho:</strong> Demissão, encerramento de empresa, fim de contrato. Projeto que morre antes do tempo. Carreira em um setor que está acabando.</p>
+        <p><strong>💰 Dinheiro:</strong> Perda financeira significativa. Falência. Herança (dinheiro que vem com a morte de alguém). Investimento que não sobreviveu.</p>
+        <p><strong>🌿 Saúde:</strong> Doença grave. Hospitalização. Precisa de atenção médica urgente. Em contextos sombrios: ameaça à vida.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Deixe morrer o que precisa morrer. Reter o que já acabou só prolonga o sofrimento. O que você está se recusando a enterrar?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Trevo</div><div class="comb-meaning">Fim que surpreende positivamente; alívio após luto</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Árvore</div><div class="comb-meaning">Doença crônica; processo de adoecimento lento</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Sol</div><div class="comb-meaning">Fim glorioso; aposentadoria; despedida celebrada</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Coração</div><div class="comb-meaning">Fim do amor; desamor; coração partido</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Cegonha</div><div class="comb-meaning">Transformação após o fim; renascimento</div></div>
+        <div class="comb-row"><div class="comb-cards">Caixão <span class="plus">+</span> Criança</div><div class="comb-meaning">Fim de algo novo; início que não sobreviveu</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 9. BUQUÊ ═══ -->
+<div class="card-grid reveal" id="c09">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">9<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">💐 O Buquê</div>
+      <div class="carta-naipe">Rainha de Espadas · Vênus / Libra · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">presente</span><span class="kw">beleza</span><span class="kw">convite</span>
+      <span class="kw">gentileza</span><span class="kw">satisfação</span><span class="kw">talento</span><span class="kw">reconhecimento</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Buquê é a <strong>alegria pura e o presente inesperado</strong>. Convite, homenagem, reconhecimento, satisfação que vem de fora. É também a carta da <strong>beleza e dos talentos</strong> — indicando alguém atraente ou revelando os dons do consulente. Em leituras de trabalho, pode indicar uma área criativa, artística, estética.</p>
+        <p>Como pessoa: <strong>aparência física</strong> — alguém atraente, bem apresentado, de sorriso fácil, que cuida da aparência. Pode ter pele clara, traços delicados, estilo refinado. Geralmente feminino em energia, mas não necessariamente gênero.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Pretendente encantador, presentes do amado, período belo no relacionamento. Fase de romance, cortejo, atenções. Alguém que você vai adorar conhecer.</p>
+        <p><strong>💼 Trabalho:</strong> Reconhecimento profissional. Elogio de superiores. Convite para projeto especial. Área criativa, estética, artística, de moda, beleza, design.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro que vem como presente ou bônus. Reconhecimento financeiro. Não é cartão de ponto — é o dinheiro que vem com alegria.</p>
+        <p><strong>🌿 Aparência:</strong> Beleza natural, bem cuidada. Também pode indicar consulta estética, maquiagem, cabelereiro. Carta de quando alguém está no seu melhor visual.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Aceite os elogios. Você merece o reconhecimento que está chegando. Abra-se para receber.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Buquê <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor com alegria; presente do amado</div></div>
+        <div class="comb-row"><div class="comb-cards">Buquê <span class="plus">+</span> Sol</div><div class="comb-meaning">Felicidade radiante; sucesso belo</div></div>
+        <div class="comb-row"><div class="comb-cards">Buquê <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Felicidade com confusão; convite duvidoso</div></div>
+        <div class="comb-row"><div class="comb-cards">Buquê <span class="plus">+</span> Anel</div><div class="comb-meaning">Compromisso feliz; noivado, casamento bonito</div></div>
+        <div class="comb-row"><div class="comb-cards">Buquê <span class="plus">+</span> Raposa</div><div class="comb-meaning">Beleza usada para manipular; encanto falso</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 10. FOICE ═══ -->
+<div class="carta c-neg" id="c10">
+  <div class="carta-head">
+    <div class="carta-num">10<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⚔ A Foice</div>
+      <div class="carta-naipe">Valete de Ouros · Marte / Áries · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">corte</span><span class="kw">decisão súbita</span><span class="kw">acidente</span>
+      <span class="kw">perigo</span><span class="kw">separação abrupta</span><span class="kw">cirurgia</span><span class="kw">urgência</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Foice é o <strong>corte brusco e imprevisível</strong>. É a demissão que chegou sem aviso, a ruptura que acontece de um dia para o outro, a notícia chocante. No corpo: acidentes, cirurgias, dor física. É rápida — não há preparação. A carta tem uma lâmina e olhe para onde ela aponta: a carta que está do lado da lâmina é o que será "cortado".</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Separação inesperada. O parceiro terminou sem aviso. Relacionamento cortado brutalmente. Decisão unilateral e repentina.</p>
+        <p><strong>💼 Trabalho:</strong> Demissão sem aviso. Contrato cancelado subitamente. Projeto cortado no meio. Acidente no local de trabalho.</p>
+        <p><strong>🌿 Saúde:</strong> Acidente. Cirurgia necessária. Dor física aguda. Intervenção médica urgente. Pode indicar a cirurgia que vai resolver o problema.</p>
+        <p><strong>💰 Dinheiro:</strong> Perda repentina de dinheiro. Conta bancária congelada. Contrato financeiro cancelado.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Às vezes o que é cortado precisava ser cortado. O que você está adiando que precisa de um corte limpo?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Foice <span class="plus">+</span> Árvore</div><div class="comb-meaning">Cirurgia; intervenção médica necessária</div></div>
+        <div class="comb-row"><div class="comb-cards">Foice <span class="plus">+</span> Anel</div><div class="comb-meaning">Divórcio; contrato rompido</div></div>
+        <div class="comb-row"><div class="comb-cards">Foice <span class="plus">+</span> Peixes</div><div class="comb-meaning">Perda financeira súbita</div></div>
+        <div class="comb-row"><div class="comb-cards">Foice <span class="plus">+</span> Coração</div><div class="comb-meaning">Coração partido repentinamente</div></div>
+        <div class="comb-row"><div class="comb-cards">Foice <span class="plus">+</span> Sol</div><div class="comb-meaning">Corte que traz clareza; decisão que salva</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Imediato. A Foice não espera.</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 11-12. CHICOTE e PÁSSAROS ═══ -->
+<div class="card-grid reveal" id="c11">
+<div class="carta c-neg">
+  <div class="carta-head">
+    <div class="carta-num">11<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🔥 O Chicote / As Vassouras</div>
+      <div class="carta-naipe">Valete de Paus · Marte / Escorpião · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">conflito</span><span class="kw">discussão</span><span class="kw">repetição</span>
+      <span class="kw">violência</span><span class="kw">exercício</span><span class="kw">padrão</span><span class="kw">ida e vinda</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Chicote é a <strong>carta do conflito que se repete</strong> — a briga que volta sempre, o ciclo que não termina, o padrão que insiste. Pode ser violência física ou verbal, mas também simplesmente a repetição fatigante de um problema. Na área de saúde: exercício físico intenso, fisioterapia. Na sexualidade: pode indicar sexo intenso, repetitivo e com algum elemento de poder.</p>
+        <p>O elemento central desta carta é o <strong>ritmo repetitivo</strong> — o vaivém, o ida e volta, a ação que se perpetua.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Casal que briga muito. Relacionamento com ciclos de afastamento e reaproximação. Pode indicar abuso verbal ou físico. Também: paixão intensa que alterna entre êxtase e conflito.</p>
+        <p><strong>💼 Trabalho:</strong> Conflito repetitivo com chefe ou colega. Tarefas que voltam sempre para recomeçar. Trabalho que exige esforço intenso e repetitivo.</p>
+        <p><strong>🌿 Saúde:</strong> Exercício físico, academia, fisioterapia. Condição que melhora e piora em ciclos.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Que padrão está se repetindo na sua vida? Qual ciclo você precisa finalmente romper? Reconhecer o ciclo é o primeiro passo para sair dele.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Chicote <span class="plus">+</span> Coração</div><div class="comb-meaning">Relacionamento tóxico com ciclos; abuso emocional</div></div>
+        <div class="comb-row"><div class="comb-cards">Chicote <span class="plus">+</span> Pássaros</div><div class="comb-meaning">Brigas verbais constantes; fofoca que fere</div></div>
+        <div class="comb-row"><div class="comb-cards">Chicote <span class="plus">+</span> Âncora</div><div class="comb-meaning">Conflito no trabalho de longa data</div></div>
+        <div class="comb-row"><div class="comb-cards">Chicote <span class="plus">+</span> Sol</div><div class="comb-meaning">O conflito se resolve; briga que limpa o ar</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 12. PÁSSAROS ═══ -->
+<div class="carta c-neu" id="c12">
+  <div class="carta-head">
+    <div class="carta-num">12<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐦 Os Pássaros</div>
+      <div class="carta-naipe">7 de Ouros · Mercúrio / Gêmeos · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">fofoca</span><span class="kw">comunicação</span><span class="kw">ansiedade</span>
+      <span class="kw">conversas</span><span class="kw">casal mais velho</span><span class="kw">nervosismo</span><span class="kw">vozes</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>Os Pássaros são a <strong>carta das conversas e da agitação mental</strong>. Podem ser a fofoca que corre, as conversas que não calam, o nervosismo que não deixa quieto. Como casal de pássaros, representa também um <strong>casal mais maduro</strong> — pessoas que se conhecem há muito tempo. O contexto determina se as conversas são boas (negócios, comunicação saudável) ou ruins (fofoca, intrigas).</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Casal que conversa muito (bem ou mal). Casal mais maduro, estabelecido. Fofoca sobre o relacionamento. Ansiedade no amor — fica pensando demais.</p>
+        <p><strong>💼 Trabalho:</strong> Ambiente de fofoca. Muitas conversas, reuniões, comunicados. Trabalho com comunicação, mídia, redes sociais, jornalismo.</p>
+        <p><strong>🌿 Saúde:</strong> Ansiedade, nervosismo, insônia por pensamentos acelerados. Sistema nervoso agitado.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Seu pensamento está acelerado demais. Silêncio é sabedoria. Desconfie das fofocas — inclusive das que você conta.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Pássaros <span class="plus">+</span> Serpente</div><div class="comb-meaning">Fofoca maliciosa; rumores que destroem</div></div>
+        <div class="comb-row"><div class="comb-cards">Pássaros <span class="plus">+</span> Coração</div><div class="comb-meaning">Conversa sobre amor; declaração</div></div>
+        <div class="comb-row"><div class="comb-cards">Pássaros <span class="plus">+</span> Sol</div><div class="comb-meaning">Boa notícia que se espalha; sucesso que todos sabem</div></div>
+        <div class="comb-row"><div class="comb-cards">Pássaros <span class="plus">+</span> Livro</div><div class="comb-meaning">Segredo que veio à tona; fofoca sobre algo escondido</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 13-14. CRIANÇA e RAPOSA ═══ -->
+<div class="card-grid reveal" id="c13">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">13<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🧒 A Criança</div>
+      <div class="carta-naipe">Valete de Espadas · Mercúrio / Gêmeos · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">novo começo</span><span class="kw">inocência</span><span class="kw">bebê</span>
+      <span class="kw">ingenuidade</span><span class="kw">criança literal</span><span class="kw">imaturidade</span><span class="kw">pequeno</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Criança é o <strong>novo, o pequeno, o inocente</strong>. Pode ser literal (uma criança, um bebê, gravidez) ou simbólico (projeto novo, relacionamento que está começando, uma nova fase que ainda está na infância). A Criança torna tudo menor e mais frágil — ela modifica as cartas ao redor no sentido de "começo" ou "pequeno".</p>
+        <p>Como pessoa: alguém jovem, de aparência jovial, ingênua, com olhos grandes e expressão aberta. Pode ser literalmente uma criança ou adolescente.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Novo amor, relacionamento no início. Gravidez (especialmente com Cegonha). Imaturidade emocional do parceiro. Amor puro e inocente.</p>
+        <p><strong>💼 Trabalho:</strong> Novo emprego ou projeto no início. Estágio, trainee. Empresa recém-fundada. Aprendiz ou trainee na equipe.</p>
+        <p><strong>💰 Dinheiro:</strong> Pouco dinheiro — início, escassez temporária. Pequenos ganhos. Investimento inicial que ainda não cresceu.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Seja paciente com o que é novo. Todo começo é frágil — proteja, nutra e não exija que cresça antes do tempo.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Criança <span class="plus">+</span> Cegonha</div><div class="comb-meaning">Gravidez; novo membro na família</div></div>
+        <div class="comb-row"><div class="comb-cards">Criança <span class="plus">+</span> Serpente</div><div class="comb-meaning">Criança manipulada; inocência usada contra</div></div>
+        <div class="comb-row"><div class="comb-cards">Criança <span class="plus">+</span> Sol</div><div class="comb-meaning">Novo começo brilhante; bebê/projeto de sucesso</div></div>
+        <div class="comb-row"><div class="comb-cards">Criança <span class="plus">+</span> Caixão</div><div class="comb-meaning">Fim de algo novo; projeto que não sobreviveu</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 14. RAPOSA ═══ -->
+<div class="carta c-neg" id="c14">
+  <div class="carta-head">
+    <div class="carta-num">14<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🦊 A Raposa</div>
+      <div class="carta-naipe">9 de Paus · Mercúrio / Virgem · Energia Negativa/Neutra</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa/Cautelosa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">astúcia</span><span class="kw">egoísmo</span><span class="kw">autoproteção</span>
+      <span class="kw">trabalho</span><span class="kw">desconfiança</span><span class="kw">esperto</span><span class="kw">manipulação</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Raposa é a <strong>inteligência que serve ao próprio interesse</strong> — pode ser egoísmo saudável (autocuidado, autoproteção) ou manipulação para benefício próprio. No contexto de trabalho, em algumas tradições, a Raposa indica o próprio trabalho — o emprego, a atividade profissional. Em outras, é o colega ou chefe que usa de astúcia para prejudicar.</p>
+        <p>Elemento-chave: A Raposa <strong>não é ingênua</strong>. Ela sabe o que quer e vai até lá, mas nem sempre pelo caminho mais honesto. A questão é quem está sendo a raposa — o consulente ou alguém ao redor.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Parceiro astuto que não é completamente honesto. Relacionamento onde alguém está sendo esperto demais. Pode indicar a necessidade de ser mais esperto e menos ingênuo no amor.</p>
+        <p><strong>💼 Trabalho:</strong> O trabalho em si (em algumas tradições). Ambiente de trabalho competitivo onde a astúcia é necessária. Colega que usa você. Pode indicar autossabotagem disfarçada de inteligência.</p>
+        <p><strong>💰 Dinheiro:</strong> Negócio que parece bom mas tem armadilha. Alguém esperto demais no acordo. Pode indicar que você precisa ser mais esperto com suas finanças.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Seja esperto, não ingênuo. Mas verifique: a astúcia está a seu serviço ou está te isolando de conexões genuínas?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Raposa <span class="plus">+</span> Serpente</div><div class="comb-meaning">Traição altamente calculada; golpe inteligente</div></div>
+        <div class="comb-row"><div class="comb-cards">Raposa <span class="plus">+</span> Chave</div><div class="comb-meaning">A astúcia resolve; inteligência é a chave</div></div>
+        <div class="comb-row"><div class="comb-cards">Raposa <span class="plus">+</span> Cão</div><div class="comb-meaning">Amigo desleal; lealdade questionável</div></div>
+        <div class="comb-row"><div class="comb-cards">Raposa <span class="plus">+</span> Âncora</div><div class="comb-meaning">Trabalho que exige astúcia; carreira esperta</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 15-16. URSO e ESTRELAS ═══ -->
+<div class="card-grid reveal" id="c15">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">15<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐻 O Urso</div>
+      <div class="carta-naipe">10 de Paus · Júpiter / Touro · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">poder</span><span class="kw">liderança</span><span class="kw">força</span>
+      <span class="kw">figura paterna</span><span class="kw">proteção</span><span class="kw">ciúme</span><span class="kw">riqueza</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Urso é a <strong>carta do poder e da força protetora</strong>. Representa o chefe, o pai, a figura de autoridade que protege (ou que domina). É também a carta das <strong>finanças sólidas</strong> — o urso que acumula recursos. Como pessoa, pode ser um homem mais velho, de constituição forte, com autoridade natural — pai, chefe, mentor ou parceiro mais dominante.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Parceiro protetor mas possessivo. Ciúme intenso. Amor que protege mas pode sufocar. Figura de pai/mãe no relacionamento.</p>
+        <p><strong>💼 Trabalho:</strong> O chefe, o patrão, a liderança. Posição de poder. Trabalho em empresa grande e sólida. Oportunidade de liderança.</p>
+        <p><strong>💰 Dinheiro:</strong> Finanças sólidas e em crescimento. Acúmulo de capital. Pessoa rica ou influente. Investimento de longo prazo que cresce devagar mas certo.</p>
+        <p><strong>🌿 Aparência:</strong> Pessoa de constituição forte, maior, de presença imponente. Pode ter cabelos ou barba escura. Ar de autoridade.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Urso <span class="plus">+</span> Peixes</div><div class="comb-meaning">Grande riqueza; chefe financeiramente poderoso</div></div>
+        <div class="comb-row"><div class="comb-cards">Urso <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor possessivo; paixão protetora</div></div>
+        <div class="comb-row"><div class="comb-cards">Urso <span class="plus">+</span> Raposa</div><div class="comb-meaning">Chefe manipulador; poder usado de forma astuta</div></div>
+        <div class="comb-row"><div class="comb-cards">Urso <span class="plus">+</span> Criança</div><div class="comb-meaning">Proteção excessiva; pai/mãe controlador/a</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 16. ESTRELAS ═══ -->
+<div class="carta c-pos" id="c16">
+  <div class="carta-head">
+    <div class="carta-num">16<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⭐ As Estrelas</div>
+      <div class="carta-naipe">6 de Copas · Aquário / Urano · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">esperança</span><span class="kw">orientação</span><span class="kw">claridade</span>
+      <span class="kw">tecnologia</span><span class="kw">espiritualidade</span><span class="kw">sonhos realizados</span><span class="kw">fama</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>As Estrelas são a <strong>carta da orientação divina e do sucesso que vem de cima</strong>. Quando aparecem, é o cosmos apontando o caminho, o momento de confiar no processo e seguir o norte interno. Também representa <strong>tecnologia, internet, redes sociais</strong> — a estrela como pixel, o céu como cloud. Em contexto espiritual: revelação, intuição confirmada, comunicação com planos elevados.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Amor que parece predestinado. Conexão espiritual. Sonho que se torna realidade romântica. Busca do amor ideal.</p>
+        <p><strong>💼 Trabalho:</strong> Sucesso e reconhecimento. Trabalho com tecnologia, internet, redes. Carreira que cresce para o alto. Visibilidade profissional.</p>
+        <p><strong>💰 Dinheiro:</strong> Finanças que melhoram. Luz no fim do túnel financeiro. Investimento em tecnologia ou em algo inovador.</p>
+        <p><strong>🧘 Espiritualidade:</strong> Conexão com o divino. Sonhos premonitórios confirmados. Prática espiritual que está funcionando. Sincronicidades significativas.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Confie no seu norte. A estrela brilha para te orientar — não para te impressionar. Olhe para onde ela aponta.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Estrelas <span class="plus">+</span> Sol</div><div class="comb-meaning">Sucesso extraordinário; fama; brilho máximo</div></div>
+        <div class="comb-row"><div class="comb-cards">Estrelas <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Orientação confusa; ideais obscurecidos</div></div>
+        <div class="comb-row"><div class="comb-cards">Estrelas <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor dos sonhos; conexão espiritual</div></div>
+        <div class="comb-row"><div class="comb-cards">Estrelas <span class="plus">+</span> Âncora</div><div class="comb-meaning">Sonho que se estabiliza; ideal que se concretiza</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 17-18. CEGONHA e CÃO ═══ -->
+<div class="card-grid reveal" id="c17">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">17<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🦢 A Cegonha</div>
+      <div class="carta-naipe">Rainha de Copas · Saturno / Aquário · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">mudança</span><span class="kw">gravidez</span><span class="kw">transformação</span>
+      <span class="kw">transição</span><span class="kw">migração</span><span class="kw">melhora</span><span class="kw">ciclo novo</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Cegonha é a <strong>carta da mudança significativa e transformadora</strong>. Diferente do Cavaleiro (que é movimento rápido), a Cegonha é uma mudança profunda de fase de vida — mudança de cidade, de emprego, de estado civil, de perspectiva. E claro: <strong>gravidez</strong>, especialmente com a Criança ao lado. A cegonha que traz o bebê não é só metáfora — é a mudança de vida que uma criança representa.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Mudança no status do relacionamento — namoro para noivado, noivado para casamento, casamento para família. Gravidez que muda tudo. Amor que transforma quem você é.</p>
+        <p><strong>💼 Trabalho:</strong> Mudança de emprego ou carreira. Novo cargo, nova empresa. Relocação profissional. O trabalho que vai transformar sua trajetória.</p>
+        <p><strong>💰 Dinheiro:</strong> Mudança na situação financeira — para melhor. Novo fluxo de renda. Fase financeira que está em transição.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> A mudança está vindo — e é para melhor. Não resista ao que está se transformando. A cegonha não pergunta se você está pronto.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Cegonha <span class="plus">+</span> Criança</div><div class="comb-meaning">Gravidez; bebê chegando</div></div>
+        <div class="comb-row"><div class="comb-cards">Cegonha <span class="plus">+</span> Navio</div><div class="comb-meaning">Mudança para longe; emigração</div></div>
+        <div class="comb-row"><div class="comb-cards">Cegonha <span class="plus">+</span> Caixão</div><div class="comb-meaning">Transformação após fim; mudança que vem da perda</div></div>
+        <div class="comb-row"><div class="comb-cards">Cegonha <span class="plus">+</span> Sol</div><div class="comb-meaning">Mudança gloriosa; transformação iluminada</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 18. CÃO ═══ -->
+<div class="carta c-pos" id="c18">
+  <div class="carta-head">
+    <div class="carta-num">18<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐕 O Cão</div>
+      <div class="carta-naipe">10 de Copas · Mercúrio / Virgem · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">amizade</span><span class="kw">lealdade</span><span class="kw">confiança</span>
+      <span class="kw">fidelidade</span><span class="kw">seguidor</span><span class="kw">obediência</span><span class="kw">apoio</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Cão é a <strong>carta da lealdade e da amizade genuína</strong>. Representa um amigo de verdade, um aliado fiel, alguém em quem o consulente pode confiar completamente. Também pode indicar o <strong>consulente mesmo</strong> quando ele é o tipo leal, que apoia os outros às vezes mais do que a si mesmo. Como pessoa: alguém de aparência amigável, olhar honesto, que inspira confiança.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Parceiro fiel e leal. Amizade que vira amor. Relacionamento baseado em confiança e amizade profunda. O melhor amigo como companheiro de vida.</p>
+        <p><strong>💼 Trabalho:</strong> Colega de confiança. Parceiro de negócios fiel. Equipe que apoia. O cão ao lado de cartas negativas no trabalho = o aliado que vai te proteger.</p>
+        <p><strong>💰 Dinheiro:</strong> Parceiro financeiro de confiança. Indicação de amigo que traz oportunidade.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Valorize quem é fiel a você. A lealdade é rara — quando encontrar, cuide. Você está sendo leal a si mesmo?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Cão <span class="plus">+</span> Serpente</div><div class="comb-meaning">Amigo que trai; lealdade falsa</div></div>
+        <div class="comb-row"><div class="comb-cards">Cão <span class="plus">+</span> Coração</div><div class="comb-meaning">Amigo apaixonado; amor baseado em amizade</div></div>
+        <div class="comb-row"><div class="comb-cards">Cão <span class="plus">+</span> Chave</div><div class="comb-meaning">O amigo é a solução; confie no aliado</div></div>
+        <div class="comb-row"><div class="comb-cards">Cão <span class="plus">+</span> Urso</div><div class="comb-meaning">Amigo poderoso; chefe que protege</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 19-20. TORRE e JARDIM ═══ -->
+<div class="card-grid reveal" id="c19">
+<div class="carta c-neu">
+  <div class="carta-head">
+    <div class="carta-num">19<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🏰 A Torre</div>
+      <div class="carta-naipe">6 de Espadas · Saturno / Capricórnio · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">solidão</span><span class="kw">instituição</span><span class="kw">governo</span>
+      <span class="kw">isolamento</span><span class="kw">autoridade</span><span class="kw">fronteiras</span><span class="kw">estrutura rígida</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Torre no Lenormand não é a catástrofe do Tarot — é o <strong>isolamento e as instituições</strong>. Pode ser hospital, governo, empresa grande e burocrática, presídio, mosteiro — qualquer estrutura grande, rígida e que isola. Também indica o <strong>isolamento voluntário ou forçado</strong>, a solidão, o período em que o consulente está se recolhendo.</p>
+        <p>Atenção: a Torre com cartas de saúde pode indicar hospitalização. Com cartas de trabalho, pode indicar empresa pública, burocracia, ou isolamento profissional.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Solidão afetiva. Recolhimento após mágoa. Relacionamento com pessoa muito fechada ou distante emocionalmente. Amor que se construiu em isolamento.</p>
+        <p><strong>💼 Trabalho:</strong> Empresa grande e impessoal. Trabalho remoto isolado. Serviço público, concurso. Estrutura hierárquica rígida. Trabalho que não tem contato humano.</p>
+        <p><strong>🌿 Saúde:</strong> Hospitalização. Quarentena. Tratamento que exige isolamento. Saúde gerida por instituição de saúde.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O isolamento pode ser necessário — mas verifique se não está se tornando muros que impedem conexão. Solidão difere de solitude.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Torre <span class="plus">+</span> Árvore</div><div class="comb-meaning">Hospital; tratamento de saúde em instituição</div></div>
+        <div class="comb-row"><div class="comb-cards">Torre <span class="plus">+</span> Peixes</div><div class="comb-meaning">Banco; empresa financeira grande</div></div>
+        <div class="comb-row"><div class="comb-cards">Torre <span class="plus">+</span> Anel</div><div class="comb-meaning">Casamento que isola; contrato institucional</div></div>
+        <div class="comb-row"><div class="comb-cards">Torre <span class="plus">+</span> Cão</div><div class="comb-meaning">Amigo que ficou à parte; isolamento compartilhado</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 20. JARDIM ═══ -->
+<div class="carta c-pos" id="c20">
+  <div class="carta-head">
+    <div class="carta-num">20<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🌺 O Jardim / O Parque</div>
+      <div class="carta-naipe">8 de Espadas · Vênus / Libra · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">público</span><span class="kw">sociedade</span><span class="kw">evento</span>
+      <span class="kw">redes sociais</span><span class="kw">comunidade</span><span class="kw">popularidade</span><span class="kw">natureza</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Jardim é o <strong>espaço público, social e coletivo</strong> — o oposto da Torre (isolamento) e da Casa (privado). Representa a vida social ativa, eventos, festas, redes sociais (literalmente: o jardim como espaço de conexão online), a comunidade. O que o consulente expõe ao público, sua reputação, sua presença pública.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Amor que surgiu numa festa, evento social ou online. Relacionamento que ficou público. Vida amorosa exposta. Pode indicar infidelidade que é conhecida por outros.</p>
+        <p><strong>💼 Trabalho:</strong> Trabalho com o público, mídia, eventos. Reputação profissional. Networking efetivo. Trabalho em espaço coletivo.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro que vem de público — venda online, evento. Despesas sociais.</p>
+        <p><strong>🌿 Saúde:</strong> Saúde ligada a ambiente coletivo. Hospital público. Bem-estar que vem da natureza e do ar livre.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Cuide da sua imagem pública — não por vaidade, mas porque o que você projeta atrai o que você vive. Conecte-se: você precisa de comunidade.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Jardim <span class="plus">+</span> Serpente</div><div class="comb-meaning">Inimigo público; fofoca que se espalha em grupo</div></div>
+        <div class="comb-row"><div class="comb-cards">Jardim <span class="plus">+</span> Estrelas</div><div class="comb-meaning">Fama online; sucesso em redes sociais</div></div>
+        <div class="comb-row"><div class="comb-cards">Jardim <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor público; relacionamento exposto</div></div>
+        <div class="comb-row"><div class="comb-cards">Jardim <span class="plus">+</span> Ratos</div><div class="comb-meaning">Reputação deteriorada; vida social em crise</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 21-22. MONTANHA e ENCRUZILHADA ═══ -->
+<div class="card-grid reveal" id="c21">
+<div class="carta c-neg">
+  <div class="carta-head">
+    <div class="carta-num">21<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⛰ A Montanha</div>
+      <div class="carta-naipe">8 de Paus · Saturno / Áries · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">obstáculo</span><span class="kw">bloqueio</span><span class="kw">pessoa difícil</span>
+      <span class="kw">atraso longo</span><span class="kw">resistência</span><span class="kw">teimosia</span><span class="kw">desafio grande</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Montanha é o <strong>bloqueio sério e de longa duração</strong>. Não é o obstáculo passageiro (que seria o Ratos) — é a barreira que exige esforço real para superar ou contornar. Pode ser uma pessoa teimosa que não cede, uma burocracia intransponível, um problema de saúde crônico, uma situação estagnada há muito tempo. A carta de imobilidade.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Obstáculo sério no relacionamento. Parceiro bloqueado emocionalmente. Terceira pessoa que impede a união. Período de frieza ou estagnação.</p>
+        <p><strong>💼 Trabalho:</strong> Projeto bloqueado. Processo que não avança. Superior que bloqueia crescimento. Burocracia que impede. Pode levar meses a resolver.</p>
+        <p><strong>💰 Dinheiro:</strong> Bloqueio financeiro sério. Dívida que não diminui. Processo judicial que congela bens. Investimento paralisado.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Às vezes a montanha não se atravessa — se contorna. O que você pode fazer ao redor do obstáculo enquanto ele não se move?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Montanha <span class="plus">+</span> Chave</div><div class="comb-meaning">O bloqueio se resolve; saída encontrada</div></div>
+        <div class="comb-row"><div class="comb-cards">Montanha <span class="plus">+</span> Sol</div><div class="comb-meaning">Obstáculo superado com glória</div></div>
+        <div class="comb-row"><div class="comb-cards">Montanha <span class="plus">+</span> Ratos</div><div class="comb-meaning">O bloqueio corroe; estagnação que desgasta</div></div>
+        <div class="comb-row"><div class="comb-cards">Montanha <span class="plus">+</span> Âncora</div><div class="comb-meaning">Bloqueio permanente; situação que ficou</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 22. ENCRUZILHADA ═══ -->
+<div class="carta c-neu" id="c22">
+  <div class="carta-head">
+    <div class="carta-num">22<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🛤 A Encruzilhada</div>
+      <div class="carta-naipe">Rainha de Ouros · Vênus / Libra · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">decisão</span><span class="kw">escolha</span><span class="kw">opções</span>
+      <span class="kw">liberdade</span><span class="kw">múltiplos caminhos</span><span class="kw">indecisão</span><span class="kw">bifurcação</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Encruzilhada é a <strong>carta da escolha e da indecisão</strong>. Há mais de um caminho disponível — e a pergunta é qual tomar. Não é a decisão já tomada (isso é a Chave) — é o momento em que o consulente está parado olhando para vários lados sem saber qual direção seguir. As cartas ao redor revelam quais são os caminhos disponíveis.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Escolha entre dois (ou mais) pretendentes. Decisão sobre o rumo do relacionamento. Permanecer ou partir. Momento de crossroads na vida amorosa.</p>
+        <p><strong>💼 Trabalho:</strong> Mais de uma oferta de emprego. Decisão sobre carreira. Empreender ou permanecer empregado. Duas oportunidades simultâneas.</p>
+        <p><strong>💰 Dinheiro:</strong> Escolha de investimento. Múltiplas opções financeiras. Gastar ou poupar. Dois projetos concorrendo pelos mesmos recursos.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> A indecisão também é uma decisão — de não decidir. Qual caminho ressoa com quem você quer ser, não apenas com o que parece mais seguro?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-row"><div class="comb-cards">Encruz. <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Confusão na decisão; escolha obscura</div></div>
+      <div class="comb-row"><div class="comb-cards">Encruz. <span class="plus">+</span> Chave</div><div class="comb-meaning">A decisão certa foi encontrada</div></div>
+      <div class="comb-row"><div class="comb-cards">Encruz. <span class="plus">+</span> Sol</div><div class="comb-meaning">Boa escolha; decisão brilhante</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 23-24. RATOS e CORAÇÃO ═══ -->
+<div class="card-grid reveal" id="c23">
+<div class="carta c-neg">
+  <div class="carta-head">
+    <div class="carta-num">23<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐀 Os Ratos</div>
+      <div class="carta-naipe">7 de Paus · Plutão / Virgem · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">perda gradual</span><span class="kw">corrosão</span><span class="kw">roubo</span>
+      <span class="kw">desgaste</span><span class="kw">ansiedade</span><span class="kw">diminuição</span><span class="kw">parasita</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>Os Ratos são a <strong>carta da perda que acontece aos poucos</strong> — não de uma vez (isso é a Foice), mas corroendo silenciosamente. É o dinheiro que some sem se saber para onde foi, a energia que se esgota gradualmente, a confiança que se deteriora, a saúde que piora lentamente. Os Ratos <strong>deterioram tudo que tocam</strong> — eles modificam as cartas ao redor negativamente.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento que se deteriora lentamente. Confiança erodida. Parceiro que drena energia. Amor que vai minguando sem confronto direto.</p>
+        <p><strong>💼 Trabalho:</strong> Ambiente tóxico que desgasta. Empresa que perde dinheiro. Roubo ou fraude no trabalho. Projetos que perdem impulso.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro que escoa sem perceber — gastos imperceptíveis, pequenos furtos, despesas ocultas. Finanças em deterioração silenciosa.</p>
+        <p><strong>🌿 Saúde:</strong> Condição que piora progressivamente se não tratada. Estresse crônico que corrói. Anemia, deficiência nutricional.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O que está sendo consumido silenciosamente na sua vida? Olhe para o que está diminuindo. Identifique o rato antes que ele termine o que lhe pertence.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Ratos <span class="plus">+</span> Peixes</div><div class="comb-meaning">Falência gradual; dinheiro sumindo</div></div>
+        <div class="comb-row"><div class="comb-cards">Ratos <span class="plus">+</span> Âncora</div><div class="comb-meaning">Emprego deteriorando; perda lenta do trabalho</div></div>
+        <div class="comb-row"><div class="comb-cards">Ratos <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor que vai murchando; sentimento corroído</div></div>
+        <div class="comb-row"><div class="comb-cards">Ratos <span class="plus">+</span> Sol</div><div class="comb-meaning">Os ratos são eliminados; perda contida</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 24. CORAÇÃO ═══ -->
+<div class="carta c-pos" id="c24">
+  <div class="carta-head">
+    <div class="carta-num">24<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">❤ O Coração</div>
+      <div class="carta-naipe">Valete de Copas · Vênus / Libra · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">amor</span><span class="kw">sentimento</span><span class="kw">afeto</span>
+      <span class="kw">paixão</span><span class="kw">generosidade</span><span class="kw">compaixão</span><span class="kw">romantismo</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Coração é a <strong>carta do amor em todas as suas formas</strong> — romântico, fraternal, compaixão, amor próprio. É também o que o consulente verdadeiramente sente — diferente do Anel (compromisso), o Coração é o sentimento puro, sem contrato. É a carta mais emocional do baralho, e junto com as cartas ao redor conta toda a história sentimental de uma situação.</p>
+        <p>Como pessoas: o Coração indica alguém de coração aberto, afetuoso, às vezes muito emocional, que sente tudo intensamente. Traços suaves, olhar quente.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor (área principal):</strong> Amor verdadeiro e presente. Sentimento genuíno. O que o coração quer. Com Cavaleiro: declaração chegando. Com Anel: casamento. Com Caixão: fim do amor. Com Nuvens: amor confuso. Com Chave: amor que é a resposta.</p>
+        <p><strong>💼 Trabalho:</strong> Trabalho que ama — vocação. Trabalho na área de saúde/cuidado/amor. Bom relacionamento com colegas por afeto genuíno.</p>
+        <p><strong>🌿 Saúde:</strong> Literalmente: o coração físico. Questões cardíacas (com cartas de saúde). Saúde emocional. O impacto das emoções na saúde.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O que seu coração realmente quer? Não o que a mente racionaliza — o que o coração sente quando para de pensar?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Coração <span class="plus">+</span> Anel</div><div class="comb-meaning">Casamento por amor; compromisso genuíno</div></div>
+        <div class="comb-row"><div class="comb-cards">Coração <span class="plus">+</span> Sol</div><div class="comb-meaning">Amor feliz e brilhante; realização amorosa</div></div>
+        <div class="comb-row"><div class="comb-cards">Coração <span class="plus">+</span> Caixão</div><div class="comb-meaning">Amor que terminou; coração partido</div></div>
+        <div class="comb-row"><div class="comb-cards">Coração <span class="plus">+</span> Chave</div><div class="comb-meaning">O amor é a resposta; amor abre portas</div></div>
+        <div class="comb-row"><div class="comb-cards">Coração <span class="plus">+</span> Serpente</div><div class="comb-meaning">Amor traído; rivalidade amorosa</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 25-26. ANEL e LIVRO ═══ -->
+<div class="card-grid reveal" id="c25">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">25<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">💍 O Anel</div>
+      <div class="carta-naipe">Ás de Paus · Saturno / Capricórnio · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">compromisso</span><span class="kw">contrato</span><span class="kw">casamento</span>
+      <span class="kw">ciclo</span><span class="kw">acordo</span><span class="kw">parceria</span><span class="kw">aliança</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Anel é a <strong>carta do compromisso formalizado</strong> — o que foi acordado, prometido, assinado. No amor: namoro sério, noivado, casamento. No trabalho: contrato assinado, parceria de negócios, acordo. A forma circular do anel representa também o <strong>ciclo que se fecha</strong> — algo que volta, que se completa, que se repete.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Casamento, noivado, relacionamento oficializado. Compromisso que vai além do sentimento (isso é o Coração) — é a promessa, a decisão de ficar. Com Foice: divórcio ou término formal.</p>
+        <p><strong>💼 Trabalho:</strong> Contrato assinado. Parceria de negócios. Acordo que amarra as partes. Renovação de contrato.</p>
+        <p><strong>💰 Dinheiro:</strong> Contrato financeiro. Dívida formalizada. Parceria de investimento.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O compromisso exige integridade. Com o que você se comprometeu que ainda não honrou? O anel que você usa tem peso — não o esqueça.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Anel <span class="plus">+</span> Coração</div><div class="comb-meaning">Casamento por amor; compromisso genuíno</div></div>
+        <div class="comb-row"><div class="comb-cards">Anel <span class="plus">+</span> Foice</div><div class="comb-meaning">Divórcio; contrato rompido subitamente</div></div>
+        <div class="comb-row"><div class="comb-cards">Anel <span class="plus">+</span> Peixes</div><div class="comb-meaning">Contrato financeiro; parceria de negócios</div></div>
+        <div class="comb-row"><div class="comb-cards">Anel <span class="plus">+</span> Serpente</div><div class="comb-meaning">Acordo com pessoa traiçoeira; contrato armadilha</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 26. LIVRO ═══ -->
+<div class="carta c-neu" id="c26">
+  <div class="carta-head">
+    <div class="carta-num">26<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">📖 O Livro</div>
+      <div class="carta-naipe">10 de Ouros · Mercúrio / Escorpião · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">segredo</span><span class="kw">conhecimento</span><span class="kw">mistério</span>
+      <span class="kw">estudo</span><span class="kw">informação oculta</span><span class="kw">revelação</span><span class="kw">educação</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Livro é a <strong>carta do que está oculto ou não revelado</strong>. Pode ser um segredo guardado, conhecimento que está sendo adquirido (estudo, cursos), ou informação que ainda não chegou. O Livro pode estar aberto (revelação, conhecimento acessível) ou fechado (segredo mantido). As cartas ao redor revelam o que o segredo contém.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Segredo no relacionamento. Parceiro que guarda algo. Amor oculto (paixão secreta). Descoberta de algo sobre o amado.</p>
+        <p><strong>💼 Trabalho:</strong> Informação privilegiada. Estudo e formação. Projeto sigiloso. Pesquisa. Informação que ainda não se tem.</p>
+        <p><strong>💰 Dinheiro:</strong> Dinheiro secreto. Herança desconhecida. Informação financeira que ainda não chegou.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Nem todo segredo precisa ser revelado agora. Mas os que prejudicam têm prazo de validade. O que você sabe que ainda não disse?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Livro <span class="plus">+</span> Chave</div><div class="comb-meaning">Segredo revelado; informação descoberta</div></div>
+        <div class="comb-row"><div class="comb-cards">Livro <span class="plus">+</span> Serpente</div><div class="comb-meaning">Segredo perigoso; informação usada como arma</div></div>
+        <div class="comb-row"><div class="comb-cards">Livro <span class="plus">+</span> Sol</div><div class="comb-meaning">Estudo bem-sucedido; segredo à luz do dia</div></div>
+        <div class="comb-row"><div class="comb-cards">Livro <span class="plus">+</span> Pássaros</div><div class="comb-meaning">Segredo que virou fofoca; boato revelado</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 27-28-29. CARTA, HOMEM, MULHER ═══ -->
+<div class="card-grid reveal" id="c27">
+<div class="carta c-neu">
+  <div class="carta-head">
+    <div class="carta-num">27<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">✉ A Carta / Mensagem</div>
+      <div class="carta-naipe">7 de Espadas · Mercúrio / Gêmeos · Energia Neutra</div>
+      <span class="carta-energia e-neu">◆ Carta Neutra</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">mensagem</span><span class="kw">documento</span><span class="kw">comunicação</span>
+      <span class="kw">e-mail</span><span class="kw">carta</span><span class="kw">contrato escrito</span><span class="kw">notícia escrita</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Carta (mensagem) é a <strong>comunicação escrita em todas as suas formas</strong>: e-mail, mensagem de texto, WhatsApp, carta física, documento, notificação. O conteúdo da mensagem é sempre revelado pelas cartas ao lado. Diferente do Cavaleiro (notícia falada/em movimento), a Carta é sempre algo escrito, registrado, documentado.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Mensagem do amado chegando. Declaração escrita. Pode ser o retorno de alguém via mensagem. O texto que mudou tudo.</p>
+        <p><strong>💼 Trabalho:</strong> E-mail importante. Proposta formal. Resultado de processo seletivo por escrito. Documentação necessária.</p>
+        <p><strong>💰 Dinheiro:</strong> Cobrança, extrato, contrato financeiro. Notícia financeira por escrito.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Coloque por escrito o que é importante. Palavras ao vento se perdem — o que está escrito fica. Que mensagem você precisa enviar ou está esperando?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Carta <span class="plus">+</span> Coração</div><div class="comb-meaning">Mensagem amorosa; declaração escrita</div></div>
+        <div class="comb-row"><div class="comb-cards">Carta <span class="plus">+</span> Foice</div><div class="comb-meaning">Notificação de demissão; documento que corta</div></div>
+        <div class="comb-row"><div class="comb-cards">Carta <span class="plus">+</span> Chave</div><div class="comb-meaning">Mensagem que resolve; documento importante</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 28. HOMEM / 29. MULHER ═══ -->
+<div class="carta c-neu" id="c28">
+  <div class="carta-head">
+    <div class="carta-num">28/29<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">👤 O Homem · A Mulher</div>
+      <div class="carta-naipe">Ás de Copas / Ás de Espadas · Personagens Centrais</div>
+      <span class="carta-energia e-neu">◆ Cartas Pessoais</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">o consulente</span><span class="kw">pessoa chave</span><span class="kw">figura central</span>
+      <span class="kw">identidade</span><span class="kw">o significador</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE ESTAS CARTAS REPRESENTAM</div>
+      <div class="sec-text">
+        <p>O Homem e a Mulher são os <strong>significadores pessoais</strong> do Lenormand — as cartas que representam o próprio consulente (dependendo de seu gênero/identidade) ou a pessoa significativa em sua vida. Quando o Homem ou a Mulher aparece numa tiragem, indica especificamente o consulente ou a pessoa sobre quem se pergunta.</p>
+        <p>As cartas ao redor do significador revelam tudo: o que está à <strong>esquerda</strong> = o passado, o que ficou para trás. O que está à <strong>direita</strong> = o futuro, o que vem. O que está <strong>acima</strong> = os pensamentos conscientes. O que está <strong>abaixo</strong> = o inconsciente, o que não é dito.</p>
+        <p><strong>Aparência da pessoa designada:</strong> As cartas ao redor revelam traços físicos e psicológicos. Urso + Mulher = mulher forte e imponente. Buquê + Homem = homem atraente e gentil. Nuvens + Mulher = mulher evasiva e confusa.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">LENDO A PESSOA PELAS CARTAS AO REDOR</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Serpente <span class="plus">+</span> Mulher</div><div class="comb-meaning">Mulher manipuladora, de cabelos escuros, intrigante</div></div>
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Homem</div><div class="comb-meaning">Homem brilhante, de aparência luminosa, bem-sucedido</div></div>
+        <div class="comb-row"><div class="comb-cards">Lua <span class="plus">+</span> Mulher</div><div class="comb-meaning">Mulher intuitiva, emocional, artística</div></div>
+        <div class="comb-row"><div class="comb-cards">Urso <span class="plus">+</span> Homem</div><div class="comb-meaning">Homem forte, poderoso, talvez ciumento</div></div>
+        <div class="comb-row"><div class="comb-cards">Criança <span class="plus">+</span> Mulher</div><div class="comb-meaning">Mulher jovem, de aparência jovial, inocente</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 30-31. LÍRIO e SOL ═══ -->
+<div class="card-grid reveal" id="c30">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">30<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🌸 O Lírio</div>
+      <div class="carta-naipe">Rei de Copas · Saturno / Capricórnio · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">maturidade</span><span class="kw">sabedoria</span><span class="kw">pureza</span>
+      <span class="kw">sexualidade</span><span class="kw">paz</span><span class="kw">virtude</span><span class="kw">harmonia</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Lírio é a <strong>carta da maturidade, da sabedoria e da sexualidade madura</strong>. Representa a pessoa mais velha, experiente, de virtude estabelecida. Mas também — e isso surpreende muitos — indica a sexualidade: o lírio como símbolo fálico ou de feminilidade madura. No amor, o Lírio indica atração física e satisfação sexual. Em situações familiares: o pai ou a figura patriarcal mais velha.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento sexualmente satisfatório. Atração física intensa. Amor entre pessoas maduras. Harmonia no casal, especialmente na intimidade.</p>
+        <p><strong>💼 Trabalho:</strong> Fase de maturidade profissional. Mentor ou chefe mais velho e sábio. Trabalho bem estabelecido após anos de experiência.</p>
+        <p><strong>🌿 Saúde:</strong> Saúde sólida de pessoa mais velha. Vigor sexual. Paz interior que reflete na saúde.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> A maturidade traz seu próprio tipo de beleza e poder. Não deseje a juventude de volta — cultive a sabedoria do que você se tornou.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Lírio <span class="plus">+</span> Chicote</div><div class="comb-meaning">Tensão sexual; conflito íntimo</div></div>
+        <div class="comb-row"><div class="comb-cards">Lírio <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor maduro e sexualmente satisfatório</div></div>
+        <div class="comb-row"><div class="comb-cards">Lírio <span class="plus">+</span> Sol</div><div class="comb-meaning">Sabedoria brilhante; vida realizada na maturidade</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 31. SOL ═══ -->
+<div class="carta c-pos" id="c31">
+  <div class="carta-head">
+    <div class="carta-num">31<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">☀ O Sol</div>
+      <div class="carta-naipe">Ás de Ouros · Sol / Leão · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Mais Positiva do Baralho</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">sucesso</span><span class="kw">felicidade</span><span class="kw">clareza</span>
+      <span class="kw">energia</span><span class="kw">vitória</span><span class="kw">saúde</span><span class="kw">bênção</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>O Sol é a <strong>carta mais positiva do baralho cigano</strong>. Ele ilumina tudo ao redor e transforma cartas negativas em situações suportáveis ou com saída. Com o Sol presente, mesmo o Caixão ou a Serpente perdem força. O Sol representa sucesso, alegria, saúde, clareza de visão, vitória merecida, energia renovada. Quando aparece, é sinal verde.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Amor feliz, realizado, brilhante. Fase luminosa no relacionamento. Atração irresistível. O amor que dá certo.</p>
+        <p><strong>💼 Trabalho:</strong> Sucesso profissional. Reconhecimento. Projeto que dá certo. Período de brilho e visibilidade. Promoção.</p>
+        <p><strong>💰 Dinheiro:</strong> Abundância. Boa fase financeira. Investimento que deu retorno. Ganhos expressivos.</p>
+        <p><strong>🌿 Saúde:</strong> Saúde excelente. Recuperação rápida. Energia e vitalidade. Cura que chega.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Brilhe. Este é o seu momento. O sucesso que você construiu merece ser vivido e celebrado, não apenas perseguido.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES — O SOL TRANSFORMA TUDO</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Peixes</div><div class="comb-meaning">Grande riqueza; abundância financeira</div></div>
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Nuvens</div><div class="comb-meaning">A confusão se resolve; a luz vence a névoa</div></div>
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Caixão</div><div class="comb-meaning">Fim glorioso; transformação iluminada</div></div>
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Âncora</div><div class="comb-meaning">Sucesso duradouro; carreira sólida e brilhante</div></div>
+        <div class="comb-row"><div class="comb-cards">Sol <span class="plus">+</span> Chave</div><div class="comb-meaning">A solução perfeita; o caminho está claro</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Logo. O Sol não demora a chegar.</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 32-33. LUA e CHAVE ═══ -->
+<div class="card-grid reveal" id="c32">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">32<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🌙 A Lua</div>
+      <div class="carta-naipe">8 de Copas · Lua / Câncer · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">intuição</span><span class="kw">reconhecimento</span><span class="kw">emoção</span>
+      <span class="kw">fama</span><span class="kw">artístico</span><span class="kw">criatividade</span><span class="kw">subconsciente</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Lua é a <strong>carta da intuição, do reconhecimento e da arte</strong>. Representa o que se sente mais do que o que se pensa, a criatividade que emerge do inconsciente, o talento artístico reconhecido pelo público. Também indica o <strong>reconhecimento profissional</strong> — a fama que vem do talento, a admiração de outros. Em amor, é a atração que vai além da lógica.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Amor baseado em intuição. Atração inexplicável. Relacionamento com artista ou pessoa muito emocional. Fase de romantismo e encantamento.</p>
+        <p><strong>💼 Trabalho:</strong> Reconhecimento profissional, fama. Trabalho nas artes — música, teatro, dança, literatura, design. Carreira que usa criatividade e intuição.</p>
+        <p><strong>🌿 Saúde:</strong> Saúde emocional. Ciclos — as fases da lua no corpo. Intuição sobre a própria saúde que não deve ser ignorada.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Confie mais no que sente do que no que pensa. Sua intuição está funcionando — o que você está sentindo mas descartando por não ter "lógica"?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Lua <span class="plus">+</span> Sol</div><div class="comb-meaning">Reconhecimento máximo; sucesso artístico</div></div>
+        <div class="comb-row"><div class="comb-cards">Lua <span class="plus">+</span> Nuvens</div><div class="comb-meaning">Intuição confusa; ilusão emocional</div></div>
+        <div class="comb-row"><div class="comb-cards">Lua <span class="plus">+</span> Estrelas</div><div class="comb-meaning">Fama crescente; reconhecimento espiritual</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 33. CHAVE ═══ -->
+<div class="carta c-pos" id="c33">
+  <div class="carta-head">
+    <div class="carta-num">33<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🔑 A Chave</div>
+      <div class="carta-naipe">8 de Ouros · Júpiter / Sagitário · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">solução</span><span class="kw">certeza</span><span class="kw">abertura</span>
+      <span class="kw">destino</span><span class="kw">sim</span><span class="kw">revelação</span><span class="kw">libertação</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Chave é a <strong>carta da solução e da certeza</strong>. É a resposta "sim" mais direta do baralho. Quando a Chave aparece ao lado de qualquer outra carta, ela "abre" aquela carta — torna sua realização certa, sua solução possível. É também a carta do destino: o que era inevitável, o que estava escrito. A Chave não promete facilidade — promete que vai acontecer.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> A relação que vai dar certo. A pessoa que é certa para você. Solução para conflito amoroso. Certeza que só esse amor pode dar.</p>
+        <p><strong>💼 Trabalho:</strong> O emprego que vai ser contratado. O projeto que vai avançar. A solução para o problema profissional.</p>
+        <p><strong>💰 Dinheiro:</strong> Solução financeira encontrada. Dívida que vai se resolver. Investimento que certamente vai render.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> A resposta está aqui. O que você buscava está sendo revelado agora. Confie — isso é certo.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES — A CHAVE ABRE TUDO</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Chave <span class="plus">+</span> Coração</div><div class="comb-meaning">O amor é a solução; amor que abre portas</div></div>
+        <div class="comb-row"><div class="comb-cards">Chave <span class="plus">+</span> Peixes</div><div class="comb-meaning">Solução financeira; dinheiro que resolve</div></div>
+        <div class="comb-row"><div class="comb-cards">Chave <span class="plus">+</span> Montanha</div><div class="comb-meaning">O bloqueio vai se resolver; saída do obstáculo</div></div>
+        <div class="comb-row"><div class="comb-cards">Chave <span class="plus">+</span> Livro</div><div class="comb-meaning">O segredo é revelado; informação vem à luz</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ 34-35-36. PEIXES, ÂNCORA, CRUZ ═══ -->
+<div class="card-grid reveal" id="c34">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">34<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">🐠 Os Peixes</div>
+      <div class="carta-naipe">Rei de Ouros · Netuno / Peixes · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">dinheiro</span><span class="kw">negócios</span><span class="kw">abundância</span>
+      <span class="kw">fluxo</span><span class="kw">independência</span><span class="kw">álcool</span><span class="kw">água</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>Os Peixes são a <strong>carta do dinheiro, das finanças e dos negócios</strong>. São o fluxo — como os peixes se movem na água, o dinheiro se move em fluxo. Também representa a independência financeira, o empreendedorismo, a multiplicação de recursos. Em alguns contextos: álcool, dependência química, ou literalmente a água e os oceanos.</p>
+        <p>Os Peixes potencializam o que tocam financeiramente — Peixes + Sol = grande riqueza. Peixes + Ratos = perda financeira grave.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>💰 Dinheiro (área principal):</strong> Boa fase financeira. Dinheiro em fluxo. Negócios prosperando. Múltiplas fontes de renda.</p>
+        <p><strong>💼 Trabalho:</strong> Empreendimento próprio. Negócio que cresce. Trabalho no setor financeiro. Independência profissional.</p>
+        <p><strong>❤ Amor:</strong> Relacionamento com pessoa bem-sucedida financeiramente. O amor que tem recursos para florescer. Às vezes: relacionamento baseado em interesse financeiro.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O dinheiro é energia em movimento — ele flui para onde a atenção está. Onde você está investindo sua atenção?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Peixes <span class="plus">+</span> Sol</div><div class="comb-meaning">Riqueza expressiva; abundância total</div></div>
+        <div class="comb-row"><div class="comb-cards">Peixes <span class="plus">+</span> Ratos</div><div class="comb-meaning">Perda financeira grave; falência</div></div>
+        <div class="comb-row"><div class="comb-cards">Peixes <span class="plus">+</span> Âncora</div><div class="comb-meaning">Estabilidade financeira; riqueza duradoura</div></div>
+        <div class="comb-row"><div class="comb-cards">Peixes <span class="plus">+</span> Chave</div><div class="comb-meaning">Solução financeira; o dinheiro que resolve</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="card-grid reveal" id="c35">
+<div class="carta c-pos">
+  <div class="carta-head">
+    <div class="carta-num">35<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">⚓ A Âncora</div>
+      <div class="carta-naipe">9 de Espadas · Saturno / Capricórnio · Energia Positiva</div>
+      <span class="carta-energia e-pos">✦ Carta Positiva</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">estabilidade</span><span class="kw">trabalho</span><span class="kw">permanência</span>
+      <span class="kw">firmeza</span><span class="kw">longa duração</span><span class="kw">persistência</span><span class="kw">carreira</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Âncora é a <strong>carta do trabalho e da estabilidade duradoura</strong>. É o que ficou, o que se construiu para durar, o que não se move com facilidade. Representa o emprego, a carreira de longo prazo, a situação estável. A âncora não move o barco — ela o segura. Tudo o que chega à Âncora tende a ficar por muito tempo.</p>
+        <p>Atenção: em contextos negativos, a Âncora pode indicar o que ficou preso quando deveria se mover — a situação que está estagnada há tempo demais.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>💼 Trabalho (área principal):</strong> Emprego estável e duradouro. Carreira sólida. Empresa que vai durar. Posição que vai ser mantida.</p>
+        <p><strong>❤ Amor:</strong> Relacionamento estável e de longa duração. Parceiro confiável e presente. Amor que passou pelo teste do tempo. Pode indicar também: amor que não muda, não evolui.</p>
+        <p><strong>💰 Dinheiro:</strong> Estabilidade financeira conquistada. Renda fixa. Investimento seguro de longo prazo.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> O que você ancorou que ainda serve? E o que foi ancorado que deveria ter sido liberado faz tempo? Estabilidade não é a mesma coisa que estagnação.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Âncora <span class="plus">+</span> Sol</div><div class="comb-meaning">Sucesso duradouro; carreira brilhante e estável</div></div>
+        <div class="comb-row"><div class="comb-cards">Âncora <span class="plus">+</span> Montanha</div><div class="comb-meaning">Estagnação profunda; bloqueio permanente</div></div>
+        <div class="comb-row"><div class="comb-cards">Âncora <span class="plus">+</span> Cegonha</div><div class="comb-meaning">Mudança na carreira; estabilidade que se transforma</div></div>
+        <div class="comb-row"><div class="comb-cards">Âncora <span class="plus">+</span> Peixes</div><div class="comb-meaning">Riqueza estável; prosperidade duradoura</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 36. CRUZ ═══ -->
+<div class="carta c-neg" id="c36">
+  <div class="carta-head">
+    <div class="carta-num">36<span>CARTA</span></div>
+    <div class="carta-meta">
+      <div class="carta-name">✝ A Cruz</div>
+      <div class="carta-naipe">6 de Paus · Saturno / Capricórnio · Energia Negativa</div>
+      <span class="carta-energia e-neg">✦ Carta Negativa</span>
+    </div>
+  </div>
+  <div class="carta-body">
+    <div class="kw-strip">
+      <span class="kw">fardo</span><span class="kw">destino</span><span class="kw">karma</span>
+      <span class="kw">sofrimento</span><span class="kw">obrigação</span><span class="kw">religião</span><span class="kw">inevitável</span>
+    </div>
+    <div class="sec">
+      <div class="sec-title">O QUE É ESTA CARTA</div>
+      <div class="sec-text">
+        <p>A Cruz é a <strong>última carta do baralho e uma das mais pesadas</strong>. Representa o fardo inevitável, o karma que precisa ser vivido, o sofrimento que não pode ser evitado — apenas atravessado. Também indica a espiritualidade, a religião, o destino superior que age na vida do consulente. A Cruz não promete felicidade — promete sentido.</p>
+        <p>Em algumas leituras, a Cruz é o peso da responsabilidade espiritual. Em outras, é o sofrimento que vem — mas que, como a cruz cristã, aponta para a ressurreição além.</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">EM CADA ÁREA DA VIDA</div>
+      <div class="sec-text">
+        <p><strong>❤ Amor:</strong> Relacionamento kármico — amor que vem ensinar algo. Sofrimento no amor que não pode ser evitado. Sacrifício por amor. Amor que carrega peso espiritual.</p>
+        <p><strong>💼 Trabalho:</strong> Trabalho que é um fardo mas é necessário. Responsabilidade pesada. Pode indicar trabalho religioso, missionário, de cuidado espiritual.</p>
+        <p><strong>🌿 Saúde:</strong> Doença que vem como parte do karma ou destino. Condição que exige aceitação além da cura. Sofrimento que tem propósito.</p>
+        <p><strong>🧘 Espiritualidade:</strong> Missão de vida. Chamado espiritual. Trabalho que vai além do pessoal. Karma sendo equilibrado.</p>
+        <p><strong>🧠 Consciência / Conselho:</strong> Algumas cruzes não se evitam — se carrega. Mas o peso tem sentido. O que esse sofrimento está tentando te ensinar? O que você saberá do outro lado?</p>
+      </div>
+    </div>
+    <div class="cdiv"></div>
+    <div class="sec">
+      <div class="sec-title">COMBINAÇÕES ESSENCIAIS</div>
+      <div class="comb-grid">
+        <div class="comb-row"><div class="comb-cards">Cruz <span class="plus">+</span> Trevo</div><div class="comb-meaning">Sofrimento que passa; fardo que alivia</div></div>
+        <div class="comb-row"><div class="comb-cards">Cruz <span class="plus">+</span> Sol</div><div class="comb-meaning">Sofrimento que leva ao sucesso; fardo glorioso</div></div>
+        <div class="comb-row"><div class="comb-cards">Cruz <span class="plus">+</span> Chave</div><div class="comb-meaning">O destino se resolve; a saída é encontrada</div></div>
+        <div class="comb-row"><div class="comb-cards">Cruz <span class="plus">+</span> Ratos</div><div class="comb-meaning">Sofrimento que esgota; fardo que corrói</div></div>
+        <div class="comb-row"><div class="comb-cards">Cruz <span class="plus">+</span> Coração</div><div class="comb-meaning">Amor kármico; sofrimento amoroso com propósito</div></div>
+      </div>
+    </div>
+    <div class="tip">⏱ <strong>Timing:</strong> Indefinido — mas inevitável. A Cruz chega quando precisa chegar.</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <span class="foot-glyph">🃏</span>
+  <p class="foot-text">
+    "O Lenormand não fala em metáforas.<br>
+    Ele fala em frases. Aprenda a gramática<br>
+    e as cartas contarão tudo."<br><br>
+    — Tradição Lenormand, séc. XVIII<br><br>
+    <em>Baseado nas tradições europeia, brasileira e russa do Lenormand<br>
+    Madame Marie Anne Lenormand (1772-1843) · Das Spiel der Hoffnung (1799)<br>
+    Rana George · Caitlin Matthews · Mary K. Greer</em>
+  </p>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script>
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis')}})
+},{threshold:.05})
+document.querySelectorAll('.reveal,.carta').forEach(el=>io.observe(el))
+
+const secs=[...document.querySelectorAll('[id]')]
+const dots=[...document.querySelectorAll('.ndot')]
+const io2=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      const id=x.target.id
+      dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})
+    }
+  })
+},{threshold:.35})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>
