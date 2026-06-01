@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometria Sagrada — A Linguagem do Cosmos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050408;
+  --bg2: #0a0810;
+  --bg3: #100d18;
+  --gold: #d4a843;
+  --gold2: #f0c96a;
+  --gold3: #8a6820;
+  --teal: #3ab8b0;
+  --teal2: #6dddd6;
+  --violet: #7b52d4;
+  --violet2: #a880f0;
+  --rose: #c45080;
+  --text: #e8e0d0;
+  --text2: #a89880;
+  --text3: #6a5f50;
+  --border: rgba(212,168,67,0.18);
+  --border2: rgba(212,168,67,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* ── BACKGROUND STARS ── */
+body::before {
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(1px 1px at 10% 15%, rgba(212,168,67,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, rgba(58,184,176,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 10%, rgba(212,168,67,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 60%, rgba(123,82,212,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 30%, rgba(212,168,67,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 75%, rgba(58,184,176,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 85%, rgba(212,168,67,0.2) 0%, transparent 100%),
+    radial-gradient(2px 2px at 50% 50%, rgba(212,168,67,0.15) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* ── SCROLL PROGRESS ── */
+#progress {
+  position:fixed;top:0;left:0;height:2px;
+  background: linear-gradient(90deg, var(--violet), var(--teal), var(--gold));
+  z-index:1000;
+  transition: width 0.1s;
+}
+
+/* ── NAV ── */
+#nav {
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background: rgba(5,4,8,0.92);
+  border-bottom:1px solid var(--border2);
+  backdrop-filter: blur(12px);
+  padding: 0 24px;
+}
+#nav-inner {
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:52px;
+}
+#nav-title {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold);opacity:0.8;
+}
+#nav-links {
+  display:flex;gap:4px;flex-wrap:wrap;
+}
+.nav-link {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text3);
+  padding:5px 10px;border:1px solid transparent;
+  border-radius:2px;cursor:pointer;text-decoration:none;
+  transition:all 0.2s;
+}
+.nav-link:hover { color:var(--gold);border-color:var(--border); }
+
+/* ── WRAPPER ── */
+.page { position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px 80px; }
+
+/* ── HERO ── */
+#hero {
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 24px 60px;
+  position:relative;z-index:1;
+}
+#hero-svg { margin-bottom:40px; animation: heroSpin 60s linear infinite; }
+@keyframes heroSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+#hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,4.5rem);
+  font-weight:900;
+  color:var(--gold);
+  line-height:1.05;
+  text-shadow:0 0 80px rgba(212,168,67,0.4);
+  margin-bottom:16px;
+}
+#hero-sub {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.8rem;letter-spacing:0.5em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:32px;
+}
+#hero p {
+  max-width:640px;font-size:1.15rem;font-style:italic;
+  color:var(--text2);line-height:1.9;
+}
+.scroll-hint {
+  margin-top:50px;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--text3);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ── CHAPTER HEADER ── */
+.chapter {
+  padding:100px 0 60px;
+  border-top:1px solid var(--border2);
+}
+.chapter-num {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--gold3);margin-bottom:12px;display:block;
+}
+.chapter h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:700;color:var(--gold);
+  line-height:1.15;margin-bottom:24px;
+}
+.chapter-intro {
+  font-size:1.15rem;font-style:italic;
+  color:var(--text2);max-width:700px;
+  line-height:1.9;margin-bottom:50px;
+  border-left:2px solid var(--gold3);
+  padding-left:24px;
+}
+
+/* ── SECTION HEADER ── */
+.sec-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:600;
+  color:var(--teal);
+  margin:60px 0 20px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(58,184,176,0.2);
+}
+.sec-title2 {
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:600;
+  color:var(--violet2);
+  margin:40px 0 16px;
+}
+
+/* ── BODY TEXT ── */
+p { margin-bottom:1.4em; color:var(--text); }
+p strong { color:var(--gold2); font-weight:600; }
+p em { color:var(--teal2); font-style:italic; }
+
+/* ── QUOTE ── */
+.quote {
+  margin:40px 0;
+  padding:28px 36px;
+  background: rgba(212,168,67,0.04);
+  border-left:3px solid var(--gold);
+  border-radius:0 4px 4px 0;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text2);
+  line-height:1.9;
+}
+.quote cite {
+  display:block;margin-top:12px;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold3);font-style:normal;
+}
+
+/* ── SYMBOL SHOWCASE ── */
+.symbol-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+  margin:40px 0;
+}
+.symbol-card {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:28px 24px;
+  text-align:center;
+  transition:all 0.3s;
+  cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.symbol-card::before {
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(212,168,67,0.06) 0%, transparent 60%);
+  opacity:0;transition:opacity 0.3s;
+}
+.symbol-card:hover { border-color:rgba(212,168,67,0.5);transform:translateY(-3px); }
+.symbol-card:hover::before { opacity:1; }
+
+.symbol-card svg { margin-bottom:16px; }
+.symbol-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--gold2);
+  margin-bottom:8px;
+}
+.symbol-card p {
+  font-size:0.88rem;line-height:1.7;
+  color:var(--text2);margin:0;
+}
+.symbol-tag {
+  display:inline-block;margin-top:12px;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal);
+  padding:3px 10px;border:1px solid rgba(58,184,176,0.3);
+  border-radius:2px;
+}
+
+/* ── CONSTRUCTION DEMO ── */
+.construction-demo {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:40px;
+  margin:40px 0;
+  text-align:center;
+}
+.construction-demo h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;color:var(--gold);
+  margin-bottom:8px;
+}
+.construction-demo .demo-sub {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:30px;
+}
+.demo-steps {
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:center;
+  margin-top:24px;
+}
+.demo-step {
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.demo-step-num {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.6rem;letter-spacing:0.2em;
+  color:var(--gold3);
+}
+.demo-step p {
+  font-size:0.82rem;color:var(--text2);
+  max-width:140px;text-align:center;
+  margin:0;line-height:1.5;
+}
+
+/* ── ANIMATED SVG ── */
+.animated-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+.anim-card:hover .animated-path {
+  animation: drawPath 3s ease forwards;
+}
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── INFO BOX ── */
+.infobox {
+  background:rgba(123,82,212,0.08);
+  border:1px solid rgba(123,82,212,0.25);
+  border-radius:4px;padding:24px 28px;
+  margin:30px 0;
+}
+.infobox-title {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--violet2);margin-bottom:10px;
+}
+.infobox p { font-size:0.95rem;color:var(--text);margin:0;line-height:1.8; }
+
+.tealbox {
+  background:rgba(58,184,176,0.06);
+  border:1px solid rgba(58,184,176,0.2);
+  border-radius:4px;padding:24px 28px;
+  margin:30px 0;
+}
+.tealbox-title {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--teal2);margin-bottom:10px;
+}
+.tealbox p { font-size:0.95rem;color:var(--text);margin:0;line-height:1.8; }
+
+/* ── RATIO TABLE ── */
+.phi-table {
+  width:100%;border-collapse:collapse;margin:24px 0;
+  font-size:0.95rem;
+}
+.phi-table th {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);padding:10px 16px;
+  border-bottom:1px solid var(--border);text-align:left;
+}
+.phi-table td {
+  padding:11px 16px;
+  border-bottom:1px solid var(--border2);
+  color:var(--text);line-height:1.6;
+}
+.phi-table tr:hover td { background:rgba(212,168,67,0.03); }
+.phi-table td:first-child { color:var(--gold2); font-weight:500; }
+
+/* ── TRADITION CARDS ── */
+.tradition-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px;margin:30px 0;
+}
+.tradition-card {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:28px;
+}
+.tradition-card .trad-icon {
+  font-size:2rem;margin-bottom:14px;display:block;
+}
+.tradition-card h4 {
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;color:var(--gold2);
+  margin-bottom:10px;
+}
+.tradition-card p {
+  font-size:0.9rem;color:var(--text2);
+  margin:0;line-height:1.75;
+}
+
+/* ── STEP LIST ── */
+.step-list { list-style:none;margin:20px 0; }
+.step-list li {
+  padding:12px 0 12px 40px;
+  position:relative;
+  border-bottom:1px solid var(--border2);
+  font-size:0.95rem;line-height:1.75;
+  color:var(--text);
+}
+.step-list li::before {
+  content:attr(data-n);
+  position:absolute;left:0;top:12px;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;font-weight:300;
+  color:var(--gold);
+  width:28px;height:28px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+}
+
+/* ── NUMBER GRID ── */
+.number-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;margin:30px 0;
+}
+.number-card {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;padding:24px;
+  text-align:center;
+}
+.number-card .num {
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:900;
+  color:var(--gold);
+  line-height:1;margin-bottom:10px;
+  text-shadow:0 0 30px rgba(212,168,67,0.4);
+}
+.number-card h4 {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px;
+}
+.number-card p {
+  font-size:0.82rem;color:var(--text2);margin:0;line-height:1.65;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  text-align:center;
+  color:var(--gold3);
+  font-size:0.9rem;
+  letter-spacing:0.5em;
+  padding:40px 0;
+  opacity:0.5;
+}
+
+/* ── FULL-WIDTH SVG BANNER ── */
+.svg-banner {
+  width:100%;
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:20px;
+  margin:40px 0;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .construction-demo{padding:24px 16px;}
+  .demo-steps{gap:12px;}
+  #nav-links{display:none;}
+  body{font-size:16px;}
+}
+
+/* ── ENTRY ANIMATIONS ── */
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-in { animation: fadeUp 0.8s ease both; }
+
+/* ── SVG DRAW ANIMATIONS ── */
+@keyframes draw1 { to{ stroke-dashoffset:0; } }
+
+.draw-anim { 
+  stroke-dasharray:2000;
+  stroke-dashoffset:2000;
+  animation: draw1 4s ease forwards;
+}
+.draw-anim-2 { 
+  stroke-dasharray:2000;
+  stroke-dashoffset:2000;
+  animation: draw1 4s ease 1s forwards;
+}
+.draw-anim-3 { 
+  stroke-dasharray:2000;
+  stroke-dashoffset:2000;
+  animation: draw1 4s ease 2s forwards;
+}
+.draw-anim-4 { 
+  stroke-dasharray:2000;
+  stroke-dashoffset:2000;
+  animation: draw1 4s ease 3s forwards;
+}
+.draw-anim-5 { 
+  stroke-dasharray:2000;
+  stroke-dashoffset:2000;
+  animation: draw1 4s ease 4s forwards;
+}
+
+/* ── INTERACTIVE STEP BUILDER ── */
+.builder-wrap {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:36px;
+  margin:40px 0;
+}
+.builder-wrap h3 {
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;color:var(--gold);
+  margin-bottom:6px;
+}
+.builder-sub {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:24px;
+}
+.builder-controls {
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;
+}
+.builder-btn {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  padding:8px 18px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--text2);
+  cursor:pointer;border-radius:2px;
+  transition:all 0.2s;
+}
+.builder-btn:hover { border-color:var(--gold);color:var(--gold); }
+.builder-btn.active { background:var(--gold);color:var(--bg);border-color:var(--gold); }
+
+.builder-canvas-wrap {
+  display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap;
+}
+.builder-canvas { flex:1;min-width:280px;text-align:center; }
+.builder-desc { flex:1;min-width:240px; }
+.builder-desc h4 {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--gold2);margin-bottom:10px;
+}
+.builder-desc p { font-size:0.92rem;color:var(--text2);line-height:1.75;margin:0 0 12px; }
+.builder-step-label {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:8px;display:block;
+}
+
+/* ── GLYPH DISPLAY ── */
+.glyph-large {
+  display:flex;align-items:center;justify-content:center;
+  padding:40px 0;
+}
+
+/* ── USE CARDS ── */
+.use-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;margin:30px 0;
+}
+.use-card {
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:24px;
+}
+.use-icon { font-size:1.8rem;margin-bottom:12px;display:block; }
+.use-card h4 {
+  font-family:'Josefin Sans',sans-serif;
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.use-card p { font-size:0.88rem;color:var(--text2);margin:0;line-height:1.7; }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div id="nav-inner">
+    <span id="nav-title">Geometria Sagrada</span>
+    <div id="nav-links">
+      <a class="nav-link" href="#cap1">Origem</a>
+      <a class="nav-link" href="#cap2">Fundamentos</a>
+      <a class="nav-link" href="#cap3">Proporção Áurea</a>
+      <a class="nav-link" href="#cap4">Nascimento</a>
+      <a class="nav-link" href="#cap5">Flor da Vida</a>
+      <a class="nav-link" href="#cap6">Sólidos</a>
+      <a class="nav-link" href="#cap7">Símbolos</a>
+      <a class="nav-link" href="#cap8">Tradições</a>
+      <a class="nav-link" href="#cap9">Usos</a>
+      <a class="nav-link" href="#cap10">Prática</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <svg id="hero-svg" width="220" height="220" viewBox="-110 -110 220 220">
+    <!-- Flower of Life simplified for hero -->
+    <g stroke="rgba(212,168,67,0.25)" stroke-width="0.5" fill="none">
+      <!-- outer ring of circles -->
+      <circle cx="0" cy="0" r="100" stroke="rgba(212,168,67,0.1)"/>
+      <circle cx="0" cy="0" r="40"/>
+      <circle cx="40" cy="0" r="40"/>
+      <circle cx="-40" cy="0" r="40"/>
+      <circle cx="20" cy="34.64" r="40"/>
+      <circle cx="-20" cy="34.64" r="40"/>
+      <circle cx="20" cy="-34.64" r="40"/>
+      <circle cx="-20" cy="-34.64" r="40"/>
+      <!-- inner detail -->
+      <circle cx="0" cy="0" r="20" stroke="rgba(58,184,176,0.4)"/>
+      <polygon points="0,-60 51.96,30 -51.96,30" stroke="rgba(212,168,67,0.5)" stroke-width="0.8"/>
+      <polygon points="0,60 51.96,-30 -51.96,-30" stroke="rgba(212,168,67,0.5)" stroke-width="0.8"/>
+      <!-- star -->
+      <circle cx="0" cy="0" r="5" fill="rgba(212,168,67,0.6)" stroke="none"/>
+    </g>
+  </svg>
+
+  <h1>Geometria<br>Sagrada</h1>
+  <p id="hero-sub">A Linguagem Visual do Cosmos</p>
+  <p>Do ponto ao círculo, do círculo ao cosmos — a geometria sagrada é o estudo dos padrões matemáticos que sustentam toda a criação. É a linguagem que a natureza usa para se construir, e que a humanidade redescobriu em todas as culturas, em todos os tempos.</p>
+  <p class="scroll-hint">▾ &nbsp; Role para explorar &nbsp; ▾</p>
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 1 — O QUE É E ORIGEM
+════════════════════════════════════ -->
+<div class="page">
+<section id="cap1" class="chapter">
+  <span class="chapter-num">Capítulo I</span>
+  <h2>O Que É Geometria Sagrada — e Por Que "Sagrada"?</h2>
+  <p class="chapter-intro">
+    Antes de desenhar um único traço, é preciso entender o que faz uma geometria ser "sagrada". Não se trata de magia nem de superstição — trata-se da descoberta, feita independentemente por dezenas de civilizações, de que certos padrões matemáticos aparecem repetidamente na natureza, na música, na arquitetura e no próprio corpo humano.
+  </p>
+
+  <p>A palavra <strong>geometria</strong> vem do grego <em>geo</em> (terra) + <em>metron</em> (medida). Originalmente, era a arte de medir a terra para dividir campos agrícolas após as cheias do Nilo — tarefa prática. Mas os egípcios, e depois os gregos, perceberam algo extraordinário: os mesmos padrões que governavam as suas medidas apareciam nas conchas do mar, nas galáxias, nos cristais de neve, nas sementes de girassol, nos ossos do corpo humano.</p>
+
+  <p>O adjetivo <strong>"sagrada"</strong> foi dado porque diversas tradições espirituais — hinduísmo, judaísmo cabalístico, islamismo, cristianismo, budismo, tradições egípcias e gregas — identificaram estes padrões como a <em>linguagem com que o divino escreveu o cosmos</em>. Não como metáfora: como fato matemático observável. Quando Platão disse que "Deus faz geometria o tempo todo", ele não estava sendo poético — ele acreditava literalmente que o cosmos fora construído sobre formas geométricas perfeitas.</p>
+
+  <div class="quote">
+    "A geometria tem dois grandes tesouros: um é o teorema de Pitágoras; o outro, a divisão de uma linha na proporção extrema e média. O primeiro podemos comparar a uma medida de ouro; o segundo podemos chamar de uma joia preciosa."
+    <cite>— Johannes Kepler, astrônomo, século XVII</cite>
+  </div>
+
+  <h3 class="sec-title">O Problema da Coincidência</h3>
+
+  <p>Por que os mesmos padrões aparecem nas pétalas de uma rosa, na espiral de uma galáxia, no DNA, na proporção da face humana e nas ruínas de templos construídos por culturas que jamais se comunicaram? Existem duas respostas:</p>
+
+  <p><strong>A resposta científica:</strong> estes padrões são soluções matemáticas ótimas que a natureza "descobre" pela pressão evolutiva. A espiral de Fibonacci, por exemplo, é a forma mais eficiente de empacotar sementes num girassol — maximiza o número de sementes com o mínimo de espaço.</p>
+
+  <p><strong>A resposta espiritual:</strong> estes padrões existem porque são o código-fonte da realidade — a "matemática do criador". Encontrá-los é encontrar a assinatura do cosmos. Meditar sobre eles é meditar sobre a própria estrutura do ser.</p>
+
+  <p>A geometria sagrada não escolhe entre as duas respostas — ela as unifica. É simultaneamente matemática rigorosa e contemplação espiritual profunda.</p>
+
+  <div class="tealbox">
+    <div class="tealbox-title">Definição Operacional</div>
+    <p>Geometria Sagrada é o estudo das proporções, formas e padrões matemáticos que: (1) emergem espontaneamente na natureza; (2) foram usados conscientemente na arquitetura de templos e monumentos sagrados; (3) possuem propriedades matemáticas únicas — especialmente a proporção áurea φ (phi); (4) são usados em práticas meditativas, artísticas e arquitetônicas com intenção espiritual.</p>
+  </div>
+
+  <h3 class="sec-title">Uma Linha do Tempo — De Onde Vem</h3>
+
+  <div class="svg-banner">
+    <svg width="100%" height="120" viewBox="0 0 900 120" preserveAspectRatio="xMidYMid meet">
+      <!-- timeline line -->
+      <line x1="40" y1="60" x2="860" y2="60" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+      <!-- points and labels -->
+      <g font-family="'Josefin Sans',sans-serif" font-size="10" fill="rgba(212,168,67,0.7)" text-anchor="middle">
+        <!-- 3000 BC -->
+        <circle cx="80" cy="60" r="5" fill="#d4a843" opacity="0.8"/>
+        <line x1="80" y1="60" x2="80" y2="30" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+        <text x="80" y="22">3000 a.C.</text>
+        <text x="80" y="10" fill="rgba(58,184,176,0.8)">Egito</text>
+        <!-- 2600 BC Pyramids -->
+        <circle cx="160" cy="60" r="5" fill="#d4a843" opacity="0.8"/>
+        <line x1="160" y1="60" x2="160" y2="90" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+        <text x="160" y="102">2600 a.C.</text>
+        <text x="160" y="114" fill="rgba(58,184,176,0.8)">Pirâmides</text>
+        <!-- 570 Pythagoras -->
+        <circle cx="300" cy="60" r="5" fill="#a880f0" opacity="0.9"/>
+        <line x1="300" y1="60" x2="300" y2="30" stroke="rgba(123,82,212,0.4)" stroke-width="1"/>
+        <text x="300" y="22">570 a.C.</text>
+        <text x="300" y="10" fill="rgba(168,128,240,0.8)">Pitágoras</text>
+        <!-- 427 Platao -->
+        <circle cx="400" cy="60" r="5" fill="#a880f0" opacity="0.9"/>
+        <line x1="400" y1="60" x2="400" y2="90" stroke="rgba(123,82,212,0.4)" stroke-width="1"/>
+        <text x="400" y="102">427 a.C.</text>
+        <text x="400" y="114" fill="rgba(168,128,240,0.8)">Platão</text>
+        <!-- 300 Euclid -->
+        <circle cx="480" cy="60" r="5" fill="#d4a843" opacity="0.8"/>
+        <line x1="480" y1="60" x2="480" y2="30" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+        <text x="480" y="22">300 a.C.</text>
+        <text x="480" y="10" fill="rgba(58,184,176,0.8)">Euclides</text>
+        <!-- 1200 Gothic -->
+        <circle cx="600" cy="60" r="5" fill="#3ab8b0" opacity="0.9"/>
+        <line x1="600" y1="60" x2="600" y2="90" stroke="rgba(58,184,176,0.4)" stroke-width="1"/>
+        <text x="600" y="102">Séc. XII</text>
+        <text x="600" y="114" fill="rgba(58,184,176,0.8)">Catedrais</text>
+        <!-- 1450 Renaissance -->
+        <circle cx="680" cy="60" r="5" fill="#3ab8b0" opacity="0.9"/>
+        <line x1="680" y1="60" x2="680" y2="30" stroke="rgba(58,184,176,0.4)" stroke-width="1"/>
+        <text x="680" y="22">Séc. XV</text>
+        <text x="680" y="10" fill="rgba(58,184,176,0.8)">Renascença</text>
+        <!-- 1900 modern -->
+        <circle cx="800" cy="60" r="5" fill="#c45080" opacity="0.9"/>
+        <line x1="800" y1="60" x2="800" y2="90" stroke="rgba(196,80,128,0.4)" stroke-width="1"/>
+        <text x="800" y="102">Séc. XX</text>
+        <text x="800" y="114" fill="rgba(196,80,128,0.8)">Renascimento</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="tradition-grid">
+    <div class="tradition-card">
+      <span class="trad-icon">𓂀</span>
+      <h4>Egito Antigo (3000 a.C.)</h4>
+      <p>Os egípcios usavam proporções sagradas nas pirâmides, templos e na arte. A Grande Pirâmide codifica π e φ em suas dimensões. Os sacerdotes de Hermópolis ensinavam geometria como disciplina espiritual. O Livro dos Mortos usa diagramas geométricos para o julgamento da alma.</p>
+    </div>
+    <div class="tradition-card">
+      <span class="trad-icon">∞</span>
+      <h4>Pitágoras e a Escola (570 a.C.)</h4>
+      <p>Pitágoras fundou uma escola filosófico-religiosa que considerava os números a essência de toda a realidade. "Tudo é número" era o lema. A escola pitagórica descobriu relações entre geometria e música (harmônicos), e via as formas geométricas como manifestações do divino. O Tetractys (arranjo de dez pontos em triângulo) era símbolo sagrado supremo.</p>
+    </div>
+    <div class="tradition-card">
+      <span class="trad-icon">⊙</span>
+      <h4>Platão e os Sólidos (427 a.C.)</h4>
+      <p>Platão associou os cinco sólidos perfeitos (hoje chamados Sólidos Platônicos) aos quatro elementos e ao cosmos. No Timeu, descreve o demiurgo criando o universo usando formas geométricas. A frase "Que não entre quem não souber geometria" estava gravada na entrada de sua Academia.</p>
+    </div>
+    <div class="tradition-card">
+      <span class="trad-icon">☽</span>
+      <h4>Islamismo Medieval (séc. VIII–XV)</h4>
+      <p>A arte islâmica proibiu a representação da figura humana, levando os artistas a desenvolverem a geometria ornamental mais sofisticada da história. As mesquitas e madrassas apresentam padrões geométricos de complexidade matemática extraordinária — alguns anteciparam descobertas matemáticas formalizadas apenas no século XX.</p>
+    </div>
+    <div class="tradition-card">
+      <span class="trad-icon">✝</span>
+      <h4>Catedrais Góticas (séc. XII–XV)</h4>
+      <p>Os mestres construtores medievais usavam geometria sagrada para projetar catedrais. O sistema de proporções era transmitido em segredo entre guildas de arquitetos (os "franc-maçons"). A Catedral de Chartres, Notre-Dame e a Sagrada Família de Gaudí são exemplos de geometria sagrada materializada em pedra.</p>
+    </div>
+    <div class="tradition-card">
+      <span class="trad-icon">🌸</span>
+      <h4>Renascimento (séc. XV–XVI)</h4>
+      <p>Leonardo da Vinci, Michelangelo, Dürer e outros artistas renascentistas usaram conscientemente a proporção áurea e geometria sagrada. Luca Pacioli escreveu De Divina Proportione (1509) com ilustrações de Da Vinci. O Homem Vitruviano é o símbolo mais conhecido desta síntese entre geometria, corpo e cosmos.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 2 — FUNDAMENTOS ABSOLUTOS
+════════════════════════════════════ -->
+<section id="cap2" class="chapter">
+  <span class="chapter-num">Capítulo II</span>
+  <h2>Os Fundamentos: Como Nasce Cada Traço</h2>
+  <p class="chapter-intro">
+    Toda a geometria sagrada começa do absoluto zero — do nada. Não de uma forma complexa, mas de elementos tão primitivos que parecem triviais. É exatamente esta simplicidade radical que os tornava sagrados: do Nada emerge o Ponto; do Ponto emerge a Linha; da Linha emerge o Círculo; do Círculo emerge toda a criação.
+  </p>
+
+  <h3 class="sec-title">Os Quatro Elementos Primordiais</h3>
+
+  <!-- INTERACTIVE BUILDER: Ponto → Linha → Círculo -->
+  <div class="builder-wrap" id="builder-primordial">
+    <h3>Da Origem ao Círculo — Construção Passo a Passo</h3>
+    <div class="builder-sub">clique nos passos para ver o nascimento de cada forma</div>
+    <div class="builder-controls">
+      <button class="builder-btn active" onclick="setPrimordial(0)">0 — Vazio</button>
+      <button class="builder-btn" onclick="setPrimordial(1)">1 — O Ponto</button>
+      <button class="builder-btn" onclick="setPrimordial(2)">2 — A Linha</button>
+      <button class="builder-btn" onclick="setPrimordial(3)">3 — O Plano</button>
+      <button class="builder-btn" onclick="setPrimordial(4)">4 — O Círculo</button>
+      <button class="builder-btn" onclick="setPrimordial(5)">5 — A Vesica Piscis</button>
+    </div>
+    <div class="builder-canvas-wrap">
+      <div class="builder-canvas">
+        <canvas id="canvas-primordial" width="300" height="300" style="border:1px solid var(--border);border-radius:4px;background:var(--bg);"></canvas>
+      </div>
+      <div class="builder-desc" id="desc-primordial">
+        <span class="builder-step-label">Passo 0 — O Vazio</span>
+        <h4>O Nada — Ain Soph</h4>
+        <p>No início não há forma, não há dimensão, não há nem o espaço em que algo poderia existir. Este é o estado anterior a toda criação — o que a Cabala chama de Ain Soph Aur (a luz sem limite), o que os hindus chamam de Parabrahman, o que os taoístas chamam de Wu Ji (sem extremo).</p>
+        <p>O vazio não é ausência — é potência pura. É o zero que contém todos os números. O silêncio que contém toda a música.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="number-grid">
+    <div class="number-card">
+      <div class="num">·</div>
+      <h4>O Ponto</h4>
+      <p>Sem dimensão, sem extensão. Posição pura. Na geometria euclidiana, o ponto é indefinível — ele é o axioma, a premissa sem prova. Símbolo do Uno, da mônada, do ser-em-si.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">—</div>
+      <h4>A Linha</h4>
+      <p>Dois pontos criam uma linha — a primeira dualidade. A linha tem comprimento mas não largura: é pura direção, puro movimento. Símbolo da relação, da dualidade, do tempo.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">△</div>
+      <h4>O Plano</h4>
+      <p>Três pontos não colineares definem um plano — a primeira superfície. O triângulo é a forma mais estável e a mais simples. Símbolo da trindade, da manifestação, do espírito-mente-corpo.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">○</div>
+      <h4>O Círculo</h4>
+      <p>Um ponto equidistante de um centro — o círculo é a forma perfeita, sem começo, sem fim. Contém π (irracional, infinito). Símbolo do infinito, do cosmos, do eterno.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">⊕</div>
+      <h4>A Vesica Piscis</h4>
+      <p>Dois círculos iguais cujos centros passam pela circunferência um do outro. O espaço de interseção — a "bexiga do peixe" — gera a raiz de 3, a base de toda geometria sagrada subsequente.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">✦</div>
+      <h4>O Padrão</h4>
+      <p>Da vesica piscis surgem todos os polígonos regulares, todos os sólidos platônicos, a Flor da Vida e toda a geometria sagrada. Um padrão infinito a partir de dois círculos.</p>
+    </div>
+  </div>
+
+  <h3 class="sec-title">A Vesica Piscis — A Primeira Forma Sagrada</h3>
+
+  <!-- VESICA PISCIS CONSTRUCTION -->
+  <div class="construction-demo">
+    <h3>Construindo a Vesica Piscis</h3>
+    <p class="demo-sub">o primeiro passo da criação geométrica</p>
+    <div class="demo-steps">
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <circle cx="0" cy="0" r="50" fill="none" stroke="rgba(212,168,67,0.5)" stroke-width="1.5"/>
+          <circle cx="0" cy="0" r="3" fill="#d4a843"/>
+        </svg>
+        <div class="demo-step-num">Passo 1</div>
+        <p>Desenhe um círculo com centro O e raio r qualquer</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <circle cx="-25" cy="0" r="50" fill="none" stroke="rgba(212,168,67,0.4)" stroke-width="1.5"/>
+          <circle cx="25" cy="0" r="50" fill="none" stroke="rgba(58,184,176,0.6)" stroke-width="1.5"/>
+          <circle cx="-25" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="25" cy="0" r="3" fill="#3ab8b0"/>
+        </svg>
+        <div class="demo-step-num">Passo 2</div>
+        <p>Marque um ponto P na circunferência e desenhe círculo igual com centro P</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <circle cx="-25" cy="0" r="50" fill="none" stroke="rgba(212,168,67,0.25)" stroke-width="1"/>
+          <circle cx="25" cy="0" r="50" fill="none" stroke="rgba(58,184,176,0.25)" stroke-width="1"/>
+          <!-- vesica fill -->
+          <path d="M 0,-43.3 A 50,50 0 0,1 0,43.3 A 50,50 0 0,1 0,-43.3" fill="rgba(212,168,67,0.12)" stroke="none"/>
+          <path d="M 0,-43.3 A 50,50 0 0,0 0,43.3" fill="none" stroke="#d4a843" stroke-width="2"/>
+          <path d="M 0,-43.3 A 50,50 0 0,1 0,43.3" fill="none" stroke="#3ab8b0" stroke-width="2"/>
+        </svg>
+        <div class="demo-step-num">Passo 3</div>
+        <p>A interseção é a Vesica Piscis — o peixe sagrado</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <circle cx="-25" cy="0" r="50" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="0.8"/>
+          <circle cx="25" cy="0" r="50" fill="none" stroke="rgba(58,184,176,0.2)" stroke-width="0.8"/>
+          <path d="M 0,-43.3 A 50,50 0 0,0 0,43.3 A 50,50 0 0,0 0,-43.3" fill="rgba(212,168,67,0.08)"/>
+          <!-- linha vertical = altura da vesica -->
+          <line x1="0" y1="-43.3" x2="0" y2="43.3" stroke="rgba(212,168,67,0.8)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- linha horizontal = largura = r -->
+          <line x1="-25" y1="0" x2="25" y2="0" stroke="rgba(168,128,240,0.8)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- triângulo equilátero -->
+          <polygon points="0,-43.3 43.3,21.65 -43.3,21.65" fill="none" stroke="rgba(58,184,176,0.6)" stroke-width="1.2"/>
+          <text x="0" y="-50" text-anchor="middle" font-size="9" fill="rgba(212,168,67,0.7)" font-family="'Josefin Sans',sans-serif">√3 × r</text>
+        </svg>
+        <div class="demo-step-num">Passo 4</div>
+        <p>Altura = r√3. Contém o triângulo equilátero. Razão √3 em tudo</p>
+      </div>
+    </div>
+  </div>
+
+  <p>A Vesica Piscis não é apenas uma forma bonita. Ela é matematicamente extraordinária: a razão entre sua altura e largura é <strong>√3 : 1</strong> (1,732...) — um número irracional que aparece em toda a cristalografia, na estrutura do DNA e na proporção dos cristais de gelo. A partir dela, pode-se construir o triângulo equilátero, o hexágono, o cubo e toda a geometria subsequente usando apenas compasso, sem régua numerada.</p>
+
+  <div class="infobox">
+    <div class="infobox-title">Por que "Bexiga do Peixe"?</div>
+    <p>Vesica Piscis é latim para "bexiga do peixe" — porque a forma lembra a bexiga natatória dos peixes. Na arte cristã primitiva, Cristo era representado dentro desta forma (chamada mandorla ou ichthys), pois o peixe era símbolo secreto dos cristãos. No hinduísmo, a mesma forma é o Yoni — o princípio feminino criador. Na geometria euclidiana, é a forma-mãe de toda construção com compasso.</p>
+  </div>
+
+  <h3 class="sec-title">Geometria de Compasso — Construindo sem Números</h3>
+
+  <p>Uma das características mais notáveis da geometria sagrada é que <strong>tudo pode ser construído com apenas um compasso e uma linha reta</strong>, sem usar régua numerada, sem medir nada. Esta é a geometria de Euclides — e é exatamente o que faziam os mestres construtores das catedrais medievais.</p>
+
+  <p>Isso significa que as proporções sagradas (φ, √2, √3, √5) não são arbitrárias — elas emergem naturalmente do ato de traçar círculos. Elas são, literalmente, as proporções que existem quando você deixa a geometria se construir.</p>
+
+  <ul class="step-list">
+    <li data-n="01"><strong>Trissectar um segmento</strong> — dividir qualquer linha em 3 partes iguais usando apenas o compasso, sem medir.</li>
+    <li data-n="02"><strong>Construir o hexágono perfeito</strong> — seis círculos do mesmo raio, um no centro, um em cada vértice. Sem medir nenhum ângulo.</li>
+    <li data-n="03"><strong>Construir φ (phi)</strong> — a proporção áurea emerge naturalmente da divisão de um retângulo em quadrado + retângulo áureo.</li>
+    <li data-n="04"><strong>Construir √2</strong> — a diagonal de um quadrado de lado 1 tem comprimento √2, exatamente. A geometria gera irracionalidades perfeitas.</li>
+    <li data-n="05"><strong>Pentágono regular</strong> — construir um pentágono perfeito com compasso é um feito que os antigos consideravam quase milagroso, pois codifica φ em cada proporção.</li>
+  </ul>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 3 — PROPORÇÃO ÁUREA
+════════════════════════════════════ -->
+<section id="cap3" class="chapter">
+  <span class="chapter-num">Capítulo III</span>
+  <h2>A Proporção Áurea — φ (Phi)</h2>
+  <p class="chapter-intro">
+    Se existe um único conceito que resume a geometria sagrada, é a proporção áurea. Representada pela letra grega φ (phi) em homenagem ao escultor grego Phidias, ela é um número irracional com propriedades tão extraordinárias que civilizações em todo o mundo a veneraram como a medida do divino.
+  </p>
+
+  <div class="glyph-large">
+    <svg width="400" height="200" viewBox="0 0 400 200">
+      <!-- Golden ratio rectangle -->
+      <rect x="20" y="40" width="360" height="222.6" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="1"/>
+      <rect x="20" y="40" width="222.6" height="137.5" fill="none" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+      <rect x="242.6" y="40" width="137.5" height="137.5" fill="none" stroke="rgba(58,184,176,0.6)" stroke-width="1.5"/>
+      <!-- smaller golden rect -->
+      <rect x="242.6" y="40" width="137.5" height="85" fill="none" stroke="rgba(168,128,240,0.5)" stroke-width="1"/>
+      <rect x="242.6" y="125" width="85" height="52.5" fill="none" stroke="rgba(212,168,67,0.4)" stroke-width="1"/>
+      <!-- labels -->
+      <text x="131.3" y="35" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="10" fill="rgba(212,168,67,0.7)">φ</text>
+      <text x="311.3" y="35" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="10" fill="rgba(58,184,176,0.7)">1</text>
+      <text x="200" y="170" text-anchor="middle" font-family="'Playfair Display',serif" font-size="22" fill="rgba(212,168,67,0.9)">φ = 1.6180339887...</text>
+    </svg>
+  </div>
+
+  <h3 class="sec-title">O Que É φ Matematicamente</h3>
+
+  <p>φ (phi) é o número que satisfaz a seguinte propriedade extraordinária: <strong>dividir um segmento em duas partes de forma que a razão entre o todo e a parte maior seja igual à razão entre a parte maior e a menor</strong>.</p>
+
+  <p>Em matemática: se o segmento tem comprimento (a+b), e a parte maior tem comprimento a, então: <em>(a+b)/a = a/b = φ</em></p>
+
+  <p>Isso gera a equação: <strong>φ² = φ + 1</strong>, cujas soluções são φ = (1 + √5) / 2 = <strong>1,6180339887...</strong></p>
+
+  <div class="quote">
+    "A proporção áurea é a única razão que, quando subtraída de si mesma, gera seu próprio recíproco. É a única razão em que o todo está para a maior parte assim como a maior está para a menor. É geometria viva."
+    <cite>— Luca Pacioli, De Divina Proportione, 1509</cite>
+  </div>
+
+  <h3 class="sec-title">Propriedades Únicas de φ</h3>
+
+  <table class="phi-table">
+    <tr>
+      <th>Propriedade</th>
+      <th>Equação</th>
+      <th>Significado</th>
+    </tr>
+    <tr>
+      <td>Auto-similar</td>
+      <td>φ² = φ + 1</td>
+      <td>Elevar ao quadrado é o mesmo que somar 1</td>
+    </tr>
+    <tr>
+      <td>Recíproco especial</td>
+      <td>1/φ = φ − 1 = 0,618...</td>
+      <td>Seu recíproco é ele mesmo menos 1 — único número com esta propriedade</td>
+    </tr>
+    <tr>
+      <td>Fibonacci</td>
+      <td>lim(Fₙ₊₁/Fₙ) = φ</td>
+      <td>A razão de termos consecutivos de Fibonacci converge para φ</td>
+    </tr>
+    <tr>
+      <td>Pentágono</td>
+      <td>diagonal/lado = φ</td>
+      <td>O pentágono regular codifica φ em todas as suas proporções</td>
+    </tr>
+    <tr>
+      <td>Espiral</td>
+      <td>r = φ^(θ/90°)</td>
+      <td>A espiral logarítmica áurea é auto-similar em qualquer escala</td>
+    </tr>
+    <tr>
+      <td>Irracional "mais irracional"</td>
+      <td>Fração contínua = [1;1,1,1,1,...]</td>
+      <td>É o número mais difícil de aproximar por frações — o "mais irracional" dos irracionais</td>
+    </tr>
+  </table>
+
+  <h3 class="sec-title">A Sequência de Fibonacci e φ</h3>
+
+  <p>A sequência de Fibonacci começa com 0, 1 e cada número seguinte é a soma dos dois anteriores:</p>
+
+  <div style="text-align:center;padding:24px 0;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);letter-spacing:0.1em;">
+    0 · 1 · 1 · 2 · 3 · 5 · 8 · 13 · 21 · 34 · 55 · 89 · 144 · 233 · 377 · ...
+  </div>
+
+  <p>Calcule a razão entre termos consecutivos: 1/1=1, 2/1=2, 3/2=1,5, 5/3=1,667, 8/5=1,6, 13/8=1,625, 21/13=1,615, 34/21=1,619, 55/34=1,617... A sequência converge para <strong>1,6180339...</strong> = φ.</p>
+
+  <p>Esta não é coincidência — é a consequência matemática inevitável de qualquer sequência onde cada termo é a soma dos dois anteriores. Mas o que é espantoso é que a natureza <em>usa</em> esta sequência:</p>
+
+  <div class="symbol-grid">
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <path d="M 0,0 Q 30,-20 40,0 Q 30,30 0,40 Q -30,30 -40,0 Q -30,-30 0,-40 Q 20,-30 0,0" fill="none" stroke="rgba(212,168,67,0.7)" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="3" fill="#d4a843"/>
+        <text x="0" y="48" text-anchor="middle" font-size="8" fill="rgba(212,168,67,0.6)" font-family="'Josefin Sans',sans-serif">8 pétalas</text>
+      </svg>
+      <h3>Pétalas de Flores</h3>
+      <p>A maioria das flores tem 3, 5, 8, 13 ou 21 pétalas — todos números de Fibonacci. A simetria 5 (pentagonal) é a mais comum entre flores com pétalas distintas.</p>
+      <span class="symbol-tag">Natureza</span>
+    </div>
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <!-- sunflower spiral approximation -->
+        <g>
+          <path d="M 0,0 Q 15,-5 20,10 Q 18,25 5,30 Q -10,28 -20,15 Q -25,0 -15,-15 Q 0,-28 15,-20" fill="none" stroke="rgba(58,184,176,0.7)" stroke-width="1.5"/>
+          <path d="M 0,0 Q -12,-8 -18,8 Q -18,24 -5,32" fill="none" stroke="rgba(212,168,67,0.5)" stroke-width="1"/>
+        </g>
+        <circle cx="0" cy="0" r="3" fill="#3ab8b0"/>
+      </svg>
+      <h3>Sementes de Girassol</h3>
+      <p>As sementes formam duas espirais: 34 em sentido horário, 55 em anti-horário. Ambos números de Fibonacci — razão φ. É o empacotamento mais eficiente possível.</p>
+      <span class="symbol-tag">Natureza</span>
+    </div>
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <!-- nautilus spiral -->
+        <path d="M 0,0 L 20,0 A 20,20 0 0,1 0,20 A 32.36,32.36 0 0,1 -32.36,0 A 52.36,52.36 0 0,1 0,-52.36" fill="none" stroke="rgba(168,128,240,0.8)" stroke-width="2"/>
+        <circle cx="0" cy="0" r="3" fill="#a880f0"/>
+      </svg>
+      <h3>Concha Náutilo</h3>
+      <p>A espiral do náutilo é uma espiral logarítmica com razão de crescimento φ. A concha cresce adicionando câmaras que são φ vezes maiores que a anterior — sempre mantendo a mesma forma.</p>
+      <span class="symbol-tag">Natureza</span>
+    </div>
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <!-- face proportions -->
+        <ellipse cx="0" cy="0" rx="30" ry="38" fill="none" stroke="rgba(212,168,67,0.5)" stroke-width="1.5"/>
+        <line x1="-30" y1="-4" x2="30" y2="-4" stroke="rgba(58,184,176,0.5)" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="-30" y1="14" x2="30" y2="14" stroke="rgba(168,128,240,0.5)" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="0" y="46" text-anchor="middle" font-size="8" fill="rgba(212,168,67,0.6)" font-family="'Josefin Sans',sans-serif">φ proporções</text>
+      </svg>
+      <h3>Face Humana</h3>
+      <p>A proporção entre altura do rosto inteiro e altura do nariz ao queixo é φ. Olhos na proporção áurea entre topo e queixo. A "beleza matemática" tem razão: ela segue φ.</p>
+      <span class="symbol-tag">Corpo</span>
+    </div>
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <line x1="-40" y1="0" x2="40" y2="0" stroke="rgba(212,168,67,0.6)" stroke-width="2"/>
+        <line x1="4.72" y1="-8" x2="4.72" y2="8" stroke="rgba(212,168,67,0.9)" stroke-width="1.5"/>
+        <line x1="-40" y1="-8" x2="-40" y2="8" stroke="rgba(58,184,176,0.6)" stroke-width="1"/>
+        <line x1="40" y1="-8" x2="40" y2="8" stroke="rgba(58,184,176,0.6)" stroke-width="1"/>
+        <text x="-18" y="-14" text-anchor="middle" font-size="9" fill="rgba(212,168,67,0.8)" font-family="'Josefin Sans',sans-serif">maior: 1</text>
+        <text x="22" y="-14" text-anchor="middle" font-size="9" fill="rgba(58,184,176,0.8)" font-family="'Josefin Sans',sans-serif">menor: 0.618</text>
+      </svg>
+      <h3>DNA Humano</h3>
+      <p>A hélice do DNA tem largura de 34 Ångströms e passo de 21 Ångströms. A razão 34/21 = 1,619... ≈ φ. Também φ aparece nas proporções entre as bases nitrogenadas.</p>
+      <span class="symbol-tag">Biologia</span>
+    </div>
+    <div class="symbol-card">
+      <svg width="100" height="100" viewBox="-50 -50 100 100">
+        <!-- galaxy spiral -->
+        <path d="M 0,0 Q 10,-5 15,5 Q 20,20 10,30 Q -5,38 -20,30 Q -38,15 -35,-5 Q -25,-30 0,-35 Q 25,-35 35,-15" fill="none" stroke="rgba(168,128,240,0.7)" stroke-width="2"/>
+        <circle cx="0" cy="0" r="4" fill="#a880f0" opacity="0.8"/>
+        <circle cx="0" cy="0" r="8" fill="none" stroke="rgba(168,128,240,0.3)" stroke-width="0.5"/>
+      </svg>
+      <h3>Galáxias Espirais</h3>
+      <p>Os braços das galáxias espirais (como a Via Láctea) seguem a espiral logarítmica áurea. A geometria do cosmos em escala de bilhões de anos-luz segue o mesmo padrão de uma concha de náutilo.</p>
+      <span class="symbol-tag">Cosmos</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 4 — NASCIMENTO DOS SÍMBOLOS
+════════════════════════════════════ -->
+<section id="cap4" class="chapter">
+  <span class="chapter-num">Capítulo IV</span>
+  <h2>O Nascimento dos Símbolos — Do Círculo a Tudo</h2>
+  <p class="chapter-intro">
+    Agora vemos como, a partir de um único círculo e um compasso, toda a geometria sagrada nasce passo a passo. Cada símbolo não é inventado — ele é <em>descoberto</em> como o próximo passo inevitável.
+  </p>
+
+  <h3 class="sec-title">Do Ponto ao Hexágono — Seis Passos</h3>
+
+  <div class="builder-wrap" id="builder-hex">
+    <h3>Construindo o Hexágono Sagrado</h3>
+    <div class="builder-sub">o primeiro polígono que emerge do círculo</div>
+    <div class="builder-controls">
+      <button class="builder-btn active" onclick="setHex(0)">1 — Círculo</button>
+      <button class="builder-btn" onclick="setHex(1)">2 — 1º arco</button>
+      <button class="builder-btn" onclick="setHex(2)">3 — 2º arco</button>
+      <button class="builder-btn" onclick="setHex(3)">4 — 3º arco</button>
+      <button class="builder-btn" onclick="setHex(4)">5 — 6 pontos</button>
+      <button class="builder-btn" onclick="setHex(5)">6 — Hexágono</button>
+      <button class="builder-btn" onclick="setHex(6)">7 — Estrela</button>
+    </div>
+    <div class="builder-canvas-wrap">
+      <div class="builder-canvas">
+        <canvas id="canvas-hex" width="300" height="300" style="border:1px solid var(--border);border-radius:4px;background:var(--bg);"></canvas>
+      </div>
+      <div class="builder-desc" id="desc-hex">
+        <span class="builder-step-label">Passo 1 — O Primeiro Círculo</span>
+        <h4>O Círculo Primordial</h4>
+        <p>Tudo começa com um único círculo. Escolha um centro, escolha um raio. Nada mais é definido ainda — apenas o círculo perfeito, símbolo do Uno, do infinito, do cosmos não-diferenciado.</p>
+        <p>Este círculo contém todos os seis vértices do hexágono esperando para emergir — mas ainda não sabemos isso.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>A propriedade extraordinária que este exercício revela: <strong>o raio de um círculo cabe exatamente seis vezes em sua circunferência</strong>. Isso não é convenção humana — é uma propriedade matemática intrínseca do círculo. Por isso o hexágono (seis lados) é a forma que emerge naturalmente de qualquer círculo, e por isso as colmeias de abelhas, os flocos de neve e os cristais de basalto têm simetria hexagonal.</p>
+
+  <div class="infobox">
+    <div class="infobox-title">Por Que 6 é Sagrado</div>
+    <p>O número 6 é o primeiro "número perfeito" — seus divisores (1+2+3) somam ele mesmo. Em geometria, 6 círculos idênticos se encaixam perfeitamente ao redor de um círculo do mesmo raio. Na cristalografia, a maioria dos cristais tem simetria hexagonal. As abelhas, por pressão evolutiva, descobriram que o hexágono é a forma que usa menos cera para fechar a maior área. O cosmos "escolhe" o 6 repetidamente.</p>
+  </div>
+
+  <!-- TRIANGLE CONSTRUCTION -->
+  <h3 class="sec-title">O Triângulo — A Forma da Energia</h3>
+
+  <div class="construction-demo">
+    <h3>Nascimento do Triângulo Equilátero</h3>
+    <p class="demo-sub">construindo a forma mais estável da geometria</p>
+    <div class="demo-steps">
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="rgba(212,168,67,0.8)" stroke-width="2"/>
+          <circle cx="-50" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="50" cy="0" r="3" fill="#d4a843"/>
+        </svg>
+        <div class="demo-step-num">1</div>
+        <p>Comece com uma linha AB</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+          <circle cx="-50" cy="0" r="100" fill="none" stroke="rgba(212,168,67,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+          <circle cx="-50" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="50" cy="0" r="3" fill="#d4a843"/>
+        </svg>
+        <div class="demo-step-num">2</div>
+        <p>Arco com centro A, raio AB</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+          <circle cx="-50" cy="0" r="100" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <circle cx="50" cy="0" r="100" fill="none" stroke="rgba(58,184,176,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+          <circle cx="-50" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="50" cy="0" r="3" fill="#3ab8b0"/>
+        </svg>
+        <div class="demo-step-num">3</div>
+        <p>Arco com centro B, raio BA</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+          <line x1="-50" y1="0" x2="0" y2="-86.6" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+          <line x1="50" y1="0" x2="0" y2="-86.6" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+          <circle cx="-50" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="50" cy="0" r="3" fill="#d4a843"/>
+          <circle cx="0" cy="-86.6" r="3" fill="#d4a843"/>
+        </svg>
+        <div class="demo-step-num">4</div>
+        <p>Interseção = C. Triângulo equilátero ABC!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SQUARE / CROSS -->
+  <h3 class="sec-title">O Quadrado e a Cruz — Os Quatro Elementos</h3>
+
+  <p>O quadrado emerge da bissetriz perpendicular — dividir uma linha ao meio em ângulo reto. Quatro lados iguais, quatro ângulos iguais: o quadrado representa a matéria, a estabilidade, os quatro elementos (terra, água, fogo, ar), os quatro pontos cardeais, as quatro estações.</p>
+
+  <div class="construction-demo">
+    <h3>Nascimento do Quadrado</h3>
+    <p class="demo-sub">e a descoberta de √2</p>
+    <div class="demo-steps">
+      <div class="demo-step">
+        <svg width="120" height="120" viewBox="-60 -60 120 120">
+          <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="rgba(212,168,67,0.7)" stroke-width="2"/>
+        </svg>
+        <div class="demo-step-num">1</div>
+        <p>Quadrado de lado 1</p>
+      </div>
+      <div class="demo-step">
+        <svg width="120" height="120" viewBox="-60 -60 120 120">
+          <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="rgba(212,168,67,0.5)" stroke-width="1.5"/>
+          <line x1="-40" y1="-40" x2="40" y2="40" stroke="rgba(58,184,176,0.9)" stroke-width="2"/>
+          <line x1="-40" y1="40" x2="40" y2="-40" stroke="rgba(168,128,240,0.6)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        </svg>
+        <div class="demo-step-num">2</div>
+        <p>Diagonal = √2 = 1,414...</p>
+      </div>
+      <div class="demo-step">
+        <svg width="120" height="120" viewBox="-60 -60 120 120">
+          <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="rgba(212,168,67,0.4)" stroke-width="1"/>
+          <rect x="-56.57" y="-56.57" width="113.14" height="113.14" fill="none" stroke="rgba(58,184,176,0.6)" stroke-width="1.5" transform="rotate(45)"/>
+        </svg>
+        <div class="demo-step-num">3</div>
+        <p>Quadrado girado: lado √2</p>
+      </div>
+      <div class="demo-step">
+        <svg width="120" height="120" viewBox="-60 -60 120 120">
+          <circle cx="0" cy="0" r="50" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+          <rect x="-35.36" y="-35.36" width="70.72" height="70.72" fill="rgba(212,168,67,0.06)" stroke="rgba(212,168,67,0.7)" stroke-width="1.5"/>
+          <line x1="-50" y1="0" x2="50" y2="0" stroke="rgba(58,184,176,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="0" y1="-50" x2="0" y2="50" stroke="rgba(58,184,176,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
+        </svg>
+        <div class="demo-step-num">4</div>
+        <p>Quadrado inscrito no círculo</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENTAGON CONSTRUCTION -->
+  <h3 class="sec-title">O Pentágono — O Portador de φ</h3>
+
+  <p>O pentágono regular é a forma mais complexa de construir com compasso, mas também a mais sagrada — porque <strong>cada proporção interna é φ</strong>. A razão diagonal/lado = φ. A razão entre os segmentos criados por duas diagonais que se cruzam = φ. Dentro do pentágono há infinitas razões áureas recursivas.</p>
+
+  <div class="construction-demo">
+    <h3>O Pentágono Regular e a Estrela de Cinco Pontas</h3>
+    <p class="demo-sub">cada segmento é φ vezes o anterior</p>
+    <div class="demo-steps">
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <polygon points="0,-55 52.31,-17.97 32.33,47.04 -32.33,47.04 -52.31,-17.97" fill="none" stroke="rgba(212,168,67,0.7)" stroke-width="2"/>
+        </svg>
+        <div class="demo-step-num">1</div>
+        <p>Pentágono regular — 5 lados iguais</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <polygon points="0,-55 52.31,-17.97 32.33,47.04 -32.33,47.04 -52.31,-17.97" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+          <line x1="0" y1="-55" x2="32.33" y2="47.04" stroke="rgba(58,184,176,0.8)" stroke-width="1.5"/>
+          <line x1="52.31" y1="-17.97" x2="-32.33" y2="47.04" stroke="rgba(212,168,67,0.8)" stroke-width="1.5"/>
+        </svg>
+        <div class="demo-step-num">2</div>
+        <p>Diagonais cruzam em proporção φ</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <polygon points="0,-55 52.31,-17.97 32.33,47.04 -32.33,47.04 -52.31,-17.97" fill="rgba(212,168,67,0.05)" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+          <polygon points="0,-55 52.31,-17.97 32.33,47.04 -32.33,47.04 -52.31,-17.97" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="0.8"/>
+          <!-- star -->
+          <polygon points="0,-55 20.56,28.31 -52.31,-17.97 52.31,-17.97 -20.56,28.31" fill="none" stroke="rgba(212,168,67,0.9)" stroke-width="2"/>
+        </svg>
+        <div class="demo-step-num">3</div>
+        <p>As diagonais formam o pentagrama</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <polygon points="0,-55 52.31,-17.97 32.33,47.04 -32.33,47.04 -52.31,-17.97" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="0.8"/>
+          <polygon points="0,-55 20.56,28.31 -52.31,-17.97 52.31,-17.97 -20.56,28.31" fill="rgba(212,168,67,0.07)" stroke="rgba(212,168,67,0.8)" stroke-width="1.5"/>
+          <!-- inner pentagon -->
+          <polygon points="0,-20.38 19.37,-6.64 11.97,17.41 -11.97,17.41 -19.37,-6.64" fill="none" stroke="rgba(58,184,176,0.7)" stroke-width="1.5"/>
+        </svg>
+        <div class="demo-step-num">4</div>
+        <p>Dentro: novo pentágono — espiral φ infinita</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 5 — FLOR DA VIDA
+════════════════════════════════════ -->
+<section id="cap5" class="chapter">
+  <span class="chapter-num">Capítulo V</span>
+  <h2>A Flor da Vida — O Padrão de Toda a Criação</h2>
+  <p class="chapter-intro">
+    A Flor da Vida é o símbolo mais conhecido da geometria sagrada — um padrão de círculos sobrepostos que contém, em potência, todos os outros símbolos sagrados. Ela foi encontrada em templos egípcios de 6.000 anos, em Assíria, Turquia, Índia, China e em manuscritos de Leonardo da Vinci.
+  </p>
+
+  <!-- FLOWER OF LIFE BUILDER -->
+  <div class="builder-wrap" id="builder-flower">
+    <h3>Construindo a Flor da Vida — Passo a Passo</h3>
+    <div class="builder-sub">cada passo adiciona um círculo e revela uma nova estrutura</div>
+    <div class="builder-controls">
+      <button class="builder-btn active" onclick="setFlower(0)">Semente</button>
+      <button class="builder-btn" onclick="setFlower(1)">+ 6 círculos</button>
+      <button class="builder-btn" onclick="setFlower(2)">+ 6 mais</button>
+      <button class="builder-btn" onclick="setFlower(3)">Flor da Vida</button>
+      <button class="builder-btn" onclick="setFlower(4)">Fruto da Vida</button>
+      <button class="builder-btn" onclick="setFlower(5)">Metatron</button>
+    </div>
+    <div class="builder-canvas-wrap">
+      <div class="builder-canvas">
+        <canvas id="canvas-flower" width="320" height="320" style="border:1px solid var(--border);border-radius:4px;background:var(--bg);"></canvas>
+      </div>
+      <div class="builder-desc" id="desc-flower">
+        <span class="builder-step-label">A Semente da Vida</span>
+        <h4>Sete Círculos — A Primeira Estrutura</h4>
+        <p>Um círculo central mais seis ao redor — cada um com centro na circunferência do central. Este padrão é chamado <strong>Semente da Vida</strong>. Contém 6 pétalas simétricas: o número 6, o hexágono, a base de toda vida celular.</p>
+        <p>Na tradição judaica, este padrão de sete esferas é a <strong>Árvore da Vida</strong> da Cabala — as dez Sephiroth reorganizadas. Para os cristãos medievais, representa os 7 dias da criação.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec-title">Os Padrões Dentro da Flor da Vida</h3>
+
+  <p>A Flor da Vida completa (19 círculos internos dentro de um círculo maior de delimitação) contém em si uma quantidade extraordinária de outros símbolos sagrados:</p>
+
+  <div class="symbol-grid">
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <!-- semente da vida -->
+        <g stroke="rgba(212,168,67,0.7)" stroke-width="1.5" fill="none">
+          <circle cx="0" cy="0" r="30" class="animated-path"/>
+          <circle cx="30" cy="0" r="30" class="animated-path"/>
+          <circle cx="-30" cy="0" r="30" class="animated-path"/>
+          <circle cx="15" cy="25.98" r="30" class="animated-path"/>
+          <circle cx="-15" cy="25.98" r="30" class="animated-path"/>
+          <circle cx="15" cy="-25.98" r="30" class="animated-path"/>
+          <circle cx="-15" cy="-25.98" r="30" class="animated-path"/>
+        </g>
+      </svg>
+      <h3>Semente da Vida</h3>
+      <p>7 círculos — o núcleo primordial. Representa os 7 dias da criação, os 7 chakras, as 7 notas musicais.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <g stroke="rgba(58,184,176,0.8)" stroke-width="1.5" fill="none">
+          <!-- fruto da vida - 13 círculos -->
+          <circle cx="0" cy="0" r="18"/>
+          <circle cx="36" cy="0" r="18"/>
+          <circle cx="-36" cy="0" r="18"/>
+          <circle cx="18" cy="31.18" r="18"/>
+          <circle cx="-18" cy="31.18" r="18"/>
+          <circle cx="18" cy="-31.18" r="18"/>
+          <circle cx="-18" cy="-31.18" r="18"/>
+          <circle cx="54" cy="-31.18" r="18" stroke-opacity="0.4"/>
+          <circle cx="-54" cy="-31.18" r="18" stroke-opacity="0.4"/>
+          <circle cx="54" cy="31.18" r="18" stroke-opacity="0.4"/>
+          <circle cx="-54" cy="31.18" r="18" stroke-opacity="0.4"/>
+          <circle cx="0" cy="-62.35" r="18" stroke-opacity="0.4"/>
+          <circle cx="0" cy="62.35" r="18" stroke-opacity="0.4"/>
+        </g>
+      </svg>
+      <h3>Fruto da Vida</h3>
+      <p>13 círculos extraídos da Flor da Vida. Conectado por linhas, gera o Cubo de Metatron — que contém todos os Sólidos Platônicos.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <!-- Metatron cube simplified -->
+        <g stroke="rgba(168,128,240,0.7)" stroke-width="1" fill="none">
+          <circle cx="0" cy="0" r="18" class="animated-path"/>
+          <circle cx="36" cy="0" r="18" class="animated-path"/>
+          <circle cx="-36" cy="0" r="18" class="animated-path"/>
+          <circle cx="18" cy="31.18" r="18" class="animated-path"/>
+          <circle cx="-18" cy="31.18" r="18" class="animated-path"/>
+          <circle cx="18" cy="-31.18" r="18" class="animated-path"/>
+          <circle cx="-18" cy="-31.18" r="18" class="animated-path"/>
+          <!-- connecting lines -->
+          <line x1="0" y1="0" x2="36" y2="0" stroke="rgba(212,168,67,0.6)" stroke-width="0.8"/>
+          <line x1="0" y1="0" x2="-36" y2="0"/>
+          <line x1="0" y1="0" x2="18" y2="31.18"/>
+          <line x1="0" y1="0" x2="-18" y2="31.18"/>
+          <line x1="0" y1="0" x2="18" y2="-31.18"/>
+          <line x1="0" y1="0" x2="-18" y2="-31.18"/>
+          <line x1="36" y1="0" x2="-18" y2="31.18"/>
+          <line x1="36" y1="0" x2="18" y2="-31.18"/>
+          <line x1="36" y1="0" x2="-36" y2="0"/>
+          <line x1="-36" y1="0" x2="18" y2="31.18"/>
+          <line x1="-36" y1="0" x2="-18" y2="-31.18"/>
+        </g>
+      </svg>
+      <h3>Cubo de Metatron</h3>
+      <p>13 círculos, todos os centros conectados. Contém o tetraedro, o cubo, o octaedro, o dodecaedro e o icosaedro — todos os Sólidos de Platão.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <!-- Sri Yantra simplified approximation -->
+        <g stroke="rgba(212,168,67,0.8)" stroke-width="1.5" fill="none">
+          <circle cx="0" cy="0" r="50" stroke-opacity="0.3"/>
+          <polygon points="0,-42 36.37,21 -36.37,21" class="animated-path"/>
+          <polygon points="0,42 36.37,-21 -36.37,-21" class="animated-path"/>
+          <polygon points="0,-30 26,-15 -26,-15" stroke="rgba(58,184,176,0.7)"/>
+          <polygon points="0,30 26,15 -26,15" stroke="rgba(58,184,176,0.7)"/>
+          <circle cx="0" cy="0" r="8" fill="rgba(212,168,67,0.3)"/>
+        </g>
+      </svg>
+      <h3>Estrela de Davi / Hexagrama</h3>
+      <p>Dois triângulos equiláteros sobrepostos — extraídos diretamente da Flor da Vida. Representa a união dos opostos: céu e terra, masculino e feminino, fogo e água.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <g stroke="rgba(58,184,176,0.8)" stroke-width="1.5" fill="none">
+          <circle cx="0" cy="0" r="48" stroke-opacity="0.3"/>
+          <circle cx="0" cy="0" r="24" class="animated-path"/>
+          <circle cx="24" cy="0" r="24" class="animated-path"/>
+          <circle cx="-24" cy="0" r="24" class="animated-path"/>
+          <circle cx="12" cy="20.78" r="24" class="animated-path"/>
+          <circle cx="-12" cy="20.78" r="24" class="animated-path"/>
+          <circle cx="12" cy="-20.78" r="24" class="animated-path"/>
+          <circle cx="-12" cy="-20.78" r="24" class="animated-path"/>
+        </g>
+      </svg>
+      <h3>Flor de Lótus</h3>
+      <p>O padrão da Semente da Vida, quando colorido alternadamente, forma a Flor de Lótus — símbolo budista e hindu do despertar espiritual a partir da lama.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+
+    <div class="symbol-card anim-card">
+      <svg width="110" height="110" viewBox="-55 -55 110 110">
+        <g stroke="rgba(196,80,128,0.8)" stroke-width="1.5" fill="none">
+          <circle cx="0" cy="0" r="50" stroke-opacity="0.3"/>
+          <!-- torus cross-section suggestion -->
+          <ellipse cx="0" cy="0" rx="50" ry="18" class="animated-path"/>
+          <ellipse cx="0" cy="0" rx="18" ry="50" class="animated-path"/>
+          <circle cx="0" cy="0" r="50" class="animated-path"/>
+          <circle cx="0" cy="0" r="18" stroke="rgba(212,168,67,0.5)"/>
+        </g>
+      </svg>
+      <h3>Toro — O Campo de Energia</h3>
+      <p>O campo toroidal — a forma do campo eletromagnético do coração, da Terra e das galáxias. Emerge da rotação da Flor da Vida em 3D ao redor de seu eixo.</p>
+      <span class="symbol-tag">Passe o mouse</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    "A Flor da Vida contém os padrões de criação à medida que emergem do Grande Vazio... Tudo é feito de criador e criação juntos. A geometria sagrada adora esta ideia."
+    <cite>— Drunvalo Melchizedek, O Antigo Segredo da Flor da Vida</cite>
+  </div>
+
+  <h3 class="sec-title">Onde a Flor da Vida Foi Encontrada</h3>
+
+  <p>O fato que mais intriga pesquisadores é que padrões idênticos à Flor da Vida foram encontrados em civilizações sem contato entre si:</p>
+
+  <table class="phi-table">
+    <tr><th>Local</th><th>Cultura</th><th>Data Aproximada</th><th>Onde</th></tr>
+    <tr><td>Abidos, Egito</td><td>Egípcia</td><td>c. 6.000 a.C.</td><td>Granito do templo de Osíris (parede lateral)</td></tr>
+    <tr><td>Assíria (Iraque)</td><td>Assíria</td><td>c. 645 a.C.</td><td>Palácios de Dur Sharrukin</td></tr>
+    <tr><td>Ephesus, Turquia</td><td>Romana/Grega</td><td>c. 100 a.C.</td><td>Pavimentos do templo de Ártemis</td></tr>
+    <tr><td>Hama, Síria</td><td>Islâmica</td><td>Séc. XIII</td><td>Ornamentos de mosaico</td></tr>
+    <tr><td>Hampi, Índia</td><td>Hindu</td><td>Séc. XIV</td><td>Templo Virupaksha</td></tr>
+    <tr><td>Laozi, China</td><td>Taoísta</td><td>Séc. II a.C.</td><td>Manuscritos filosóficos</td></tr>
+    <tr><td>Israel</td><td>Judaica</td><td>Séc. III–VIII</td><td>Sinagogas de Hamat Tiberias e Ein Gedi</td></tr>
+    <tr><td>Codex Atlanticus</td><td>Leonardo da Vinci</td><td>1500 d.C.</td><td>Cadernos pessoais</td></tr>
+  </table>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 6 — SÓLIDOS PLATÔNICOS
+════════════════════════════════════ -->
+<section id="cap6" class="chapter">
+  <span class="chapter-num">Capítulo VI</span>
+  <h2>Os Sólidos Platônicos — As Formas do Cosmos</h2>
+  <p class="chapter-intro">
+    Em 3D, existem exatamente cinco poliedros em que todas as faces são polígonos regulares idênticos, todos os ângulos são iguais e todas as arestas são iguais. Apenas cinco — e isso é uma prova matemática, não uma observação empírica. Platão os associou aos quatro elementos e ao cosmos, e por isso chamamos de Sólidos Platônicos.
+  </p>
+
+  <p>Porque exatamente cinco? Porque para um poliedro convexo regular existir, os ângulos internos que se encontram num vértice devem somar menos de 360°. Com triângulos equiláteros (60° cada), você pode ter 3, 4 ou 5 ao redor de um vértice (3×60=180, 4×60=240, 5×60=300 — todos <360°; 6×60=360° = plano, não poliedro). Com quadrados (90°): apenas 3. Com pentágonos (108°): apenas 3. Com hexágonos: 3×120=360° = plano, impossível. Com heptágonos e acima: maior que 360°, impossível. Logo: 3+3+3 triângulos = tetraedro; 4+4+4 triângulos = octaedro; 5+5+5 triângulos = icosaedro; 3+3+3 quadrados = cubo; 3+3+3 pentágonos = dodecaedro. Exatamente cinco.</p>
+
+  <div class="symbol-grid">
+    <div class="symbol-card">
+      <svg width="120" height="120" viewBox="-60 -60 120 120">
+        <!-- Tetrahedron projection -->
+        <g fill="none" stroke-width="1.5">
+          <polygon points="0,-50 43.3,25 -43.3,25" stroke="rgba(212,168,67,0.9)" fill="rgba(212,168,67,0.06)"/>
+          <line x1="0" y1="-50" x2="0" y2="25" stroke="rgba(212,168,67,0.4)" stroke-dasharray="4,3"/>
+          <line x1="0" y1="25" x2="0" y2="-10" stroke="rgba(58,184,176,0.6)" stroke-width="1"/>
+          <circle cx="0" cy="-10" r="3" fill="rgba(58,184,176,0.7)" stroke="none"/>
+        </g>
+      </svg>
+      <h3>Tetraedro</h3>
+      <p>4 faces triangulares. Representa o <strong>Fogo</strong> — a forma mais pontiaguda, mais energética. Símbolo da força, do impulso, do masculino. Associado ao chakra do plexo solar.</p>
+      <span class="symbol-tag">Fogo · 4 faces</span>
+    </div>
+
+    <div class="symbol-card">
+      <svg width="120" height="120" viewBox="-60 -60 120 120">
+        <!-- Cube projection -->
+        <g fill="none" stroke-width="1.5">
+          <rect x="-30" y="-30" width="60" height="60" stroke="rgba(58,184,176,0.8)" fill="rgba(58,184,176,0.05)"/>
+          <line x1="-30" y1="-30" x2="-48" y2="-48" stroke="rgba(58,184,176,0.6)" stroke-dasharray="3,3"/>
+          <line x1="30" y1="-30" x2="12" y2="-48" stroke="rgba(58,184,176,0.6)" stroke-dasharray="3,3"/>
+          <line x1="30" y1="30" x2="12" y2="12" stroke="rgba(58,184,176,0.9)"/>
+          <line x1="-30" y1="30" x2="-48" y2="12" stroke="rgba(58,184,176,0.9)"/>
+          <line x1="-48" y1="-48" x2="12" y2="-48" stroke="rgba(58,184,176,0.5)"/>
+          <line x1="-48" y1="-48" x2="-48" y2="12" stroke="rgba(58,184,176,0.5)"/>
+          <line x1="12" y1="-48" x2="12" y2="12" stroke="rgba(58,184,176,0.8)"/>
+          <line x1="-48" y1="12" x2="12" y2="12" stroke="rgba(58,184,176,0.8)"/>
+        </g>
+      </svg>
+      <h3>Hexaedro (Cubo)</h3>
+      <p>6 faces quadradas. Representa a <strong>Terra</strong> — estabilidade, solidez, a matéria. Símbolo da manifestação física, da estrutura, das seis direções (cima, baixo, norte, sul, leste, oeste).</p>
+      <span class="symbol-tag">Terra · 6 faces</span>
+    </div>
+
+    <div class="symbol-card">
+      <svg width="120" height="120" viewBox="-60 -60 120 120">
+        <!-- Octahedron -->
+        <g fill="none" stroke-width="1.5">
+          <polygon points="0,-50 50,0 0,50 -50,0" stroke="rgba(168,128,240,0.8)" fill="rgba(168,128,240,0.05)"/>
+          <line x1="0" y1="-50" x2="0" y2="50" stroke="rgba(168,128,240,0.4)" stroke-dasharray="4,3"/>
+          <circle cx="0" cy="0" r="5" fill="rgba(168,128,240,0.5)" stroke="none"/>
+        </g>
+      </svg>
+      <h3>Octaedro</h3>
+      <p>8 faces triangulares. Representa o <strong>Ar</strong> — leveza, movimento, a mente. Símbolo do coração (por sua auto-dualidade: dois tetraedros unidos pela base), da compaixão, do pensamento.</p>
+      <span class="symbol-tag">Ar · 8 faces</span>
+    </div>
+
+    <div class="symbol-card">
+      <svg width="120" height="120" viewBox="-60 -60 120 120">
+        <!-- Dodecahedron approximation -->
+        <g fill="none" stroke-width="1.5">
+          <circle cx="0" cy="0" r="45" stroke="rgba(196,80,128,0.3)" stroke-width="0.8"/>
+          <polygon points="0,-50 28.53,-38.04 46.19,-11.94 38.04,26.18 11.75,47.55 -11.75,47.55 -38.04,26.18 -46.19,-11.94 -28.53,-38.04" stroke="rgba(196,80,128,0.7)" fill="rgba(196,80,128,0.05)"/>
+          <polygon points="0,-30 17.1,-22.82 27.71,-7.16 22.82,15.71 7.05,28.53 -7.05,28.53 -22.82,15.71 -27.71,-7.16 -17.1,-22.82" stroke="rgba(196,80,128,0.4)" stroke-dasharray="3,3"/>
+        </g>
+      </svg>
+      <h3>Dodecaedro</h3>
+      <p>12 faces pentagonais — o único com faces de pentágono. Representa o <strong>Éter / Cosmos</strong> — a substância de que é feito o universo. Platão disse: "Deus usou o dodecaedro para ordenar o cosmos."</p>
+      <span class="symbol-tag">Éter · 12 faces</span>
+    </div>
+
+    <div class="symbol-card">
+      <svg width="120" height="120" viewBox="-60 -60 120 120">
+        <!-- Icosahedron approximation -->
+        <g fill="none" stroke-width="1.5">
+          <circle cx="0" cy="0" r="50" stroke="rgba(212,168,67,0.2)" stroke-width="0.5"/>
+          <polygon points="0,-50 47.55,-15.45 29.39,40.45 -29.39,40.45 -47.55,-15.45" stroke="rgba(212,168,67,0.7)" fill="rgba(212,168,67,0.04)"/>
+          <polygon points="0,50 47.55,15.45 29.39,-40.45 -29.39,-40.45 -47.55,15.45" stroke="rgba(58,184,176,0.6)" fill="none"/>
+          <line x1="0" y1="-50" x2="47.55" y2="15.45" stroke="rgba(212,168,67,0.3)"/>
+          <line x1="0" y1="-50" x2="-47.55" y2="15.45" stroke="rgba(212,168,67,0.3)"/>
+        </g>
+      </svg>
+      <h3>Icosaedro</h3>
+      <p>20 faces triangulares — o mais esférico dos cinco. Representa a <strong>Água</strong> — fluidez, adaptação, a emoção. Símbolo do fluxo, da transformação, da consciência que se adapta ao recipiente.</p>
+      <span class="symbol-tag">Água · 20 faces</span>
+    </div>
+  </div>
+
+  <div class="infobox">
+    <div class="infobox-title">Dualidade dos Sólidos</div>
+    <p>Os Sólidos Platônicos formam pares duais: o cubo e o octaedro são duais (os centros das faces de um formam os vértices do outro). O dodecaedro e o icosaedro são duais. O tetraedro é auto-dual. Isso revela uma simetria profunda: o cosmos se organiza em pares de opostos complementares, exatamente como o Yin e Yang, o masculino e o feminino, a partícula e a antipartícula.</p>
+  </div>
+
+  <h3 class="sec-title">Os Sólidos em Kepler e na Física Moderna</h3>
+
+  <p>Johannes Kepler (1571–1630) tentou explicar as órbitas dos seis planetas conhecidos nesting os cinco sólidos platônicos um dentro do outro, com esferas entre eles. A ideia não funcionou empiricamente, mas levou a descobertas reais sobre as leis do movimento planetário.</p>
+
+  <p>Mais surpreendente: na física moderna, os vírus têm simetria icosaédrica (a forma mais eficiente para uma casca proteica). Moléculas de fulereno (C60, "buckyballs") têm simetria de dodecaedro truncado. Cristais de quasicrystal têm simetria icosaédrica — algo que os cristalógrafos consideravam impossível antes de 1984, quando Dan Shechtman ganhou o Nobel por descobri-los.</p>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 7 — TODOS OS SÍMBOLOS
+════════════════════════════════════ -->
+<section id="cap7" class="chapter">
+  <span class="chapter-num">Capítulo VII</span>
+  <h2>Todos os Símbolos — Origem, Significado e Usos</h2>
+  <p class="chapter-intro">
+    Agora que entendemos os fundamentos, podemos explorar cada símbolo da geometria sagrada em profundidade — de onde veio, como é construído, o que representa nas diferentes tradições e como é usado atualmente.
+  </p>
+
+  <!-- VESICA PISCIS -->
+  <h3 class="sec-title">1. Vesica Piscis — A Mãe das Formas</h3>
+  <div class="symbol-grid" style="grid-template-columns:1fr 1fr;">
+    <div style="display:flex;align-items:center;justify-content:center;padding:20px;">
+      <svg width="200" height="200" viewBox="-100 -100 200 200">
+        <circle cx="-40" cy="0" r="80" fill="rgba(212,168,67,0.05)" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+        <circle cx="40" cy="0" r="80" fill="rgba(58,184,176,0.05)" stroke="rgba(58,184,176,0.6)" stroke-width="1.5"/>
+        <path d="M 0,-69.28 A 80,80 0 0,1 0,69.28 A 80,80 0 0,1 0,-69.28" fill="rgba(212,168,67,0.12)" stroke="none"/>
+        <path d="M 0,-69.28 A 80,80 0 0,0 0,69.28" fill="none" stroke="rgba(212,168,67,0.9)" stroke-width="2.5"/>
+        <path d="M 0,-69.28 A 80,80 0 0,1 0,69.28" fill="none" stroke="rgba(58,184,176,0.9)" stroke-width="2.5"/>
+        <line x1="-40" y1="0" x2="40" y2="0" stroke="rgba(168,128,240,0.7)" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="0" y1="-69.28" x2="0" y2="69.28" stroke="rgba(212,168,67,0.5)" stroke-width="1" stroke-dasharray="4,3"/>
+        <circle cx="-40" cy="0" r="4" fill="rgba(212,168,67,0.8)" stroke="none"/>
+        <circle cx="40" cy="0" r="4" fill="rgba(58,184,176,0.8)" stroke="none"/>
+      </svg>
+    </div>
+    <div style="padding:20px 10px;">
+      <p><strong>Origem:</strong> Euclides a descreve na Proposição 1 dos Elementos (300 a.C.). Mas o padrão já aparecia em selos mesopotâmios de 3000 a.C.</p>
+      <p><strong>Matemática:</strong> Razão altura/largura = √3. Gera automaticamente o triângulo equilátero, o hexágono, a Flor da Vida.</p>
+      <p><strong>Simbolismo:</strong> Representa o encontro de dois mundos, a criação através da união dos opostos. O espaço de interseção é o "filho" dos dois círculos — a criação. No Egito, era o olho de Hórus. No Cristianismo primitivo, era o ichthys (peixe) e a mandorla ao redor de Cristo e da Virgem. No hinduísmo, é o Yoni — o portal da criação.</p>
+      <p><strong>Uso moderno:</strong> Meditação sobre a dualidade. Presente no design de igrejas, logotipos espirituais e cristais de cura.</p>
+    </div>
+  </div>
+
+  <!-- FLOR DA VIDA / SEMENTE -->
+  <h3 class="sec-title">2. Semente, Flor e Árvore da Vida</h3>
+  <p>Três estágios do mesmo padrão — três revelações progressivas:</p>
+
+  <div class="number-grid">
+    <div class="number-card">
+      <div class="num">7</div>
+      <h4>Semente da Vida</h4>
+      <p>7 círculos — potência pura, o código do nascimento. Os 7 dias da criação bíblica. Os 7 chakras do sistema energético humano. Os 7 tons da escala musical. As 7 "esferas de influência" da Cabala.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">19</div>
+      <h4>Flor da Vida</h4>
+      <p>19 círculos internos — expressão plena. Encontrada em mais locais sagrados que qualquer outro símbolo. Representa o cosmos em expansão a partir do ponto central — a criação em andamento.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">13</div>
+      <h4>Fruto da Vida</h4>
+      <p>13 círculos selecionados da Flor — a estrutura oculta. Quando seus centros são conectados, emerge o Cubo de Metatron, que contém todos os 5 Sólidos Platônicos.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">∞</div>
+      <h4>Árvore da Vida</h4>
+      <p>Na Cabala judaica, a Árvore da Vida com 10 Sephiroth (11 com Da'at) emerge diretamente da Semente da Vida — os centros dos 7 círculos mais 3 pontos de interseção formam as Sephiroth.</p>
+    </div>
+  </div>
+
+  <!-- ESPIRAL ÁUREA -->
+  <h3 class="sec-title">3. A Espiral Áurea — O Padrão do Crescimento</h3>
+
+  <div class="construction-demo">
+    <h3>Construindo a Espiral Áurea</h3>
+    <p class="demo-sub">o padrão universal do crescimento</p>
+    <div class="demo-steps">
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <rect x="0" y="-30" width="30" height="30" fill="none" stroke="rgba(212,168,67,0.8)" stroke-width="1.5"/>
+          <text x="15" y="-12" text-anchor="middle" font-size="9" fill="rgba(212,168,67,0.7)" font-family="'Josefin Sans',sans-serif">1</text>
+        </svg>
+        <div class="demo-step-num">1</div>
+        <p>Quadrado 1×1</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <rect x="0" y="-30" width="30" height="30" fill="none" stroke="rgba(212,168,67,0.6)" stroke-width="1"/>
+          <rect x="-30" y="-30" width="30" height="30" fill="none" stroke="rgba(58,184,176,0.8)" stroke-width="1.5"/>
+          <text x="15" y="-12" text-anchor="middle" font-size="9" fill="rgba(212,168,67,0.5)" font-family="'Josefin Sans',sans-serif">1</text>
+          <text x="-15" y="-12" text-anchor="middle" font-size="9" fill="rgba(58,184,176,0.7)" font-family="'Josefin Sans',sans-serif">1</text>
+        </svg>
+        <div class="demo-step-num">2</div>
+        <p>+Quadrado 1×1 ao lado</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <rect x="-30" y="-30" width="60" height="30" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="0.8"/>
+          <rect x="-30" y="0" width="60" height="60" fill="none" stroke="rgba(168,128,240,0.8)" stroke-width="1.5"/>
+          <text x="0" y="38" text-anchor="middle" font-size="10" fill="rgba(168,128,240,0.7)" font-family="'Josefin Sans',sans-serif">2</text>
+        </svg>
+        <div class="demo-step-num">3</div>
+        <p>+Quadrado 2×2 abaixo</p>
+      </div>
+      <div class="demo-step">
+        <svg width="130" height="130" viewBox="-65 -65 130 130">
+          <rect x="-30" y="-30" width="60" height="30" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="0.5"/>
+          <rect x="-30" y="0" width="60" height="60" fill="none" stroke="rgba(168,128,240,0.3)" stroke-width="0.5"/>
+          <rect x="30" y="-30" width="90" height="90" fill="none" stroke="rgba(196,80,128,0.7)" stroke-width="1.5"/>
+          <!-- spiral arc approximation -->
+          <path d="M -30,-30 Q -30,30 30,30 Q 90,30 90,-30 Q 90,-90 30,-90" fill="none" stroke="rgba(212,168,67,0.9)" stroke-width="2"/>
+        </svg>
+        <div class="demo-step-num">4</div>
+        <p>+Quadrado 3×3. Arco contínuo = Espiral Áurea</p>
+      </div>
+    </div>
+  </div>
+
+  <p>A espiral áurea não cresce linearmente — a cada 90° ela fica φ vezes maior. Isso a torna <strong>auto-similar</strong>: qualquer segmento da espiral é idêntico em forma a qualquer outro, apenas numa escala diferente. É por isso que a espiral do náutilo, do furacão, da galáxia e da orelha humana têm todas o mesmo aspecto independente da escala: todas seguem o mesmo padrão de crescimento por φ.</p>
+
+  <!-- HEXAGRAMA -->
+  <h3 class="sec-title">4. Hexagrama — A Estrela de Seis Pontas</h3>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;margin:30px 0;">
+    <svg width="180" height="180" viewBox="-90 -90 180 180">
+      <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="1"/>
+      <polygon points="0,-75 64.95,37.5 -64.95,37.5" fill="rgba(212,168,67,0.08)" stroke="rgba(212,168,67,0.8)" stroke-width="2"/>
+      <polygon points="0,75 64.95,-37.5 -64.95,-37.5" fill="rgba(58,184,176,0.08)" stroke="rgba(58,184,176,0.8)" stroke-width="2"/>
+      <circle cx="0" cy="0" r="6" fill="rgba(212,168,67,0.8)" stroke="none"/>
+    </svg>
+    <div style="flex:1;min-width:240px;">
+      <p>O hexagrama é a sobreposição de dois triângulos equiláteros — um apontando para cima (△ = fogo, masculino, espírito) e outro para baixo (▽ = água, feminino, matéria). A interseção cria um hexágono central.</p>
+      <p>Encontrado em praticamente todas as tradições: <strong>Judaísmo</strong> (Estrela de Davi, Magen David), <strong>Hinduísmo</strong> (Satkona, união de Shiva e Shakti), <strong>Islamismo</strong> (Khatam Sulayman, Selo de Salomão), <strong>Budismo</strong> (representação da impermanência), alquimia medieval (símbolo da pedra filosofal).</p>
+      <p>Matematicamente, é a projeção do cubo em 2D — e a interseção dos seis círculos da Semente da Vida.</p>
+    </div>
+  </div>
+
+  <!-- PENTAGRAMA -->
+  <h3 class="sec-title">5. Pentagrama — A Estrela de Cinco Pontas</h3>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;margin:30px 0;">
+    <svg width="180" height="180" viewBox="-90 -90 180 180">
+      <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(168,128,240,0.2)" stroke-width="1"/>
+      <polygon points="0,-80 76.08,-26.18 47.02,68.54 -47.02,68.54 -76.08,-26.18" fill="none" stroke="rgba(168,128,240,0.4)" stroke-width="1"/>
+      <polygon points="0,-80 47.02,68.54 -76.08,-26.18 76.08,-26.18 -47.02,68.54" fill="rgba(168,128,240,0.08)" stroke="rgba(168,128,240,0.9)" stroke-width="2"/>
+      <!-- phi markers -->
+      <circle cx="0" cy="-80" r="4" fill="rgba(212,168,67,0.8)" stroke="none"/>
+    </svg>
+    <div style="flex:1;min-width:240px;">
+      <p>O pentagrama (estrela de cinco pontas) é a forma geométrica que mais densamente codifica φ. <em>Cada segmento do pentagrama é dividido por outro na proporção áurea</em>. Interna e recursivamente: dentro de qualquer pentagrama existe um pentágono menor; dentro dele outro pentagrama ainda menor — uma regressão infinita de φ.</p>
+      <p>Na Grécia pitagórica, era símbolo secreto da escola — os membros o desenhavam em suas cartas para se identificar. Para os celtas, era o pentalfa. Na Cabala, representa o ser humano (cabeça, dois braços, dois pés). Na Wicca moderna, representa os quatro elementos + espírito. Na maçonaria, aparece como a "estrela flamejante".</p>
+    </div>
+  </div>
+
+  <!-- SRI YANTRA -->
+  <h3 class="sec-title">6. Sri Yantra — O Mapa do Cosmos Hindú</h3>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;margin:30px 0;">
+    <svg width="200" height="200" viewBox="-100 -100 200 200">
+      <circle cx="0" cy="0" r="95" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(212,168,67,0.15)" stroke-width="0.8"/>
+      <!-- outer petals suggestion -->
+      <circle cx="0" cy="0" r="75" fill="none" stroke="rgba(212,168,67,0.1)" stroke-width="0.5" stroke-dasharray="47.1,47.1" stroke-dashoffset="0"/>
+      <!-- 9 interlocking triangles approximation -->
+      <polygon points="0,-70 60.62,35 -60.62,35" fill="rgba(212,168,67,0.06)" stroke="rgba(212,168,67,0.7)" stroke-width="1.5"/>
+      <polygon points="0,70 60.62,-35 -60.62,-35" fill="rgba(58,184,176,0.06)" stroke="rgba(58,184,176,0.7)" stroke-width="1.5"/>
+      <polygon points="0,-50 43.3,25 -43.3,25" fill="rgba(212,168,67,0.04)" stroke="rgba(212,168,67,0.5)" stroke-width="1"/>
+      <polygon points="0,50 43.3,-25 -43.3,-25" fill="rgba(58,184,176,0.04)" stroke="rgba(58,184,176,0.5)" stroke-width="1"/>
+      <polygon points="0,-30 26,15 -26,15" fill="rgba(168,128,240,0.06)" stroke="rgba(168,128,240,0.6)" stroke-width="1"/>
+      <polygon points="0,30 26,-15 -26,-15" fill="rgba(168,128,240,0.04)" stroke="rgba(168,128,240,0.5)" stroke-width="1"/>
+      <polygon points="0,-14 12.12,7 -12.12,7" fill="rgba(212,168,67,0.15)" stroke="rgba(212,168,67,0.8)" stroke-width="1.2"/>
+      <polygon points="0,14 12.12,-7 -12.12,-7" fill="rgba(196,80,128,0.1)" stroke="rgba(196,80,128,0.6)" stroke-width="1"/>
+      <!-- bindu -->
+      <circle cx="0" cy="0" r="4" fill="rgba(212,168,67,0.9)" stroke="none"/>
+    </svg>
+    <div style="flex:1;min-width:240px;">
+      <p>O Sri Yantra é considerado o diagrama sagrado mais poderoso do hinduísmo — e o mais matematicamente sofisticado. Consiste em <strong>9 triângulos interligados</strong> ao redor de um ponto central (o bindu), criando 43 triângulos menores. Quatro triângulos apontam para cima (Shiva, masculino) e cinco apontam para baixo (Shakti, feminino).</p>
+      <p>O desafio matemático: fazer com que os 9 triângulos se intersectem exatamente nos pontos corretos, sem gaps nem sobreposições, requer trigonometria sofisticada. Por séculos, acreditou-se que era impossível construí-lo "perfeitamente" — estudos modernos mostram que ele codifica soluções transcendentais.</p>
+      <p>O bindu central representa o ponto de criação, o ego transcendido, Brahman. Meditar fixando os olhos no bindu é uma prática avançada de dharana (concentração).</p>
+    </div>
+  </div>
+
+  <!-- TORO -->
+  <h3 class="sec-title">7. O Toro — O Campo Que Dobra Sobre Si Mesmo</h3>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;margin:30px 0;">
+    <svg width="200" height="200" viewBox="-100 -100 200 200">
+      <!-- torus as 2D cross-section rings -->
+      <ellipse cx="0" cy="0" rx="90" ry="32" fill="none" stroke="rgba(58,184,176,0.6)" stroke-width="1.5"/>
+      <ellipse cx="0" cy="-32" rx="90" ry="32" fill="none" stroke="rgba(58,184,176,0.4)" stroke-width="1"/>
+      <ellipse cx="0" cy="32" rx="90" ry="32" fill="none" stroke="rgba(58,184,176,0.4)" stroke-width="1"/>
+      <ellipse cx="0" cy="0" rx="32" ry="90" fill="none" stroke="rgba(212,168,67,0.6)" stroke-width="1.5"/>
+      <ellipse cx="0" cy="0" rx="50" ry="50" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="16" fill="rgba(212,168,67,0.15)" stroke="rgba(212,168,67,0.5)" stroke-width="1"/>
+      <!-- flow arrows suggestion -->
+      <path d="M 0,-90 Q 95,0 0,90" fill="none" stroke="rgba(196,80,128,0.5)" stroke-width="1.5" marker-end="none"/>
+      <circle cx="0" cy="0" r="4" fill="rgba(196,80,128,0.7)" stroke="none"/>
+    </svg>
+    <div style="flex:1;min-width:240px;">
+      <p>O toro é a superfície geométrica que se obtém ao girar um círculo ao redor de um eixo externo — como a superfície de uma rosca. Matematicamente, é uma superfície fechada sem bordas, onde "dentro" e "fora" se invertem continuamente.</p>
+      <p>Na geometria sagrada, o toro representa o campo energético — o campo eletromagnético do coração humano é toroidal, assim como o campo magnético da Terra. A "respiração" do cosmos: energia que flui para dentro pelo polo norte, expande-se ao meio e flui para fora pelo polo sul, curvando-se de volta ao polo norte.</p>
+      <p>Em física: o átomo de hidrogênio (o átomo mais simples) tem simetria toroidal quando em seu estado excitado. A teoria de cordas propõe que dimensões extras do espaço podem estar "compactadas" em formas toroidais.</p>
+    </div>
+  </div>
+
+  <!-- MANDALA -->
+  <h3 class="sec-title">8. A Mandala — O Cosmos em Círculo</h3>
+
+  <div style="display:flex;gap:30px;flex-wrap:wrap;align-items:center;margin:30px 0;">
+    <svg width="200" height="200" viewBox="-100 -100 200 200">
+      <circle cx="0" cy="0" r="95" fill="none" stroke="rgba(212,168,67,0.3)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="75" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="0.8"/>
+      <!-- 12-petaled lotus -->
+      <g stroke="none">
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(0)"/>
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(30)"/>
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(60)"/>
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(90)"/>
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(120)"/>
+        <ellipse rx="20" ry="40" fill="rgba(168,128,240,0.12)" transform="rotate(150)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(15)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(45)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(75)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(105)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(135)"/>
+        <ellipse rx="20" ry="40" fill="rgba(212,168,67,0.1)" transform="rotate(165)"/>
+      </g>
+      <polygon points="0,-60 51.96,30 -51.96,30" fill="none" stroke="rgba(58,184,176,0.5)" stroke-width="1.2"/>
+      <polygon points="0,60 51.96,-30 -51.96,-30" fill="none" stroke="rgba(58,184,176,0.5)" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="20" fill="rgba(212,168,67,0.1)" stroke="rgba(212,168,67,0.6)" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="6" fill="rgba(212,168,67,0.8)" stroke="none"/>
+    </svg>
+    <div style="flex:1;min-width:240px;">
+      <p>Mandala é sânscrito para "círculo" — mas representa muito mais. Uma mandala é qualquer diagrama circular com simetria radial que serve como mapa do cosmos e suporte para meditação. O budismo tibetano desenvolveu mandalas de extraordinária complexidade como representações do "campo búdico" — a paisagem da mente iluminada.</p>
+      <p>A psicologia junguiana redescobriu a mandala como símbolo espontâneo do inconsciente — pacientes em crise desenhavam espontaneamente formas circulares simétricas. C.G. Jung as chamou de "arquétipos do Self" — representações da totalidade psíquica.</p>
+      <p>Matematicamente, qualquer mandala é um estudo em simetria rotacional. A simetria mais usada é de ordem 8 (oitava dobradura) nas tradições islâmicas, ordem 6 nas celtas, e ordem 4 nas mandalas navajo.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 8 — TRADIÇÕES
+════════════════════════════════════ -->
+<section id="cap8" class="chapter">
+  <span class="chapter-num">Capítulo VIII</span>
+  <h2>A Geometria Sagrada nas Tradições do Mundo</h2>
+  <p class="chapter-intro">
+    Como cada grande tradição espiritual usou, interpretou e transmitiu a geometria sagrada — e por que independentemente chegaram às mesmas formas.
+  </p>
+
+  <h3 class="sec-title">Hinduísmo — Os Yantras</h3>
+  <p>O hinduísmo desenvolveu o uso mais sistemático e sofisticado da geometria sagrada através dos <strong>yantras</strong> — diagramas geométricos usados como suportes de meditação e rituais. Yantra significa "instrumento, máquina" em sânscrito: é literalmente um instrumento para a mente.</p>
+  <p>Cada divindade tem seu yantra correspondente, com geometria específica que codifica as qualidades daquela divindade. O <strong>Ganesha Yantra</strong> usa o hexagrama. O <strong>Kali Yantra</strong> usa triângulos descendentes. O <strong>Surya Yantra</strong> usa o hexágono (para o sol). O Sri Yantra é o yantra da deusa Lalita Tripura Sundari — considerado o mais poderoso.</p>
+  <p>A prática: o meditador começa meditando na circunferência externa (o mundo manifesto), gradualmente move atenção para camadas mais internas (abstraindo-se do mundo) até finalmente fixar no bindu central — o ponto de consciência pura, sem forma.</p>
+
+  <div class="tealbox">
+    <div class="tealbox-title">Os Chakras como Yantras</div>
+    <p>Os sete chakras do corpo humano têm cada um um yantra associado. O chakra raiz (Muladhara) tem 4 pétalas de lótus + quadrado. O chakra do plexo solar (Manipura) tem 10 pétalas + triângulo invertido (fogo). O chakra do coração (Anahata) tem 12 pétalas + hexagrama (união dos opostos). O chakra da coroa (Sahasrara) tem 1.000 pétalas — representando a integração de todas as qualidades. O corpo humano é, ele mesmo, um yantra vivo.</p>
+  </div>
+
+  <h3 class="sec-title">Islamismo — A Arte Sem Figuras</h3>
+  <p>A proibição islâmica de representações figurativas direcionou a criatividade artística para a geometria — com resultados extraordinários. Os artistas islâmicos medievais desenvolveram padrões de tiling (pavimentação) de complexidade matemática sem igual, usando:</p>
+
+  <ul class="step-list">
+    <li data-n="01"><strong>Girih tiles</strong> — cinco formas poligonais que se encaixam para criar padrões de simetria quíntupla, antecipando os "quasicrystals" aperiódicos descobertos formalmente em 1984.</li>
+    <li data-n="02"><strong>Arabescos</strong> — padrões espirais baseados em flores de 6, 8 ou 12 pétalas, derivados da Flor da Vida. O mesmo padrão se repete em escalas diferentes (fractal avant la lettre).</li>
+    <li data-n="03"><strong>Muqarnas</strong> — estalactites arquitetônicas criadas por subdivisões geométricas recursivas das abóbadas. São estruturas 3D que emergem da geometria 2D.</li>
+    <li data-n="04"><strong>Tiling de Penrose</strong> — padrões aperiódicos com simetria quíntupla foram encontrados no Masjed-i Jāmeh de Isfahan (1453) — 500 anos antes de Roger Penrose os "descobrir" matematicamente em 1974.</li>
+  </ul>
+
+  <h3 class="sec-title">Judaísmo — A Cabala e a Geometria</h3>
+  <p>A mística judaica (Cabala) desenvolveu a <strong>Árvore da Vida</strong> (Etz Chaim) — um diagrama de dez (ou onze) esferas chamadas Sephiroth, conectadas por 22 caminhos, que representa a estrutura do cosmos e da psique humana.</p>
+  <p>As Sephiroth emergem diretamente da Semente da Vida: os sete centros dos círculos mais interseções específicas geram os dez pontos. As 22 conexões correspondem às 22 letras do alfabeto hebraico — e às 22 lâminas maiores do Tarô. A geometria da Árvore da Vida é a base de toda a numerologia cabalística (Gematria) e do sistema de correspondências que inclui planetas, anjos, cores e perfumes para cada Sephira.</p>
+
+  <h3 class="sec-title">Cristianismo — As Catedrais como Cosmos</h3>
+  <p>Os mestres construtores medievais (operativos e especulativos) usavam geometria sagrada para projetar catedrais com intenção espiritual consciente:</p>
+
+  <ul class="step-list">
+    <li data-n="01"><strong>Ad Quadratum</strong> (pelo quadrado): a planta baixa da catedral é derivada por uma série de quadrados rotacionados, cada um inscrito no círculo que circunscreve o anterior. Isso cria proporções em √2.</li>
+    <li data-n="02"><strong>Ad Triangulum</strong> (pelo triângulo): a altura da nave é determinada pelo triângulo equilátero inscrito na largura. Cria proporções em √3 — a razão da Vesica Piscis.</li>
+    <li data-n="03"><strong>Portais de triplo arco</strong>: a forma em Vesica Piscis aparece nos arcos ogivais do gótico, e Cristo é representado na mandorla — a própria Vesica Piscis — nos tímpanos das portas.</li>
+    <li data-n="04"><strong>Rosáceas</strong>: as janelas circulares são mandalas cristãs — baseadas em divisões geométricas do círculo em 8, 12 ou 16 partes. A luz atravessando o vitral colorido era a divindade iluminando a matéria.</li>
+  </ul>
+
+  <h3 class="sec-title">Egito Antigo — A Geometria como Religião</h3>
+  <p>Para os egípcios, a geometria não era uma ferramenta — era uma forma de conhecer o divino. A palavra egípcia <em>neter</em> (deus) tem a mesma raiz de "natureza" e "medida". O próprio ato de medir a terra após as cheias do Nilo era um ato sagrado: restaurar a ordem (Ma'at) a partir do caos (Nun).</p>
+  <p>A Grande Pirâmide de Gizé codifica em suas proporções: π (razão entre o perímetro da base e o dobro da altura = 2π), φ (a inclinação das faces triangulares = arctan φ), a velocidade da luz em km/s (os primeiros dígitos aparecem nas coordenadas da pirâmide), e a distância da Terra ao Sol (escala 1:43.200).</p>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 9 — OS NÚMEROS SAGRADOS
+════════════════════════════════════ -->
+<section id="cap9" class="chapter">
+  <span class="chapter-num">Capítulo IX</span>
+  <h2>Os Números Sagrados — A Numerologia da Forma</h2>
+  <p class="chapter-intro">
+    Na geometria sagrada, cada número tem uma forma geométrica correspondente, e essa forma tem qualidades que revelam a "personalidade" do número. Não é misticismo arbitrário — é uma tradição de observação das propriedades matemáticas de cada número e das formas que gera.
+  </p>
+
+  <div class="number-grid">
+    <div class="number-card">
+      <div class="num">0</div>
+      <h4>O Vazio / O Círculo</h4>
+      <p>O zero e o círculo são equivalentes: ambos representam o nada que contém tudo. A potência sem forma, o silêncio que precede a música. Em geometria: o círculo perfeito, sem início nem fim.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">1</div>
+      <h4>O Ponto / A Mônada</h4>
+      <p>O Um, a unidade, o ponto sem extensão. Princípio de tudo. O tetraedro tem 4 faces, 4 vértices, 6 arestas — mas é o "Un" dos sólidos: a forma de menor superfície para dado volume.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">2</div>
+      <h4>A Linha / A Díade</h4>
+      <p>Dois pontos, uma linha. A primeira dualidade. A Vesica Piscis nasce de dois círculos. O yin-yang é a geometria do 2: dois círculos tangentes internamente dentro de um maior.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">3</div>
+      <h4>O Triângulo / A Tríade</h4>
+      <p>O primeiro polígono, a primeira superfície. A tríade aparece em todas as tradições: Trimurti, Trindade cristã, Tao-Yin-Yang, tese-antítese-síntese. O triângulo é a forma mais estável.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">4</div>
+      <h4>O Quadrado / A Tétrade</h4>
+      <p>Quatro elementos, quatro estações, quatro pontos cardeais. O quadrado é estabilidade, matéria, manifestação. O número 4 é a base da "tetractys" pitagórica — arranjo 1+2+3+4=10 pontos em triângulo.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">5</div>
+      <h4>O Pentágono / A Pêntade</h4>
+      <p>Cinco é o número da vida e do humano (5 dedos, 5 membros, 5 sentidos). O pentágono e o pentagrama codificam φ. Na biologia, a simetria 5 (starfish, flores) indica vida orgânica — nunca cristais inorgânicos.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">6</div>
+      <h4>O Hexágono / A Héxade</h4>
+      <p>O primeiro número perfeito (1+2+3=6). O hexágono é a forma mais eficiente para cobrir um plano. A colmeia, o floco de neve, o basalto — a natureza escolhe o 6 repetidamente. Os 6 dias da criação.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">7</div>
+      <h4>A Semente da Vida / Heptade</h4>
+      <p>Sete é único: é o único número entre 1 e 10 que não divide 360° evenly. É o número do mistério, da perfeição espiritual. 7 chakras, 7 tons, 7 dias, 7 planetas antigos, 7 esferas da Semente.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">8</div>
+      <h4>O Octaedro / Ogdóade</h4>
+      <p>Dois quadrados sobrepostos girados 45°. O 8 deitado é o infinito (∞). No budismo, o Nobre Caminho Óctuplo. Na Cabala, é o número de Hod (glória, mercúrio, intelecto). O octaedro tem 8 faces.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">9</div>
+      <h4>O Três ao Cubo / Enéade</h4>
+      <p>9 = 3² — a tríade ao quadrado. Único número cuja soma digital sempre retorna a si mesmo (9×n: a soma dos dígitos do resultado sempre é 9). A Enéade egípcia: nove deuses primordiais de Heliopólis.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">10</div>
+      <h4>A Tetractys / Décade</h4>
+      <p>A tetractys pitagórica: 1+2+3+4=10 pontos em arranjo triangular. Representa a perfeição (de volta à unidade numa nova oitava). As 10 Sephiroth da Cabala. O sistema decimal.</p>
+    </div>
+    <div class="number-card">
+      <div class="num">φ</div>
+      <h4>A Razão Áurea</h4>
+      <p>Não é um número inteiro — é um princípio. φ=1.618... é a razão que emerge do pentágono, da espiral do crescimento, da sequência de Fibonacci. É o número de que o cosmos usa para crescer de forma auto-similar.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     CAPÍTULO 10 — USOS E PRÁTICA
+════════════════════════════════════ -->
+<section id="cap10" class="chapter">
+  <span class="chapter-num">Capítulo X</span>
+  <h2>Como Usar a Geometria Sagrada — Usos e Práticas</h2>
+  <p class="chapter-intro">
+    A geometria sagrada não é apenas teoria — é uma prática viva. Aqui estão as principais formas de trabalhar com ela: da meditação à arquitetura, da arte às práticas energéticas contemporâneas.
+  </p>
+
+  <h3 class="sec-title">1. Meditação com Yantras e Mandalas</h3>
+
+  <p>A forma mais antiga e direta de usar geometria sagrada. O princípio: a mente humana tende naturalmente a seguir a geometria que observa. Ao olhar para um yantra ou mandala com atenção concentrada, a mente começa a espelhar a estrutura da forma — da periferia caótica ao centro unificado.</p>
+
+  <ul class="step-list">
+    <li data-n="01"><strong>Escolha o símbolo</strong> — Cada símbolo tem qualidades diferentes. A Flor da Vida para expansão e conexão universal. O Sri Yantra para dissolução do ego e estados profundos de samadhi. O hexagrama para equilíbrio e integração de opostos. O pentagrama para vitalidade e conexão com a natureza.</li>
+    <li data-n="02"><strong>Posição e ambiente</strong> — Sente-se com a coluna ereta. Coloque o yantra na altura dos olhos, a 30–60 cm. Luz suave, sem distrações. O yantra pode ser impresso em papel, gravado em metal, desenhado à mão (recomendado — o ato de desenhar já é meditação).</li>
+    <li data-n="03"><strong>Tratak — Olhar fixo</strong> — Olhe para o centro do yantra sem piscar por um tempo. Deixe a forma "entrar" na consciência. Quando os olhos cansarem, feche-os e observe a imagem residual (afterimage) — é a forma da sua mente.</li>
+    <li data-n="04"><strong>Da periferia ao centro</strong> — Gradualmente mova a atenção da borda do yantra para o interior, da forma mais complexa para a mais simples, até chegar ao ponto central. Este movimento é um mapa da jornada espiritual — do mundo manifesto ao Absoluto.</li>
+    <li data-n="05"><strong>Integração</strong> — Após a meditação, feche os olhos por alguns minutos. Observe como a mente está. Não force nada. A geometria já fez seu trabalho.</li>
+  </ul>
+
+  <h3 class="sec-title">2. Desenho e Construção Manual</h3>
+
+  <p>Há uma tradição em muitas escolas esotéricas de que <strong>o ato de construir geometria sagrada com compasso e régua é ele mesmo uma prática espiritual</strong>. O processo lento, preciso e contemplativo de traçar cada arco, de encontrar cada interseção, acalma a mente e desenvolve presença.</p>
+
+  <div class="use-grid">
+    <div class="use-card">
+      <span class="use-icon">⊙</span>
+      <h4>Materiais</h4>
+      <p>Compasso de metal (não plástico), régua, lápis H ou 2H (fino), borracha de qualidade, papel cartão branco 200g. Para arte finalizada: caneta nanquim 0.05, papel aquarela para aquarela, ou papel vegetal para transparência.</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">◇</span>
+      <h4>Sequência de Aprendizado</h4>
+      <p>1) Vesica Piscis. 2) Triângulo equilátero. 3) Hexágono regular. 4) Estrela de 6 pontas. 5) Semente da Vida. 6) Pentágono (mais difícil). 7) Pentagrama. 8) Espiral áurea. 9) Flor da Vida. 10) Cubo de Metatron.</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">🎨</span>
+      <h4>Coloração</h4>
+      <p>A coloração de mandalas é uma prática meditativa por si só. Use aquarela para transparência e fluidez (mais espiritual), ou tinta acrílica para intensidade. Cores tradicionais: dourado para o divino, azul para o espiritual, vermelho para a energia vital, verde para a natureza.</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">🌀</span>
+      <h4>Spirografia</h4>
+      <p>Desenhar espirais áureas, espirais de Arquimedes e cicloidal: parte prática da geometria sagrada. Use papel polar (com ângulos graduados) como suporte. A espiral de Fibonacci pode ser construída com régua a partir do retângulo áureo.</p>
+    </div>
+  </div>
+
+  <h3 class="sec-title">3. Arquitetura e Design de Espaços</h3>
+
+  <p>A aplicação da geometria sagrada na arquitetura não é nostálgica — arquitetos contemporâneos como Frank Lloyd Wright, Gaudí, Buckminster Fuller e Zaha Hadid usaram (ou foram influenciados por) estes princípios:</p>
+
+  <table class="phi-table">
+    <tr><th>Princípio</th><th>Aplicação Prática</th><th>Efeito</th></tr>
+    <tr><td>Proporção Áurea</td><td>Razão entre largura e altura de portas, janelas, fachadas</td><td>Proporções que o olho percebe como "naturalmente corretas" e agradáveis</td></tr>
+    <tr><td>Simetria radial</td><td>Plantas circulares, rotundas, cúpulas</td><td>Sensação de centralização, de cosmos contido</td></tr>
+    <tr><td>Ad triangulum</td><td>Alturas de tetos determinadas por triângulos equiláteros</td><td>Proporções √3 que criam sensação de grandeza vertical</td></tr>
+    <tr><td>Espiral áurea</td><td>Escadarias em espiral, rampas, disposição de cômodos</td><td>Movimento que parece "natural" ao corpo — segue nosso instinto de locomoção</td></tr>
+    <tr><td>Sólidos Platônicos</td><td>Formas dos ambientes, cúpulas geodésicas (icosaedro), estruturas tensegrity</td><td>Eficiência estrutural máxima com mínimo material</td></tr>
+    <tr><td>Fractalidade</td><td>Repetição de padrões em escalas diferentes (telhado, janela, ornamento)</td><td>Harmonia visual em todas as escalas — o que o olho vê é coerente de perto e de longe</td></tr>
+  </table>
+
+  <h3 class="sec-title">4. Arte Sagrada e Iconografia</h3>
+
+  <p>A arte sacra em todas as tradições usa geometria sagrada como estrutura invisível sob a composição visível:</p>
+
+  <ul class="step-list">
+    <li data-n="01"><strong>Ícones ortodoxos</strong>: toda a composição é construída sobre uma grade geométrica baseada em φ. O rosto de Cristo é circunscrito por um círculo; o corpo por um retângulo áureo.</li>
+    <li data-n="02"><strong>Mandala tibetana</strong>: pinturas em thangka de mandalas são construídas sobre grades geométricas rigorosas. Um mestre thangka passa anos aprendendo as proporções antes de pintar seu primeiro rosto de Buda.</li>
+    <li data-n="03"><strong>Arte islâmica</strong>: cada padrão geométrico começa com um círculo, do qual emergem as subdivisões. O artista não projeta — ele deixa a geometria se revelar.</li>
+    <li data-n="04"><strong>Renascimento europeu</strong>: Da Vinci, Rafael, Michelangelo — todos usavam a seção áurea para compor. O Homem Vitruviano é a declaração explícita desta prática.</li>
+  </ul>
+
+  <h3 class="sec-title">5. Trabalho com Cristais e Geometria</h3>
+
+  <p>Na tradição da cristaloterapia e práticas energéticas contemporâneas, os cristais são dispostos em padrões geométricos sagrados para criar "campos de intenção":</p>
+
+  <div class="use-grid">
+    <div class="use-card">
+      <span class="use-icon">⬡</span>
+      <h4>Grade de Cristais</h4>
+      <p>Cristais dispostos nos vértices de um hexágono, pentagrama ou Flor da Vida. A intenção: criar um campo de energia coerente e amplificado. Use pedra no centro (intenção) e pontas apontando para fora (irradiação) ou para dentro (concentração).</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">△</span>
+      <h4>Triângulo Ascendente</h4>
+      <p>Três cristais em triângulo equilátero — a grade mais simples. O triângulo apontado para cima (fogo) amplifica manifestação e energia. Apontado para baixo (água) aprofunda introspecção e receptividade.</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">✡</span>
+      <h4>Hexagrama Estrela</h4>
+      <p>Seis cristais nos vértices do hexagrama — a grade do equilíbrio. Combina energia ascendente (triângulo do fogo) com descendente (triângulo da água). Excelente para harmonia e integração.</p>
+    </div>
+    <div class="use-card">
+      <span class="use-icon">🌸</span>
+      <h4>Flor da Vida Grid</h4>
+      <p>Cristal central + seis ao redor, seguindo a Semente da Vida. Grade da abundância e expansão. Pode-se adicionar camadas externas para ampliar o campo. Ative com intenção clara e traçando as linhas de conexão com varinha de cristal.</p>
+    </div>
+  </div>
+
+  <h3 class="sec-title">6. A Geometria Sagrada e a Física Moderna</h3>
+
+  <p>Longe de ser apenas "espiritualidade", a geometria sagrada encontra paralelos notáveis na física contemporânea:</p>
+
+  <table class="phi-table">
+    <tr><th>Conceito Sagrado</th><th>Paralelo na Física</th><th>Evidência</th></tr>
+    <tr><td>Sólidos Platônicos</td><td>Estrutura de vírus, moléculas, quasicrystals</td><td>Vírus icosaédricos (adenovírus, herpes). Fulereno C60 = dodecaedro truncado</td></tr>
+    <tr><td>Proporção Áurea φ</td><td>Constante de estrutura fina, DNA, quasicrystals</td><td>Quasicrystals de liga Al-Mn descobertos em 1984 têm simetria icosaédrica e φ</td></tr>
+    <tr><td>Flor da Vida</td><td>Geometria do vácuo quântico</td><td>Nassim Haramein propõe que o vácuo tem estrutura de "esponja" baseada em empacotamento de esferas</td></tr>
+    <tr><td>Toro</td><td>Campos magnéticos de planetas, estrelas, tokamaks</td><td>O campo magnético da Terra é toroidal. Reatores de fusão nuclear usam tokamaks (toros)</td></tr>
+    <tr><td>Espiral áurea</td><td>Galáxias espirais, padrões de crescimento biológico</td><td>Via Láctea, Andrômeda — braços em espiral logarítmica com expoente ≈ φ</td></tr>
+    <tr><td>Fractais</td><td>Geometria fractal de Mandelbrot</td><td>Coastlines, nuvens, neurônios, bronquíolos — todos fractais. A natureza "usa" autosiimilaridade</td></tr>
+  </table>
+
+</section>
+
+<div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- CONCLUSÃO -->
+<section class="chapter" style="padding-bottom:80px;">
+  <span class="chapter-num">Conclusão</span>
+  <h2>A Linguagem do Cosmos</h2>
+
+  <div class="quote">
+    "Não somos seres humanos tendo uma experiência espiritual. Somos seres espirituais tendo uma experiência humana — construída sobre geometria."
+    <cite>— Pierre Teilhard de Chardin</cite>
+  </div>
+
+  <p>A geometria sagrada é, em última análise, um convite a olhar com mais atenção. A perceber que a espiral na sua concha de náutilo e a espiral da galáxia mais distante são a mesma espiral. Que os cinco sólidos que Platão descreveu há 2.400 anos aparecem nos vírus que a ciência moderna estuda. Que as proporções usadas nos templos egípcios, nas catedrais medievais e nos minaretes islâmicos são as mesmas proporções usadas pelo DNA.</p>
+
+  <p>Isso pode ser interpretado de muitas formas: como evidência de um cosmos ordenado por uma inteligência criadora; como evidência de que a evolução converge para soluções ótimas; como coincidência extraordinária; ou como tudo isso ao mesmo tempo.</p>
+
+  <p>O que é inquestionável é este fato: <strong>quando você aprende a ver estas formas, o mundo se torna um lugar diferente</strong>. A pétala de uma flor se torna um portal para φ. Um favo de mel se torna evidência da eficiência hexagonal. O rosto de uma pessoa amada se torna um yantra vivo. A geometria sagrada é, fundamentalmente, uma prática de atenção — de perceber que o cosmos é, de ponta a ponta, extraordinariamente belo e extraordinariamente preciso.</p>
+
+  <p>E talvez o gesto mais sagrado de todos seja simplesmente pegar um compasso, pôr sua ponta no papel, e deixar que do ponto central emerja o círculo — e observar o que nasce a partir daí.</p>
+
+  <div class="glyph-large" style="padding:60px 0;">
+    <svg width="300" height="300" viewBox="-150 -150 300 300" style="animation: heroSpin 40s linear infinite;">
+      <g stroke="rgba(212,168,67,0.5)" stroke-width="0.8" fill="none">
+        <circle cx="0" cy="0" r="140" stroke-opacity="0.15"/>
+        <circle cx="0" cy="0" r="120" stroke-opacity="0.1"/>
+        <circle cx="0" cy="0" r="60" stroke-opacity="0.4"/>
+        <circle cx="60" cy="0" r="60"/>
+        <circle cx="-60" cy="0" r="60"/>
+        <circle cx="30" cy="51.96" r="60"/>
+        <circle cx="-30" cy="51.96" r="60"/>
+        <circle cx="30" cy="-51.96" r="60"/>
+        <circle cx="-30" cy="-51.96" r="60"/>
+        <polygon points="0,-100 86.6,50 -86.6,50" stroke="rgba(58,184,176,0.5)" stroke-width="1"/>
+        <polygon points="0,100 86.6,-50 -86.6,-50" stroke="rgba(58,184,176,0.5)" stroke-width="1"/>
+        <polygon points="0,-120 103.92,60 -103.92,60" stroke="rgba(168,128,240,0.3)" stroke-width="0.8"/>
+        <polygon points="0,120 103.92,-60 -103.92,-60" stroke="rgba(168,128,240,0.3)" stroke-width="0.8"/>
+        <circle cx="0" cy="0" r="8" fill="rgba(212,168,67,0.8)" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+
+</section>
+</div><!-- .page -->
+
+<footer style="position:relative;z-index:1;text-align:center;padding:40px 20px;border-top:1px solid rgba(212,168,67,0.08);font-family:'Josefin Sans',sans-serif;font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(106,95,80,0.6);">
+  ✦ &nbsp; A Linguagem Visual do Cosmos &nbsp; ✦ &nbsp; Do Ponto ao Infinito
+</footer>
+
+<script>
+// ─────────────────────────────────────
+// SCROLL PROGRESS
+// ─────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+});
+
+// ─────────────────────────────────────
+// CANVAS HELPERS
+// ─────────────────────────────────────
+function getCtx(id) {
+  const c = document.getElementById(id);
+  return c ? c.getContext('2d') : null;
+}
+
+function clearCanvas(ctx, w, h) {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = '#050408';
+  ctx.fillRect(0, 0, w, h);
+}
+
+// ─────────────────────────────────────
+// PRIMORDIAL BUILDER
+// ─────────────────────────────────────
+const primordialDescs = [
+  {
+    label: 'Passo 0 — O Vazio',
+    title: 'O Nada — Ain Soph',
+    text: 'No início não há forma, não há dimensão, não há nem o espaço em que algo poderia existir. Este é o estado anterior a toda criação — o que a Cabala chama de Ain Soph Aur (a luz sem limite), o que os hindus chamam de Parabrahman, o que os taoístas chamam de Wu Ji (sem extremo). O vazio não é ausência — é potência pura. É o zero que contém todos os números. O silêncio que contém toda a música.'
+  },
+  {
+    label: 'Passo 1 — O Ponto',
+    title: 'A Mônada — O Uno',
+    text: 'O primeiro gesto da criação é o ponto — sem dimensão, sem extensão, sem parte. Apenas posição. Para Euclides, o ponto é indefinível: ele é o axioma, a premissa que não pode ser demonstrada. Para os pitagóricos, era a Mônada — o Uno, a semente de toda a realidade. O simples ato de colocar a ponta do compasso no papel e fazer uma marca já é um ato de criação: do nada, um lugar.'
+  },
+  {
+    label: 'Passo 2 — A Linha',
+    title: 'A Díade — A Primeira Dualidade',
+    text: 'Dois pontos definem uma linha — e com ela surge a primeira dualidade, a primeira relação, a primeira direção. A linha tem comprimento mas não largura: é pura abstração. Para os pitagóricos, a Díade representava a divisão do Uno em sujeito e objeto — o primeiro passo da manifestação. A linha também é tempo: início, meio, fim.'
+  },
+  {
+    label: 'Passo 3 — O Plano',
+    title: 'A Tríade — A Primeira Superfície',
+    text: 'Três pontos não colineares definem o plano — a primeira superfície, a primeira forma bidimensional. O triângulo é o polígono mais simples e mais estável. Com três pontos, surge a profundidade relacional: os três lados criam uma tensão que "fecha" o espaço. A Tríade é o número da síntese: tese + antítese = síntese. Pai + Mãe = Filho. Brahma + Vishnu + Shiva.'
+  },
+  {
+    label: 'Passo 4 — O Círculo',
+    title: 'O Cosmos — A Totalidade',
+    text: 'Um ponto equidistante de um centro — o círculo é a forma de máxima simetria em 2D. Sem começo, sem fim, sem direção privilegiada. O círculo é o cosmos: o anel do zodíaco, o ciclo do ano, o horizonte que sempre avança diante de você. Matematicamente contém π (pi) — um número irracional e transcendental, infinito como o próprio círculo. O compasso traçou seu primeiro arco: o cosmos nasceu.'
+  },
+  {
+    label: 'Passo 5 — Vesica Piscis',
+    title: 'A Criação — O Portal',
+    text: 'Do primeiro círculo nasce o segundo: pegue um ponto da circunferência e, com o mesmo raio, trace outro círculo. O espaço de interseção — a mandorla, o ichthys, o yoni — é a Vesica Piscis. Não é coincidência que todas as tradições tenham encontrado nesta forma o símbolo da criação: ela surge naturalmente do mais simples dos gestos, e contém em si toda a geometria subsequente. Altura/largura = √3. Gera o triângulo equilátero, o hexágono, a Flor da Vida.'
+  }
+];
+
+let primordialStep = 0;
+
+function setPrimordial(n) {
+  primordialStep = n;
+  document.querySelectorAll('#builder-primordial .builder-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === n);
+  });
+  drawPrimordial(n);
+  const d = primordialDescs[n];
+  document.getElementById('desc-primordial').innerHTML = `
+    <span class="builder-step-label">${d.label}</span>
+    <h4>${d.title}</h4>
+    <p>${d.text}</p>
+  `;
+}
+
+function drawPrimordial(step) {
+  const ctx = getCtx('canvas-primordial');
+  if (!ctx) return;
+  clearCanvas(ctx, 300, 300);
+  ctx.save();
+  ctx.translate(150, 150);
+
+  const gold = 'rgba(212,168,67,';
+  const teal = 'rgba(58,184,176,';
+
+  if (step >= 1) {
+    // Ponto central
+    ctx.beginPath();
+    ctx.arc(0, 0, 4, 0, Math.PI * 2);
+    ctx.fillStyle = gold + '0.9)';
+    ctx.fill();
+  }
+
+  if (step >= 2) {
+    // Segundo ponto + linha
+    ctx.beginPath();
+    ctx.arc(70, 0, 3, 0, Math.PI * 2);
+    ctx.fillStyle = teal + '0.8)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(70, 0);
+    ctx.strokeStyle = gold + '0.7)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  if (step >= 3) {
+    // Terceiro ponto + triângulo
+    ctx.beginPath();
+    ctx.arc(35, -60.62, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(168,128,240,0.8)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(70, 0);
+    ctx.lineTo(35, -60.62);
+    ctx.closePath();
+    ctx.strokeStyle = gold + '0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = gold + '0.04)';
+    ctx.fill();
+  }
+
+  if (step >= 4) {
+    // Círculo
+    ctx.beginPath();
+    ctx.arc(0, 0, 90, 0, Math.PI * 2);
+    ctx.strokeStyle = gold + '0.7)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, 5, 0, Math.PI * 2);
+    ctx.fillStyle = gold + '1)';
+    ctx.fill();
+  }
+
+  if (step >= 5) {
+    // Vesica Piscis
+    const r = 90;
+    const cx2 = r;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.strokeStyle = gold + '0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx2, 0, r, 0, Math.PI * 2);
+    ctx.strokeStyle = teal + '0.6)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    // fill vesica
+    ctx.save();
+    ctx.beginPath();
+    const h = Math.sqrt(r*r - (r/2)*(r/2));
+    ctx.arc(0, 0, r, -Math.PI/3, Math.PI/3);
+    ctx.arc(cx2, 0, r, Math.PI - Math.PI/3, Math.PI + Math.PI/3, true);
+    ctx.closePath();
+    ctx.fillStyle = gold + '0.1)';
+    ctx.fill();
+    ctx.strokeStyle = gold + '0.9)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  ctx.restore();
+}
+
+drawPrimordial(0);
+
+// ─────────────────────────────────────
+// HEX BUILDER
+// ─────────────────────────────────────
+const hexDescs = [
+  { label: 'Passo 1 — O Primeiro Círculo', title: 'A Unidade', text: 'Tudo começa com um único círculo. Escolha um centro O, escolha um raio r. Nada mais é definido — apenas o círculo perfeito, símbolo do Uno, do cosmos não-diferenciado.' },
+  { label: 'Passo 2 — Primeiro Arco', title: 'A Primeira Divisão', text: 'Escolha qualquer ponto P na circunferência. Sem alterar o compasso (mesmo raio!), coloque a ponta em P e trace um arco que corta o círculo original em dois pontos. Você acabou de marcar dois vértices do hexágono — sem medir, sem calcular.' },
+  { label: 'Passo 3 — Segundo Arco', title: 'A Expansão', text: 'Coloque o compasso em um dos pontos recém-criados e trace outro arco. Dois novos pontos emergem. Perceba: você não mediu nada. Apenas repetiu o mesmo gesto com o mesmo raio.' },
+  { label: 'Passo 4 — Continuando', title: 'O Ritmo', text: 'Continue o mesmo processo ao redor do círculo. A cada passo, dois novos vértices. A geometria se constrói a si mesma — você é apenas o instrumento.' },
+  { label: 'Passo 5 — Seis Pontos', title: 'A Revelação', text: 'Após exatamente seis passos, você está de volta ao ponto inicial. Exatamente. Isso não é acidente — é uma propriedade fundamental do círculo: o raio cabe exatamente seis vezes na circunferência. Seis pontos equidistantes emergem.' },
+  { label: 'Passo 6 — Hexágono', title: 'A Forma Perfeita', text: 'Conecte os seis pontos e o hexágono regular aparece. Seis lados iguais, seis ângulos iguais de 120° — sem medir, sem calcular, apenas com compasso. Esta é a forma que as abelhas descobriram como a mais eficiente para seus favos.' },
+  { label: 'Passo 7 — Estrela de Davi', title: 'A União dos Opostos', text: 'Conecte os pontos alternados para criar dois triângulos equiláteros — e emerge a Estrela de Davi, o hexagrama. Os triângulos codificam a dualidade (fogo↑ e água↓), e sua interseção cria um hexágono central — a síntese dos opostos.' },
+];
+
+let hexStep = 0;
+
+function setHex(n) {
+  hexStep = n;
+  document.querySelectorAll('#builder-hex .builder-btn').forEach((b, i) => b.classList.toggle('active', i === n));
+  drawHex(n);
+  const d = hexDescs[n];
+  document.getElementById('desc-hex').innerHTML = `
+    <span class="builder-step-label">${d.label}</span>
+    <h4>${d.title}</h4>
+    <p>${d.text}</p>
+  `;
+}
+
+function drawHex(step) {
+  const ctx = getCtx('canvas-hex');
+  if (!ctx) return;
+  clearCanvas(ctx, 300, 300);
+  ctx.save();
+  ctx.translate(150, 150);
+  const r = 100;
+  const gold = 'rgba(212,168,67,';
+  const teal = 'rgba(58,184,176,';
+  const violet = 'rgba(168,128,240,';
+
+  // Points of hexagon
+  const pts = [];
+  for (let i = 0; i < 6; i++) {
+    const a = (i * 60 - 30) * Math.PI / 180;
+    pts.push({ x: r * Math.cos(a), y: r * Math.sin(a) });
+  }
+
+  // Step 0: just circle
+  ctx.beginPath();
+  ctx.arc(0, 0, r, 0, Math.PI * 2);
+  ctx.strokeStyle = gold + '0.7)';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, 4, 0, Math.PI * 2);
+  ctx.fillStyle = gold + '1)';
+  ctx.fill();
+
+  if (step >= 1) {
+    // First point P at top
+    ctx.beginPath();
+    ctx.arc(pts[0].x, pts[0].y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = teal + '0.9)';
+    ctx.fill();
+    // arc from P
+    ctx.beginPath();
+    ctx.arc(pts[0].x, pts[0].y, r, 0, Math.PI * 2);
+    ctx.strokeStyle = teal + '0.3)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  if (step >= 2) {
+    ctx.beginPath();
+    ctx.arc(pts[1].x, pts[1].y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = gold + '0.8)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(pts[1].x, pts[1].y, r, 0, Math.PI * 2);
+    ctx.strokeStyle = gold + '0.25)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  if (step >= 3) {
+    [2, 3].forEach(i => {
+      ctx.beginPath();
+      ctx.arc(pts[i].x, pts[i].y, r, 0, Math.PI * 2);
+      ctx.strokeStyle = teal + '0.2)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(pts[i].x, pts[i].y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = teal + '0.7)';
+      ctx.fill();
+    });
+  }
+
+  if (step >= 4) {
+    [4, 5].forEach(i => {
+      ctx.beginPath();
+      ctx.arc(pts[i].x, pts[i].y, r, 0, Math.PI * 2);
+      ctx.strokeStyle = gold + '0.15)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(pts[i].x, pts[i].y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = gold + '0.7)';
+      ctx.fill();
+    });
+  }
+
+  if (step >= 5) {
+    // All 6 points highlighted
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = gold + '1)';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 12, 0, Math.PI * 2);
+      ctx.strokeStyle = gold + '0.3)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  }
+
+  if (step >= 6) {
+    // Hexagon
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < 6; i++) ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.closePath();
+    ctx.strokeStyle = gold + '0.9)';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+    ctx.fillStyle = gold + '0.06)';
+    ctx.fill();
+  }
+
+  if (step >= 7) {
+    // Star of David
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    ctx.lineTo(pts[2].x, pts[2].y);
+    ctx.lineTo(pts[4].x, pts[4].y);
+    ctx.closePath();
+    ctx.strokeStyle = teal + '0.8)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = teal + '0.06)';
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(pts[1].x, pts[1].y);
+    ctx.lineTo(pts[3].x, pts[3].y);
+    ctx.lineTo(pts[5].x, pts[5].y);
+    ctx.closePath();
+    ctx.strokeStyle = violet + '0.7)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = violet + '0.04)';
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+drawHex(0);
+
+// ─────────────────────────────────────
+// FLOWER OF LIFE BUILDER
+// ─────────────────────────────────────
+const flowerDescs = [
+  { label: 'A Semente da Vida', title: 'Sete Círculos — A Criação', text: 'Um círculo central mais seis ao redor — cada um com centro na circunferência do central. Este padrão é a Semente da Vida. Contém 6 pétalas simétricas. Na tradição judaica, este padrão é a base da Árvore da Vida. Para os cristãos medievais, representa os 7 dias da criação. Para os hindus, os 7 chakras.' },
+  { label: 'Segunda Camada', title: '12 Círculos Externos', text: 'Adicionamos seis novos círculos ao redor da Semente. A Flor começa a crescer. Perceba que cada novo círculo surge naturalmente das interseções existentes — não há escolha a fazer, apenas seguir o padrão.' },
+  { label: 'Terceira Camada', title: 'A Flor Completa', text: 'Mais seis círculos, desta vez nos "cantos" entre os círculos da segunda camada. A Flor da Vida completa tem 19 círculos internos. O padrão agora começa a aparecer completo — uma mandala de extraordinária beleza, construída com um único compasso e um único gesto repetido.' },
+  { label: 'Flor da Vida', title: 'O Padrão Completo', text: 'A Flor da Vida completa, com seu círculo delimitador. Este é o padrão encontrado no templo de Abidos (Egito), em Hampi (Índia), em Ephesus (Turquia) e nos cadernos de Leonardo da Vinci. O mesmo padrão, em culturas que nunca se comunicaram, ao longo de 8.000 anos de história humana.' },
+  { label: 'Fruto da Vida', title: '13 Círculos Selecionados', text: 'Do padrão da Flor, selecionamos 13 círculos específicos — os que se tocam sem se sobrepor. Este padrão é o Fruto da Vida. Conecte todos os centros e emerge o Cubo de Metatron.' },
+  { label: 'Cubo de Metatron', title: 'Todos os Sólidos Platônicos', text: 'Conectando todos os 13 centros do Fruto da Vida com linhas retas, emerge o Cubo de Metatron — e nele estão codificados, em projeção 2D, todos os cinco Sólidos Platônicos: tetraedro, cubo, octaedro, dodecaedro e icosaedro. O 2D contém o 3D. A Flor da Vida contém o cosmos.' },
+];
+
+let flowerStep = 0;
+
+function setFlower(n) {
+  flowerStep = n;
+  document.querySelectorAll('#builder-flower .builder-btn').forEach((b, i) => b.classList.toggle('active', i === n));
+  drawFlower(n);
+  const d = flowerDescs[n];
+  document.getElementById('desc-flower').innerHTML = `
+    <span class="builder-step-label">${d.label}</span>
+    <h4>${d.title}</h4>
+    <p>${d.text}</p>
+  `;
+}
+
+function drawFlower(step) {
+  const ctx = getCtx('canvas-flower');
+  if (!ctx) return;
+  clearCanvas(ctx, 320, 320);
+  ctx.save();
+  ctx.translate(160, 160);
+  const r = 42;
+  const gold = 'rgba(212,168,67,';
+  const teal = 'rgba(58,184,176,';
+  const violet = 'rgba(168,128,240,';
+
+  // Centers of all circles in the flower
+  const centers = [[0,0]];
+  for (let i = 0; i < 6; i++) {
+    const a = i * 60 * Math.PI / 180;
+    centers.push([r * 2 * Math.cos(a), r * 2 * Math.sin(a)]);
+  }
+  // Layer 3 - 6 more outer
+  for (let i = 0; i < 6; i++) {
+    const a = (i * 60 + 30) * Math.PI / 180;
+    centers.push([r * 2 * Math.sqrt(3) * Math.cos(a), r * 2 * Math.sqrt(3) * Math.sin(a)]);
+  }
+  // Layer 4 corners
+  for (let i = 0; i < 6; i++) {
+    const a = i * 60 * Math.PI / 180;
+    centers.push([r * 4 * Math.cos(a), r * 4 * Math.sin(a)]);
+  }
+
+  function drawCircle(cx, cy, alpha, color, lw) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = (color || gold) + alpha + ')';
+    ctx.lineWidth = lw || 1;
+    ctx.stroke();
+  }
+
+  // Draw outer boundary
+  if (step >= 3) {
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 4, 0, Math.PI * 2);
+    ctx.strokeStyle = gold + '0.3)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  // Seed of life (step 0)
+  const layer1Color = step <= 0 ? '0.7)' : '0.3)';
+  centers.slice(0, 7).forEach(([cx, cy]) => {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = gold + (step === 0 ? '0.8' : '0.3') + ')';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+  });
+
+  if (step >= 1) {
+    centers.slice(7, 13).forEach(([cx, cy]) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = teal + (step === 1 ? '0.8' : '0.4') + ')';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    });
+  }
+
+  if (step >= 2) {
+    centers.slice(13, 19).forEach(([cx, cy]) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = violet + (step === 2 ? '0.7' : '0.3') + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  }
+
+  // Fruit of life selection (step 4)
+  const fruitCenters = [centers[0], ...centers.slice(1, 7)];
+  for (let i = 0; i < 6; i++) {
+    const a = (i * 60 + 30) * Math.PI / 180;
+    fruitCenters.push([r * 2 * Math.sqrt(3) * Math.cos(a), r * 2 * Math.sqrt(3) * Math.sin(a)]);
+  }
+
+  if (step >= 4) {
+    fruitCenters.forEach(([cx, cy]) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = gold + '0.8)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+      ctx.fillStyle = teal + '0.9)';
+      ctx.fill();
+    });
+  }
+
+  // Metatron (step 5) - connect all centers
+  if (step >= 5) {
+    ctx.lineWidth = 0.7;
+    for (let i = 0; i < fruitCenters.length; i++) {
+      for (let j = i + 1; j < fruitCenters.length; j++) {
+        ctx.beginPath();
+        ctx.moveTo(fruitCenters[i][0], fruitCenters[i][1]);
+        ctx.lineTo(fruitCenters[j][0], fruitCenters[j][1]);
+        ctx.strokeStyle = gold + '0.45)';
+        ctx.stroke();
+      }
+    }
+    // highlight inner structure
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = i * 60 * Math.PI / 180;
+      ctx.moveTo(0, 0);
+      ctx.lineTo(r * 2 * Math.cos(a), r * 2 * Math.sin(a));
+    }
+    ctx.strokeStyle = teal + '0.6)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+drawFlower(0);
+</script>
+
+</body>
+</html>

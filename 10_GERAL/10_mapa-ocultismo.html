@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Mental · Cabala · Tarot · Alquimia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dark: #8B6914;
+    --deep-purple: #1A0A2E;
+    --mid-purple: #2D1B4E;
+    --violet: #5B2D8E;
+    --indigo: #2E2070;
+    --crimson: #8B0000;
+    --ruby: #C41E3A;
+    --teal: #006D6D;
+    --emerald: #0D5C3A;
+    --cobalt: #1B3A8C;
+    --copper: #B87333;
+    --mercury: #A8A9AD;
+    --sulfur: #E8C547;
+    --salt: #F5F0E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--deep-purple);
+    font-family: 'Crimson Pro', serif;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* Starfield background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(212,175,55,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 8%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 70% 12%, rgba(212,175,55,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 45%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 20%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 60% 75%, rgba(212,175,55,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 85%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 5% 55%, rgba(212,175,55,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+    animation: twinkle 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  /* Nebula background glow */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(91,45,142,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 30%, rgba(139,0,0,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 70%, rgba(0,109,109,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* SVG canvas for connection lines */
+  #connections {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Main scroll container */
+  .universe {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+
+  /* === HEADER === */
+  .header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    position: relative;
+  }
+
+  .header-sigil {
+    font-size: 3rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 20px var(--gold));
+    animation: pulse-glow 3s ease-in-out infinite;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 15px var(--gold)); }
+    50% { filter: drop-shadow(0 0 35px var(--gold-light)) drop-shadow(0 0 60px var(--gold)); }
+  }
+
+  .title-main {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 4vw, 2.8rem);
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 30px rgba(212,175,55,0.7), 0 0 60px rgba(212,175,55,0.3);
+    line-height: 1.3;
+  }
+
+  .title-sub {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: rgba(212,175,55,0.6);
+    letter-spacing: 0.3em;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .header-divider {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto;
+  }
+
+  /* === CENTER NODE === */
+  .center-node {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 40px;
+  }
+
+  .center-orb {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(240,208,96,0.3), rgba(212,175,55,0.1) 50%, rgba(26,10,46,0.8));
+    border: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+      0 0 40px rgba(212,175,55,0.3),
+      0 0 80px rgba(212,175,55,0.15),
+      inset 0 0 30px rgba(212,175,55,0.1);
+    animation: orb-spin 20s linear infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .center-orb:hover { transform: scale(1.08); }
+
+  @keyframes orb-spin {
+    0% { box-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(212,175,55,0.15), inset 0 0 30px rgba(212,175,55,0.1); }
+    50% { box-shadow: 0 0 60px rgba(212,175,55,0.5), 0 0 120px rgba(212,175,55,0.25), inset 0 0 50px rgba(212,175,55,0.2); }
+    100% { box-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(212,175,55,0.15), inset 0 0 30px rgba(212,175,55,0.1); }
+  }
+
+  .center-orb::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,0.3);
+    animation: rotate-ring 15s linear infinite reverse;
+  }
+
+  .center-orb::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212,175,55,0.15);
+    animation: rotate-ring 25s linear infinite;
+  }
+
+  @keyframes rotate-ring {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .center-symbol { font-size: 2.8rem; line-height: 1; }
+  .center-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-top: 4px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* === THREE PILLARS === */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  /* === PILLAR CARD === */
+  .pillar {
+    border-radius: 16px;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fade-in 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .pillar:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  @keyframes fade-in {
+    to { opacity: 1; }
+  }
+
+  .pillar:nth-child(1) { animation-delay: 0.2s; }
+  .pillar:nth-child(2) { animation-delay: 0.4s; }
+  .pillar:nth-child(3) { animation-delay: 0.6s; }
+
+  /* CABALA - Violet/Purple */
+  .pillar-cabala {
+    background: linear-gradient(135deg, rgba(45,27,78,0.9) 0%, rgba(26,10,46,0.95) 100%);
+    border: 1.5px solid rgba(91,45,142,0.6);
+    box-shadow: 0 8px 40px rgba(91,45,142,0.25), inset 0 1px 0 rgba(91,45,142,0.3);
+  }
+  .pillar-cabala:hover {
+    box-shadow: 0 16px 60px rgba(91,45,142,0.4), 0 0 0 1px rgba(91,45,142,0.5);
+  }
+
+  /* TAROT - Crimson/Ruby */
+  .pillar-tarot {
+    background: linear-gradient(135deg, rgba(78,20,20,0.9) 0%, rgba(46,10,10,0.95) 100%);
+    border: 1.5px solid rgba(196,30,58,0.5);
+    box-shadow: 0 8px 40px rgba(139,0,0,0.25), inset 0 1px 0 rgba(196,30,58,0.3);
+  }
+  .pillar-tarot:hover {
+    box-shadow: 0 16px 60px rgba(139,0,0,0.4), 0 0 0 1px rgba(196,30,58,0.5);
+  }
+
+  /* ALQUIMIA - Emerald/Teal */
+  .pillar-alquimia {
+    background: linear-gradient(135deg, rgba(13,50,30,0.9) 0%, rgba(5,30,20,0.95) 100%);
+    border: 1.5px solid rgba(0,109,109,0.5);
+    box-shadow: 0 8px 40px rgba(0,109,109,0.2), inset 0 1px 0 rgba(0,109,109,0.3);
+  }
+  .pillar-alquimia:hover {
+    box-shadow: 0 16px 60px rgba(0,109,109,0.35), 0 0 0 1px rgba(0,109,109,0.5);
+  }
+
+  /* Pillar background shimmer */
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* === PILLAR HEADER === */
+  .pillar-header {
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .pillar-icon {
+    font-size: 3rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 12px currentColor);
+    transition: transform 0.3s ease;
+  }
+  .pillar:hover .pillar-icon { transform: scale(1.15) rotate(5deg); }
+
+  .pillar-cabala .pillar-icon { color: #B084E0; }
+  .pillar-tarot .pillar-icon { color: #E05060; }
+  .pillar-alquimia .pillar-icon { color: #40C080; }
+
+  .pillar-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+    letter-spacing: 0.15em;
+    line-height: 1.3;
+  }
+  .pillar-cabala .pillar-title { color: #D4A8FF; }
+  .pillar-tarot .pillar-title { color: #FFB0B8; }
+  .pillar-alquimia .pillar-title { color: #80FFB8; }
+
+  .pillar-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    opacity: 0.65;
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+  }
+  .pillar-cabala .pillar-subtitle { color: #C8A0F0; }
+  .pillar-tarot .pillar-subtitle { color: #F0A0A8; }
+  .pillar-alquimia .pillar-subtitle { color: #80E8B0; }
+
+  .pillar-divider {
+    height: 1px;
+    margin: 0 auto 20px;
+    width: 80%;
+  }
+  .pillar-cabala .pillar-divider { background: linear-gradient(90deg, transparent, rgba(176,132,224,0.6), transparent); }
+  .pillar-tarot .pillar-divider { background: linear-gradient(90deg, transparent, rgba(224,80,96,0.6), transparent); }
+  .pillar-alquimia .pillar-divider { background: linear-gradient(90deg, transparent, rgba(64,192,128,0.6), transparent); }
+
+  /* === BRANCHES === */
+  .branch {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .branch::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+    transition: width 0.3s ease;
+  }
+
+  .branch:hover::before { width: 6px; }
+
+  .pillar-cabala .branch { background: rgba(91,45,142,0.12); border: 1px solid rgba(91,45,142,0.25); }
+  .pillar-cabala .branch::before { background: linear-gradient(180deg, #B084E0, #7040A8); }
+  .pillar-cabala .branch:hover { background: rgba(91,45,142,0.22); border-color: rgba(176,132,224,0.4); }
+
+  .pillar-tarot .branch { background: rgba(139,0,0,0.15); border: 1px solid rgba(196,30,58,0.25); }
+  .pillar-tarot .branch::before { background: linear-gradient(180deg, #E05060, #A02030); }
+  .pillar-tarot .branch:hover { background: rgba(139,0,0,0.25); border-color: rgba(224,80,96,0.4); }
+
+  .pillar-alquimia .branch { background: rgba(0,109,109,0.12); border: 1px solid rgba(0,109,109,0.25); }
+  .pillar-alquimia .branch::before { background: linear-gradient(180deg, #40C080, #207048); }
+  .pillar-alquimia .branch:hover { background: rgba(0,109,109,0.22); border-color: rgba(64,192,128,0.4); }
+
+  .branch-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .branch-emoji { font-size: 1.3rem; flex-shrink: 0; }
+
+  .branch-name {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .pillar-cabala .branch-name { color: #D4A8FF; }
+  .pillar-tarot .branch-name { color: #FFB8C0; }
+  .pillar-alquimia .branch-name { color: #A0FFD0; }
+
+  .leaves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-left: 36px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  .branch.open .leaves {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  .leaf {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    transition: transform 0.2s ease;
+    cursor: default;
+  }
+  .leaf:hover { transform: scale(1.05); }
+
+  .pillar-cabala .leaf { background: rgba(91,45,142,0.2); border: 1px solid rgba(176,132,224,0.3); color: #E0C8FF; }
+  .pillar-tarot .leaf { background: rgba(139,0,0,0.2); border: 1px solid rgba(224,80,96,0.3); color: #FFD0D8; }
+  .pillar-alquimia .leaf { background: rgba(0,109,109,0.2); border: 1px solid rgba(64,192,128,0.3); color: #C0FFE0; }
+
+  .branch-toggle {
+    margin-left: auto;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    transition: transform 0.3s ease, opacity 0.3s;
+    flex-shrink: 0;
+  }
+  .branch.open .branch-toggle { transform: rotate(180deg); opacity: 0.8; }
+
+  /* === CORRELATION BRIDGES === */
+  .bridges {
+    max-width: 1100px;
+    margin: 50px auto 0;
+    padding: 0 10px;
+  }
+
+  .bridges-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: var(--gold);
+    text-align: center;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .bridges-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(212,175,55,0.5);
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: 0.1em;
+  }
+
+  .bridges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .bridge-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .bridge-card:hover {
+    background: rgba(212,175,55,0.06);
+    border-color: rgba(212,175,55,0.4);
+    transform: translateY(-3px);
+  }
+
+  .bridge-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .bridge-cabala-tarot::after { background: linear-gradient(90deg, #B084E0, #E05060); }
+  .bridge-tarot-alquimia::after { background: linear-gradient(90deg, #E05060, #40C080); }
+  .bridge-cabala-alquimia::after { background: linear-gradient(90deg, #B084E0, #40C080); }
+  .bridge-all::after { background: linear-gradient(90deg, #B084E0, #E05060, #40C080); }
+
+  .bridge-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  .bridge-arrow {
+    font-size: 0.8rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .bridge-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .bridge-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.88rem;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .bridge-text strong {
+    font-style: normal;
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* === SEPHIROTH TABLE === */
+  .sephiroth-section {
+    max-width: 1100px;
+    margin: 50px auto 0;
+    padding: 0 10px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: var(--gold);
+    text-align: center;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .section-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(212,175,55,0.5);
+    text-align: center;
+    margin-bottom: 28px;
+    letter-spacing: 0.1em;
+  }
+
+  .sephiroth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .sephira {
+    background: rgba(255,255,255,0.025);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sephira:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .sephira-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.6rem;
+    opacity: 0.5;
+    letter-spacing: 0.2em;
+    margin-bottom: 4px;
+  }
+
+  .sephira-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .sephira-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.55);
+    font-style: italic;
+    margin-bottom: 2px;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .sephira-row span:last-child {
+    text-align: right;
+    color: var(--gold-light);
+    opacity: 0.7;
+  }
+
+  .sephira-accent {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 0 0 10px 10px;
+    opacity: 0.6;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+
+  .footer-symbol {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .footer-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(212,175,55,0.4);
+    letter-spacing: 0.15em;
+    line-height: 1.8;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .pillars { grid-template-columns: 1fr; max-width: 480px; }
+    .bridges-grid { grid-template-columns: 1fr; }
+    .sephiroth-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .sephiroth-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="universe">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="header-sigil">✦ ✧ ✦</span>
+    <h1 class="title-main">Cabala · Tarot · Alquimia</h1>
+    <p class="title-sub">As Três Línguas do Mistério</p>
+    <div class="header-divider"></div>
+  </div>
+
+  <!-- CENTER ORB -->
+  <div class="center-node">
+    <div class="center-orb" title="Ein Sof — A Infinitude">
+      <span class="center-symbol">🜂</span>
+      <span class="center-label">EIN SOF<br>A LUZ PRIMORDIAL</span>
+    </div>
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div class="pillars">
+
+    <!-- CABALA -->
+    <div class="pillar pillar-cabala">
+      <div class="pillar-header">
+        <span class="pillar-icon">✡</span>
+        <h2 class="pillar-title">Cabala</h2>
+        <p class="pillar-subtitle">A Árvore da Vida</p>
+        <div class="pillar-divider"></div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🌳</span>
+          <span class="branch-name">Árvore da Vida (Etz Chaim)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">10 Sefirot</span>
+          <span class="leaf">22 Caminhos</span>
+          <span class="leaf">4 Mundos (Atzilut, Beriah, Yetzirah, Assiah)</span>
+          <span class="leaf">3 Pilares</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🔢</span>
+          <span class="branch-name">Gematria & Notarikón</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Valor numérico das letras</span>
+          <span class="leaf">Temurah (permutação)</span>
+          <span class="leaf">Alefato hebraico</span>
+          <span class="leaf">Acrônimos sagrados</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">⚡</span>
+          <span class="branch-name">O Raio Flamejante</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Descida da energia criadora</span>
+          <span class="leaf">Da Coroa ao Reino</span>
+          <span class="leaf">Serpente na Árvore</span>
+          <span class="leaf">Retorno ascendente</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">👼</span>
+          <span class="branch-name">Angélicos & Nomes Divinos</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">72 Nomes de Deus</span>
+          <span class="leaf">Arcanjos por Sefirá</span>
+          <span class="leaf">Tetragramaton (יהוה)</span>
+          <span class="leaf">Elohim, Adonai, Shaddai</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">📜</span>
+          <span class="branch-name">Textos Sagrados</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Zohar</span>
+          <span class="leaf">Sefer Yetzirah</span>
+          <span class="leaf">Sefer HaBahir</span>
+          <span class="leaf">Regardie — Árvore da Vida</span>
+          <span class="leaf">Um Jardim de Romãs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAROT -->
+    <div class="pillar pillar-tarot">
+      <div class="pillar-header">
+        <span class="pillar-icon">🃏</span>
+        <h2 class="pillar-title">Tarot</h2>
+        <p class="pillar-subtitle">Espelho da Alma</p>
+        <div class="pillar-divider"></div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🌙</span>
+          <span class="branch-name">Arcanos Maiores (22 Atus)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">0 — O Louco</span>
+          <span class="leaf">I — O Mago</span>
+          <span class="leaf">X — Roda da Fortuna</span>
+          <span class="leaf">XXI — O Universo</span>
+          <span class="leaf">22 caminhos da Árvore</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">♠</span>
+          <span class="branch-name">4 Naipes & Elementos</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Bastões — Fogo (Atzilut)</span>
+          <span class="leaf">Copas — Água (Beriah)</span>
+          <span class="leaf">Espadas — Ar (Yetzirah)</span>
+          <span class="leaf">Discos/Ouros — Terra (Assiah)</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🔯</span>
+          <span class="branch-name">Tarô Alquímico (R. Place)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Arcanos ↔ Processos alquímicos</span>
+          <span class="leaf">Pedra Filosofal = O Mundo</span>
+          <span class="leaf">Louco = Neófito alquimista</span>
+          <span class="leaf">Jung: Psicologia & Alquimia</span>
+          <span class="leaf">Anima Mundi no verso</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">📖</span>
+          <span class="branch-name">Livro de Thoth (Crowley)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Correspondências com a Qabalah</span>
+          <span class="leaf">Roda de Samsara</span>
+          <span class="leaf">Thelema e Aeon</span>
+          <span class="leaf">Frieda Harris — arte sagrada</span>
+          <span class="leaf">Atus como iniciações</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🌟</span>
+          <span class="branch-name">Cartas & Astrologia</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Planetas nos Arcanos</span>
+          <span class="leaf">Signos do Zodíaco</span>
+          <span class="leaf">Elementos nas cortes</span>
+          <span class="leaf">Letras hebraicas em cada Atu</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALQUIMIA -->
+    <div class="pillar pillar-alquimia">
+      <div class="pillar-header">
+        <span class="pillar-icon">⚗</span>
+        <h2 class="pillar-title">Alquimia</h2>
+        <p class="pillar-subtitle">A Grande Obra</p>
+        <div class="pillar-divider"></div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🔥</span>
+          <span class="branch-name">Opus Magnum (7 Etapas)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">1. Calcinação</span>
+          <span class="leaf">2. Dissolução</span>
+          <span class="leaf">3. Separação</span>
+          <span class="leaf">4. Conjunção</span>
+          <span class="leaf">5. Fermentação</span>
+          <span class="leaf">6. Destilação</span>
+          <span class="leaf">7. Coagulação</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">☿</span>
+          <span class="branch-name">Tria Prima (3 Essências)</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Enxofre 🜁 — Alma / Fogo</span>
+          <span class="leaf">Mercúrio ☿ — Espírito / Água</span>
+          <span class="leaf">Sal 🜔 — Corpo / Terra</span>
+          <span class="leaf">Paracelsus e a tríade</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🪙</span>
+          <span class="branch-name">7 Metais & Planetas</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Ouro — Sol ☀</span>
+          <span class="leaf">Prata — Lua 🌙</span>
+          <span class="leaf">Ferro — Marte ♂</span>
+          <span class="leaf">Mercúrio — Mercúrio ☿</span>
+          <span class="leaf">Estanho — Júpiter ♃</span>
+          <span class="leaf">Cobre — Vênus ♀</span>
+          <span class="leaf">Chumbo — Saturno ♄</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">🐦</span>
+          <span class="branch-name">Nigredo · Albedo · Rubedo</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Nigredo — Putrefação / Morte do ego</span>
+          <span class="leaf">Albedo — Purificação / Lua</span>
+          <span class="leaf">Citrinitas — Aurora / Transmutação</span>
+          <span class="leaf">Rubedo — A Pedra / Sol</span>
+        </div>
+      </div>
+
+      <div class="branch" onclick="toggle(this)">
+        <div class="branch-header">
+          <span class="branch-emoji">💎</span>
+          <span class="branch-name">Pedra Filosofal</span>
+          <span class="branch-toggle">▼</span>
+        </div>
+        <div class="leaves">
+          <span class="leaf">Elixir da vida longa</span>
+          <span class="leaf">Transmutação do chumbo em ouro</span>
+          <span class="leaf">Quinta Essência (Éter)</span>
+          <span class="leaf">Iluminação espiritual</span>
+          <span class="leaf">Lapis Philosophorum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRIDGES / CORRELATIONS -->
+  <div class="bridges reveal">
+    <h3 class="bridges-title">✦ As Pontes entre os Três Sistemas ✦</h3>
+    <p class="bridges-subtitle">Onde os caminhos se encontram</p>
+
+    <div class="bridges-grid">
+
+      <div class="bridge-card bridge-cabala-tarot">
+        <div class="bridge-icons">
+          <span>✡</span>
+          <span class="bridge-arrow">⟷</span>
+          <span>🃏</span>
+        </div>
+        <div class="bridge-label">Cabala ↔ Tarot</div>
+        <p class="bridge-text">
+          Os <strong>22 Arcanos Maiores</strong> correspondem aos <strong>22 caminhos da Árvore da Vida</strong>. Cada Atu recebe uma letra hebraica: Alef ao Louco, Bet ao Mago, Shin ao Julgamento. As cartas de corte espelham os <strong>4 mundos cabalísticos</strong> (Atzilut, Beriah, Yetzirah, Assiah) e os naipes refletem os elementos de cada Sefirá.
+        </p>
+      </div>
+
+      <div class="bridge-card bridge-tarot-alquimia">
+        <div class="bridge-icons">
+          <span>🃏</span>
+          <span class="bridge-arrow">⟷</span>
+          <span>⚗</span>
+        </div>
+        <div class="bridge-label">Tarot ↔ Alquimia</div>
+        <p class="bridge-text">
+          No <strong>Tarô Alquímico</strong> de Robert Place, cada Arcano Maior é uma fase do <strong>Opus Magnum</strong>. O Louco é a <em>Prima Materia</em>; O Mundo é a <strong>Pedra Filosofal</strong>. Jung identificou que as imagens alquímicas e os arcanos narram o mesmo processo de individuação psíquica — a transformação do ser.
+        </p>
+      </div>
+
+      <div class="bridge-card bridge-cabala-alquimia">
+        <div class="bridge-icons">
+          <span>✡</span>
+          <span class="bridge-arrow">⟷</span>
+          <span>⚗</span>
+        </div>
+        <div class="bridge-label">Cabala ↔ Alquimia</div>
+        <p class="bridge-text">
+          O <strong>Tria Prima</strong> alquímico (Enxofre, Mercúrio, Sal) ecoa os três pilares da Árvore. Os <strong>7 metais</strong> e seus planetas correspondem às 7 Sefirot inferiores. A <em>Nigredo</em> é o abismo de Daath; a <em>Rubedo</em>, o esplendor de Tiferet — o Sol, coração da Árvore.
+        </p>
+      </div>
+
+      <div class="bridge-card bridge-all">
+        <div class="bridge-icons">
+          <span>✡</span>
+          <span class="bridge-arrow">⟷</span>
+          <span>🃏</span>
+          <span class="bridge-arrow">⟷</span>
+          <span>⚗</span>
+        </div>
+        <div class="bridge-label">A Síntese dos Três</div>
+        <p class="bridge-text">
+          Os três sistemas são <strong>linguagens diferentes do mesmo mistério</strong>: a transformação do ser humano. A Cabala mapeia a estrutura do cosmos e da alma; o Tarot a torna navegável por imagens; a Alquimia a opera via processos físicos e simbólicos. <em>Como em cima, assim embaixo</em> — todos nasceram da mesma fonte hermética.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEPHIROTH TABLE -->
+  <div class="sephiroth-section reveal">
+    <h3 class="section-title">✦ As 10 Sefirot — Tabela de Correspondências ✦</h3>
+    <p class="section-subtitle">Cabala · Tarot · Alquimia · Planetas</p>
+    <div class="sephiroth-grid" id="sephiroth"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-symbol">🜃</span>
+    <p class="footer-text">
+      "Como em cima, assim embaixo — como no interior, assim no exterior."<br>
+      Tábua de Esmeralda · Hermes Trismegistus
+    </p>
+  </div>
+
+</div>
+
+<script>
+  // Toggle branches
+  function toggle(el) {
+    el.classList.toggle('open');
+  }
+
+  // Sephiroth data
+  const sephiroth = [
+    { num: "א · 1", name: "Kether", heb: "כֶּתֶר", meaning: "A Coroa", planet: "Ponto / Nada", tarot: "As dos 4 naipes", alquimia: "Prima Materia", color: "#FFFFFF" },
+    { num: "ב · 2", name: "Chokmah", heb: "חָכְמָה", meaning: "A Sabedoria", planet: "Zodíaco / Urano", tarot: "Reis (Cavaleiros)", alquimia: "Enxofre", color: "#C8C8FF" },
+    { num: "ג · 3", name: "Binah", heb: "בִּינָה", meaning: "A Compreensão", planet: "Saturno ♄", tarot: "Rainhas", alquimia: "Sal", color: "#2A0A2A" },
+    { num: "ד · 4", name: "Chesed", heb: "חֶסֶד", meaning: "A Misericórdia", planet: "Júpiter ♃", tarot: "4 (quatro)", alquimia: "Chumbo→Estanho", color: "#4040AA" },
+    { num: "ה · 5", name: "Geburah", heb: "גְּבוּרָה", meaning: "A Força", planet: "Marte ♂", tarot: "5 (cinco)", alquimia: "Ferro", color: "#AA2020" },
+    { num: "ו · 6", name: "Tiferet", heb: "תִּפְאֶרֶת", meaning: "A Beleza", planet: "Sol ☀", tarot: "6 (seis) · Arcanos solares", alquimia: "Ouro · Rubedo", color: "#D4AF37" },
+    { num: "ז · 7", name: "Netzach", heb: "נֶצַח", meaning: "A Vitória", planet: "Vênus ♀", tarot: "7 (sete) · Imperatriz", alquimia: "Cobre", color: "#20AA60" },
+    { num: "ח · 8", name: "Hod", heb: "הוֹד", meaning: "O Esplendor", planet: "Mercúrio ☿", tarot: "8 (oito) · O Mago", alquimia: "Mercúrio · Albedo", color: "#E8A020" },
+    { num: "ט · 9", name: "Yesod", heb: "יְסוֹד", meaning: "O Fundamento", planet: "Lua 🌙", tarot: "9 (nove) · Sacerdotisa", alquimia: "Prata", color: "#C0C0D8" },
+    { num: "י · 10", name: "Malkuth", heb: "מַלְכוּת", meaning: "O Reino", planet: "Terra 🌍", tarot: "10 (dez) · 4 elementos", alquimia: "Corpo físico", color: "#6B4226" },
+  ];
+
+  const grid = document.getElementById('sephiroth');
+  sephiroth.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'sephira';
+    el.innerHTML = `
+      <div class="sephira-num">${s.num}</div>
+      <div class="sephira-name" style="color:${s.color}; text-shadow: 0 0 12px ${s.color}40">${s.name} ${s.heb}</div>
+      <div class="sephira-row"><span>Significado</span><span>${s.meaning}</span></div>
+      <div class="sephira-row"><span>Planeta</span><span>${s.planet}</span></div>
+      <div class="sephira-row"><span>Tarot</span><span>${s.tarot}</span></div>
+      <div class="sephira-row"><span>Alquimia</span><span>${s.alquimia}</span></div>
+      <div class="sephira-accent" style="background: linear-gradient(90deg, ${s.color}80, ${s.color}20)"></div>
+    `;
+    grid.appendChild(el);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Auto-open first branch of each pillar
+  document.querySelectorAll('.pillar').forEach(pillar => {
+    const first = pillar.querySelector('.branch');
+    if (first) setTimeout(() => first.classList.add('open'), 800);
+  });
+</script>
+</body>
+</html>

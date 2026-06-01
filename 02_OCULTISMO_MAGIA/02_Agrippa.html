@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Occulta Philosophia — Enciclopédia Iniciática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   DE OCCULTA PHILOSOPHIA — GRIMOIRE RENASCENTISTA
+   Design: Pergaminho envelhecido · Ouro · Carmesim
+   ===================================================== */
+
+:root {
+  /* Paleta de Pergaminho e Tinta */
+  --parch-1: #f7edd5;    /* pergaminho claro */
+  --parch-2: #ede0c0;    /* pergaminho médio */
+  --parch-3: #d9c99a;    /* pergaminho escuro */
+  --parch-4: #c9b080;    /* bordas, fundos */
+  --ink-deep: #1c1409;   /* tinta profunda */
+  --ink-mid:  #2e1f0e;   /* tinta média */
+  --ink-soft: #4a3520;   /* texto corpo */
+  /* Ouro */
+  --gold-bright: #d4a017;
+  --gold-mid:    #b8860b;
+  --gold-dark:   #8b6914;
+  --gold-faint:  rgba(212,160,23,0.15);
+  /* Carmesim */
+  --crim-bright: #9b1c1c;
+  --crim-mid:    #7a1515;
+  --crim-dark:   #5a0f0f;
+  --crim-faint:  rgba(155,28,28,0.08);
+  /* Azul iniciático */
+  --indigo:      #2c3e6b;
+  --indigo-faint:rgba(44,62,107,0.08);
+  /* Púrpura */
+  --purple:      #5a2d82;
+  --purple-faint:rgba(90,45,130,0.08);
+  /* Verde herbal */
+  --emerald:     #1a5c3a;
+  --emerald-faint:rgba(26,92,58,0.08);
+  --sidebar-w:   290px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* TEXTURA DE FUNDO — PERGAMINHO */
+body {
+  background-color: var(--parch-2);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  color: var(--ink-soft);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--parch-3); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+
+/* ===== BARRA DE PROGRESSO ===== */
+#reading-progress {
+  position: fixed; top: 0; left: var(--sidebar-w); right: 0;
+  height: 4px; background: var(--parch-3); z-index: 200;
+}
+#reading-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crim-mid), var(--gold-bright));
+  width: 0%; transition: width .15s;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+  position: fixed; left: 0; top: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: var(--ink-deep);
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  border-right: 2px solid var(--gold-dark);
+  overflow-y: auto; z-index: 100;
+  padding: 0 0 30px;
+  transition: transform .3s ease;
+  box-shadow: 4px 0 30px rgba(0,0,0,0.5);
+}
+
+#sidebar-header {
+  background: linear-gradient(180deg, var(--crim-dark) 0%, var(--ink-deep) 100%);
+  padding: 28px 20px 22px;
+  border-bottom: 1px solid var(--gold-dark);
+  text-align: center;
+  position: relative;
+}
+#sidebar-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 10%; right: 10%;
+  height: 1px; background: var(--gold-bright);
+}
+.sidebar-sigil {
+  display: block; font-size: 36px; color: var(--gold-bright);
+  margin-bottom: 10px; letter-spacing: 6px;
+  text-shadow: 0 0 15px rgba(212,160,23,0.6);
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%,100% { text-shadow: 0 0 10px rgba(212,160,23,0.4); }
+  50%      { text-shadow: 0 0 25px rgba(212,160,23,0.8), 0 0 50px rgba(212,160,23,0.3); }
+}
+#sidebar-header .sidebar-title {
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 3.5px; color: var(--gold-mid);
+  text-transform: uppercase; display: block;
+}
+
+.nav-section-title {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold-dark);
+  padding: 14px 16px 5px;
+  border-top: 1px solid rgba(212,160,23,0.1);
+  margin-top: 8px; display: block;
+}
+.nav-link {
+  display: block; padding: 5px 16px;
+  color: rgba(237,224,192,0.75);
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif; font-size: 13px; line-height: 1.5;
+  border-left: 2px solid transparent;
+  transition: all .2s;
+}
+.nav-link:hover {
+  color: var(--gold-bright);
+  border-left-color: var(--gold-mid);
+  background: rgba(212,160,23,0.07);
+  padding-left: 22px;
+}
+.nav-link.sub { padding-left: 28px; font-size: 12px; color: rgba(237,224,192,0.5); }
+.nav-link.sub:hover { padding-left: 34px; }
+.nav-active {
+  color: var(--gold-bright) !important;
+  border-left-color: var(--gold-bright) !important;
+  background: rgba(212,160,23,0.1) !important;
+}
+
+/* ===== TOGGLE SIDEBAR ===== */
+#sidebar-toggle {
+  position: fixed; left: var(--sidebar-w); top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold-dark); color: var(--parch-1);
+  border: none; padding: 14px 6px; cursor: pointer;
+  z-index: 101; border-radius: 0 5px 5px 0;
+  font-family: 'Cinzel', serif; font-size: 10px;
+  letter-spacing: 2px; writing-mode: vertical-rl;
+  transition: all .3s; box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+}
+#sidebar-toggle:hover { background: var(--gold-bright); color: var(--ink-deep); }
+
+/* ===== MAIN ===== */
+#main { margin-left: var(--sidebar-w); min-height: 100vh; transition: margin-left .3s; }
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(155,28,28,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(212,160,23,0.1) 0%, transparent 50%),
+    var(--ink-deep);
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(155,28,28,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(212,160,23,0.1) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 40px 60px;
+  position: relative; overflow: hidden;
+}
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(212,160,23,0.025) 60px, rgba(212,160,23,0.025) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(212,160,23,0.025) 60px, rgba(212,160,23,0.025) 61px);
+  pointer-events: none;
+}
+
+.hero-overline {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 6px;
+  color: var(--gold-dark); text-transform: uppercase;
+  margin-bottom: 24px; opacity: .9;
+}
+.hero-symbol {
+  font-size: 90px; line-height: 1;
+  color: var(--gold-bright);
+  text-shadow: 0 0 60px rgba(212,160,23,0.5), 0 0 120px rgba(212,160,23,0.2);
+  margin-bottom: 30px;
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(26px, 4vw, 56px);
+  color: var(--parch-1);
+  line-height: 1.15; letter-spacing: 1px;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+}
+.hero-latin-title {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: clamp(15px, 2vw, 22px);
+  color: var(--gold-mid); letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.hero-author {
+  font-family: 'Cinzel', serif; font-size: 13px;
+  letter-spacing: 3px; color: var(--parch-3);
+  margin-bottom: 40px; text-transform: uppercase;
+}
+.hero-rule {
+  width: 100%; max-width: 500px; height: 1px; margin: 0 auto 36px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold-bright), var(--gold-dark), transparent);
+}
+.hero-desc {
+  max-width: 680px;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: rgba(237,224,192,0.85);
+  line-height: 1.9; margin-bottom: 48px;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.hero-tag {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px;
+  padding: 5px 14px; text-transform: uppercase;
+  border: 1px solid var(--gold-dark); color: var(--gold-mid);
+  background: rgba(212,160,23,0.06);
+  transition: all .2s;
+}
+.hero-tag:hover { background: rgba(212,160,23,0.15); color: var(--gold-bright); }
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 80px 70px;
+  border-bottom: 1px solid var(--parch-3);
+  position: relative;
+}
+.section:nth-child(odd) {
+  background: var(--parch-1);
+}
+.section:nth-child(even) {
+  background: var(--parch-2);
+}
+
+/* Bordas ornamentais de seção */
+.section::before {
+  content: '';
+  display: block; height: 3px;
+  background: linear-gradient(90deg, transparent 5%, var(--parch-4) 15%, var(--gold-dark) 40%, var(--gold-bright) 50%, var(--gold-dark) 60%, var(--parch-4) 85%, transparent 95%);
+  margin-bottom: 60px;
+}
+
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-number {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 6px;
+  color: var(--gold-dark); text-transform: uppercase; display: block; margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(20px, 3vw, 36px); color: var(--crim-bright);
+  line-height: 1.25; margin-bottom: 14px;
+}
+.section-subtitle {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: var(--ink-mid); margin-bottom: 20px;
+}
+.section-divider {
+  width: 220px; margin: 0 auto; text-align: center;
+  color: var(--gold-dark); font-size: 14px; letter-spacing: 8px;
+}
+
+/* ===== HEADINGS ===== */
+h2.content-h2 {
+  font-family: 'Cinzel', serif; font-size: 22px;
+  color: var(--crim-bright); margin: 55px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--parch-3);
+  position: relative;
+}
+h2.content-h2::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; width: 60px; height: 2px;
+  background: var(--gold-mid);
+}
+h3.content-h3 {
+  font-family: 'Cinzel', serif; font-size: 17px;
+  color: var(--ink-mid); margin: 40px 0 16px;
+  letter-spacing: 0.5px;
+}
+h4.content-h4 {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 17px; font-weight: 600;
+  color: var(--crim-mid); margin: 28px 0 12px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+p { margin-bottom: 22px; text-align: justify; hyphens: auto; color: var(--ink-soft); }
+
+.dropcap::first-letter {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 80px; float: left; line-height: .75;
+  margin: 6px 14px 0 0;
+  color: var(--crim-bright);
+  text-shadow: 2px 2px 0 var(--gold-dark);
+}
+
+em { color: var(--ink-mid); }
+strong { color: var(--ink-deep); }
+.em-gold { color: var(--gold-dark); font-weight: 600; }
+.em-greek { font-style: italic; color: var(--crim-mid); }
+.em-latin { font-style: italic; color: var(--ink-mid); }
+.em-hebrew { direction: rtl; color: var(--crim-bright); font-size: 1.15em; font-weight: 600; }
+
+/* ===== BLOCKQUOTE ===== */
+blockquote {
+  border-left: 4px solid var(--crim-bright);
+  padding: 20px 28px; margin: 36px 0;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: var(--ink-mid);
+  background: var(--crim-faint);
+  position: relative;
+}
+blockquote::before {
+  content: '\201C';
+  position: absolute; top: -8px; left: 16px;
+  font-size: 60px; color: var(--crim-bright); opacity: .3;
+  font-family: Georgia, serif; line-height: 1;
+}
+blockquote cite {
+  display: block; margin-top: 12px;
+  font-size: 12px; color: var(--gold-dark); font-style: normal;
+  font-family: 'Cinzel', serif; letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+/* ===== CALLOUT BOXES ===== */
+.callout {
+  border: 1px solid var(--parch-4); padding: 24px 30px; margin: 36px 0;
+  position: relative; background: rgba(255,255,255,0.4);
+}
+.callout::before {
+  content: attr(data-label);
+  position: absolute; top: -11px; left: 20px;
+  background: inherit; padding: 0 12px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold-dark);
+}
+.callout.hermetic   { border-color: var(--gold-mid); background: rgba(212,160,23,0.06); }
+.callout.hermetic::before { background: var(--parch-1); color: var(--gold-dark); }
+.callout.cabalistic { border-color: var(--emerald); background: var(--emerald-faint); }
+.callout.cabalistic::before { background: var(--parch-1); color: var(--emerald); }
+.callout.philosophical { border-color: var(--indigo); background: var(--indigo-faint); }
+.callout.philosophical::before { background: var(--parch-1); color: var(--indigo); }
+.callout.warning    { border-color: var(--crim-bright); background: var(--crim-faint); }
+.callout.warning::before { background: var(--parch-1); color: var(--crim-bright); }
+.callout.initiatic  { border-color: var(--purple); background: var(--purple-faint); }
+.callout.initiatic::before { background: var(--parch-1); color: var(--purple); }
+
+/* Corrigir background do before para a seção atual */
+.section:nth-child(odd) .callout::before { background: var(--parch-1); }
+.section:nth-child(even) .callout::before { background: var(--parch-2); }
+
+/* ===== TABLES ===== */
+.table-wrapper { overflow-x: auto; margin: 36px 0; border: 1px solid var(--parch-4); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr { background: var(--ink-deep); }
+th {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-bright);
+  padding: 13px 15px; text-align: left;
+  border-bottom: 2px solid var(--gold-dark);
+}
+td {
+  padding: 11px 15px; border-bottom: 1px solid var(--parch-3);
+  vertical-align: top; color: var(--ink-soft);
+}
+tr:nth-child(even) td { background: rgba(201,176,128,0.15); }
+tr:hover td { background: rgba(212,160,23,0.1); }
+
+/* ===== CARDS ===== */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 22px; margin: 36px 0; }
+.card {
+  border: 1px solid var(--parch-4);
+  padding: 24px;
+  background: rgba(255,255,255,0.5);
+  transition: all .3s;
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-bright), var(--gold-dark));
+  opacity: 0; transition: opacity .3s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); border-color: var(--gold-mid); }
+.card:hover::before { opacity: 1; }
+.card-icon { font-size: 30px; margin-bottom: 12px; display: block; }
+.card-title { font-family: 'Cinzel', serif; font-size: 13px; color: var(--crim-bright); margin-bottom: 10px; letter-spacing: .5px; }
+.card-text { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+/* ===== PLANET CARDS ===== */
+.planet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 18px; margin: 30px 0; }
+.planet-card {
+  border: 1px solid var(--parch-4); padding: 20px; text-align: center;
+  background: rgba(255,255,255,0.45); transition: all .3s;
+}
+.planet-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.planet-card.sol    { border-top: 3px solid #c8950a; }
+.planet-card.lua    { border-top: 3px solid #8090a8; }
+.planet-card.marte  { border-top: 3px solid #9b2020; }
+.planet-card.mercurio { border-top: 3px solid #4a7a50; }
+.planet-card.jupiter { border-top: 3px solid #3050a0; }
+.planet-card.venus  { border-top: 3px solid #a04870; }
+.planet-card.saturno { border-top: 3px solid #505060; }
+.planet-symbol { font-size: 38px; margin-bottom: 8px; display: block; color: var(--ink-mid); }
+.planet-name   { font-family: 'Cinzel', serif; font-size: 13px; color: var(--crim-bright); margin-bottom: 8px; }
+.planet-info   { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+/* ===== TIMELINE ===== */
+.timeline { position: relative; padding: 10px 0; margin: 36px 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 72px; top: 0; bottom: 0;
+  width: 1px; background: linear-gradient(180deg, transparent, var(--gold-dark), transparent);
+}
+.timeline-item { display: flex; gap: 22px; margin-bottom: 28px; position: relative; }
+.timeline-year {
+  min-width: 62px; font-family: 'Cinzel', serif; font-size: 12px;
+  color: var(--gold-dark); text-align: right; padding-top: 2px;
+}
+.timeline-dot {
+  position: absolute; left: 65px; top: 6px; width: 16px; height: 16px;
+  border: 2px solid var(--gold-mid); background: var(--parch-1); border-radius: 50%;
+}
+.timeline-content { flex: 1; padding-left: 26px; }
+.timeline-event { font-family: 'Cinzel', serif; font-size: 14px; color: var(--crim-bright); margin-bottom: 5px; }
+.timeline-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+
+/* ===== ACCORDION ===== */
+.accordion { margin: 22px 0; }
+.accordion-item { border: 1px solid var(--parch-3); margin-bottom: 4px; }
+.accordion-header {
+  background: none; border: none; width: 100%; text-align: left;
+  padding: 14px 20px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 13px; color: var(--ink-mid);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all .2s;
+}
+.accordion-header:hover { background: rgba(212,160,23,0.07); color: var(--crim-bright); }
+.accordion-header.active { background: rgba(155,28,28,0.06); color: var(--crim-bright); border-bottom: 1px solid var(--parch-3); }
+.accordion-arrow { transition: transform .3s; font-size: 11px; color: var(--gold-dark); }
+.accordion-header.active .accordion-arrow { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; padding: 0 20px; }
+.accordion-body.open { max-height: 3000px; padding: 16px 20px 22px; }
+
+/* ===== TABS ===== */
+.tabs-container { margin: 36px 0; }
+.tabs-header { display: flex; gap: 4px; border-bottom: 2px solid var(--parch-3); flex-wrap: wrap; margin-bottom: 0; }
+.tab-btn {
+  background: var(--parch-3); border: 1px solid var(--parch-4); border-bottom: none;
+  color: var(--ink-soft); padding: 9px 18px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1px;
+  transition: all .2s; margin-bottom: -2px;
+}
+.tab-btn:hover { background: var(--parch-2); color: var(--crim-bright); }
+.tab-btn.active { background: var(--parch-1); color: var(--crim-bright); border-color: var(--parch-3); border-bottom-color: var(--parch-1); }
+.tab-panel { display: none; padding: 28px; border: 1px solid var(--parch-3); border-top: none; background: var(--parch-1); }
+.tab-panel.active { display: block; }
+
+/* ===== QUADRADOS MÁGICOS ===== */
+.magic-square { display: inline-grid; gap: 3px; }
+.magic-square .cell {
+  width: 38px; height: 38px; border: 1px solid var(--parch-4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cinzel', serif; font-size: 14px;
+  color: var(--crim-bright); background: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+/* ===== GLOSSARY ===== */
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr)); gap: 18px; margin: 28px 0; }
+.glossary-item { border: 1px solid var(--parch-3); padding: 20px; background: rgba(255,255,255,0.4); }
+.glossary-term { font-family: 'Cinzel', serif; font-size: 14px; color: var(--crim-bright); margin-bottom: 5px; letter-spacing: .5px; }
+.glossary-etymology { font-family: 'IM Fell English', serif; font-style: italic; font-size: 12px; color: var(--gold-dark); margin-bottom: 8px; }
+.glossary-def { font-size: 13px; color: var(--ink-soft); line-height: 1.7; }
+
+/* ===== DIAGRAMS ===== */
+.diagram-wrapper { text-align: center; margin: 40px 0; }
+.diagram-title {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+  color: var(--gold-dark); text-transform: uppercase; margin-bottom: 20px;
+}
+
+/* ===== COMPARISON ===== */
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 14px; margin: 28px 0; }
+.comparison-col { border: 1px solid var(--parch-3); padding: 18px; background: rgba(255,255,255,0.35); }
+.comparison-col-title { font-family: 'Cinzel', serif; font-size: 12px; color: var(--crim-bright); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--parch-3); letter-spacing: .5px; }
+.comparison-item { font-size: 13px; color: var(--ink-soft); padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.5; }
+
+/* ===== VERSE ===== */
+.verse {
+  text-align: center; padding: 40px 60px; margin: 44px 0;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 20px; color: var(--crim-mid); line-height: 2.1;
+  border: 1px solid var(--parch-4);
+  background: rgba(155,28,28,0.04);
+  position: relative;
+}
+.verse::before, .verse::after {
+  content: '✦ ✦ ✦';
+  display: block; font-style: normal; font-size: 12px;
+  color: var(--gold-dark); letter-spacing: 6px; margin-bottom: 16px;
+}
+.verse::after { margin-bottom: 0; margin-top: 16px; }
+
+/* ===== ORNAMENT ===== */
+.ornament { text-align: center; color: var(--gold-dark); font-size: 22px; margin: 36px 0; letter-spacing: 8px; }
+
+/* ===== FOOTNOTES ===== */
+.footnotes { border-top: 1px solid var(--parch-3); margin-top: 60px; padding-top: 28px; }
+.footnote-item { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.6; opacity: .8; }
+
+/* ===== BACK TO TOP ===== */
+#back-top {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--crim-bright); color: var(--parch-1);
+  border: none; width: 44px; height: 44px; border-radius: 50%;
+  cursor: pointer; font-size: 18px; opacity: 0; transition: all .3s; z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+#back-top.visible { opacity: 1; }
+#back-top:hover { background: var(--gold-mid); color: var(--ink-deep); transform: translateY(-3px); }
+
+/* ===== TAGS ===== */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.tag {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 1.5px;
+  padding: 4px 12px; border: 1px solid var(--gold-dark); color: var(--gold-dark);
+  text-transform: uppercase; background: rgba(212,160,23,0.07);
+}
+
+/* ===== COLLAPSED SIDEBAR ===== */
+.sidebar-collapsed #sidebar       { transform: translateX(-100%); }
+.sidebar-collapsed #sidebar-toggle { left: 0; }
+.sidebar-collapsed #main          { margin-left: 0; }
+.sidebar-collapsed #reading-progress { left: 0; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar { transform: translateX(-290px); width: 290px; }
+  .sidebar-open #sidebar { transform: translateX(0); }
+  #sidebar-toggle { left: 0; }
+  .section { padding: 50px 24px; }
+  #hero { padding: 60px 24px; }
+  .hero-symbol { font-size: 60px; }
+}
+</style>
+</head>
+<body>
+<div id="reading-progress"><div id="reading-bar"></div></div>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <span class="sidebar-sigil">☽ ✡ ☿</span>
+    <span class="sidebar-title">Índice Iniciático</span>
+  </div>
+  <span class="nav-section-title">Prolegômenos</span>
+  <a href="#hero" class="nav-link">✦ Página Inicial</a>
+  <a href="#sec-intro" class="nav-link">✦ Sobre Esta Enciclopédia</a>
+  <a href="#sec-agrippa" class="nav-link">✦ Quem Foi Agrippa</a>
+  <span class="nav-section-title">I — Contexto Histórico</span>
+  <a href="#sec-renascimento" class="nav-link">O Renascimento Oculto</a>
+  <a href="#sec-hermetismo" class="nav-link sub">→ Hermetismo Renascentista</a>
+  <a href="#sec-neoplatonismo" class="nav-link sub">→ Neoplatonismo</a>
+  <a href="#sec-ficino" class="nav-link sub">→ Marsilio Ficino</a>
+  <a href="#sec-pico" class="nav-link sub">→ Pico della Mirandola</a>
+  <span class="nav-section-title">II — Cosmologia</span>
+  <a href="#sec-cosmo" class="nav-link">O Universo Triplo</a>
+  <a href="#sec-elemental" class="nav-link sub">→ Mundo Elemental</a>
+  <a href="#sec-celestial" class="nav-link sub">→ Mundo Celestial</a>
+  <a href="#sec-intelectual" class="nav-link sub">→ Mundo Intelectual</a>
+  <a href="#sec-alma-mundo" class="nav-link sub">→ Anima Mundi</a>
+  <a href="#sec-hierarquias" class="nav-link sub">→ Hierarquias Espirituais</a>
+  <a href="#sec-microcosmo" class="nav-link sub">→ Macro/Microcosmo</a>
+  <span class="nav-section-title">III — Os Três Livros</span>
+  <a href="#sec-livro1" class="nav-link">Livro I — Magia Natural</a>
+  <a href="#sec-livro2" class="nav-link">Livro II — Magia Celestial</a>
+  <a href="#sec-livro3" class="nav-link">Livro III — Magia Cerimonial</a>
+  <span class="nav-section-title">IV — Sistemas</span>
+  <a href="#sec-correspondencias" class="nav-link">Correspondências Ocultas</a>
+  <a href="#sec-cabala" class="nav-link sub">→ Cabala Cristã</a>
+  <a href="#sec-alquimia" class="nav-link">Alquimia</a>
+  <a href="#sec-numerologia" class="nav-link">Geometria Sagrada</a>
+  <a href="#sec-linguagem" class="nav-link">Linguagem Mágica</a>
+  <span class="nav-section-title">V — Interpretação</span>
+  <a href="#sec-iniciática" class="nav-link">Leitura Iniciática</a>
+  <a href="#sec-como-estudar" class="nav-link">Como Estudar Agrippa</a>
+  <a href="#sec-comparacoes" class="nav-link">Comparações</a>
+  <span class="nav-section-title">VI — Legado</span>
+  <a href="#sec-influencia" class="nav-link">Influência Histórica</a>
+  <a href="#sec-timeline" class="nav-link">Linha do Tempo</a>
+  <a href="#sec-arvore" class="nav-link">Árvore da Vida</a>
+  <a href="#sec-glossario" class="nav-link">Glossário Completo</a>
+  <a href="#sec-bibliografia" class="nav-link">Bibliografia</a>
+  <a href="#sec-conclusao" class="nav-link">Meditação Final</a>
+</nav>
+
+<button id="sidebar-toggle" onclick="toggleSidebar()">☰ ÍNDICE</button>
+<div id="main">
+<section id="hero">
+  <div class="hero-overline">Opera Omnia Magica Renaissancis · Enciclopédia Iniciática Total</div>
+  <div class="hero-symbol">⚕</div>
+  <h1 class="hero-title">Três Livros de<br>Filosofia Oculta</h1>
+  <div class="hero-latin-title">De Occulta Philosophia Libri Tres</div>
+  <div class="hero-author">Heinrich Cornelius Agrippa von Nettesheim (1486–1535)</div>
+  <div class="hero-rule"></div>
+  <p class="hero-desc">Uma Enciclopédia Iniciática Total — análise filosófica, esotérica, simbólica e histórica da magna obra do ocultismo renascentista. Do Mundo Elemental às Hierarquias Angelicais, da Cabala Cristã à Magia Natural, da Astrologia à Linguagem Sagrada dos Nomes Divinos.</p>
+  <svg width="400" height="60" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="30" x2="160" y2="30" stroke="#8a6a1a" stroke-width="1"/>
+    <polygon points="170,30 180,22 190,30 180,38" fill="none" stroke="#c9a84c" stroke-width="1"/>
+    <circle cx="200" cy="30" r="12" fill="none" stroke="#c9a84c" stroke-width="1"/>
+    <text x="200" y="35" text-anchor="middle" fill="#c9a84c" font-size="14" font-family="serif">✦</text>
+    <polygon points="210,30 220,22 230,30 220,38" fill="none" stroke="#c9a84c" stroke-width="1"/>
+    <line x1="240" y1="30" x2="400" y2="30" stroke="#8a6a1a" stroke-width="1"/>
+  </svg>
+  <div class="tags" style="justify-content:center;margin-top:30px;">
+    <span class="tag">Hermetismo</span><span class="tag">Neoplatonismo</span><span class="tag">Cabala Cristã</span>
+    <span class="tag">Magia Natural</span><span class="tag">Astrologia</span><span class="tag">Alquimia</span>
+    <span class="tag">Angeologia</span><span class="tag">Gematria</span><span class="tag">Renascimento</span>
+  </div>
+</section>
+
+<section class="section" id="sec-intro">
+  <div class="section-header">
+    <span class="section-number">Prolegômenos</span>
+    <h1 class="section-title">Sobre Esta Enciclopédia Iniciática</h1>
+    <p class="section-subtitle">Natureza, propósito e método desta obra de referência</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Este volume nasceu de uma necessidade reconhecida por todos os que já tentaram adentrar as páginas dos <em>Três Livros de Filosofia Oculta</em> de Cornelius Agrippa: a de um guia que não apenas resuma, mas <em>habite</em> o universo conceitual do texto, explicando sua linguagem, suas pressuposições filosóficas, sua lógica metafísica interna e suas ressonâncias com a totalidade das tradições esotéricas do Ocidente. Agrippa não escreveu para principiantes — escreveu para aqueles que já dominavam latim, grego, hebraico, filosofia aristotélica, neoplatonismo, teologia cristã, astrologia, medicina hipocrática e numerologia pitagórica. Propomos aqui tornar acessível esse universo extraordinário sem trair sua profundidade.</p>
+  <p>O leitor que percorrer estas páginas não encontrará um resumo. Encontrará uma <strong class="em-gold">viagem iniciática guiada</strong> pelos três andares do cosmos agrippiano: o mundo elemental (onde habitam os quatro elementos e suas virtudes ocultas), o mundo celestial (onde os planetas e suas inteligências imprimem suas influências sobre a matéria), e o mundo intelectual/divino (onde habitam os anjos, os nomes sagrados, as sefirot e os fundamentos últimos da realidade). Cada conceito será examinado em múltiplos níveis — histórico, filosófico, simbólico, iniciático e comparativo.</p>
+  <div class="callout hermetic" data-label="Nota Metodológica">
+    <p>Esta enciclopédia opera em quatro níveis simultâneos de leitura, espelhando a tradição hermenêutica medieval e renascentista: <strong class="em-gold">(1) Nível Literal</strong> — o que Agrippa literalmente afirma; <strong class="em-gold">(2) Nível Alegórico</strong> — o significado simbólico por trás das afirmações; <strong class="em-gold">(3) Nível Moral/Psicológico</strong> — o que os sistemas descritos revelam sobre a natureza da mente humana; <strong class="em-gold">(4) Nível Anagógico</strong> — a dimensão espiritual última, o que aponta para a união com o divino. Esta quadriplicidade de leitura não é arbitrária — é o método que o próprio Agrippa usa para interpretar as Escrituras e os textos filosóficos que cita.</p>
+  </div>
+  <blockquote>
+    "A magia é a mais perfeita e mais elevada ciência, o conhecimento supremo e mais nobre das coisas naturais mais santas."
+    <cite>— Cornelius Agrippa, De Occulta Philosophia, Livro I, Capítulo II</cite>
+  </blockquote>
+</section>
+
+<section class="section" id="sec-agrippa">
+  <div class="section-header">
+    <span class="section-number">Capítulo I</span>
+    <h1 class="section-title">Heinrich Cornelius Agrippa von Nettesheim</h1>
+    <p class="section-subtitle">Vida, obra, perseguições e legado do maior mago-filósofo do Renascimento</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Heinrich Cornelius Agrippa von Nettesheim nasceu em 14 de setembro de 1486 em Colônia, no Sacro Império Romano-Germânico — cidade que era simultaneamente um centro de teologia escolástica conservadora e de correntes místicas heterodoxas herdadas da tradição renana (Mestre Eckhart, João Tauler, Henrique Suso). O nome "von Nettesheim" indica origem nobre, e Agrippa cultivou ao longo de toda a vida uma identidade de cavalheiro-filósofo, homem de espada e de pena, que circulou pelas cortes e universidades da Europa com uma mistura de brilhantismo e temeridade que lhe custou perseguições, prisões, exílios e inimizades poderosas.</p>
+  <p>Dominou latim, grego, hebraico, árabe e pelo menos seis línguas vernáculas. Estudou direito, medicina, teologia, filosofia e ciências naturais. Em 1510, com apenas 23 anos, completou a primeira versão dos <em>Três Livros de Filosofia Oculta</em> — que circulou em manuscrito e foi revisada e expandida ao longo das duas décadas seguintes, até a publicação definitiva em 1531.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1486</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Nascimento em Colônia</div>
+        <div class="timeline-desc">14 de setembro. Família nobre do Sacro Império. Cidade marcada pelo misticismo renano (Eckhart, Ruysbroeck) e pela escolástica dominicana.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1506</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Paris e redes herméticas</div>
+        <div class="timeline-desc">Frequenta Paris. Participa de uma rede secreta de estudantes interessados em hermetismo e magia. Primeiros contatos aprofundados com a Cabala.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1509</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Dole — Cabala e Inquisição</div>
+        <div class="timeline-desc">Leciona na Universidade de Dole. Profere palestras sobre o <em>De Verbo Mirifico</em> de Reuchlin. É denunciado à Inquisição pelo franciscano Jean Catilinet por heresia. Primeiro grande conflito com a ortodoxia religiosa.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1510</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Primeira versão do De Occulta Philosophia</div>
+        <div class="timeline-desc">Dedica ao abade Johannes Trithemius de Sponheim. A obra circula em manuscrito. Trithemius, em carta famosa, aconselha Agrippa a guardá-la em segredo — comunicar a sabedoria oculta apenas aos sábios.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1515–1516</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Pavia — Leitura pública do Corpus Hermeticum</div>
+        <div class="timeline-desc">Leciona o <em>Pimandro</em> do Corpus Hermeticum em Pavia — ato extraordinariamente audacioso que o expõe à acusação de paganismo. Conflitos violentos com teólogos locais.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1519–1520</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Metz — Defesa das Bruxas</div>
+        <div class="timeline-desc">Como advogado público em Metz, defende com sucesso uma mulher acusada de bruxaria e herança diabólica. Conflito violento com o inquisidor Nicolas Savin. Escreve tratado contra os inquisidores — mostrando sua coragem intelectual e moral.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1526</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">De Incertitudine et Vanitate Scientiarum</div>
+        <div class="timeline-desc">Publica seu tratado cético e iconoclasta sobre a vaidade de todas as ciências — aparentemente em contradição com o De Occulta. A tensão entre as obras é uma das chaves hermenêuticas mais importantes para compreender Agrippa.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1531</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Publicação Definitiva — De Occulta Philosophia</div>
+        <div class="timeline-desc">Colônia. A obra expandida e revisada é finalmente publicada em três volumes. Dedicada ao arcebispo Hermann von Wied. Imediata repercussão em toda a Europa letrada.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1535</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Morte em Grenoble</div>
+        <div class="timeline-desc">Morre em circunstâncias obscuras em Grenoble, França. Havia sido preso por dívidas em Bruxelas (1528). Sua morte foi cercada de lendas negras — diziam que um cão negro que o acompanhava era o próprio diabo.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">O Paradoxo Agrippa: Mago e Cético</h2>
+  <p>Uma das questões mais fascinantes da biografia intelectual de Agrippa é a aparente contradição entre duas de suas obras maiores: o <em>De Occulta Philosophia</em> (1531), que constitui a mais abrangente defesa e sistematização da magia renascentista, e o <em>De Incertitudine et Vanitate Scientiarum et Artium</em> (1526), que é uma devastadora crítica cética de todas as ciências e artes humanas — incluindo a própria magia.</p>
+  <div class="callout initiatic" data-label="Chave Iniciática — O Paradoxo Resolvido">
+    <p>O <em>De Incertitudine</em> pode ser lido como o <strong class="em-gold">cadinho que purifica a leitura do De Occulta</strong>. Agrippa nos diz: não tome nada literalmente; não acredite em nada sem fundamento filosófico; questione toda autoridade. Apenas o leitor que passou pelo fogo do ceticismo está preparado para receber as verdades do sistema mágico sem as confundir com superstição vulgar. Este é um padrão iniciático clássico: primeiro a desconstrução das certezas falsas (a <em>via negativa</em>), depois a construção do conhecimento verdadeiro (a <em>via positiva</em>).</p>
+  </div>
+
+  <h2 class="content-h2">Fontes Intelectuais de Agrippa</h2>
+  <div class="cards-grid">
+    <div class="card"><span class="card-icon">📜</span><div class="card-title">Corpus Hermeticum</div><div class="card-text">Traduzido por Ficino em 1463. A cosmologia hermetista — o homem como imagem do cosmos, a cadeia das emanações, a magia como participação cósmica — permeia cada página do De Occulta. O Pimandro, o Asclepius e o Corpus completo são fontes permanentes.</div></div>
+    <div class="card"><span class="card-icon">⭐</span><div class="card-title">Neoplatonismo</div><div class="card-text">Platão, Plotino, Porfírio, Jâmblico, Proclo, Pseudo-Dionísio Areopagita. A teoria das emanações, a hierarquia do Uno ao Múltiplo, a ascensão da alma através das esferas, a theurgia neoplatônica — tudo entra diretamente na estrutura do De Occulta.</div></div>
+    <div class="card"><span class="card-icon">✡</span><div class="card-title">Cabala Judaica e Cristã</div><div class="card-text">Via Pico della Mirandola e Johannes Reuchlin. As sefirot, os nomes divinos, os anjos, a gematria, o notirikón, a temurah — Agrippa integra toda a estrutura cabalística ao seu sistema de magia intelectual.</div></div>
+    <div class="card"><span class="card-icon">🔭</span><div class="card-title">Astrologia Árabe e Clássica</div><div class="card-text">Ptolomeu, Al-Kindi, Abu Ma'shar. O <em>Picatrix</em> (Ghayat al-Hakim) é fonte crucial para os talismãs e imagens mágicas. Agrippa combina a astrologia grega (qualidades, aspectos) com a árabe (imagens, sigils).</div></div>
+    <div class="card"><span class="card-icon">🧪</span><div class="card-title">Alquimia e Medicina Natural</div><div class="card-text">Galeno, Avicena, Alberto Magno. A teoria das qualidades elementais (quente, frio, úmido, seco) e das virtudes ocultas das substâncias forma a espinha dorsal do Livro I. Alberto Magno é fonte direta indispensável.</div></div>
+    <div class="card"><span class="card-icon">⚔</span><div class="card-title">Trithemius — Mentor Direto</div><div class="card-text">Johannes Trithemius (1462–1516), abade de Sponheim e mentor de Agrippa, foi pioneiro na sistematização da magia angélica. Sua <em>Steganographia</em> e o <em>Liber Octo Quaestionum</em> influenciaram diretamente o Livro III do De Occulta.</div></div>
+  </div>
+</section>
+
+<section class="section" id="sec-renascimento">
+  <div class="section-header">
+    <span class="section-number">Capítulo II</span>
+    <h1 class="section-title">O Renascimento e a Revolução Hermética</h1>
+    <p class="section-subtitle">O contexto histórico que tornou Agrippa possível e necessário</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Para compreender por que Agrippa escreveu o que escreveu — e por que suas ideias eram simultaneamente tão influentes e tão perigosas — é necessário mergulhar no universo intelectual do Renascimento europeu. Esse período, que se estende aproximadamente de 1350 a 1600, não foi apenas um movimento artístico ou literário: foi uma profunda revolução na <em>imagem do cosmos</em> que os europeus cultos habitavam mentalmente. No centro dessa revolução estava, paradoxalmente, o passado — um conjunto de textos antigos redescobertos que transformaram radicalmente a compreensão do que o ser humano era e do que ele podia fazer.</p>
+
+  <h2 class="content-h2" id="sec-hermetismo">O Hermetismo Renascentista</h2>
+  <p>O hermetismo renascentista nasce em 1463, quando Cosimo de' Medici ordenou ao seu tradutor, Marsilio Ficino, que interrompesse a tradução de Platão para traduzir imediatamente um manuscrito recém-chegado da Macedônia: o <em>Corpus Hermeticum</em>. O texto, atribuído ao lendário Hermes Trismegisto ("Hermes, o Três Vezes Grande"), foi acreditado por todos os humanistas renascentistas como uma obra da mais alta antiguidade — anterior a Platão, anterior a Moisés, talvez contemporânea ou mesmo anterior ao Dilúvio.</p>
+  <div class="callout hermetic" data-label="A Grande Ilusão Fecunda">
+    <p>Isaac Casaubon demonstrou em 1614 que o Corpus Hermeticum era, na verdade, uma compilação de textos greco-egípcios escritos principalmente entre os séculos I e III d.C. Mas essa "descoberta tardia" não diminui em nada a importância histórica do hermetismo renascentista: foi a <em>crença na antiguidade extraordinária</em> dos textos que conferiu a eles sua autoridade avassaladora. Para um Ficino, um Pico, um Agrippa, estar de acordo com Hermes Trismegisto equivalia a estar de acordo com uma sabedoria primordial que precedia e fundamentava todas as demais tradições — incluindo a bíblica.</p>
+  </div>
+  <p>O Corpus Hermeticum constituía o que Ficino chamou de <em class="em-latin">prisca theologia</em> — a "teologia antiga", uma revelação divina original que se teria manifestado em múltiplas tradições ao longo da história: em Zoroastro, em Pitágoras, em Platão, nos profetas hebreus, e que culminava no Cristianismo. Esta visão tinha uma consequência revolucionária: ela colocava o hermetismo, a filosofia grega, a Cabala judaica e o Cristianismo como expressões diferentes de uma mesma verdade universal — abrindo a possibilidade de construir uma síntese total de todas as tradições de sabedoria do Ocidente. É exatamente esse projeto de síntese total que Agrippa leva a cabo nos <em>Três Livros de Filosofia Oculta</em>.</p>
+
+  <h2 class="content-h2" id="sec-neoplatonismo">Neoplatonismo: A Espinha Filosófica de Agrippa</h2>
+  <p>Se o hermetismo fornece a aura de autoridade sagrada do projeto agrippiano, o neoplatonismo fornece sua espinha filosófica. A estrutura fundamental do neoplatonismo pode ser descrita em três processos:</p>
+  <div class="cards-grid">
+    <div class="card"><span class="card-icon">◯</span><div class="card-title">Monê — Permanência</div><div class="card-text">O Uno permanece em si mesmo, absolutamente simples, além de toda qualidade, além do ser, além do pensamento. É a fonte de tudo sem precisar de nada. Agrippa o identifica com o Deus cristão em sua transcendência absoluta — o Ain Soph da Cabala, o Pai do qual tudo emana sem que Ele sofra qualquer diminuição.</div></div>
+    <div class="card"><span class="card-icon">↓</span><div class="card-title">Proodos — Emanação</div><div class="card-text">Do Uno emana o Nous (Intelecto Universal), do Nous emana a Psyche (Alma do Mundo), da Alma emana a Natureza e a matéria. Cada nível da realidade é uma imagem do nível acima. O cosmos é uma hierarquia de reflexos — como um espelho refletido em outro espelho infinitamente.</div></div>
+    <div class="card"><span class="card-icon">↑</span><div class="card-title">Epistrophê — Retorno</div><div class="card-text">Tudo o que emana do Uno tende a retornar ao Uno. A alma humana, que desceu ao mundo material, pode e deve ascender de volta à sua fonte divina. Este retorno é o objetivo da filosofia, da teurgia e — para Agrippa — da magia legítima. A magia é o caminho de volta ao divino.</div></div>
+  </div>
+
+  <h2 class="content-h2" id="sec-ficino">Marsilio Ficino: O Pai do Renascimento Hermético</h2>
+  <p>Marsilio Ficino (1433–1499) é o mediador entre a tradição antiga e Agrippa. Fundador da Academia Platônica de Florença sob o patrocínio dos Médici, Ficino realizou um trabalho monumental: traduziu para o latim o Corpus Hermeticum (1463), as <em>Enéadas</em> de Plotino (1492), as obras de Porfírio, Jâmblico e Proclo. Sozinho, foi responsável por tornar a filosofia neoplatônica e hermética acessível ao mundo letrado europeu.</p>
+  <div class="callout philosophical" data-label="A Grande Contribuição de Ficino — Spiritus Mundi">
+    <p>A mais importante contribuição de Ficino para o projeto agrippiano é a noção de <strong class="em-gold">Spiritus Mundi</strong> — o "Espírito do Mundo". Este é um pneuma (sopro vital) que permeia todo o cosmos, mediando entre a alma imaterial e o corpo material, sendo o veículo pelo qual as influências astrais se transmitem das estrelas para as coisas terrestres. Para Ficino e depois para Agrippa, a magia natural opera fundamentalmente através do <em>spiritus mundi</em>: certas substâncias, sons, imagens e rituais são capazes de capturar e concentrar o espírito cósmico de uma forma específica — solar, lunar, marciana. O mago é aquele que aprendeu a manipular esse espírito conscientemente.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-pico">Pico della Mirandola: A Cabala Entra no Projeto Hermético</h2>
+  <p>Giovanni Pico della Mirandola (1463–1494) foi o responsável por introduzir a Cabala judaica no centro do projeto hermético-cristão. Em suas <em>900 Teses</em> (1486) e no <em>Discurso sobre a Dignidade do Homem</em>, Pico realizou algo radicalmente novo: usou conceitos cabalísticos para interpretar e confirmar a teologia cristã, e usou a teologia cristã para interpretar e confirmar a Cabala. O resultado foi a <em>Cabala Cristã</em> — uma tradição nova que seria fundamental para Agrippa.</p>
+  <p>Pico afirmava — de forma escandalosa para a época — que <em>"nenhuma ciência nos assegura melhor da divindade de Cristo do que a magia e a Cabala"</em>. Esta afirmação condensava o projeto inteiro: usar as ferramentas interpretativas da tradição mística judaica para confirmar os dogmas cristãos, especialmente a Trindade e a Encarnação. Para Agrippa, a Cabala é mais do que um sistema interpretativo — é o fundamento do terceiro e mais elevado nível da magia: a magia cerimonial que opera diretamente com nomes divinos, anjos e hierarquias espirituais.</p>
+
+  <h2 class="content-h2">Ciência e Magia no Renascimento</h2>
+  <p>É um erro profundo imaginar que a magia renascentista era "anticientífica" ou "irracional". Para os homens do século XVI, a divisão entre ciência e magia simplesmente não existia da forma como a concebemos hoje. A magia <em>natural</em> de Agrippa era considerada parte legítima da filosofia natural — a "física" da época. Grandes naturalistas como Paracelso, Giambattista della Porta e o jovem Francis Bacon operavam em um universo conceitual onde magia e ciência eram aspectos do mesmo projeto de compreender e manipular a natureza.</p>
+  <div class="callout hermetic" data-label="Magia como Ciência Total">
+    <p>Agrippa define a magia no início do Livro I como <em>"a conexão e união de todas as virtudes que existem nas coisas inferiores com os dons e faculdades das coisas superiores"</em>. Esta definição é rigorosamente científica no sentido renascentista: descreve a magia como o estudo e a aplicação prática das conexões que estruturam o cosmos. O mago é, nessa visão, o <strong class="em-gold">cientista total</strong> — aquele que compreende as leis que governam todas as esferas da realidade e sabe como operar dentro e através delas. A revolução científica do século XVII só tornaria a magia "irracional" ao substituir o modelo de cosmos como organismo vivo por um modelo de cosmos como máquina.</p>
+  </div>
+</section>
+
+<section class="section" id="sec-cosmo">
+  <div class="section-header">
+    <span class="section-number">Capítulo III</span>
+    <h1 class="section-title">A Cosmologia de Agrippa</h1>
+    <p class="section-subtitle">O Universo Triplo — Elemental, Celestial e Intelectual</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">A cosmologia que sustenta toda a estrutura do <em>De Occulta Philosophia</em> é uma das mais elaboradas construções intelectuais do Renascimento. Não é uma cosmologia inventada por Agrippa — é uma síntese magistral de neoplatonismo, hermetismo, Cabala e escolástica — mas Agrippa a sistematiza com uma clareza e uma abrangência que não tem precedente. Compreender essa cosmologia é compreender a lógica interna de todo o sistema mágico agrippiano: sem ela, os três livros não fazem sentido; com ela, cada elemento da obra encontra seu lugar preciso numa estrutura coerente e profunda.</p>
+
+  <div class="diagram-wrapper">
+    <div class="diagram-title">A Hierarquia dos Três Mundos — Mundus Triplex</div>
+    <svg width="100%" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;">
+      <rect width="600" height="450" fill="#0d0a06"/>
+      <ellipse cx="300" cy="75" rx="245" ry="60" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="1.5"/>
+      <text x="300" y="65" text-anchor="middle" fill="#c9a84c" font-size="14" font-family="Cinzel, serif" letter-spacing="2">MUNDO INTELECTUAL / DIVINO</text>
+      <text x="300" y="85" text-anchor="middle" fill="#e8d08a" font-size="11" font-family="serif" font-style="italic">Anjos · Inteligências Puras · Nomes Divinos · Sefirot · Arquétipos</text>
+      <line x1="300" y1="138" x2="300" y2="178" stroke="#8a6a1a" stroke-width="1" stroke-dasharray="4,3"/>
+      <polygon points="295,176 300,186 305,176" fill="#8a6a1a"/>
+      <text x="315" y="162" fill="#8a6a1a" font-size="10" font-family="serif" font-style="italic">emanação ↓ / retorno ↑</text>
+      <ellipse cx="300" cy="228" rx="210" ry="52" fill="rgba(100,130,200,0.07)" stroke="#6d8ec0" stroke-width="1.5"/>
+      <text x="300" y="218" text-anchor="middle" fill="#6d8ec0" font-size="14" font-family="Cinzel, serif" letter-spacing="2">MUNDO CELESTIAL</text>
+      <text x="300" y="240" text-anchor="middle" fill="#a0b8d8" font-size="11" font-family="serif" font-style="italic">Planetas · Esferas · Estrelas Fixas · Almas Celestes · Influências</text>
+      <line x1="300" y1="284" x2="300" y2="322" stroke="#8a6a1a" stroke-width="1" stroke-dasharray="4,3"/>
+      <polygon points="295,320 300,330 305,320" fill="#8a6a1a"/>
+      <ellipse cx="300" cy="378" rx="185" ry="52" fill="rgba(90,160,80,0.07)" stroke="#5a9e6d" stroke-width="1.5"/>
+      <text x="300" y="368" text-anchor="middle" fill="#5a9e6d" font-size="14" font-family="Cinzel, serif" letter-spacing="2">MUNDO ELEMENTAL</text>
+      <text x="300" y="390" text-anchor="middle" fill="#90c898" font-size="11" font-family="serif" font-style="italic">Fogo · Ar · Água · Terra · Plantas · Animais · Metais · Minerais</text>
+      <circle cx="55" cy="228" r="28" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+      <line x1="55" y1="256" x2="55" y2="290" stroke="#c9a84c" stroke-width="1.2"/>
+      <line x1="55" y1="268" x2="38" y2="282" stroke="#c9a84c" stroke-width="1.2"/>
+      <line x1="55" y1="268" x2="72" y2="282" stroke="#c9a84c" stroke-width="1.2"/>
+      <line x1="55" y1="290" x2="42" y2="310" stroke="#c9a84c" stroke-width="1.2"/>
+      <line x1="55" y1="290" x2="68" y2="310" stroke="#c9a84c" stroke-width="1.2"/>
+      <text x="55" y="328" text-anchor="middle" fill="#c9a84c" font-size="10" font-family="Cinzel, serif">HOMO</text>
+      <text x="55" y="340" text-anchor="middle" fill="#8a6a1a" font-size="9" font-family="serif" font-style="italic">microcosmo</text>
+      <line x1="80" y1="210" x2="92" y2="75" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="2,4" opacity="0.5"/>
+      <line x1="83" y1="228" x2="90" y2="228" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="2,4" opacity="0.5"/>
+      <line x1="80" y1="246" x2="92" y2="375" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="2,4" opacity="0.5"/>
+      <line x1="555" y1="390" x2="555" y2="65" stroke="#c9a84c" stroke-width="0.7" stroke-dasharray="2,6" opacity="0.3"/>
+      <polygon points="550,67 555,57 560,67" fill="#c9a84c" opacity="0.3"/>
+      <text x="562" y="228" fill="#c9a84c" font-size="9" font-family="serif" font-style="italic" opacity="0.5">retorno</text>
+    </svg>
+  </div>
+
+  <h3 class="content-h3" id="sec-elemental">I. O Mundo Elemental — Mundus Elementalis</h3>
+  <p>O mundo elemental é o nível mais baixo — mas não o menos importante — da hierarquia cósmica. É o mundo da matéria, da multiplicidade, da geração e da corrupção: tudo aquilo que nasce, cresce, se transforma e morre. É composto pelos quatro elementos da física antiga — Fogo, Ar, Água e Terra — que derivam de quatro qualidades primárias: <strong class="em-gold">Calor</strong>, <strong class="em-gold">Frio</strong>, <strong class="em-gold">Umidade</strong> e <strong class="em-gold">Secura</strong>.</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Elemento</th><th>Qualidades</th><th>Humor</th><th>Temperamento</th><th>Sentido</th><th>Estação</th><th>Parte do Corpo</th><th>Princípio</th></tr></thead>
+      <tbody>
+        <tr><td>🔥 <strong>Fogo</strong></td><td>Quente + Seco</td><td>Bílis Amarela</td><td>Colérico</td><td>Visão</td><td>Verão</td><td>Coração, Cabeça</td><td>Ativo, Expansivo, Ascendente</td></tr>
+        <tr><td>💨 <strong>Ar</strong></td><td>Quente + Úmido</td><td>Sangue</td><td>Sanguíneo</td><td>Audição</td><td>Primavera</td><td>Peito, Pulmões</td><td>Mediador, Comunicador</td></tr>
+        <tr><td>💧 <strong>Água</strong></td><td>Frio + Úmido</td><td>Fleuma</td><td>Fleumático</td><td>Paladar/Tato</td><td>Inverno</td><td>Ventre, Estômago</td><td>Receptivo, Dissolvente</td></tr>
+        <tr><td>🌍 <strong>Terra</strong></td><td>Frio + Seco</td><td>Bílis Negra</td><td>Melancólico</td><td>Olfato</td><td>Outono</td><td>Membros, Ossos</td><td>Fixo, Condensador, Descendente</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout hermetic" data-label="A Quintessência — O Quinto Elemento">
+    <p>Além dos quatro elementos, existe um quinto — a <strong class="em-gold">Quintessência</strong> (<em class="em-latin">quinta essentia</em>). Para Aristóteles, era a substância dos corpos celestes — imutável e perfeitamente circular. Para os alquimistas e para Agrippa, a quintessência é a essência espiritual pura que pode ser extraída de qualquer coisa natural. É o éter, o spiritus mundi, o medium das influências celestes. O trabalho alquímico de extrair a quintessência é analógo ao trabalho mágico de acessar a virtude espiritual oculta nas coisas — ambos buscam destilar o espírito da matéria.</p>
+  </div>
+  <div class="callout philosophical" data-label="Virtudes Ocultas — O Fundamento da Magia Natural">
+    <p>A distinção mais importante de Agrippa no Livro I é entre <strong class="em-gold">qualidades manifestas</strong> (derivadas dos elementos — calor, frio, umidade, secura) e <strong class="em-gold">virtudes ocultas</strong> (derivadas de influências espirituais superiores). Por que o imã atrai o ferro? Não por calor nem por frio, mas por uma virtude oculta específica — uma influência recebida das esferas celestes. Por que o coral detém o sangramento? Por uma simpatia oculta com o sangue. Estas virtudes ocultas são o fundamento de toda a magia natural e provam, para Agrippa, que o cosmos é um sistema de influências espirituais e não meramente de causas físicas.</p>
+  </div>
+
+  <h3 class="content-h3" id="sec-celestial">II. O Mundo Celestial — Mundus Caelestis</h3>
+  <p>Acima do mundo elemental, interpondo-se entre ele e o mundo divino, está o mundo celestial: o reino dos planetas, das esferas cristalinas, das estrelas fixas e das inteligências que as animam. O modelo astronômico de Agrippa é o ptolemaico geocêntrico: a Terra no centro, rodeada pelas sete esferas planetárias (em ordem crescente: Lua, Mercúrio, Vênus, Sol, Marte, Júpiter, Saturno), depois a esfera das estrelas fixas, e além — o Primeiro Móvel e o Empíreo imóvel. Cada esfera é animada por uma inteligência celeste que a move e pela qual transmite influências específicas ao mundo inferior.</p>
+  <div class="planet-grid">
+    <div class="planet-card saturno"><span class="planet-symbol">♄</span><div class="planet-name" style="color:#808090">Saturno</div><div class="planet-info">O mais afastado. Frio e seco. Melancolia, profundidade, tempo, morte, alquimia, contemplação. Metal: chumbo. Pedra: jaspe negro. Inteligência: Agiel. Espírito: Zazel.</div></div>
+    <div class="planet-card jupiter"><span class="planet-symbol">♃</span><div class="planet-name" style="color:#8090d0">Júpiter</div><div class="planet-info">Quente e úmido. Expansão, benevolência, realeza, justiça, riqueza, religião. Metal: estanho. Pedra: safira. Inteligência: Iophiel. Espírito: Hismael.</div></div>
+    <div class="planet-card marte"><span class="planet-symbol">♂</span><div class="planet-name" style="color:#c84030">Marte</div><div class="planet-info">Quente e seco. Guerra, coragem, destruição, febre, cirurgia, ferro. Metal: ferro. Pedra: rubim. Inteligência: Graphiel. Espírito: Barzabel.</div></div>
+    <div class="planet-card sol"><span class="planet-symbol">☉</span><div class="planet-name" style="color:#f0c040">Sol</div><div class="planet-info">O rei dos planetas. Quente e seco. Vida, luz, ouro, realeza, saúde, coração. Metal: ouro. Pedra: crisólito/diamante. Inteligência: Nakhiel. Espírito: Sorath.</div></div>
+    <div class="planet-card venus"><span class="planet-symbol">♀</span><div class="planet-name" style="color:#d080a0">Vênus</div><div class="planet-info">Fria e úmida. Amor, beleza, fertilidade, harmonia, arte, prazeres sensuais. Metal: cobre. Pedra: esmeralda. Inteligência: Hagiel. Espírito: Kedemel.</div></div>
+    <div class="planet-card mercurio"><span class="planet-symbol">☿</span><div class="planet-name" style="color:#90b870">Mercúrio</div><div class="planet-info">Variável — assume a natureza dos outros planetas. Comunicação, magia, medicina, comércio, escrita. Metal: mercúrio vivo. Pedra: ágata. Inteligência: Tiriel. Espírito: Taphthartharath.</div></div>
+    <div class="planet-card lua"><span class="planet-symbol">☽</span><div class="planet-name" style="color:#c0c8d8">Lua</div><div class="planet-info">A mais próxima. Fria e úmida. Ciclos, fertilidade, sonhos, marés, gestação. Metal: prata. Pedra: cristal/selenita. Inteligência: Malka Be-Tarshisim. Espírito: Shad Barshemoth.</div></div>
+  </div>
+
+  <h3 class="content-h3" id="sec-intelectual">III. O Mundo Intelectual/Divino — Mundus Intellectualis</h3>
+  <p>O mundo intelectual é o estrato mais elevado da hierarquia cósmica — o reino das inteligências puras, dos anjos, das ideias arquetípicas e dos nomes divinos. Ele corresponde ao <em>Nous</em> neoplatônico e às Sefirot superiores da Cabala. É o nível do qual o mundo celestial recebe suas qualidades essenciais, e é portanto a causa remota de tudo o que existe no mundo elemental. A magia cerimonial do Livro III opera neste nível — por isso é o mais poderoso e o mais perigoso dos três tipos de magia.</p>
+
+  <h2 class="content-h2" id="sec-alma-mundo">A Alma do Mundo — Anima Mundi</h2>
+  <p>O conceito de <em class="em-latin">Anima Mundi</em> é talvez o mais fundamental de toda a filosofia mágica agrippiana, porque é ela que torna a magia possível. A alma do mundo é a entidade intermediária entre o espírito puro (o mundo intelectual) e a matéria bruta (o mundo elemental), sendo ao mesmo tempo receptáculo das idéias divinas e força animadora de toda a natureza. Platão havia descrito a alma do mundo no <em>Timeu</em>; Plotino a desenvolveu como o terceiro nível da hierarquia do Uno; Ficino a identificou com o <em>Spiritus Mundi</em>. Para Agrippa, a alma do mundo é a mediadora universal — o canal pelo qual as virtudes dos mundos superiores fluem para o mundo inferior.</p>
+  <blockquote>"Os magos acreditam e afirmam que não apenas os elementos naturais, mas também todos os tipos de metais, pedras, animais, plantas, sons, palavras e figuras têm virtudes espirituais específicas; e que estas virtudes lhes foram dadas pela ideia e forma que os penetram, pelo poder da alma do mundo."<cite>— Agrippa, De Occulta Philosophia, Livro I, Cap. XIV</cite></blockquote>
+
+  <h2 class="content-h2" id="sec-hierarquias">Hierarquias Espirituais</h2>
+  <div class="tabs-container">
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab(this,'htab1')">Dionísio Areopagita</button>
+      <button class="tab-btn" onclick="switchTab(this,'htab2')">Hierarquia Cabalística</button>
+      <button class="tab-btn" onclick="switchTab(this,'htab3')">Espíritos Elementais</button>
+      <button class="tab-btn" onclick="switchTab(this,'htab4')">Inteligências Planetárias</button>
+    </div>
+    <div id="htab1" class="tab-panel active">
+      <h4 class="content-h4">Os Nove Coros Angelicais — Pseudo-Dionísio</h4>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Tríade</th><th>Ordem</th><th>Função</th><th>Correspondência Cabalística</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3"><strong>1ª Tríade</strong><br><em>Contemplam o divino diretamente</em></td><td>Serafins</td><td>Amor ardente a Deus; transmitem calor divino</td><td>Kether / Ain Soph</td></tr>
+          <tr><td>Querubins</td><td>Sabedoria e ciência divina; iluminam as ordens inferiores</td><td>Chokmah</td></tr>
+          <tr><td>Tronos</td><td>Portam e sustentam o poder divino</td><td>Binah</td></tr>
+          <tr><td rowspan="3"><strong>2ª Tríade</strong><br><em>Governam o cosmos</em></td><td>Dominações</td><td>Regulam o trabalho das ordens inferiores</td><td>Chesed</td></tr>
+          <tr><td>Virtudes</td><td>Conferem graça e produzem milagres</td><td>Geburah</td></tr>
+          <tr><td>Potências</td><td>Resistem às forças do mal; guardam as ordens cósmicas</td><td>Tiphereth</td></tr>
+          <tr><td rowspan="3"><strong>3ª Tríade</strong><br><em>Atuam no mundo humano</em></td><td>Principados</td><td>Guardam nações, cidades, comunidades</td><td>Netzach</td></tr>
+          <tr><td>Arcanjos</td><td>Mensageiros supremos; revelam mistérios</td><td>Hod</td></tr>
+          <tr><td>Anjos</td><td>Guardiões de indivíduos; mediadores nas orações</td><td>Yesod / Malkuth</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div id="htab2" class="tab-panel">
+      <h4 class="content-h4">As Dez Sefirot e seus Arcanjos</h4>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Nº</th><th>Nome</th><th>Significado</th><th>Nome Divino</th><th>Arcanjo</th><th>Correspondência</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Kether</strong></td><td>Coroa</td><td>Eheieh (אהיה)</td><td>Metatron</td><td>Ponto primordial; vontade divina; o Uno</td></tr>
+          <tr><td>2</td><td><strong>Chokmah</strong></td><td>Sabedoria</td><td>Yah (יה)</td><td>Raziel</td><td>Força expansiva; Pai; zodíaco primordial</td></tr>
+          <tr><td>3</td><td><strong>Binah</strong></td><td>Entendimento</td><td>YHWH Elohim</td><td>Tzaphkiel</td><td>Forma receptiva; Mãe; Saturno superior</td></tr>
+          <tr><td>4</td><td><strong>Chesed</strong></td><td>Graça/Amor</td><td>El (אל)</td><td>Tzadkiel</td><td>Misericórdia; expansão; Júpiter</td></tr>
+          <tr><td>5</td><td><strong>Geburah</strong></td><td>Força/Rigor</td><td>Elohim Gibor</td><td>Khamael</td><td>Julgamento; restrição; Marte</td></tr>
+          <tr><td>6</td><td><strong>Tiphereth</strong></td><td>Beleza</td><td>YHWH Eloah Ve-Da'at</td><td>Rafael / Miguel</td><td>Harmonia; coração; Sol; Cristo</td></tr>
+          <tr><td>7</td><td><strong>Netzach</strong></td><td>Vitória</td><td>YHWH Tzabaoth</td><td>Haniel</td><td>Emoção; natureza; Vênus</td></tr>
+          <tr><td>8</td><td><strong>Hod</strong></td><td>Esplendor</td><td>Elohim Tzabaoth</td><td>Miguel / Rafael</td><td>Intelecto; magia; Mercúrio</td></tr>
+          <tr><td>9</td><td><strong>Yesod</strong></td><td>Fundação</td><td>El Shaddai</td><td>Gabriel</td><td>Astral; sonhos; fundação; Lua</td></tr>
+          <tr><td>10</td><td><strong>Malkuth</strong></td><td>Reino</td><td>Adonai Ha-Aretz</td><td>Sandalphon</td><td>Mundo material; natureza; Terra</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div id="htab3" class="tab-panel">
+      <h4 class="content-h4">Espíritos dos Quatro Elementos</h4>
+      <p>Agrippa, seguindo a tradição neoplatônica e a Cabala, reconhece espíritos específicos que habitam e governam cada elemento:</p>
+      <div class="cards-grid">
+        <div class="card"><span class="card-icon">🔥</span><div class="card-title">Espíritos do Fogo — Salamandras</div><div class="card-text">Os mais raros e mais difíceis de contactar. Habitam o fogo puro e as regiões de calor extremo. Sua natureza é ardente e transformadora. Na Cabala, correspondem ao mundo de Atziluth. Nas invocações, são chamados no Sul e governados pelo arcanjo Miguel.</div></div>
+        <div class="card"><span class="card-icon">💨</span><div class="card-title">Espíritos do Ar — Silfos</div><div class="card-text">Habitam o ar e as regiões intermediárias. São os mais próximos da natureza humana em certos aspectos — racionais, comunicativos. Podem aparecer em formas visíveis aos clarividentes. Governados pelo arcanjo Rafael. Invocados no Leste.</div></div>
+        <div class="card"><span class="card-icon">💧</span><div class="card-title">Espíritos da Água — Ondinas</div><div class="card-text">Habitam os oceanos, rios, lagos. Relacionados com a imaginação, os sonhos, as emoções. Na tradição clássica: nereidas, ninfas, tritões. Governados pelo arcanjo Gabriel. Invocados no Oeste. Associados à Lua e a Yesod.</div></div>
+        <div class="card"><span class="card-icon">🌍</span><div class="card-title">Espíritos da Terra — Gnomos</div><div class="card-text">Habitam a terra sólida, as cavernas, as minas. Guardiões dos tesouros minerais e vegetais. Na tradição: gnomos, pigmeus, faunos, sátiros. Governados pelo arcanjo Uriel. Invocados no Norte. Associados a Saturno e a Malkuth.</div></div>
+      </div>
+    </div>
+    <div id="htab4" class="tab-panel">
+      <h4 class="content-h4">Inteligências e Espíritos Planetários Completos</h4>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Planeta</th><th>Inteligência (Aspecto Elevado)</th><th>Espírito/Daemon (Aspecto Bruto)</th><th>Olympic Spirit</th><th>Número Mágico</th></tr></thead>
+        <tbody>
+          <tr><td>☽ Lua</td><td>Malka Be-Tarshisim</td><td>Shad Barshemoth Ha-Shartathan</td><td>Phul</td><td>9 / 81 / 369</td></tr>
+          <tr><td>☿ Mercúrio</td><td>Tiriel</td><td>Taphthartharath</td><td>Ophiel</td><td>8 / 64 / 260</td></tr>
+          <tr><td>♀ Vênus</td><td>Hagiel</td><td>Kedemel</td><td>Hagith</td><td>7 / 49 / 175</td></tr>
+          <tr><td>☉ Sol</td><td>Nakhiel</td><td>Sorath</td><td>Och</td><td>6 / 36 / 111</td></tr>
+          <tr><td>♂ Marte</td><td>Graphiel</td><td>Barzabel</td><td>Phaleg</td><td>5 / 25 / 65</td></tr>
+          <tr><td>♃ Júpiter</td><td>Iophiel</td><td>Hismael</td><td>Bethor</td><td>4 / 16 / 34</td></tr>
+          <tr><td>♄ Saturno</td><td>Agiel</td><td>Zazel</td><td>Aratron</td><td>3 / 9 / 15</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <h2 class="content-h2" id="sec-microcosmo">Macrocosmo e Microcosmo — Homo ut Mundus</h2>
+  <p>Um dos princípios mais fundamentais da filosofia mágica de Agrippa — e do hermetismo em geral — é a correspondência entre macrocosmo e microcosmo: a ideia de que o ser humano é uma imagem miniaturizada do universo total. Esta não é uma metáfora poética para Agrippa — é uma afirmação metafísica rigorosa com consequências práticas diretas para a magia.</p>
+  <p>O ser humano contém em si mesmo os três mundos: o corpo físico espelha o mundo elemental (com seus quatro humores e temperamentos), a alma espelha o mundo celestial (com seus sete "planetas" internos — os sete chakras diríamos hoje), e o espírito ou intelecto supremo espelha o mundo intelectual (capaz de contemplar diretamente as realidades divinas). Esta estrutura tripartite — corpo, alma, espírito — é a chave para a magia: o mago que conhece a si mesmo conhece o cosmos, e pode por isso operar sobre o cosmos.</p>
+  <div class="callout initiatic" data-label="O Homem como Nó do Cosmos">
+    <p>A posição privilegiada do ser humano no cosmos agrippiano é extraordinária. Ficino havia escrito que a alma humana é o "nó" que une o cosmos — ela está no centro da hierarquia, participando simultaneamente do material e do espiritual, do temporal e do eterno. Agrippa radicaliza essa visão: o ser humano é o único ser no cosmos capaz de <em>operar magicamente</em> — porque é o único que contém em si mesmo todos os três mundos e pode portanto mediar entre eles. O mago não é apenas um observador do cosmos — é um <strong class="em-gold">operador cósmico</strong>, alguém cujo conhecimento e vontade purificados podem influenciar a cadeia de causas que estrutura a realidade.</p>
+  </div>
+</section>
+
+<section class="section" id="sec-livro1">
+  <div class="section-header">
+    <span class="section-number">Capítulo IV</span>
+    <h1 class="section-title">Livro I — Magia Natural</h1>
+    <p class="section-subtitle">De Magia Naturali — As Virtudes Ocultas do Mundo Elemental</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">O primeiro dos três livros é o mais acessível e concretamente material — o que não significa que seja o mais simples. A magia natural (<em class="em-latin">magia naturalis</em>) é o estudo e a aplicação prática das virtudes ocultas que habitam as coisas do mundo elemental: plantas, pedras, metais, animais, sons, perfumes, cores. É, em certo sentido, a "química" e a "física" do cosmos mágico — mas uma química radicalmente diferente da moderna, porque opera com qualidades espirituais e não apenas com propriedades mensuráveis.</p>
+  <div class="callout warning" data-label="Distinção Crucial — Magia Verdadeira vs. Falsa Magia">
+    <p>Agrippa distingue explicitamente entre a <em>magia verdadeira</em> (que é a ciência filosófica das virtudes naturais) e a <em>falsa magia</em>, que inclui: (1) a <strong>nigromância</strong> — invocação dos mortos para profecias; (2) a <strong>goecia</strong> — trabalho com forças demoníacas; (3) a <strong>superstição vulgar</strong> — mistura irracional de elementos legítimos com crenças falsas. Sua magia natural opera exclusivamente através das virtudes que Deus implantou na natureza — é, em sua concepção, completamente compatível com o Cristianismo e com a razão filosófica.</p>
+  </div>
+
+  <h2 class="content-h2">Os 74 Capítulos do Livro I — Estrutura e Conteúdo</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Caps. I–VI: Definição e Fundamentos Filosóficos da Magia Natural<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>O Cap. I define a magia como "a mais perfeita e mais elevada ciência". O Cap. II discute a "excelência da magia" — apresentada como a "suma perfeição da filosofia natural". O Cap. III estabelece o princípio fundamental: as correspondências entre os três mundos. <em>"As coisas inferiores obedecem às superiores, e as coisas ativas às passivas, e as terrestres às celestes."</em> Este princípio de correspondência é o fundamento de toda a magia.</p>
+        <p>O Cap. IV descreve os quatro elementos em detalhe — suas qualidades, suas combinações, seus graus e a quintessência. O Cap. V discute as virtudes dos elementos nas coisas compostas — como os elementos se combinam para produzir qualidades específicas. O Cap. VI — o mais importante deste bloco — introduz a distinção crucial entre qualidades manifestas e virtudes ocultas.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Caps. VII–XXXII: As Virtudes das Plantas, Pedras e Metais<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Esta é a seção mais enciclopédica do Livro I — um vasto catálogo de correspondências naturais organizadas segundo suas correspondências planetárias. A lógica subjacente é das <strong class="em-gold">simpatias e antipatias ocultas</strong>: certas coisas "simpatizam" por compartilharem a mesma virtude cósmica; outras "antipatizam" por terem virtudes opostas.</p>
+        <p>Fontes principais: Alberto Magno (<em>De Mineralibus</em>), Plínio o Velho (<em>Historia Naturalis</em>), Dioscórides (<em>De Materia Medica</em>), o <em>Lapidário</em> de Damigeron-Evax, e especialmente o <em>Picatrix</em> árabe. Agrippa não inventa — ele sistematiza e sintetiza uma tradição enciclopédica medieval de herbalismo mágico e lapidária, elevando-a a um sistema filosófico coerente.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Caps. XXXIII–XLV: Virtudes dos Animais e suas Partes<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>A zoologia mágica de Agrippa. Cada animal, cada parte de animal (sangue, osso, pena, pelo, fígado) tem suas virtudes específicas. A lógica interna é coerente: os animais são lidos como símbolos vivos de forças cósmicas. O leão é um animal solar — suas partes condensam e transmitem a influência solar. O boi é um animal lunar. O lobo é um animal marciano. Usar o coração de um leão em um talismã solar é, na lógica agrippiana, concentrar a força solar num artefato material.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Caps. XLVI–LX: Simpatias, Antipatias e Vínculos Ocultos<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Aqui Agrippa desenvolve mais sistematicamente a teoria das simpatias e antipatias. Isso inclui: cura por simpatia (plantas que "simpatizam" com órgãos doentes), proteção por antipatia (substâncias que repelem forças malignas), e os "vínculos ocultos" (<em class="em-latin">vincula occulta</em>) — ligações espirituais que podem ser criadas entre pessoas ou entre uma pessoa e um objeto, usando as simpatias corretas. Esta última teoria é a base da magia amorosa e das ligações mágicas.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Caps. LXI–LXXIV: Poderes da Alma — Imaginação e Vontade como Forças Mágicas<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Os capítulos mais psicologicamente sofisticados do Livro I. Agrippa afirma que a alma humana, movida por uma paixão intensa e sustentada, tem o poder de imprimir suas imagens sobre a matéria exterior. Esta é a teoria da magia pela imaginação. O famoso Cap. LXII discute o "fascino" — o mau-olhado — não como superstição vulgar, mas como efeito real de uma alma apaixonada que, ao olhar intensamente com inveja ou raiva, irradia um "espírito venenoso" que afeta a saúde do olhado. Esta teoria antecipa certas descobertas da psicologia moderna (influência dos estados mentais sobre o corpo, o efeito placebo).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Grandes Tabelas de Correspondências Naturais</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Planeta</th><th>Pedras Mágicas</th><th>Plantas Principais</th><th>Animais Simbólicos</th><th>Metal</th><th>Incenso</th><th>Cor</th></tr></thead>
+      <tbody>
+        <tr><td>☉ Sol</td><td>Crisólito, Jacinto, Carbúnculo, Diamante</td><td>Louro, Girassol, Açafrão, Calêndula, Peônia</td><td>Leão, Corvo, Grifo, Cisne, Besouro dourado</td><td>Ouro</td><td>Olíbano, Âmbar, Bálsamo</td><td>Dourado, Amarelo brilhante</td></tr>
+        <tr><td>☽ Lua</td><td>Pérola, Cristal, Selenita, Ópalo</td><td>Lótus, Lírio, Musgo, Papoula, Cogumelo</td><td>Gato, Camaleão, Coruja, Sapo, Lagosta</td><td>Prata</td><td>Cânfora, Aloe, Mirra branca</td><td>Branco, Prateado, Pálido</td></tr>
+        <tr><td>♂ Marte</td><td>Rubim, Pedra de Sangue, Cornalina</td><td>Absinto, Eufórbio, Rabanete, Alho, Mostarda</td><td>Lobo, Urso, Abutre, Escorpião</td><td>Ferro</td><td>Pimenta, Galanga, Dragon's Blood</td><td>Vermelho, Escarlate</td></tr>
+        <tr><td>☿ Mercúrio</td><td>Ágata, Esmeralda, Topázio, Sardônix</td><td>Verbena, Avelã, Figueira, Cinabre</td><td>Cegonha, Macacos, Raposa, Serpente</td><td>Mercúrio vivo</td><td>Mástique, Estoraques misturados</td><td>Variado, Multicolorido</td></tr>
+        <tr><td>♃ Júpiter</td><td>Safira, Jacinto azul, Esmeralda</td><td>Carvalho, Salsa, Bétula, Nogueira</td><td>Veado, Elefante, Boi, Pelicano, Águia</td><td>Estanho</td><td>Benjoim, Macis, Noz-moscada</td><td>Azul, Púrpura, Violeta</td></tr>
+        <tr><td>♀ Vênus</td><td>Esmeralda, Berilo, Lápis-Lazúli</td><td>Rosa, Mirto, Violeta, Dedaleira, Verbena</td><td>Pomba, Passarinho, Cabra, Lebre, Cisne</td><td>Cobre</td><td>Rosa, Sândalo, Almíscar, Civeta</td><td>Verde, Rosa, Teal</td></tr>
+        <tr><td>♄ Saturno</td><td>Jaspe negro, Calcedônia, Turquesa, Ônix</td><td>Cipreste, Aconito, Mandragora, Ébano</td><td>Abutre negro, Morcego, Toupeira, Camelo</td><td>Chumbo</td><td>Ópio, Mirra amarga, Âmbar negro</td><td>Negro, Cinza chumbo</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="sec-livro2">
+  <div class="section-header">
+    <span class="section-number">Capítulo V</span>
+    <h1 class="section-title">Livro II — Magia Celestial</h1>
+    <p class="section-subtitle">De Magia Caelesti — Números, Harmonias, Talismãs e Influências Astrais</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">O segundo livro dos <em>Três Livros de Filosofia Oculta</em> é o mais matematicamente ambicioso — e talvez o mais tecnicamente difícil de toda a obra. Aqui Agrippa abandona o catálogo de coisas naturais para mergulhar no mundo dos números, das harmonias musicais, das proporções geométricas, dos quadrados mágicos, das imagens astrológicas e dos talismãs. A magia celestial opera com o mundo das esferas — ela tenta capturar, concentrar e direcionar as influências que os planetas e as estrelas exercem continuamente sobre o mundo elemental.</p>
+
+  <h2 class="content-h2">A Numerologia Pitagórica como Fundamento</h2>
+  <p>Para os pitagóricos, os números não eram meros instrumentos de cálculo — eram a substância real do universo. "Todas as coisas são número." Cada número tem um "espírito" ou "virtude" que o caracteriza — e coisas que compartilham o mesmo número compartilham uma afinidade oculta. O número 7 corresponde aos sete planetas, aos sete dias da semana, às sete notas musicais, aos sete sacramentos, às sete aberturas do rosto humano, às sete cores do arco-íris. Esta multiplicidade de correspondências não é coincidência — é expressão de uma estrutura metafísica real.</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Número</th><th>Nome Pitagórico</th><th>Atributo Divino / Cabalístico</th><th>Planeta</th><th>Correspondências Principais</th><th>Significado Filosófico</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 — Mônade</strong></td><td>Unum</td><td>O Uno; Kether; Deus Pai</td><td>Sol (centro)</td><td>Ponto primordial, Espírito, Origem</td><td>Contém todos os números em potência; princípio da identidade</td></tr>
+        <tr><td><strong>2 — Díade</strong></td><td>Duo</td><td>Logos/Filho; Chokmah</td><td>Lua (dualidade)</td><td>Espírito e Matéria, Masculino-Feminino</td><td>Primeiro número que se separa da unidade; princípio de toda polaridade</td></tr>
+        <tr><td><strong>3 — Tríade</strong></td><td>Tria</td><td>Espírito Santo; Trindade; Binah</td><td>Saturno</td><td>Três mundos, três almas, Trindade</td><td>Síntese das oposições da Díade; Tese-Antítese-Síntese</td></tr>
+        <tr><td><strong>4 — Tétrade</strong></td><td>Quatuor</td><td>Criação material; Chesed</td><td>Júpiter</td><td>Quatro elementos, direções, humores, evangelistas</td><td>Primeira forma "sólida"; estabilidade e manifestação material</td></tr>
+        <tr><td><strong>5 — Pêntade</strong></td><td>Quinque</td><td>Mediação; Geburah</td><td>Marte</td><td>Cinco sentidos, pentáculo, microcosmo humano</td><td>O homem (braços, pernas, cabeça); número que reproduz a si mesmo</td></tr>
+        <tr><td><strong>6 — Héxade</strong></td><td>Sex</td><td>Beleza e Harmonia; Tiphereth</td><td>Sol</td><td>Seis dias da criação, Estrela de Davi, criação</td><td>Primeiro número perfeito (1+2+3=6); harmonia cósmica</td></tr>
+        <tr><td><strong>7 — Heptade</strong></td><td>Septem</td><td>Virgindade divina; Netzach</td><td>Vênus</td><td>Sete planetas, dias, notas, sacramentos</td><td>Número "virgem" — não gerado nem gerador dentro da década</td></tr>
+        <tr><td><strong>8 — Óctade</strong></td><td>Octo</td><td>Sabedoria aplicada; Hod</td><td>Mercúrio</td><td>Oito esferas, ressurreição (octava), regeneração</td><td>Primeiro cubo (2³); eternidade (∞ rotacionado)</td></tr>
+        <tr><td><strong>9 — Ênneade</strong></td><td>Novem</td><td>Fundação suprema; Yesod</td><td>Lua</td><td>Nove coros angelicais, mistérios</td><td>Primeiro quadrado ímpar (3²); retorna a si mesmo multiplicado</td></tr>
+        <tr><td><strong>10 — Década</strong></td><td>Decem</td><td>Reino; Malkuth; Manifestação</td><td>Todos / Terra</td><td>Dez Sefirot, mandamentos, nomes divinos</td><td>Retorno à Unidade em nível mais elevado (1+0=1); cosmos completo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Os Quadrados Mágicos Planetários</h2>
+  <p>Os <em>quadrados mágicos</em> planetários são figuras numéricas onde a soma de cada linha, coluna e diagonal é igual. Agrippa apresenta sete quadrados — um para cada planeta — afirmando que eles concentram a virtude do planeta correspondente. Um quadrado mágico é uma <em>imagem numérica da harmonia planetária</em>: organiza os números de 1 até n² numa grade de perfeita igualdade — realizando, em forma numérica, a completude e harmonia do planeta.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:30px;justify-content:center;margin:30px 0;">
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold-dark);margin-bottom:10px;letter-spacing:2px;">♄ SATURNO — 3×3 (Soma: 15)</div>
+      <div class="magic-square" style="grid-template-columns:repeat(3,36px);">
+        <div class="cell">4</div><div class="cell">9</div><div class="cell">2</div>
+        <div class="cell">3</div><div class="cell">5</div><div class="cell">7</div>
+        <div class="cell">8</div><div class="cell">1</div><div class="cell">6</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold-dark);margin-bottom:10px;letter-spacing:2px;">♃ JÚPITER — 4×4 (Soma: 34)</div>
+      <div class="magic-square" style="grid-template-columns:repeat(4,36px);">
+        <div class="cell">4</div><div class="cell">14</div><div class="cell">15</div><div class="cell">1</div>
+        <div class="cell">9</div><div class="cell">7</div><div class="cell">6</div><div class="cell">12</div>
+        <div class="cell">5</div><div class="cell">11</div><div class="cell">10</div><div class="cell">8</div>
+        <div class="cell">16</div><div class="cell">2</div><div class="cell">3</div><div class="cell">13</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold-dark);margin-bottom:10px;letter-spacing:2px;">♂ MARTE — 5×5 (Soma: 65)</div>
+      <div class="magic-square" style="grid-template-columns:repeat(5,36px);">
+        <div class="cell">11</div><div class="cell">24</div><div class="cell">7</div><div class="cell">20</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">12</div><div class="cell">25</div><div class="cell">8</div><div class="cell">16</div>
+        <div class="cell">17</div><div class="cell">5</div><div class="cell">13</div><div class="cell">21</div><div class="cell">9</div>
+        <div class="cell">10</div><div class="cell">18</div><div class="cell">1</div><div class="cell">14</div><div class="cell">22</div>
+        <div class="cell">23</div><div class="cell">6</div><div class="cell">19</div><div class="cell">2</div><div class="cell">15</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold-dark);margin-bottom:10px;letter-spacing:2px;">☉ SOL — 6×6 (Soma: 111)</div>
+      <div class="magic-square" style="grid-template-columns:repeat(6,36px);">
+        <div class="cell">6</div><div class="cell">32</div><div class="cell">3</div><div class="cell">34</div><div class="cell">35</div><div class="cell">1</div>
+        <div class="cell">7</div><div class="cell">11</div><div class="cell">27</div><div class="cell">28</div><div class="cell">8</div><div class="cell">30</div>
+        <div class="cell">19</div><div class="cell">14</div><div class="cell">16</div><div class="cell">15</div><div class="cell">23</div><div class="cell">24</div>
+        <div class="cell">18</div><div class="cell">20</div><div class="cell">22</div><div class="cell">21</div><div class="cell">17</div><div class="cell">13</div>
+        <div class="cell">25</div><div class="cell">29</div><div class="cell">10</div><div class="cell">9</div><div class="cell">26</div><div class="cell">12</div>
+        <div class="cell">36</div><div class="cell">5</div><div class="cell">33</div><div class="cell">4</div><div class="cell">2</div><div class="cell">31</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">As Horas Planetárias</h2>
+  <p>O sistema das horas planetárias é um dos aspectos mais práticos da astrologia mágica agrippiana. As 24 horas do dia são atribuídas ciclicamente aos sete planetas — e o planeta da primeira hora de cada dia dá o nome a esse dia (planeta do domingo = Sol, segunda = Lua, terça = Marte etc.). Este sistema é herdado diretamente da astrologia helenística.</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Hora do Dia</th><th>Dom.</th><th>Seg.</th><th>Ter.</th><th>Qua.</th><th>Qui.</th><th>Sex.</th><th>Sáb.</th></tr></thead>
+      <tbody>
+        <tr><td>1ª (Nascer do Sol)</td><td>☉</td><td>☽</td><td>♂</td><td>☿</td><td>♃</td><td>♀</td><td>♄</td></tr>
+        <tr><td>2ª</td><td>♀</td><td>♄</td><td>☉</td><td>☽</td><td>♂</td><td>☿</td><td>♃</td></tr>
+        <tr><td>3ª</td><td>☿</td><td>♃</td><td>♀</td><td>♄</td><td>☉</td><td>☽</td><td>♂</td></tr>
+        <tr><td>4ª</td><td>☽</td><td>♂</td><td>☿</td><td>♃</td><td>♀</td><td>♄</td><td>☉</td></tr>
+        <tr><td>5ª</td><td>♄</td><td>☉</td><td>☽</td><td>♂</td><td>☿</td><td>♃</td><td>♀</td></tr>
+        <tr><td>6ª</td><td>♃</td><td>♀</td><td>♄</td><td>☉</td><td>☽</td><td>♂</td><td>☿</td></tr>
+        <tr><td>7ª</td><td>♂</td><td>☿</td><td>♃</td><td>♀</td><td>♄</td><td>☉</td><td>☽</td></tr>
+        <tr><td colspan="8" style="text-align:center;font-style:italic;color:var(--gold-dark);font-size:12px;">… (o ciclo se repete a cada 7 horas; as horas noturnas seguem o mesmo padrão)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="sec-livro3">
+  <div class="section-header">
+    <span class="section-number">Capítulo VI</span>
+    <h1 class="section-title">Livro III — Magia Cerimonial e Intelectual</h1>
+    <p class="section-subtitle">De Magia Ceremoniali — Cabala, Anjos, Nomes Divinos e Hierarquias Espirituais</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">O terceiro livro é o mais ambicioso, o mais denso e — na perspectiva da tradição mágica posterior — o mais influente dos três. Aqui Agrippa escala ao nível mais elevado da realidade: o mundo intelectual e divino, habitado pelos anjos, pelas inteligências puras, pelos nomes sagrados de Deus. A magia cerimonial ou intelectual é a tentativa de entrar em comunicação e cooperação com essas inteligências — o que Agrippa fundamenta extensivamente na tradição cabalística.</p>
+
+  <h2 class="content-h2" id="sec-cabala">A Cabala Cristã de Agrippa — Fundamentos</h2>
+  <p>Para Agrippa e para a tradição cabalística que ele sintetiza, os nomes divinos não são convenções linguísticas — são manifestações reais dos atributos de Deus, com poder intrínseco. O hebraico é a língua primordial — a língua pela qual Deus criou o mundo ("e Deus <em>disse</em>...") e que Adão usou para nomear os animais. As fórmulas de invocação em hebraico têm poder real e objetivo que não depende da compreensão intelectual do operador (embora a compreensão potencialize o efeito).</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Nome Hebraico</th><th>Transliteração</th><th>Significado</th><th>Sefirah</th><th>Atributo Divino</th></tr></thead>
+      <tbody>
+        <tr><td><span class="em-hebrew">אהיה</span></td><td>Eheieh</td><td>"Eu Sou" / "Eu Serei"</td><td>Kether</td><td>Existência pura; auto-ser absoluto</td></tr>
+        <tr><td><span class="em-hebrew">יה</span></td><td>Yah</td><td>Forma abreviada do Tetragrammaton</td><td>Chokmah</td><td>Sabedoria primordial; força expansiva</td></tr>
+        <tr><td><span class="em-hebrew">יהוה</span></td><td>YHWH / Tetragrammaton</td><td>O Nome Inefável; "Ser"</td><td>Binah / Tiphereth</td><td>Ser em sua plenitude; o Nome impronunciável</td></tr>
+        <tr><td><span class="em-hebrew">אל</span></td><td>El</td><td>"Deus" — poder, força divina</td><td>Chesed</td><td>Misericórdia e poder benevolente</td></tr>
+        <tr><td><span class="em-hebrew">אלהים</span></td><td>Elohim</td><td>"Deuses" — plural majestático</td><td>Binah / Geburah</td><td>Criação plural, força, severidade</td></tr>
+        <tr><td><span class="em-hebrew">שדי</span></td><td>Shaddai</td><td>"O Todo-Poderoso"</td><td>Yesod</td><td>Fertilidade, geração, fundação</td></tr>
+        <tr><td><span class="em-hebrew">אדני</span></td><td>Adonai</td><td>"Meu Senhor"</td><td>Malkuth</td><td>Soberania; manifestação no mundo</td></tr>
+        <tr><td><span class="em-hebrew">אגלא</span></td><td>Agla</td><td>Acrônimo: Atah Gibor Le-Olam Adonai</td><td>Múltiplo</td><td>"Tu és poderoso para sempre, Ó Senhor" — fórmula de proteção</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Gematria, Notirikón e Temurah</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Gematria — O Valor Numérico das Letras Hebraicas<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Na gematria, cada letra hebraica possui um valor numérico. Palavras cujos valores coincidem são espiritualmente relacionadas. O alfabeto hebraico: Alef (א) = 1, Bet (ב) = 2, Gimel (ג) = 3, Dalet (ד) = 4, He (ה) = 5, Vav (ו) = 6, Zayin (ז) = 7, Chet (ח) = 8, Tet (ט) = 9, Yod (י) = 10, Kaf (כ) = 20, Lamed (ל) = 30, Mem (מ) = 40, Nun (נ) = 50, Samech (ס) = 60, Ayin (ע) = 70, Pe (פ) = 80, Tzadi (צ) = 90, Qof (ק) = 100, Resh (ר) = 200, Shin (ש) = 300, Tav (ת) = 400.</p>
+        <p>Exemplo clássico: "serpente" (<em class="em-hebrew">נחש</em> — Nachash) = 358 = valor de "Messias" (<em class="em-hebrew">משיח</em> — Mashiach). Para os cabalistas, isso indica uma relação profunda: ambos são expressões do mesmo princípio de transformação — a serpente que tenta e o Messias que redime.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Notirikón — Acrônimos e Expansões<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>O notirikón lê cada letra de uma palavra como inicial de outra palavra. Exemplo mais famoso: <strong>Agla</strong> — um dos nomes mágicos mais usados nos grimórios medievais e renascentistas — é o acrônimo de <em class="em-hebrew">אתה גבור לעולם אדני</em> (Atah Gibor Le-Olam Adonai) — "Tu és poderoso para sempre, Ó Senhor." Este nome aparece constantemente nos rituais de proteção e consagração do De Occulta e nos grimórios que dele descendem.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Temurah — Permutação das Letras<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>A temurah é a arte de substituir letras por outras segundo sistemas de cifra. O sistema <em>Atbash</em> (onde Alef substitui Tav e vice-versa) é o mais famoso — ele foi usado no próprio texto bíblico (Jeremias usa Atbash para disfarçar "Babel" como "Sheshach"). Para Agrippa, a temurah é especialmente relevante na construção de nomes mágicos e anagramas de nomes divinos. Permite revelar significados ocultos dentro dos textos sagrados e criar novas formas de nomes que concentram virtudes específicas.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Os 72 Nomes de Deus e os 72 Anjos do Zodíaco</h2>
+  <p>Um dos elementos mais fascinantes e influentes do Livro III é a teoria dos <em>72 nomes de Deus</em> — extraídos cabalísticamente dos versículos 19, 20 e 21 do capítulo 14 do Êxodo (que descrevem a travessia do Mar Vermelho). Cada um desses versículos tem exatamente 72 letras em hebraico. Combinando as letras dos três versículos em colunas, obtém-se 72 grupos de três letras — os 72 "semaphoras" ou nomes. A cada nome corresponde um anjo que governa 5 graus do zodíaco. Este sistema dos 72 anjos foi enormemente influente na magia cerimonial posterior — ele está no coração da Cabala Prática conforme desenvolvida no século XIX e XX.</p>
+
+  <h2 class="content-h2">O Ritual Mágico — Estrutura e Componentes</h2>
+  <div class="cards-grid">
+    <div class="card"><span class="card-icon">⊙</span><div class="card-title">Preparação do Mago</div><div class="card-text">Abstinência, jejum, banho ritual, oração, pureza de intenção. O mago deve estar em estado de "dignidade" espiritual — não por mérito moral perfeito, mas por alinhamento intencional com o divino. A vestimenta, a postura, o estado mental — tudo contribui para criar a condição de receptividade necessária.</div></div>
+    <div class="card"><span class="card-icon">△</span><div class="card-title">O Círculo Mágico</div><div class="card-text">O círculo de proteção não é superstição — é uma tecnologia de concentração e proteção. Cria um espaço sagrado separado do mundo profano. Os nomes divinos e angelicais inscritos no círculo são os "muros" que mantêm o mago protegido durante o contato com forças superiores.</div></div>
+    <div class="card"><span class="card-icon">📜</span><div class="card-title">A Invocação Formal</div><div class="card-text">As palavras da invocação funcionam como chaves harmônicas — sons e sequências que ressoam com a natureza do ser invocado. O hebraico é preferido por ser a língua primordial. A invocação deve nomear o ser, descrever seus atributos, e formular o pedido de forma precisa e filosófica.</div></div>
+    <div class="card"><span class="card-icon">🕯</span><div class="card-title">Correspondências Rituais Totais</div><div class="card-text">Tudo no ritual deve estar em harmonia com o planeta ou entidade invocada: cor das velas, incenso queimado, metais usados, dia e hora, pedras presentes, vestimentas, orientação. Esta harmonia total "sintoniza" o ambiente com a frequência da entidade invocada.</div></div>
+    <div class="card"><span class="card-icon">⭐</span><div class="card-title">Os Pentáculos e Selos</div><div class="card-text">Diagramas mágicos que combinam figuras geométricas, letras hebraicas, nomes divinos e simbolismo planetário. Os sigils planetários são derivados dos quadrados mágicos: traçando o nome do espírito em gematria pelo quadrado, obtém-se sua "assinatura" geométrica única.</div></div>
+    <div class="card"><span class="card-icon">✝</span><div class="card-title">A Intenção Pura</div><div class="card-text">Para Agrippa, a eficácia mágica depende menos das técnicas e mais do estado interior do operador. Um iniciado que pronuncia um nome divino com compreensão e pureza realiza uma operação radicalmente diferente do ignorante que pronuncia as mesmas palavras com superstição ou ganância material.</div></div>
+  </div>
+  <blockquote>"O mago não pode realizar nada de valor se não tiver primeiro se tornado um recipiente da sabedoria divina. Pois a alma elevada ao seu cume é então igual aos anjos e nada lhe falta para completar o poder da alma divina: ela pode tudo, pode conhecer tudo, pode fazer tudo o que quer."<cite>— Agrippa, De Occulta Philosophia, Livro III</cite></blockquote>
+</section>
+
+<section class="section" id="sec-correspondencias">
+  <div class="section-header">
+    <span class="section-number">Capítulo VII</span>
+    <h1 class="section-title">Sistema de Correspondências Ocultas</h1>
+    <p class="section-subtitle">A Grande Teia de Simpatias que Estrutura o Cosmos Agrippiano</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">As correspondências ocultas são o sistema nervoso da magia agrippiana. A ideia fundamental é que o cosmos é uma rede de ressonâncias — onde cada coisa no mundo elemental espelha algo no mundo celestial, que por sua vez espelha algo no mundo intelectual. Estas ressonâncias não são arbitrárias: elas derivam da estrutura metafísica do universo, da forma como as virtudes divinas se manifestam em cascata através dos três mundos. Por que o ouro corresponde ao Sol? Porque o ouro <em>incarna</em> no mundo elemental a mesma virtude que o Sol irradia no mundo celestial — é o mais nobre dos metais, o mais permanente, o mais luminoso.</p>
+  <div class="verse">
+    "Como em cima, assim embaixo;<br>como embaixo, assim em cima.<br>Para realizar o milagre da coisa única."<br>— Tábua de Esmeralda de Hermes Trismegisto
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Domínio</th><th>♄ Saturno</th><th>♃ Júpiter</th><th>♂ Marte</th><th>☉ Sol</th><th>♀ Vênus</th><th>☿ Mercúrio</th><th>☽ Lua</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Número mágico</strong></td><td>3 / 15 / 45</td><td>4 / 34 / 136</td><td>5 / 65 / 325</td><td>6 / 111 / 666</td><td>7 / 175 / 1225</td><td>8 / 260 / 2080</td><td>9 / 369 / 3321</td></tr>
+        <tr><td><strong>Dia da Semana</strong></td><td>Sábado</td><td>Quinta</td><td>Terça</td><td>Domingo</td><td>Sexta</td><td>Quarta</td><td>Segunda</td></tr>
+        <tr><td><strong>Metal</strong></td><td>Chumbo</td><td>Estanho</td><td>Ferro</td><td>Ouro</td><td>Cobre</td><td>Mercúrio</td><td>Prata</td></tr>
+        <tr><td><strong>Pedra</strong></td><td>Jaspe negro, Calcedônia</td><td>Safira, Berilo</td><td>Rubim, Diamante</td><td>Crisólito, Jacinto</td><td>Esmeralda, Berilo</td><td>Ágata, Topázio</td><td>Pérola, Cristal</td></tr>
+        <tr><td><strong>Planta</strong></td><td>Cipreste, Aconito</td><td>Carvalho, Salsa</td><td>Absinto, Alho</td><td>Louro, Girassol</td><td>Rosa, Mirto</td><td>Verbena, Avelã</td><td>Lótus, Papoula</td></tr>
+        <tr><td><strong>Animal</strong></td><td>Abutre, Toupeira</td><td>Veado, Elefante</td><td>Lobo, Urso</td><td>Leão, Corvo</td><td>Pomba, Cabra</td><td>Cegonha, Serpente</td><td>Gato, Camaleão</td></tr>
+        <tr><td><strong>Cor</strong></td><td>Negro, Pardo</td><td>Azul, Roxo</td><td>Vermelho, Escarlate</td><td>Dourado, Laranja</td><td>Verde, Rosa</td><td>Multicolorido</td><td>Branco, Prateado</td></tr>
+        <tr><td><strong>Incenso</strong></td><td>Opium, Assafétida</td><td>Noz-moscada, Benjoim</td><td>Dragon's Blood, Pimenta</td><td>Olíbano, Âmbar</td><td>Rosa, Sândalo</td><td>Mástique, Menta</td><td>Cânfora, Mirra</td></tr>
+        <tr><td><strong>Parte do corpo</strong></td><td>Esqueleto, Pele</td><td>Fígado, Coxas</td><td>Bile, Músculos</td><td>Coração, Olho direito</td><td>Rins, Garganta</td><td>Pulmões, Língua</td><td>Ventre, Útero</td></tr>
+        <tr><td><strong>Humor</strong></td><td>Bile Negra</td><td>Sangue</td><td>Bile Amarela</td><td>Espírito Vital</td><td>Fleuma doce</td><td>Todos misturados</td><td>Fleuma fria</td></tr>
+        <tr><td><strong>Virtude mágica</strong></td><td>Longevidade, Alquimia</td><td>Riqueza, Honra</td><td>Vitória, Força</td><td>Saúde, Iluminação</td><td>Amor, Beleza</td><td>Eloquência, Magia</td><td>Sonhos, Fertilidade</td></tr>
+        <tr><td><strong>Inteligência</strong></td><td>Agiel</td><td>Iophiel</td><td>Graphiel</td><td>Nakhiel</td><td>Hagiel</td><td>Tiriel</td><td>Malka Be-Tarshisim</td></tr>
+        <tr><td><strong>Arcanjo</strong></td><td>Tzaphkiel / Cassiel</td><td>Tzadkiel / Sachiel</td><td>Khamael / Samael</td><td>Miguel / Rafael</td><td>Haniel / Anael</td><td>Rafael / Miguel</td><td>Gabriel</td></tr>
+        <tr><td><strong>Signo regido</strong></td><td>Capricórnio, Aquário</td><td>Sagitário, Peixes</td><td>Áries, Escorpião</td><td>Leão</td><td>Touro, Libra</td><td>Gêmeos, Virgem</td><td>Câncer</td></tr>
+        <tr><td><strong>Letra hebraica</strong></td><td>Tau (ת)</td><td>Gimel (ג)</td><td>Pe (פ)</td><td>Resh (ר)</td><td>Dalet (ד)</td><td>Bet (ב)</td><td>Kaf (כ)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Signo</th><th>Símbolo</th><th>Elemento</th><th>Qualidade</th><th>Regente</th><th>Parte do Corpo</th><th>Pedra</th><th>Planta</th></tr></thead>
+      <tbody>
+        <tr><td>Áries</td><td>♈</td><td>Fogo</td><td>Cardinal</td><td>♂ Marte</td><td>Cabeça, Cérebro</td><td>Diamante, Rubim</td><td>Alho, Gengibre</td></tr>
+        <tr><td>Touro</td><td>♉</td><td>Terra</td><td>Fixo</td><td>♀ Vênus</td><td>Pescoço, Garganta</td><td>Esmeralda, Topázio</td><td>Rosa, Mirto</td></tr>
+        <tr><td>Gêmeos</td><td>♊</td><td>Ar</td><td>Mutável</td><td>☿ Mercúrio</td><td>Pulmões, Mãos</td><td>Ágata, Berilo</td><td>Verbena, Anís</td></tr>
+        <tr><td>Câncer</td><td>♋</td><td>Água</td><td>Cardinal</td><td>☽ Lua</td><td>Peito, Estômago</td><td>Pérola, Selenita</td><td>Lótus, Papoula</td></tr>
+        <tr><td>Leão</td><td>♌</td><td>Fogo</td><td>Fixo</td><td>☉ Sol</td><td>Coração, Costas</td><td>Jacinto, Crisólito</td><td>Louro, Girassol</td></tr>
+        <tr><td>Virgem</td><td>♍</td><td>Terra</td><td>Mutável</td><td>☿ Mercúrio</td><td>Intestinos, Ventre</td><td>Jaspe, Ágata</td><td>Verbena, Funcho</td></tr>
+        <tr><td>Libra</td><td>♎</td><td>Ar</td><td>Cardinal</td><td>♀ Vênus</td><td>Rins, Quadril</td><td>Esmeralda, Berilo</td><td>Rosa, Violeta</td></tr>
+        <tr><td>Escorpião</td><td>♏</td><td>Água</td><td>Fixo</td><td>♂ Marte</td><td>Genitais, Bexiga</td><td>Turmalina, Cornalina</td><td>Absinto, Arruda</td></tr>
+        <tr><td>Sagitário</td><td>♐</td><td>Fogo</td><td>Mutável</td><td>♃ Júpiter</td><td>Quadris, Coxas</td><td>Safira, Topázio</td><td>Carvalho, Agrimônia</td></tr>
+        <tr><td>Capricórnio</td><td>♑</td><td>Terra</td><td>Cardinal</td><td>♄ Saturno</td><td>Joelhos, Ossos</td><td>Jaspe negro, Ônix</td><td>Cipreste, Dedaleira</td></tr>
+        <tr><td>Aquário</td><td>♒</td><td>Ar</td><td>Fixo</td><td>♄ Saturno</td><td>Tornozelos, Circulação</td><td>Turquesa, Safira</td><td>Acácia, Comfrey</td></tr>
+        <tr><td>Peixes</td><td>♓</td><td>Água</td><td>Mutável</td><td>♃ Júpiter</td><td>Pés, Sistema Linfático</td><td>Ametista, Pérola</td><td>Mirra, Algas</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="sec-alquimia">
+  <div class="section-header">
+    <span class="section-number">Capítulo VIII</span>
+    <h1 class="section-title">Alquimia no Sistema de Agrippa</h1>
+    <p class="section-subtitle">A Grande Obra como Metáfora Cósmica e Realidade Espiritual</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">A alquimia ocupa um lugar peculiar no sistema de Agrippa: ele a menciona frequentemente mas não a sistematiza como faz com a astrologia ou a Cabala. Isso é significativo — a alquimia era, para ele, um sistema paralelo ao seu, com o qual mantinha relações de mútua iluminação mas que possuía sua própria lógica interna. O <em>De Occulta</em> fornece o fundamento filosófico que justifica e explica o que a alquimia faz — e a alquimia fornece um laboratório concreto onde esses princípios se manifestam na matéria. A relação entre os dois sistemas é a de teoria e prática contemplativa.</p>
+
+  <h2 class="content-h2">A Grande Obra — Opus Magnum</h2>
+  <p>A Grande Obra alquímica (<em class="em-latin">Opus Magnum</em>) é o processo de transmutação da matéria bruta — o chumbo, Saturno, a consciência ordinária não refinada — em ouro puro — o Sol, a consciência iluminada. Este processo passa por fases que a tradição descreve com cores e nomes específicos:</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Fase</th><th>Nome</th><th>Cor</th><th>Planeta</th><th>Significado Espiritual</th><th>Processo Material</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1ª Fase</strong></td><td>Nigredo</td><td>Negro</td><td>♄ Saturno</td><td>Morte do ego, dissolução das identificações falsas, "noite escura da alma" de João da Cruz</td><td>Calcinação, putrefação, dissolução da matéria prima</td></tr>
+        <tr><td><strong>2ª Fase</strong></td><td>Albedo</td><td>Branco</td><td>☽ Lua</td><td>Purificação, emergência da alma pura, "aurora" do ser novo</td><td>Lavagem (ablução), separação, destilação</td></tr>
+        <tr><td><strong>3ª Fase</strong></td><td>Citrinitas</td><td>Amarelo</td><td>☿ Mercúrio</td><td>Iluminação parcial, sabedoria mercurial, conhecimento pleno</td><td>Fermentação, sublimação</td></tr>
+        <tr><td><strong>4ª Fase</strong></td><td>Rubedo</td><td>Vermelho/Ouro</td><td>☉ Sol</td><td>União dos opostos, realização completa, iluminação total — a Pedra Filosofal obtida</td><td>Coagulação, fixação, produção da Pedra Filosofal</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout initiatic" data-label="A Pedra Filosofal — Lapis Philosophorum">
+    <p>A Pedra Filosofal — o objetivo último da alquimia — não é um objeto material no sentido ordinário. É a substância que possui o poder de transmutação total: transforma metais vis em ouro, cura todas as doenças (é o <em>Elixir Vitae</em>), e — no sentido mais elevado — transforma o praticante em um ser de plenitude espiritual. Para Agrippa, a Pedra é a quintessência concentrada ao máximo grau — a virtude espiritual pura que pode ser impressa em qualquer matéria para elevar sua natureza. Simbolicamente, é o Cristo interior, a completude da alma humana realizada.</p>
+  </div>
+
+  <h2 class="content-h2">Solve et Coagula — O Princípio Fundamental</h2>
+  <p>O lema alquímico <em class="em-latin">Solve et Coagula</em> — "Dissolve e Coagula" — resume o processo completo da Grande Obra. Para transformar qualquer substância é necessário primeiro dissolvê-la em seus componentes elementais (Solve — o processo analítico, o Nigredo), e depois recoagulá-la numa forma superior (Coagula — o processo sintético, o Rubedo). Este princípio dialético ecoa em toda a filosofia de Agrippa: a magia procede sempre por dissolução (entender a estrutura oculta de uma coisa) seguida de recoagulação (usar essa estrutura para um propósito específico).</p>
+
+  <h2 class="content-h2">A Quintessência — O Segredo Comum</h2>
+  <p>O conceito mais importante que a alquimia compartilha com o sistema agrippiano é o de <em>quintessência</em>. A quinta essência é aquilo que resta quando todos os elementos grosseiros são removidos de uma substância — a essência espiritual pura que habita toda coisa natural. No sistema de Agrippa, a quintessência corresponde ao <em>spiritus</em> — o elemento intermediário entre a matéria (os quatro elementos grosseiros) e a alma (a forma espiritual). É o veículo pelo qual as influências celestes agem sobre a matéria. Por isso, a extração e uso da quintessência é uma das operações mais poderosas da magia natural — ela acessa diretamente a camada espiritual que conecta a coisa com seu arquétipo celeste.</p>
+</section>
+
+<section class="section" id="sec-numerologia">
+  <div class="section-header">
+    <span class="section-number">Capítulo IX</span>
+    <h1 class="section-title">Geometria Sagrada e Formas Mágicas</h1>
+    <p class="section-subtitle">As Formas Eternas como Manifestações do Divino</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Paralela à numerologia, a geometria sagrada é outro elemento central do pensamento agrippiano. As formas geométricas não são abstrações — são manifestações visíveis de princípios metafísicos eternos. O círculo (sem começo nem fim) representa o Uno e a eternidade. O triângulo é o símbolo da tríade e da manifestação (é a forma mínima que delimita uma área). O quadrado representa a estabilidade da manifestação material (os quatro elementos). O pentáculo representa o ser humano e a quintessência (cinco pontas = cabeça + quatro membros).</p>
+  <div class="diagram-wrapper">
+    <div class="diagram-title">Formas Geométricas Sagradas e seus Significados Metafísicos</div>
+    <svg width="100%" height="320" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;">
+      <rect width="700" height="320" fill="#0d0a06"/>
+      <circle cx="80" cy="150" r="62" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <text x="80" y="230" text-anchor="middle" fill="#e8d08a" font-size="12" font-family="Cinzel, serif">Círculo</text>
+      <text x="80" y="246" text-anchor="middle" fill="#8a6a1a" font-size="10" font-family="serif" font-style="italic">O Uno · Eternidade</text>
+      <text x="80" y="261" text-anchor="middle" fill="#6a4a0a" font-size="9" font-family="serif" font-style="italic">Kether · Ain Soph</text>
+      <polygon points="210,88 160,215 260,215" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <text x="210" y="237" text-anchor="middle" fill="#e8d08a" font-size="12" font-family="Cinzel, serif">Triângulo</text>
+      <text x="210" y="253" text-anchor="middle" fill="#8a6a1a" font-size="10" font-family="serif" font-style="italic">Tríade · Manifestação</text>
+      <text x="210" y="268" text-anchor="middle" fill="#6a4a0a" font-size="9" font-family="serif" font-style="italic">Trindade · Três Mundos</text>
+      <rect x="305" y="88" width="124" height="124" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <text x="367" y="230" text-anchor="middle" fill="#e8d08a" font-size="12" font-family="Cinzel, serif">Quadrado</text>
+      <text x="367" y="246" text-anchor="middle" fill="#8a6a1a" font-size="10" font-family="serif" font-style="italic">Quatro Elementos</text>
+      <text x="367" y="261" text-anchor="middle" fill="#6a4a0a" font-size="9" font-family="serif" font-style="italic">Matéria · Malkuth</text>
+      <polygon points="540,88 503,198 614,128 466,128 577,198" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+      <text x="540" y="230" text-anchor="middle" fill="#e8d08a" font-size="12" font-family="Cinzel, serif">Pentáculo</text>
+      <text x="540" y="246" text-anchor="middle" fill="#8a6a1a" font-size="10" font-family="serif" font-style="italic">Homem · Microcosmo</text>
+      <text x="540" y="261" text-anchor="middle" fill="#6a4a0a" font-size="9" font-family="serif" font-style="italic">Quintessência · Vida</text>
+      <polygon points="648,88 628,140 648,122 668,140" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <polygon points="648,160 628,128 648,146 668,128" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <text x="648" y="185" text-anchor="middle" fill="#e8d08a" font-size="11" font-family="Cinzel, serif">Hexagrama</text>
+      <text x="648" y="200" text-anchor="middle" fill="#8a6a1a" font-size="9" font-family="serif" font-style="italic">Sol · Tiphereth</text>
+      <text x="648" y="214" text-anchor="middle" fill="#6a4a0a" font-size="8" font-family="serif" font-style="italic">Selo de Salomão</text>
+    </svg>
+  </div>
+  <div class="callout philosophical" data-label="A Geometria como Linguagem do Divino">
+    <p>Para Agrippa, as formas geométricas são a linguagem mais direta que o divino usa para se comunicar com a criação. Enquanto os números são a estrutura interna da realidade, as formas geométricas são sua <em>expressão visual</em>. Por isso, os pentáculos e selos mágicos são compostos de formas geométricas precisas combinadas com nomes divinos e correspondências simbólicas: eles são, literalmente, diagramas filosóficos que representam e concentram realidades espirituais. O círculo do ritual mágico não é apenas um limite físico — é a representação geométrica do Uno que protege o mago dentro de sua esfera sagrada.</p>
+  </div>
+</section>
+
+<section class="section" id="sec-linguagem">
+  <div class="section-header">
+    <span class="section-number">Capítulo X</span>
+    <h1 class="section-title">A Linguagem Mágica</h1>
+    <p class="section-subtitle">Nomes, Vogais Sagradas e o Poder Metafísico do Verbo</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Para Agrippa e para toda a tradição hermética que ele sintetiza, a linguagem não é um sistema de convenções arbitrárias — é uma realidade metafísica com poder intrínseco. As palavras não apenas descrevem a realidade — elas <em>participam</em> dela. Os nomes divinos não são rótulos convencionais para conceitos religiosos — são veículos reais dos atributos que designam. Esta visão da linguagem como potência operativa é a base de toda magia verbal, desde as fórmulas dos Papiros Gregos Mágicos até os nomes do Lemegeton e as invocações do Golden Dawn.</p>
+
+  <h2 class="content-h2">O Hebraico como Língua Primordial — Leshon Qodesh</h2>
+  <p>Na tradição que Agrippa herda, o hebraico é a <em class="em-latin">lingua sacra</em> — a língua que Deus usou para criar o mundo ("E Deus disse: Haja luz") e que Adão usou para nomear os animais (e nomear, nessa visão, significa conhecer a essência). Este mito da língua adâmica tem uma implicação radical: cada palavra hebraica contém a essência daquilo que designa, e não apenas um rótulo convencional. O nome hebraico para "luz" (<em class="em-hebrew">אור</em> — <em>Ohr</em>) não é arbitrário — ele captura, de alguma forma misteriosa, a essência da luz.</p>
+
+  <h2 class="content-h2">As Sete Vogais Gregas e a Magia Sonora</h2>
+  <p>Agrippa dedica atenção especial às sete vogais do grego clássico como sons mágicos de poder especial. Essa teoria remonta à magia greco-egípcia dos Papiros Gregos Mágicos e à teoria musical pitagórica. As sete vogais correspondem aos sete planetas:</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Vogal Grega</th><th>Planeta</th><th>Qualidade Sonora</th><th>Uso Ritual</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Α (alpha)</strong></td><td>☽ Lua</td><td>Tom aberto, receptivo, feminino</td><td>Invocações lunares, sonhos, magia da imaginação</td></tr>
+        <tr><td><strong>Ε (epsilon)</strong></td><td>☿ Mercúrio</td><td>Tom comunicativo, articulado</td><td>Eloquência, comunicação, magia mental</td></tr>
+        <tr><td><strong>Η (eta)</strong></td><td>♀ Vênus</td><td>Tom harmonioso, longo e suave</td><td>Amor, beleza, harmonia, vínculos</td></tr>
+        <tr><td><strong>Ι (iota)</strong></td><td>☉ Sol</td><td>Tom claro, penetrante, ascendente</td><td>Invocações solares, saúde, iluminação</td></tr>
+        <tr><td><strong>Ο (omicron)</strong></td><td>♂ Marte</td><td>Tom redondo, forte, marcante</td><td>Força, vitória, proteção guerreira</td></tr>
+        <tr><td><strong>Υ (upsilon)</strong></td><td>♃ Júpiter</td><td>Tom expansivo, régio, amplo</td><td>Riqueza, expansão, sabedoria, justiça</td></tr>
+        <tr><td><strong>Ω (omega)</strong></td><td>♄ Saturno</td><td>Tom grave, profundo, ressonante</td><td>Alquimia, tempo, contemplação, revelação</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Os Sufixos dos Nomes Angelicais</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <div class="glossary-term">-el (אל) — "Deus"</div>
+      <div class="glossary-etymology">Do Nome Divino El — poder, força divina</div>
+      <div class="glossary-def">O sufixo mais comum nos nomes angelicais: <strong>Miguel</strong> (Mikha-el = "Quem como Deus"), <strong>Gabriel</strong> (Gabri-el = "Força de Deus"), <strong>Rafael</strong> (Rafa-el = "Cura de Deus"), <strong>Uriel</strong> (Uri-el = "Fogo de Deus"), Sariel, Haniel, Tzadkiel, Khamael, etc.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">-iah / -yah (יה) — "Deus Altíssimo"</div>
+      <div class="glossary-etymology">Do Nome Divino Yah — forma breve do Tetragrammaton</div>
+      <div class="glossary-def">Presente em nomes como Tzadkiah, Sachiah, Raziah. Indica uma relação com o aspecto mais elevado do nome divino — são anjos dos mundos superiores (Beriah e Atziluth), mais próximos do Ain Soph.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">-on / -ón (און) — Poder eterno</div>
+      <div class="glossary-etymology">Possivelmente de "aon" — força, poder, perpetuidade</div>
+      <div class="glossary-def">Presente em nomes como <strong>Metatron</strong> (o anjo mais elevado da Cabala, o "Príncipe da Presença", o Anjo que lidera Israel pelo deserto) e <strong>Sandalphon</strong> (gêmeo de Metatron, guardião das orações). Indica anjos de poder extraordinário e função cósmica elevada.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">-iel (יאל) — Dupla derivação divina</div>
+      <div class="glossary-etymology">Combinação de Yod (princípio divino) + El (Deus)</div>
+      <div class="glossary-def">Presente em Iophiel (inteligência de Júpiter), Agiel (inteligência de Saturno), Hagiel (inteligência de Vênus). Indica a dupla derivação divina — do Tetragrammaton e do nome El — especialmente usado para as inteligências planetárias.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-iniciática">
+  <div class="section-header">
+    <span class="section-number">Capítulo XI</span>
+    <h1 class="section-title">Interpretação Iniciática — Lendo Agrippa como Filósofo-Mago</h1>
+    <p class="section-subtitle">A diferença entre o leitor literal e o leitor iniciado</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Há duas formas radicalmente diferentes de ler o <em>De Occulta Philosophia</em>, e a diferença entre elas determina inteiramente o que o leitor extrai do texto. A primeira forma é a leitura <em>literal-exotérica</em>: o texto é lido como um manual de operações mágicas, e o leitor busca extrair técnicas que possa aplicar mecanicamente. A segunda forma é a leitura <em>simbólico-iniciática</em>: o texto é lido como um mapa do cosmos e do ser humano, e o praticante usa esse mapa para aprofundar sua compreensão da realidade e transformar sua própria consciência.</p>
+  <p>Agrippa pertence claramente à segunda tradição. Ele é explícito sobre isso: a magia não é um conjunto de truques ou técnicas — é um modo de ser no cosmos, uma forma de participar conscientemente da vida da totalidade. O mago não é um técnico que manipula forças externas — é um filósofo que compreendeu a estrutura da realidade e age dentro dela com consciência e intenção.</p>
+
+  <h2 class="content-h2">O Cosmos como Organismo Vivo</h2>
+  <p>A visão mágica do universo que Agrippa propõe é fundamentalmente a visão de um <em>cosmos animado</em> — um universo que está vivo, que é atravessado por virtudes e simpatias, que responde à consciência e à intenção, que não é um mecanismo indiferente mas um parceiro de dança cósmico. Esta visão é a antítese exata da visão mecanicista que o século XVII introduziria na ciência ocidental — e é exatamente o que o pensamento ecológico contemporâneo está redescubrindo, sob outras formas.</p>
+  <div class="callout initiatic" data-label="O Cosmos Animado — Mudança de Percepção">
+    <p>Para o praticante que absorve genuinamente a cosmologia de Agrippa, o mundo deixa de ser um cenário neutro de eventos físicos e se torna um <strong class="em-gold">campo de significados e ressonâncias vivas</strong>. O sol que nasce cada manhã não é apenas um evento físico — é uma manifestação do princípio solar que permeia todo o cosmos. A pedra que se segura na mão não é apenas dióxido de silício — é um ser específico com sua história, sua personalidade, sua ressonância cósmica. Esta mudança de percepção é a verdadeira "iniciação" que o De Occulta propõe — e não pode ser obtida por leitura superficial, mas apenas pela contemplação profunda e prolongada dos sistemas que Agrippa descreve.</p>
+  </div>
+
+  <h2 class="content-h2">O Problema do Literalismo — Dois Erros Simétricos</h2>
+  <p>Um dos maiores perigos na leitura do <em>De Occulta</em> é o literalismo — a tendência de tomar tudo o que Agrippa diz em seu valor facial mais imediato. O literalismo leva a dois erros igualmente danosos:</p>
+  <p><strong class="em-gold">Literalismo crédulo:</strong> O leitor acredita literalmente que gravando um quadrado de Saturno em chumbo ficará invisível, ou que entoando o nome "AGLA" três vezes afastará todos os demônios. Esse leitor está praticando superstição — exatamente o que Agrippa combate.</p>
+  <p><strong class="em-gold">Literalismo cético:</strong> O leitor conclui que, como nenhum quadrado mágico jamais tornou ninguém fisicamente invisível, toda a obra é fantasia inútil. Esse leitor perdeu completamente o que o texto realmente oferece.</p>
+  <p>A leitura iniciática evita ambos os extremos. Ela pergunta: o que essa prática <em>desenvolve</em> no praticante? Que faculdades ela cultiva? Que modo de percepção ela apura? O quadrado de Saturno gravado em chumbo não torna ninguém fisicamente invisível — mas o processo de sua criação (a pesquisa dos números, a contemplação da natureza saturnínica, o trabalho no momento correto, a concentração e intenção) desenvolvem no praticante uma compreensão viva da qualidade saturnínica do cosmos. E essa compreensão é o verdadeiro produto da operação.</p>
+
+  <h2 class="content-h2">A Contemplação das Correspondências como Prática Meditativa</h2>
+  <p>Uma das práticas iniciáticas mais valiosas que emerge de uma leitura profunda do <em>De Occulta</em> é a <em>contemplação das correspondências</em>. Isso significa meditar uma correspondência planetária — não apenas memorizá-la, mas <em>sentir</em> como o leão, o ouro, o louro, o domingo, o número 6, o arcanjo Miguel e o coração são expressões diferentes do mesmo princípio cósmico solar. Esta contemplação, quando praticada regularmente, desenvolve o que a tradição hermética chama de "visão simbólica" — a capacidade de perceber o cosmos como um sistema de significados vivos que se espelham em todos os níveis da realidade.</p>
+
+  <h2 class="content-h2">O Papel da Vontade e da Imaginação</h2>
+  <p>Nos capítulos finais do Livro I, Agrippa desenvolve uma teoria da magia pela imaginação e pela vontade que é o ponto mais psicologicamente sofisticado de toda a obra. A alma humana, quando movida por uma paixão intensa e sustentada, tem o poder de imprimir suas imagens sobre a realidade exterior — de afetar outros seres e circunstâncias pelo poder da imaginação e da vontade concentradas. Esta teoria antecipa descobertas da psicologia moderna (influência dos estados mentais sobre o corpo, efeito placebo, poder das crenças sobre a ação) e também levanta questões que a física contemporânea ainda debate (o papel do observador na realidade observada).</p>
+  <div class="callout philosophical" data-label="Magia como Psicologia Profunda">
+    <p>Carl Gustav Jung, que conhecia bem a tradição alquímica e hermética, pode ser lido como o mais sofisticado intérprete moderno do projeto iniciático de Agrippa. Para Jung, as operações alquímicas e mágicas descritas pelos renascentistas são projeções dos processos inconscientes da psique — o Nigredo é a sombra, o Rubedo é a individuação. Esta leitura psicológica não é "redutivista" no sentido de eliminar a dimensão espiritual — é uma forma de encontrar o correlato interior das operações que Agrippa descreve no exterior. O verdadeiro mago opera simultaneamente no cosmos externo e no cosmos interior que ele mesmo é.</p>
+  </div>
+</section>
+
+<section class="section" id="sec-como-estudar">
+  <div class="section-header">
+    <span class="section-number">Capítulo XII</span>
+    <h1 class="section-title">Como Estudar Agrippa</h1>
+    <p class="section-subtitle">Guia prático para o estudante moderno — dificuldades, ordem e conhecimentos prévios</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Estudar o <em>De Occulta Philosophia</em> diretamente é simultaneamente recompensador e desafiante. O texto pressupõe um leitor que domina latim clássico, conhece filosofia greco-romana profundamente, sabe algo de hebraico, e tem familiaridade com astrologia tradicional. Para o leitor moderno que não tem esse background, o texto pode parecer densamente impenetrável. Mas há caminhos de entrada — e percorrê-los pacientemente é em si uma prática de formação filosófica e espiritual valiosa.</p>
+
+  <h2 class="content-h2">Principais Dificuldades</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">1. A Linguagem e a Profusão de Referências Clássicas<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>Agrippa escreve em latim humanista — fluente, elegante, mas denso. Cada afirmação é sustentada por uma cadeia de autoridades: "Como Platão diz no Timeu", "Como afirma Plínio no Livro XXXVII da Historia Naturalis", "Como confirma o Pseudo-Dionísio na Hierarquia Celestial". Para o leitor que não conhece esses textos, cada citação é uma janela fechada. Solução: começar com um guia introdutório (como este) e ir gradualmente abrindo essas janelas conforme o interesse se aprofunda — cada referência de Agrippa é um convite para explorar uma nova fonte.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">2. O Problema da Leitura Literal vs. Simbólica<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>Como discutido no capítulo anterior, o maior perigo da leitura é o literalismo. Quando Agrippa diz que "o coral pendurado no pescoço detém o sangramento", ele está fazendo uma afirmação sobre simpatias ocultas que, dentro de sua cosmologia, tem justificativa filosófica rigorosa. O estudante moderno precisa aprender a traduzir constantemente: "detém o sangramento" significa "tem uma afinidade simbólico-metafísica com o sangue que pode ser usada ritual e contemplativamente". Esta tradução não é desonesta — é a forma correta de ler o texto dentro de seu próprio sistema de pressupostos.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">3. A Quantidade de Informação e o Risco de Perder a Estrutura<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>O De Occulta é uma obra enciclopédica — ela contém centenas de correspondências, dezenas de sistemas e inúmeras referências cruzadas. É muito fácil perder-se nos detalhes e esquecer a visão de conjunto. Recomendação: leia o texto primeiro rapidamente, apenas para ter uma impressão do todo. Depois releia seção por seção, mais devagar. Nunca tente memorizar as correspondências antes de compreender o princípio metafísico que as gera — as correspondências sem o princípio são mera catalogação inútil.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">4. A Tensão entre o De Occulta e o De Incertitudine<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>As duas grandes obras de Agrippa parecem em contradição direta. A solução é ler o De Incertitudine como um "antídoto preventivo" ao literalismo — Agrippa nos diz: não confie em nada cegamente, incluindo neste texto. O estudante que lê ambas as obras em paralelo desenvolve um equilíbrio saudável entre abertura esotérica e crítica filosófica — exatamente o que Agrippa queria do leitor ideal. O ceticismo filosófico e o misticismo hermético não são opostos — são complementares no projeto agrippiano.</p></div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Conhecimentos Prévios Recomendados</h2>
+  <div class="cards-grid">
+    <div class="card"><span class="card-icon">🏛</span><div class="card-title">Filosofia Grega (Essencial)</div><div class="card-text">Pelo menos: Platão (<em>Timeu</em>, <em>Fedro</em>, <em>República</em>), Aristóteles (<em>De Anima</em>, <em>Metafísica</em>), Plotino (seleção das <em>Enéadas</em>). Sem isso, metade do De Occulta permanece incompreensível. Começar por uma boa história da filosofia antiga antes de abordar os textos primários.</div></div>
+    <div class="card"><span class="card-icon">✡</span><div class="card-title">Cabala Introdutória (Importante)</div><div class="card-text">Uma introdução às dez Sefirot, aos quatro mundos, aos nomes divinos e ao alfabeto hebraico. Obras recomendadas: Gershom Scholem (<em>Major Trends in Jewish Mysticism</em>), Dion Fortune (<em>The Mystical Qabalah</em>). Entender a Árvore da Vida é absolutamente necessário para o Livro III.</div></div>
+    <div class="card"><span class="card-icon">⭐</span><div class="card-title">Astrologia Tradicional (Útil)</div><div class="card-text">Conhecimento básico dos sete planetas, dos doze signos e de seus significados tradicionais (não modernos). As obras de Robert Hand ou Benjamin Dykes são excelentes portas de entrada para a astrologia helenística que Agrippa usa — a astrologia moderna pós-século XIX é muito diferente.</div></div>
+    <div class="card"><span class="card-icon">🌿</span><div class="card-title">História do Hermetismo (Contextual)</div><div class="card-text">Familiaridade com o Corpus Hermeticum (tradução de Brian Copenhaver) e com o contexto histórico do Renascimento italiano. Frances Yates (<em>Giordano Bruno and the Hermetic Tradition</em>) é a leitura secundária mais importante para situar Agrippa em seu contexto.</div></div>
+  </div>
+
+  <h2 class="content-h2">Ordem Recomendada de Estudo</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">Fase 1</div><div class="timeline-dot"></div>
+      <div class="timeline-content"><div class="timeline-event">Contexto Histórico</div>
+      <div class="timeline-desc">Ler Frances Yates (<em>The Occult Philosophy in the Elizabethan Age</em>) e Charles Nauert (<em>Agrippa and the Crisis of Renaissance Thought</em>). Familiarizar-se com o Renascimento, o hermetismo e a Cabala Cristã como fenômenos históricos antes de abordá-los como sistemas filosóficos.</div></div>
+    </div>
+    <div class="timeline-item"><div class="timeline-year">Fase 2</div><div class="timeline-dot"></div>
+      <div class="timeline-content"><div class="timeline-event">Fontes Filosóficas Primárias</div>
+      <div class="timeline-desc">Ler o <em>Timeu</em> de Platão e seleções das <em>Enéadas</em> de Plotino. Ler o <em>Corpus Hermeticum</em> (tradução de Brian Copenhaver). Ler o <em>Asclepius</em>. Ler Pseudo-Dionísio Areopagita (<em>Hierarquia Celestial</em>). Estas são as fontes que Agrippa mais cita.</div></div>
+    </div>
+    <div class="timeline-item"><div class="timeline-year">Fase 3</div><div class="timeline-dot"></div>
+      <div class="timeline-content"><div class="timeline-event">Fontes Imediatas de Agrippa</div>
+      <div class="timeline-desc">Ler o <em>De Vita</em> de Ficino (especialmente o Livro III sobre a vida celestial). Ler o <em>Discurso sobre a Dignidade do Homem</em> de Pico. Ler o <em>De Arte Cabalistica</em> de Reuchlin. Familiarizar-se com o <em>Picatrix</em> em tradução e comentário.</div></div>
+    </div>
+    <div class="timeline-item"><div class="timeline-year">Fase 4</div><div class="timeline-dot"></div>
+      <div class="timeline-content"><div class="timeline-event">Primeira Leitura do De Occulta</div>
+      <div class="timeline-desc">Leitura rápida dos três livros em tradução (a tradução inglesa anotada por Donald Tyson para Llewellyn Publications, 1993, com mais de 500 páginas de notas, é a mais acessível para o leitor moderno). O objetivo é ter uma impressão do todo, não compreender cada detalhe.</div></div>
+    </div>
+    <div class="timeline-item"><div class="timeline-year">Fase 5</div><div class="timeline-dot"></div>
+      <div class="timeline-content"><div class="timeline-event">Estudo Profundo com Fontes</div>
+      <div class="timeline-desc">Releitura cuidadosa, seção por seção, com consulta às fontes originais de cada referência importante. Criação de fichas de correspondências pessoais. Contemplação ativa dos sistemas descritos. Estudo paralelo do De Incertitudine para manter o equilíbrio crítico. Este é o trabalho de anos, não de semanas.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-comparacoes">
+  <div class="section-header">
+    <span class="section-number">Capítulo XIII</span>
+    <h1 class="section-title">Agrippa em Comparação com as Grandes Tradições</h1>
+    <p class="section-subtitle">O De Occulta Philosophia e seus paralelos, fontes e herdeiros</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="tabs-container">
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab(this,'ctab1')">vs. Ficino</button>
+      <button class="tab-btn" onclick="switchTab(this,'ctab2')">vs. Pico</button>
+      <button class="tab-btn" onclick="switchTab(this,'ctab3')">vs. Paracelso</button>
+      <button class="tab-btn" onclick="switchTab(this,'ctab4')">vs. John Dee</button>
+      <button class="tab-btn" onclick="switchTab(this,'ctab5')">vs. Corpus Hermeticum</button>
+      <button class="tab-btn" onclick="switchTab(this,'ctab6')">vs. Picatrix</button>
+    </div>
+    <div id="ctab1" class="tab-panel active">
+      <h4 class="content-h4">Agrippa vs. Marsilio Ficino (1433–1499)</h4>
+      <p><strong class="em-gold">Convergências:</strong> Ambos compartilham a cosmologia neoplatônica-hermética; ambos acreditam no <em>spiritus mundi</em> como medium da magia; ambos afirmam que a magia natural é compatível com o Cristianismo; ambos usam a <em>prisca theologia</em> como fundamento de autoridade universal.</p>
+      <p><strong class="em-gold">Divergências fundamentais:</strong> Ficino é muito mais cauteloso na exposição pública — ele frequentemente apresenta as operações mágicas como "medicina espiritual", evitando o termo "magia". Agrippa é audacioso e direto. Ficino praticamente ignora a Cabala; para Agrippa, ela é um dos três pilares fundamentais. Ficino é mais sistemático em filosofia; Agrippa é mais sistemático em prática mágica operativa. O De Vita de Ficino (especialmente o Livro III) é o antecedente direto mais importante do Livro I do De Occulta.</p>
+    </div>
+    <div id="ctab2" class="tab-panel">
+      <h4 class="content-h4">Agrippa vs. Pico della Mirandola (1463–1494)</h4>
+      <p><strong class="em-gold">Convergências:</strong> Ambos fazem a síntese Cabala + Platonismo + Hermetismo + Cristianismo. Ambos defendem a dignidade absoluta do ser humano como operador cósmico. Ambos veem a magia como filosofia natural elevada a seu grau supremo.</p>
+      <p><strong class="em-gold">Divergências:</strong> Pico é essencialmente um filósofo e teólogo — sua magia é mais teórica. Agrippa é o grande sistematizador prático — ele pega as intuições filosóficas de Pico e as transforma num sistema operativo completo com correspondências detalhadas e técnicas específicas. Pico morreu aos 31 anos sem completar seu projeto; Agrippa levou 20 anos para completar o seu e produziu a síntese definitiva do ocultismo renascentista.</p>
+    </div>
+    <div id="ctab3" class="tab-panel">
+      <h4 class="content-h4">Agrippa vs. Paracelso (1493–1541)</h4>
+      <p>Contemporâneos, Agrippa e Paracelso representam dois tipos opostos de <em>magus</em> renascentista. Agrippa é o erudito-filósofo: sua força é a síntese bibliográfica, a sistematização enciclopédica, a fundamentação filosófica profunda. Paracelso é o médico-experimentador: sua força é a observação clínica, a inovação terapêutica radical, a criatividade conceitual disruptiva.</p>
+      <p><strong class="em-gold">Convergências:</strong> Ambos acreditam nas virtudes ocultas das substâncias naturais. Ambos veem a medicina como ciência espiritual. Ambos acreditam no macrocosmo-microcosmo. Ambos enfrentam oposição eclesiástica e acadêmica violenta.</p>
+      <p><strong class="em-gold">Divergências:</strong> Para Agrippa, a Cabala é fundamental; Paracelso a ignora quase completamente. Paracelso critica a medicina galênica baseada nos humores; Agrippa a usa como fundamento sem questionar. Paracelso introduz os três princípios alquímicos (sal, enxofre, mercúrio) como substitutos dos quatro elementos; Agrippa trabalha com os quatro elementos aristotélicos.</p>
+    </div>
+    <div id="ctab4" class="tab-panel">
+      <h4 class="content-h4">Agrippa vs. John Dee (1527–1608)</h4>
+      <p>John Dee é o grande herdeiro britânico de Agrippa. O De Occulta foi uma das obras centrais da biblioteca de Dee (mais de 4000 volumes — uma das maiores da Europa). A influência de Agrippa sobre Dee é direta e profunda, especialmente na magia angelical e na Cabala Cristã.</p>
+      <p><strong class="em-gold">Convergências:</strong> Ambos buscam comunicação com anjos e inteligências celestes. Ambos usam o sistema cabalístico de nomes divinos e hierarquias angelicais. Ambos acreditam numa sabedoria primordial universal. Ambos têm problemas graves com autoridades religiosas e políticas.</p>
+      <p><strong class="em-gold">Divergências:</strong> Dee vai muito além de Agrippa na magia angélica prática, desenvolvendo com Edward Kelley o sistema da "língua enoquiana" — uma suposta língua angélica revelada numa série de sessões de scrying (visão em espelho mágico). Agrippa trabalha com os sistemas de nomes existentes; Dee recebe (ou inventa) um sistema inteiramente novo. Dee é muito mais matemático — sua <em>Monas Hieroglyphica</em> é um esforço de geometria sagrada que Agrippa não teria feito.</p>
+    </div>
+    <div id="ctab5" class="tab-panel">
+      <h4 class="content-h4">Agrippa vs. Corpus Hermeticum</h4>
+      <p>O Corpus Hermeticum é a fonte mais profunda do projeto de Agrippa. O De Occulta pode ser lido, em certos níveis, como uma elaboração filosófico-prática dos princípios herméticos — um comentário expandido e sistematizado do Corpus.</p>
+      <p><strong class="em-gold">O Pimandro e a Cosmogonia:</strong> O relato da criação no Pimandro — Deus que contempla Sua própria beleza, que Se manifesta como Nous, que produz o Logos, que por sua vez cria o cosmos material — é a base direta da cosmologia agrippiana dos três mundos e das emanações. A diferença é que Agrippa integra a Cabala (Sefirot, nomes divinos) como o arcabouço hebraico-cristão que confirma e elabora o arcabouço hermético grego.</p>
+      <p><strong class="em-gold">O Asclepius e a Magia das Estátuas:</strong> O Asclepius hermético descreve uma prática egípcia de "animação" de estátuas sagradas através de ervas, pedras, incenso e rituais — atraindo a "alma" divina para um receptáculo material. Esta é a base direta da teoria agrippiana dos talismãs e imagens mágicas: o talismã é uma estátua portátil que concentra uma virtude celestial específica.</p>
+    </div>
+    <div id="ctab6" class="tab-panel">
+      <h4 class="content-h4">Agrippa vs. Picatrix (Ghayat al-Hakim)</h4>
+      <p>O <em>Picatrix</em> (compilado no século XI na Espanha árabe, traduzido para o latim no século XIII) é provavelmente a influência prática mais importante sobre o De Occulta, particularmente no que diz respeito às imagens mágicas e correspondências planetárias.</p>
+      <p><strong class="em-gold">Convergências:</strong> Ambos trabalham com o mesmo sistema de sete planetas e suas correspondências. Ambos descrevem imagens mágicas específicas para cada planeta e decan. Ambos discutem as condições astrológicas necessárias para talismãs eficazes. Ambos integram magia natural, astral e espiritual num sistema coerente.</p>
+      <p><strong class="em-gold">Divergências:</strong> O Picatrix é mais "mágico" e menos "filosófico" — dá instruções operativas detalhadas sem tanto fundamento teórico. Agrippa usa o Picatrix como fonte material mas o eleva num sistema filosófico que o transcende amplamente. O Picatrix tem uma dimensão islâmica que Agrippa simplesmente remove ou adapta. Agrippa integra a Cabala judaica — o Picatrix ignora completamente a tradição hebraica.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-influencia">
+  <div class="section-header">
+    <span class="section-number">Capítulo XIV</span>
+    <h1 class="section-title">Influência Histórica dos Três Livros</h1>
+    <p class="section-subtitle">Do século XVI ao ocultismo contemporâneo — como Agrippa moldou o esoterismo ocidental</p>
+    <div class="section-divider"></div>
+  </div>
+  <p class="dropcap">Poucos livros na história do Ocidente exerceram uma influência tão vasta e duradoura sobre o esoterismo quanto o <em>De Occulta Philosophia</em>. Publicado em 1531, rapidamente tornou-se a obra de referência para todos os que se interessavam por magia, astrologia, Cabala e filosofia esotérica — e essa posição central não foi questionada por séculos. De Shakespeare a Crowley, de Marlowe a Eliphas Lévi, o De Occulta deixou sua marca em praticamente cada expressão significativa do ocultismo ocidental.</p>
+
+  <h2 class="content-h2">Influência Imediata — Século XVI</h2>
+  <p>A influência imediata de Agrippa foi sentida em toda a Europa intelectual. John Dee na Inglaterra estudou-o extensivamente e construiu sobre ele seu sistema de magia enoquiana. Giordano Bruno (1548–1600) — o filósofo-mago que seria queimado pela Inquisição — absorveu profundamente sua cosmologia e desenvolveu a arte da memória mágica inspirado nos princípios agrippianos. Na Alemanha, o <em>De Occulta</em> alimentou os círculos humanistas e neopitágorecos das cortes protestantes. Na França, influenciou a medicina paracelsiana e os círculos herméticos da corte de Henrique III.</p>
+  <p>Literariamente, o impacto foi igualmente profundo. O Fausto histórico — do qual Marlowe e Goethe construiriam suas versões literárias — era frequentemente identificado com Agrippa por seus contemporâneos. O "Doutor Fausto" era, em parte, uma projeção popular da figura do filósofo-mago humanista, de quem Agrippa era o exemplo mais famoso e controverso.</p>
+
+  <h2 class="content-h2">Rosacrucianismo — O Projeto Agrippiano Romanticizado</h2>
+  <p>Os manifestos rosacruzes — o <em>Fama Fraternitatis</em> (1614), a <em>Confessio Fraternitatis</em> (1615) e as <em>Bodas Químicas de Christian Rosenkreutz</em> (1616) — emergem exatamente um século após a primeira redação do De Occulta, e o universo intelectual que eles pressupõem é quase inteiramente agrippiano: Cabala Cristã, magia natural, astrologia, alquimia, hierarquias angelicais, linguagem sagrada. É impossível entender o rosacrucianismo sem entender Agrippa.</p>
+
+  <h2 class="content-h2">Eliphas Lévi e o Ocultismo do Século XIX</h2>
+  <p>Eliphas Lévi (1810–1875), o grande ocultista francês, estava completamente imerso em Agrippa. Seu <em>Dogme et Rituel de la Haute Magie</em> (1855-1856) é, em muitos aspectos, uma reapresentação popular dos princípios do De Occulta numa linguagem do século XIX. Lévi foi o principal canal pelo qual Agrippa chegou ao Golden Dawn e, através deles, ao ocultismo moderno em geral. A famosa definição de Lévi — "a Magia é a Ciência do Mago" — é quase uma paráfrase direta de Agrippa.</p>
+
+  <h2 class="content-h2">O Golden Dawn e o Ocultismo Contemporâneo</h2>
+  <p>A Hermetic Order of the Golden Dawn (fundada em Londres em 1888) é o herdeiro mais sistemático e influente de Agrippa na modernidade. O sistema mágico do Golden Dawn combina Cabala Hermética (baseada em Agrippa e seus sucessores), astrologia, tarot, geomância e uma versão do sistema enoquiano de John Dee, tudo organizado num currículo iniciático de graus. Os elementos mais diretamente agrippianos incluem: o sistema de correspondências Cabala-astrologia-tarot, os nomes dos anjos e inteligências planetárias, os sigils derivados dos quadrados mágicos, e o próprio conceito de magia como ciência filosófica que opera através de correspondências simbólicas.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Período</th><th>Tradição / Autor</th><th>Influência Específica de Agrippa</th></tr></thead>
+      <tbody>
+        <tr><td>Séc. XVI</td><td>John Dee (1527–1608)</td><td>Magia angelical, Cabala Cristã, teoria das correspondências</td></tr>
+        <tr><td>Séc. XVI</td><td>Giordano Bruno (1548–1600)</td><td>Arte da memória mágica, cosmologia hermética, magia das imagens</td></tr>
+        <tr><td>Séc. XVI</td><td>Marlowe / Shakespeare</td><td>Figura do mago-filósofo, universo animado, hierarquias espirituais</td></tr>
+        <tr><td>Séc. XVII</td><td>Rosacruzes (1614–1616)</td><td>Fraternidade secreta de sábios, síntese Cabala + Alquimia + Magia</td></tr>
+        <tr><td>Séc. XVII</td><td>Robert Fludd (1574–1637)</td><td>Cosmologia hermética, música das esferas, medicina oculta</td></tr>
+        <tr><td>Séc. XVII</td><td>Primeira tradução inglesa (1651)</td><td>Democratização do acesso à obra — influência sobre a magia popular britânica</td></tr>
+        <tr><td>Séc. XVIII</td><td>Maçonaria esotérica</td><td>Graus iniciáticos, simbolismo geométrico, Cabala operativa</td></tr>
+        <tr><td>Séc. XIX</td><td>Eliphas Lévi (1810–1875)</td><td>Sistema geral de magia, correspondências, Cabala Hermética modernizada</td></tr>
+        <tr><td>Séc. XIX–XX</td><td>Golden Dawn (1888)</td><td>Todo o sistema operativo: correspondências, invocações, graus, tarot</td></tr>
+        <tr><td>Séc. XX</td><td>Aleister Crowley (1875–1947)</td><td>Thelema como sistema herdeiro do ocultismo agrippiano via Golden Dawn</td></tr>
+        <tr><td>Séc. XX</td><td>Dion Fortune (1890–1946)</td><td>Cabala Mística, sistema de correspondências psicológicas</td></tr>
+        <tr><td>Séc. XX–XXI</td><td>Wicca / Neopaganismo</td><td>Correspondências elementais, herbologia mágica, ciclos lunares, quartos</td></tr>
+        <tr><td>Séc. XXI</td><td>Astrologia Tradicional Revival</td><td>Redescobrimento das correspondências agrippianas como base da astrologia pré-moderna</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="sec-timeline">
+  <div class="section-header">
+    <span class="section-number">Capítulo XV</span>
+    <h1 class="section-title">Linha do Tempo do Ocultismo Ocidental</h1>
+    <p class="section-subtitle">De Hermes Trismegisto ao ocultismo contemporâneo</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">c. 300 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Formação do Corpus Hermeticum</div><div class="timeline-desc">Os textos gregos que formarão o Corpus Hermeticum começam a ser escritos no Egito helenístico, combinando filosofia grega (platonismo, estoicismo) com religião egípcia e tradições judaicas. O processo de composição se estende pelos primeiros séculos d.C.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c. 250 d.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Plotino funda o Neoplatonismo</div><div class="timeline-desc">Plotino (205-270) sistematiza a filosofia platônica em torno da tríade Uno-Nous-Alma. As Enéadas tornam-se a obra filosófica mais influente para o esoterismo ocidental — a estrutura metafísica que Agrippa usará como espinha dorsal.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c. 500 d.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Pseudo-Dionísio Areopagita</div><div class="timeline-desc">Síntese de neoplatonismo e teologia cristã. A Hierarquia Celestial sistematiza os nove coros angelicais que Agrippa usará como estrutura fundamental do Livro III. A teologia negativa dionisiana fundamenta o conceito de Ain Soph cabalístico.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c. 900</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Sefer Yetzirah e Cabala Inicial</div><div class="timeline-desc">O Sefer Yetzirah — um dos textos fundacionais da Cabala — descreve a criação do cosmos através das 22 letras hebraicas e dos 10 números primordiais. A Cabala inicial floresce na Provence e na Espanha.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c. 1050</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Picatrix Compilado</div><div class="timeline-desc">O Ghayat al-Hakim ("Picatrix") é compilado na Espanha árabe — a mais completa síntese de magia astrológica do período islâmico. Será a fonte prática mais importante de Agrippa para talismãs e imagens mágicas.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1200–1305</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Alberto Magno e o Zohar</div><div class="timeline-desc">Alberto Magno sistematiza as virtudes ocultas das substâncias naturais em estrutura aristotélica (fonte direta do Livro I de Agrippa). Moisés de Leão compõe o Zohar — o texto cabalístico mais importante, desenvolvendo a doutrina das dez Sefirot.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1463</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Ficino Traduz o Corpus Hermeticum</div><div class="timeline-desc">Marco zero do hermetismo renascentista. Cosimo de' Medici ordena a Ficino que abandone a tradução de Platão. O resultado transforma a cultura intelectual europeia e torna possível o projeto de Agrippa.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1486</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">As 900 Teses de Pico e Nascimento de Agrippa</div><div class="timeline-desc">Pico publica suas 900 Teses em Roma — o primeiro documento da Cabala Cristã. No mesmo ano, nasce Cornelius Agrippa em Colônia. O projeto que Pico inaugura, Agrippa irá completar.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1510</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Primeira versão do De Occulta Philosophia</div><div class="timeline-desc">Agrippa, com 23 anos, completa a primeira versão e a envia a Trithemius. A obra circula em manuscrito por 21 anos antes da publicação — criando uma aura de mistério e expectativa.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1531</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Publicação Definitiva do De Occulta Philosophia</div><div class="timeline-desc">O evento central desta enciclopédia. A obra que sintetiza toda a tradição hermética, neoplatônica, cabalística e astrológica numa visão coerente e abrangente da magia filosófica. Imediata repercussão em toda a Europa.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1558–1614</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">John Dee e Isaac Casaubon</div><div class="timeline-desc">John Dee desenvolve a magia enoquiana baseada em Agrippa (1558–1582). Isaac Casaubon demonstra que o Corpus Hermeticum é mais recente do que se acreditava (1614) — abalando mas não destruindo a autoridade da tradição hermética.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1614–1616</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Manifestos Rosacruzes</div><div class="timeline-desc">A Fama e a Confessio Fraternitatis anunciam a existência de uma fraternidade secreta de sábios — realizando programaticamente o ideal do mago-filósofo agrippiano. As Bodas Químicas desenvolvem a dimensão alquímica.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1855–1856</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Eliphas Lévi — Dogme et Rituel</div><div class="timeline-desc">Lévi reapresenta os princípios agrippianos numa linguagem do século XIX, criando o ocultismo moderno como campo intelectual distinto. Seu trabalho é o elo direto entre Agrippa e o Golden Dawn.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1888–1900</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Golden Dawn — A Síntese Vitoriana</div><div class="timeline-desc">A Hermetic Order of the Golden Dawn sistematiza o legado agrippiano num currículo iniciático completo. Membros incluem W.B. Yeats, Arthur Machen, Aleister Crowley, Dion Fortune — todos absorvem o sistema de correspondências de Agrippa.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">2000–hoje</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Agrippa no Século XXI</div><div class="timeline-desc">Edições acadêmicas críticas (V. Perrone Compagni, 1992), traduções modernas com comentários extensos (Donald Tyson, 1993), e o renascimento do interesse em astrologia tradicional, Cabala Hermética e magia cerimonial trazem Agrippa de volta ao centro do debate esotérico contemporâneo.</div></div></div>
+  </div>
+</section>
+
+<section class="section" id="sec-arvore">
+  <div class="section-header">
+    <span class="section-number">Capítulo XVI</span>
+    <h1 class="section-title">A Árvore da Vida Cabalística</h1>
+    <p class="section-subtitle">Etz Chayyim — Diagrama completo das dez Sefirot e seus caminhos</p>
+    <div class="section-divider"></div>
+  </div>
+  <p>A Árvore da Vida (<em class="em-hebrew">עץ חיים</em> — Etz Chayyim) é o diagrama central da Cabala — um mapa do cosmos que mostra como a realidade emana de Deus (no topo, Kether) até o mundo material (na base, Malkuth), através de dez Sefirot conectadas por 22 caminhos que correspondem às 22 letras do alfabeto hebraico. Para Agrippa e toda a tradição da Cabala Cristã, esta árvore é simultaneamente um mapa do cosmos, um mapa da alma humana e um mapa de Deus em Sua auto-manifestação.</p>
+  <div class="diagram-wrapper">
+    <div class="diagram-title">Árvore da Vida — Etz Chayyim — com Correspondências Agrippianas</div>
+    <svg width="100%" height="720" viewBox="0 0 500 720" xmlns="http://www.w3.org/2000/svg" style="max-width:500px;margin:0 auto;display:block;">
+      <rect width="500" height="720" fill="#0d0a06"/>
+      <!-- Caminhos -->
+      <line x1="250" y1="62" x2="378" y2="162" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="62" x2="122" y2="162" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="62" x2="250" y2="342" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="162" x2="122" y2="162" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="162" x2="378" y2="282" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="162" x2="250" y2="342" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="122" y1="162" x2="122" y2="282" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="122" y1="162" x2="250" y2="342" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="282" x2="122" y2="282" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="282" x2="250" y2="342" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="282" x2="378" y2="462" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="122" y1="282" x2="250" y2="342" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="122" y1="282" x2="122" y2="462" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="342" x2="378" y2="462" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="342" x2="122" y2="462" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="342" x2="250" y2="562" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="462" x2="122" y2="462" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="462" x2="250" y2="562" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="122" y1="462" x2="250" y2="562" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="250" y1="562" x2="250" y2="662" stroke="#8a6a1a" stroke-width="1" opacity="0.6"/>
+      <line x1="378" y1="462" x2="250" y2="662" stroke="#8a6a1a" stroke-width="0.8" opacity="0.35"/>
+      <line x1="122" y1="462" x2="250" y2="662" stroke="#8a6a1a" stroke-width="0.8" opacity="0.35"/>
+      <!-- Três Pilares -->
+      <text x="45" y="28" fill="#8a6a1a" font-size="10" font-family="Cinzel, serif" opacity="0.6">Pilar da</text>
+      <text x="45" y="40" fill="#8a6a1a" font-size="10" font-family="Cinzel, serif" opacity="0.6">Severidade</text>
+      <text x="250" y="20" text-anchor="middle" fill="#c9a84c" font-size="10" font-family="Cinzel, serif" opacity="0.7">Pilar do Meio</text>
+      <text x="418" y="28" fill="#8a6a1a" font-size="10" font-family="Cinzel, serif" opacity="0.6">Pilar da</text>
+      <text x="418" y="40" fill="#8a6a1a" font-size="10" font-family="Cinzel, serif" opacity="0.6">Misericórdia</text>
+      <!-- Sefirot -->
+      <circle cx="250" cy="62" r="34" fill="rgba(255,255,255,0.07)" stroke="#ffffff" stroke-width="1.5"/>
+      <text x="250" y="56" text-anchor="middle" fill="#ffffff" font-size="10" font-family="Cinzel, serif">Kether</text>
+      <text x="250" y="70" text-anchor="middle" fill="#b0b0b0" font-size="9" font-family="serif" font-style="italic">Coroa · Eheieh</text>
+      <circle cx="378" cy="162" r="30" fill="rgba(180,180,100,0.07)" stroke="#c8c880" stroke-width="1.5"/>
+      <text x="378" y="157" text-anchor="middle" fill="#c8c880" font-size="10" font-family="Cinzel, serif">Chokmah</text>
+      <text x="378" y="170" text-anchor="middle" fill="#a0a060" font-size="9" font-family="serif" font-style="italic">Sabedoria · Yah</text>
+      <circle cx="122" cy="162" r="30" fill="rgba(100,50,150,0.08)" stroke="#8060b0" stroke-width="1.5"/>
+      <text x="122" y="157" text-anchor="middle" fill="#a080d0" font-size="10" font-family="Cinzel, serif">Binah</text>
+      <text x="122" y="170" text-anchor="middle" fill="#8060a0" font-size="9" font-family="serif" font-style="italic">Entend. · YHWH</text>
+      <circle cx="378" cy="282" r="30" fill="rgba(60,100,200,0.08)" stroke="#6080d0" stroke-width="1.5"/>
+      <text x="378" y="277" text-anchor="middle" fill="#8090e0" font-size="10" font-family="Cinzel, serif">Chesed</text>
+      <text x="378" y="290" text-anchor="middle" fill="#6070b0" font-size="9" font-family="serif" font-style="italic">Graça · El</text>
+      <circle cx="122" cy="282" r="30" fill="rgba(200,40,40,0.08)" stroke="#c04040" stroke-width="1.5"/>
+      <text x="122" y="277" text-anchor="middle" fill="#e06060" font-size="10" font-family="Cinzel, serif">Geburah</text>
+      <text x="122" y="290" text-anchor="middle" fill="#a04040" font-size="9" font-family="serif" font-style="italic">Força · Elohim</text>
+      <circle cx="250" cy="342" r="36" fill="rgba(220,180,40,0.09)" stroke="#c9a84c" stroke-width="2"/>
+      <text x="250" y="336" text-anchor="middle" fill="#e8d08a" font-size="11" font-family="Cinzel, serif">Tiphereth</text>
+      <text x="250" y="350" text-anchor="middle" fill="#c9a84c" font-size="9" font-family="serif" font-style="italic">Beleza · Sol · Miguel</text>
+      <circle cx="378" cy="462" r="30" fill="rgba(40,180,80,0.08)" stroke="#40b060" stroke-width="1.5"/>
+      <text x="378" y="457" text-anchor="middle" fill="#60c880" font-size="10" font-family="Cinzel, serif">Netzach</text>
+      <text x="378" y="470" text-anchor="middle" fill="#40a060" font-size="9" font-family="serif" font-style="italic">Vitória · Vênus</text>
+      <circle cx="122" cy="462" r="30" fill="rgba(220,120,40,0.08)" stroke="#d08040" stroke-width="1.5"/>
+      <text x="122" y="457" text-anchor="middle" fill="#e0a060" font-size="10" font-family="Cinzel, serif">Hod</text>
+      <text x="122" y="470" text-anchor="middle" fill="#b07040" font-size="9" font-family="serif" font-style="italic">Esplendor · Mercúrio</text>
+      <circle cx="250" cy="562" r="30" fill="rgba(150,150,200,0.08)" stroke="#a0a0c0" stroke-width="1.5"/>
+      <text x="250" y="557" text-anchor="middle" fill="#c0c0e0" font-size="10" font-family="Cinzel, serif">Yesod</text>
+      <text x="250" y="570" text-anchor="middle" fill="#9090b0" font-size="9" font-family="serif" font-style="italic">Fundação · Lua · Gabriel</text>
+      <circle cx="250" cy="662" r="30" fill="rgba(80,120,60,0.08)" stroke="#608040" stroke-width="1.5"/>
+      <text x="250" y="657" text-anchor="middle" fill="#90b060" font-size="10" font-family="Cinzel, serif">Malkuth</text>
+      <text x="250" y="670" text-anchor="middle" fill="#608040" font-size="9" font-family="serif" font-style="italic">Reino · Terra · Sandalphon</text>
+    </svg>
+  </div>
+  <p>A Árvore da Vida não é apenas um diagrama estático — é um <em>mapa dinâmico</em>. Os 22 caminhos que conectam as Sefirot correspondem às 22 letras hebraicas, que por sua vez correspondem aos 22 arcanos maiores do Tarot (na correspondência estabelecida pela tradição Golden Dawn, baseada nos princípios de Agrippa). Cada caminho representa uma transformação, uma modalidade de experiência que o iniciado atravessa em sua jornada ascendente de Malkuth (o mundo material, o ponto de partida) em direção a Kether (a coroa divina, o objetivo último).</p>
+</section>
+
+<section class="section" id="sec-glossario">
+  <div class="section-header">
+    <span class="section-number">Capítulo XVII</span>
+    <h1 class="section-title">Glossário Hermético Completo</h1>
+    <p class="section-subtitle">Termos essenciais da filosofia oculta de Agrippa com etimologia e definição</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">Ain Soph (אין סוף)</div><div class="glossary-etymology">Hebraico: "Sem Limite" / "Sem Fim"</div><div class="glossary-def">Na Cabala, o aspecto absolutamente transcendente de Deus, anterior a qualquer emanação. O Ain Soph está além de qualquer atributo — nem existência, nem não-existência podem ser predicadas dele. Corresponde ao Uno de Plotino e ao Deus apofático do Pseudo-Dionísio.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Anima Mundi</div><div class="glossary-etymology">Latim: "Alma do Mundo"</div><div class="glossary-def">O princípio vital universal que anima e conecta todos os seres do cosmos. Herança platônica (Timeu) mediada por Plotino e Ficino. É o veículo pelo qual as influências divinas fluem para o mundo material, e o medium pelo qual a magia opera. Equivalente ao Pneuma dos Estoicos e ao Spiritus Mundi de Ficino.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Daimon / Daemon</div><div class="glossary-etymology">Grego: "Ser Divino Intermediário"</div><div class="glossary-def">Na filosofia platônica, entidade intermediária entre os deuses e os humanos. O daimon de Sócrates era uma voz interior que o guiava. Para Apuleio, os daimons são os necessários mediadores de toda comunicação entre o divino e o humano. Agrippa distingue entre daimons bons (que auxiliam a magia benéfica) e maus. Não equivale ao "demônio" cristão no sentido negativo.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Emanação</div><div class="glossary-etymology">Latim: emanatio, "fluir de"</div><div class="glossary-def">No neoplatonismo, o processo pelo qual a realidade se produz a si mesma a partir do Uno: sem diminuição do Uno (como o sol que irradia sem perder luz), cada nível da realidade "transborda" para produzir o nível abaixo. A estrutura fundamental da cosmologia agrippiana dos três mundos.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Gematria (גמטריה)</div><div class="glossary-etymology">Do grego "geometria" ou do hebraico "guimatria"</div><div class="glossary-def">Sistema cabalístico de interpretação baseado no valor numérico das letras hebraicas. Palavras cujos valores numéricos coincidem são consideradas espiritualmente relacionadas. Método fundamental de Agrippa para estabelecer conexões entre os nomes divinos e o cosmos.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Goecia / Goetia</div><div class="glossary-etymology">Grego: goeteia, "feitiçaria"</div><div class="glossary-def">Forma de magia que Agrippa rejeita — aquela que opera através de invocação de espíritos malignos ou de práticas proibidas pela lei divina. Distingue-se da magia natural (virtudes naturais) e da magia cerimonial legítima (invocação de anjos com nomes divinos). Representa a contrafação vulgar da autêntica magia filosófica.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Hermes Trismegisto</div><div class="glossary-etymology">Grego: "Hermes o Três Vezes Grande"</div><div class="glossary-def">Figura lendária — identificação sincrética do deus grego Hermes com o deus egípcio Thoth — à qual foram atribuídos os textos do Corpus Hermeticum. Os renascentistas o acreditavam um profeta antediluviano. O título "Trismegisto" indica tripla grandeza: o maior filósofo, o maior sacerdote e o maior rei.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Imaginatio</div><div class="glossary-etymology">Latim: "faculdade de formar imagens"</div><div class="glossary-def">No sistema agrippiano, a imaginação não é mera fantasia — é uma faculdade ativa da alma com poder causal real sobre o mundo. Uma imaginação suficientemente intensa e purificada pode imprimir suas imagens sobre o spiritus mundi, afetando assim a realidade exterior. Base da teoria agrippiana da magia pela vontade.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Intelligentia</div><div class="glossary-etymology">Latim: "inteligência", "entendimento"</div><div class="glossary-def">No sistema agrippiano, as inteligências são entidades espirituais benéficas que animam os planetas — distintas dos "espíritos" ou daimons planetários (o aspecto mais bruto da influência planetária). Cada planeta tem uma inteligência (aspecto elevado) e um espírito (aspecto elementar). As inteligências são os "anjos" das esferas celestes.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Macrocosmo / Microcosmo</div><div class="glossary-etymology">Grego: "Grande Mundo" / "Pequeno Mundo"</div><div class="glossary-def">Princípio filosófico fundamental do hermetismo: o universo (macrocosmo) e o ser humano (microcosmo) são estruturados pelo mesmo padrão. O que existe no grande cosmos tem sua correspondência no pequeno cosmos do ser humano. Esta correspondência torna possível a magia: operar sobre as correspondências internas afeta o cosmos externo, e vice-versa.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Neoplatonismo</div><div class="glossary-etymology">Escola filosófica fundada por Plotino (205-270 d.C.)</div><div class="glossary-def">Desenvolvimento e sistematização do platonismo. Caracteriza-se pela doutrina da emanação do Uno, pela hierarquia Uno-Nous-Alma, pela teoria da ascensão da alma ao divino, e pela theurgia (uso de rituais para facilitar essa ascensão). A espinha filosófica de toda a cosmologia agrippiana.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Nous</div><div class="glossary-etymology">Grego: "Intelecto", "Mente"</div><div class="glossary-def">No neoplatonismo, o segundo nível da hierarquia do Uno (abaixo do Uno, acima da Alma). O Intelecto Universal que contempla eternamente as Formas ou Ideias. Corresponde ao mundo intelectual de Agrippa, ao Beriah cabalístico, ao Logos cristão. É o âmbito das essências eternas e dos arquétipos divinos.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Prisca Theologia</div><div class="glossary-etymology">Latim: "Teologia Antiga", "Sabedoria Primordial"</div><div class="glossary-def">Conceito desenvolvido por Ficino: a ideia de que há uma sabedoria divina primordial revelada a Hermes Trismegisto, Zoroastro, Orfeu, Pitágoras, Platão — que está em perfeita harmonia com o Cristianismo. Esta visão permitia aos humanistas renascentistas usar textos pagãos sem conflito com a fé cristã, e fundamentava a síntese total que Agrippa realiza no De Occulta.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Quintessência</div><div class="glossary-etymology">Latim: "quinta essência", o quinto elemento</div><div class="glossary-def">Para Aristóteles, a substância dos corpos celestes — imutável e perfeitamente circular. Para os alquimistas, a essência pura extraída de qualquer substância por destilação progressiva. Para Agrippa, o intermediário entre a matéria (os quatro elementos) e o espírito — o veículo das virtudes ocultas e das influências celestiais.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Sefirot (ספירות)</div><div class="glossary-etymology">Hebraico: "esferas", "emanações", "números"</div><div class="glossary-def">As dez emanações divinas da Cabala, através das quais o Ain Soph cria e sustenta o cosmos. Não são atributos externos de Deus mas modos pelos quais Deus se manifesta e age. Formam a "Árvore da Vida". Cada Sefirah tem um nome, um número, um nome divino, um arcanjo, um astro e um conjunto de correspondências mágicas.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Sigil / Sigilum</div><div class="glossary-etymology">Latim: sigillum, "selo", "marca", "sinal"</div><div class="glossary-def">Assinatura simbólica de um espírito ou entidade espiritual — uma figura geométrica única derivada do nome do ser em questão através de um processo sistemático (como o traçado do nome em gematria pelo quadrado mágico correspondente). O sigil funciona como uma "chave" vibracional para a entidade que representa.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Simpatia / Antipatia</div><div class="glossary-etymology">Grego: sympatheia / antipatheia</div><div class="glossary-def">Princípio fundamental da magia natural: certas coisas se atraem por compartilharem a mesma virtude cósmica (simpatia); outras se repelem por terem virtudes opostas (antipatia). O imã e o ferro simpatizam; o imã e o diamante antipatizam. O coral e o sangue simpatizam. Este princípio é a base mecânica de toda a magia natural agrippiana.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Spiritus Mundi</div><div class="glossary-etymology">Latim: "Espírito do Mundo"</div><div class="glossary-def">O pneuma cósmico que permeia todo o universo, mediando entre a alma imaterial e o corpo material, sendo o veículo pelo qual as influências astrais se transmitem do céu para a terra. Conceito central em Ficino e Agrippa. A magia opera fundamentalmente sobre o spiritus mundi — certas substâncias, sons e rituais capturam e direcionam o spiritus de formas específicas.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Tetragrammaton (יהוה)</div><div class="glossary-etymology">Grego: "O Nome de Quatro Letras"</div><div class="glossary-def">O nome mais sagrado de Deus: Yod-He-Vav-He (YHWH). Considerado impronunciável na tradição judaica. Para a Cabala Cristã (Pico, Agrippa), o Tetragrammaton revela a Trindade: Yod-He = Pai e Mãe; Vav = Filho; He final = Espírito Santo. O nome mais poderoso de toda a magia cerimonial agrippiana.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Theurgia</div><div class="glossary-etymology">Grego: "obra divina", "operação de Deus"</div><div class="glossary-def">No neoplatonismo tardio (especialmente Jâmblico), a prática ritual que facilita a ascensão da alma ao divino e a descida do divino à alma. Distingue-se da "magia vulgar" por ter como objetivo não o benefício material mas a união com o divino. Para Agrippa, toda a magia cerimonial do Livro III é essencialmente teúrgica.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Virtus Occulta</div><div class="glossary-etymology">Latim: "virtude oculta", "poder escondido"</div><div class="glossary-def">Propriedade de uma coisa natural que não deriva de suas qualidades elementais visíveis mas de uma influência espiritual recebida das esferas celestes. A atração do imã, a propriedade hemostática do coral — são virtudes ocultas. São o fundamento de toda a magia natural e provam que o cosmos é um sistema de influências espirituais, não apenas físicas.</div></div>
+  </div>
+</section>
+
+<section class="section" id="sec-bibliografia">
+  <div class="section-header">
+    <span class="section-number">Capítulo XVIII</span>
+    <h1 class="section-title">Bibliografia Fundamental</h1>
+    <p class="section-subtitle">Fontes primárias, estudos acadêmicos e leituras recomendadas</p>
+    <div class="section-divider"></div>
+  </div>
+  <h2 class="content-h2">Obras de Agrippa</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">De Occulta Philosophia Libri Tres (1531)</div><div class="glossary-etymology">Colônia: Johannes Soter. Ed. crítica: V. Perrone Compagni, Leiden: Brill, 1992.</div><div class="glossary-def">A obra central desta enciclopédia. Tradução inglesa anotada por Donald Tyson (Llewellyn Publications, 1993) — com mais de 500 páginas de notas, é a mais acessível para o leitor moderno. A tradução latina de J.F. (1651) é histórica e influente.</div></div>
+    <div class="glossary-item"><div class="glossary-term">De Incertitudine et Vanitate Scientiarum (1526)</div><div class="glossary-etymology">Antuérpia. Tradução inglesa histórica: Of the Vanitie and Uncertaintie of Artes and Sciences (1569).</div><div class="glossary-def">O contraponto essencial do De Occulta. Leitura indispensável para compreender o projeto intelectual completo de Agrippa — o equilíbrio entre ceticismo filosófico e sabedoria hermética é o que define o seu caráter único.</div></div>
+    <div class="glossary-item"><div class="glossary-term">De Nobilitate et Praecellentia Foeminei Sexus (1529)</div><div class="glossary-etymology">Antuérpia. Escrito em homenagem a Margarida da Áustria.</div><div class="glossary-def">Tratado surpreendente sobre a nobreza e excelência do sexo feminino — que demonstra o feminismo implícito na visão mágico-hermética de Agrippa, onde o princípio feminino (a Alma, a Lua, Binah) é o mediador universal do cosmos.</div></div>
+  </div>
+  <h2 class="content-h2">Estudos Acadêmicos Fundamentais</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">Frances Yates — Giordano Bruno and the Hermetic Tradition (1964)</div><div class="glossary-etymology">University of Chicago Press</div><div class="glossary-def">O livro que inaugurou os estudos modernos sobre o hermetismo renascentista. Indispensável para contextualizar Agrippa no ambiente intelectual do século XVI. A tese de Yates sobre o papel do hermetismo na revolução científica permanece fertilmente influente.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Charles Nauert — Agrippa and the Crisis of Renaissance Thought (1965)</div><div class="glossary-etymology">University of Illinois Press</div><div class="glossary-def">A biografia intelectual de Agrippa mais completa em inglês. Analisa a tensão entre o De Occulta e o De Incertitudine e situa Agrippa no contexto das crises religiosas, políticas e intelectuais do início do século XVI.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Christopher Lehrich — The Language of Demons and Angels (2003)</div><div class="glossary-etymology">Brill Academic Publishers</div><div class="glossary-def">O estudo mais sofisticado e filosoficamente rigoroso sobre Agrippa em décadas. Analisa o De Occulta como um sistema filosófico coerente sobre a linguagem, a representação e o poder. Altamente recomendado para leitores com formação filosófica.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Gershom Scholem — Major Trends in Jewish Mysticism (1941)</div><div class="glossary-etymology">Schocken Books</div><div class="glossary-def">A obra fundacional dos estudos acadêmicos da mística judaica. O capítulo sobre a Cabala espanhola e o Zohar é essencial para compreender as fontes do Livro III do De Occulta.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Ioan Couliano — Eros and Magic in the Renaissance (1987)</div><div class="glossary-etymology">University of Chicago Press</div><div class="glossary-def">Análise brilhante da magia renascentista como sistema de manipulação psicológica baseado na teoria do desejo e da imaginação. Inclui análise profunda de Ficino e Agrippa. Uma das obras mais inovadoras e instigantes sobre o tema.</div></div>
+    <div class="glossary-item"><div class="glossary-term">D.P. Walker — Spiritual and Demonic Magic from Ficino to Campanella (1958)</div><div class="glossary-etymology">Warburg Institute, Londres</div><div class="glossary-def">Estudo clássico da magia espiritual e demoníaca no Renascimento, com capítulos importantes sobre Agrippa, Ficino e seus sucessores. Essencial para entender o contexto da magia celestial e cerimonial.</div></div>
+  </div>
+  <h2 class="content-h2">Fontes Primárias Relacionadas</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">Corpus Hermeticum</div><div class="glossary-etymology">Tradução e comentário de Brian Copenhaver (Cambridge University Press, 1992)</div><div class="glossary-def">A melhor tradução inglesa moderna, com extensas notas históricas e filosóficas. Absolutamente indispensável para compreender as raízes herméticas do projeto de Agrippa.</div></div>
+    <div class="glossary-item"><div class="glossary-term">Plotino — Enéadas</div><div class="glossary-etymology">Tradução de A.H. Armstrong (Harvard/Loeb, 7 vols.)</div><div class="glossary-def">A edição crítica e tradução padrão das Enéadas. Especialmente importantes para Agrippa: Enéada IV.4.40-44 (sobre magia e simpatias), I.6 (Sobre o Belo), e VI (sobre o Uno e suas emanações).</div></div>
+    <div class="glossary-item"><div class="glossary-term">Picatrix (Ghayat al-Hakim)</div><div class="glossary-etymology">Tradução inglesa de John Michael Greer e Christopher Warnock (Adocentyn Press, 2010)</div><div class="glossary-def">A primeira tradução inglesa completa do Picatrix, com notas extensas. Essencial para entender as fontes árabes da magia natural e celestial de Agrippa e para comparar os dois sistemas.</div></div>
+  </div>
+</section>
+
+<section class="section" id="sec-conclusao">
+  <div class="section-header">
+    <span class="section-number">Epilogos</span>
+    <h1 class="section-title">Meditação Final</h1>
+    <p class="section-subtitle">O que Agrippa ainda nos diz — e o que podemos levar desta viagem</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="verse">
+    "Há mais coisas no céu e na terra, Horácio,<br>
+    do que sonha a tua filosofia."<br>
+    — Shakespeare, Hamlet (c. 1601)
+  </div>
+  <p class="dropcap">Chegando ao fim desta enciclopédia iniciática, impõe-se uma questão fundamental: por que estudar Agrippa hoje? O que tem a dizer ao século XXI um filósofo-mago do século XVI que acreditava em talismãs de chumbo, em inteligências planetárias e em virtudes ocultas do louro?</p>
+  <p>A resposta mais honesta é: mais do que poderíamos inicialmente supor. Não porque a cosmologia específica de Agrippa — com seus sete planetas geocêntricos e suas inteligências angelicais — seja literalmente verdadeira no sentido científico moderno. Mas porque ela representa um modo de habitar o cosmos que o mundo moderno perdeu, e que, cada vez mais, percebemos que faz uma falta profunda.</p>
+  <p>O cosmos de Agrippa é um cosmos <em>significativo</em>. O sol que nasce não é apenas uma massa de hidrogênio em fusão nuclear — é uma manifestação do princípio de vida, luz e nobreza que permeia todos os níveis da realidade. A pedra que se segura na mão não é apenas uma configuração molecular — é um ser específico com sua história, sua personalidade, sua ressonância com o cosmos maior. O ser humano não é uma máquina biológica determinada por genes e neurônios — é um microcosmo vivo que reflete e participa da estrutura inteira do universo.</p>
+  <div class="callout initiatic" data-label="A Magia como Filosofia Vivida — O Legado Real">
+    <p>O verdadeiro legado de Agrippa não são os quadrados mágicos nem os nomes dos anjos — embora esses possam ser úteis como ferramentas contemplativas. O verdadeiro legado é uma <strong class="em-gold">visão do mundo como organismo vivo penetrado de sentido</strong>, onde cada coisa — cada planta, cada planeta, cada número, cada palavra — é uma janela para um aspecto do divino que pode ser contemplado, habitado e com o qual pode-se entrar em comunhão. Esta é a filosofia oculta — não oculta porque proibida, mas oculta porque requer olhos treinados para ser vista. São esses olhos que esta enciclopédia buscou, em alguma medida, ajudar a abrir.</p>
+  </div>
+  <blockquote>"Que aquele que busca encontre. Que aquele que bate ouça a porta abrir. E que aquele que perguntar receba — não de mim, mas da sabedoria eterna que, por um breve momento, falou através de mim."<cite>— Parafraseando o espírito de Cornelius Agrippa von Nettesheim (1486–1535)</cite></blockquote>
+  <div class="verse">
+    Ascende pelos três mundos<br>
+    como se sobisses por uma escada de luz.<br>
+    O elemental é teu corpo,<br>
+    o celestial é tua alma,<br>
+    o intelectual é teu espírito —<br>
+    tu és os três.<br>
+    Tu és o cosmos.<br>
+    O cosmos és tu.<br>
+    <em>Ut superius, sic inferius.</em>
+  </div>
+  <div class="footnotes">
+    <h3 class="content-h3">Notas e Referências</h3>
+    <div class="footnote-item">¹ Sobre a datação do Corpus Hermeticum: Isaac Casaubon, <em>De rebus sacris et ecclesiasticis exercitationes XVI</em>, Londres, 1614. Para o debate posterior, ver Garth Fowden, <em>The Egyptian Hermes</em>, Princeton, 1986.</div>
+    <div class="footnote-item">² Sobre a carta de Trithemius a Agrippa (1510) pedindo discrição: Joseph H. Peterson (ed.), <em>Agrippa's De Occulta Philosophia</em>, nota introdutória. A carta é datada de 8 de abril de 1510.</div>
+    <div class="footnote-item">³ O episódio de Metz (1519): documentado por Agrippa em sua correspondência — <em>Epistolae</em>, Livro II, cartas 35-39. Ver também Nauert, <em>Agrippa and the Crisis of Renaissance Thought</em>, cap. 4.</div>
+    <div class="footnote-item">⁴ Sobre os quadrados mágicos e sua história matemática: W.S. Andrews, <em>Magic Squares and Cubes</em>, Dover, 1960. Sobre sua função mágica: Donald Tyson (ed.), <em>Three Books of Occult Philosophy</em>, notas ao Livro II.</div>
+    <div class="footnote-item">⁵ A relação entre o De Occulta e o Golden Dawn: R.A. Gilbert, <em>The Golden Dawn: Twilight of the Magicians</em>, Aquarian Press, 1983.</div>
+    <div class="footnote-item">⁶ Sobre a influência de Agrippa em Marlowe e Shakespeare: Frances Yates, <em>The Occult Philosophy in the Elizabethan Age</em>, Routledge, 1979.</div>
+  </div>
+</section>
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function toggleSidebar(){document.body.classList.toggle('sidebar-collapsed')}
+window.addEventListener('scroll',function(){
+  const st=window.scrollY,dh=document.body.scrollHeight-window.innerHeight;
+  document.getElementById('reading-bar').style.width=(st/dh*100)+'%';
+  const bt=document.getElementById('back-top');
+  st>500?bt.classList.add('visible'):bt.classList.remove('visible');
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(st>=s.offsetTop-130)cur=s.id});
+  document.querySelectorAll('.nav-link').forEach(l=>{
+    l.classList.remove('nav-active');
+    if(l.getAttribute('href')==='#'+cur)l.classList.add('nav-active');
+  });
+});
+function switchTab(btn,panelId){
+  const c=btn.closest('.tabs-container');
+  c.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  c.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+function toggleAccordion(btn){
+  const body=btn.nextElementSibling,isOpen=body.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.accordion-body').forEach(b=>b.classList.remove('open'));
+  btn.closest('.accordion').querySelectorAll('.accordion-header').forEach(b=>b.classList.remove('active'));
+  if(!isOpen){body.classList.add('open');btn.classList.add('active')}
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const hero=document.getElementById('hero');
+if(hero){window.addEventListener('scroll',function(){
+  const s=window.scrollY;
+  if(s<window.innerHeight)hero.style.transform='translateY('+(s*0.15)+'px)';
+})}
+</script>
+</body>
+</html>

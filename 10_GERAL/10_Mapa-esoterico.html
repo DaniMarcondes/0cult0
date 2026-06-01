@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa do Esoterismo & Ocultismo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root {
+    --bg: #0a0806;
+    --bg2: #110e09;
+    --bg3: #1a1510;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --gold-dim: #7a6530;
+    --amber: #d4821a;
+    --cream: #f0e6cc;
+    --cream-dim: #a89870;
+    --red: #8b1a1a;
+    --red2: #c44a2a;
+    --purple: #3d1f5c;
+    --purple2: #7b4fa6;
+    --teal: #1a4a4a;
+    --teal2: #2e8b7a;
+    --silver: #b0a898;
+    --glow: rgba(201,168,76,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* Stars background */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: var(--o1, 0.1); transform: scale(1); }
+    to   { opacity: var(--o2, 0.6); transform: scale(1.3); }
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid var(--gold-dim);
+    background: linear-gradient(180deg, rgba(10,8,6,0) 0%, rgba(201,168,76,0.04) 100%);
+  }
+
+  .sigil {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.5));
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(22px, 4vw, 42px);
+    color: var(--gold2);
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--cream-dim);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  /* Search */
+  .search-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: 32px auto 0;
+  }
+  .search-wrap input {
+    width: 100%;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid var(--gold-dim);
+    border-radius: 2px;
+    padding: 12px 20px 12px 48px;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .search-wrap input::placeholder { color: var(--cream-dim); opacity: 0.5; }
+  .search-wrap input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201,168,76,0.15);
+  }
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-dim);
+    font-size: 18px;
+    pointer-events: none;
+  }
+
+  /* Main layout */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* Category filter pills */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  .filter-pill {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: all 0.25s;
+    opacity: 0.55;
+  }
+  .filter-pill:hover, .filter-pill.active { opacity: 1; box-shadow: 0 0 12px currentColor; }
+  .filter-pill.all { color: var(--gold); }
+
+  /* Macro sections */
+  .macro-section {
+    margin-bottom: 32px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .macro-section:hover { border-color: rgba(201,168,76,0.35); }
+  .macro-section.hidden { display: none; }
+
+  .macro-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.25s;
+    position: relative;
+  }
+  .macro-header:hover { background: rgba(201,168,76,0.05); }
+
+  .macro-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  .macro-title-wrap { flex: 1; }
+  .macro-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .macro-desc {
+    font-size: 14px;
+    color: var(--cream-dim);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .macro-count {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--cream-dim);
+    border: 1px solid currentColor;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0.5;
+  }
+
+  .macro-toggle {
+    font-size: 20px;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    color: var(--cream-dim);
+    flex-shrink: 0;
+  }
+  .macro-section.open .macro-toggle { transform: rotate(180deg); }
+
+  /* Micro grid */
+  .micro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.08);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+  .macro-section.open .micro-grid { max-height: 3000px; }
+
+  .micro-card {
+    background: var(--bg2);
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .micro-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .micro-card:hover { background: var(--bg3); }
+  .micro-card:hover::before { opacity: 1; }
+
+  .micro-name {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .micro-desc {
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .micro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .micro-tag {
+    font-size: 10px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 1px;
+    color: var(--cream-dim);
+    opacity: 0.7;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--gold-dim);
+    max-width: 640px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 60px rgba(201,168,76,0.2);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: none;
+    color: var(--cream-dim);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--gold2); }
+
+  .modal-icon { font-size: 36px; margin-bottom: 12px; }
+  .modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    color: var(--gold2);
+    margin-bottom: 4px;
+  }
+  .modal-parent {
+    font-size: 13px;
+    color: var(--gold-dim);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .modal-body { font-size: 16px; line-height: 1.8; color: var(--cream); }
+  .modal-body p { margin-bottom: 12px; }
+  .modal-body strong { color: var(--gold); font-style: normal; }
+  .modal-subtopics { margin-top: 20px; }
+  .modal-subtopics h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 12px;
+  }
+  .subtopic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .subtopic-pill {
+    font-size: 13px;
+    padding: 5px 14px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 1px;
+    color: var(--cream-dim);
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    position: relative; z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+  .stat span { color: var(--gold2); font-size: 18px; display: block; text-align: center; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+  /* Highlight */
+  .highlight { background: rgba(201,168,76,0.2); border-radius: 2px; }
+
+  /* Color themes per category */
+  .cat-magia .macro-header .macro-title,
+  .cat-magia .micro-card, .cat-magia .macro-count { color: var(--amber); }
+  .cat-magia .micro-card::before { background: var(--amber); }
+  .cat-magia .macro-section { border-color: rgba(212,130,26,0.2); }
+
+  .cat-divinacao .macro-header .macro-title,
+  .cat-divinacao .micro-card, .cat-divinacao .macro-count { color: #7ecad4; }
+  .cat-divinacao .micro-card::before { background: #7ecad4; }
+  .cat-divinacao .macro-section { border-color: rgba(126,202,212,0.2); }
+
+  .cat-misticismo .macro-header .macro-title,
+  .cat-misticismo .micro-card, .cat-misticismo .macro-count { color: #b47fe8; }
+  .cat-misticismo .micro-card::before { background: #b47fe8; }
+  .cat-misticismo .macro-section { border-color: rgba(180,127,232,0.2); }
+
+  .cat-tradicoes .macro-header .macro-title,
+  .cat-tradicoes .micro-card, .cat-tradicoes .macro-count { color: var(--teal2); }
+  .cat-tradicoes .micro-card::before { background: var(--teal2); }
+  .cat-tradicoes .macro-section { border-color: rgba(46,139,122,0.2); }
+
+  .cat-cosmo .macro-header .macro-title,
+  .cat-cosmo .micro-card, .cat-cosmo .macro-count { color: #e8c96a; }
+  .cat-cosmo .micro-card::before { background: #e8c96a; }
+  .cat-cosmo .macro-section { border-color: rgba(232,201,106,0.2); }
+
+  .cat-hermetismo .macro-header .macro-title,
+  .cat-hermetismo .micro-card, .cat-hermetismo .macro-count { color: #e8986a; }
+  .cat-hermetismo .micro-card::before { background: #e8986a; }
+  .cat-hermetismo .macro-section { border-color: rgba(232,152,106,0.2); }
+
+  .cat-religioes .macro-header .macro-title,
+  .cat-religioes .micro-card, .cat-religioes .macro-count { color: #e87a7a; }
+  .cat-religioes .micro-card::before { background: #e87a7a; }
+  .cat-religioes .macro-section { border-color: rgba(232,122,122,0.2); }
+
+  .cat-psique .macro-header .macro-title,
+  .cat-psique .micro-card, .cat-psique .macro-count { color: #8ab4e8; }
+  .cat-psique .micro-card::before { background: #8ab4e8; }
+  .cat-psique .macro-section { border-color: rgba(138,180,232,0.2); }
+
+  .cat-fenomenos .macro-header .macro-title,
+  .cat-fenomenos .micro-card, .cat-fenomenos .macro-count { color: #a8e87a; }
+  .cat-fenomenos .micro-card::before { background: #a8e87a; }
+  .cat-fenomenos .macro-section { border-color: rgba(168,232,122,0.2); }
+
+  .cat-filosofia .macro-header .macro-title,
+  .cat-filosofia .micro-card, .cat-filosofia .macro-count { color: #e8d07a; }
+  .cat-filosofia .micro-card::before { background: #e8d07a; }
+  .cat-filosofia .macro-section { border-color: rgba(232,208,122,0.2); }
+
+  @media (max-width: 600px) {
+    .macro-header { padding: 16px 18px; }
+    .macro-title { font-size: 15px; }
+    .micro-grid { grid-template-columns: 1fr; }
+    .modal { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<header>
+  <div class="sigil">✦ ☽ ✦</div>
+  <h1>Mapa do Esoterismo<br>Ocultismo & Espiritualidade</h1>
+  <p class="subtitle">Cartografia dos Mistérios — Macro & Micro</p>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar área, tradição, prática..." autocomplete="off">
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div><span id="statMacro">0</span>Macro-Áreas</div>
+  <div><span id="statMicro">0</span>Sub-Áreas</div>
+  <div><span id="statVisible">0</span>Visíveis</div>
+</div>
+
+<main>
+  <div class="filter-bar" id="filterBar"></div>
+  <div id="container"></div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-icon" id="mIcon"></div>
+    <div class="modal-title" id="mTitle"></div>
+    <div class="modal-parent" id="mParent"></div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-subtopics" id="mSubs"></div>
+  </div>
+</div>
+
+<script>
+const DATA = [
+  {
+    id: "magia",
+    cat: "cat-magia",
+    icon: "🔥",
+    title: "Magia & Ocultismo Prático",
+    desc: "Arte de influenciar a realidade por meios não-ordinários, rituais e vontade",
+    color: "#d4821a",
+    items: [
+      { name: "Magia Cerimonial", desc: "Sistema ritual complexo com evocações, círculos mágicos e correspondências planetárias.", tags: ["ritual","occidental"], detail: "A Magia Cerimonial abrange sistemas como a Golden Dawn, Thelema e a tradição grimório europeia. Trabalha com angelos, demônios e inteligências planetárias através de rituais precisos. <strong>Figuras chave:</strong> Aleister Crowley, Israel Regardie, Eliphas Lévi.", subs: ["Evocação", "Invocação", "Círculos mágicos", "Tetragrammaton", "Nomes de poder", "Selos e Sigis", "Magia Enochiana", "Liber Aba"] },
+      { name: "Teurgia", desc: "Magia elevada voltada para a união com o divino e trabalho com forças espirituais superiores.", tags: ["divino","neoplatonismo"], detail: "A Teurgia (grego: theourgia — 'trabalho divino') é o conjunto de práticas rituais que visa elevar a alma até os planos divinos. Diferente da goetia, não manipula entidades inferiores. <strong>Origem:</strong> Jâmblico, Proclo e os Oráculos Caldeus.", subs: ["Oráculos Caldeus", "Neoplatonismo prático", "Purificação da alma", "Ascensão espiritual", "Jâmblico", "Iluminação ritual"] },
+      { name: "Goetia & Demonologia", desc: "Arte de conjurar e trabalhar com espíritos, demônios e entidades específicas.", tags: ["grimório","espíritos"], detail: "A Goetia abrange o trabalho com os 72 espíritos de Salomão (Ars Goetia), sistemas de pactos e hierarquias demoníacas. <strong>Textos base:</strong> Lemegeton, Grimorium Verum, Grand Grimoire.", subs: ["72 espíritos de Salomão", "Ars Goetia", "Lemegeton", "Pactos", "Hierarquias infernais", "Abramelin", "Grimorium Verum"] },
+      { name: "Magia Caótica", desc: "Sistema pragmático e pós-moderno que usa qualquer paradigma como ferramenta.", tags: ["caos","pós-moderno"], detail: "O Chaos Magick surgiu nos anos 70 com Peter Carroll e Ray Sherwin. Rejeita dogmas rígidos e utiliza crença como ferramenta pragmática. O conceito de gnose como estado alterado de consciência é central. <strong>Conceitos chave:</strong> Sigilização, kia, banishing, paradigmas.", subs: ["Sigilização", "Kia e Chaos", "Peter Carroll", "Austin Osman Spare", "Paradigma fluido", "Gnose mágica", "Liber Null"] },
+      { name: "Magia das Ervas & Botanomancia", desc: "Uso ritual e mágico de plantas, raízes e ervas em feitiços e curas.", tags: ["natureza","folklore"], detail: "Prática ancestral que combina conhecimento botânico com simbolismo espiritual. Cada planta carrega assinaturas vibracionais que correspondem a planetas, elementos e propósitos mágicos.", subs: ["Assinaturas das plantas", "Banhos de ervas", "Defumações", "Unguentos mágicos", "Raízes e raizeiros", "Jardim mágico"] },
+      { name: "Magia Simpática", desc: "Princípio do 'semelhante age sobre semelhante' — bonecas, amuletos e representações.", tags: ["folk","simpatia"], detail: "Baseada nas Leis de Similaridade e Contágio de James Frazer. Inclui voodoo dolls, magia de corda, nós, cordões e qualquer representação física como veículo de intenção mágica.", subs: ["Lei da Similaridade", "Lei do Contágio", "Bonecos de voo", "Magia de corda e nós", "Efígies", "Mojo bags"] },
+      { name: "Magia dos Grimórios", desc: "Tradição ocidental dos livros de magia medievais e renascentistas.", tags: ["livros","medieval"], detail: "Os grimórios são manuais mágicos do medievo e renascimento que codificam rituais, selos, listas de espíritos e instruções de operação. <strong>Exemplos:</strong> Key of Solomon, Grand Grimoire, Heptameron, Munich Manual.", subs: ["Key of Solomon", "Lesser Key", "Heptameron", "Picatrix", "Munich Manual", "Sworn Book of Honorius", "Black Pullet"] },
+      { name: "Magia Runar", desc: "Uso das runas como sistema mágico, oracular e de poder vibracional.", tags: ["nórdico","runas"], detail: "As runas são mais que alfabeto — são forças cósmicas. A magia runar envolve galdr (cantos), stav (posturas), e a escrita de bindrunes e yantras rúnicos. <strong>Sistemas:</strong> Elder Futhark, Younger Futhark, Anglo-Saxon Futhorc.", subs: ["Galdr (cantos)", "Stav (posturas)", "Bindrunes", "Stadhagaldr", "Elder Futhark", "Seiðr", "Ásatrú mágico"] },
+      { name: "Magia Sexual (Sex Magick)", desc: "Uso da energia sexual como combustível para intenções mágicas e elevação espiritual.", tags: ["tantra","occidental"], detail: "Popularizada por Paschal Beverly Randolph e Aleister Crowley, une tradições tântricas orientais com hermetismo ocidental. A energia do orgasmo é direcionada para manifestações ou estados espirituais.", subs: ["Karezza", "OTO e Crowley", "Randolph", "Magia de Lua Vermelha", "Tantra Ocidental"] },
+      { name: "Magia Natural & Elementar", desc: "Trabalho com os quatro elementos, forças naturais e espíritos da natureza.", tags: ["elementos","natureza"], detail: "Envolve trabalho com sílfides (ar), gnomos (terra), salamandras (fogo) e ondinas (água). Prática central na Wicca, neopaganismo e hermetismo.", subs: ["Quatro elementos", "Elementais", "Gnomos", "Sílfides", "Salamandras", "Ondinas"] },
+      { name: "Magia Folk & Popular", desc: "Tradições mágicas populares, benzimentos, simpatias e práticas regionais.", tags: ["folk","popular"], detail: "Inclui as tradições mágicas não-sistematizadas do povo: benzedeiras, raizeiras, hoodoo americano, bruxaria italiana (Stregoneria), práticas ciganas, magia eslava e outras tradições locais.", subs: ["Hoodoo", "Curanderismo", "Stregoneria", "Bruxaria eslava", "Benzedeiras", "Magia cigana", "Pow-Wow"] },
+      { name: "Alquimia Prática", desc: "Transmutação de matérias físicas como via de transformação espiritual e produção de remédios.", tags: ["transmutação","laboratório"], detail: "A alquimia laboratorial trabalha com as três primas (sal, enxofre, mercúrio), a Opus Magnum e a busca pela Pedra Filosofal. Inclui spagyric (herbalismo alquímico) e destilação de quintessências.", subs: ["Opus Magnum", "Pedra Filosofal", "Spagyric", "Três Primas", "Nigredo/Albedo/Rubedo", "Elixires"] },
+    ]
+  },
+  {
+    id: "divinacao",
+    cat: "cat-divinacao",
+    icon: "🔮",
+    title: "Divinação & Oraculares",
+    desc: "Artes de ver além do tempo, consultar o destino e interpretar sinais",
+    color: "#7ecad4",
+    items: [
+      { name: "Astrologia", desc: "Estudo da influência dos astros sobre a vida humana e os ciclos cósmicos.", tags: ["astros","ciclos"], detail: "A astrologia é uma das tradições divinatórias mais complexas. Inclui sistemas ocidental (tropical), védico (jyotish), helenístico, árabe e chinês. Trabalha com mapas natais, trânsitos, revoluções solares e sinastrias.", subs: ["Astrologia tropical", "Astrologia sideral", "Jyotish védico", "Horária", "Mundana", "Astrologia cabalística", "Progressões", "Sinastria"] },
+      { name: "Tarot", desc: "Baralho de 78 cartas usado para leitura oracular, reflexão e autoconhecimento.", tags: ["cartas","oracular"], detail: "O Tarot surgiu no século XV como jogo de cartas e foi apropriado pelos ocultistas no séc. XVIII. Os <strong>22 Arcanos Maiores</strong> correspondem ao caminho do Louco — jornada arquetípica da alma.", subs: ["Arcanos Maiores", "Arcanos Menores", "Tarot de Marselha", "Rider-Waite", "Thoth de Crowley", "Spreads e tiragens", "Leitura intuitiva"] },
+      { name: "I Ching", desc: "Oracle chinês milenar dos 64 hexagramas, base da filosofia taoísta.", tags: ["chines","tao"], detail: "O I Ching (Livro das Mutações) é um dos textos mais antigos da humanidade. Trabalha com 64 hexagramas formados por linhas yin e yang, revelando o estado energético de uma situação.", subs: ["64 hexagramas", "Trigramas", "Lançamento de moedas", "Yarrow stalks", "Comentários de Confúcio", "I Ching e Jung"] },
+      { name: "Runas Oraculares", desc: "Uso das 24 (ou 33) runas como sistema divinatório e espiritual.", tags: ["nórdico","runas"], detail: "Diferente da magia runar, o uso oracular consulta a consciência das runas como entidades/forças. Inclui lançamento de runas, tiragens em panos e interpretação intuitiva.", subs: ["Elder Futhark", "Tiragens rúnicas", "Runa branca", "Rúnica em padrões", "Interpretação intuitiva"] },
+      { name: "Numerologia", desc: "Ciência dos números como arquétipos vibracionais da realidade.", tags: ["números","pitagórico"], detail: "A numerologia reduz nomes e datas a números portadores de significados espirituais. Inclui a <strong>Numerologia Pitagórica</strong>, Cabalística (Gematria) e Caldeia. Analisa número de vida, destino, alma e personalidade.", subs: ["Número de vida", "Gematria", "Numerologia caldéia", "Numerologia kármica", "Ciclos numerológicos"] },
+      { name: "Geomancia", desc: "Divinação por padrões na terra, areia, ou pontos aleatórios — 16 figuras geomânticas.", tags: ["terra","padrões"], detail: "Uma das tradições divinatórias mais complexas, a geomancia árabe (Ilm al-Raml) usa 16 figuras compostas por pontos que são combinadas em escudos e casas. Base da astrologia árabe.", subs: ["16 figuras geomânticas", "Escudo geomântico", "Casas geomânticas", "Geomancia árabe", "Ilm al-Raml"] },
+      { name: "Quiromancia", desc: "Leitura das linhas, montes e forma das mãos para revelar caráter e destino.", tags: ["mãos","leitura"], detail: "A quiromancia analisa linhas principais (vida, coração, destino, cabeça), montes planetários, formato dos dedos e falanges. Inclui versões herméticas, ciganas e orientais.", subs: ["Linhas principais", "Montes planetários", "Quirognomonia", "Dermatoglifia", "Quiromancia védica"] },
+      { name: "Cristalomancia & Espelho Negro", desc: "Visão por cristais, espelhos e superfícies reflexivas — scrying.", tags: ["visão","espelho"], detail: "O scrying (visão) usa superfícies reflexivas para induzir estados de transe e visão. John Dee usava espelhos negros e bolas de cristal para receber mensagens angélicas. Inclui também a hidromancia (água).", subs: ["Bola de cristal", "Espelho negro", "Espelho de Obsidiana", "Hidromancia", "Capnomancia", "John Dee"] },
+      { name: "Ornitomancia & Augúrio", desc: "Divinação pelo comportamento e voo das aves — tradição romana e grega.", tags: ["aves","romano"], detail: "Os augures romanos interpretavam o voo, o canto e o comportamento de aves para aconselhar o estado. Inclui a haruspicina (entranhas), os oráculos gregos e outras formas de augúrio.", subs: ["Augúrio romano", "Haruspicina", "Oráculos gregos", "Ornitomancia xamânica"] },
+      { name: "Radiestesia & Dowsing", desc: "Uso de pêndulo ou varinha para detectar energias, água e respostas sutis.", tags: ["pêndulo","energia"], detail: "A radiestesia usa instrumentos físicos (pêndulo, varinha em L, forquilha) como amplificadores da percepção sutil. Usada para encontrar água, ley lines, respostas binárias e diagnósticos.", subs: ["Pêndulo", "Varinha de Adivinhação", "Radiônica", "Ley lines", "Mapa radiestésico"] },
+      { name: "Tarotlogia Cabalística", desc: "Correspondência profunda entre o Tarot e a Árvore da Vida cabalística.", tags: ["cabala","tarot"], detail: "Cada arcano maior corresponde a uma das 22 letras hebraicas e aos 22 caminhos da Árvore da Vida. Os arcanos menores se mapeiam nas 10 sefirot e nos 4 mundos cabalísticos.", subs: ["22 caminhos", "Letras hebraicas", "Aces e Sefirot", "Quatro mundos", "Tabua de correspondências"] },
+      { name: "Oráculo dos Sonhos (Oniromancia)", desc: "Interpretação de sonhos como mensagens divinas ou proféticas.", tags: ["sonhos","profecias"], detail: "Presente em todas as culturas, a oniromantica inclui a incubação de sonhos nos templos gregos (Asclépio), a interpretação dos sonhos no Antigo Testamento e os sistemas egípcios.", subs: ["Incubação", "Sonhos lúcidos proféticos", "Livro dos Sonhos de Artemidoro", "Interpretação Jungiana", "Sonhos xamânicos"] },
+      { name: "Cartomancia & Lenormand", desc: "Leitura de baralhos comuns, oráculos Lenormand e outros sistemas de cartas.", tags: ["cartas","baralho"], detail: "Marie Anne Lenormand (1772-1843) popularizou a cartomancia com baralhos especiais de 36 cartas. Inclui também leitura de baralho comum (copas, espadas, ouros, paus) com significados tradicionais.", subs: ["Lenormand", "Gipsy cards", "Baralho comum", "Cigano", "Oracle cards"] },
+    ]
+  },
+  {
+    id: "misticismo",
+    cat: "cat-misticismo",
+    icon: "✨",
+    title: "Misticismo & Contemplação",
+    desc: "Busca da experiência direta do divino, transcendência e estados elevados",
+    color: "#b47fe8",
+    items: [
+      { name: "Mística Cristã", desc: "Tradição contemplativa e extática do Cristianismo — santos, visões e União com Deus.", tags: ["cristão","contemplação"], detail: "Inclui os Padres do Deserto, a Via Negativa (apofatismo) de Dionísio Areopagita, os Beguinos, Eckhart, João da Cruz e Teresa de Ávila. A experiência mística cristã culmina na <strong>Unio Mystica</strong>.", subs: ["Apofatismo", "Meister Eckhart", "João da Cruz", "Teresa de Ávila", "Hesicasmo", "Lectio Divina", "Oração contemplativa"] },
+      { name: "Sufismo", desc: "Tradição mística islâmica da busca pela união com Alá através do amor e devoção.", tags: ["islâmico","amor"], detail: "O Sufismo (Tasawwuf) representa a dimensão esotérica e mística do Islão. Inclui a poesia de Rumi, a doutrina da Fana (aniquilação do ego), os dhikr e as ordens sufis como Qadiriyya e Mevlevi.", subs: ["Fana", "Dhikr", "Sama (dança sufi)", "Rumi", "Ibn Arabi", "Al-Hallaj", "Ordens Sufis", "Bektashi"] },
+      { name: "Kabbalah / Cabalá", desc: "Misticismo judeu — Árvore da Vida, sefirot, Ein Sof e os mundos divinos.", tags: ["judaico","árvore"], detail: "A Cabala abrange a Cabala Judaica (mística) e a Cabala Hermética (ocidental). O <strong>Zohar</strong>, escrito no séc. XIII, é o texto central. Descreve a estrutura da realidade em 10 sefirot e 4 mundos.", subs: ["Zohar", "Sefirot", "Árvore da Vida", "Ein Sof", "Quatro mundos", "Qliphoth", "Cabala Hermética", "Etz Chaim"] },
+      { name: "Vedanta & Advaita", desc: "Filosofia não-dualista indiana — o Eu (Atman) é idêntico ao Todo (Brahman).", tags: ["hindu","não-dual"], detail: "O Advaita Vedanta de Shankaracharya afirma que apenas Brahman existe — a multiplicidade é Maya (ilusão). A realização do <strong>Tat Tvam Asi</strong> (Isso és Tu) dissolve a ilusão da separação.", subs: ["Advaita", "Ramana Maharshi", "Nisargadatta", "Turiya", "Neti Neti", "Jnana Yoga", "Aham Brahmasmi"] },
+      { name: "Misticismo Budista", desc: "Práticas contemplativas budistas — Dzogchen, Zen, Vajrayana e experiências de vazio.", tags: ["budismo","vazio"], detail: "Inclui o Budismo Zen (satori, koan), o Vajrayana tibetano (Dzogchen, mahamudra), o Theravada (nibbana) e a mística budista da impermanência e interdependência.", subs: ["Dzogchen", "Mahamudra", "Zen Satori", "Koans", "Bardo Thodol", "Kalachakra", "Rigpa"] },
+      { name: "Gnosticismo", desc: "Corrente esotérica cristã primitiva — conhecimento direto, pleroma e demiurgo.", tags: ["gnose","primitivo"], detail: "Os gnósticos (séc. I-III) ensinavam que o mundo material foi criado por um Demiurgo imperfeito. O conhecimento (gnosis) da centelha divina interior permite a libertação. Textos de Nag Hammadi.", subs: ["Pleroma", "Demiurgo", "Archons", "Sophia", "Evangelhos Gnósticos", "Nag Hammadi", "Valentinianismo", "Mandeanismo"] },
+      { name: "Taoismo Esotérico", desc: "Dimensão interior do Tao — alquimia interna, imortalidade e fluxo do Wu-Wei.", tags: ["tao","china"], detail: "O Taoismo esotérico inclui a alquimia interna (neidan), práticas de cultivo de qi (qigong espiritual), e a mística do Tao Te Ching. Distinção entre alquimia externa (waidan) e interna.", subs: ["Neidan", "Waidan", "Três Tesouros", "Wuji", "Zhuangzi místico", "Qigong espiritual", "Alquimia taoísta"] },
+      { name: "Kundalini & Tantra", desc: "Energia serpentina que ascende pela coluna — despertar e estados de samadhi.", tags: ["shakti","yoga"], detail: "A Kundalini Shakti dorme em Muladhara (base da coluna) e ao despertar percorre os 7 chakras até Sahasrara. O Tantra (esquerda e direita) usa o corpo e a energia como veículo para a liberação.", subs: ["7 chakras", "Muladhara a Sahasrara", "Nadi Ida/Pingala", "Tantra da mão esquerda", "Kashmir Shaivismo", "Kriya Yoga"] },
+      { name: "Misticismo Islâmico Filosófico", desc: "Ibn Arabi, Al-Ghazali e a filosofia mística do Islão clássico.", tags: ["islâmico","filosofia"], detail: "Ibn Arabi (1165-1240) desenvolveu o conceito de <strong>Wahdat al-Wujud</strong> (Unidade do Ser) — uma forma de panteísmo islâmico. Al-Ghazali reconciliou filosofia e fé mística.", subs: ["Wahdat al-Wujud", "Ibn Arabi", "Al-Ghazali", "Ishraqi (iluminismo)", "Suhrawardi"] },
+      { name: "Experiências de Quase-Morte (EQM)", desc: "Fenômenos místicos no limiar da morte — túnel, luz e expansão da consciência.", tags: ["morte","consciência"], detail: "As Experiências de Quase-Morte (EQMs) foram sistematicamente estudadas por Raymond Moody. Apresentam padrões universais: saída do corpo, túnel de luz, revisão de vida e encontro com entidades.", subs: ["Raymond Moody", "Kenneth Ring", "Panorama da vida", "NDE e cultura", "Pam Reynolds", "Revisão de vida"] },
+    ]
+  },
+  {
+    id: "tradicoes",
+    cat: "cat-tradicoes",
+    icon: "🌿",
+    title: "Tradições Espirituais & Religiões Esotéricas",
+    desc: "Sistemas religiosos com dimensão interna, iniciática ou esotérica",
+    color: "#2e8b7a",
+    items: [
+      { name: "Wicca & Neopaganismo", desc: "Religião mágica moderna baseada em ciclos naturais, deus e deusa.", tags: ["pagão","natureza"], detail: "Gerald Gardner fundou a Wicca moderna em 1954 sintetizando hermetismo, Thelema e práticas folclóricas. O calendário Wicca (Roda do Ano) tem 8 sabbats e 13 esbats.", subs: ["Roda do Ano", "Sabbats", "Esbats", "Charge da Deusa", "Alexandrian", "Dianic", "Gardneriana", "Correllian"] },
+      { name: "Xamanismo", desc: "Tradição de mediação entre mundos por estados alterados — curandeiros do espírito.", tags: ["espíritos","transe"], detail: "O xamanismo é a mais antiga tradição espiritual — 40.000+ anos. O xamã entra em estados de transe para viajar ao Mundo Superior, Inferior e Médio, interagindo com espíritos auxiliares.", subs: ["Viagem xamânica", "Espíritos auxiliares", "Soul retrieval", "Core Shamanism", "Xamanismo siberiano", "Ayahuasca", "Trance drumming"] },
+      { name: "Religiões Afro-Brasileiras", desc: "Candomblé, Umbanda, Jurema e suas relações com orixás, caboclos e entidades.", tags: ["afro","brasil"], detail: "O <strong>Candomblé</strong> preservou os cultos yorubá/fon/banto trazidos com o tráfico. A <strong>Umbanda</strong> sintetiza elementos africanos, espíritas e indígenas. A <strong>Quimbanda</strong> trabalha com Exus e Pombagiras.", subs: ["Candomblé Ketu", "Nação Angola", "Nação Jeje", "Umbanda", "Quimbanda", "Jurema Sagrada", "Tambor de Mina", "Batuque"] },
+      { name: "Voodoo & Tradições Diaspóricas", desc: "Haitian Vodou, Louisiana Voodoo, e tradições afro-diaspóricas das Américas.", tags: ["haiti","lwa"], detail: "O Vodou haitiano é uma tradição completa com panteão de Lwas (espíritos), ritos de possessão, vévés (selos) e hierarquia sacerdotal (houngan/mambo). Distinto do 'voodoo pop' midiático.", subs: ["Lwas", "Vévés", "Houngan/Mambo", "Rada e Petro", "Ogou", "Gede", "Santería", "Trinidad Orisha"] },
+      { name: "Hermetismo & Rosa-Cruz", desc: "Fraternidades ocultistas do séc. XVII baseadas em textos herméticos e alquímicos.", tags: ["hermético","fraternidade"], detail: "Os manifestos Rosa-Cruz (1614-1617) anunciaram uma fraternidade secreta de sábios. Influenciaram massons, iluministas e ocultistas. AMORC é a ordem rosacrucluciana moderna mais conhecida.", subs: ["Manifestos Rosacrucianos", "AMORC", "Christian Rosenkreuz", "Fama Fraternitatis", "Confessio Fraternitatis", "Samuel Hartlib"] },
+      { name: "Maçonaria Esotérica", desc: "Dimensão iniciática e esotérica da Franco-Maçonaria e seus graus simbólicos.", tags: ["iniciação","graus"], detail: "Além do aspecto fraternal, a Maçonaria carrega um curriculum esotérico em seus 3 (ou 33+) graus. Os símbolos do avental, compasso e esquadro têm correspondências herméticas e cabalísticas.", subs: ["3 graus azuis", "Rito Escocês", "Royal Arch", "Memphis-Misraim", "Craft Masonry", "Geometria sagrada"] },
+      { name: "Thelema", desc: "Sistema mágico-religioso de Aleister Crowley — 'Faze o que tu queres será a totalidade da Lei'.", tags: ["crowley","vontade"], detail: "A Thelema foi revelada a Crowley em 1904 através do Livro da Lei (Liber AL). Baseada no conceito de <strong>True Will</strong> (Vontade Verdadeira) e na aeon de Horus. A OTO é a ordem que transmite os mistérios thelemitas.", subs: ["Liber AL", "True Will", "Aeons", "OTO", "A∴A∴", "Thelema e Cabala", "Babalon", "93 Current"] },
+      { name: "Tradição Reconstrucionista", desc: "Revivalismo de religiões antigas — Helenismo, Heathenry, Religio Romana.", tags: ["reconstrução","politeísmo"], detail: "Os reconstrucionistas tentam reviver fielmente religiões antigas como o Helenismo (deuses gregos), Heathenry (nórdico), Religio Romana, Kemetic Orthodoxy (egípcio) com base em evidências históricas.", subs: ["Helenismo Helênico", "Heathenry", "Asatru", "Religio Romana", "Kemetic Orthodoxy", "Gaelic Polytheism"] },
+      { name: "Tradição Wita / Bruxaria Tradicional", desc: "Bruxaria pré-Wicca com raízes folclóricas europeias e pactos com o Outro Lado.", tags: ["bruxaria","tradicional"], detail: "Distinta da Wicca moderna, a Bruxaria Tradicional reivindica linhagens pré-Gardnerianas, trabalha com o Diabo Comudo como princípio espiritual e enfatiza aspectos sombrios e chthônicos.", subs: ["1734 Tradition", "Cochrane's Craft", "Clan of Tubal Cain", "Cultus Sabbati", "Grimorium Verum folk", "Horned God"] },
+      { name: "Druidismo", desc: "Tradição celta dos guardiões do conhecimento — natureza, árvores e ciclos sagrados.", tags: ["celta","natureza"], detail: "Os druidas históricos eram a elite intelectual celta. O neodruidismo moderno foi inaugurado por John Toland (1717) e inclui ordens como OBOD e ADF. Trabalha com ogham, calendário celta e espíritos da terra.", subs: ["Ogham", "Calendário celta", "Samhain/Beltane", "OBOD", "ADF", "Bard/Ovate/Druid", "Nemeton"] },
+      { name: "Espiritismo Kardecista", desc: "Filosofia espírita de Allan Kardec — reencarnação, mediunidade e evolução.", tags: ["espírita","kardec"], detail: "O Espiritismo codificado por Kardec (1857) baseia-se em 5 obras fundamentais. Afirma a existência da alma, reencarnação, lei de causa e efeito e comunicação mediúnica com espíritos evoluídos.", subs: ["O Livro dos Espíritos", "Mediunidade", "Reencarnação", "Lei Moral", "Desobsessão", "Passes espirituais", "Centros espíritas"] },
+    ]
+  },
+  {
+    id: "cosmo",
+    cat: "cat-cosmo",
+    icon: "⭐",
+    title: "Cosmologia & Metafísica Esotérica",
+    desc: "Modelos da realidade, planos de existência e estrutura do cosmos",
+    color: "#e8c96a",
+    items: [
+      { name: "Planos de Existência", desc: "Hierarquia de mundos — físico, etérico, astral, mental, causal e espiritual.", tags: ["planos","hierarquia"], detail: "Diversas tradições mapeiam o cosmos em planos ou mundos sobrepostos. A tradição teosófica descreve 7 planos; a Cabala, 4 mundos (Atziluth, Beriah, Yetzirah, Assiah); o neoplatonismo, o Uno, Nous e Alma.", subs: ["Plano físico/etérico", "Plano astral", "Plano mental", "Plano búdico", "Plano ătmico", "Quatro mundos cabalísticos", "Emanações neoplatônicas"] },
+      { name: "Cosmogonia Hermética", desc: "Criação do cosmos segundo o Corpus Hermeticum — Nous, logos e matéria.", tags: ["hermes","criação"], detail: "O Corpus Hermeticum (especialmente Poimandres) descreve a criação a partir do Nous (Mente Divina). O homem é um ser divino aprisionado na matéria que pode reascender pelos planos.", subs: ["Corpus Hermeticum", "Poimandres", "Nous e Logos", "Ogdóade e Ennéade", "Tabula Smaragdina"] },
+      { name: "Cosmologia Gnóstica", desc: "Pleroma, Archons, Sophia e a criação imperfeita do Demiurgo.", tags: ["gnostico","archons"], detail: "Para os gnósticos, o Cosmos foi criado pelo <strong>Demiurgo</strong> (um deus menor imperfeito), aprisionando faíscas divinas na matéria. O Pleroma (Plenitude) é o reino divino verdadeiro acima.", subs: ["Pleroma", "Kenoma", "Sophia", "Archons", "Bythos", "Valentinianismo cosmológico"] },
+      { name: "Astrologia Mundana & Ciclos", desc: "Astrologia aplicada a ciclos históricos, eras zodiacais e destino das civilizações.", tags: ["ciclos","eras"], detail: "Inclui a teoria das Grandes Eras (Era de Aquário), conjunções de planetas lentos como indicadores históricos, a teoria de Dante, e os ciclos de Saturno/Júpiter na civilização.", subs: ["Era de Aquário", "Precessão dos equinócios", "Conjunções Jupiter/Saturno", "Nodo Norte/Sul", "Astrologia mundana"] },
+      { name: "Teoria dos Chakras", desc: "Centros de energia sutil no corpo humano — mapeamento e trabalho espiritual.", tags: ["energia","corpo"], detail: "Os chakras (rodas) são centros de energia descritos no Tantra hindu. Os 7 chakras principais (Muladhara a Sahasrara) correspondem a glândulas, cores, sons e funções psico-espirituais.", subs: ["7 chakras principais", "Chakras secundários", "Nadi sistema", "Ida/Pingala/Sushumna", "Aura e campos energéticos"] },
+      { name: "Teoria das Correspondências", desc: "Tudo se espelha em tudo — 'Como em cima, assim em baixo; como dentro, assim fora'.", tags: ["hermes","espelho"], detail: "O Princípio das Correspondências é central ao hermetismo. Permite criar sistemas de magia e divinação baseados em assinaturas planetárias, elementais e numerológicas entre reinos distintos.", subs: ["Tabela das correspondências", "Correspondências planetárias", "Correspondências elementais", "Assinatura astral das plantas"] },
+      { name: "Ley Lines & Geometria Sagrada", desc: "Linhas de força que cruzam a Terra e sua relação com sítios sagrados.", tags: ["terra","geometria"], detail: "Alfred Watkins cunhou o termo 'ley lines' em 1921. Pesquisas conectam Stonehenge, pirâmides e templos antigos por alinhamentos geométricos e energéticos. A geometria sagrada estuda as formas divinas na natureza.", subs: ["Ley lines", "Geometria sagrada", "Razão áurea", "Flor da Vida", "Sólidos platônicos", "Feng Shui", "Vastu Shastra"] },
+      { name: "Escatologia Esotérica", desc: "Fins dos tempos, ciclos cósmicos, apocalipses e o destino final da alma.", tags: ["fins","ciclos"], detail: "Inclui os Yugas hindus (Kali Yuga), a Grande Ano platônico, a escatologia zoroastriana, apocalipses gnósticos e as previsões nostradâmicas. A alma e o cosmos caminham para um destino transcendente.", subs: ["Yugas hindus", "Kali Yuga", "Grande Ano", "Apocalipse gnóstico", "Profecias maias", "Revelação hermética"] },
+    ]
+  },
+  {
+    id: "hermetismo",
+    cat: "cat-hermetismo",
+    icon: "☿",
+    title: "Hermetismo & Tradição Ocidental",
+    desc: "A grande tradição filosófico-mágica do Ocidente — Hermes, Alquimia, Maçonaria",
+    color: "#e8986a",
+    items: [
+      { name: "Corpus Hermeticum", desc: "Textos atribuídos a Hermes Trismegisto — base filosófica do ocultismo ocidental.", tags: ["hermes","textos"], detail: "O Corpus Hermeticum (séc. II-III d.C.) é um conjunto de diálogos filosófico-religiosos atribuídos ao lendário Hermes Trismegisto. Influenciou o Renascimento florentino, a alquimia e toda a tradição ocultista.", subs: ["Poimandres", "Tabula Smaragdina", "Asclepius", "Kybalion", "Hermética filosófica", "Hermética técnica"] },
+      { name: "Filosofia Neoplatônica", desc: "Plotino, Jâmblico, Proclo — emanação do Uno e retorno da alma.", tags: ["grego","alma"], detail: "O Neoplatonismo (séc. III-VI) de Plotino descreve a realidade como emanação do Uno — Nous (Mente), Psique (Alma) e Matéria. A alma busca retornar ao Uno através da contemplação (theoria).", subs: ["Plotino", "Jâmblico", "Proclo", "O Uno", "Emanação e Retorno", "Henologia"] },
+      { name: "Alquimia Filosófica", desc: "Transformação interior espelhada na transmutação dos metais — opus do adepto.", tags: ["alquimia","transformação"], detail: "A alquimia filosófica usa o laboratório como espelho da alma. As fases <strong>Nigredo/Albedo/Citrinitas/Rubedo</strong> correspondem a estágios de purificação psico-espiritual. Jung reinterpretou a alquimia como psicologia do inconsciente.", subs: ["Nigredo", "Albedo", "Rubedo", "Solve et Coagula", "Hieros Gamos", "Lapis Philosophorum", "Jung e alquimia"] },
+      { name: "Sete Princípios Herméticos", desc: "Mentalismo, Correspondência, Vibração, Polaridade, Ritmo, Causa e Efeito, Gênero.", tags: ["princípios","lei"], detail: "Popularizados pelo Kybalion (1908), os 7 Princípios descrevem a estrutura da realidade conforme a tradição hermética: <strong>O Todo é Mente; O Universo é Mental.</strong>", subs: ["Mentalismo", "Correspondência", "Vibração", "Polaridade", "Ritmo", "Causa e Efeito", "Gênero"] },
+      { name: "Tradição Primorosa (Philosophia Perennis)", desc: "A sabedoria perene subjacente a todas as tradições espirituais.", tags: ["perene","síntese"], detail: "Leibniz e Huxley descreveram uma sabedoria comum que atravessa todas as tradições. René Guénon, Frithjof Schuon e Ananda Coomaraswamy desenvolveram o Tradicionalismo Perene.", subs: ["René Guénon", "Frithjof Schuon", "Ananda Coomaraswamy", "Tradicionismo", "Sophia Perennis"] },
+      { name: "Golden Dawn & Ocultismo Vitoriano", desc: "Hermetic Order of the Golden Dawn — síntese do ocultismo ocidental moderno.", tags: ["golden dawn","síntese"], detail: "Fundada em 1888 por Mathers e Westcott, a Golden Dawn sintetizou Cabala, Tarot, astrologia, Enochiana e magia egípcia num curriculum completo. Membros incluem W.B. Yeats e Aleister Crowley.", subs: ["Mathers e Westcott", "Curriculum GD", "Magia Enochiana", "Graus iniciáticos", "Regardie", "Stella Matutina"] },
+      { name: "Martinismo & Saint-Martin", desc: "Tradição mística e teosofia prática de Louis-Claude de Saint-Martin.", tags: ["martinismo","teosofia"], detail: "Saint-Martin (1743-1803), o 'Filósofo Desconhecido', fundou uma corrente mística que combina iluminismo e espiritualidade. O Martinismo enfatiza a Reintegração do homem com o divino.", subs: ["Ordre Martiniste", "Reintegração", "Pasqually", "Operativos vs Contemplativos"] },
+      { name: "Magia Enochiana", desc: "Sistema angélico recebido por John Dee e Edward Kelley — língua e aethyres.", tags: ["anjos","dee"], detail: "John Dee e Edward Kelley (1582-1589) receberam um sistema angélico complexo incluindo a língua Enochiana, as 30 Aethyres (ou Aires), as 4 Torres elementais e as Tábuas Celestiais.", subs: ["Língua enochiana", "30 Aethyres", "Tábuas celestiais", "Calls/Chaves", "Dee e Kelley", "Liber Chanokh"] },
+    ]
+  },
+  {
+    id: "religioes",
+    cat: "cat-religioes",
+    icon: "🕯️",
+    title: "Religiões & Mitologias Esotéricas",
+    desc: "Dimensões ocultas das grandes religiões e mitologias do mundo",
+    color: "#e87a7a",
+    items: [
+      { name: "Mitologia Egípcia Esotérica", desc: "Mistérios de Osíris, Ísis e Rá — iniciação nos templos e Livro dos Mortos.", tags: ["egito","mistérios"], detail: "O Egito antigo preservou um dos sistemas esotéricos mais sofisticados. Os Mistérios de Elêusis, o Livro dos Mortos (Livro de Sair ao Dia) e os rituais de mumificação codificam uma cosmologia e escatologia complexas.", subs: ["Livro dos Mortos", "Osíris e Ressurreição", "Mistérios de Ísis", "Duat", "Ogdóade de Hermópolis", "Atum e a criação"] },
+      { name: "Mitologia Nórdica Esotérica", desc: "Runa, Odin, Yggdrasil e os mistérios da tradição germano-nórdica.", tags: ["nórdico","odin"], detail: "Odin se sacrificou a si mesmo por 9 noites em Yggdrasil para receber as runas. A mitologia nórdica é rica em iniciação, morte e renascimento, viagens entre os 9 mundos e a tradição skaaldica.", subs: ["Yggdrasil", "9 mundos", "Ragnarök esotérico", "Völva", "Seiðr", "Skaldic mysteries", "Fylgja"] },
+      { name: "Mitologia Grega Esotérica", desc: "Mistérios de Elêusis, Orfismo, culto de Dionísio e escolas filosóficas.", tags: ["grego","mistérios"], detail: "Os Mistérios de Elêusis foram celebrados por 2000 anos e envolviam o ciclo de Deméter/Perséfone como jornada da alma. O Orfismo ensinou pré-existência da alma e transmigração.", subs: ["Mistérios de Elêusis", "Orfismo", "Culto de Dionísio", "Pitágoras", "Platão como iniciado", "Tábuas Órficas"] },
+      { name: "Hinduísmo Esotérico", desc: "Agamas, Tantras, Upanishads secretos e tradições shivaitas e vaishnavas.", tags: ["hindu","agamas"], detail: "O Hinduísmo contém vastas dimensões esotéricas: os Agamas (escrituras tântricas), os Upanishads (filosofia mística), a tradição Shaiva Siddhanta e as práticas Vaishnava de Bhakti como caminho de união.", subs: ["Upanishads", "Shaiva Siddhanta", "Kashmir Shaivism", "Sri Vidya", "Natha Sampradaya", "Shri Yantra"] },
+      { name: "Budismo Esotérico (Vajrayana)", desc: "Ensinamentos secretos do Buda — iniciações, mandalas, mantras e yidams.", tags: ["vajrayana","tântrico"], detail: "O Vajrayana (Veículo do Diamante) é a forma tântrica do Budismo praticada no Tibet, Nepal e Japão (Shingon). Inclui iniciações (empowerments), práticas de deity yoga, visualizações e a doutrina do Dzogchen.", subs: ["Initiation/Empowerment", "Deity Yoga", "Kalachakra", "Shingon japonês", "Dzogchen", "Bardo Thodol", "Tummo"] },
+      { name: "Zoroastrismo & Mazdaísmo", desc: "Dualismo cosmológico iraniano — Ahura Mazda contra Angra Mainyu.", tags: ["iraniano","dualismo"], detail: "O Zoroastrismo de Zaratustra é possivelmente a mais antiga religião revelada. Seu dualismo (Bem vs Mal) influenciou o Judaísmo, Islamismo e Gnosticismo. Inclui os Gathas, o fogo sagrado e a escatologia Frashokereti.", subs: ["Avesta e Gathas", "Ahura Mazda", "Amesha Spentas", "Frashokereti", "Mitras", "Zurvanismo"] },
+      { name: "Mitologia Celta & Fairy Faith", desc: "Sidhe, Tuatha Dé Danann, e o Outro Mundo da tradição celta insular.", tags: ["celta","fada"], detail: "A tradição celta insular (irlandesa, galesa, escocesa) preservou uma mitologia rica em Outro Mundo (Tír na nÓg, Annwn), na fé nas Fadas (Aos Sí) e nos ciclos míticos dos Tuatha Dé Danann.", subs: ["Tuatha Dé Danann", "Aos Sí", "Tír na nÓg", "Annwn", "Welsh Mabinogi", "Fairy Faith", "Fomorianos"] },
+    ]
+  },
+  {
+    id: "psique",
+    cat: "cat-psique",
+    icon: "🧠",
+    title: "Psicologia Profunda & Espiritualidade",
+    desc: "A psique como via de acesso ao espiritual — Jung, transpessoal e estados alterados",
+    color: "#8ab4e8",
+    items: [
+      { name: "Psicologia Analítica (Jung)", desc: "Inconsciente coletivo, arquétipos, individuação e sincronicidade.", tags: ["jung","arquétipos"], detail: "Jung propôs que a psique tem camadas: pessoal e coletiva. Os <strong>arquétipos</strong> (Anima, Animus, Sombra, Self) são padrões universais. A individuação é o processo de tornar-se inteiro — equivalente psicológico da iniciação.", subs: ["Inconsciente coletivo", "Arquétipos", "Individuação", "Sincronicidade", "Anima/Animus", "Sombra", "Self", "Alquimia junguiana"] },
+      { name: "Psicologia Transpessoal", desc: "Estados além do ego individual — Maslow, Stanislav Grof e mapeamento de consciências.", tags: ["transpessoal","consciência"], detail: "A Psicologia Transpessoal (4ª força) estuda experiências que transcendem os limites do ego. Stanislav Grof mapeou o inconsciente perinasal (COEX systems) e transpessoal através de sessões psicodélicas e Holotropic Breathwork.", subs: ["Holotropic Breathwork", "Sistemas COEX", "Matrices perinatais", "Grof", "Maslow", "Ken Wilber", "Terapia transpessoal"] },
+      { name: "Estados Alterados de Consciência", desc: "Transe, meditação profunda, sonhos lúcidos e outros estados não-ordinários.", tags:["transe","meditação"], detail: "EACs incluem sonhos lúcidos, transe mediúnico, hipnose, meditação profunda, êxtase místico e estados induzidos por enteógenos. Charles Tart categorizou esses estados como 'sistemas discretos de consciência'.", subs: ["Sonho lúcido", "Projeção astral", "Transe hipnótico", "Samadhi", "Transe xamânico", "Jhanas budistas"] },
+      { name: "Enteógenos & Espiritualidade", desc: "Plantas e substâncias que induzem experiências espirituais — ayahuasca, psilocibina.", tags: ["plantas","visão"], detail: "Os enteógenos ('gerador do divino interior') têm sido usados em contextos rituais em todas as culturas. Ayahuasca (amazônica), peyote (huichol), iboga (bwiti), psilocibina e ergot (possivelmente em Elêusis).", subs: ["Ayahuasca", "Psilocibina", "Peyote", "Iboga", "San Pedro", "DMT", "Pesquisa psicodélica moderna"] },
+      { name: "Projeção Astral & OBE", desc: "Saída do corpo consciente — viagem no plano astral e exploração de outros reinos.", tags: ["astral","OBE"], detail: "A projeção astral (OBE — Out-of-Body Experience) é documentada em todas as culturas. Robert Monroe sistematizou técnicas modernas. O 'corpo astral' ou 'duplo etérico' separado do físico pode viajar livremente.", subs: ["Monroe Institute", "WILD technique", "WILD/WBTB", "Silver cord", "Viagem astral controlada", "Plano astral inferior"] },
+      { name: "Mediunidade & Canalização", desc: "Comunicação com espíritos, guias e entidades por meio de médiuns e canais.", tags: ["médium","espíritos"], detail: "Inclui mediunidade física (ectoplasma, materialização), psicográfica (escrita automática), de voz, de visão (clarividência). Canalização moderna traz entidades como Seth (Jane Roberts), Ra (Ra Material) e Abraham (Hicks).", subs: ["Psicografia", "Materialização", "Escrita automática", "Canalização de Ra", "Seth Material", "Clairaudiência", "Xenoglossia"] },
+      { name: "Regressão de Vidas Passadas", desc: "Hipnose para acesso a memórias de encarnações anteriores e cura kármica.", tags: ["regressão","karma"], detail: "Brian Weiss popularizou a regressão de vidas passadas como ferramenta terapêutica. Ian Stevenson documentou casos espontâneos de crianças com memórias verificáveis de vidas anteriores.", subs: ["Brian Weiss", "Ian Stevenson", "Hipnose regressiva", "Inter-life", "Michael Newton", "Soul Age"] },
+      { name: "Sonho Lúcido & Yoga do Sonho", desc: "Consciência dentro do sonho como prática espiritual e portal dimensional.", tags: ["sonho","yoga"], detail: "O Sonho Lúcido como prática espiritual é central no Vajrayana (Yoga dos Sonhos de Naropa), no Taoismo (Zhuangzi) e na tradição Senoi da Malásia. Modernamente, Stephen LaBerge desenvolveu técnicas científicas.", subs: ["MILD/WILD/DILD", "Stephen LaBerge", "Yoga dos Sonhos de Naropa", "Sonho como Bardo", "Dreamwork junguiano", "Dreamtime aborígene"] },
+    ]
+  },
+  {
+    id: "fenomenos",
+    cat: "cat-fenomenos",
+    icon: "👁",
+    title: "Fenômenos Paranormais & Fronteiras",
+    desc: "Fenômenos além da ciência convencional — OVNIs, criptídeos, PSI e anomalias",
+    color: "#a8e87a",
+    items: [
+      { name: "Parapsicologia & PSI", desc: "Estudo científico de teleparia, precognição, psicocinese e ESP.", tags: ["psi","ciência"], detail: "A Parapsicologia estuda fenômenos psi em condições controladas. O Rhine Research Center (Duke University) conduziu décadas de experimentos com cartas Zener. A PEAR (Princeton) estudou psicocinese.", subs: ["Telepatia", "Precognição", "Retrocognição", "Psicocinese", "Remote Viewing", "Experimentos de Ganzfeld", "Efeito observador"] },
+      { name: "Ufologia & Contato Alienígena", desc: "Fenômeno OVNI, experiências de abdução e possíveis contatos extraterrestres.", tags: ["ovni","et"], detail: "A Ufologia estuda fenômenos aéreos não identificados com perspectivas que variam de extraterrestre a interdimensional. Jacques Vallée propôs que OVNIs são fenômenos de controle da crença humana.", subs: ["Fenômeno UAP/OVNI", "Abdução", "Roswell", "Jacques Vallée", "Disclosure", "Híbridos", "Experiências de contato"] },
+      { name: "Criptozoologia", desc: "Estudo de criaturas não reconhecidas pela ciência — Bigfoot, Nessie, Chupacabra.", tags: ["criaturas","misterio"], detail: "A Criptozoologia investiga relatos de animais desconhecidos. Inclui o Pé Grande (Sasquatch), Monstro do Lago Ness, Chupacabra, Mothman e centenas de casos locais em todas as culturas.", subs: ["Sasquatch/Bigfoot", "Cryptids aquáticos", "Mothman", "Chupacabra", "Anomalous creatures", "Black Shuck"] },
+      { name: "Haunting & Fantasmagorias", desc: "Investigação de casas assombradas, poltergeists e aparições.", tags: ["fantasmas","investigação"], detail: "Inclui investigação de fenômenos de poltergeist (agente adolescente), residual haunting (impressões energéticas), aparições inteligentes e a tradição folclórica global dos espíritos dos mortos.", subs: ["Poltergeist", "Residual haunting", "EVP", "ITC", "Investigação paranormal", "SPR (Society for Psychical Research)"] },
+      { name: "Remote Viewing", desc: "Técnica treinável de percepção remota desenvolvida pela inteligência americana.", tags: ["cia","percepção"], detail: "O Remote Viewing foi desenvolvido pelo governo americano no Projeto Stargate (1978-1995). Ingo Swann e Russell Targ desenvolveram protocolos científicos para percepção de alvos distantes sem informação prévia.", subs: ["Projeto Stargate", "CRV (Coordinate RV)", "Ingo Swann", "Russell Targ", "Protocolo científico", "Aplicações práticas"] },
+      { name: "Sincronicidade & Fenômenos Acasuais", desc: "Coincidências significativas e padrões além da causalidade linear.", tags: ["jung","acaso"], detail: "Jung cunhou 'sincronicidade' para coincidências significativas sem relação causal. O <strong>Efeito Pauli-Jung</strong> descreveu falhas mecânicas inexplicáveis na presença do físico Pauli. Conecta com física quântica não-local.", subs: ["Sincronicidade de Jung", "Pauli-Jung", "Mágica de coincidências", "Teoria morfogenética de Sheldrake", "Campos mórficos"] },
+      { name: "Lugares de Poder & Vórtices", desc: "Locais geográficos com energia especial — Sedona, Stonehenge, Machu Picchu.", tags: ["lugares","energia"], detail: "Lugares de poder são locais com concentrações energéticas naturais ou construídas ritualmente. Sedona (Arizona) tem vórtices famosos; Stonehenge é um observatório astronômico sagrado; linhas de força cruzam a Terra.", subs: ["Sedona vórtices", "Stonehenge", "Ley lines e locais", "Geometria telúrica", "Energia piezoelétrica", "Power spots xamânicos"] },
+    ]
+  },
+  {
+    id: "filosofia",
+    cat: "cat-filosofia",
+    icon: "⚖️",
+    title: "Filosofia, Teosofia & Gnose Moderna",
+    desc: "Movimentos filosófico-espirituais modernos e suas sínteses",
+    color: "#e8d07a",
+    items: [
+      { name: "Teosofia", desc: "Helena Blavatsky — síntese de tradições orientais e ocidentais, raças-raízes e planos.", tags: ["blavatsky","síntese"], detail: "Helena Petrovna Blavatsky fundou a Sociedade Teosófica em 1875 com o objetivo de criar fraternidade universal e investigar leis ocultas da natureza. A <strong>Doutrina Secreta</strong> mapeia ciclos cósmicos e raças-raízes.", subs: ["Doutrina Secreta", "Chaves da Teosofia", "Planos teosóficos", "Raças-raízes", "Mahatmas", "Adyar vs Point Loma", "Anthroposofia"] },
+      { name: "Antroposofia", desc: "Rudolf Steiner — espiritualidade e ciência do espírito, akasha e mundos espirituais.", tags: ["steiner","ciência"], detail: "Steiner desenvolveu a Antroposofia como uma 'ciência do espírito' baseada em observação treinada dos mundos espirituais. Inclui Crônicas Akáshicas, Euritimia, Waldorf e medicina antroposófica.", subs: ["Crônicas Akáshicas", "Mundo espiritual de Steiner", "Educação Waldorf", "Biodinâmica", "Euritimia", "Cristologia esotérica"] },
+      { name: "New Age & Espiritualidade Contemporânea", desc: "Movimento espiritual eclético do séc. XX-XXI — cristais, cura e nova era.", tags: ["new age","eclético"], detail: "O movimento New Age surgiu nos anos 70-80 como síntese ecléctica de espiritualidades orientais e ocidentais, ufologia, psicologia humanista e misticismo ecológico.", subs: ["Canalização", "Cristais e pedras", "Cura energética", "Lei da Atração", "Constelação familiar", "Alinhamento de chakras", "Registros Akáshicos"] },
+      { name: "Perennialismo & Tradicionismo", desc: "Guénon, Schuon, Coomaraswamy — a sabedoria primordial única em todas as religiões.", tags: ["perene","guénon"], detail: "O Tradicionalismo Perene afirma que existe uma Sophia Perennis — sabedoria una — por baixo das formas religiosas diversas. Guénon abraçou o Islão sufista como forma de acesso a essa tradição.", subs: ["René Guénon", "Frithjof Schuon", "Ananda Coomaraswamy", "Julius Evola", "Sophia Perennis", "Kritik da modernidade"] },
+      { name: "Teosofismo Espírita", desc: "Sínteses entre Espiritismo, Teosofia e tradições orientais no Brasil e mundo.", tags: ["brasil","síntese"], detail: "No Brasil surgiu uma corrente singular que mistura Kardecismo, Teosofia e influências orientais — nas obras de Bezerra de Menezes, Emmanuel (Chico Xavier), Joanna de Ângelis e Divaldo Franco.", subs: ["Chico Xavier", "Emmanuel", "Bezerra de Menezes", "Joanna de Ângelis", "Divaldo Franco", "GEAK"] },
+      { name: "Filosofia da Mente & Consciência", desc: "Problema difícil da consciência, panpsiquismo e consciência quântica.", tags: ["consciência","filosofia"], detail: "A questão da consciência conecta ciência e espiritualidade. O <strong>Hard Problem</strong> de Chalmers, o panpsiquismo de Goff, a teoria Orch-OR de Penrose-Hameroff e o Idealismo de Bernardo Kastrup propõem que a consciência é fundamental.", subs: ["Hard Problem", "Panpsiquismo", "Orch-OR", "Bernardo Kastrup", "Essência imanente", "Monismo idealista"] },
+      { name: "Ocultismo Filosófico Moderno", desc: "Dion Fortune, Israel Regardie, Kenneth Grant e o ocultismo acadêmico contemporâneo.", tags: ["moderno","ocultismo"], detail: "O séc. XX produziu sintetizadores sofisticados do ocultismo: Dion Fortune (Cabala prática), Austin Spare (arte e magia), Kenneth Grant (Typhonian OTO) e Gareth Knight (Cabala e Tarot).", subs: ["Dion Fortune", "Israel Regardie", "Kenneth Grant", "Austin Osman Spare", "Gareth Knight", "Chaos magick teórico"] },
+      { name: "Esoterismo Acadêmico", desc: "Estudo científico-acadêmico do ocultismo — Wouter Hanegraaff, Kocku von Stuckrad.", tags: ["academia","estudo"], detail: "A partir dos anos 90 surgiu um campo acadêmico sério para o estudo do esoterismo ocidental. A ESSWE (European Society for the Study of Western Esotericism) publica a revista Aries.", subs: ["Wouter Hanegraaff", "Kocku von Stuckrad", "Antoine Faivre", "Marco Pasi", "ESSWE", "Aries journal"] },
+    ]
+  },
+];
+
+// Generate stars
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 150; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2 + 0.5;
+  s.style.cssText = `
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;top:${Math.random()*100}%;
+    --d:${2+Math.random()*5}s;
+    --o1:${0.05+Math.random()*0.2};
+    --o2:${0.3+Math.random()*0.6};
+    animation-delay:${Math.random()*5}s;
+  `;
+  starsEl.appendChild(s);
+}
+
+// Build filter pills
+const cats = [
+  { id: 'all', label: 'Todas', color: '#c9a84c' },
+  { id: 'cat-magia', label: 'Magia', color: '#d4821a' },
+  { id: 'cat-divinacao', label: 'Divinação', color: '#7ecad4' },
+  { id: 'cat-misticismo', label: 'Misticismo', color: '#b47fe8' },
+  { id: 'cat-tradicoes', label: 'Tradições', color: '#2e8b7a' },
+  { id: 'cat-cosmo', label: 'Cosmologia', color: '#e8c96a' },
+  { id: 'cat-hermetismo', label: 'Hermetismo', color: '#e8986a' },
+  { id: 'cat-religioes', label: 'Religiões', color: '#e87a7a' },
+  { id: 'cat-psique', label: 'Psique', color: '#8ab4e8' },
+  { id: 'cat-fenomenos', label: 'Paranormal', color: '#a8e87a' },
+  { id: 'cat-filosofia', label: 'Filosofia', color: '#e8d07a' },
+];
+
+const filterBar = document.getElementById('filterBar');
+cats.forEach(c => {
+  const pill = document.createElement('button');
+  pill.className = 'filter-pill ' + (c.id === 'all' ? 'all active' : '');
+  pill.style.color = c.color;
+  pill.textContent = c.label;
+  pill.dataset.cat = c.id;
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    filterByCat(c.id);
+  });
+  filterBar.appendChild(pill);
+});
+
+function filterByCat(cat) {
+  document.querySelectorAll('.macro-section').forEach(sec => {
+    if (cat === 'all' || sec.dataset.cat === cat) {
+      sec.classList.remove('hidden');
+    } else {
+      sec.classList.add('hidden');
+    }
+  });
+  updateStats();
+}
+
+// Build sections
+const container = document.getElementById('container');
+let totalMicro = 0;
+
+DATA.forEach(macro => {
+  const section = document.createElement('div');
+  section.className = `macro-section ${macro.cat}`;
+  section.dataset.cat = macro.cat;
+  section.dataset.id = macro.id;
+
+  totalMicro += macro.items.length;
+
+  section.innerHTML = `
+    <div class="macro-header">
+      <div class="macro-icon">${macro.icon}</div>
+      <div class="macro-title-wrap">
+        <div class="macro-title">${macro.title}</div>
+        <div class="macro-desc">${macro.desc}</div>
+      </div>
+      <div class="macro-count" style="color:${macro.color}">${macro.items.length} sub-áreas</div>
+      <div class="macro-toggle">▾</div>
+    </div>
+    <div class="micro-grid">
+      ${macro.items.map(item => `
+        <div class="micro-card" data-macro="${macro.id}" data-name="${item.name}" style="--accent:${macro.color}">
+          <div class="micro-name">${item.name}</div>
+          <div class="micro-desc">${item.desc}</div>
+          <div class="micro-tags">${item.tags.map(t => `<span class="micro-tag">${t}</span>`).join('')}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  const header = section.querySelector('.macro-header');
+  header.addEventListener('click', () => {
+    section.classList.toggle('open');
+  });
+
+  section.querySelectorAll('.micro-card').forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      openModal(macro, macro.items[idx]);
+    });
+  });
+
+  container.appendChild(section);
+});
+
+// Stats
+document.getElementById('statMacro').textContent = DATA.length;
+document.getElementById('statMicro').textContent = totalMicro;
+
+function updateStats() {
+  const visible = document.querySelectorAll('.macro-section:not(.hidden)').length;
+  document.getElementById('statVisible').textContent = visible;
+}
+updateStats();
+
+// Modal
+const overlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+
+function openModal(macro, item) {
+  document.getElementById('mIcon').textContent = macro.icon;
+  document.getElementById('mTitle').textContent = item.name;
+  document.getElementById('mParent').textContent = macro.title;
+  document.getElementById('mBody').innerHTML = `<p>${item.detail}</p>`;
+
+  const subsEl = document.getElementById('mSubs');
+  if (item.subs && item.subs.length) {
+    subsEl.innerHTML = `
+      <h4>Tópicos de Estudo</h4>
+      <div class="subtopic-list">${item.subs.map(s => `<div class="subtopic-pill">${s}</div>`).join('')}</div>
+    `;
+    subsEl.style.display = 'block';
+  } else {
+    subsEl.style.display = 'none';
+  }
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Search
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+
+  // Reset filter pills
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.filter-pill.all').classList.add('active');
+
+  document.querySelectorAll('.macro-section').forEach(sec => {
+    sec.classList.remove('hidden');
+    const macroId = sec.dataset.id;
+    const macro = DATA.find(m => m.id === macroId);
+    let macroVisible = false;
+
+    sec.querySelectorAll('.micro-card').forEach((card, idx) => {
+      const item = macro.items[idx];
+      const text = (item.name + item.desc + item.tags.join(' ') + (item.detail||'')).toLowerCase();
+      const match = !q || text.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) macroVisible = true;
+    });
+
+    if (q && !macroVisible) {
+      sec.classList.add('hidden');
+    } else if (q && macroVisible) {
+      sec.classList.add('open');
+    }
+  });
+
+  updateStats();
+});
+
+// Open first section by default
+if (DATA.length > 0) {
+  document.querySelector('.macro-section').classList.add('open');
+}
+</script>
+</body>
+</html>

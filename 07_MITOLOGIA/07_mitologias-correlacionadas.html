@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexo das Mitologias — Correlações das Tradições Sagradas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #7a6330;
+    --ink: #0a0806;
+    --parchment: #1a1510;
+    --parchment-mid: #221d15;
+    --parchment-light: #2e2618;
+    --text: #d4c5a0;
+    --text-dim: #8a7d60;
+    --accent-red: #8b2020;
+    --accent-blue: #1a3a5c;
+    --accent-teal: #1a4a40;
+    --accent-purple: #3d1f5c;
+
+    --egy: #c4821a;
+    --mes: #8b4513;
+    --heb: #2266aa;
+    --fen: #8b1a1a;
+    --chi: #cc2200;
+    --hin: #ff6600;
+    --per: #6633aa;
+    --gre: #1a66aa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── BACKGROUND TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(30,20,10,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 80px 20px 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .hero-ornament {
+    font-size: 1.2rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.8em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.1;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3);
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .hero-desc {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.8;
+    opacity: 0.85;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    color: var(--gold-dim);
+    font-size: 1.4rem;
+    letter-spacing: 0.5em;
+    padding: 20px 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV TABS ── */
+  .tabs-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,8,6,0.95);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 12px 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tab-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+
+  .tab-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .tab-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    position: relative; z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section { display: none; padding-top: 60px; }
+  .section.active { display: block; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .myth-sigil {
+    width: 80px; height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+  }
+
+  .section-header-text h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .section-header-text .period {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-header-text p {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 700px;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .card {
+    background: var(--parchment-mid);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 2px;
+    padding: 28px;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-2px);
+  }
+
+  .card-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .card ul {
+    list-style: none;
+    margin-top: 10px;
+  }
+
+  .card ul li {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0.85;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .card ul li::before {
+    content: '◈';
+    position: absolute; left: 0;
+    color: var(--gold-dim);
+    font-size: 0.6rem;
+    top: 5px;
+  }
+
+  /* ── CORRELATION SECTION ── */
+  .corr-section {
+    background: var(--parchment-light);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    padding: 40px;
+    margin-bottom: 30px;
+  }
+
+  .corr-section h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .corr-section .corr-sub {
+    font-size: 0.8rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 28px;
+  }
+
+  /* ── PARALLEL TABLE ── */
+  .parallel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .parallel-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .parallel-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    vertical-align: top;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+  }
+
+  .parallel-table tr:last-child td { border-bottom: none; }
+  .parallel-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+  .parallel-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    white-space: nowrap;
+    opacity: 1;
+  }
+
+  /* ── MYTH BADGE ── */
+  .myth-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid;
+    margin: 2px;
+    white-space: nowrap;
+  }
+
+  .badge-egy { color: var(--egy); border-color: var(--egy); background: rgba(196,130,26,0.1); }
+  .badge-mes { color: #cd853f; border-color: #cd853f; background: rgba(139,69,19,0.1); }
+  .badge-heb { color: #4499dd; border-color: #4499dd; background: rgba(34,102,170,0.1); }
+  .badge-fen { color: #dd6666; border-color: #dd6666; background: rgba(139,26,26,0.1); }
+  .badge-chi { color: #ff6644; border-color: #ff6644; background: rgba(204,34,0,0.1); }
+  .badge-hin { color: #ffaa44; border-color: #ffaa44; background: rgba(255,102,0,0.1); }
+  .badge-per { color: #aa88dd; border-color: #aa88dd; background: rgba(102,51,170,0.1); }
+  .badge-gre { color: #55aadd; border-color: #55aadd; background: rgba(26,102,170,0.1); }
+
+  /* ── CORRELATION OVERVIEW (home) ── */
+  .overview-intro {
+    padding: 50px 0 30px;
+    text-align: center;
+  }
+
+  .overview-intro h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .overview-intro p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ── THEME GRID (home) ── */
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .theme-card {
+    background: var(--parchment-mid);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 2px;
+    padding: 28px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .theme-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    background: var(--parchment-light);
+  }
+
+  .theme-card .theme-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .theme-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+
+  .theme-card p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+
+  .theme-card .badge-row {
+    margin-top: 14px;
+  }
+
+  /* ── GREAT FLOOD TABLE ── */
+  .flood-entry { margin-bottom: 12px; }
+  .flood-entry .flood-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+  }
+
+  .tl-item {
+    padding: 10px 20px 20px 60px;
+    position: relative;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 14px; top: 14px;
+    width: 13px; height: 13px;
+    border: 1px solid var(--gold-dim);
+    background: var(--parchment-mid);
+    transform: rotate(45deg);
+  }
+
+  .tl-year {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .tl-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .section-header { flex-direction: column; gap: 16px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .corr-section { padding: 24px 18px; }
+    .parallel-table { font-size: 0.8rem; }
+    .parallel-table th, .parallel-table td { padding: 8px 8px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section.active > * {
+    animation: fadeInUp 0.5s ease both;
+  }
+
+  .section.active > *:nth-child(2) { animation-delay: 0.1s; }
+  .section.active > *:nth-child(3) { animation-delay: 0.2s; }
+  .section.active > *:nth-child(4) { animation-delay: 0.3s; }
+  .section.active > *:nth-child(5) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-ornament">✦ &nbsp; Nexo das Tradições Sagradas &nbsp; ✦</span>
+  <h1>As Mitologias<br>da Humanidade</h1>
+  <p class="hero-sub">Origens · Correlações · Arquetipos Universais</p>
+  <p class="hero-desc">
+    Das margens do Nilo às planícies do Ganges, das montanhas do Olimpo às estepes da Pérsia —
+    os povos antigos narraram histórias surpreendentemente similares sobre a criação, os deuses e o destino humano.
+    Explore as conexões que unem oito das maiores tradições míticas da história.
+  </p>
+</header>
+
+<!-- NAV TABS -->
+<nav class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showSection('home')">⬡ Correlações</button>
+    <button class="tab-btn" onclick="showSection('egy')" style="color:var(--egy)">Egípcia</button>
+    <button class="tab-btn" onclick="showSection('mes')" style="color:#cd853f">Mesopotâmica</button>
+    <button class="tab-btn" onclick="showSection('heb')" style="color:#4499dd">Hebraica</button>
+    <button class="tab-btn" onclick="showSection('fen')" style="color:#dd6666">Fenícia</button>
+    <button class="tab-btn" onclick="showSection('chi')" style="color:#ff6644">Chinesa</button>
+    <button class="tab-btn" onclick="showSection('hin')" style="color:#ffaa44">Hindu</button>
+    <button class="tab-btn" onclick="showSection('per')" style="color:#aa88dd">Persa</button>
+    <button class="tab-btn" onclick="showSection('gre')" style="color:#55aadd">Grega</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: HOME / CORRELAÇÕES
+════════════════════════════════════════════ -->
+<section id="home" class="section active">
+
+  <div class="overview-intro">
+    <h2>Temas Universais nas Mitologias</h2>
+    <p>Apesar de surgir em culturas separadas por milênios e oceanos, a mitologia humana converge em padrões arquetípicos notáveis. Aqui estão os grandes temas que conectam todas as tradições.</p>
+  </div>
+
+  <div class="theme-grid">
+
+    <div class="theme-card">
+      <span class="theme-icon">🌊</span>
+      <h3>O Grande Dilúvio</h3>
+      <p>Uma das narrativas mais universais: um deus irado envia um dilúvio para destruir a humanidade; um homem justo constrói uma embarcação e salva a vida na Terra.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-mes">Utnapishtim</span>
+        <span class="myth-badge badge-heb">Noé</span>
+        <span class="myth-badge badge-hin">Manu</span>
+        <span class="myth-badge badge-gre">Deucalião</span>
+        <span class="myth-badge badge-chi">Nüwa</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🐍</span>
+      <h3>Serpente Primordial / Dragão do Caos</h3>
+      <p>Uma serpente ou dragão representa o caos que precede a criação — o herói divino deve vencê-la para estabelecer a ordem cósmica.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Apófis vs Rá</span>
+        <span class="myth-badge badge-mes">Tiamat vs Marduk</span>
+        <span class="myth-badge badge-per">Ahriman</span>
+        <span class="myth-badge badge-hin">Vritra vs Indra</span>
+        <span class="myth-badge badge-gre">Tifão vs Zeus</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🌅</span>
+      <h3>Criação a partir do Caos / Vazio</h3>
+      <p>O cosmos emerge de um estado primordial de caos, água ou vazio. Uma divindade criadora impõe ordem e separa os elementos do mundo.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Nun / Atum</span>
+        <span class="myth-badge badge-mes">Apsu / Tiamat</span>
+        <span class="myth-badge badge-heb">Tehom / Elohim</span>
+        <span class="myth-badge badge-chi">Hundun / Pangu</span>
+        <span class="myth-badge badge-hin">Prakriti / Brahma</span>
+        <span class="myth-badge badge-gre">Caos primordial</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">☀️</span>
+      <h3>O Deus Solar</h3>
+      <p>O Sol personifica a divindade suprema ou um deus de grande poder, que nasce, atravessa o céu e morre à noite, simbolizando ciclos de morte e renascimento.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Rá / Amon-Rá</span>
+        <span class="myth-badge badge-mes">Shamash</span>
+        <span class="myth-badge badge-per">Ahura Mazda / Mithra</span>
+        <span class="myth-badge badge-hin">Surya / Vishnu</span>
+        <span class="myth-badge badge-gre">Apolo / Hélio</span>
+        <span class="myth-badge badge-chi">Xi He</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">⚖️</span>
+      <h3>Julgamento dos Mortos</h3>
+      <p>Após a morte, a alma é submetida a um julgamento divino. Ações em vida determinam o destino eterno: paraíso, purgatório ou punição.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Pesagem do coração</span>
+        <span class="myth-badge badge-per">Chinvat / Ahura Mazda</span>
+        <span class="myth-badge badge-hin">Yama / Karma</span>
+        <span class="myth-badge badge-gre">Minos / Hades</span>
+        <span class="myth-badge badge-heb">Sheol / Gehena</span>
+        <span class="myth-badge badge-mes">Kur / Ereshkigal</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🌿</span>
+      <h3>Jardim / Paraíso Primordial</h3>
+      <p>A humanidade viveu uma era de ouro em harmonia com os deuses, em um jardim ou terra perfeita. Um ato transgressor causou a queda desse estado.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-heb">Jardim do Éden</span>
+        <span class="myth-badge badge-mes">Dilmun</span>
+        <span class="myth-badge badge-per">Airyana Vaejah</span>
+        <span class="myth-badge badge-hin">Satya Yuga</span>
+        <span class="myth-badge badge-gre">Idade de Ouro</span>
+        <span class="myth-badge badge-chi">Era de Huang Di</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🦅</span>
+      <h3>Deus Criador Trino / Tríade Divina</h3>
+      <p>O divino se manifesta em uma tríade de funções complementares: criação, sustentação e destruição (ou destruição e renovação).</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Osíris-Ísis-Hórus</span>
+        <span class="myth-badge badge-hin">Brahma-Vishnu-Shiva</span>
+        <span class="myth-badge badge-gre">Zeus-Poseidon-Hades</span>
+        <span class="myth-badge badge-per">Ahura/Zoroastro/Amesha</span>
+        <span class="myth-badge badge-heb">El Shaddai / Yahweh / Ruach</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🔥</span>
+      <h3>O Herói Civilizador</h3>
+      <p>Um herói semi-divino traz ao homem um dom essencial (fogo, escrita, agricultura), muitas vezes desafiando os deuses e pagando um preço por isso.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-gre">Prometeu (fogo)</span>
+        <span class="myth-badge badge-mes">Enki (sabedoria)</span>
+        <span class="myth-badge badge-chi">Fuxi (escrita)</span>
+        <span class="myth-badge badge-hin">Agni (fogo sagrado)</span>
+        <span class="myth-badge badge-egy">Thoth (escrita)</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">💀</span>
+      <h3>Deus Morto e Ressurrecto</h3>
+      <p>Uma divindade morre, desce ao submundo e ressuscita — simbolizando os ciclos da natureza, da fertilidade e a esperança de vida após a morte.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Osíris</span>
+        <span class="myth-badge badge-mes">Tammuz / Inanna</span>
+        <span class="myth-badge badge-fen">Baal / Mot</span>
+        <span class="myth-badge badge-gre">Dioniso / Perséfone</span>
+        <span class="myth-badge badge-hin">Vishnu (avatares)</span>
+        <span class="myth-badge badge-per">Mithra</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🌀</span>
+      <h3>Fim dos Tempos / Apocalipse</h3>
+      <p>O mundo como o conhecemos terá um fim catastrófico. Forças do bem e do mal se confrontarão em batalha final, após a qual um novo mundo surgirá.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-per">Frashokereti</span>
+        <span class="myth-badge badge-hin">Kali Yuga / Kalki</span>
+        <span class="myth-badge badge-heb">Apocalipse / Yom HaDin</span>
+        <span class="myth-badge badge-mes">Batalha de Marduk</span>
+        <span class="myth-badge badge-gre">Fim de Eras de Hesíodo</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">🌳</span>
+      <h3>Árvore / Eixo do Mundo</h3>
+      <p>Um eixo cósmico — árvore, montanha ou pilar — liga o mundo superior, o terreno e o submundo, servindo de via de comunicação entre os planos.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-mes">Monte Nippur / Ziggurat</span>
+        <span class="myth-badge badge-hin">Monte Meru</span>
+        <span class="myth-badge badge-gre">Monte Olimpo</span>
+        <span class="myth-badge badge-chi">Kunlun</span>
+        <span class="myth-badge badge-egy">Djed / Pilar Osíris</span>
+        <span class="myth-badge badge-heb">Monte Sinai / Sião</span>
+      </div>
+    </div>
+
+    <div class="theme-card">
+      <span class="theme-icon">👁️</span>
+      <h3>Olho Divino / Visão Onisciente</h3>
+      <p>O deus supremo possui um olho ou visão que tudo vê — o instrumento da providência divina e da ordem moral no cosmos.</p>
+      <div class="badge-row">
+        <span class="myth-badge badge-egy">Olho de Rá / Udjat</span>
+        <span class="myth-badge badge-per">Ahura Mazda (luz)</span>
+        <span class="myth-badge badge-hin">Tercerio olho de Shiva</span>
+        <span class="myth-badge badge-gre">Zeus / Argos</span>
+        <span class="myth-badge badge-heb">Yahweh onisciente</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GRAND COMPARATIVE TABLE -->
+  <div class="corr-section" style="margin-top:60px">
+    <h3>Tabela Comparativa das Divindades</h3>
+    <p class="corr-sub">Equivalências funcionais entre os panteões</p>
+    <div style="overflow-x:auto">
+    <table class="parallel-table">
+      <tr>
+        <th>Função</th>
+        <th><span class="myth-badge badge-egy">Egípcia</span></th>
+        <th><span class="myth-badge badge-mes">Mesopotâmica</span></th>
+        <th><span class="myth-badge badge-heb">Hebraica</span></th>
+        <th><span class="myth-badge badge-fen">Fenícia</span></th>
+        <th><span class="myth-badge badge-chi">Chinesa</span></th>
+        <th><span class="myth-badge badge-hin">Hindu</span></th>
+        <th><span class="myth-badge badge-per">Persa</span></th>
+        <th><span class="myth-badge badge-gre">Grega</span></th>
+      </tr>
+      <tr><td>Deus Supremo</td><td>Amon-Rá</td><td>Anu / Marduk</td><td>Yahweh</td><td>El / Baal</td><td>Jade Supremo</td><td>Brahma</td><td>Ahura Mazda</td><td>Zeus</td></tr>
+      <tr><td>Sol</td><td>Rá / Khepri</td><td>Shamash</td><td>—</td><td>—</td><td>Xi He / Sol</td><td>Surya</td><td>Mithra</td><td>Apolo / Hélio</td></tr>
+      <tr><td>Lua</td><td>Thoth / Khonsu</td><td>Sin / Nanna</td><td>—</td><td>Yareah</td><td>Chang'e</td><td>Chandra / Soma</td><td>—</td><td>Ártemis / Selene</td></tr>
+      <tr><td>Sabedoria</td><td>Thoth / Ma'at</td><td>Enki / Ea</td><td>Hokhmah (Sabedoria)</td><td>El</td><td>Fuxi</td><td>Saraswati</td><td>Vohu Manah</td><td>Atena / Hermes</td></tr>
+      <tr><td>Guerra</td><td>Hórus / Monthu</td><td>Ishtar / Nergal</td><td>Yahweh Tzevaot</td><td>Anat</td><td>Guan Yu</td><td>Indra / Durga</td><td>Verethragna</td><td>Ares / Atena</td></tr>
+      <tr><td>Amor / Fertilidade</td><td>Ísis / Hator</td><td>Ishtar / Inanna</td><td>Asherah</td><td>Astarte / Anat</td><td>Nüwa / Guanyin</td><td>Lakshmi / Parvati</td><td>Anahita</td><td>Afrodite / Deméter</td></tr>
+      <tr><td>Morte / Submundo</td><td>Osíris / Anúbis</td><td>Nergal / Ereshkigal</td><td>Sheol / Azrael</td><td>Mot</td><td>Yanluo Wang</td><td>Yama / Shiva</td><td>Angra Mainyu</td><td>Hades / Tânatos</td></tr>
+      <tr><td>Tempestade / Mar</td><td>Set / Nut</td><td>Enlil / Adad</td><td>Yahweh (trovão)</td><td>Baal Hadad</td><td>Leigong / Long Wang</td><td>Indra / Varuna</td><td>—</td><td>Zeus / Poseidon</td></tr>
+      <tr><td>Fogo / Forja</td><td>Ptah / Sekhmet</td><td>Girra / Gibil</td><td>Serafim (fogo)</td><td>—</td><td>Zhu Rong</td><td>Agni</td><td>Atar (fogo sagrado)</td><td>Hefesto / Héstia</td></tr>
+      <tr><td>Mensageiro</td><td>Thoth</td><td>Nusku / Papsukkal</td><td>Anjos / Gabriel</td><td>—</td><td>—</td><td>Narada</td><td>Sraosha</td><td>Hermes / Íris</td></tr>
+      <tr><td>Criador da Humanidade</td><td>Khnum (argila)</td><td>Enki + Ninhursag</td><td>Yahweh (argila)</td><td>El</td><td>Nüwa (argila)</td><td>Brahma</td><td>Ahura Mazda</td><td>Prometeu / Zeus</td></tr>
+      <tr><td>Trickster / Astúcia</td><td>Set / Thoth</td><td>Enki</td><td>Satã (oponente)</td><td>—</td><td>Monkey King (Sun Wukong)</td><td>Maya / Indra</td><td>—</td><td>Hermes / Prometeu</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <!-- FLOOD TABLE -->
+  <div class="corr-section">
+    <h3>O Dilúvio Universal: Paralelos Narrativos</h3>
+    <p class="corr-sub">A mesma história em tradições distintas</p>
+    <div style="overflow-x:auto">
+    <table class="parallel-table">
+      <tr>
+        <th>Elemento</th>
+        <th><span class="myth-badge badge-mes">Gilgamesh (Sum.)</span></th>
+        <th><span class="myth-badge badge-heb">Gênesis</span></th>
+        <th><span class="myth-badge badge-hin">Matsya Purana</span></th>
+        <th><span class="myth-badge badge-gre">Hesiodo</span></th>
+        <th><span class="myth-badge badge-chi">Tradição Chinesa</span></th>
+      </tr>
+      <tr><td>Herói</td><td>Utnapishtim</td><td>Noé</td><td>Manu</td><td>Deucalião</td><td>Gun / Yu</td></tr>
+      <tr><td>Motivo divino</td><td>Barulho humano</td><td>Maldade humana</td><td>Ciclo cósmico</td><td>Depravação</td><td>Inundação caótica</td></tr>
+      <tr><td>Aviso dado por</td><td>Enki / Ea</td><td>Yahweh</td><td>Matsya (peixe)</td><td>Prometeu</td><td>—</td></tr>
+      <tr><td>Embarcação</td><td>Arca cúbica</td><td>Arca retangular</td><td>Grande barco</td><td>Arca</td><td>—</td></tr>
+      <tr><td>Animais salvos</td><td>Sim</td><td>Sim (pares)</td><td>Sim (sementes)</td><td>—</td><td>—</td></tr>
+      <tr><td>Ave enviada</td><td>Pomba, andorinha, corvo</td><td>Pomba, corvo</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>Pouso em montanha</td><td>Monte Nisir</td><td>Monte Ararate</td><td>Himalaias</td><td>Monte Otris / Parnaso</td><td>—</td></tr>
+      <tr><td>Herói tornado imortal</td><td>Sim (Utnapishtim)</td><td>Não</td><td>Não</td><td>Não</td><td>Não</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <!-- CREATION TABLE -->
+  <div class="corr-section">
+    <h3>Cosmogonias: A Criação do Mundo</h3>
+    <p class="corr-sub">Cada tradição responde à pergunta primordial: como o cosmos surgiu?</p>
+    <div style="overflow-x:auto">
+    <table class="parallel-table">
+      <tr>
+        <th>Tradição</th>
+        <th>Estado inicial</th>
+        <th>Agente criador</th>
+        <th>Método de criação</th>
+        <th>Origem humana</th>
+      </tr>
+      <tr><td><span class="myth-badge badge-egy">Egípcia</span></td><td>Nun — oceano do caos</td><td>Atum / Ptah / Khnum</td><td>Autocriação, palavra, modelagem</td><td>Lágrimas de Rá / Argila de Khnum</td></tr>
+      <tr><td><span class="myth-badge badge-mes">Mesopotâmica</span></td><td>Apsu (água doce) + Tiamat (salgada)</td><td>Marduk (Enuma Elish)</td><td>Corte de Tiamat, construção</td><td>Sangue de Kingu + Argila</td></tr>
+      <tr><td><span class="myth-badge badge-heb">Hebraica</span></td><td>Tohu wa-bohu + Tehom</td><td>Elohim / Yahweh</td><td>Palavra (Dabar) — fiat lux</td><td>Pó + sopro divino (neshamah)</td></tr>
+      <tr><td><span class="myth-badge badge-fen">Fenícia</span></td><td>Mot (lama/escuridão)</td><td>El + Astarte</td><td>Ovo cósmico</td><td>Criação por El e deusas</td></tr>
+      <tr><td><span class="myth-badge badge-chi">Chinesa</span></td><td>Hundun — caos indiferenciado</td><td>Pangu</td><td>Pangu separa Yin e Yang com machado</td><td>Nüwa molda da argila / lama</td></tr>
+      <tr><td><span class="myth-badge badge-hin">Hindu</span></td><td>Prakriti / Oceano cósmico</td><td>Brahma / Vishnu</td><td>Meditação, emanação, serpente Ananta</td><td>Manu (primeiro homem)</td></tr>
+      <tr><td><span class="myth-badge badge-per">Persa</span></td><td>Vazio eterno</td><td>Ahura Mazda</td><td>Pensamento puro / asha (verdade)</td><td>Gayomartan (ser primordial)</td></tr>
+      <tr><td><span class="myth-badge badge-gre">Grega</span></td><td>Caos primordial</td><td>Gaia / Eros / Cronos</td><td>Emanação espontânea</td><td>Prometeu (argila) / Deucalião</td></tr>
+    </table>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: EGÍPCIA
+════════════════════════════════════════════ -->
+<section id="egy" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:var(--egy); color:var(--egy)">𓂀</div>
+    <div class="section-header-text">
+      <h2 style="color:var(--egy)">Mitologia Egípcia</h2>
+      <p class="period">c. 3100 a.C. – 400 d.C. · Vale do Nilo, Norte da África</p>
+      <p>Uma das mais antigas e ricas tradições míticas da história, desenvolvida ao longo de mais de 3.500 anos às margens do Nilo. A mitologia egípcia é profundamente ligada ao ciclo solar, à fertilidade e à crença na imortalidade da alma — refletida nas pirâmides e no Livro dos Mortos.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>A Criação de Heliopólis — O Auto-surgimento de Atum</h3>
+      <p>No princípio havia apenas Nun, o oceano primordial do caos. Atum emergiu deste oceano e, ao espirrar (ou se masturbar), gerou Shu (ar) e Tefnut (umidade), que por sua vez criaram Geb (Terra) e Nut (céu). Destes nasceram Osíris, Ísis, Set e Néftis — a Grande Enéade de Heliopólis.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Deus Solar</div>
+      <h3>Rá e a Viagem do Sol</h3>
+      <p>Rá, o deus sol, navega em sua barca celestial pelos doze domínios do céu (durante o dia) e atravessa os doze portões do Duat (submundo) à noite, renascendo ao amanhecer como Khepri (o escaravelho). A cada noite ele enfrenta Apófis, a serpente do caos.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Mito Central</div>
+      <h3>Osíris, Ísis, Set e Hórus</h3>
+      <p>O mito mais importante do Egito: Osíris, rei do Egito, é assassinado e desmembrado por seu irmão Set. Ísis recolhe os pedaços, o ressuscita temporariamente e concebe Hórus. Anúbis embalsa Osíris, que se torna rei dos mortos. Hórus, adulto, derrota Set e restaura a ordem (Ma'at).</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Escatologia</div>
+      <h3>O Julgamento de Osíris</h3>
+      <p>Após a morte, a alma (Ba e Ka) comparece ao Salão das Duas Verdades. O coração do morto é pesado numa balança contra a pena de Ma'at (verdade e justiça). Anúbis fiscaliza; Thoth registra. Se o coração for mais leve que a pena, o morto entra no Campo dos Juncos (paraíso). Caso contrário, Ammit devora a alma.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Egípcio</h3>
+      <ul>
+        <li><strong>Rá / Amon-Rá</strong> — Deus sol, rei dos deuses</li>
+        <li><strong>Osíris</strong> — Morte, ressurreição, rei do submundo</li>
+        <li><strong>Ísis</strong> — Magia, maternidade, proteção</li>
+        <li><strong>Hórus</strong> — Realeza, céu, falcão</li>
+        <li><strong>Set</strong> — Caos, deserto, tempestade</li>
+        <li><strong>Anúbis</strong> — Morte, embalsamamento</li>
+        <li><strong>Thoth</strong> — Sabedoria, escrita, lua</li>
+        <li><strong>Ptah</strong> — Criação pela palavra, artesanato</li>
+        <li><strong>Hator</strong> — Amor, beleza, música</li>
+        <li><strong>Sekhmet</strong> — Guerra, epidemias, leoa</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Osíris ↔ Dioniso (Grego):</strong> ambos são deuses de morte e ressurreição, associados à fertilidade e mistérios</li>
+        <li><strong>Ísis ↔ Ishtar/Inanna (Mesop.):</strong> grande deusa-mãe que desce ao submundo por seu amado</li>
+        <li><strong>Rá vs Apófis ↔ Ahura Mazda vs Ahriman (Persa):</strong> dualidade luz vs trevas</li>
+        <li><strong>Pesagem do coração ↔ Julgamento persa (Chinvat):</strong> moral determina destino pós-morte</li>
+        <li><strong>Thoth ↔ Hermes (Grego) ↔ Enki (Mesop.):</strong> deus da sabedoria e da escrita</li>
+        <li><strong>Atum emergindo de Nun ↔ Brahma sobre as águas (Hindu):</strong> criador emergindo do caos aquático</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: MESOPOTÂMICA
+════════════════════════════════════════════ -->
+<section id="mes" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#cd853f; color:#cd853f">𒀭</div>
+    <div class="section-header-text">
+      <h2 style="color:#cd853f">Mitologia Mesopotâmica</h2>
+      <p class="period">c. 3500 a.C. – 500 a.C. · Suméria, Acádia, Babilônia, Assíria</p>
+      <p>A mais antiga tradição mitológica registrada da humanidade, nascida entre o Tigre e o Eufrates. A mitologia mesopotâmica influenciou diretamente a Bíblia hebraica, a mitologia fenícia e, indiretamente, a tradição grega. O Enuma Elish e a Epopeia de Gilgamesh são obras-primas da literatura antiga.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>Enuma Elish — O Poema da Criação Babilônico</h3>
+      <p>No princípio, Apsu (água doce) e Tiamat (água salgada) se misturavam. Deles nasceram os deuses, que perturbaram o repouso de Apsu. Marduk, o herói divino, mata Tiamat e com seu corpo cria o céu e a Terra. Do sangue de Kingu (consort de Tiamat) misturado com argila, Enki cria os humanos para servir os deuses.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Épica</div>
+      <h3>A Epopeia de Gilgamesh</h3>
+      <p>O rei Gilgamesh, dois terços deus, parte em busca da imortalidade após a morte de seu amigo Enkidu. Após aventuras épicas, chega a Utnapishtim — único mortal tornado imortal após sobreviver ao dilúvio. Gilgamesh aprende que a imortalidade não é para os humanos; deve aceitar a morte e viver plenamente.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Dilúvio</div>
+      <h3>O Dilúvio de Utnapishtim</h3>
+      <p>Os deuses decidem destruir a humanidade pelo dilúvio. Enki avisa Utnapishtim secretamente, mandando-o construir uma arca. Após o dilúvio, ele pousa no Monte Nisir, solta pombas e corvos para verificar se a terra secou. Os deuses, arrependidos, tornam Utnapishtim imortal. Esta narrativa é 1.000 anos mais antiga que o Gênesis.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Descida ao Submundo</div>
+      <h3>Inanna/Ishtar no Submundo</h3>
+      <p>Inanna, deusa do amor e guerra, desce ao Kur (submundo) governado por sua irmã Ereshkigal. Em cada um dos sete portões, ela deve tirar um adorno. Nua e humilhada, é morta e pendurada como um cadáver. O mundo acima começa a murchar. Após três dias, ela ressuscita e retorna — mito do ciclo das estações.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Mesopotâmico</h3>
+      <ul>
+        <li><strong>Anu</strong> — Deus dos céus, pai dos deuses</li>
+        <li><strong>Enlil</strong> — Vento, tempestade, soberania</li>
+        <li><strong>Enki / Ea</strong> — Sabedoria, água, magia</li>
+        <li><strong>Inanna / Ishtar</strong> — Amor, guerra, Vênus</li>
+        <li><strong>Marduk</strong> — Deus nacional babilônico</li>
+        <li><strong>Nanna / Sin</strong> — Lua</li>
+        <li><strong>Shamash / Utu</strong> — Sol, justiça</li>
+        <li><strong>Nergal</strong> — Morte, submundo</li>
+        <li><strong>Tammuz / Dumuzi</strong> — Vegetação, pastores</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Tiamat ↔ Tehom (Hebraico) ↔ Nun (Egípcio):</strong> oceano primordial do caos</li>
+        <li><strong>Utnapishtim ↔ Noé ↔ Manu ↔ Deucalião:</strong> sobrevivente do dilúvio universal</li>
+        <li><strong>Inanna ↔ Afrodite (Grega) ↔ Astarte (Fenícia):</strong> grande deusa do amor e guerra</li>
+        <li><strong>Tammuz ↔ Osíris (Egípcio) ↔ Baal (Fenícia):</strong> deus da vegetação morto e ressurrecto</li>
+        <li><strong>Enki ↔ Thoth (Egípcio) ↔ Atena (Grega):</strong> deus da sabedoria e protetor dos humanos</li>
+        <li><strong>Marduk vs Tiamat ↔ Zeus vs Tifão ↔ Indra vs Vritra:</strong> herói divino vencendo serpente do caos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: HEBRAICA
+════════════════════════════════════════════ -->
+<section id="heb" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#4499dd; color:#4499dd">✡</div>
+    <div class="section-header-text">
+      <h2 style="color:#4499dd">Mitologia Hebraica / Judaica</h2>
+      <p class="period">c. 2000 a.C. – 200 d.C. · Canaã, Mesopotâmia, Egito</p>
+      <p>A tradição hebraica representa uma síntese e transformação radical das mitologias do Oriente Próximo. O monoteísmo (ou henoteísmo primitivo) de Israel reconfigurou narrativas conhecidas — criação, dilúvio, jardim primordial — dentro de um único relacionamento de aliança entre Deus e seu povo.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>Bereshit — "No Princípio"</h3>
+      <p>Deus cria o cosmos em seis dias pela palavra ("E disse Deus: Haja luz"). O estado primordial é tohu wa-bohu (caos vazio) sobre o tehom (abismo de águas) — termo relacionado linguisticamente a Tiamat. Ao sétimo dia, Deus descansa, instituindo o Shabat. Duas versões de criação existem nos capítulos 1 e 2 do Gênesis, refletindo fontes distintas (sacerdotal e javista).</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Mito Central</div>
+      <h3>O Jardim do Éden e a Queda</h3>
+      <p>Adão e Eva vivem em harmonia com Deus no jardim de Éden. A serpente, o mais astuto dos animais, persuade Eva a comer do fruto proibido da Árvore do Conhecimento do Bem e do Mal. O casal é expulso do jardim. A narrativa explica a origem do sofrimento, da morte e do trabalho como condição humana — e ecoa o Jardim de Dilmun mesopotâmico.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Dilúvio</div>
+      <h3>Noé e o Dilúvio</h3>
+      <p>Yahweh, desolado com a maldade humana, decide destruir a criação com um dilúvio. Noé, o único justo, recebe instruções para construir uma arca e salvar sua família e pares de animais. Após 40 dias, a arca pousa no Ararate. Deus estabelece uma aliança com Noé representada pelo arco-íris — promessa de não mais destruir a vida.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Angelologia</div>
+      <h3>Os Anjos, Nefilins e Seres Celestiais</h3>
+      <p>A tradição hebraica desenvolveu uma rica hierarquia celestial: querubins e serafins guardam o trono divino; Gabriel e Miguel são mensageiros e guerreiros; os Nefilins (Gênesis 6) são descendentes de "filhos de Deus" com humanas. O Livro de Enoque descreve anjos caídos (Vigílias), prenunciando conceitos demoníacos posteriores.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Figuras</div>
+      <h3>Figuras Míticas Hebraicas</h3>
+      <ul>
+        <li><strong>Yahweh / Elohim</strong> — Deus único e criador</li>
+        <li><strong>Adão e Eva</strong> — Primeiros humanos</li>
+        <li><strong>Satã / ha-Satan</strong> — Adversário, acusador</li>
+        <li><strong>Lilith</strong> — Primeira mulher (tradição extra-bíblica)</li>
+        <li><strong>Noé</strong> — Sobrevivente do dilúvio</li>
+        <li><strong>Leviathan / Behemoth</strong> — Monstros cósmicos</li>
+        <li><strong>Miguel / Gabriel / Rafael</strong> — Arcanjos</li>
+        <li><strong>Ruach Elohim</strong> — O Espírito de Deus</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Tehom ↔ Tiamat (Mesop.):</strong> mesma raiz semítica para o abismo primordial</li>
+        <li><strong>Éden ↔ Dilmun (Mesop.):</strong> jardim primordial sem sofrimento ou morte</li>
+        <li><strong>Noé ↔ Utnapishtim:</strong> narrativa do dilúvio praticamente idêntica</li>
+        <li><strong>Leviatã ↔ Tiamat ↔ Apófis ↔ Vritra:</strong> serpente do caos aquático</li>
+        <li><strong>Satã ↔ Ahriman (Persa):</strong> princípio do mal em oposição ao bem divino (influência persa no judaísmo pós-exílio)</li>
+        <li><strong>Ha-Adam (do adamá = terra vermelha) ↔ Khnum modela da argila (Egípcio):</strong> humano criado da terra</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: FENÍCIA
+════════════════════════════════════════════ -->
+<section id="fen" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#dd6666; color:#dd6666">𒀭</div>
+    <div class="section-header-text">
+      <h2 style="color:#dd6666">Mitologia Fenícia / Cananéia</h2>
+      <p class="period">c. 2500 a.C. – 200 a.C. · Levante, Líbano, Síria, Norte de Israel</p>
+      <p>Os fenícios e cananeus deixaram uma das heranças mitológicas mais influentes — seu panteão moldou diretamente a Bíblia hebraica (Baal, Astarte, El, Mot) e chegou à Grécia via colonização mediterrânea. As tábuas de Ugarit (descobertas em 1929) revelaram este rico sistema mítico.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Panteão</div>
+      <h3>El, Baal e a Estrutura Divina</h3>
+      <p>El é o deus patriarca supremo, pai dos deuses, criador do cosmos — seu nome torna-se a própria palavra semítica para "deus" (El, Elohim, Allah). Baal, filho de Dagon, é o deus da tempestade e fertilidade — o mais popular e dinâmico. Mot governa a morte. Yam governa o mar e caos. Asherah, esposa de El, é a grande deusa-mãe, associada a postes sagrados.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Mito Central</div>
+      <h3>Baal vs Mot — O Ciclo das Estações</h3>
+      <p>Baal, o deus da chuva e fertilidade, é desafiado por Mot (morte). Baal desce ao submundo e morre — a Terra seca e a fertilidade cessa (inverno/seca). Sua irmã Anat desce, mata e semeia Mot, liberando Baal. Baal ressurge e a chuva volta. Este ciclo anual de morte e ressurreição explica as estações e é paralelo a Osíris, Tammuz e Perséfone.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Deusa</div>
+      <h3>Astarte e Anat — As Grandes Deusas</h3>
+      <p>Astarte (Ashtoreth na Bíblia) é a deusa do amor, guerra e planeta Vênus — equivalente semítica de Inanna/Ishtar e ancestral de Afrodite. Anat é a deusa guerreira feroz, irmã de Baal, que combate sem piedade; ela aparece em textos egípcios e ugaríticos como guerreira suprema. As duas foram veneradas também no Egito e em Israel (contra os profetas hebraicos).</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>A Criação Fenícia (Sanchuniaton)</h3>
+      <p>Segundo o filósofo Filo de Biblos, o mito fenício começa com o caos (Mot), ao qual se associa um vento sombrio. Deste caos surge um ovo cósmico que se rompe, criando os céus e a Terra. Os primeiros seres humanos são frutos da terra. El (Kronos para os gregos) reina sobre os deuses mas mata seu filho e mutilas — narrativa que Hesíodo adaptou para Cronos/Urano.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Fenício / Cananeu</h3>
+      <ul>
+        <li><strong>El</strong> — Deus supremo, pai dos deuses (→ Elohim, Zeus, Cronos)</li>
+        <li><strong>Baal Hadad</strong> — Tempestade, fertilidade (→ Zeus, Júpiter)</li>
+        <li><strong>Asherah</strong> — Grande deusa-mãe, mar</li>
+        <li><strong>Astarte</strong> — Amor, guerra, Vênus (→ Afrodite, Inanna)</li>
+        <li><strong>Anat</strong> — Guerreira feroz (→ Atena, Sekhmet)</li>
+        <li><strong>Mot</strong> — Morte e submundo (→ Hades, Nergal)</li>
+        <li><strong>Yam</strong> — Mar e caos (→ Poseidon, Apsu)</li>
+        <li><strong>Kothar-wa-Khasis</strong> — Artesão divino (→ Hefesto)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>El ↔ Cronos (Grego) ↔ Anu (Mesop.):</strong> deus patriarca supremo</li>
+        <li><strong>Baal ↔ Zeus / Júpiter ↔ Indra ↔ Enlil:</strong> deus da tempestade que governa</li>
+        <li><strong>Astarte ↔ Afrodite ↔ Inanna ↔ Ísis:</strong> deusa do amor / Vênus</li>
+        <li><strong>Mot ↔ Hades ↔ Osiris ↔ Yama:</strong> senhor do submundo</li>
+        <li><strong>Baal vs Mot ↔ Osíris e Set ↔ Deméter e Perséfone:</strong> ciclo da fertilidade/morte/ressurreição</li>
+        <li><strong>El castrando/matando filho ↔ Cronos castrando Urano (Grego):</strong> mesmo mito adaptado por Hesíodo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: CHINESA
+════════════════════════════════════════════ -->
+<section id="chi" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#ff6644; color:#ff6644">☯</div>
+    <div class="section-header-text">
+      <h2 style="color:#ff6644">Mitologia Chinesa</h2>
+      <p class="period">c. 2700 a.C. – contínua · China, Ásia Oriental</p>
+      <p>A mitologia chinesa é vasta e diversa, incorporando tradições taoístas, confucionistas e budistas ao longo de milênios. Diferente das tradições ocidentais, ela não possui um texto sagrado centralizado — seu corpus mítico se distribuiu por cosmologias taoístas, romances históricos e rituais locais.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>Pangu e a Separação do Céu e da Terra</h3>
+      <p>No princípio havia Hundun — o caos indiferenciado, como um ovo. Pangu dormia dentro deste ovo por 18.000 anos. Ao despertar, pegou um machado e separou o Yin (Terra, escuro, pesado) do Yang (céu, luminoso, leve). Pangu cresceu entre os dois, empurrando-os. Ao morrer, seu corpo se tornou os elementos do mundo: os olhos viraram o sol e a lua, os cabelos as estrelas, a pele a terra fértil.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Criação Humana</div>
+      <h3>Nüwa e a Criação da Humanidade</h3>
+      <p>Nüwa, deusa com corpo de serpente, vagava solitária pelo mundo. Moldou figuras da argila amarela do rio — estas se tornaram nobres. Cansada, mergulhou uma corda no barro e a sacudiu — os pingos tornaram-se o povo comum. Nüwa também consertou o céu: quando o pilar celestial se rompeu causando inundação e incêndio, ela fundiu pedras de cinco cores para remendar o firmamento.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Herói Cultural</div>
+      <h3>Os Imperadores Sagrados e Civilizadores</h3>
+      <p>Fuxi ensinou a humanidade a pescar, caçar e criou os trigramas (base do I Ching). Shennong inventou a agricultura e a medicina — ele próprio provava plantas para descobrir remédios. O Imperador Amarelo (Huang Di) trouxe a escrita, a bússola, a medicina e instituiu o governo; sua esposa Leizu descobriu a seda. Estes não são meros reis mas heróis civilizadores de statura mítica.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Cosmologia</div>
+      <h3>O Controle das Águas — Gun e Yu</h3>
+      <p>Uma grande inundação ameaçava a humanidade. Gun, enviado para controlá-la, roubou a terra sagrada (Xi Rang) dos céus para construir diques — mas falhou e foi executado. Seu filho Yu usou uma abordagem diferente: em vez de diques, cavou canais para drenar as águas. Passou 13 anos controlando o dilúvio e nunca entrou em sua casa ao passar por ela. Yu tornou-se fundador lendário da dinastia Xia.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Chinês</h3>
+      <ul>
+        <li><strong>Jade Supremo (Yù Huáng)</strong> — Imperador celestial</li>
+        <li><strong>Nüwa</strong> — Criadora, reparadora do céu</li>
+        <li><strong>Pangu</strong> — Criador do cosmos</li>
+        <li><strong>Fuxi</strong> — Cultura, escrita, caça</li>
+        <li><strong>Chang'e</strong> — Deusa da lua</li>
+        <li><strong>Sun Wukong</strong> — Rei Macaco, trickster</li>
+        <li><strong>Guanyin</strong> — Compaixão, misericórdia</li>
+        <li><strong>Long Wang</strong> — Reis dragão do mar</li>
+        <li><strong>Yanluo Wang</strong> — Rei do submundo</li>
+        <li><strong>Leigong</strong> — Deus do trovão</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Hundun ↔ Nun (Egípcio) ↔ Caos (Grego) ↔ Tohu wa-bohu (Hebraico):</strong> caos primordial</li>
+        <li><strong>Pangu separando Yin/Yang ↔ Marduk separando Tiamat ↔ Geb/Nut separados (Egípcio):</strong> separação céu-terra</li>
+        <li><strong>Nüwa moldando humanos de argila ↔ Yahweh ↔ Khnum ↔ Enki:</strong> criação humana do barro</li>
+        <li><strong>Yu controlando o dilúvio ↔ Noé ↔ Utnapishtim:</strong> herói que enfrenta inundação</li>
+        <li><strong>Sun Wukong ↔ Hermes (Grego) ↔ Enki (Mesop.):</strong> trickster divino, astuto e travesso</li>
+        <li><strong>Imperadores sábios ↔ Prometeu ↔ Thoth:</strong> herói civilizador que traz conhecimento</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: HINDU
+════════════════════════════════════════════ -->
+<section id="hin" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#ffaa44; color:#ffaa44">ॐ</div>
+    <div class="section-header-text">
+      <h2 style="color:#ffaa44">Mitologia Indiana / Hindu</h2>
+      <p class="period">c. 1500 a.C. – contínua · Subcontinente Indiano</p>
+      <p>A mais extensa e viva tradição mítica ainda em prática, com bilhões de seguidores. Os Vedas, Upanishads, Mahabharata, Ramayana e Puranas formam um corpus imensurável de narrativas sobre criação, deuses, cosmologia cíclica e a busca pela liberação (moksha).</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>Brahma e a Criação Cíclica</h3>
+      <p>O cosmos não tem início único — existe em ciclos infinitos (Kalpas). Vishnu repousa sobre a serpente Ananta no oceano primordial. Um lótus brota de seu umbigo, de onde Brahma emerge e cria o cosmos. Após um Kalpa (4,32 bilhões de anos), Shiva destrói tudo e Vishnu retorna ao repouso. Este é o mais grandioso ciclo temporal de qualquer tradição mítica.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Trimurti</div>
+      <h3>Brahma, Vishnu e Shiva — A Trindade</h3>
+      <p>A Trimurti é a tríade funcional do hinduísmo: Brahma cria, Vishnu sustenta e preserva, Shiva destrói para permitir a renovação. Vishnu desce ao mundo em avatares (Dashavatara) quando o dharma está em perigo: Matsya (peixe), Kurma (tartaruga), Varaha (javali), Narasimha (homem-leão), Vamana (anão), Parashurama, Rama, Krishna, Buda e Kalki (vindouro).</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Épica</div>
+      <h3>Mahabharata e o Bhagavad Gita</h3>
+      <p>O maior poema épico da humanidade (100.000 estrofes). Na véspera da batalha de Kurukshetra, o guerreiro Arjuna hesita em lutar contra seus parentes. Krishna, seu cocheiro e avatar de Vishnu, revela o Bhagavad Gita — 700 versos sobre dharma, ação sem apego ao fruto (karma yoga) e a natureza imortal da alma. Uma das obras filosóficas mais influentes de todos os tempos.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Dilúvio</div>
+      <h3>Manu e o Grande Dilúvio</h3>
+      <p>Manu, o primeiro homem, encontra um pequeno peixe que pede proteção. O peixe cresce e avisa Manu de um dilúvio iminente. Manu constrói um barco; o peixe (revelado como Matsya, avatar de Vishnu) puxa a embarcação pelos Himalaias. Após o dilúvio, Manu se torna o pai da humanidade renovada — paralelo perfeito com Noé e Utnapishtim.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Hindu</h3>
+      <ul>
+        <li><strong>Brahma</strong> — Criador</li>
+        <li><strong>Vishnu</strong> — Preservador (com avatares: Rama, Krishna)</li>
+        <li><strong>Shiva</strong> — Destruidor / Transformador</li>
+        <li><strong>Devi / Durga / Kali</strong> — Deusa suprema, poder (Shakti)</li>
+        <li><strong>Lakshmi</strong> — Prosperidade, beleza</li>
+        <li><strong>Saraswati</strong> — Sabedoria, artes</li>
+        <li><strong>Indra</strong> — Tempestade, guerreiro</li>
+        <li><strong>Agni</strong> — Fogo sagrado</li>
+        <li><strong>Yama</strong> — Morte, justiça</li>
+        <li><strong>Ganesha</strong> — Sabedoria, remoção de obstáculos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Brahma-Vishnu-Shiva ↔ Osíris-Rá-Hórus ↔ Zeus-Poseidon-Hades:</strong> tríade divina funcional</li>
+        <li><strong>Manu ↔ Noé ↔ Utnapishtim ↔ Deucalião:</strong> dilúvio universal</li>
+        <li><strong>Indra vs Vritra ↔ Zeus vs Tifão ↔ Marduk vs Tiamat:</strong> deus guerreiro vs serpente do caos</li>
+        <li><strong>Yuga (idades do mundo) ↔ Idades de Ouro/Prata/Bronze/Ferro (Grego):</strong> degradação progressiva das eras</li>
+        <li><strong>Deva vs Asura ↔ Ahura vs Daeva (Persa):</strong> mesma palavra, oposição invertida</li>
+        <li><strong>Agni ↔ Prometeu ↔ Atar (Persa):</strong> fogo sagrado como dom aos humanos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: PERSA
+════════════════════════════════════════════ -->
+<section id="per" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#aa88dd; color:#aa88dd">𓅀</div>
+    <div class="section-header-text">
+      <h2 style="color:#aa88dd">Mitologia Persa / Zoroastriana</h2>
+      <p class="period">c. 1500 a.C. – 651 d.C. · Irã, Ásia Central</p>
+      <p>O zoroastrismo, fundado pelo profeta Zaratustra (Zoroastro), revolucionou a religião com seu dualismo ético radical: um universo em batalha entre Ahura Mazda (bem) e Angra Mainyu (mal). Sua influência sobre o judaísmo pós-exílio, o cristianismo e o islamismo foi profunda — os conceitos de Satã, anjos, ressurreição e apocalipse têm raízes persas.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Dualismo Cósmico</div>
+      <h3>Ahura Mazda vs Angra Mainyu</h3>
+      <p>O cosmos está em eterna batalha entre dois princípios: Ahura Mazda (Senhor Sábio — bem, luz, verdade, Asha) e Angra Mainyu / Ahriman (Espírito Maligno — mal, trevas, mentira, Druj). Cada ser humano tem liberdade de escolher entre os dois caminhos. O tempo cósmico dura 12.000 anos, após os quais o bem vencerá definitivamente — esta é a Frashokereti (renovação final).</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>A Criação e Gayomartan</h3>
+      <p>Ahura Mazda cria o mundo em seis etapas (céu, água, terra, plantas, animais, humanos) — paralelo com os seis dias da criação hebraica (influência mútua). O primeiro ser humano é Gayomartan (ser mortal primordial), de cuja semente nasceu o casal primordial Mashya e Mashyane — o Adão e Eva persa. Angra Mainyu corrompeu a criação introduzindo doenças, morte e inverno.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Apocalipse</div>
+      <h3>Frashokereti — A Renovação Final</h3>
+      <p>No fim dos tempos, o Salvador (Saoshyant), nascido de semente de Zoroastro, promoverá a ressurreição dos mortos. Todos passarão pelo rio de metal fundido: para os justos, ele parecerá leite morno; para os malvados, será tormento. Angra Mainyu será destruído definitivamente. O mundo será renovado em sua perfeição original. Esta é a fonte direta do conceito bíblico de ressurreição e julgamento final.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Julgamento</div>
+      <h3>A Ponte Chinvat — Julgamento da Alma</h3>
+      <p>Após a morte, a alma permanece três dias junto ao corpo. No quarto dia, cruza a Ponte Chinvat (ponte do julgamento). Para os justos, a ponte se alarga como uma grande estrada e uma bela donzela (o Daena — a própria consciência purificada) a recebe. Para os maus, a ponte se estreita como uma lâmina e a donzela se torna uma horrenda velha. A alma cai no inferno.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Panteão Zoroastriano</h3>
+      <ul>
+        <li><strong>Ahura Mazda</strong> — Deus único, luz, bem</li>
+        <li><strong>Angra Mainyu / Ahriman</strong> — Princípio do mal</li>
+        <li><strong>Amesha Spentas</strong> — Seis arcanjos (Vohu Manah, Asha, etc.)</li>
+        <li><strong>Mithra</strong> — Sol, contratos, justiça</li>
+        <li><strong>Anahita</strong> — Água, fertilidade, guerreira</li>
+        <li><strong>Sraosha</strong> — Obediência, mensageiro</li>
+        <li><strong>Atar</strong> — Fogo sagrado</li>
+        <li><strong>Verethragna</strong> — Vitória, guerra</li>
+        <li><strong>Saoshyant</strong> — Salvador escatológico</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Ahura Mazda ↔ Yahweh ↔ Rá ↔ Zeus:</strong> deus supremo da luz e bem</li>
+        <li><strong>Angra Mainyu ↔ Satã (Hebraico) ↔ Set (Egípcio) ↔ Apófis:</strong> princípio do mal (influência direta no judaísmo)</li>
+        <li><strong>Saoshyant ↔ Messias (Hebraico) ↔ Kalki (Hindu):</strong> salvador escatológico</li>
+        <li><strong>Frashokereti ↔ Apocalipse bíblico ↔ Kali Yuga/Kalki:</strong> renovação final do cosmos</li>
+        <li><strong>Amesha Spentas ↔ Anjos/Arcanjos (Hebraico) ↔ Adityas (Hindu):</strong> hierarquia celestial</li>
+        <li><strong>Deva/Asura invertidos ↔ Devas (bons no Hindu) são Daevas (maus no Persa):</strong> mesma palavra, avaliação oposta</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION: GREGA
+════════════════════════════════════════════ -->
+<section id="gre" class="section">
+  <div class="section-header">
+    <div class="myth-sigil" style="border-color:#55aadd; color:#55aadd">⚡</div>
+    <div class="section-header-text">
+      <h2 style="color:#55aadd">Mitologia Grega</h2>
+      <p class="period">c. 1200 a.C. – 400 d.C. · Grécia, Mar Egeu, Mediterrâneo</p>
+      <p>A mitologia grega é a mais conhecida no Ocidente e a de maior influência na cultura europeia. Homero, Hesíodo, Ésquilo, Sófocles e Ovídio (romano) codificaram narrativas que ressoam até hoje na arte, literatura, filosofia e psicologia. Os gregos absorveram influências fenícias, egípcias e mesopotâmicas e as reelaboraram com brilhantismo literário.</p>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-tag">Cosmogonia</div>
+      <h3>Teogonia de Hesíodo — Das Trevas ao Olimpo</h3>
+      <p>No princípio havia Caos — um vazio primordial. Deste surgiram Gaia (Terra), Tártaro (submundo) e Eros (amor). Gaia gerou Urano (céu), que a cobriu. Urano oprimia seus filhos; Cronos, o filho mais jovem, castrou o pai com uma foice. Do sangue surgiu Afrodite. Cronos reinou mas devorava seus filhos por medo. Zeus, escondido por Reia, cresceu e libertou seus irmãos, derrotando Cronos na Titanomaquia.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Herói Civilizador</div>
+      <h3>Prometeu e o Fogo</h3>
+      <p>Prometeu roubou o fogo dos deuses e o deu aos humanos, que antes viviam nas trevas. Zeus, furioso, o acorrentou a uma rocha no Cáucaso onde uma águia devorava seu fígado eternamente (ele se regenerava cada noite). Zeus também enviou Pandora com uma caixa de todos os males. Prometeu é o arquétipo do benfeitor da humanidade que paga preço por desafiar os deuses.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Idades do Mundo</div>
+      <h3>As Cinco Eras de Hesíodo</h3>
+      <p>Hesíodo descreve cinco eras da humanidade em declínio: Ouro (perfeição sob Cronos), Prata (decadência), Bronze (guerra e violência), Heróica (eras dos heróis — única era positiva) e Ferro (o tempo presente — trabalho, injustiça). Esta degradação progressiva das eras ecoa as Yugas hindus e os ciclos persas.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Submundo</div>
+      <h3>Hades e o Reino dos Mortos</h3>
+      <p>O submundo grego é dividido: Elísio para os heróis e virtuosos, os Campos de Asfódelos para os comuns, Tártaro para os criminosos. O rio Estige separa o mundo dos vivos. Caronte transporta as almas mediante uma moeda. Minos, Éaco e Radamanto julgam os mortos. Cérbero guarda a entrada. O ciclo de Perséfone — raptada por Hades, ela passa parte do ano no submundo — explica as estações.</p>
+    </div>
+    <div class="card">
+      <div class="card-tag">Principais Divindades</div>
+      <h3>Os Doze Olímpicos</h3>
+      <ul>
+        <li><strong>Zeus</strong> — Céu, trovão, rei dos deuses</li>
+        <li><strong>Hera</strong> — Casamento, rainha</li>
+        <li><strong>Poseidon</strong> — Mar, terremotos</li>
+        <li><strong>Deméter</strong> — Agricultura, fertilidade</li>
+        <li><strong>Atena</strong> — Sabedoria, guerra justa</li>
+        <li><strong>Apolo</strong> — Sol, música, profecia</li>
+        <li><strong>Ártemis</strong> — Caça, lua</li>
+        <li><strong>Ares</strong> — Guerra</li>
+        <li><strong>Afrodite</strong> — Amor, beleza</li>
+        <li><strong>Hefesto</strong> — Fogo, forja</li>
+        <li><strong>Hermes</strong> — Mensageiro, comércio</li>
+        <li><strong>Dioniso</strong> — Vinho, êxtase, morte/ressurreição</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-tag">Correlações</div>
+      <h3>Paralelos com Outras Tradições</h3>
+      <ul>
+        <li><strong>Zeus ↔ Jupiter (Romano) ↔ Indra ↔ Baal ↔ Enlil:</strong> deus do trovão e soberano</li>
+        <li><strong>Cronos castrando Urano ↔ El fenício ↔ Kumarbi (Hitita):</strong> mito da castração do deus-pai</li>
+        <li><strong>Dioniso ↔ Osíris ↔ Baal ↔ Tammuz:</strong> deus da vegetação que morre e ressurge</li>
+        <li><strong>Perséfone ↔ Inanna ↔ Baal:</strong> descida ao submundo e retorno — ciclo das estações</li>
+        <li><strong>Prometeu ↔ Enki (Mesop.) ↔ Agni (Hindu):</strong> doador do fogo e benfeitor da humanidade</li>
+        <li><strong>Zeus vs Tifão ↔ Marduk vs Tiamat ↔ Indra vs Vritra ↔ Hórus vs Set:</strong> batalha cósmica ordem vs caos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  ✦ &nbsp; Nexo das Tradições Sagradas &nbsp; ✦ &nbsp; Da argila do Nilo às chamas do Olimpo &nbsp; ✦
+</footer>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  const btns = document.querySelectorAll('.tab-btn');
+  const labels = ['home','egy','mes','heb','fen','chi','hin','per','gre'];
+  const idx = labels.indexOf(id);
+  if (idx >= 0) btns[idx].classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

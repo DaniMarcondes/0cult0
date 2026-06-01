@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trabalho com Chakras — Guia Prático Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c1: #b5451b; --c1l: #fdf0eb;
+  --c2: #c97226; --c2l: #fef5ea;
+  --c3: #c9a820; --c3l: #fefbea;
+  --c4: #2a9960; --c4l: #eafaf3;
+  --c5: #1f7ab5; --c5l: #eaf4fd;
+  --c6: #5b2d8a; --c6l: #f5eeff;
+  --c7: #7b3fa0; --c7l: #faf0ff;
+  --gold: #c9a43a;
+  --gold-light: #f5e6b0;
+  --cream: #fdf8f0;
+  --dark: #1e1208;
+  --parchment: #f9f2e3;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--parchment);
+  color: var(--dark);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(170deg, #0f0a1e 0%, #1a0d2e 30%, #0d2240 60%, #0f0a1e 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 60px 24px;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 30% 30%, rgba(201,164,58,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 70% 70%, rgba(91,45,138,0.15) 0%, transparent 70%);
+}
+
+.hero-mandala {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,164,58,0.08);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin-very-slow 120s linear infinite;
+}
+.hero-mandala::before {
+  content:'';
+  position: absolute; inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,164,58,0.06);
+}
+.hero-mandala::after {
+  content:'';
+  position: absolute; inset: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,164,58,0.05);
+}
+
+@keyframes spin-very-slow { from{transform:translate(-50%,-50%) rotate(0)} to{transform:translate(-50%,-50%) rotate(360deg)} }
+
+.hero-chain {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 5px; margin-bottom: 36px; position: relative; z-index: 2;
+}
+.hc-dot {
+  border-radius: 50%;
+  animation: hc-pulse 4s ease-in-out infinite;
+  position: relative;
+}
+.hc-dot::after {
+  content:'';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.3;
+  animation: hc-pulse 4s ease-in-out infinite reverse;
+}
+@keyframes hc-pulse { 0%,100%{transform:scale(1);opacity:.7} 50%{transform:scale(1.25);opacity:1} }
+.hc-line { width:2px; height:10px; background:linear-gradient(to bottom, rgba(201,164,58,0.2), rgba(201,164,58,0.5)); }
+.d1{width:18px;height:18px;background:#b5451b;color:#b5451b;animation-delay:0s;}
+.d2{width:22px;height:22px;background:#c97226;color:#c97226;animation-delay:.4s;}
+.d3{width:26px;height:26px;background:#c9a820;color:#c9a820;animation-delay:.8s;}
+.d4{width:30px;height:30px;background:#2a9960;color:#2a9960;animation-delay:1.2s;}
+.d5{width:26px;height:26px;background:#1f7ab5;color:#1f7ab5;animation-delay:1.6s;}
+.d6{width:22px;height:22px;background:#5b2d8a;color:#5b2d8a;animation-delay:2s;}
+.d7{width:18px;height:18px;background:#7b3fa0;color:#7b3fa0;animation-delay:2.4s;}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900; font-style: italic;
+  color: #e8d080;
+  text-shadow: 0 0 60px rgba(201,164,58,0.4), 0 0 120px rgba(201,164,58,0.15);
+  position: relative; z-index: 2;
+  letter-spacing: -0.01em; line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(.8rem, 2vw, 1.1rem);
+  letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(201,164,58,.6);
+  position: relative; z-index: 2; margin-bottom: 28px;
+}
+.hero-desc {
+  font-size: 1.1rem; color: rgba(255,255,255,.72);
+  max-width: 640px; font-style: italic;
+  position: relative; z-index: 2; line-height: 1.9;
+}
+.hero-divider {
+  width: 180px; height: 1px;
+  background: linear-gradient(to right, transparent, #c9a43a, transparent);
+  margin: 24px auto; position: relative; z-index: 2;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+section { padding: 70px 28px; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 700; line-height: 1.2;
+  text-align: center; margin-bottom: 12px;
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 700;
+  margin-bottom: 12px;
+}
+h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .95rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+p { margin-bottom: 14px; }
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+strong { font-weight: 600; }
+
+.gold-line {
+  width: 80px; height: 2px; margin: 0 auto 44px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* ── SECTION BG VARIANTS ── */
+.bg-cream    { background: #fdf9f0; }
+.bg-parchment{ background: #f9f2e3; }
+.bg-white    { background: #ffffff; }
+.bg-gradient-warm { background: linear-gradient(135deg, #fdf9f0 0%, #fdf2e4 100%); }
+.bg-gradient-cool { background: linear-gradient(135deg, #f2f8fd 0%, #f0eeff 100%); }
+.bg-dark {
+  background: linear-gradient(160deg, #120820 0%, #0d1e30 50%, #120820 100%);
+  color: rgba(255,255,255,.88);
+}
+.bg-dark h2 { color: #e8d080; }
+.bg-dark h3 { color: rgba(201,164,58,.9); }
+.bg-dark h4 { color: rgba(201,164,58,.7); }
+.bg-dark p, .bg-dark li { color: rgba(255,255,255,.8); }
+.bg-dark .gold-line { }
+
+/* ── CARDS ── */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px 32px;
+  box-shadow: 0 3px 20px rgba(0,0,0,.07);
+  margin-bottom: 20px;
+}
+.card-gold {
+  background: linear-gradient(135deg, #fffdf4, #fff9e6);
+  border: 1px solid rgba(201,164,58,.3);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.card-dark {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(201,164,58,.2);
+  border-radius: 18px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+.card-dark:hover { border-color: rgba(201,164,58,.45); transition: border-color .3s; }
+
+/* ── GRID ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin: 24px 0; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin: 24px 0; }
+@media(max-width:700px) {
+  .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
+}
+@media(min-width:701px) and (max-width:900px) {
+  .grid-3,.grid-4 { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-block;
+  padding: 3px 12px; border-radius: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .8rem; font-weight: 600;
+  letter-spacing: .08em; color: white;
+}
+.tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.tag {
+  padding: 5px 14px; border-radius: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .82rem;
+}
+
+/* ── PENDULUM ── */
+.pendulum-container {
+  display: flex; justify-content: center;
+  margin: 50px 0; position: relative;
+}
+.pendulum-wrapper {
+  position: relative;
+  width: 120px; height: 280px;
+}
+.pendulum-string {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(201,164,58,.8), rgba(201,164,58,.3));
+  transform-origin: top center;
+  transform: translateX(-50%);
+  animation: pendulum-swing 3s ease-in-out infinite;
+  height: 200px;
+}
+.pendulum-crystal {
+  position: absolute;
+  top: 198px; left: 50%;
+  transform: translateX(-50%);
+  width: 28px; height: 45px;
+  background: linear-gradient(160deg, rgba(200,180,255,.9), rgba(140,100,200,.7), rgba(80,50,150,.5));
+  clip-path: polygon(50% 0%, 80% 30%, 100% 55%, 80% 80%, 50% 100%, 20% 80%, 0% 55%, 20% 30%);
+  animation: pendulum-swing 3s ease-in-out infinite, crystal-glow 3s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(140,100,200,.6);
+  border-radius: 0 0 4px 4px;
+}
+.pendulum-pivot {
+  position: absolute; top: -6px; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(201,164,58,.7);
+}
+@keyframes pendulum-swing {
+  0%,100% { transform: translateX(-50%) rotate(-20deg); }
+  50%      { transform: translateX(-50%) rotate(20deg); }
+}
+@keyframes crystal-glow {
+  0%,100% { box-shadow: 0 0 15px rgba(140,100,200,.5); }
+  50%      { box-shadow: 0 0 35px rgba(180,140,255,.8), 0 0 60px rgba(140,100,200,.3); }
+}
+
+/* ── TABLE ── */
+.styled-table {
+  width: 100%; border-collapse: collapse;
+  font-size: .92rem; margin: 28px 0;
+}
+.styled-table th {
+  background: #1e1208;
+  color: #e8d080;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .8rem; letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 13px 16px; text-align: left;
+}
+.styled-table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  vertical-align: top;
+}
+.styled-table tr:nth-child(even) td { background: rgba(201,164,58,.04); }
+.styled-table tr:hover td { background: rgba(201,164,58,.08); transition: background .2s; }
+.styled-table th:first-child { border-radius: 0; }
+
+/* ── INFO BOXES ── */
+.info-box {
+  border-radius: 14px; padding: 24px 28px; margin: 20px 0;
+  position: relative;
+}
+.ib-tip    { background:#f0fef5; border-left:5px solid #2a9960; }
+.ib-warn   { background:#fff5f0; border-left:5px solid #b5451b; }
+.ib-info   { background:#f0f6ff; border-left:5px solid #1f7ab5; }
+.ib-gold   { background:linear-gradient(135deg,#fffef5,#fff9e0); border-left:5px solid var(--gold); }
+.ib-purple { background:#f8f0ff; border-left:5px solid #5b2d8a; }
+
+.ib-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+  opacity: .65; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── CHAKRA DISEASE CARDS ── */
+.disease-card {
+  border-radius: 16px; overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.disease-header {
+  padding: 18px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.disease-dot {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700; font-size: .9rem; color: white;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px currentColor;
+}
+.disease-name { color: white; }
+.disease-name h3 { color: white; margin: 0; font-size: 1.2rem; }
+.disease-name span { font-size: .85rem; opacity: .8; font-style: italic; }
+.disease-body {
+  background: white; padding: 22px 24px;
+}
+.disease-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+@media(max-width:700px) { .disease-cols { grid-template-columns:1fr; } }
+.disease-col h4 { font-size:.8rem; margin-bottom:8px; }
+.disease-col ul { font-size:.92rem; }
+
+/* ── STONE CARDS ── */
+.stone-card {
+  background: white; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 3px 16px rgba(0,0,0,.08);
+  transition: transform .25s, box-shadow .25s;
+}
+.stone-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.13); }
+.stone-header {
+  height: 70px; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 2rem;
+}
+.stone-body { padding: 16px 18px; }
+.stone-body strong { display: block; font-size: 1rem; margin-bottom: 4px; }
+.stone-body p { font-size: .88rem; margin: 0; opacity: .78; line-height: 1.5; }
+.stone-chakra {
+  margin-top: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .75rem; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ── TAROT ── */
+.tarot-card {
+  background: linear-gradient(160deg, #1a0d2e, #0d1e30);
+  border: 1px solid rgba(201,164,58,.3);
+  border-radius: 14px; padding: 24px 20px;
+  text-align: center;
+  transition: border-color .3s;
+}
+.tarot-card:hover { border-color: rgba(201,164,58,.7); }
+.tarot-symbol { font-size: 2.4rem; margin-bottom: 10px; }
+.tarot-card h4 { color: #e8d080; margin-bottom: 6px; }
+.tarot-card p { color: rgba(255,255,255,.75); font-size: .9rem; margin: 0; line-height: 1.5; }
+.tarot-card .badge { margin-top: 10px; display: inline-block; }
+
+/* ── MANTRA BLOCK ── */
+.mantra-block {
+  border-radius: 18px; padding: 32px;
+  text-align: center; margin-bottom: 20px;
+  position: relative; overflow: hidden;
+}
+.mantra-block::before {
+  content: 'ॐ';
+  position: absolute; font-size: 8rem;
+  opacity: .06; top: -10px; right: -10px;
+  font-family: serif;
+  animation: spin-very-slow 60s linear infinite;
+}
+.mantra-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 900;
+  margin-bottom: 8px;
+  text-shadow: 0 0 30px currentColor;
+}
+.mantra-latin {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .85rem; letter-spacing: .25em;
+  opacity: .7; text-transform: uppercase; margin-bottom: 12px;
+}
+.mantra-meaning { font-style: italic; opacity: .85; font-size: 1rem; }
+.hz-badge {
+  display: inline-block; margin-top: 12px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px; padding: 4px 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .8rem; letter-spacing: .15em; color: rgba(255,255,255,.8);
+}
+
+/* ── STEP LIST ── */
+.step-list { list-style: none; counter-reset: step; }
+.step-list li {
+  counter-increment: step;
+  padding: 14px 0 14px 56px;
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  font-size: .97rem;
+}
+.step-list li:last-child { border-bottom: none; }
+.step-list li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 12px;
+  width: 36px; height: 36px;
+  background: var(--dark);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .85rem; font-weight: 700; color: #e8d080;
+}
+
+/* ── PENDULUM READING TABLE ── */
+.pendulum-reading {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px; margin: 28px 0;
+}
+.pr-card {
+  border-radius: 14px; padding: 20px;
+  text-align: center;
+  transition: transform .2s;
+}
+.pr-card:hover { transform: scale(1.03); }
+.pr-symbol { font-size: 2.2rem; margin-bottom: 8px; }
+.pr-card h4 { margin-bottom: 6px; font-size:.9rem; }
+.pr-card p { font-size: .88rem; margin: 0; opacity: .8; }
+
+/* ── FREQUENCY BARS ── */
+.freq-bar {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 14px;
+}
+.freq-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .82rem; width: 120px; flex-shrink: 0;
+}
+.freq-track {
+  flex: 1; height: 10px; background: rgba(0,0,0,.08);
+  border-radius: 10px; overflow: hidden;
+}
+.freq-fill {
+  height: 100%; border-radius: 10px;
+  animation: freq-expand 2s ease-out forwards;
+}
+@keyframes freq-expand { from{width:0} }
+.freq-hz {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .8rem; width: 60px; text-align: right; opacity: .6;
+}
+
+/* ── PROTOCOL BLOCK ── */
+.protocol {
+  background: linear-gradient(160deg, #0f0a1e, #0d2240);
+  border-radius: 20px; padding: 40px;
+  color: white; margin: 32px 0;
+  position: relative; overflow: hidden;
+}
+.protocol::after {
+  content: '◎';
+  position: absolute; font-size: 14rem;
+  opacity: .03; bottom: -40px; right: -40px;
+  animation: spin-very-slow 90s linear infinite reverse;
+}
+.protocol h3 { color: #e8d080; margin-bottom: 20px; }
+.protocol-steps { display: grid; gap: 16px; }
+.ps-item {
+  display: flex; gap: 18px; align-items: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding-bottom: 16px;
+}
+.ps-item:last-child { border-bottom: none; padding-bottom: 0; }
+.ps-num {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: rgba(201,164,58,.15);
+  border: 1px solid rgba(201,164,58,.4);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .85rem; color: #e8d080; font-weight: 700;
+}
+.ps-text strong { color: #e8d080; display: block; margin-bottom: 4px; font-family:'Josefin Sans',sans-serif; font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; }
+.ps-text p { color: rgba(255,255,255,.75); font-size: .93rem; margin: 0; }
+
+/* ── QUOTE ── */
+.quote-block {
+  text-align: center;
+  padding: 60px 28px;
+  background: linear-gradient(135deg, #fdf9f0 0%, #fdf2e0 100%);
+  border-top: 3px solid rgba(201,164,58,.3);
+  border-bottom: 3px solid rgba(201,164,58,.3);
+}
+.quote-block blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem,2.5vw,1.8rem);
+  font-style: italic; color: #4a2c10;
+  max-width: 720px; margin: 0 auto 16px; line-height: 1.65;
+}
+.quote-block cite {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .85rem; letter-spacing: .2em;
+  color: var(--gold); text-transform: uppercase;
+}
+
+/* ── TOC ── */
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px; margin: 32px 0;
+}
+@media(max-width:600px){ .toc-grid { grid-template-columns:1fr; } }
+.toc-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 10px;
+  background: white; text-decoration: none;
+  color: var(--dark); transition: background .2s;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: .88rem; letter-spacing: .05em;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.toc-item:hover { background: #fff9e6; }
+.toc-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+
+/* ── FOOTER ── */
+footer {
+  background: linear-gradient(160deg, #0f0a1e, #0d2240);
+  color: rgba(255,255,255,.7);
+  text-align: center; padding: 60px 28px;
+}
+footer h3 {
+  font-family:'Playfair Display',serif;
+  color:#e8d080; font-size:1.6rem; margin-bottom:16px;
+}
+footer p { font-size:.92rem; max-width:580px; margin:0 auto 10px; }
+.footer-dots {
+  display:flex; justify-content:center; gap:10px; margin:28px 0; flex-wrap:wrap;
+}
+.fd { width:16px; height:16px; border-radius:50%; animation: hc-pulse 3s ease-in-out infinite; }
+
+/* ── AURA DIAGRAM ── */
+.aura-layers {
+  position: relative; width: 300px; height: 300px;
+  margin: 0 auto;
+}
+.aura-layer {
+  position: absolute; border-radius: 50%;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  opacity: .25; transition: opacity .3s;
+}
+.aura-layer:hover { opacity: .5; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #f9f2e3; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+/* ── UTILS ── */
+.mt16{margin-top:16px} .mt28{margin-top:28px} .mt44{margin-top:44px}
+.text-center{text-align:center}
+.ornament{text-align:center;font-size:1.6rem;color:var(--gold);opacity:.35;letter-spacing:.4em;margin:8px 0}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="topo">
+  <div class="hero-bg"></div>
+  <div class="hero-mandala"></div>
+
+  <div class="hero-chain">
+    <div class="hc-dot d7"></div><div class="hc-line"></div>
+    <div class="hc-dot d6"></div><div class="hc-line"></div>
+    <div class="hc-dot d5"></div><div class="hc-line"></div>
+    <div class="hc-dot d4"></div><div class="hc-line"></div>
+    <div class="hc-dot d3"></div><div class="hc-line"></div>
+    <div class="hc-dot d2"></div><div class="hc-line"></div>
+    <div class="hc-dot d1"></div>
+  </div>
+
+  <h1>Trabalho &amp; Tratamento<br>dos Chakras</h1>
+  <div class="hero-sub">Guia Prático Avançado</div>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Como medir, diagnosticar e tratar cada centro energético — pêndulo, 
+    tarô, pedras, mantras, terapias, doenças relacionadas e protocolos completos 
+    de trabalho energético.
+  </p>
+  <div class="hero-divider"></div>
+  <p style="color:rgba(201,164,58,.45);font-family:'Josefin Sans',sans-serif;font-size:.8rem;letter-spacing:.35em;position:relative;z-index:2;">
+    DIAGNÓSTICO · CURA · ALINHAMENTO · ATIVAÇÃO
+  </p>
+</section>
+
+
+<!-- ═══ ÍNDICE ═══ -->
+<section class="bg-gradient-warm">
+  <div class="container">
+    <h2 style="color:#4a2c10;">📋 O que você vai aprender</h2>
+    <div class="gold-line"></div>
+
+    <div class="toc-grid">
+      <a href="#pendulo" class="toc-item"><span class="toc-dot" style="background:#5b2d8a;"></span>Pêndulo — Como Usar</a>
+      <a href="#leitura-pendulo" class="toc-item"><span class="toc-dot" style="background:#1f7ab5;"></span>Lendo o Pêndulo</a>
+      <a href="#doencas" class="toc-item"><span class="toc-dot" style="background:#b5451b;"></span>Doenças por Chakra</a>
+      <a href="#pedras" class="toc-item"><span class="toc-dot" style="background:#2a9960;"></span>Pedras e Cristais</a>
+      <a href="#como-usar-pedras" class="toc-item"><span class="toc-dot" style="background:#c9a820;"></span>Como Usar as Pedras</a>
+      <a href="#mantras" class="toc-item"><span class="toc-dot" style="background:#c97226;"></span>Mantras e Frequências</a>
+      <a href="#tarot" class="toc-item"><span class="toc-dot" style="background:#7b3fa0;"></span>Tarô e Chakras</a>
+      <a href="#reiki" class="toc-item"><span class="toc-dot" style="background:#2a9960;"></span>Reiki e Imposição de Mãos</a>
+      <a href="#aromaterapia" class="toc-item"><span class="toc-dot" style="background:#c9a820;"></span>Aromaterapia</a>
+      <a href="#yoga" class="toc-item"><span class="toc-dot" style="background:#b5451b;"></span>Yoga por Chakra</a>
+      <a href="#auric" class="toc-item"><span class="toc-dot" style="background:#5b2d8a;"></span>Leitura Áurica</a>
+      <a href="#protocolo" class="toc-item"><span class="toc-dot" style="background:#1f7ab5;"></span>Protocolo de Sessão</a>
+      <a href="#afirmacoes" class="toc-item"><span class="toc-dot" style="background:#7b3fa0;"></span>Afirmações por Chakra</a>
+      <a href="#alimentacao" class="toc-item"><span class="toc-dot" style="background:#2a9960;"></span>Alimentação & Plantas</a>
+      <a href="#banhos" class="toc-item"><span class="toc-dot" style="background:#1f7ab5;"></span>Banhos Energéticos</a>
+      <a href="#causas" class="toc-item"><span class="toc-dot" style="background:#b5451b;"></span>Causas Emocionais Profundas</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PÊNDULO ═══ -->
+<section class="bg-white" id="pendulo">
+  <div class="container">
+    <h2 style="color:#3d1f6e;">🔮 O Pêndulo — A Ferramenta de Diagnóstico</h2>
+    <div class="gold-line"></div>
+
+    <div class="grid-2">
+      <div>
+        <p>O <strong>pêndulo</strong> é uma das ferramentas de diagnóstico energético mais antigas e simples. Funciona como uma extensão do sistema nervoso autônomo — amplificando movimentos musculares involuntários (<em>efeito ideomotor</em>) que respondem ao campo energético sutil do corpo.</p>
+        <p>Na medição dos chakras, o pêndulo é suspenso sobre cada centro energético e observa-se o <strong>padrão, amplitude e direção de rotação</strong> para interpretar o estado de cada chakra.</p>
+
+        <div class="info-box ib-gold">
+          <div class="ib-label">✦ Princípio Científico</div>
+          <p>O efeito ideomotor — movimentos musculares inconscientes gerados pelo sistema nervoso autônomo — é reconhecido pela neurociência. O pêndulo amplifica microestímulos neuromusculares que o olho nu não percebe. Não é "magia": é biofeedback sutil.</p>
+        </div>
+
+        <h3>Tipos de Pêndulo</h3>
+        <ul>
+          <li><strong>Cristal de quartzo:</strong> amplifica e é neutro — ideal para iniciantes</li>
+          <li><strong>Ametista:</strong> afinado para trabalho espiritual e chakras superiores</li>
+          <li><strong>Obsidiana:</strong> proteção, ideal para chakras inferiores</li>
+          <li><strong>Madeira:</strong> suave, neutro, bom para chakras de coração</li>
+          <li><strong>Cobre:</strong> excelente condutor de energia — leitura rápida e precisa</li>
+          <li><strong>Ouro/Prata:</strong> tradicionais em radiestesia; ouro = solar, prata = lunar</li>
+          <li><strong>Lapis-lazúli:</strong> afinado para Ajna e intuição</li>
+        </ul>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+        <div class="pendulum-container" style="margin:0;">
+          <div class="pendulum-wrapper">
+            <div class="pendulum-pivot"></div>
+            <div class="pendulum-string"></div>
+            <div class="pendulum-crystal"></div>
+          </div>
+        </div>
+        <div class="info-box ib-purple" style="width:100%; margin:0;">
+          <div class="ib-label">💡 Comprimento Ideal</div>
+          <p>Entre 25–35 cm de fio. Curto demais = movimentos erráticos. Longo demais = respostas lentas. Ajuste até sentir que o pêndulo "vive" em sua mão.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt44">
+      <h3>🖐️ Como Calibrar e Preparar o Pêndulo</h3>
+      <div class="card">
+        <ol class="step-list">
+          <li><strong>Limpeza inicial:</strong> Passe o pêndulo na fumaça de sálvia ou palo santo, ou deixe na luz solar por 1 hora. Isso remove energias de outras pessoas ou ambientes.</li>
+          <li><strong>Programação pessoal:</strong> Segure o pêndulo em sua mão dominante com o cotovelo dobrado a 90°. Respire fundo e diga (mentalmente ou em voz alta): <em>"Este pêndulo é meu instrumento de verdade. Que ele responda com honestidade à minha intenção."</em></li>
+          <li><strong>Estabeleça o SIM:</strong> Pergunte: "Me mostre um SIM." Observe a direção de movimento (geralmente horário). Confirme 3x.</li>
+          <li><strong>Estabeleça o NÃO:</strong> Pergunte: "Me mostre um NÃO." Observe (geralmente anti-horário ou linha reta). Confirme 3x.</li>
+          <li><strong>Teste com verdades conhecidas:</strong> Pergunte "Meu nome é [nome verdadeiro]?" (deve ser SIM) e "Meu nome é [nome falso]?" (deve ser NÃO). Só avance se os resultados forem consistentes.</li>
+          <li><strong>Estado mental:</strong> Pratique em estado de neutralidade — sem desejo pelo resultado. O pêndulo responde ao sistema nervoso, não às intenções conscientes. Emoções fortes contaminam a leitura.</li>
+          <li><strong>Posição do corpo:</strong> Sente-se com a coluna ereta, pés apoiados no chão, cotovelo levemente elevado. Não apoie o cotovelo na mesa — isso reduz a sensibilidade.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LEITURA DO PÊNDULO ═══ -->
+<section class="bg-gradient-cool" id="leitura-pendulo">
+  <div class="container">
+    <h2 style="color:#1a3a6e;">📐 Como Medir os Chakras com o Pêndulo</h2>
+    <div class="gold-line"></div>
+
+    <h3>Protocolo de Medição</h3>
+    <div class="card">
+      <ol class="step-list">
+        <li><strong>Prepare o espaço:</strong> Ambiente limpo, silencioso, sem eletrônicos ligados próximos. Acenda incenso opcional. Declare sua intenção em voz alta: "Meço os chakras de [nome] com honestidade e para o bem maior."</li>
+        <li><strong>Posição do paciente:</strong> Deitado em decúbito dorsal (de costas), corpo relaxado, sem cruzar braços ou pernas (cruzar fecha o circuito energético).</li>
+        <li><strong>Sequência de medição:</strong> Comece pelo Muladhara (base) e suba até o Sahasrara, ou o contrário — seja consistente. Não pule chakras.</li>
+        <li><strong>Posição do pêndulo:</strong> Segure diretamente acima de cada ponto do chakra (sem tocar o corpo), a cerca de 5–8 cm de distância. Mantenha imóvel por 10–20 segundos antes de interpretar.</li>
+        <li><strong>Observe por 30–60 segundos:</strong> Aguarde o movimento estabilizar antes de interpretar. Movimentos iniciais podem ser "calibração".</li>
+        <li><strong>Anote cada chakra:</strong> Use uma planilha simples: chakra, direção, amplitude (pequena/média/grande), velocidade, qualidade do movimento.</li>
+        <li><strong>Segunda passagem:</strong> Sempre confirme com uma segunda leitura. Se divergir, faça uma terceira e observe o padrão dominante.</li>
+      </ol>
+    </div>
+
+    <h3 class="mt28">🔄 Interpretando os Movimentos</h3>
+    <div class="pendulum-reading">
+      <div class="pr-card" style="background:linear-gradient(135deg,#e8fdf0,#d4f5e5);">
+        <div class="pr-symbol">↻</div>
+        <h4 style="color:#1e7040;">Círculo Horário</h4>
+        <p>Chakra aberto, equilibrado, girando no sentido correto. Energia fluindo.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#fee8e8,#fdd4d4);">
+        <div class="pr-symbol">↺</div>
+        <h4 style="color:#8b0000;">Círculo Anti-horário</h4>
+        <p>Bloqueio ou energia invertida. Chakra trabalhando contra si mesmo. Precisa de trabalho urgente.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#e8f0fe,#d4e4fd);">
+        <div class="pr-symbol">↕</div>
+        <h4 style="color:#1a3a8f;">Linha Vertical</h4>
+        <p>Chakra em processo de abertura ou fechamento. Estado de transição energética.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#fef5e8,#fde9d4);">
+        <div class="pr-symbol">↔</div>
+        <h4 style="color:#7d4200;">Linha Horizontal</h4>
+        <p>Chakra bloqueado ou em resistência. Barreira energética presente. Trabalho necessário.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#f5e8fe,#ead4fd);">
+        <div class="pr-symbol">⊙</div>
+        <h4 style="color:#4a1580;">Elipse Ampla</h4>
+        <p>Chakra hiperativo — energia em excesso, desregulada. Pode causar sintomas de exagero.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#fefde8,#fdf8d4);">
+        <div class="pr-symbol">·</div>
+        <h4 style="color:#6b5c00;">Sem Movimento</h4>
+        <p>Chakra praticamente inativo, muito bloqueado ou dormente. Atenção especial necessária.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#f0fdf5,#e0fae8);">
+        <div class="pr-symbol">◯</div>
+        <h4 style="color:#1a6040;">Círculo Pequeno e Regular</h4>
+        <p>Funcionamento normal, amplitude poderia ser maior. Estável mas com espaço para expansão.</p>
+      </div>
+      <div class="pr-card" style="background:linear-gradient(135deg,#fdf0f0,#fae0e0);">
+        <div class="pr-symbol">✗</div>
+        <h4 style="color:#8b1a1a;">Movimento Irregular</h4>
+        <p>Energia caótica no chakra. Múltiplos bloqueios ou conflito entre ativação e repressão.</p>
+      </div>
+    </div>
+
+    <div class="info-box ib-gold mt28">
+      <div class="ib-label">✦ Amplitude e Velocidade</div>
+      <div class="grid-2" style="margin:0;">
+        <div>
+          <h4>Amplitude do Círculo</h4>
+          <ul>
+            <li><strong>Grande (>10cm):</strong> muita energia, às vezes em excesso</li>
+            <li><strong>Médio (5–10cm):</strong> equilíbrio ideal</li>
+            <li><strong>Pequeno (&lt;5cm):</strong> pouca energia, subativo</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Velocidade de Rotação</h4>
+          <ul>
+            <li><strong>Rápida:</strong> alta vibração, pode ser hiper ou muito ativo</li>
+            <li><strong>Moderada:</strong> fluência saudável</li>
+            <li><strong>Lenta:</strong> energia densa, estagnada</li>
+            <li><strong>Oscilante:</strong> instabilidade emocional ou conflito</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt44">📊 Tabela de Diagnóstico Rápido</h3>
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Chakra</th>
+            <th>Ponto de Medição</th>
+            <th>Horário (normal)</th>
+            <th>Anti-horário (atenção)</th>
+            <th>Parado (urgente)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>Base da coluna / entre as pernas (região do cóccix)</td>
+            <td>Enraizamento sólido, segurança</td>
+            <td>Medo, instabilidade material</td>
+            <td>Trauma severo de sobrevivência</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>5 cm abaixo do umbigo</td>
+            <td>Criatividade fluindo, prazer saudável</td>
+            <td>Culpa sexual, bloqueio criativo</td>
+            <td>Trauma sexual não resolvido</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo Solar</span></td>
+            <td>Entre umbigo e esterno</td>
+            <td>Poder pessoal, autoconfiança</td>
+            <td>Baixa autoestima, vergonha</td>
+            <td>Trauma de humilhação ou abandono</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>Centro do esterno</td>
+            <td>Amor fluindo, abertura emocional</td>
+            <td>Mágoa, fechamento, rancor</td>
+            <td>Perda devastadora não processada</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>Nuca (para deitar) ou garganta</td>
+            <td>Expressão livre, comunicação clara</td>
+            <td>Verdade suprimida, medo de falar</td>
+            <td>Histórico de silenciamento ou abuso verbal</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>Entre as sobrancelhas</td>
+            <td>Intuição ativa, discernimento</td>
+            <td>Confusão mental, desconexão</td>
+            <td>Negação sistemática da realidade interna</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>Topo do crânio (alguns cm acima)</td>
+            <td>Conexão espiritual, propósito</td>
+            <td>Niilismo, vazio existencial</td>
+            <td>Ruptura espiritual / crise de fé</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box ib-warn mt16">
+      <div class="ib-label">⚠️ Importante</div>
+      <p>A leitura com pêndulo é uma ferramenta de autoconhecimento e apoio ao trabalho energético — <strong>não substitui diagnóstico médico</strong>. Use-a em conjunto com outras avaliações, não como único critério de diagnóstico de saúde.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ DOENÇAS POR CHAKRA ═══ -->
+<section class="bg-parchment" id="doencas">
+  <div class="container">
+    <h2 style="color:#4a1a0a;">🏥 Doenças e Condições por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <p>A medicina energética entende que perturbações nos chakras — quando prolongadas e não tratadas — eventualmente se manifestam no corpo físico. A tabela abaixo mapeia as relações mais estudadas entre desequilíbrios chakrais e condições de saúde. <strong>Estas relações são complementares ao tratamento médico convencional, nunca substitutos.</strong></p>
+
+    <!-- CHAKRA 1 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#b5451b,#8b3015);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">①</div>
+        <div class="disease-name">
+          <h3>Muladhara — Chakra Raiz</h3>
+          <span>Base da coluna · Terra · LAM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#b5451b;">🔴 Físico</h4>
+            <ul>
+              <li>Dores lombares crônicas</li>
+              <li>Problemas no cóccix e sacro</li>
+              <li>Artrite e dores articulares</li>
+              <li>Obesidade / desnutrição</li>
+              <li>Constipação crônica</li>
+              <li>Varizes e má circulação nas pernas</li>
+              <li>Doenças renais</li>
+              <li>Imunidade baixa sistêmica</li>
+              <li>Fadiga crônica (CFS)</li>
+              <li>Osteoporose</li>
+              <li>Problemas nos pés e joelhos</li>
+              <li>Hemorroidas</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#b5451b;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Ansiedade existencial crônica</li>
+              <li>Transtorno de estresse pós-traumático</li>
+              <li>Paranoia e desconfiança</li>
+              <li>Depressão com apatia severa</li>
+              <li>Síndrome do impostor</li>
+              <li>Fobia social intensa</li>
+              <li>Insegurança financeira crônica</li>
+              <li>Dificuldade de comprometer-se</li>
+              <li>Sensação de "não pertencer"</li>
+              <li>Hipocondria</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#b5451b;">🌱 Origens Comuns</h4>
+            <ul>
+              <li>Traumas de infância precoce (0–7 anos)</li>
+              <li>Abandono ou negligência parental</li>
+              <li>Pobreza extrema na infância</li>
+              <li>Violência doméstica</li>
+              <li>Instabilidade de lar frequente</li>
+              <li>Ameaças à vida (acidentes, guerras)</li>
+              <li>Desconexão dos ancestrais</li>
+              <li>Sedentarismo extremo</li>
+              <li>Privação de contato com natureza</li>
+              <li>Bullying severo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 2 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#c97226,#a05c1a);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">②</div>
+        <div class="disease-name">
+          <h3>Svadhisthana — Chakra Sacral</h3>
+          <span>Baixo ventre · Água · VAM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#c97226;">🟠 Físico</h4>
+            <ul>
+              <li>Problemas uterinos / ovarianos</li>
+              <li>Endometriose</li>
+              <li>Disfunção erétil</li>
+              <li>Infecções urinárias recorrentes</li>
+              <li>Síndrome do intestino irritável</li>
+              <li>Dores no sacro / quadril</li>
+              <li>Disfunções sexuais (libido)</li>
+              <li>Rigidez no quadril</li>
+              <li>Problemas renais</li>
+              <li>Desequilíbrios hormonais</li>
+              <li>Irregularidade menstrual</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#c97226;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Culpa crônica</li>
+              <li>Vergonha corporal</li>
+              <li>Disforia de gênero não integrada</li>
+              <li>Dependência afetiva</li>
+              <li>Comportamentos viciantes (álcool, sexo compulsivo)</li>
+              <li>Bloqueio criativo profundo</li>
+              <li>Rigidez emocional</li>
+              <li>Medo de intimidade</li>
+              <li>Anedonia (incapacidade de sentir prazer)</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#c97226;">🌿 Origens Comuns</h4>
+            <ul>
+              <li>Abuso sexual (qualquer forma)</li>
+              <li>Educação religiosa repressora da sexualidade</li>
+              <li>Mensagens de vergonha sobre o corpo</li>
+              <li>Criatividade suprimida na infância</li>
+              <li>Relacionamentos com controle emocional</li>
+              <li>"Não pode chorar" / repressão das emoções</li>
+              <li>Traumas de relacionamento romântico</li>
+              <li>Aborto não integrado</li>
+              <li>Puberdade traumática</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 3 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#c9a820,#a08018);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">③</div>
+        <div class="disease-name">
+          <h3>Manipura — Plexo Solar</h3>
+          <span>Entre umbigo e esterno · Fogo · RAM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#9a8010;">🟡 Físico</h4>
+            <ul>
+              <li>Gastrite e úlceras gástricas</li>
+              <li>Síndrome do cólon irritável</li>
+              <li>Diabetes tipo 2</li>
+              <li>Pancreatite</li>
+              <li>Problemas no fígado e vesícula</li>
+              <li>Doenças adrenais</li>
+              <li>Obesidade abdominal</li>
+              <li>Problemas de pressão arterial</li>
+              <li>Anorexia / bulimia (controle)</li>
+              <li>Tensão muscular no abdômen</li>
+              <li>Síndrome metabólica</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#9a8010;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Baixíssima autoestima</li>
+              <li>Síndrome do impostor</li>
+              <li>Perfeccionismo debilitante</li>
+              <li>Raiva crônica reprimida</li>
+              <li>Necessidade compulsiva de controle</li>
+              <li>Comportamento passivo-agressivo</li>
+              <li>Vergonha profunda</li>
+              <li>Dificuldade de dizer "não"</li>
+              <li>Vitimização crônica</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#9a8010;">🔥 Origens Comuns</h4>
+            <ul>
+              <li>Humilhação pública na infância ou escola</li>
+              <li>Pais controladores ou autoritários</li>
+              <li>Fracassos que geraram vergonha extrema</li>
+              <li>Bullying escolar</li>
+              <li>Comparações destrutivas constantes</li>
+              <li>Ambiente familiar de crítica permanente</li>
+              <li>Abuso de autoridade no trabalho</li>
+              <li>Traição de confiança por líderes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 4 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#2a9960,#1a6a40);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">④</div>
+        <div class="disease-name">
+          <h3>Anahata — Coração</h3>
+          <span>Centro do peito · Ar · YAM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#1a6a40;">💚 Físico</h4>
+            <ul>
+              <li>Doenças cardíacas (angina, infarto)</li>
+              <li>Hipertensão arterial</li>
+              <li>Arritmias cardíacas</li>
+              <li>Asma e bronquite crônica</li>
+              <li>Pneumonia de repetição</li>
+              <li>Doenças autoimunes</li>
+              <li>Câncer de mama</li>
+              <li>Dores nos ombros e trapézio</li>
+              <li>Problemas no timo</li>
+              <li>Inflamação crônica sistêmica</li>
+              <li>Dores no peito (sem causa cardíaca)</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#1a6a40;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Incapacidade de amar a si mesmo</li>
+              <li>Mágoa crônica não resolvida</li>
+              <li>Rancor e amargura</li>
+              <li>Codependência afetiva</li>
+              <li>Solidão e isolamento</li>
+              <li>Ciúme e possessividade</li>
+              <li>Dificuldade de receber amor</li>
+              <li>Luto não processado</li>
+              <li>Desconexão emocional (freeze)</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#1a6a40;">💔 Origens Comuns</h4>
+            <ul>
+              <li>Perda de entes queridos (luto não processado)</li>
+              <li>Rejeição parental na infância</li>
+              <li>Traições em relacionamentos</li>
+              <li>Amor condicional da família</li>
+              <li>Ausência emocional dos pais</li>
+              <li>Relacionamentos abusivos</li>
+              <li>Divórcio traumático</li>
+              <li>Ambiente familiar sem demonstração de afeto</li>
+              <li>Perda de filhos / aborto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 5 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#1f7ab5,#155a85);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">⑤</div>
+        <div class="disease-name">
+          <h3>Vishuddha — Garganta</h3>
+          <span>Região cervical · Éter · HAM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#155a85;">🔵 Físico</h4>
+            <ul>
+              <li>Hipotireoidismo / hipertireoidismo</li>
+              <li>Nódulos na tireoide</li>
+              <li>Dores de garganta recorrentes</li>
+              <li>Amigdalite crônica</li>
+              <li>Rouquidão frequente</li>
+              <li>Sinusite crônica</li>
+              <li>Dores cervicais / pescoço rígido</li>
+              <li>Problemas auditivos</li>
+              <li>Laringite de repetição</li>
+              <li>Bruxismo (ranger de dentes)</li>
+              <li>Problemas de deglutição</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#155a85;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Medo severo de julgamento</li>
+              <li>Dificuldade de dizer "não"</li>
+              <li>Guardar segredos dolorosos</li>
+              <li>Incapacidade de pedir ajuda</li>
+              <li>Gagueira ou bloqueio de fala</li>
+              <li>Mentiras compulsivas</li>
+              <li>Excesso de fala (compensação)</li>
+              <li>Timidez paralisante</li>
+              <li>Swallowing emotions (engolir emoções)</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#155a85;">🗣️ Origens Comuns</h4>
+            <ul>
+              <li>"Você não tem direito de falar"</li>
+              <li>Interrupção constante na infância</li>
+              <li>Críticas à voz / canto na infância</li>
+              <li>Família que não ouve</li>
+              <li>Segredos familiares mantidos à força</li>
+              <li>Abuso verbal / bullying</li>
+              <li>Ambiente de censura e repressão</li>
+              <li>Traumas ligados a revelar verdades</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 6 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#5b2d8a,#3d1f60);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">⑥</div>
+        <div class="disease-name">
+          <h3>Ajna — Terceiro Olho</h3>
+          <span>Entre as sobrancelhas · Luz · OM</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#3d1f60;">🟣 Físico</h4>
+            <ul>
+              <li>Enxaquecas severas</li>
+              <li>Distúrbios visuais (miopia, visão turva)</li>
+              <li>Problemas neurológicos</li>
+              <li>Epilepsia (em alguns casos)</li>
+              <li>Desequilíbrios hormonais (pituitária)</li>
+              <li>Problemas de memória</li>
+              <li>Síndrome de névoa mental (brain fog)</li>
+              <li>Distúrbios do sono profundos</li>
+              <li>Pesadelos recorrentes</li>
+              <li>Dores na testa e sinusite</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#3d1f60;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Racionalismo rígido / desconexão intuitiva</li>
+              <li>Indecisão crônica</li>
+              <li>Confusão de propósito de vida</li>
+              <li>Superstição irracional</li>
+              <li>Fantasias dissociativas</li>
+              <li>Dificuldade de discernimento</li>
+              <li>Alucinações (excesso)</li>
+              <li>Negação da realidade</li>
+              <li>Obsessões mentais</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#3d1f60;">👁️ Origens Comuns</h4>
+            <ul>
+              <li>Intuições negadas sistematicamente</li>
+              <li>"Você está imaginando" repetido na infância</li>
+              <li>Educação que desvaloriza o subjetivo</li>
+              <li>Trauma com figuras de autoridade intelectual</li>
+              <li>Uso excessivo de telas/ruído mental</li>
+              <li>Meditação forçada antes de preparo</li>
+              <li>Uso de substâncias psicoativas sem contexto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 7 -->
+    <div class="disease-card">
+      <div class="disease-header" style="background:linear-gradient(135deg,#7b3fa0,#561e78);">
+        <div class="disease-dot" style="background:rgba(255,255,255,.2);color:#fff;box-shadow:none;">⑦</div>
+        <div class="disease-name">
+          <h3>Sahasrara — Coroa</h3>
+          <span>Topo da cabeça · Consciência · Silêncio</span>
+        </div>
+      </div>
+      <div class="disease-body">
+        <div class="disease-cols">
+          <div class="disease-col">
+            <h4 style="color:#561e78;">💜 Físico</h4>
+            <ul>
+              <li>Enxaquecas com aura</li>
+              <li>Distúrbios neurológicos degenerativos</li>
+              <li>Desequilíbrios da glândula pineal</li>
+              <li>Distúrbios do ciclo circadiano</li>
+              <li>Hipersensibilidade à luz</li>
+              <li>Problemas cranianos</li>
+              <li>Depressão profunda resistente</li>
+              <li>Transtornos dissociativos</li>
+              <li>Epilepsia e convulsões</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#561e78;">🧠 Mental / Emocional</h4>
+            <ul>
+              <li>Niilismo existencial profundo</li>
+              <li>Crise espiritual (Dark Night of the Soul)</li>
+              <li>Sentimento de desconexão de Deus/universo</li>
+              <li>Fanatismo religioso (excesso)</li>
+              <li>Materialismo rígido (déficit)</li>
+              <li>Falta de propósito de vida</li>
+              <li>Sensação de vazio crônico</li>
+              <li>Delírios de grandeza espiritual</li>
+            </ul>
+          </div>
+          <div class="disease-col">
+            <h4 style="color:#561e78;">✨ Origens Comuns</h4>
+            <ul>
+              <li>Trauma religioso (abuso por líderes espirituais)</li>
+              <li>Ausência de espiritualidade na criação</li>
+              <li>Experiências de quase-morte não integradas</li>
+              <li>Uso de substâncias dissociativas</li>
+              <li>Bypass espiritual (fuga via espiritualidade)</li>
+              <li>Criação em ambiente de niilismo</li>
+              <li>Perda de fé após tragédias</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PEDRAS ═══ -->
+<section class="bg-gradient-warm" id="pedras">
+  <div class="container">
+    <h2 style="color:#2a4a2a;">💎 Guia Completo de Pedras e Cristais</h2>
+    <div class="gold-line"></div>
+
+    <p>Os cristais e pedras preciosas possuem estruturas cristalinas que vibram em frequências estáveis — daí seu uso em relógios (quartzo piezoelétrico). Na terapia energética, essa estabilidade vibratória é usada para <strong>influenciar e harmonizar campos energéticos</strong> menos estáveis, como os humanos.</p>
+
+    <!-- CHAKRA 1 -->
+    <h3 style="color:#b5451b; margin-top:36px; border-left:4px solid #b5451b; padding-left:12px;">① Muladhara — Pedras Vermelhas e Negras (Terra)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#8b0000,#c0392b);">🔴</div>
+        <div class="stone-body">
+          <strong>Granada Vermelha</strong>
+          <p>A pedra raiz por excelência. Ativa a energia de sobrevivência, estimula o Muladhara adormecido. Proteção física e energética.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Primário</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a1a1a,#4a4a4a);">⚫</div>
+        <div class="stone-body">
+          <strong>Obsidiana Negra</strong>
+          <p>Proteção poderosa, dissolve energias negativas e traumas não resolvidos. Excelente para limpeza do campo áurico.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Proteção</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#3d3d3d,#777);">⚙️</div>
+        <div class="stone-body">
+          <strong>Hematita</strong>
+          <p>Enraizamento magnético. Conecta ao campo da Terra, excelente para pessoas com tendência a dissociar ou "subir" demais.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Enraizamento</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#6b1a1a,#a52020);">🟫</div>
+        <div class="stone-body">
+          <strong>Jaspe Vermelho</strong>
+          <p>Vitalidade, força física, estabilidade. Ideal para quem sente fraqueza, fadiga crônica ou falta de vontade de agir.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Vitalidade</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#2d1a0a,#5a3a1a);">🌑</div>
+        <div class="stone-body">
+          <strong>Turmalina Negra</strong>
+          <p>O "escudo" por excelência. Protege contra energias externas, EMFs, e vampirismo energético. Aterramento poderoso.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Escudo</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#6b3a2a,#a06040);">🟤</div>
+        <div class="stone-body">
+          <strong>Olho de Touro</strong>
+          <p>Estabilidade, paciência, persistência. Para quem tem dificuldade de manter projetos e comprometer-se com escolhas.</p>
+          <div class="stone-chakra" style="color:#b5451b;">① Raiz — Estabilidade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 2 -->
+    <h3 style="color:#c97226; margin-top:36px; border-left:4px solid #c97226; padding-left:12px;">② Svadhisthana — Pedras Laranjas (Água)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#c97226,#e8963a);">🟠</div>
+        <div class="stone-body">
+          <strong>Cornalina (Carnelina)</strong>
+          <p>A pedra da criatividade e paixão. Reativa o desejo de viver, cria, sentir. Essencial para bloqueio criativo.</p>
+          <div class="stone-chakra" style="color:#c97226;">② Sacral — Criatividade</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#d4a020,#e8c840);">🌕</div>
+        <div class="stone-body">
+          <strong>Âmbar</strong>
+          <p>Resina fossilizada com energia solar. Purifica o chakra sacral de energias antigas, restore alegria natural.</p>
+          <div class="stone-chakra" style="color:#c97226;">② Sacral — Purificação</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#c87040,#e89860);">🍑</div>
+        <div class="stone-body">
+          <strong>Calcita Laranja</strong>
+          <p>Suave e gentil. Excelente para traumas sexuais. Dissolve bloqueios com delicadeza, reconecta com o prazer.</p>
+          <div class="stone-chakra" style="color:#c97226;">② Sacral — Cura de Trauma</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#e87840,#f09860);">☀️</div>
+        <div class="stone-body">
+          <strong>Pedra do Sol</strong>
+          <p>Alegria, entusiasmo, criatividade. Ativa a energia solar no chakra sacral. Excelente para depressão e apatia.</p>
+          <div class="stone-chakra" style="color:#c97226;">② Sacral — Alegria</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 3 -->
+    <h3 style="color:#c9a820; margin-top:36px; border-left:4px solid #c9a820; padding-left:12px;">③ Manipura — Pedras Amarelas (Fogo)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#c9a820,#e8c840);">💛</div>
+        <div class="stone-body">
+          <strong>Citrino</strong>
+          <p>"A pedra do sol." Não acumula energias negativas — a única que se auto-limpa. Ativa o poder pessoal e a manifestação.</p>
+          <div class="stone-chakra" style="color:#9a8010;">③ Plexo — Poder Pessoal</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#8b6820,#c09030);">🐯</div>
+        <div class="stone-body">
+          <strong>Olho de Tigre</strong>
+          <p>Coragem, determinação, clareza mental. Para quem está em tomada de decisões importantes ou precisa de foco.</p>
+          <div class="stone-chakra" style="color:#9a8010;">③ Plexo — Coragem</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#8b7020,#c0a030);">⚙️</div>
+        <div class="stone-body">
+          <strong>Pirita</strong>
+          <p>Autoconfiança e prosperidade. Neutraliza energia de vitimização. "Ouro dos tolos" que traz sabedoria real.</p>
+          <div class="stone-chakra" style="color:#9a8010;">③ Plexo — Autoconfiança</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#c0a830,#d8c050);">✨</div>
+        <div class="stone-body">
+          <strong>Topázio Amarelo</strong>
+          <p>Clareza de intenção, vontade alinhada com o bem maior. Transforma raiva reprimida em ação saudável.</p>
+          <div class="stone-chakra" style="color:#9a8010;">③ Plexo — Vontade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 4 -->
+    <h3 style="color:#2a9960; margin-top:36px; border-left:4px solid #2a9960; padding-left:12px;">④ Anahata — Pedras Verdes e Rosas (Ar)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#e87ab0,#f0a0c8);">🩷</div>
+        <div class="stone-body">
+          <strong>Quartzo Rosa</strong>
+          <p>A pedra do amor incondicional. Suaviza mágoas, dissolve raiva com gentileza, reconecta com o autoamor.</p>
+          <div class="stone-chakra" style="color:#2a9960;">④ Coração — Amor</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a6a40,#2a9960);">💚</div>
+        <div class="stone-body">
+          <strong>Esmeralda</strong>
+          <p>Pedra da cura do coração por excelência. Regeneração emocional, fidelidade, esperança renovada.</p>
+          <div class="stone-chakra" style="color:#2a9960;">④ Coração — Cura</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#2a8050,#3aa070);">🍀</div>
+        <div class="stone-body">
+          <strong>Aventurina Verde</strong>
+          <p>"A pedra da sorte." Atrai oportunidades e dissolve padrões emocionais obsoletos que bloqueiam o coração.</p>
+          <div class="stone-chakra" style="color:#2a9960;">④ Coração — Abertura</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a5030,#2a7040);">🌿</div>
+        <div class="stone-body">
+          <strong>Malaquita</strong>
+          <p>Extrai traumas emocionais do inconsciente. Poderosa mas intensa — use com cuidado e limpeza frequente.</p>
+          <div class="stone-chakra" style="color:#2a9960;">④ Coração — Transformação</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 5 -->
+    <h3 style="color:#1f7ab5; margin-top:36px; border-left:4px solid #1f7ab5; padding-left:12px;">⑤ Vishuddha — Pedras Azuis (Éter)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a7ab0,#2a9ad0);">💠</div>
+        <div class="stone-body">
+          <strong>Aquamarina</strong>
+          <p>Clareza na expressão, comunicação corajosa. Libera palavras travadas. Excelente para apresentações e medo de falar.</p>
+          <div class="stone-chakra" style="color:#1f7ab5;">⑤ Garganta — Expressão</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#2a7880,#3a98a0);">🩵</div>
+        <div class="stone-body">
+          <strong>Turquesa</strong>
+          <p>Proteção na comunicação. Usada por xamãs há milênios. Honestidade e alinhamento entre coração e palavras.</p>
+          <div class="stone-chakra" style="color:#1f7ab5;">⑤ Garganta — Honestidade</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a2880,#2a38a0);">💙</div>
+        <div class="stone-body">
+          <strong>Cianita Azul</strong>
+          <p>Auto-alinhante — não precisa de limpeza. Alinha todos os chakras rapidamente. Especial para garganta e terceiro olho.</p>
+          <div class="stone-chakra" style="color:#1f7ab5;">⑤ Garganta — Alinhamento</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#2a4880,#3a68a0);">🔷</div>
+        <div class="stone-body">
+          <strong>Topázio Azul</strong>
+          <p>Comunicação criativa, expressão artística. Ideal para escritores, músicos, professores e qualquer comunicador.</p>
+          <div class="stone-chakra" style="color:#1f7ab5;">⑤ Garganta — Criatividade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 6 -->
+    <h3 style="color:#5b2d8a; margin-top:36px; border-left:4px solid #5b2d8a; padding-left:12px;">⑥ Ajna — Pedras Índigo e Roxas (Luz)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#6a2090,#9030b0);">🔮</div>
+        <div class="stone-body">
+          <strong>Ametista</strong>
+          <p>A pedra espiritual universal. Ativa e protege o terceiro olho. Clareza mental, sonhos lúcidos, intuição aguçada.</p>
+          <div class="stone-chakra" style="color:#5b2d8a;">⑥ Terceiro Olho — Intuição</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#1a2080,#2a30a0);">🌌</div>
+        <div class="stone-body">
+          <strong>Lápis-lazúli</strong>
+          <p>Pedra dos faraós e profetas. Acessa sabedoria ancestral, expande a consciência, fortalece a visão interior.</p>
+          <div class="stone-chakra" style="color:#5b2d8a;">⑥ Terceiro Olho — Sabedoria</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#3a4a80,#5a6aa0);">🌠</div>
+        <div class="stone-body">
+          <strong>Labradorita</strong>
+          <p>A pedra da magia e transformação. Ativa percepções ocultas, sincronicidades, e protege o campo áurico.</p>
+          <div class="stone-chakra" style="color:#5b2d8a;">⑥ Terceiro Olho — Magia</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#2a2080,#4a40a0);">💫</div>
+        <div class="stone-body">
+          <strong>Sodalita</strong>
+          <p>Lógica intuitiva — integra mente racional e intuitiva. Reduz confusão mental, traz clareza de pensamento.</p>
+          <div class="stone-chakra" style="color:#5b2d8a;">⑥ Terceiro Olho — Clareza</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAKRA 7 -->
+    <h3 style="color:#7b3fa0; margin-top:36px; border-left:4px solid #7b3fa0; padding-left:12px;">⑦ Sahasrara — Pedras Violeta e Brancas (Consciência)</h3>
+    <div class="grid-4">
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#e0e0e0,#ffffff);">🤍</div>
+        <div class="stone-body">
+          <strong>Selenita</strong>
+          <p>Luz pura cristalizada. Limpa todos os outros cristais, cria campo de alta vibração. Conecta com planos superiores.</p>
+          <div class="stone-chakra" style="color:#7b3fa0;">⑦ Coroa — Conexão Divina</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#f0f0f0,#ffffff);">❄️</div>
+        <div class="stone-body">
+          <strong>Quartzo Claro</strong>
+          <p>Amplificador universal. Potencializa a intenção, clarifica todos os chakras, eleva a vibração geral do campo.</p>
+          <div class="stone-chakra" style="color:#7b3fa0;">⑦ Coroa — Amplificação</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#8a7090,#a898b0);">🌙</div>
+        <div class="stone-body">
+          <strong>Pedra da Lua</strong>
+          <p>Intuição lunar, conexão com ciclos, feminino sagrado. Facilita estados contemplativos e receptividade espiritual.</p>
+          <div class="stone-chakra" style="color:#7b3fa0;">⑦ Coroa — Receptividade</div>
+        </div>
+      </div>
+      <div class="stone-card">
+        <div class="stone-header" style="background:linear-gradient(135deg,#8020b0,#a040d0);">👑</div>
+        <div class="stone-body">
+          <strong>Ametista Púrpura Profunda</strong>
+          <p>Transcendência, meditação profunda, conexão com dimensões superiores. A ametista mais escura ativa o Sahasrara.</p>
+          <div class="stone-chakra" style="color:#7b3fa0;">⑦ Coroa — Transcendência</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ COMO USAR AS PEDRAS ═══ -->
+<section class="bg-white" id="como-usar-pedras">
+  <div class="container">
+    <h2 style="color:#2a4a2a;">🪨 Como Usar as Pedras no Tratamento</h2>
+    <div class="gold-line"></div>
+
+    <div class="grid-2">
+      <div>
+        <h3>🧹 1. Limpeza dos Cristais</h3>
+        <p>Cristais absorvem energias do ambiente e de outras pessoas. Sempre limpe ao comprar e regularmente:</p>
+        <ul>
+          <li><strong>Água corrente (20–30 min):</strong> Para pedras duras (quartzo, ametista, turmalina). <em>Não usar para selenita, malaquita, lápis-lazúli — dissolvem na água.</em></li>
+          <li><strong>Sal grosso seco (24h):</strong> Enterrar na sal por um dia. Depois descartar o sal (não reutilize — ele absorveu as energias).</li>
+          <li><strong>Sol:</strong> 1–2h de manhã (não o sol do meio-dia — pode desbotar ametista e quartzo rosa).</li>
+          <li><strong>Lua cheia:</strong> Toda lua cheia, deixe os cristais sob a luz lunar (janela ou ao ar livre) por uma noite inteira. Limpa E carrega ao mesmo tempo.</li>
+          <li><strong>Defumação:</strong> Palo santo, sálvia branca ou incenso de sândalo. Passe a fumaça pela pedra enquanto visualiza a limpeza.</li>
+          <li><strong>Som:</strong> Tigelas de cristal ou tuning forks — vibração sonora dissolve energias acumuladas.</li>
+          <li><strong>Terra:</strong> Enterre por 24h na terra do jardim — a Terra recicla naturalmente as energias.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>⚡ 2. Programação da Pedra</h3>
+        <p>Após limpar, programe a pedra com uma intenção específica:</p>
+        <ol>
+          <li>Segure a pedra na mão dominante. Feche os olhos.</li>
+          <li>Respire fundo 3 vezes, chegando a um estado de calma.</li>
+          <li>Visualize uma luz branca ou dourada preenchendo a pedra.</li>
+          <li>Declare clara e diretamente: <em>"Eu programo este [nome da pedra] para [intenção específica]. Que esta pedra trabalhe para meu bem maior e de todos ao meu redor."</em></li>
+          <li>Sele com 3 respirações lentas.</li>
+          <li>A intenção deve ser POSITIVA e ESPECÍFICA: não "sem ansiedade", mas "paz e segurança interior".</li>
+        </ol>
+
+        <div class="info-box ib-tip" style="margin-top:16px;">
+          <div class="ib-label">💡 Dica</div>
+          <p>Reprogramar mensalmente ou sempre que a pedra for limpa. Intenções acumulam peso — renovar mantém o trabalho ativo.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="mt44">📍 Onde Posicionar as Pedras no Corpo</h3>
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Chakra</th>
+            <th>Posição Exata</th>
+            <th>Alternativas</th>
+            <th>Tempo Recomendado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>Entre as pernas, próximo ao cóccix (em pé) OU no centro entre as coxas (deitado)</td>
+            <td>Nas solas dos pés / tornozelos</td>
+            <td>15–20 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>5 cm abaixo do umbigo, sobre a região pélvica</td>
+            <td>Nos quadris / nas mãos durante meditação</td>
+            <td>15–20 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo Solar</span></td>
+            <td>Região entre umbigo e esterno</td>
+            <td>Nas mãos (em meditação), no bolso esquerdo</td>
+            <td>15–20 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>Centro do esterno (sobre o coração físico)</td>
+            <td>Mão esquerda (lado receptor), colar longo</td>
+            <td>20–30 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>Sobre a garganta / laringe</td>
+            <td>Colar curto, no bolso perto do peito, nas orelhas</td>
+            <td>15 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>Entre as sobrancelhas, na testa</td>
+            <td>Nas têmporas, brincos, óculos com cristais</td>
+            <td>10–15 min</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>Topo da cabeça (difícil em pé — use deitado)</td>
+            <td>Ao lado da cabeça, sobre o travesseiro, colar longo</td>
+            <td>10–15 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-3 mt28">
+      <div class="card">
+        <h4>💍 Joia Terapêutica</h4>
+        <p>Use a pedra como joia (anel, colar, pulseira) no lado do corpo correspondente. <strong>Esquerdo = recebe energia.</strong> <strong>Direito = emite energia.</strong> Para atrair: esquerdo. Para proteger ou expressar: direito.</p>
+      </div>
+      <div class="card">
+        <h4>🛏️ Pedras no Ambiente</h4>
+        <p>Coloque pedras em pontos estratégicos do lar. Quartzo rosa no quarto (amor), citrino no escritório (criatividade e prosperidade), turmalina negra nas entradas (proteção), selenita em toda a casa (limpeza e elevação).</p>
+      </div>
+      <div class="card">
+        <h4>💧 Grade de Cristais</h4>
+        <p>Crie um layout geométrico de pedras ao redor do corpo ou ambiente. Quartzo claro nos ângulos + pedra central + pedra de intenção. A grade cria um campo energético amplificado e sustentado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MANTRAS E FREQUÊNCIAS ═══ -->
+<section class="bg-dark" id="mantras">
+  <div class="container">
+    <h2>🎵 Mantras, Sons e Frequências Solfeggio</h2>
+    <div class="gold-line"></div>
+
+    <p>O som é a ferramenta energética mais direta. Cada chakra vibra em uma frequência específica — ao entoar o <strong>Bija Mantra</strong> correspondente, a vibração sonora ressoa diretamente naquele centro energético, desbloqueando-o e reequilibrando-o. É física acústica aplicada à energia sutil.</p>
+
+    <div class="grid-2" style="margin-top:36px;">
+      <div>
+        <h3>Como Entoar os Mantras</h3>
+        <ol class="step-list">
+          <li><strong>Posição:</strong> Sente-se em posição meditativa com a coluna ereta. Sukhasana (posição fácil) ou em cadeira com pés apoiados.</li>
+          <li><strong>Respiração:</strong> Inspire profundamente pelo nariz. Ao expirar, entoe o mantra na expiração completa. Nunca force — o mantra deve fluir naturalmente.</li>
+          <li><strong>Ressonância:</strong> Sinta a vibração no ponto do chakra. Para LAM, sinta na base da coluna; para AUM, sinta no crânio inteiro.</li>
+          <li><strong>Repetições:</strong> Mínimo 7, ideal 21 ou 108 repetições (use mala de contas: 108 contas = 1 mala completa).</li>
+          <li><strong>Sequência completa:</strong> Começando por LAM e subindo até o silêncio do Sahasrara — ritual poderoso de abertura de todos os chakras.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Malas de Contas e Mudras</h3>
+        <p>A <strong>mala</strong> (colar de 108 contas) é o instrumento de contagem dos mantras. Use o polegar para passar cada conta enquanto repete o mantra internamente.</p>
+        <p><strong>Mudras complementares</strong> (gestos das mãos):</p>
+        <ul>
+          <li><strong>Muladhara:</strong> Muladhara Mudra — dedos entrelaçados, indicadores juntos apontando para baixo</li>
+          <li><strong>Svadhisthana:</strong> Shakti Mudra — punhos fechados com indicador e mínimo estendidos</li>
+          <li><strong>Manipura:</strong> Rudra Mudra — polegar, indicador e anular unidos</li>
+          <li><strong>Anahata:</strong> Anjali Mudra (mãos em oração) ou Lotus Mudra</li>
+          <li><strong>Vishuddha:</strong> Granthita Mudra — dedos entrelaçados à frente da garganta</li>
+          <li><strong>Ajna:</strong> Gyana Mudra — polegar e indicador unidos (meditação clássica)</li>
+          <li><strong>Sahasrara:</strong> Mudra dos 1000 pétalas — mãos abertas para cima sobre o crânio</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mantra blocks -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; margin-top:40px;">
+      <div class="mantra-block" style="background:linear-gradient(135deg,#3d1010,#6b2020); color:white;">
+        <div class="mantra-text" style="color:#ff8080;">LAM</div>
+        <div class="mantra-latin">Bija Mantra — Muladhara</div>
+        <div class="mantra-meaning">"O som da Terra" — Conecta com o elemento sólido, âncora a energia no corpo físico</div>
+        <div class="hz-badge">396 Hz · Nota: Dó</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#3d2010,#7a4010); color:white;">
+        <div class="mantra-text" style="color:#ffb060;">VAM</div>
+        <div class="mantra-latin">Bija Mantra — Svadhisthana</div>
+        <div class="mantra-meaning">"O som da Água" — Libera o fluxo criativo e emocional, dissolve rigidez</div>
+        <div class="hz-badge">417 Hz · Nota: Ré</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#3d3010,#7a6010); color:white;">
+        <div class="mantra-text" style="color:#ffe060;">RAM</div>
+        <div class="mantra-latin">Bija Mantra — Manipura</div>
+        <div class="mantra-meaning">"O som do Fogo" — Ativa o poder pessoal, a vontade e a força de transformar</div>
+        <div class="hz-badge">528 Hz · Nota: Mi</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#0a3020,#104820); color:white;">
+        <div class="mantra-text" style="color:#60e090;">YAM</div>
+        <div class="mantra-latin">Bija Mantra — Anahata</div>
+        <div class="mantra-meaning">"O som do Ar" — Abre o coração, ativa amor incondicional e cura emocional</div>
+        <div class="hz-badge">639 Hz · Nota: Fá</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#0a2038,#104060); color:white;">
+        <div class="mantra-text" style="color:#60a8ff;">HAM</div>
+        <div class="mantra-latin">Bija Mantra — Vishuddha</div>
+        <div class="mantra-meaning">"O som do Éter" — Libera a expressão, abre o espaço para a verdade ser dita</div>
+        <div class="hz-badge">741 Hz · Nota: Sol</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#1e0838,#380c60); color:white;">
+        <div class="mantra-text" style="color:#c080ff;">OM / AUM</div>
+        <div class="mantra-latin">Bija Mantra — Ajna</div>
+        <div class="mantra-meaning">"O som primordial" — O Om contém todas as frequências. Ativa o terceiro olho e o discernimento</div>
+        <div class="hz-badge">852 Hz · Nota: Lá</div>
+      </div>
+      <div class="mantra-block" style="background:linear-gradient(135deg,#280838,#481060); color:white;">
+        <div class="mantra-text" style="color:#e0a0ff;">✦ Silêncio ✦</div>
+        <div class="mantra-latin">Além dos Mantras — Sahasrara</div>
+        <div class="mantra-meaning">"O som que não pode ser dito" — O silêncio puro após o AUM final, onde a consciência reposa em si mesma</div>
+        <div class="hz-badge">963 Hz · Nota: Si</div>
+      </div>
+    </div>
+
+    <h3 style="color:rgba(201,164,58,.9); margin-top:50px;">📻 Frequências Solfeggio — Terapia Sonora</h3>
+    <p>As frequências Solfeggio são tons musicais usados em canto gregoriano medieval que, segundo pesquisadores como o Dr. Joseph Puleo, possuem propriedades terapêuticas específicas. São usadas em meditações com headphone:</p>
+
+    <div class="card-dark" style="margin-top:20px;">
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#ff8080;">① 396 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:14%;background:linear-gradient(to right,#b5451b,#e07050);"></div></div>
+        <span class="freq-hz">396 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#ffb060;">② 417 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:20%;background:linear-gradient(to right,#c97226,#e09040);"></div></div>
+        <span class="freq-hz">417 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#ffe060;">③ 528 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:35%;background:linear-gradient(to right,#c9a820,#e0c840);"></div></div>
+        <span class="freq-hz">528 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#60e090;">④ 639 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:50%;background:linear-gradient(to right,#2a9960,#40c080);"></div></div>
+        <span class="freq-hz">639 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#60a8ff;">⑤ 741 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:68%;background:linear-gradient(to right,#1f7ab5,#3090d0);"></div></div>
+        <span class="freq-hz">741 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#c080ff;">⑥ 852 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:82%;background:linear-gradient(to right,#5b2d8a,#8040b0);"></div></div>
+        <span class="freq-hz">852 Hz</span>
+      </div>
+      <div class="freq-bar">
+        <span class="freq-label" style="color:#e0a0ff;">⑦ 963 Hz</span>
+        <div class="freq-track"><div class="freq-fill" style="width:100%;background:linear-gradient(to right,#7b3fa0,#a060c0,#c090e0);"></div></div>
+        <span class="freq-hz">963 Hz</span>
+      </div>
+    </div>
+
+    <div class="info-box ib-tip" style="background:rgba(42,153,96,.1); border-color:#2a9960; margin-top:24px;">
+      <div class="ib-label" style="color:rgba(201,164,58,.8);">🎧 Como Usar</div>
+      <p>Pesquise no YouTube ou Spotify: "[Frequência] Hz chakra healing". Use headphones ou caixas de som com qualidade. 30–60 min de exposição. Pode ser durante meditação, trabalho criativo, banho ou sono.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TARÔ ═══ -->
+<section class="bg-gradient-cool" id="tarot">
+  <div class="container">
+    <h2 style="color:#3d1f6e;">🃏 Tarô e os Chakras</h2>
+    <div class="gold-line"></div>
+
+    <p>O Tarô é um sistema de simbolismo arquetípico com 78 cartas. As <strong>22 Arcanos Maiores</strong> correspondem aos caminhos da Árvore da Vida Cabalística, e por extensão, ao desenvolvimento dos chakras. Usar o Tarô no trabalho com chakras permite identificar padrões inconscientes e bloqueios arquetípicos.</p>
+
+    <h3 style="margin-top:36px;">Arcanos Maiores por Chakra</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-top:24px;">
+      <div class="tarot-card">
+        <div class="tarot-symbol">🌍</div>
+        <h4>Muladhara</h4>
+        <p>O Mundo (XXI), O Hierofante (V), O Imperador (IV)</p>
+        <span class="badge" style="background:#b5451b;">① Raiz</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">🌙</div>
+        <h4>Svadhisthana</h4>
+        <p>A Lua (XVIII), A Sacerdotisa (II), O Enamorado (VI)</p>
+        <span class="badge" style="background:#c97226;">② Sacral</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">☀️</div>
+        <h4>Manipura</h4>
+        <p>O Sol (XIX), A Força (VIII), A Roda da Fortuna (X)</p>
+        <span class="badge" style="background:#c9a820;">③ Plexo</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">❤️</div>
+        <h4>Anahata</h4>
+        <p>Os Enamorados (VI), A Imperatriz (III), A Temperança (XIV)</p>
+        <span class="badge" style="background:#2a9960;">④ Coração</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">🗣️</div>
+        <h4>Vishuddha</h4>
+        <p>O Mago (I), O Julgamento (XX), O Carro (VII)</p>
+        <span class="badge" style="background:#1f7ab5;">⑤ Garganta</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">⭐</div>
+        <h4>Ajna</h4>
+        <p>A Estrela (XVII), O Eremita (IX), O Eremita da Lua</p>
+        <span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span>
+      </div>
+      <div class="tarot-card">
+        <div class="tarot-symbol">⚡</div>
+        <h4>Sahasrara</h4>
+        <p>O Louco (0), O Julgamento (XX), O Mundo (XXI)</p>
+        <span class="badge" style="background:#7b3fa0;">⑦ Coroa</span>
+      </div>
+    </div>
+
+    <div class="card-gold mt44">
+      <h3>Tiragem de Tarô para Diagnóstico de Chakras</h3>
+      <p>Crie uma tiragem de 7 cartas, uma para cada chakra, da base ao topo:</p>
+      <div class="step-list-inline" style="display:grid; grid-template-columns:repeat(7,1fr); gap:10px; margin-top:20px; text-align:center;">
+        <div style="background:rgba(181,69,27,.1); border:2px solid #b5451b; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">①</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#b5451b; margin-top:4px;">MULADHARA</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Segurança</div>
+        </div>
+        <div style="background:rgba(201,114,38,.1); border:2px solid #c97226; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">②</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#c97226; margin-top:4px;">SACRAL</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Emoção</div>
+        </div>
+        <div style="background:rgba(201,168,32,.1); border:2px solid #c9a820; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">③</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#c9a820; margin-top:4px;">PLEXO</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Poder</div>
+        </div>
+        <div style="background:rgba(42,153,96,.1); border:2px solid #2a9960; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">④</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#2a9960; margin-top:4px;">CORAÇÃO</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Amor</div>
+        </div>
+        <div style="background:rgba(31,122,181,.1); border:2px solid #1f7ab5; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">⑤</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#1f7ab5; margin-top:4px;">GARGANTA</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Verdade</div>
+        </div>
+        <div style="background:rgba(91,45,138,.1); border:2px solid #5b2d8a; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">⑥</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#5b2d8a; margin-top:4px;">3º OLHO</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Intuição</div>
+        </div>
+        <div style="background:rgba(123,63,160,.1); border:2px solid #7b3fa0; border-radius:10px; padding:12px;">
+          <div style="font-size:1.5rem;">⑦</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-size:.72rem; color:#7b3fa0; margin-top:4px;">COROA</div>
+          <div style="font-size:.8rem; margin-top:4px; opacity:.7;">Espírito</div>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-style:italic; opacity:.8;">Interprete cada carta no contexto do chakra correspondente. Uma carta invertida sugere bloqueio naquele centro. Um Arcano Maior indica tema arquetípico profundo. Arcanos Menores mostram situações do cotidiano.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ REIKI ═══ -->
+<section class="bg-parchment" id="reiki">
+  <div class="container">
+    <h2 style="color:#2a4a2a;">🙌 Reiki e Imposição de Mãos</h2>
+    <div class="gold-line"></div>
+
+    <div class="grid-2">
+      <div>
+        <p>O <strong>Reiki</strong> (霊気) é um sistema japonês de canalização de energia universal através das mãos, criado pelo Dr. Mikao Usui em 1922. O terapeuta funciona como canal — a energia Reiki flui através do praticante e vai para onde é necessário no campo energético do receptor.</p>
+
+        <h3>As Posições de Mãos sobre os Chakras</h3>
+        <p>Cada posição de mãos no Reiki corresponde a um centro energético. O terapeuta mantém as mãos levemente sobre (ou a 3–5 cm acima) de cada ponto por <strong>3–5 minutos</strong>, até sentir que a energia foi suficientemente transmitida.</p>
+
+        <div style="display:grid; gap:10px; margin-top:16px;">
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#b5451b; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">1</div>
+            <div><strong>Muladhara:</strong> Mãos na parte inferior do abdômen / virilha. Para auto-Reiki: planta dos pés.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#c97226; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">2</div>
+            <div><strong>Svadhisthana:</strong> Mãos sobre o baixo-ventre / região pélvica.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#c9a820; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">3</div>
+            <div><strong>Manipura:</strong> Mãos sobre o plexo solar, entre umbigo e costelas.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#2a9960; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">4</div>
+            <div><strong>Anahata:</strong> Mãos sobre o centro do peito. A posição mais importante — requer mais tempo.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#1f7ab5; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">5</div>
+            <div><strong>Vishuddha:</strong> Uma mão na frente da garganta (sem tocar), outra na nuca.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#5b2d8a; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">6</div>
+            <div><strong>Ajna:</strong> Mão a 3 cm acima da testa (nunca toque diretamente o terceiro olho de outra pessoa sem permissão).</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; background:white; border-radius:10px; padding:12px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#7b3fa0; color:white; display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; flex-shrink:0;">7</div>
+            <div><strong>Sahasrara:</strong> Mão acima do topo da cabeça (10 cm) — nunca toque a coroa de outra pessoa sem autorização.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Auto-Reiki — Prática Diária</h3>
+        <p>Você pode praticar Reiki em si mesmo. Uma sequência simples para o dia a dia:</p>
+        <div class="card">
+          <ol class="step-list">
+            <li><strong>Toque a planta dos pés</strong> por 2 min — enraizamento, chama o fluxo de energia.</li>
+            <li><strong>Mãos no baixo-ventre</strong> (abaixo do umbigo) — ativa criatividade e vitalidade.</li>
+            <li><strong>Mãos no plexo solar</strong> — sustenta a autoconfiança e digestão.</li>
+            <li><strong>Mão direita no coração,</strong> esquerda sobre ela — o gesto mais poderoso de autoamor.</li>
+            <li><strong>Mão na garganta</strong> — libera o que precisa ser dito.</li>
+            <li><strong>Mão na testa</strong> — clarifica o pensamento, reduz ansiedade.</li>
+            <li><strong>Mão no topo da cabeça</strong> — integra e eleva.</li>
+          </ol>
+        </div>
+
+        <div class="info-box ib-gold" style="margin-top:16px;">
+          <div class="ib-label">🔑 Símbolos Reiki</div>
+          <p>Praticantes de Reiki usam símbolos sagrados (Cho Ku Rei, Sei He Ki, Hon Sha Ze Sho Nen) que são desenhados mentalmente ou no ar sobre os chakras para amplificar efeitos específicos — poder, emoção e conexão à distância, respectivamente.</p>
+        </div>
+
+        <h3 style="margin-top:24px;">Outros Sistemas de Imposição de Mãos</h3>
+        <ul>
+          <li><strong>Quantum Touch:</strong> Respiração combinada com foco de intenção amplifica o fluxo de energia.</li>
+          <li><strong>Cura Pránica (Choa Kok Sui):</strong> Sistema detalhado de varredura e projeção de prana com as mãos.</li>
+          <li><strong>Jin Shin Jyutsu:</strong> Japonês — toque suave em 26 "selos de segurança" do corpo.</li>
+          <li><strong>Polarity Therapy:</strong> Equilibra correntes elétricas positivas, neutras e negativas no corpo.</li>
+          <li><strong>ThetaHealing:</strong> Cura com intenção no estado theta de ondas cerebrais.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ AROMATERAPIA ═══ -->
+<section class="bg-gradient-warm" id="aromaterapia">
+  <div class="container">
+    <h2 style="color:#4a2c10;">🌸 Aromaterapia por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <p>Os óleos essenciais possuem frequências vibratórias que interagem com os campos energéticos dos chakras. O olfato é o sentido mais direto ao sistema límbico — que regula emoções e memórias — tornando a aromaterapia uma via de acesso rápido e profundo ao sistema chakral.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr><th>Chakra</th><th>Óleos Principais</th><th>Óleos Secundários</th><th>Modo de Uso</th><th>Efeito</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>Patchouli, Cedro, Vetiver</td>
+            <td>Sândalo, Mirra, Lariça</td>
+            <td>Difusor, sola dos pés (diluído), banho</td>
+            <td>Enraizamento, segurança, aterramento</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>Ylang-ylang, Laranja Doce, Jasmim</td>
+            <td>Sândalo, Cardamomo, Neroli</td>
+            <td>Massagem no baixo-ventre, banho, difusor</td>
+            <td>Criatividade, prazer, libido saudável</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo</span></td>
+            <td>Gengibre, Limão, Bergamota</td>
+            <td>Menta, Alecrim, Erva-limão</td>
+            <td>Inalação direta, plexo solar (diluído)</td>
+            <td>Confiança, energia, clareza de vontade</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>Rosa, Gerânio, Palmarosa</td>
+            <td>Bergamota, Ylang-ylang, Melisa</td>
+            <td>Peito (diluído), colar de aroma, difusor</td>
+            <td>Abertura ao amor, perdão, autocompaixão</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>Eucalipto, Menta, Hortelã</td>
+            <td>Salva, Camomila Romana, Tea Tree</td>
+            <td>Inalação, vapor, compressa na garganta</td>
+            <td>Libera expressão, clareza vocal, verdade</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>Olibano (Incenso), Mirra, Sândalo</td>
+            <td>Lavanda, Junípero, Camomila Alemã</td>
+            <td>Testa (1 gota diluída), difusor na meditação</td>
+            <td>Intuição, clareza mental, estado contemplativo</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>Olibano, Lótus, Sândalo Branco</td>
+            <td>Nardo, Rosa, Alfazema Pura</td>
+            <td>Difusor, topo da cabeça (diluído), incenso</td>
+            <td>Transcendência, conexão espiritual, paz</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box ib-warn mt16">
+      <div class="ib-label">⚠️ Segurança na Aromaterapia</div>
+      <p>Óleos essenciais são concentrados — <strong>sempre dilua em óleo carreador</strong> (jojoba, amêndoa, coco) antes de aplicar na pele. Proporção: 2–3 gotas de essencial para 10ml de carreador. Grávidas, bebês e pessoas com epilepsia devem consultar profissional antes.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ YOGA POR CHAKRA ═══ -->
+<section class="bg-white" id="yoga">
+  <div class="container">
+    <h2 style="color:#1e3a5f;">🧘 Yoga Terapêutico por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <p>Cada postura de yoga (asana) trabalha energeticamente as regiões do corpo onde os chakras residem. Pressão, estiramento e abertura nessas regiões ativam e liberam o fluxo de prana naquele centro.</p>
+
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr><th>Chakra</th><th>Asanas Principais</th><th>Pranayama</th><th>Efeito Energético</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>Tadasana (Montanha), Malasana (Guirlanda), Virabhadrasana I e II, Balasana (Criança), Uttanasana (Pinça em pé)</td>
+            <td>Respiração diafragmática profunda, Mula Bandha</td>
+            <td>Enraizamento, estabilidade na base, conexão com Terra</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>Baddha Konasana (Borboleta), Eka Pada Rajakapotasana (Pombo), Gomukhasana (Face de Vaca), Supta Baddha Konasana</td>
+            <td>Respiração abdominal fluida, Svadhisthana Pranayama</td>
+            <td>Abertura de quadril, libera emoções reprimidas, fluxo criativo</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo</span></td>
+            <td>Navasana (Barco), Dhanurasana (Arco), Paripurna Navasana, Ardha Navasana, Surya Namaskar completo</td>
+            <td>Kapalabhati (respiração de fogo), Uddiyana Bandha</td>
+            <td>Ativa o fogo digestivo, fortalece autoconfiança, poder pessoal</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>Ustrasana (Camelo), Bhujangasana (Cobra), Matsyasana (Peixe), Anahatasana, Setu Bandha (Ponte)</td>
+            <td>Respiração de coração — expansão lenta do peito, 4-4-4-4</td>
+            <td>Abre o peito, dissolve armaduras emocionais, amor</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>Sarvangasana (Vela), Halasana (Arado), Matsyasana (Peixe), Simhasana (Leão — rugido!)</td>
+            <td>Ujjayi (respiração vitoriosa), Bhramari (zumbido de abelha)</td>
+            <td>Pressão e liberação cervical, desbloqueio de expressão</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>Shashankasana (Lebre), Balasana com testa no chão, Prasarita Padottanasana (inversão)</td>
+            <td>Trataka (foco no ponto), Nadi Shodhana lento</td>
+            <td>Pressão no terceiro olho ativa o Ajna, clareza e intuição</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>Sirsasana (Postura sobre a cabeça — avançado), Padmasana (Lótus), Savasana (Corpo morto)</td>
+            <td>Meditação em silêncio, Mahavedha, respiração muito lenta</td>
+            <td>Inversão estimula Sahasrara, Savasana integra toda a prática</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LEITURA ÁURICA ═══ -->
+<section class="bg-gradient-cool" id="auric">
+  <div class="container">
+    <h2 style="color:#1a3a6e;">✨ Leitura da Aura — Diagnóstico Visual</h2>
+    <div class="gold-line"></div>
+
+    <div class="grid-2">
+      <div>
+        <p>A <strong>aura</strong> é o campo eletromagnético e energético que envolve o corpo humano, composto por múltiplas camadas que correspondem aos chakras. Cada camada reflete o estado daquele chakra específico.</p>
+
+        <h3>As 7 Camadas da Aura</h3>
+        <div class="aura-layers" style="width:260px; height:300px; position:relative; margin:24px auto;">
+          <div class="aura-layer" style="width:260px;height:300px;border-radius:50%/60%;background:rgba(123,63,160,.1);border:2px solid rgba(123,63,160,.2);"></div>
+          <div class="aura-layer" style="width:220px;height:260px;border-radius:50%/58%;background:rgba(91,45,138,.12);border:2px solid rgba(91,45,138,.25);"></div>
+          <div class="aura-layer" style="width:185px;height:220px;border-radius:50%/55%;background:rgba(31,122,181,.12);border:2px solid rgba(31,122,181,.3);"></div>
+          <div class="aura-layer" style="width:155px;height:185px;border-radius:50%/55%;background:rgba(42,153,96,.15);border:2px solid rgba(42,153,96,.35);"></div>
+          <div class="aura-layer" style="width:128px;height:155px;border-radius:50%/55%;background:rgba(201,168,32,.15);border:2px solid rgba(201,168,32,.4);"></div>
+          <div class="aura-layer" style="width:104px;height:128px;border-radius:50%/50%;background:rgba(201,114,38,.2);border:2px solid rgba(201,114,38,.45);"></div>
+          <div class="aura-layer" style="width:82px;height:105px;border-radius:50%/50%;background:rgba(181,69,27,.25);border:2px solid rgba(181,69,27,.5);"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:60px;background:linear-gradient(to bottom,#8e44ad,#2980b9,#27ae60,#f1c40f,#e67e22,#c0392b);border-radius:20px;opacity:.8;"></div>
+        </div>
+        <p style="text-align:center; font-size:.85rem; opacity:.7; font-style:italic;">Diagrama esquemático das 7 camadas áuricas</p>
+      </div>
+
+      <div>
+        <div style="display:grid; gap:10px; margin-top:12px;">
+          <div style="display:flex; gap:12px; background:rgba(181,69,27,.08); border-radius:10px; padding:12px; border-left:4px solid #b5451b;">
+            <div style="font-weight:700; min-width:24px; color:#b5451b;">①</div>
+            <div><strong>Corpo Etérico</strong> (0–5 cm): cópia exata do físico, azul-cinza. Vitalidade física e dor.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(201,114,38,.08); border-radius:10px; padding:12px; border-left:4px solid #c97226;">
+            <div style="font-weight:700; min-width:24px; color:#c97226;">②</div>
+            <div><strong>Corpo Emocional</strong> (1–7 cm): colorido e fluido. Emoções e sentimentos.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(201,168,32,.08); border-radius:10px; padding:12px; border-left:4px solid #c9a820;">
+            <div style="font-weight:700; min-width:24px; color:#c9a820;">③</div>
+            <div><strong>Corpo Mental</strong> (7–20 cm): amarelo estruturado. Pensamentos e padrões mentais.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(42,153,96,.08); border-radius:10px; padding:12px; border-left:4px solid #2a9960;">
+            <div style="font-weight:700; min-width:24px; color:#2a9960;">④</div>
+            <div><strong>Corpo Astral</strong> (15–30 cm): cores pastéis, rosa. Amor e relacionamentos.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(31,122,181,.08); border-radius:10px; padding:12px; border-left:4px solid #1f7ab5;">
+            <div style="font-weight:700; min-width:24px; color:#1f7ab5;">⑤</div>
+            <div><strong>Corpo Etérico Template</strong> (30–45 cm): azul-escuro. Padrão divino, saúde ideal.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(91,45,138,.08); border-radius:10px; padding:12px; border-left:4px solid #5b2d8a;">
+            <div style="font-weight:700; min-width:24px; color:#5b2d8a;">⑥</div>
+            <div><strong>Corpo Celestial</strong> (45–60 cm): opalescente. Êxtase, amor espiritual, iluminação.</div>
+          </div>
+          <div style="display:flex; gap:12px; background:rgba(123,63,160,.08); border-radius:10px; padding:12px; border-left:4px solid #7b3fa0;">
+            <div style="font-weight:700; min-width:24px; color:#7b3fa0;">⑦</div>
+            <div><strong>Corpo Causal</strong> (60–90 cm): dourado-violeta. Karma, propósito de vida, alma.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-gold mt44">
+      <h3>Como Treinar a Visão Áurica</h3>
+      <div class="grid-2" style="margin:0;">
+        <div>
+          <h4>Exercício Básico — 5 minutos por dia</h4>
+          <ol>
+            <li>Em ambiente de luz suave (não escuro, não luz direta), foque em suas próprias mãos contra fundo branco.</li>
+            <li>Olhe para o espaço <em>entre</em> seus dedos e ao redor das mãos — não <em>para</em> as mãos.</li>
+            <li>Use a visão periférica, deixe os olhos levemente desfocados.</li>
+            <li>Ao relaxar o foco, comece a notar uma leve bruma ou contorno ao redor dos dedos.</li>
+            <li>Com a prática (semanas ou meses), as cores começam a aparecer.</li>
+          </ol>
+        </div>
+        <div>
+          <h4>Sinais de Desequilíbrio na Aura</h4>
+          <ul>
+            <li><strong>Buracos ou vazios:</strong> bloqueios energéticos intensos</li>
+            <li><strong>Cores turvas/escuras:</strong> energia densa acumulada</li>
+            <li><strong>Cores muito vivas e grandes:</strong> hyperatividade naquela área</li>
+            <li><strong>Aura "colada" ao corpo:</strong> esgotamento energético</li>
+            <li><strong>Aura irregular ou rasgada:</strong> trauma recente ou invasão energética</li>
+            <li><strong>Cores brilhantes e equilibradas:</strong> saúde e equilíbrio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PROTOCOLO DE SESSÃO ═══ -->
+<section class="bg-dark" id="protocolo">
+  <div class="container">
+    <h2>⚗️ Protocolo Completo de Sessão de Alinhamento</h2>
+    <div class="gold-line"></div>
+
+    <p>Uma sessão profissional de alinhamento de chakras dura entre 60 e 90 minutos. Abaixo, o protocolo completo:</p>
+
+    <div class="protocol">
+      <h3>✦ Protocolo de Sessão de 90 Minutos</h3>
+      <div class="protocol-steps">
+        <div class="ps-item">
+          <div class="ps-num">1</div>
+          <div class="ps-text">
+            <strong>Abertura e Intenção (5 min)</strong>
+            <p>Preparação do ambiente (incenso, música suave, dimmer de luz). Conversa inicial para identificar queixas e intenção da sessão. Defumação do espaço com palo santo. Declaração de proteção e intenção sagrada.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">2</div>
+          <div class="ps-text">
+            <strong>Diagnóstico com Pêndulo (15 min)</strong>
+            <p>Paciente deitado. Medição de cada um dos 7 chakras com pêndulo. Anotação do padrão, amplitude e direção de cada chakra. Identificação dos 2–3 chakras que precisam de mais trabalho.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">3</div>
+          <div class="ps-text">
+            <strong>Varredura Energética (10 min)</strong>
+            <p>Passe as mãos a 5–10 cm do corpo do paciente, sentindo diferenças de temperatura, pressão, formigamento ou vácuo. Localize acúmulos (calor intenso) e vazios (frio ou ausência de sensação).</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">4</div>
+          <div class="ps-text">
+            <strong>Posicionamento das Pedras (todo o tratamento)</strong>
+            <p>Coloque as pedras correspondentes em cada chakra. Comece pelos mais bloqueados identificados. Mantenha durante toda a sessão de Reiki/energia.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">5</div>
+          <div class="ps-text">
+            <strong>Trabalho Energético Principal (30–40 min)</strong>
+            <p>Reiki, imposição de mãos ou técnica de preferência. Comece pelos pés (aterramento), suba pelos chakras. Dedique mais tempo aos chakras identificados como bloqueados. Use mantras mentais ou em voz baixa durante.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">6</div>
+          <div class="ps-text">
+            <strong>Terapia Sonora (10 min)</strong>
+            <p>Tigelas de cristal, diapasões ou música de frequências Solfeggio. Toque ou faça ressoar sobre os chakras trabalhados. O som consolida o trabalho energético e penetra camadas mais profundas.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">7</div>
+          <div class="ps-text">
+            <strong>Integração e Selamento (5 min)</strong>
+            <p>Remova as pedras dos chakras superiores para os inferiores. Faça passes energéticos de cima a baixo para "selar" o campo. Aplique óleo essencial de sândalo na planta dos pés para enraizamento.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">8</div>
+          <div class="ps-text">
+            <strong>Verificação Final com Pêndulo (5 min)</strong>
+            <p>Remedicão dos chakras para verificar mudanças. Compare com os dados iniciais. Compartilhe os resultados com o paciente.</p>
+          </div>
+        </div>
+        <div class="ps-item">
+          <div class="ps-num">9</div>
+          <div class="ps-text">
+            <strong>Orientações Pós-Sessão (10 min)</strong>
+            <p>Beba água — o trabalho energético mobiliza toxinas emocionais. Descanse nas próximas 24h. Evite situações de stress intenso por 48h. Processamento emocional pode ocorrer nos dias seguintes — isso é normal. Orientações de prática para casa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:32px;">
+      <div class="card-dark">
+        <h4>🌙 Frequência das Sessões</h4>
+        <ul>
+          <li><strong>Casos agudos:</strong> 1 sessão por semana por 4–6 semanas</li>
+          <li><strong>Manutenção:</strong> 1 sessão por mês</li>
+          <li><strong>Aprofundamento espiritual:</strong> 1 sessão por luna cheia</li>
+          <li><strong>Crise emocional intensa:</strong> 2 sessões na semana por 2–3 semanas</li>
+        </ul>
+      </div>
+      <div class="card-dark">
+        <h4>⚡ Reações Esperadas Após Sessão</h4>
+        <ul>
+          <li>Sonolência intensa (normal — energia reorganizando)</li>
+          <li>Emoções à flor da pele por 24–72h</li>
+          <li>Sonhos muito intensos ou simbólicos</li>
+          <li>Sensação de leveza ou euforia suave</li>
+          <li>Raramente: dores transitórias nos locais trabalhados</li>
+          <li>Liberação emocional (choro, riso, tremores)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ AFIRMAÇÕES ═══ -->
+<section class="bg-parchment" id="afirmacoes">
+  <div class="container">
+    <h2 style="color:#4a2c10;">💬 Afirmações Terapêuticas por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <p>As afirmações são declarações em primeira pessoa, presente, que reprogramam o sistema nervoso e os padrões de crença associados a cada chakra. A chave é <strong>repetir com sentimento e convicção</strong>, não mecanicamente. Diga em voz alta, olhando para o espelho, com a mão no chakra correspondente.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; margin-top:32px;">
+      <div class="card" style="border-top:5px solid #b5451b;">
+        <div style="color:#b5451b; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">① MULADHARA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Eu tenho direito de estar aqui."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Sou seguro(a) e sustentado(a) pela vida."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"A Terra me nutre e me apoia."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Tenho tudo que preciso."</li>
+          <li style="padding:8px 0; font-style:italic;">"Meu corpo é meu lar — estou em paz nele."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #c97226;">
+        <div style="color:#c97226; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">② SVADHISTHANA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Mereço sentir prazer."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Minha criatividade flui livremente."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Abraço minha sexualidade com amor."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Permito que a vida flua através de mim."</li>
+          <li style="padding:8px 0; font-style:italic;">"Sou um ser criativo pleno de possibilidades."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #c9a820;">
+        <div style="color:#c9a820; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">③ MANIPURA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Confio em minha capacidade."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Tenho o direito de ocupar meu espaço."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Meu poder pessoal é uma dádiva."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Ajo a partir do poder, não do medo."</li>
+          <li style="padding:8px 0; font-style:italic;">"Sou digno(a) de sucesso e reconhecimento."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #2a9960;">
+        <div style="color:#2a9960; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">④ ANAHATA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Me amo incondicionalmente."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Perdoo e sou perdoado(a)."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Dou e recebo amor com facilidade."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Meu coração está aberto à cura."</li>
+          <li style="padding:8px 0; font-style:italic;">"Sou amor em essência."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #1f7ab5;">
+        <div style="color:#1f7ab5; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">⑤ VISHUDDHA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Falo minha verdade com amor e clareza."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Minha voz importa e é ouvida."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Me expresso autenticamente."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Ouço com presença e compaixão."</li>
+          <li style="padding:8px 0; font-style:italic;">"Minha comunicação cria pontes."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #5b2d8a;">
+        <div style="color:#5b2d8a; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">⑥ AJNA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Confio na minha intuição."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Vejo com clareza e discernimento."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Estou aberto(a) à sabedoria superior."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Minha mente e intuição trabalham juntas."</li>
+          <li style="padding:8px 0; font-style:italic;">"Vejo a verdade em todas as situações."</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:5px solid #7b3fa0;">
+        <div style="color:#7b3fa0; font-family:'Josefin Sans',sans-serif; font-size:.8rem; letter-spacing:.2em; margin-bottom:12px;">⑦ SAHASRARA</div>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Estou conectado(a) ao Universo."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Confio no fluxo divino da vida."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Tenho um propósito sagrado."</li>
+          <li style="padding:8px 0; border-bottom:1px solid rgba(0,0,0,.06); font-style:italic;">"Sou um canal de graça e luz."</li>
+          <li style="padding:8px 0; font-style:italic;">"Faço parte do todo e o todo faz parte de mim."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ BANHOS ENERGÉTICOS ═══ -->
+<section class="bg-gradient-warm" id="banhos">
+  <div class="container">
+    <h2 style="color:#1a3a6e;">🛁 Banhos Energéticos por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <p>O banho é um dos rituais de cura mais antigos da humanidade. A água é um poderoso condutor e purificador energético. Combine ervas, sal, óleos essenciais e intenção para criar um tratamento de chakra em casa:</p>
+
+    <div class="grid-2">
+      <div>
+        <h3>🌿 Banho de Limpeza Geral dos Chakras</h3>
+        <div class="card">
+          <h4>Ingredientes</h4>
+          <ul>
+            <li>2 colheres de sal do Himalaia (rosa = cura, branco = limpeza)</li>
+            <li>7 flores coloridas (uma da cor de cada chakra)</li>
+            <li>1 punhado de alecrim fresco (proteção e clareza)</li>
+            <li>Óleo essencial de sândalo e lavanda (3 gotas cada)</li>
+            <li>Vela branca ou dourada acesa ao lado</li>
+          </ul>
+          <h4 style="margin-top:14px;">Ritual</h4>
+          <ol>
+            <li>Prepare a banheira ou balde</li>
+            <li>Declare sua intenção antes de entrar</li>
+            <li>Permaneça 20 minutos, visualizando cada chakra se limpando</li>
+            <li>Ao sair, deixe a água escorrer visualizando as energias indo com ela</li>
+            <li>Ao terminar: não enxágue imediatamente</li>
+          </ol>
+        </div>
+      </div>
+
+      <div>
+        <h3>🎯 Banhos Específicos por Chakra</h3>
+        <div style="display:grid; gap:10px;">
+          <div style="background:rgba(181,69,27,.08); border-radius:10px; padding:12px; border-left:4px solid #b5451b;">
+            <strong style="color:#b5451b;">① Raiz:</strong> Sal grosso + raiz de gengibre + pimenta vermelha + petala de rosa vermelha
+          </div>
+          <div style="background:rgba(201,114,38,.08); border-radius:10px; padding:12px; border-left:4px solid #c97226;">
+            <strong style="color:#c97226;">② Sacral:</strong> Pétalas de laranjeira + óleo de ylang-ylang + fatias de laranja + canela em pau
+          </div>
+          <div style="background:rgba(201,168,32,.08); border-radius:10px; padding:12px; border-left:4px solid #c9a820;">
+            <strong style="color:#c9a820;">③ Plexo:</strong> Camomila amarela + gengibre + óleo de limão + açafrão
+          </div>
+          <div style="background:rgba(42,153,96,.08); border-radius:10px; padding:12px; border-left:4px solid #2a9960;">
+            <strong style="color:#2a9960;">④ Coração:</strong> Pétalas de rosa + quartzo rosa na borda + óleo de gerânio + manjericão
+          </div>
+          <div style="background:rgba(31,122,181,.08); border-radius:10px; padding:12px; border-left:4px solid #1f7ab5;">
+            <strong style="color:#1f7ab5;">⑤ Garganta:</strong> Água com sal marinho + menta + eucalipto + lavanda + turquesa na borda
+          </div>
+          <div style="background:rgba(91,45,138,.08); border-radius:10px; padding:12px; border-left:4px solid #5b2d8a;">
+            <strong style="color:#5b2d8a;">⑥ Terceiro Olho:</strong> Água de lua + lavanda + olibano + jasmim + ametista na borda
+          </div>
+          <div style="background:rgba(123,63,160,.08); border-radius:10px; padding:12px; border-left:4px solid #7b3fa0;">
+            <strong style="color:#7b3fa0;">⑦ Coroa:</strong> Água purificada + incenso de sândalo + flor de lótus + selenita na borda
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CAUSAS EMOCIONAIS ═══ -->
+<section class="bg-white" id="causas">
+  <div class="container">
+    <h2 style="color:#4a1a0a;">🔑 Causas Emocionais Profundas — A Psicologia dos Chakras</h2>
+    <div class="gold-line"></div>
+
+    <p>Louise Hay, Caroline Myss, Anodea Judith e outros pioneiros da medicina energética mapearam as conexões entre padrões psicológicos, crenças inconscientes e bloqueios chakrais. Esta é a psicologia dos chakras:</p>
+
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr><th>Chakra</th><th>Crença Central Bloqueante</th><th>Ferida Arquetípica</th><th>Necessidade Não Atendida</th><th>Caminho de Cura</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>"O mundo não é seguro para mim"</td>
+            <td>Abandono / Rejeição existencial</td>
+            <td>Segurança, pertencimento, sustentação</td>
+            <td>Reconectar com o corpo, criar rotinas, trabalhar herança familiar</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>"Meu prazer é pecado / vergonhoso"</td>
+            <td>Traição / Abuso de intimidade</td>
+            <td>Prazer, movimento, criação, intimidade</td>
+            <td>Terapia corporal, arte, reconexão com o prazer saudável</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo</span></td>
+            <td>"Não sou suficientemente bom(boa)"</td>
+            <td>Humilhação / Vergonha</td>
+            <td>Respeito, autonomia, reconhecimento</td>
+            <td>Psicoterapia, assertividade, trabalho com autoestima</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>"Se me abrir, serei magoado(a) novamente"</td>
+            <td>Perda / Traição de amor</td>
+            <td>Amor incondicional, conexão, perdão</td>
+            <td>Perdão ativo, meditação Metta, terapia relacional</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>"Minha voz não importa / vai me machucar"</td>
+            <td>Silenciamento / Invalidação</td>
+            <td>Ser ouvido, expressão, comunicação verdadeira</td>
+            <td>Canto, escrita, terapia de voz, comunicação não violenta</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>"Não posso confiar na minha percepção"</td>
+            <td>Gaslighting / Invalidação da realidade</td>
+            <td>Clareza, discernimento, confiança em si</td>
+            <td>Meditação, diário de sonhos, trabalho com sombra</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>"Estou sozinho(a) no universo / a vida não tem sentido"</td>
+            <td>Separação do Sagrado</td>
+            <td>Propósito, conexão transcendente, significado</td>
+            <td>Prática contemplativa, serviço, revisão de vida e propósito</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box ib-purple mt28">
+      <div class="ib-label">🧠 Trabalho com a Sombra — Jung e os Chakras</div>
+      <p>Carl Jung descreveu a <strong>Sombra</strong> como tudo o que reprimimos e negamos em nós mesmos. No trabalho com chakras, os bloqueios energéticos são frequentemente manifestações da sombra. O trabalho verdadeiro não é "eliminar" energias negativas, mas <strong>integrar</strong> os aspectos reprimidos — transformando a sombra em fonte de energia consciente. Um Muladhara bloqueado não precisa apenas de "luz vermelha" — precisa da integração do medo de sobrevivência que foi suprimido.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUOTE -->
+<div class="quote-block">
+  <blockquote>
+    "O corpo não mente. Toda dor física tem uma raiz emocional, todo bloqueio energético tem uma história, e toda cura começa no momento em que paramos de resistir ao que sentimos."
+  </blockquote>
+  <cite>— Tradição da Medicina Energética</cite>
+</div>
+
+
+<!-- ═══ ALIMENTAÇÃO E PLANTAS ═══ -->
+<section class="bg-gradient-warm" id="alimentacao">
+  <div class="container">
+    <h2 style="color:#2a4a2a;">🌿 Plantas Medicinais e Alimentação por Chakra</h2>
+    <div class="gold-line"></div>
+
+    <div style="overflow-x:auto;">
+      <table class="styled-table">
+        <thead>
+          <tr><th>Chakra</th><th>Alimentos Ativadores</th><th>Plantas Medicinais</th><th>Evitar (em excesso)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge" style="background:#b5451b;">① Raiz</span></td>
+            <td>Beterraba, tomate, romã, cenoura, batata-doce vermelha, carne (com moderação), raízes em geral</td>
+            <td>Ashwagandha, Ginseng, Raiz de Alcaçuz, Valeriana, Camu-camu</td>
+            <td>Alimentos processados, açúcar refinado em excesso</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c97226;">② Sacral</span></td>
+            <td>Laranja, manga, abóbora, cenoura, salmão, nozes, sementes de abóbora, avocado</td>
+            <td>Damiana, Tribulus, Shatavari, Hibisco, Canela</td>
+            <td>Álcool (em excesso), cafeína excessiva, açúcar</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#c9a820;">③ Plexo</span></td>
+            <td>Banana, abacaxi, milho, limão, gengibre, açafrão, grãos integrais, nozes do Brasil</td>
+            <td>Gengibre, Cúrcuma, Erva-limão, Camomila, Funcho</td>
+            <td>Frituras, alimentos muito pesados, excesso de carne vermelha</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#2a9960;">④ Coração</span></td>
+            <td>Folhas verdes escuras, brócolis, pepino, kiwi, abacate, spirulina, ervas frescas</td>
+            <td>Espinheiro (Hawthorn), Rosa, Erva-cidreira, Melissa, Tulsi (Manjericão Sagrado)</td>
+            <td>Cafeína em excesso, alimentos que causam inflamação</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#1f7ab5;">⑤ Garganta</span></td>
+            <td>Mirtilos, amoras, figos, tâmaras, mel puro, água de coco, chás de ervas</td>
+            <td>Sabugueiro, Própolis, Equinácea, Malva, Tomilho</td>
+            <td>Laticínios em excesso (muco), alimentos frios em excesso</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#5b2d8a;">⑥ Terceiro Olho</span></td>
+            <td>Uvas roxas, ameixas, mirtilo, beterraba roxa, chocolate amargo 70%+, nozes</td>
+            <td>Ginkgo Biloba, Bacopa Monnieri, Erva de São João, Maracujá, Angélica</td>
+            <td>Álcool (embota a percepção), telas excessivas, barulho constante</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:#7b3fa0;">⑦ Coroa</span></td>
+            <td>Jejum consciente, água pura, vegetais roxos, incensos (inalar aroma), sucos frescos</td>
+            <td>Lótus, Nardo, Olibano, Mirra, Lavanda Pura, Passionflower</td>
+            <td>Alimentos muito pesados, carne em excesso, álcool</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-dots">
+    <div class="fd" style="background:#b5451b; animation-delay:0s;"></div>
+    <div class="fd" style="background:#c97226; animation-delay:.3s;"></div>
+    <div class="fd" style="background:#c9a820; animation-delay:.6s;"></div>
+    <div class="fd" style="background:#2a9960; animation-delay:.9s;"></div>
+    <div class="fd" style="background:#1f7ab5; animation-delay:1.2s;"></div>
+    <div class="fd" style="background:#5b2d8a; animation-delay:1.5s;"></div>
+    <div class="fd" style="background:#7b3fa0; animation-delay:1.8s;"></div>
+  </div>
+
+  <h3>✦ Trabalho &amp; Tratamento dos Chakras ✦</h3>
+  <p>Este guia sintetiza décadas de tradição em medicina energética, psicologia transpessoal e práticas contemplativas de múltiplas culturas.</p>
+  <p style="margin-top:12px; font-style:italic; opacity:.5; font-size:.88rem;">
+    Use com discernimento. O trabalho com chakras é complementar — nunca substituto — ao cuidado médico e psicológico convencional.<br>
+    Em caso de sintomas físicos ou emocionais persistentes, consulte sempre profissionais qualificados.
+  </p>
+  <div style="margin-top:32px; opacity:.25; font-size:1.4rem; letter-spacing:.5em; font-family:'Josefin Sans',sans-serif;">
+    OM ✦ SHANTI ✦ SHANTI ✦ SHANTI
+  </div>
+</footer>
+
+</body>
+</html>

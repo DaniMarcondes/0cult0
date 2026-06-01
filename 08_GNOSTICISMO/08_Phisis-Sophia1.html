@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pistis Sophia — Enciclopédia Gnóstica Definitiva</title>
+<style>
+:root{--bg:#0A0810;--bg2:#0F0C1A;--bg3:#141020;--card:#1A1530;--card2:#201840;--gold:#C8A030;--gold-l:#F0C840;--gold-d:rgba(200,160,48,0.15);--violet:#7040C0;--violet-l:#A060F0;--teal:#20A0A0;--teal-l:#40D0D0;--crimson:#A02040;--crimson-l:#E03060;--silver:#90A0C0;--silver-l:#C0D0E8;--text:#E8E0F0;--text-d:rgba(232,224,240,0.68);--text-dd:rgba(232,224,240,0.42);--border:rgba(200,160,48,0.18);--border2:rgba(112,64,192,0.25);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.85;overflow-x:hidden;background-image:radial-gradient(ellipse at 20% 0%,rgba(112,64,192,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(200,160,48,0.06) 0%,transparent 50%);}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(200,160,48,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 30% 8%,rgba(232,224,240,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 55% 20%,rgba(200,160,48,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 70% 5%,rgba(232,224,240,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 85% 18%,rgba(160,96,240,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 25% 75%,rgba(200,160,48,0.2) 0%,transparent 100%),radial-gradient(1px 1px at 92% 60%,rgba(232,224,240,0.3) 0%,transparent 100%);pointer-events:none;z-index:0;}
+.layout{display:flex;min-height:100vh;position:relative;z-index:1;}
+#sidebar{width:280px;min-width:280px;background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 0;flex-shrink:0;scrollbar-width:thin;scrollbar-color:var(--gold) var(--bg2);}
+#sidebar::-webkit-scrollbar{width:4px;}
+#sidebar::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+.sidebar-logo{text-align:center;padding:20px 16px 24px;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.sidebar-logo .glyph{font-size:2.5rem;display:block;margin-bottom:8px;filter:drop-shadow(0 0 12px var(--gold));}
+.sidebar-logo h2{font-size:0.75rem;letter-spacing:0.2em;color:var(--gold);font-family:'Courier New',monospace;text-transform:uppercase;}
+.nav-section{margin-bottom:4px;}
+.nav-section-title{font-size:0.6rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;padding:8px 20px 4px;font-family:'Courier New',monospace;opacity:0.7;}
+.nav-link{display:block;padding:6px 20px;color:var(--text-d);text-decoration:none;font-size:0.8rem;transition:all 0.2s;border-left:2px solid transparent;}
+.nav-link:hover,.nav-link.active{color:var(--gold-l);border-left-color:var(--gold);background:rgba(200,160,48,0.06);}
+.nav-link.sub{padding-left:32px;font-size:0.75rem;}
+.main{flex:1;min-width:0;padding:0 0 80px;}
+.hero{background:linear-gradient(160deg,var(--bg2) 0%,var(--bg3) 60%,rgba(112,64,192,0.15) 100%);border-bottom:1px solid var(--border);padding:80px 60px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'ΠΙΣΤΙΣ ΣΟΦΙΑ';position:absolute;font-size:8rem;color:rgba(200,160,48,0.03);font-family:'Courier New',monospace;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.hero-badge{display:inline-block;padding:4px 12px;border:1px solid var(--gold);color:var(--gold);font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;font-family:'Courier New',monospace;margin-bottom:20px;border-radius:2px;}
+.hero h1{font-size:clamp(2rem,5vw,4rem);color:var(--gold-l);letter-spacing:0.05em;text-shadow:0 0 20px rgba(200,160,48,0.2);line-height:1.15;margin-bottom:16px;}
+.hero-sub{font-size:1.1rem;color:var(--text-d);font-style:italic;max-width:680px;line-height:2;}
+.hero-meta{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap;}
+.hero-meta-item{text-align:center;padding:12px 20px;background:rgba(200,160,48,0.06);border:1px solid var(--border);border-radius:4px;}
+.hero-meta-item .val{font-size:1.5rem;color:var(--gold);font-family:'Courier New',monospace;display:block;}
+.hero-meta-item .label{font-size:0.65rem;color:var(--text-dd);letter-spacing:0.15em;text-transform:uppercase;}
+.section{padding:60px 60px 40px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:40px;}
+.section-icon{font-size:1.8rem;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--gold-d);border:1px solid var(--border);border-radius:4px;flex-shrink:0;}
+.section-title-block h2{font-size:clamp(1.3rem,3vw,1.9rem);color:var(--gold-l);letter-spacing:0.03em;}
+.section-title-block p{font-size:0.85rem;color:var(--text-dd);font-style:italic;margin-top:4px;}
+h3.subsection{font-size:1.2rem;color:var(--violet-l);margin:36px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border2);}
+h4.sub-subsection{font-size:1rem;color:var(--teal-l);margin:24px 0 10px;}
+p{margin-bottom:14px;font-size:0.95rem;color:var(--text-d);}
+p strong{color:var(--text);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:24px 0;}
+.card{background:var(--card);border:1px solid var(--border2);border-radius:6px;padding:20px;transition:border-color 0.3s;}
+.card:hover{border-color:var(--gold);}
+.card-icon{font-size:1.6rem;margin-bottom:10px;}
+.card h4{font-size:0.95rem;color:var(--gold);margin-bottom:8px;}
+.card p{font-size:0.82rem;margin:0;line-height:1.75;}
+blockquote{border-left:3px solid var(--gold);padding:16px 20px 16px 24px;margin:24px 0;background:var(--gold-d);border-radius:0 4px 4px 0;font-style:italic;color:var(--silver-l);font-size:0.92rem;line-height:2;}
+blockquote cite{display:block;margin-top:10px;font-size:0.75rem;color:var(--gold);font-style:normal;letter-spacing:0.1em;}
+.callout{padding:20px 24px;border-radius:4px;margin:24px 0;border:1px solid;}
+.callout-gold{border-color:var(--gold);background:rgba(200,160,48,0.07);}
+.callout-violet{border-color:var(--violet);background:rgba(112,64,192,0.08);}
+.callout-teal{border-color:var(--teal);background:rgba(32,160,160,0.07);}
+.callout-crimson{border-color:var(--crimson);background:rgba(160,32,64,0.08);}
+.callout-title{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-family:'Courier New',monospace;margin-bottom:10px;font-style:normal;}
+.callout-gold .callout-title{color:var(--gold);}
+.callout-violet .callout-title{color:var(--violet-l);}
+.callout-teal .callout-title{color:var(--teal-l);}
+.callout-crimson .callout-title{color:var(--crimson-l);}
+.callout p{font-size:0.88rem;margin-bottom:8px;}
+.callout p:last-child{margin-bottom:0;}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.84rem;}
+th{background:var(--card2);color:var(--gold);padding:12px 16px;text-align:left;font-weight:700;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+td{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.05);color:var(--text-d);vertical-align:top;}
+tr:hover td{background:rgba(200,160,48,0.03);}
+td:first-child{color:var(--gold-l);font-weight:600;}
+td.greek{font-style:italic;color:var(--violet-l);}
+.timeline{position:relative;padding-left:32px;margin:24px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--violet),var(--teal));}
+.timeline-item{position:relative;margin-bottom:28px;}
+.timeline-item::before{content:'';position:absolute;left:-28px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);}
+.timeline-item .year{font-size:0.7rem;color:var(--gold);font-family:'Courier New',monospace;letter-spacing:0.15em;margin-bottom:4px;}
+.timeline-item h4{font-size:0.95rem;color:var(--text);margin-bottom:6px;}
+.timeline-item p{font-size:0.83rem;margin:0;}
+.cosmos-diagram{margin:32px auto;max-width:600px;text-align:center;}
+.cosmos-layer{margin:0 auto;padding:16px 24px;border:1px solid;border-radius:4px;margin-bottom:4px;font-size:0.82rem;color:var(--text-d);transition:all 0.3s;}
+.cosmos-layer:hover{transform:scaleX(1.02);}
+.cosmos-layer .layer-name{font-weight:700;display:block;margin-bottom:4px;font-size:0.9rem;}
+.cosmos-layer .layer-desc{font-size:0.75rem;color:var(--text-dd);}
+.layer-pleroma{border-color:var(--gold);background:rgba(200,160,48,0.08);}
+.layer-pleroma .layer-name{color:var(--gold-l);}
+.layer-sophia{border-color:var(--violet);background:rgba(112,64,192,0.08);}
+.layer-sophia .layer-name{color:var(--violet-l);}
+.layer-demiurge{border-color:var(--teal);background:rgba(32,160,160,0.06);}
+.layer-demiurge .layer-name{color:var(--teal-l);}
+.layer-archons{border-color:var(--crimson);background:rgba(160,32,64,0.06);}
+.layer-archons .layer-name{color:var(--crimson-l);}
+.layer-material{border-color:rgba(144,160,192,0.5);background:rgba(144,160,192,0.06);}
+.layer-material .layer-name{color:var(--silver-l);}
+.cosmos-arrow{text-align:center;color:var(--gold);opacity:0.5;margin:2px 0;font-size:0.9rem;}
+.expandable{margin:12px 0;}
+.expandable-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--card);border:1px solid var(--border2);border-radius:4px;cursor:pointer;transition:all 0.2s;user-select:none;}
+.expandable-header:hover{border-color:var(--gold);}
+.expandable-header h4{font-size:0.9rem;color:var(--gold);margin:0;}
+.expandable-arrow{color:var(--gold);transition:transform 0.3s;font-size:0.8rem;}
+.expandable-content{padding:20px;background:rgba(26,21,48,0.5);border:1px solid var(--border2);border-top:none;border-radius:0 0 4px 4px;display:none;}
+.expandable.open .expandable-content{display:block;}
+.expandable.open .expandable-arrow{transform:rotate(180deg);}
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin:20px 0;}
+.glossary-item{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;}
+.glossary-term{font-size:0.95rem;color:var(--gold-l);font-weight:700;margin-bottom:4px;}
+.glossary-orig{font-size:0.72rem;color:var(--violet-l);font-style:italic;margin-bottom:8px;font-family:'Courier New',monospace;}
+.glossary-def{font-size:0.8rem;color:var(--text-d);line-height:1.75;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.compare-col{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:20px;}
+.compare-col h4{font-size:0.85rem;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.compare-col li{font-size:0.82rem;color:var(--text-d);margin-bottom:6px;padding-left:14px;position:relative;list-style:none;}
+.compare-col li::before{content:'◆';position:absolute;left:0;font-size:0.5rem;color:var(--gold);top:5px;}
+.tree{margin:20px 0;}
+.tree-node{display:flex;align-items:flex-start;gap:12px;margin-bottom:8px;}
+.tree-indent{padding-left:28px;margin-top:4px;border-left:1px dashed var(--border);margin-left:12px;}
+.tree-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.tree-gold{background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.tree-violet{background:var(--violet-l);box-shadow:0 0 8px var(--violet);}
+.tree-teal{background:var(--teal);box-shadow:0 0 6px var(--teal);}
+.tree-crimson{background:var(--crimson);box-shadow:0 0 6px var(--crimson);}
+.tree-silver{background:var(--silver);}
+.tree-text{font-size:0.84rem;}
+.tree-name{color:var(--text);font-weight:600;}
+.tree-desc{font-size:0.76rem;color:var(--text-dd);display:block;margin-top:2px;}
+mark.gold{background:rgba(200,160,48,0.2);color:var(--gold-l);padding:1px 4px;border-radius:2px;}
+mark.violet{background:rgba(112,64,192,0.2);color:var(--violet-l);padding:1px 4px;border-radius:2px;}
+mark.teal{background:rgba(32,160,160,0.2);color:var(--teal-l);padding:1px 4px;border-radius:2px;}
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--violet-l));z-index:9999;transition:width 0.1s;}
+#scroll-top{position:fixed;bottom:32px;right:32px;width:44px;height:44px;background:var(--card2);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--gold);z-index:1000;opacity:0;transition:opacity 0.3s;}
+#scroll-top.visible{opacity:1;}
+.reading-chapter{border:1px solid var(--border2);border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.rc-header{background:var(--card2);padding:16px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background 0.2s;}
+.rc-header:hover{background:rgba(112,64,192,0.25);}
+.rc-num{font-size:0.65rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;font-family:'Courier New',monospace;margin-bottom:4px;}
+.rc-title{font-size:0.95rem;color:var(--text);font-weight:600;}
+.rc-body{padding:24px;background:rgba(26,21,48,0.6);display:none;}
+.rc-body.open{display:block;}
+.aeon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:20px 0;}
+.aeon-card{background:var(--card);border:1px solid var(--border2);border-radius:6px;padding:16px;text-align:center;transition:all 0.3s;}
+.aeon-card:hover{border-color:var(--violet-l);transform:translateY(-2px);}
+.aeon-name{font-size:0.95rem;color:var(--violet-l);font-weight:700;margin-bottom:4px;}
+.aeon-greek{font-size:0.72rem;color:var(--gold);font-style:italic;font-family:'Courier New',monospace;margin-bottom:8px;}
+.aeon-meaning{font-size:0.75rem;color:var(--text-dd);}
+@media(max-width:900px){#sidebar{display:none;}.section{padding:40px 24px;}.hero{padding:50px 24px 40px;}}
+@media(max-width:700px){.compare-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="progress-bar" style="width:0%"></div>
+<div class="layout">
+<aside id="sidebar">
+<div class="sidebar-logo"><span class="glyph">☥</span><h2>Pistis Sophia<br>Enciclopédia</h2></div>
+<div class="nav-section"><div class="nav-section-title">I. Introdução</div><a class="nav-link" href="#intro">Visão Geral</a><a class="nav-link sub" href="#manuscrito">O Manuscrito</a><a class="nav-link sub" href="#historia-descoberta">Descoberta</a><a class="nav-link sub" href="#traducoes">Traduções</a></div>
+<div class="nav-section"><div class="nav-section-title">II. Contexto</div><a class="nav-link" href="#gnosticismo">O Gnosticismo</a><a class="nav-link sub" href="#crist-primitivo">Cristianismo Primitivo</a><a class="nav-link sub" href="#valentinianismo">Valentinianismo</a><a class="nav-link sub" href="#hermetismo">Hermetismo</a></div>
+<div class="nav-section"><div class="nav-section-title">III. Cosmologia</div><a class="nav-link" href="#cosmologia">A Cosmologia</a><a class="nav-link sub" href="#pleroma">O Pleroma</a><a class="nav-link sub" href="#aeons">Os Éons</a><a class="nav-link sub" href="#arcontes">Os Arcontes</a><a class="nav-link sub" href="#regioes">Regiões Celestes</a></div>
+<div class="nav-section"><div class="nav-section-title">IV. Sophia</div><a class="nav-link" href="#sophia-central">Sophia — Análise</a><a class="nav-link sub" href="#queda-sophia">A Queda</a><a class="nav-link sub" href="#arrependimentos">Os 13 Arrependimentos</a><a class="nav-link sub" href="#redencao">A Redenção</a></div>
+<div class="nav-section"><div class="nav-section-title">V. Personagens</div><a class="nav-link" href="#personagens">Personagens</a><a class="nav-link sub" href="#jesus-ps">Jesus</a><a class="nav-link sub" href="#maria-madalena">Maria Madalena</a><a class="nav-link sub" href="#discipulos">Os Discípulos</a></div>
+<div class="nav-section"><div class="nav-section-title">VI. Leitura Comentada</div><a class="nav-link" href="#leitura-comentada">Livros I–IV</a></div>
+<div class="nav-section"><div class="nav-section-title">VII. Conceitos</div><a class="nav-link" href="#misterios">Os Mistérios</a><a class="nav-link sub" href="#luz">A Luz</a><a class="nav-link sub" href="#alma">A Alma</a><a class="nav-link sub" href="#reencarnacao">Destino das Almas</a></div>
+<div class="nav-section"><div class="nav-section-title">VIII. Paralelos</div><a class="nav-link" href="#paralelos">Paralelos Religiosos</a><a class="nav-link sub" href="#nag-hammadi">Nag Hammadi</a><a class="nav-link sub" href="#enoque">Livro de Enoque</a><a class="nav-link sub" href="#neoplatonismo">Neoplatonismo</a><a class="nav-link sub" href="#cabala">Cabala e Alquimia</a></div>
+<div class="nav-section"><div class="nav-section-title">IX. Esoterismo</div><a class="nav-link" href="#esoterico">Interpretações Esotéricas</a><a class="nav-link sub" href="#teosofia">Teosofia</a><a class="nav-link sub" href="#jung">Jung</a><a class="nav-link sub" href="#samael">Samael Aun Weor</a><a class="nav-link sub" href="#ordens">Ordens Iniciáticas</a></div>
+<div class="nav-section"><div class="nav-section-title">X. Conclusão</div><a class="nav-link" href="#como-ler">Como Ler</a><a class="nav-link" href="#glossario">Glossário</a><a class="nav-link" href="#bibliografia">Bibliografia</a></div>
+</aside>
+<main class="main">
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge">☽ Manuscrito Gnóstico ☽ Codex Askewianus ☽ Séc. III–IV d.C.</div>
+<h1>Pistis Sophia</h1>
+<p class="hero-sub">Enciclopédia Definitiva do Grande Manuscrito Gnóstico — Da Cosmologia à Redenção, dos Éons às Almas — Análise Filosófica, Histórica, Simbólica e Iniciática Completa do Texto Sagrado da Tradição Gnóstica Cristã</p>
+<div class="hero-meta">
+<div class="hero-meta-item"><span class="val">~500</span><span class="label">páginas copta</span></div>
+<div class="hero-meta-item"><span class="val">4</span><span class="label">livros internos</span></div>
+<div class="hero-meta-item"><span class="val">séc. III–IV</span><span class="label">datação</span></div>
+<div class="hero-meta-item"><span class="val">1785</span><span class="label">British Museum</span></div>
+<div class="hero-meta-item"><span class="val">13</span><span class="label">arrependimentos</span></div>
+</div>
+</div>
+
+<!-- SEÇÃO I: INTRODUÇÃO -->
+<section class="section" id="intro">
+<div class="section-header"><div class="section-icon">📜</div><div class="section-title-block"><h2>I. Introdução e Visão Geral</h2><p>O que é o Pistis Sophia — identidade, natureza e significância do texto</p></div></div>
+
+<p>O <mark class="gold">Pistis Sophia</mark> — cujo nome significa literalmente <mark class="violet">Fé-Sabedoria</mark> ou <mark class="teal">A Fé da Sabedoria</mark> em grego — é um dos textos gnósticos mais extensos, complexos e fascinantes que sobreviveram até os dias atuais. Trata-se de um diálogo místico-revelacional, redigido em língua copta, no qual Jesus Cristo, após sua ressurreição, transmite ensinamentos esotéricos secretos a seus discípulos ao longo de onze anos — um período pós-pascal de instrução iniciática que o texto apresenta como o verdadeiro clímax da missão de Jesus na Terra.</p>
+
+<p>A obra constitui, sem dúvida, o mais elaborado e sistemático mapa cosmológico produzido pela tradição gnóstica cristã. Ela descreve, com riqueza impressionante de detalhes, a estrutura do universo espiritual: desde as regiões mais elevadas do <mark class="gold">Pleroma</mark> (a plenitude divina) até as mais obscuras esferas materiais governadas por entidades chamadas <mark class="crimson">Arcontes</mark>. No centro desta cosmologia grandiosamente elaborada encontra-se o drama da <mark class="violet">Pistis Sophia</mark> — uma entidade divina feminina que, por um ato de autoafirmação espiritual motivado pelo desejo, cai das regiões luminosas para as trevas materiais e deve ser resgatada pelo Iluminador Divino.</p>
+
+<p>A narrativa do Pistis Sophia não é uma história linear simples. É um tecido extraordinariamente complexo de revelações, liturgias, hinos de arrependimento, exegese de salmos e orações do Antigo Testamento, descrições de julgamentos de almas, explicações de mecânicas cósmicas e instrução sobre os vários graus de mistérios espirituais disponíveis aos iniciados. O texto pressupõe um leitor familiarizado com a cosmologia gnóstica básica e vai progressivamente aprofundando as revelações, num movimento que espelha a própria jornada de ascensão espiritual que descreve.</p>
+
+<blockquote>"E aconteceu depois que Jesus ressuscitou dos mortos, ele passou onze anos conversando com seus discípulos, ensinando-lhes apenas o exterior do Primeiro Mistério e o interior dos Segundos Mistérios. Mas o interior do interior do Primeiro Mistério ele não lhes ensinava."<cite>— Pistis Sophia, Livro I, Capítulo 1</cite></blockquote>
+
+<h3 class="subsection" id="manuscrito">O Manuscrito — Codex Askewianus</h3>
+
+<p>O manuscrito que preserva o Pistis Sophia é conhecido como <mark class="gold">Codex Askewianus</mark>, em homenagem ao médico britânico <strong>Anthony Askew</strong> (1722–1774), que o adquiriu antes de sua morte. Após o falecimento de Askew, o manuscrito foi leiloado e adquirido pelo <strong>British Museum</strong> em 1785, onde permanece custodiado sob a designação <em>MS Add. 5114</em>.</p>
+
+<p>Fisicamente, o Codex é um volume encadernado de <mark class="teal">178 folhas de pergaminho</mark> (356 páginas), escritas em dialeto <strong>sahídico do copta</strong>, com algumas inserções no dialeto subaquímico. O manuscrito apresenta sinais evidentes de uso ritualístico, incluindo marcações e correções que sugerem que era um texto de referência ativa para uma comunidade gnóstica.</p>
+
+<div class="callout callout-gold">
+<p class="callout-title">📋 Dados Técnicos do Codex Askewianus</p>
+<p><strong>Localização atual:</strong> British Library, Londres — MS Add. 5114</p>
+<p><strong>Material:</strong> Pergaminho encadernado em couro</p>
+<p><strong>Páginas:</strong> 356 (178 folhas recto e verso)</p>
+<p><strong>Idioma:</strong> Copta sahídico, com elementos do dialeto subaquímico</p>
+<p><strong>Datação do manuscrito:</strong> Séculos IV–V d.C.</p>
+<p><strong>Datação da composição:</strong> Estimada entre sécs. II e IV d.C., com debate em torno de 250–350 d.C.</p>
+<p><strong>Origem textual grega:</strong> Presumida, com evidências linguísticas internas</p>
+</div>
+
+<h3 class="subsection" id="historia-descoberta">História da Descoberta e Transmissão</h3>
+
+<div class="timeline">
+<div class="timeline-item"><div class="year">Séc. III–IV d.C.</div><h4>Composição Original</h4><p>O texto é provavelmente composto no Egito, em ambiente gnóstico de língua grega, possivelmente no contexto da tradição bárbelo-gnóstica. A composição em copta preservada pode ser tradução de um original grego agora perdido.</p></div>
+<div class="timeline-item"><div class="year">Séc. IV–V d.C.</div><h4>Produção do Manuscrito Copta</h4><p>O Codex Askewianus é transcrito em copta, possivelmente no contexto monástico ou de uma comunidade gnóstica egípcia. O texto sofre adaptações durante este período.</p></div>
+<div class="timeline-item"><div class="year">Antes de 1773</div><h4>Aquisição por Anthony Askew</h4><p>O médico colecionador britânico Dr. Anthony Askew adquire o manuscrito. Especula-se que foi comprado no Cairo ou em Constantinopla por antiquários europeus.</p></div>
+<div class="timeline-item"><div class="year">1785</div><h4>British Museum</h4><p>Após a morte de Askew (1774), seu espólio é leiloado em 1775. O British Museum adquire o manuscrito em 1785, onde começa a atrair atenção de estudiosos europeus.</p></div>
+<div class="timeline-item"><div class="year">1851</div><h4>Primeira Edição Acadêmica</h4><p>Schwartze publica a primeira edição completa do texto copta com tradução latina, tornando o Pistis Sophia acessível ao mundo acadêmico ocidental. Petermann aprimora esta edição em 1853.</p></div>
+<div class="timeline-item"><div class="year">1896 / 1921</div><h4>G.R.S. Mead — A Popularização Esotérica</h4><p>G.R.S. Mead, figura central da Sociedade Teosófica, publica a primeira tradução inglesa completa. Esta obra leva o Pistis Sophia às comunidades esotéricas de toda a Europa e América.</p></div>
+<div class="timeline-item"><div class="year">1947–1948</div><h4>Descoberta de Nag Hammadi</h4><p>A descoberta de 52 textos gnósticos em Nag Hammadi revoluciona os estudos gnósticos, fornecendo contexto comparativo inestimável para o Pistis Sophia.</p></div>
+<div class="timeline-item"><div class="year">1978–1984</div><h4>Edição Crítica Moderna</h4><p>Violet Macdermot publica nova tradução crítica (editada por Carl Schmidt) dentro da série Nag Hammadi Studies, representando o padrão acadêmico moderno.</p></div>
+</div>
+
+<h3 class="subsection" id="traducoes">Principais Estudiosos e Traduções</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Estudioso</th><th>Período</th><th>Contribuição</th><th>Orientação</th></tr></thead>
+<tbody>
+<tr><td>M.G. Schwartze</td><td class="greek">1851</td><td>Primeira edição completa do texto copta + tradução latina</td><td>Filológica/Acadêmica</td></tr>
+<tr><td>J.H. Petermann</td><td class="greek">1853</td><td>Edição crítica aprimorada com notas textuais</td><td>Filológica</td></tr>
+<tr><td>G.R.S. Mead</td><td class="greek">1896 / 1921</td><td>Primeira tradução inglesa; análise esotérica; popularização</td><td>Teosófica/Esotérica</td></tr>
+<tr><td>Carl Schmidt</td><td class="greek">1905–1925</td><td>Estudos críticos fundamentais; colocação no contexto gnóstico</td><td>Acadêmica/Patrística</td></tr>
+<tr><td>Violet Macdermot</td><td class="greek">1978 / 1984</td><td>Tradução inglesa moderna padrão; edição crítica definitiva</td><td>Acadêmica Moderna</td></tr>
+<tr><td>Bentley Layton</td><td class="greek">1987</td><td>Contextualização dentro dos "gnósticos clássicos"</td><td>Acadêmica</td></tr>
+<tr><td>Hans-Martin Schenke</td><td class="greek">1970s–1990s</td><td>Análise da escola bárbelo-gnóstica e relação com o PS</td><td>Acadêmica/Histórica</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- SEÇÃO II: CONTEXTO -->
+<section class="section" id="gnosticismo">
+<div class="section-header"><div class="section-icon">🌌</div><div class="section-title-block"><h2>II. Contexto Histórico e Religioso</h2><p>O Gnosticismo, o Cristianismo Primitivo e o ambiente intelectual do Mediterrâneo Antigo</p></div></div>
+
+<h3 class="subsection">O Gnosticismo — Definição e Debates</h3>
+<p>O termo <mark class="gold">Gnosticismo</mark> deriva do grego <em>gnōstikós</em> (γνωστικός), "aquele que conhece", a partir de <em>gnōsis</em> (γνῶσις), "conhecimento". É um termo moderno, introduzido no século XIX pelos historiadores do cristianismo para categorizar um conjunto de movimentos religiosos dos séculos I–IV d.C. que compartilhavam certos elementos doutrinais fundamentais. O debate acadêmico contemporâneo questiona a validade do próprio termo como categoria unificadora — Michael Williams em <em>Rethinking "Gnosticism"</em> (1996) argumenta que era, na verdade, um espectro vasto e heterogêneo de movimentos que não se reconheceriam como pertencentes a uma mesma tradição.</p>
+
+<div class="callout callout-violet">
+<p class="callout-title">⚗️ Os Elementos Centrais do Pensamento Gnóstico</p>
+<p><strong>1. Dualismo ontológico:</strong> A distinção radical entre o mundo espiritual (positivo, divino, verdadeiro) e o mundo material (negativo, ilusório, prisão da alma).</p>
+<p><strong>2. Demiurgo:</strong> A existência de um criador inferior do mundo material, distinto do Deus supremo — frequentemente identificado com o Deus do Antigo Testamento.</p>
+<p><strong>3. Gnose redentora:</strong> O conhecimento como meio de salvação — não a fé ou as obras, mas o conhecimento experiencial da origem divina da alma.</p>
+<p><strong>4. Faísca divina:</strong> A crença de que os seres humanos contêm uma centelha do ser divino aprisionada na matéria.</p>
+<p><strong>5. Cosmologia elaborada:</strong> Sistemas detalhados de entidades espirituais intermediárias que estruturam os planos entre o Divino e o material.</p>
+<p><strong>6. Revelação secreta:</strong> A gnose é transmitida por um revelador divino (frequentemente Cristo) a um grupo seleto de iniciados.</p>
+</div>
+
+<h3 class="subsection" id="crist-primitivo">O Pistis Sophia no Contexto do Cristianismo Primitivo</h3>
+<p>O Pistis Sophia emerge de um momento crucial da história religiosa: o período em que o que conhecemos como "Cristianismo" ainda não estava definitivamente consolidado como tradição única e ortodoxa, mas era um espectro multifacetado de interpretações em intensa competição teológica. Nos séculos II e III d.C., o mundo mediterrâneo assistia a uma fermentação intelectual sem precedentes. O Platonismo médio e o Neoplatonismo em ascensão forneciam linguagem filosófica sofisticada. O Hermetismo egípcio-grego produzia textos especulativos sobre a natureza do cosmos e da alma. O Judaísmo apocalíptico contribuía com visões de mundos celestes e julgamentos divinos.</p>
+
+<p>Os grupos que produziram textos como o Pistis Sophia se consideravam cristãos — na verdade, muitas vezes consideravam possuir o Cristianismo <em>verdadeiro e completo</em>, enquanto as igrejas "ortodoxas" emergentes teriam apenas um conhecimento superficial e exotérico. A este conhecimento superficial destinado às massas (<em>hylikoi</em> e <em>psychikoi</em>), os gnósticos opunham o conhecimento profundo e secreto (<em>gnosis</em>) reservado aos <em>pneumatikoi</em> — os "espirituais".</p>
+
+<h3 class="subsection" id="valentinianismo">O Valentinianismo e sua Relação com o Pistis Sophia</h3>
+<p>Entre as muitas escolas gnósticas que floresceram nos séculos II–III d.C., o <mark class="gold">Valentinianismo</mark> é particularmente relevante. Fundada pelo teólogo Valentino (c. 100–160 d.C.), esta escola elaborou um dos sistemas cosmológicos gnósticos mais sofisticados. O sistema valentiniano postulava um Pleroma composto por 30 éons organizados em pares sizigianos (masculino-feminino), culminando na figura de <em>Sophia</em> — o éon mais jovem e periférico, cujo desejo de conhecer o Pai Supremo sem o consentimento de seu parceiro leva à catástrofe cósmica que resulta na criação do mundo material.</p>
+
+<div class="compare-grid">
+<div class="compare-col"><h4>🌟 Sistema Valentiniano</h4><ul>
+<li>Pleroma com 30 éons (15 pares sizigianos)</li>
+<li>O Pai Supremo é transcendente e incognoscível</li>
+<li>Sophia quer conhecer o Pai sem seu consorte</li>
+<li>A queda de Sophia produz a Achamóth (Sophia inferior)</li>
+<li>O Demiurgo é criado pela Sophia inferior</li>
+<li>Distinção entre pneumáticos, psíquicos e hílicos</li>
+<li>Cristo desce para revelar o conhecimento</li>
+</ul></div>
+<div class="compare-col"><h4>✨ Sistema do Pistis Sophia</h4><ul>
+<li>Hierarquia de tesouros, regiões e éons elaborada</li>
+<li>O Primeiro Mistério como divindade suprema</li>
+<li>Sophia desce ao Caos por engano de Autodades</li>
+<li>Sophia inferior (no Caos) clama por redenção</li>
+<li>Arcontes gerados de emanações de Sophia</li>
+<li>Distinção entre diferentes graus de mistérios</li>
+<li>Jesus já ascendido desce para resgatar Sophia</li>
+</ul></div>
+</div>
+
+<h3 class="subsection" id="hermetismo">O Hermetismo e o Neoplatonismo</h3>
+<p>O Pistis Sophia não pode ser compreendido sem referência ao <mark class="teal">Hermetismo</mark> e ao <mark class="violet">Neoplatonismo</mark> do Egito greco-romano dos séculos II–IV d.C. O Hermetismo — tradição filosófico-religiosa atribuída ao lendário Hermes Trismegisto — compartilhava com o Gnosticismo temas fundamentais: a natureza aprisionada da alma, a ascensão pelas esferas planetárias, o conhecimento como meio de libertação, e a estrutura hierárquica do cosmos.</p>
+<p>O Neoplatonismo de Plotino (c. 204–270 d.C.) — contemporâneo provável dos compiladores do Pistis Sophia — oferecia uma estrutura metafísica sofisticada que ressoava profundamente com o pensamento gnóstico. Sua doutrina das três hipóstases — o Uno, o Intelecto (Nous) e a Alma (Psyche) — pode ser colocada em paralelo com as estruturas cosmológicas do PS. A diferença crucial: para Plotino, o descenso da Alma é necessário e não trágico; para o PS, o descenso de Sophia é um erro trágico que precisa ser corrigido.</p>
+
+<div class="callout callout-teal">
+<p class="callout-title">🏛️ Paralelos entre Neoplatonismo e Pistis Sophia</p>
+<p><strong>O Uno ↔ O Ineffável / Primeiro Mistério:</strong> Ambos são transcendentes, incognoscíveis e fonte de todo ser.</p>
+<p><strong>O Nous ↔ Os Éons superiores:</strong> A inteligência divina que conhece o Uno e produz as formas.</p>
+<p><strong>Psyche / Alma do Mundo ↔ Sophia:</strong> O aspecto intermediário e vulnerável do divino, sujeito à queda.</p>
+<p><strong>Matéria (Hyle) ↔ O Caos / As Trevas:</strong> O substrato passivo e negativo que recebe a emanação divina mal direcionada.</p>
+<p><strong>Epistrophē (retorno) ↔ Redenção de Sophia:</strong> O movimento de regresso da alma ao seu princípio divino.</p>
+</div>
+</section>
+
+<!-- SEÇÃO III: COSMOLOGIA -->
+<section class="section" id="cosmologia">
+<div class="section-header"><div class="section-icon">⭐</div><div class="section-title-block"><h2>III. A Cosmologia do Pistis Sophia</h2><p>O mapa do universo espiritual — da Luz absoluta às Trevas do Caos</p></div></div>
+
+<p>A cosmologia apresentada no Pistis Sophia é, sem exagero, uma das mais elaboradas produzidas por qualquer tradição religiosa da Antiguidade. Onde textos como o Gênesis bíblico fornecem contornos cosmológicos relativamente simples, o PS constrói um universo espiritual de extraordinária complexidade, com múltiplas regiões hierarquicamente organizadas, populações de entidades espirituais com nomes próprios, funções específicas e histórias individuais.</p>
+
+<h3 class="subsection" id="pleroma">O Pleroma — A Plenitude Divina</h3>
+<p>No topo absoluto da hierarquia cósmica do PS encontra-se o que o texto denomina <mark class="gold">O Ineffável</mark> ou <mark class="gold">O Primeiro Mistério</mark>. Este ser supremo é caracterizado por uma transcendência radical — ele está além de qualquer predicado, além de qualquer limite, além da própria compreensão de todos os outros seres, incluindo os éons mais elevados do Pleroma.</p>
+<p>O <mark class="gold">Pleroma</mark> (do grego <em>plērōma</em>, "plenitude") é a totalidade do realm divino — o espaço da luz pura onde habitam os éons (entidades divinas eternas). O PS descreve o Pleroma estruturado em múltiplas "regiões" ou "tesouros" habitados por diferentes classes de seres divinos, numa hierarquia descendente do Ineffável até as camadas mais externas da luz.</p>
+
+<div class="cosmos-diagram">
+<h4 style="color:var(--gold);text-align:center;margin-bottom:20px;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;">Mapa Cosmológico do Pistis Sophia</h4>
+<div class="cosmos-layer layer-pleroma" style="width:90%"><span class="layer-name">O INEFFÁVEL / O PRIMEIRO MISTÉRIO</span><span class="layer-desc">Além de toda compreensão — a Luz pura e transcendente</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-pleroma" style="width:85%"><span class="layer-name">O TESOURO DA LUZ</span><span class="layer-desc">Repositório supremo da Luz — sede dos éons mais elevados</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-sophia" style="width:80%"><span class="layer-name">AS 13 REGIÕES DO PLEROMA</span><span class="layer-desc">Os 12 Éons + a 13ª Região — Habitada por Barbelo e entidades superiores</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-sophia" style="width:75%"><span class="layer-name">O LUGAR DE SOPHIA (13ª Região)</span><span class="layer-desc">De onde Sophia desceu — região limítrofe entre o Pleroma e o exterior</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-demiurge" style="width:70%"><span class="layer-name">O ESPAÇO INTERMEDIÁRIO / HEIMARMENÊ</span><span class="layer-desc">As 12 esferas astrológicas — domínio dos arcontes do Destino</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-archons" style="width:65%"><span class="layer-name">O CAOS</span><span class="layer-desc">O reino das trevas exteriores — onde Sophia caiu e os arcontes habitam</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-archons" style="width:60%"><span class="layer-name">OS 24 INVISÍVEIS / ARCONTES</span><span class="layer-desc">Governantes das regiões inferiores — guardiões malignos e ladrões de luz</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-material" style="width:55%"><span class="layer-name">A ESFERA / OS SETE CÉUS PLANETÁRIOS</span><span class="layer-desc">As sete esferas planetárias — sede dos arcontes intermediários</span></div>
+<div class="cosmos-arrow">▼</div>
+<div class="cosmos-layer layer-material" style="width:50%"><span class="layer-name">O MUNDO MATERIAL</span><span class="layer-desc">A Terra e suas regiões — prisão das almas que descendem</span></div>
+</div>
+
+<h3 class="subsection" id="aeons">Os Éons — As Emanações Divinas</h3>
+<p>Os <mark class="violet">Éons</mark> (do grego <em>aiōn</em>, αἰών — "eternidade") são as entidades divinas que habitam o Pleroma. No Pistis Sophia, formam uma hierarquia elaborada, com cada éon possuindo seu próprio caráter, função e posição. O termo "éon" carrega o sentido não apenas de eternidade temporal, mas de uma esfera ou modo de ser divino — um estado de existência que transcende o tempo linear.</p>
+
+<div class="aeon-grid">
+<div class="aeon-card"><div class="aeon-name">O Ineffável</div><div class="aeon-greek">ἄρρητος (árrētos)</div><div class="aeon-meaning">O supremamente incognoscível — além de nome, forma ou predicação. A fonte absoluta de toda Luz.</div></div>
+<div class="aeon-card"><div class="aeon-name">Barbelo</div><div class="aeon-greek">Βαρβηλώ</div><div class="aeon-meaning">A Mãe divina, a Progenitora — o primeiro ato de autoconsciência do Pai Supremo. A Matrix do universo espiritual.</div></div>
+<div class="aeon-card"><div class="aeon-name">O Autogenes</div><div class="aeon-greek">Αὐτογενής</div><div class="aeon-meaning">"O Autogerado" — manifestação cristológica dentro do Pleroma, associada ao Cristo pré-existente.</div></div>
+<div class="aeon-card"><div class="aeon-name">Adamas</div><div class="aeon-greek">Ἀδάμας</div><div class="aeon-meaning">O Homem Celestial Perfeito — contraparte divina do Adão terrestre. Modelo espiritual da humanidade.</div></div>
+<div class="aeon-card"><div class="aeon-name">Pistis Sophia</div><div class="aeon-greek">Πίστις Σοφία</div><div class="aeon-meaning">A Fé-Sabedoria — a Vigésima-Terceira Emanação do Primeiro Mistério. Central para toda a narrativa.</div></div>
+<div class="aeon-card"><div class="aeon-name">Os 12 Éons</div><div class="aeon-greek">Αἰῶνες δώδεκα</div><div class="aeon-meaning">Os doze domínios superiores do Pleroma, associados com os 12 signos zodiacais em seu estado espiritual original.</div></div>
+<div class="aeon-card"><div class="aeon-name">Autodades</div><div class="aeon-greek">Αὐθάδης</div><div class="aeon-meaning">"O Arrogante" — o arconte que enganou Sophia, apresentando-lhe uma falsa luz para levá-la a abandonar o Pleroma.</div></div>
+<div class="aeon-card"><div class="aeon-name">Jeu</div><div class="aeon-greek">Ἰεού</div><div class="aeon-meaning">O "Pai do Tesouro da Luz" — entidade suprema que supervisiona o Tesouro da Luz, mencionado extensivamente.</div></div>
+</div>
+
+<h3 class="subsection" id="arcontes">Os Arcontes — Governantes das Trevas</h3>
+<p>Os <mark class="crimson">Arcontes</mark> (do grego <em>árchōn</em>, ἄρχων — "governante") são as entidades que governam as regiões intermediárias e inferiores do cosmos. Ao contrário dos éons, que são emanações legítimas da Divindade Suprema, os arcontes são subprodutos da queda de Sophia — nasceram da mistura aberrante entre a luz de Sophia e as forças caóticas das trevas. São ladrões de luz cósmica que aprisionam as almas em seu circuito kármico para se alimentar de sua energia luminosa.</p>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Arconte</th><th>Domínio</th><th>Paralelo Planetário</th><th>Natureza no PS</th></tr></thead>
+<tbody>
+<tr><td>Ialdabaoth</td><td>O Demiurgo / Criador</td><td class="greek">Saturno</td><td>O Arconte supremo das regiões caóticas; filho mais poderoso de Sophia</td></tr>
+<tr><td>Sabaoth</td><td>Esfera Solar/Marciana</td><td class="greek">Marte</td><td>Embora arconte, pode ser redimido; arrepende-se e recebe certa dignidade</td></tr>
+<tr><td>Autodades</td><td>Região exterior do Pleroma</td><td class="greek">—</td><td>O Arrogante — o engano personificado; precipitou a queda de Sophia</td></tr>
+<tr><td>Os 5 Auxiliares</td><td>Esferas intermediárias</td><td class="greek">Planetas variados</td><td>Entidades que assistem Ialdabaoth na administração do mundo</td></tr>
+<tr><td>Os 72 Arcontes</td><td>Subseções do Caos</td><td class="greek">—</td><td>Governantes dos 72 aeons do Caos; detentores dos "destinadores"</td></tr>
+<tr><td>Archons da Heimarmenê</td><td>Esferas astrológicas</td><td class="greek">Zodíaco/planetas</td><td>Governantes do Destino — determinam o karma dos humanos</td></tr>
+</tbody></table></div>
+
+<h3 class="subsection" id="regioes">Regiões, Tesouros e Geografias Espirituais</h3>
+<div class="tree">
+<div class="tree-node"><div class="tree-dot tree-gold"></div><div class="tree-text"><span class="tree-name">O Tesouro da Luz (Thēsauros tou Phōtos)</span><span class="tree-desc">A região suprema — repositório de toda luz divina. Sede do Primeiro Mistério.</span></div></div>
+<div class="tree-indent">
+<div class="tree-node"><div class="tree-dot tree-gold"></div><div class="tree-text"><span class="tree-name">O Interior do Interior do Primeiro Mistério</span><span class="tree-desc">O sanctum sanctorum — inacessível mesmo aos éons mais elevados.</span></div></div>
+<div class="tree-node"><div class="tree-dot tree-gold"></div><div class="tree-text"><span class="tree-name">As 3 Vestes de Luz</span><span class="tree-desc">As três vestimentas luminosas — símbolos dos três graus de iniciação suprema.</span></div></div>
+</div>
+<div class="tree-node" style="margin-top:16px"><div class="tree-dot tree-violet"></div><div class="tree-text"><span class="tree-name">As 13 Regiões do Pleroma</span><span class="tree-desc">Os treze éons/regiões luminosas que compõem o Pleroma.</span></div></div>
+<div class="tree-indent">
+<div class="tree-node"><div class="tree-dot tree-violet"></div><div class="tree-text"><span class="tree-name">A 13ª Região (Região de Sophia)</span><span class="tree-desc">De onde Sophia desceu — limítrofe entre o Pleroma e as regiões exteriores.</span></div></div>
+<div class="tree-node"><div class="tree-dot tree-violet"></div><div class="tree-text"><span class="tree-name">Os 12 Éons Superiores</span><span class="tree-desc">Os doze domínios do Pleroma — governados pelos 12 pares de éons luminosos.</span></div></div>
+</div>
+<div class="tree-node" style="margin-top:16px"><div class="tree-dot tree-teal"></div><div class="tree-text"><span class="tree-name">O Espaço Intermediário</span><span class="tree-desc">Região entre o Pleroma e o Caos — habitada pelos Invisíveis e pelas esferas astrológicas.</span></div></div>
+<div class="tree-indent">
+<div class="tree-node"><div class="tree-dot tree-teal"></div><div class="tree-text"><span class="tree-name">Os 24 Invisíveis</span><span class="tree-desc">24 entidades guardiãs da transição entre os éons superiores e os arcontes.</span></div></div>
+<div class="tree-node"><div class="tree-dot tree-teal"></div><div class="tree-text"><span class="tree-name">A Heimarmenê (O Destino)</span><span class="tree-desc">As esferas do fado — os doze signos astrológicos como entidades governantes.</span></div></div>
+</div>
+<div class="tree-node" style="margin-top:16px"><div class="tree-dot tree-crimson"></div><div class="tree-text"><span class="tree-name">O Caos</span><span class="tree-desc">O reino das trevas — onde Sophia caiu e ficou aprisionada. Habitado por leões, dragões e demônios.</span></div></div>
+<div class="tree-node" style="margin-top:16px"><div class="tree-dot tree-silver"></div><div class="tree-text"><span class="tree-name">As Trevas Externas</span><span class="tree-desc">O abismo absoluto — região de punição máxima, "onde haverá choro e ranger de dentes".</span></div></div>
+</div>
+</section>
+
+<!-- SEÇÃO IV: SOPHIA -->
+<section class="section" id="sophia-central">
+<div class="section-header"><div class="section-icon">✨</div><div class="section-title-block"><h2>IV. Sophia — O Princípio Feminino Divino</h2><p>A análise completa da entidade central — queda, arrependimentos e redenção</p></div></div>
+
+<p>Compreender <mark class="gold">Sophia</mark> — tanto como entidade específica quanto como princípio filosófico-teológico — é essencial para penetrar o coração pulsante de todo este sistema de pensamento. Sophia é, ao mesmo tempo: uma personagem dramática cujo destino estrutura toda a narrativa, um princípio cosmológico que explica a origem do mundo material, um símbolo psicológico da alma humana em sua condição de exilada, e um arquétipo do feminino sagrado que influenciará profundamente o pensamento esotérico ocidental por séculos.</p>
+
+<h3 class="subsection">Etimologia e Significado de Sophia</h3>
+<p>O nome <mark class="gold">Sophia</mark> (Σοφία) é simplesmente o termo grego para <strong>Sabedoria</strong>. Na filosofia grega clássica, <em>sophia</em> era a mais elevada das formas de conhecimento — o conhecimento do que existe em si mesmo. Para Aristóteles, era a sabedoria teórica que investiga as primeiras causas e os princípios eternos.</p>
+<p>Na tradição hebraica, a <strong>Hokhmah</strong> (חָכְמָה) aparece nos textos sapienciais como entidade quase personificada que estava com Deus antes da criação. O Livro dos Provérbios (8:22-31) apresenta a Sabedoria como a primeira criatura de Deus. O Livro da Sabedoria (7:22-8:1) descreve-a como um espírito divino que "atravessa e penetra tudo". Esta tradição hebraica sapiencial é uma das raízes diretas do conceito gnóstico de Sophia.</p>
+<p>O epíteto <mark class="violet">Pistis</mark> (Πίστις) — "Fé" — é igualmente significativo. O nome composto pode ser interpretado como: Sophia que age por Fé, Sophia cuja salvação depende da Fé, ou a unidade da Fé com a Sabedoria que permite ao iniciado atingir a salvação.</p>
+
+<h3 class="subsection" id="queda-sophia">A Queda de Sophia — Análise Completa</h3>
+<p>O relato da queda de Sophia no PS é um dos episódios mais ricos em camadas simbólicas de toda a literatura gnóstica. Embora o texto ofereça uma narrativa relativamente direta dos eventos, os significados ocultos constituem uma meditação profunda sobre a natureza do desejo, do erro, do ego espiritual e das consequências da ação não iluminada.</p>
+
+<blockquote>"E aconteceu, de acordo com o ordenamento do Primeiro Mistério, que Pistis Sophia foi descida ao espaço caótico das regiões externas, e foi aprisionada pelas forças do Caos por ter olhado para baixo para a Luz do Leão-faced [Autodades], que está abaixo. Ela pensou que a luz era do Primeiro Mistério, e foi para ela; mas na verdade a luz era de Autodades, que é o mais extravagante dos éons."<cite>— Pistis Sophia, Livro I, cap. 29</cite></blockquote>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Fase 1: O Desejo de Ver a Luz Inferior</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>Sophia, habitando a décima terceira região do Éon (a mais periférica), avista uma luz brilhante abaixo de seu domínio. Esta luz é emanada por Autodades — o Arconte "Arrogante" — que a projeta intencionalmente para seduzir Sophia. O engano é meticuloso: a luz de Autodades imita a natureza da Luz Superior do Primeiro Mistério.</p>
+<p>O impulso de Sophia é, em sua origem, nobre — é o desejo de <em>mais luz</em>, de <em>mais divindade</em>. O problema não é o desejo em si, mas o objeto para o qual ele se dirige: uma contrafação, uma ilusão que parece mas não é o Supremo. Este é um tema fundamental no pensamento gnóstico: o erro não é querer o divino, mas confundir o divino com sua imitação.</p>
+</div></div>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Fase 2: O Descenso ao Caos</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>Atraída pela luz falsa de Autodades, Sophia começa a descer. Este descenso é gradual — ela atravessa múltiplas camadas de regiões inferiores, perdendo progressivamente sua "veste de luz" (seu poder divino) a cada travessia. As forças das trevas que habitam cada região atacam-na e roubam-lhe partes de sua substância luminosa.</p>
+<p>Este processo de despojamento é fundamental: Sophia não cai de uma vez, mas gradualmente. Cada passo fora do Pleroma enfraquece sua capacidade de retornar. Ela fica cada vez mais aprisionada pelo peso das trevas acumuladas. É uma imagem poderosa do processo de alienação espiritual — não um colapso súbito, mas uma erosão progressiva.</p>
+</div></div>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Fase 3: O Aprisionamento no Caos</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>Sophia atinge o Caos — a região de trevas absolutas — e é cercada por forças hostis lideradas por um arconte com cabeça de leão (Leontomorphos), que a aprisionam. Ela está rodeada por entidades que se alimentam de sua substância luminosa, tentando extinguir sua luz. Ela grita por socorro, mas nenhuma resposta vem imediatamente.</p>
+<p>O aprisionamento pelo "leão-faced power" é particularmente significativo. O leão com cabeça de leão é uma das imagens do Demiurgo em vários textos gnósticos — e simultaneamente uma alusão ao "rugido do leão" do Salmo 22:13, que Sophia usa em seu primeiro hino. A perseguição de Sophia pelos arcontes é tanto um evento narrativo quanto uma exegese gnóstica dos salmos bíblicos.</p>
+</div></div>
+
+<h3 class="subsection" id="arrependimentos">Os 13 Arrependimentos de Sophia — Análise Detalhada</h3>
+<p>Os Treze Arrependimentos constituem o coração literário e litúrgico do Pistis Sophia. Cada arrependimento é uma composição poética em que Sophia descreve sua situação, implora socorro ao Primeiro Mistério e reconhece a natureza de seus erros. Jesus então interpreta cada hino em relação a um salmo bíblico, estabelecendo o método hermenêutico gnóstico que permeia todo o texto.</p>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Primeiro Arrependimento</div><div class="rc-title">O Clamor do Exílio — Salmos 69 e 70</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p>No Primeiro Arrependimento, Sophia clama ao Primeiro Mistério desde as profundezas do Caos. Ela descreve como as forças do Leão-faced a cercaram e roubaram sua luz. Ela confessa: <em>"Eu perdi minha luz"</em> e reconhece sua situação de completo desamparo espiritual.</p>
+<p><strong>Interpretação Jesuítica:</strong> Jesus identifica este hino com o Salmo 69 de Davi: <em>"Salva-me, ó Deus, porque as águas chegaram até a alma"</em>. A hermenêutica gnóstica é reveladora: onde o texto bíblico fala de inimigos humanos, o PS vê arcontes cósmicos. As "águas" tornam-se o Caos das trevas; os "inimigos" tornam-se as forças do mal cósmico.</p>
+<p><strong>Significado Psicológico (Jungiano):</strong> Este primeiro arrependimento representa a <em>crise de identidade</em> — o momento em que o ego (Sophia descida ao Caos) enfrenta sua separação do Si-mesmo (o Primeiro Mistério/Self). É a "noche oscura del alma" que precede toda transformação profunda.</p>
+</div></div>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Segundo ao Décimo Arrependimento</div><div class="rc-title">A Espiral da Descida e da Esperança</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p>Os Arrependimentos Segundo ao Décimo seguem um padrão cíclico que reflete a dinâmica da alma no exílio espiritual: descida mais profunda → reconhecimento da condição → clamor ao divino → súplica → breve esperança → nova descida. Este ciclo é um aprofundamento em espiral da compreensão de Sophia.</p>
+<p><strong>Arrependimento 3:</strong> Sophia reconhece que as forças do Caos são, na verdade, parte de um sistema que ela própria (inadvertidamente) ajudou a criar — seus poderes de luz, misturados com as trevas, geraram os arcontes que agora a oprimem. Esta é uma das afirmações mais teologicamente carregadas do texto: o opressor tem algo do oprimido dentro de si.</p>
+<p><strong>Arrependimento 5:</strong> Sophia implora que o Primeiro Mistério "olhe para baixo" até ela. O movimento vertical é fundamental na cosmologia do PS: o divino superior deve "inclinar-se" para resgatar o que está embaixo.</p>
+<p><strong>Arrependimento 8:</strong> Sophia começa a ver raios de luz do Tesouro acima de si — o Primeiro Mistério está respondendo. O processo de redenção começa a se manifestar não como um súbito resgate, mas como uma luz crescente que vai gradualmente permeando as trevas do Caos.</p>
+</div></div>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Décimo Terceiro Arrependimento</div><div class="rc-title">A Conclusão — O Retorno da Esperança</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p>O Décimo Terceiro Arrependimento é o clímax do ciclo litúrgico. Sophia agora vê claramente a luz do Primeiro Mistério descendo em direção a ela, e seu hino transita do lamento para a antecipação grata. Ela exulta: <em>"Minha luz foi salva, e o meu lamento tornou-se alegria para mim, e minhas trevas foram afastadas"</em>.</p>
+<p>O número 13 é significativo: Sophia habitava originalmente a <em>décima terceira</em> região do Pleroma — seu resgate significa o retorno ao seu estado original. O número 13 é também associado, na tradição gnóstica, com a plenitude do ciclo: os doze meses mais o Sol, os doze discípulos mais Jesus, os doze éons mais Sophia.</p>
+<p><strong>A Estrutura Ritual:</strong> Os treze arrependimentos não são apenas uma narrativa sobre Sophia — são uma liturgia de iniciação. O praticante gnóstico que recitava ou meditava estes hinos estava participando ritualmente do processo de descida e ascensão de Sophia, identificando sua própria alma com a da Éon divina.</p>
+</div></div>
+
+<h3 class="subsection" id="redencao">A Redenção de Sophia — O Processo de Ascensão</h3>
+<p>A redenção de Sophia não é um evento único e instantâneo — é um processo gradual, com múltiplas fases, recaídas e novas ascensões. Esta estrutura narrativa espelha a psicologia realista do caminho espiritual, onde o progresso raramente é linear.</p>
+<p><strong>Primeira Libertação:</strong> Jesus retira Sophia das profundezas mais baixas do Caos, mas não imediatamente para sua região original — apenas para uma região levemente superior. Ela está livrada do pior, mas ainda não está em casa.</p>
+<p><strong>Os Ataques Renovados:</strong> Autodades e os arcontes renovam seus ataques contra Sophia, tentando recapturá-la. Sophia é novamente ameaçada e canta novos hinos de lamento, mas desta vez com mais confiança — ela já experimentou o socorro do Primeiro Mistério.</p>
+<p><strong>A Ascensão Progressiva:</strong> Jesus, ativando sucessivos poderes de luz do Tesouro, vai elevando Sophia progressivamente — de região em região — até que ela finalmente retorna à décima terceira região, seu lar original. Mas mesmo isto não é o fim: o texto indica que Sophia deve continuar sua purificação antes de poder alcançar uma posição ainda mais elevada.</p>
+</section>
+
+<!-- SEÇÃO V: PERSONAGENS -->
+<section class="section" id="personagens">
+<div class="section-header"><div class="section-icon">👥</div><div class="section-title-block"><h2>V. Os Personagens Centrais</h2><p>Jesus, Maria Madalena, os discípulos e as entidades que dialogam no texto</p></div></div>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Personagem</th><th>Papel no Texto</th><th>Caráter</th><th>Frequência</th></tr></thead>
+<tbody>
+<tr><td>Jesus (O Salvador)</td><td>Revelador principal; redentor de Sophia</td><td>Onisciente, paciente, pedagógico</td><td>Presente em toda a obra</td></tr>
+<tr><td>Maria Madalena</td><td>Discípula principal; intérprete privilegiada</td><td>Inteligente, devota, eloquente</td><td>Mais perguntas que qualquer outro</td></tr>
+<tr><td>Pistis Sophia</td><td>O centro dramático; a alma em exílio</td><td>Fé intensa, vulnerável, persistente</td><td>Toda a primeira metade</td></tr>
+<tr><td>Maria (mãe de Jesus)</td><td>Discípula; faz perguntas específicas</td><td>Maternal, perspicaz</td><td>Moderada</td></tr>
+<tr><td>João Evangelista</td><td>Discípulo; intérprete de hinos</td><td>Contemplativo, devoto</td><td>Moderada</td></tr>
+<tr><td>Pedro</td><td>Discípulo; por vezes contesta Maria Madalena</td><td>Impulsivo, por vezes ciumento</td><td>Moderada — notable pela tensão</td></tr>
+<tr><td>Filipe</td><td>Discípulo; responsável por registrar o texto</td><td>Escriba fiel</td><td>Mínima — mas metaliterariamente crucial</td></tr>
+<tr><td>Salomé</td><td>Discípula; faz perguntas sobre a alma</td><td>Curiosa, filosófica</td><td>Moderada nos Livros III e IV</td></tr>
+<tr><td>Marta</td><td>Discípula; interpreta hinos nos livros tardios</td><td>Ativa, comprometida</td><td>Moderada nos Livros III e IV</td></tr>
+</tbody></table></div>
+
+<h3 class="subsection" id="jesus-ps">Jesus no Pistis Sophia — Uma Cristologia Gnóstica</h3>
+<p>A figura de Jesus no Pistis Sophia é radicalmente diferente da representação dos evangelhos canônicos. Aqui, Jesus não é primariamente o pregador histórico da Galileia ou o taumaturgo dos evangelhos sinóticos — é fundamentalmente o <mark class="gold">Revelador Cósmico</mark>, o agente do Primeiro Mistério que desceu ao mundo material para transmitir os Mistérios que permitem a salvação.</p>
+<p>A cristologia do PS é essencialmente <strong>docetista</strong> ou semi-docetista: Jesus é um ser divino que <em>assumiu</em> um corpo humano temporariamente para cumprir sua missão, mas sua verdadeira natureza é radicalmente transcendente. Ele desceu revestido de "vestes de luz" que escondem sua glória — e antes de ensinar os discípulos, ele "tirou" a forma de Jesus histórico e se revelou em sua glória cósmica plena.</p>
+
+<blockquote>"E aconteceu quando Jesus terminou de falar com seus discípulos, que ele disse a eles: 'Aquele que tem ouvidos para ouvir, que ouça.' E Maria Madalena e João o virgem eram os que mais estavam prontos a receber as palavras de Jesus, e Jesus os amava mais do que todos os discípulos."<cite>— Pistis Sophia, Livro II</cite></blockquote>
+
+<h3 class="subsection" id="maria-madalena">Maria Madalena — A Discípula Suprema</h3>
+<p>A representação de <mark class="gold">Maria Madalena</mark> no Pistis Sophia é uma das mais fascinantes de toda a literatura cristã primitiva. Neste texto, ela emerge como a discípula principal de Jesus — não apenas em devoção emocional, mas em compreensão intelectual e espiritual. Em várias passagens, o texto afirma explicitamente que Maria Madalena era <em>mais espiritual que todos os outros discípulos</em>.</p>
+<p>Maria Madalena faz mais perguntas a Jesus do que qualquer outro discípulo — e suas perguntas são consistentemente as mais sofisticadas. Em vários momentos, Pedro tenta "silenciá-la" ou reclamar que ela monopoliza o diálogo com Jesus — e Jesus consistentemente a defende, afirmando que ela pergunta porque "o seu espírito está cheio de entendimento".</p>
+
+<div class="callout callout-gold">
+<p class="callout-title">💬 Pedro vs. Maria Madalena — O Conflito nos Textos Gnósticos</p>
+<p>A tensão entre Pedro e Maria Madalena no PS reflete um debate histórico real entre diferentes facções do Cristianismo primitivo. Pedro representa a linha "apostólica" e "ortodoxa" que eventualmente dominaria a Igreja institucional. Maria Madalena representa uma tradição gnóstica que afirmava a primazia do conhecimento espiritual direto (gnose) sobre a autoridade institucional.</p>
+<p>Este padrão é repetido em outros textos gnósticos: no <em>Evangelho de Maria</em>, Pedro questiona a autoridade de Maria para transmitir ensinamentos de Jesus; no <em>Pistis Sophia</em>, Pedro reclama que Maria monopoliza o diálogo. Em cada caso, Jesus afirma a legitimidade do insight espiritual feminino sobre a hierarquia masculina estabelecida.</p>
+</div>
+
+<h3 class="subsection" id="discipulos">O Papel dos Discípulos — Estrutura Dialógica</h3>
+<p>O Pistis Sophia é estruturado como um diálogo extenso — e a natureza dialógica não é meramente formal, mas teologicamente significativa. Cada vez que um discípulo faz uma pergunta ou oferece uma interpretação, o texto nos convida a observar seu nível de compreensão espiritual, a profundidade de seu entendimento dos mistérios, e o grau em que ele ou ela se aproxima da gnose perfeita.</p>
+<p>Há uma pedagogia implícita no método dialógico: Jesus não declara simplesmente a verdade — ele convida os discípulos a tentarem compreender por si mesmos. Este método socrático-gnóstico revela uma epistemologia específica: o conhecimento verdadeiro não é transmitido, mas despertado — o revelador cria as condições para que a centelha divina do discípulo se reconheça a si mesma.</p>
+</section>
+
+<!-- SEÇÃO VI: LEITURA COMENTADA -->
+<section class="section" id="leitura-comentada">
+<div class="section-header"><div class="section-icon">📖</div><div class="section-title-block"><h2>VI. Leitura Comentada Completa</h2><p>Percurso detalhado pelos quatro livros do Pistis Sophia</p></div></div>
+
+<h3 class="subsection">Livro I — A Descida de Sophia e os Arrependimentos</h3>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Capítulos 1–6</div><div class="rc-title">O Prólogo — Jesus Glorificado Retorna</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p><strong>O que acontece:</strong> O texto começa situando Jesus e seus discípulos no Monte das Oliveiras, onze anos após a ressurreição. Jesus ainda está ensinando os discípulos — mas apenas os "exteriores" dos Mistérios. Subitamente, às seis horas do dia (meio-dia — momento cosmologicamente significativo), uma grande luz brilha ao redor de Jesus, envolve-o e ele é levado para os céus.</p>
+<p>Jesus permanece nos céus por toda uma noite — durante a qual percorre múltiplos níveis do cosmos, sofrendo uma transformação progressiva que o eleva a regiões cada vez mais superiores. Ele atravessa as esferas dos arcontes (que não o reconhecem em sua forma glorificada), penetra no Tesouro da Luz, recebe vestes de luz cada vez mais poderosas, e eventualmente alcança a presença do Primeiro Mistério.</p>
+<p><strong>Simbolismo:</strong> A narrativa de abertura estabelece o paradigma cosmológico fundamental: o cosmos é um sistema de camadas sobrepostas, e Jesus como redentor é o único ser capaz de traversá-las livremente em ambas as direções — descendendo para resgatar as almas e ascendendo para conduzi-las ao divino.</p>
+<p><strong>Aspecto Litúrgico:</strong> O "meio-dia" como hora da transformação é significativo em várias tradições: na Bíblia, o escurecimento do sol ao meio-dia na crucificação; no Mitraísmo, o sol como divindade suprema no zênite; na tradição egípcia, Rá em sua máxima potência.</p>
+</div></div>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Capítulos 7–29</div><div class="rc-title">O Relato do Cosmos — A Estrutura dos Planos</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p><strong>O que acontece:</strong> Quando Jesus retorna no dia seguinte, revestido de sua glória completa, os discípulos estão aterrados e não o reconhecem imediatamente. Jesus acalma-os e começa a descrever a estrutura do cosmos que percorreu — a elaborada geografia espiritual.</p>
+<p>Jesus descreve a Heimarmenê (o Destino/Fado) — as esferas astrológicas — e explica que, antes de sua missão, estas esferas controlavam absolutamente o destino humano. Cada alma nascida era marcada pelas forças do destino conforme as posições dos astros — e estas posições eram governadas pelos arcontes.</p>
+<p><strong>A Reestruturação do Cosmos:</strong> Jesus relata que, ao atravessar as esferas em seu retorno, ele alterou a orientação da Heimarmenê — invertendo a direção de rotação das esferas de modo a reduzir o poder dos arcontes sobre as almas. Este é um dos pontos mais astrológica e cosmologicamente ricos do PS: a ideia de que a missão de Cristo foi uma interferência literal na mecânica cósmica.</p>
+<p><strong>Implicações Astrológicas:</strong> A concepção do PS sobre a Heimarmenê representa uma posição teológica sofisticada em relação à astrologia: os astros e suas posições <em>são</em> reais como influências sobre a alma, mas estas influências são exercidas por entidades arcontais que podem ser transcendidas pelo conhecimento espiritual.</p>
+</div></div>
+
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Capítulos 30–82</div><div class="rc-title">Os Treze Arrependimentos e o Resgate</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p><strong>O que acontece:</strong> Esta é a seção mais extensa do Livro I — e a mais importante. Jesus narra em detalhe a história de Sophia: sua habitação na 13ª região do Éon, a tentação pela falsa luz, sua descida ao Caos e os Treze Arrependimentos. Após cada arrependimento, um discípulo oferece uma interpretação baseada em um salmo bíblico, e Jesus confirma e aprofunda essa interpretação.</p>
+<p><strong>A Estrutura Exegética:</strong> O método hermenêutico do PS é sistemático: para cada arrependimento de Sophia, Jesus identifica uma passagem bíblica — especialmente dos Salmos — como uma "profecia" ou expressão antecipada desse momento cósmico. As Escrituras não são primariamente história ou lei, mas cifras simbólicas de eventos cosmológicos eternos.</p>
+<p><strong>O Papel dos Discípulos como Intérpretes:</strong> Jesus pergunta aos discípulos: "Qual deles compreende o arrependimento de Sophia?" E então o discípulo que se sente capacitado se oferece para interpretar. Este método sugere que a compreensão espiritual não é uniformemente distribuída — diferentes discípulos têm diferentes níveis de acesso a diferentes aspectos do ensinamento.</p>
+</div></div>
+
+<h3 class="subsection">Livro II — Os Mistérios e as Punições dos Arcontes</h3>
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Livro II — Visão Geral</div><div class="rc-title">A Natureza dos Mistérios e das Punições Cósmicas</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p><strong>O que acontece:</strong> O Livro II muda de foco. Sophia foi resgatada das profundezas do Caos e retornou à sua região original — mas ainda não está em condição de plenitude. Jesus e os discípulos debatem a natureza dos Mistérios, a hierarquia das regiões celestes e o processo de purificação que Sophia (e as almas gnósticas) deve completar.</p>
+<p>Uma das seções mais importantes é a descrição das <strong>punições dos arcontes</strong> que atrapalharam Sophia. Jesus descreve como os arcontes que se opuseram ao processo de redenção serão punidos — alguns reduzidos em poder, outros reencarnados em formas degradadas, outros confinados em regiões de trevas específicas.</p>
+<p><strong>Os Mistérios como Iniciação:</strong> O Livro II aprofunda a doutrina dos Mistérios — a estrutura iniciática que o PS propõe como caminho de salvação. Há vários graus: os "Mistérios do Primeiro Mistério", os "Mistérios do Inefável", e os Mistérios dos éons inferiores. Cada grau de iniciação concede ao iniciado acesso a regiões mais elevadas do cosmos após a morte.</p>
+<p><strong>A Função dos Mistérios:</strong> Os Mistérios no PS não são apenas cerimônias rituais — são catalisadores de transformação ontológica. Quando uma alma recebe os "selos" e "mistérios" corretos, ela adquire literalmente a capacidade de traversar as esferas dos arcontes após a morte, pois conhece as "senhas" que permitem a passagem.</p>
+</div></div>
+
+<h3 class="subsection">Livros III e IV — Destino das Almas e Julgamentos</h3>
+<div class="reading-chapter">
+<div class="rc-header" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rc-num">Livros III–IV — Visão Geral</div><div class="rc-title">O Julgamento das Almas, Reencarnação e Punições</div></div><span>▼</span>
+</div>
+<div class="rc-body">
+<p><strong>O que acontece:</strong> Os Livros III e IV representam uma mudança significativa de tom e foco. Enquanto os primeiros dois livros são dominados pelo drama de Sophia, os últimos dois são mais didáticos e sistemáticos, focando no destino das almas após a morte: os julgamentos, as punições nos "loci de punição" do Caos, a reencarnação e as condições para a libertação final.</p>
+<p><strong>O Sistema de Julgamento:</strong> O PS apresenta um elaborado sistema de julgamento pós-morte. Quando uma alma morre, é escoltada pelos "recebedores de Sabaoth" até o Caos, onde é julgada por seus feitos em vida. Dependendo deste julgamento, a alma pode ser: libertada imediatamente (se recebeu os mistérios); enviada para "purgatórios" do Caos; reencarnada imediatamente; ou condenada às Trevas Externas para pecados graves.</p>
+<p><strong>A Doutrina da Reencarnação no PS:</strong> O PS apresenta uma forma específica de metempsicose que é simultaneamente gnóstica e adaptada ao contexto cristão. As almas que não receberam os mistérios são reencarnadas — potencialmente múltiplas vezes — até que encontrem o ensinamento gnóstico. Diferente do karma budista ou hinduísta, a reencarnação no PS não é uma lei natural imparcial, mas é administrada pelos arcontes como instrumento de aprisionamento.</p>
+</div></div>
+</section>
+
+<!-- SEÇÃO VII: CONCEITOS -->
+<section class="section" id="misterios">
+<div class="section-header"><div class="section-icon">🔮</div><div class="section-title-block"><h2>VII. Os Conceitos Fundamentais</h2><p>Mistérios, Luz, Alma, Pecado e Salvação — análise aprofundada</p></div></div>
+
+<h3 class="subsection" id="luz">A Luz — O Conceito Central</h3>
+<p>A <mark class="gold">Luz</mark> (em grego <em>phōs</em>, φῶς; em copta <em>ouwein</em>) é, sem exagero, o conceito mais fundamental de toda a cosmologia e soteriologia do PS. O universo espiritual do PS é, em sua essência mais básica, um drama da Luz — sua emanação, sua fragmentação, seu roubo, sua recuperação e seu retorno final à sua Fonte. O PS opera com uma ontologia luminosa radical: <strong>ser</strong> é sinônimo de <strong>possuir Luz</strong>.</p>
+
+<div class="card-grid">
+<div class="card"><div class="card-icon">☀</div><h4>A Luz do Ineffável</h4><p>A fonte última de toda luz — transcendente e incognoscível. Não é percebida como "iluminação" pelos seres limitados mas como pura Presença além da compreensão.</p></div>
+<div class="card"><div class="card-icon">✨</div><h4>A Luz dos Éons</h4><p>A luz emanada que preenche o Pleroma — criativa, ordenada, compartilhada. Os éons são seres de luz que não precisam "roubar" uns dos outros; há abundância suficiente para todos.</p></div>
+<div class="card"><div class="card-icon">💡</div><h4>A Centelha de Luz nas Almas</h4><p>O "pneuma" ou "faísca divina" aprisionada nos seres humanos — o fragmento de Sophia que os arcontes aprisionaram na matéria. É esta centelha que a gnose busca reconhecer e resgatar.</p></div>
+<div class="card"><div class="card-icon">🕯</div><h4>A Luz Roubada pelos Arcontes</h4><p>Os arcontes subsistem roubando a luz das almas que atravessam suas esferas. Esta luz roubada alimenta o "sistema cósmico" de aprisionamento — daí a urgência gnóstica de libertar as centelhas.</p></div>
+</div>
+
+<h3 class="subsection" id="alma">A Alma Humana — Estrutura e Destino</h3>
+<p>A antropologia do PS é tripartite. O ser humano é constituído de três componentes:</p>
+<p><strong>1. O Pneuma (Espírito):</strong> A "centelha divina" — o fragmento de Sophia ou de luz do Pleroma aprisionado na matéria. Este é o componente genuinamente divino — e é o que a gnose busca libertar. Não todos os humanos possuem um pneuma igualmente desenvolvido; os "pneumáticos" (gnósticos) têm uma centelha mais brilhante e mais facilmente ativada.</p>
+<p><strong>2. A Psyche (Alma):</strong> O componente intermediário — a sede da memória, das emoções, do caráter moral. A psyche é formada pelos arcontes a partir de suas próprias substâncias, e por isso carrega as inclinações que os arcontes plantaram. A psique é o terreno de batalha entre a luz do pneuma e as trevas da matéria.</p>
+<p><strong>3. A Antimimon Pneumatos (A Contrafação do Espírito):</strong> Elemento exclusivo do PS. A "Contrafação do Espírito" é implantada nas almas pelos arcontes para espioná-las e para levá-las de volta ao circuito do karma. É a "voz" dos arcontes dentro do ser humano — o que os modernos poderiam chamar de ego, sombra, ou superego de origem externa.</p>
+
+<div class="callout callout-crimson">
+<p class="callout-title">⚠️ A Antimimon Pneumatos — O Espião dos Arcontes</p>
+<p>Esta entidade é única no PS e representa uma das suas contribuições mais originais à antropologia gnóstica. A "Contrafação do Espírito" é implantada pelos arcontes em cada alma que desce ao mundo material. Ela não é simplesmente a tendência ao pecado — é uma entidade semi-autônoma que trabalha ativamente para os interesses dos arcontes.</p>
+<p>Suas funções: fazer a alma esquecer sua origem divina; incitá-la a pecar (o que alimenta os arcontes de luz); espionar a alma e relatar aos arcontes sobre qualquer gnose que ela possa estar recebendo; e, após a morte, testemunhar contra a alma no julgamento dos arcontes. A libertação desta Contrafação é um aspecto central do processo de iniciação nos Mistérios.</p>
+</div>
+
+<h3 class="subsection" id="reencarnacao">Destino das Almas — O Circuito de Reencarnações</h3>
+<p>O PS apresenta um dos sistemas de reencarnação e destino pós-morte mais detalhados da literatura gnóstica. O processo funciona da seguinte maneira:</p>
+<p><strong>Morte e Julgamento:</strong> Quando uma alma morre, os "recebedores de Sabaoth" vêm buscá-la. A conduzem pelas esferas dos arcontes até os "loci de julgamento" no Caos. Lá, a "Contrafação do Espírito" testifica sobre os pecados da alma, e os "recebedores" avaliam a quantidade de luz acumulada ou perdida durante sua vida.</p>
+<p><strong>A Copa do Esquecimento:</strong> Uma das imagens mais fascinantes do PS (ressoando com o mito grego do rio Letes) é a Copa do Esquecimento. Antes de reencarnação, a alma bebe desta copa — e esquece sua existência anterior, seus sofrimentos no Caos e qualquer gnose que possa ter recebido. Este esquecimento é apresentado como instrumento dos arcontes para perpetuar o ciclo de aprisionamento.</p>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Tipo de Alma</th><th>Destino Imediato</th><th>Reencarnação</th><th>Destino Final</th></tr></thead>
+<tbody>
+<tr><td>Alma que recebeu os Mistérios</td><td>Ascensão direta pelo Pleroma</td><td>Não necessária</td><td>Reintegração ao Tesouro da Luz</td></tr>
+<tr><td>Alma justa sem Mistérios</td><td>Região de descanso na "Direita"</td><td>Reencarnada em família justa</td><td>Potencial de receber Mistérios</td></tr>
+<tr><td>Alma com pecados moderados</td><td>Purgatórios do Caos</td><td>Após purificação, reencarnada</td><td>Ciclos múltiplos até purificação</td></tr>
+<tr><td>Alma blasfema</td><td>Regiões profundas do Caos</td><td>Em forma animal ou corpo defeituoso</td><td>Múltiplos ciclos de purificação intensa</td></tr>
+<tr><td>Alma praticante de magia negra</td><td>Trevas Externas</td><td>Destruição da alma (annihilationism)</td><td>Dissolução total — cessação de existência</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- SEÇÃO VIII: PARALELOS -->
+<section class="section" id="paralelos">
+<div class="section-header"><div class="section-icon">⚖</div><div class="section-title-block"><h2>VIII. Paralelos Religiosos e Comparações</h2><p>O Pistis Sophia no contexto de outras tradições e textos sagrados</p></div></div>
+
+<h3 class="subsection" id="nag-hammadi">Comparação com os Textos de Nag Hammadi</h3>
+<p>A descoberta de Nag Hammadi em 1945–1947 revolucionou os estudos gnósticos ao fornecer um corpus de textos diretamente comparáveis ao Pistis Sophia. Antes desta descoberta, o PS era estudado quase no vácuo — após ela, tornou-se possível posicioná-lo dentro do ecossistema mais amplo da literatura gnóstica egípcia.</p>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Texto</th><th>Tradição</th><th>Paralelo com PS</th><th>Diferença Principal</th></tr></thead>
+<tbody>
+<tr><td>Apocryphon de João</td><td>Setiana</td><td>Cosmologia similar; Barbelo; queda de Sophia; Ialdabaoth</td><td>Não tem forma dialógica pós-ressurreição; mais "mitológico"</td></tr>
+<tr><td>Evangelho de Maria</td><td>Gnóstico geral</td><td>Primazia de Maria Madalena; pedagogia pós-ressurreição</td><td>Muito mais curto; sem a elaborada cosmologia do PS</td></tr>
+<tr><td>Evangelho da Verdade</td><td>Valentiniana</td><td>Queda do Erro personificado; redenção pelo Cristo</td><td>Filosoficamente mais refinado; menos cosmológico</td></tr>
+<tr><td>A Exegese da Alma</td><td>Gnóstico geral</td><td>Alma feminina que cai e é resgatada pelo consorte divino</td><td>Muito mais breve; alegórico em vez de cosmológico</td></tr>
+<tr><td>Zostrianos</td><td>Setiana</td><td>Viagem ascendente pelos éons e regiões do Pleroma</td><td>Forma de apocalipse de ascensão; não dialógico</td></tr>
+<tr><td>Alógenes</td><td>Setiana</td><td>Revelações sobre o Inefável e hierarquias do Pleroma</td><td>Mais filosófico e neoplatônico em orientação</td></tr>
+</tbody></table></div>
+
+<h3 class="subsection" id="enoque">Paralelos com o Livro de Enoque</h3>
+<p>O <mark class="teal">Livro de Enoque</mark> (1 Enoque), texto judeu apocalíptico dos séculos III–I a.C., apresenta algumas das conexões mais fascinantes com o Pistis Sophia. Os paralelos principais incluem: a estrutura de viagens celestiais com descrições detalhadas de regiões e seus habitantes; a noção de anjos decaídos (os "Vigilantes" de Enoque) como equivalentes funcionais dos arcontes gnósticos; a preocupação com o julgamento das almas e os destinos pós-morte; e a figura do visionário que recebe revelações sobre a estrutura do cosmos.</p>
+<p>A diferença crucial é teológica: em Enoque, os anjos decaídos corrompem a humanidade por atos externos (ensinar artes proibidas, gerar gigantes). No PS, a corrupção é cósmica e ontológica — os arcontes não corrompem do exterior, mas aprisionam a centelha divina no interior do ser humano desde o momento da criação.</p>
+
+<h3 class="subsection" id="neoplatonismo">Paralelos com o Neoplatonismo de Plotino</h3>
+<p>A relação entre o PS e o Neoplatonismo é particularmente rica. Ambos emergem do mesmo ambiente intelectual — o Egito greco-romano do século III d.C. — e compartilham preocupações filosóficas fundamentais. Plotino escreveu um tratado específico criticando os gnósticos (<em>Contra os Gnósticos</em>, Enéada II.9), o que sugere que conhecia sistemas similares ao PS.</p>
+<p>O ponto de maior convergência é a cosmologia emanacionista: tanto Plotino quanto o PS descrevem um cosmos gerado por emanações hierárquicas a partir de um princípio supremo absolutamente uno e transcendente. Ambos têm uma Alma do Mundo (Psyche tou Kosmou / Sophia) que, ao "olhar para baixo" em direção à matéria, se afasta do contemplar do Uno e gera um mundo inferior.</p>
+<p>A diferença crucial é axiológica: para Plotino, este processo é <strong>necessário e não trágico</strong> — a Alma <em>deve</em> descer para animar o mundo material, e este descenso é parte da ordem cósmica perfeita. Para o PS, o descenso de Sophia é um <strong>erro trágico</strong> que precisa ser corrigido — e o mundo material resultante é uma <em>prisão</em>, não uma obra-de-arte divina.</p>
+
+<h3 class="subsection" id="cabala">Paralelos com a Cabala e a Alquimia</h3>
+<p>As conexões entre o PS e a tradição <mark class="violet">Cabalística</mark> são estruturais e profundas. A questão é se ambos compartilham raízes comuns na especulação judaica tardia sobre a Merkavah (a "Carruagem" divina) e sobre o Pleroma (que na Cabala se tornará o <em>Ein Sof</em> e as <em>Sefirot</em>).</p>
+<p><strong>Sophia / Chokhmah:</strong> O paralelo mais óbvio é entre a Sophia gnóstica e a Sefirah <em>Chokhmah</em> (Sabedoria) da Árvore da Vida cabalística. Em ambos os sistemas, a Sabedoria é a primeira emanação do Infinito. E em ambos, há uma dimensão "inferior" da Sabedoria (<em>Sophia inferior</em> no PS / <em>Binah</em> como limitação de Chokhmah na Cabala) que está mais próxima da matéria.</p>
+<p>Na <mark class="gold">Alquimia</mark>, os paralelos com o PS são especialmente ricos em simbolismo. A <em>Nigredo</em> alquímica — a fase inicial de dissolução e escurecimento — corresponde à queda de Sophia nas trevas do Caos. A <em>Albedo</em> — purificação e iluminação progressiva — corresponde aos arrependimentos e ao processo de ascensão. A <em>Rubedo</em> — a realização final — corresponde ao retorno de Sophia ao Pleroma e à obtenção da gnose perfeita pelo iniciado.</p>
+</section>
+
+<!-- SEÇÃO IX: ESOTERISMO -->
+<section class="section" id="esoterico">
+<div class="section-header"><div class="section-icon">🌙</div><div class="section-title-block"><h2>IX. Interpretações Esotéricas Modernas</h2><p>Do Ocultismo Vitoriano ao Esoterismo Contemporâneo</p></div></div>
+
+<h3 class="subsection" id="teosofia">A Tradição Teosófica — Blavatsky e Mead</h3>
+<p>A influência sistemática do PS no esoterismo ocidental moderno começa com o movimento <mark class="gold">Teosófico</mark> fundado por Helena Petrovna Blavatsky (1831–1891) em 1875. Blavatsky, em sua monumental obra <em>A Doutrina Secreta</em> (1888), faz múltiplas referências ao Gnosticismo em geral e a Sophia em particular — apresentando o sistema gnóstico como uma preservação parcialmente autêntica de uma "Teosofia Antiga" universal.</p>
+<p>Foi <mark class="teal">G.R.S. Mead</mark> (1863–1933) — secretário particular de Blavatsky e membro central da Sociedade Teosófica — quem realizou o trabalho mais sistemático de popularização do PS no contexto esotérico ocidental. Sua tradução inglesa de 1896 (revisada em 1921), acompanhada de extenso comentário interpretativo, foi a porta de entrada para gerações de estudiosos esotéricos ao texto.</p>
+<p>Mead interpretava o PS através de uma lente sintética que fundia o Gnosticismo com o Budismo, o Hinduísmo, o Hermetismo e a Teosofia de Blavatsky. Para ele, a história de Sophia era uma expressão velada da doutrina da <em>Emanação</em> e do <em>Involution-Evolution</em> teosófico: o espírito descendo à matéria (involução) para eventualmente ascender de volta ao espiritual (evolução), enriquecido pela experiência.</p>
+
+<h3 class="subsection" id="jung">Carl Gustav Jung — A Interpretação Psicológica</h3>
+<p>A contribuição de <mark class="gold">Carl Gustav Jung</mark> (1875–1961) para a interpretação do PS e do Gnosticismo em geral é monumental e controversa. Jung via nos textos gnósticos uma expressão simbólica dos processos profundos da psicologia do inconsciente — e desenvolveu uma interpretação do mito de Sophia que influenciaria profundamente tanto a psicologia analítica quanto o esoterismo moderno.</p>
+<p>Para Jung, a queda de Sophia é um símbolo da <strong>dinâmica da projeção inconsciente</strong>. O "olhar para baixo" de Sophia, atraída pela falsa luz de Autodades, representa o mecanismo pelo qual o ego se perde ao projetar o divino em objetos que não o são — confundindo o arquétipo com o evento concreto, o símbolo com a realidade que ele representa.</p>
+<p>O processo dos treze arrependimentos corresponde, na perspectiva junguiana, ao processo de <strong>individuação</strong> — o caminho pelo qual o ser humano reconhece progressivamente suas projeções, integra o conteúdo inconsciente e se aproxima da totalidade do Si-mesmo (Self). Os arcontes que aprisionam Sophia são os <strong>complexos autônomos</strong> — partes da psique que se desligam do eu consciente e exercem poder sobre ele.</p>
+
+<div class="callout callout-violet">
+<p class="callout-title">🧠 Correspondências Junguianas no Pistis Sophia</p>
+<p><strong>Sophia ↔ Anima</strong> — a alma feminina da psique / princípio da psique profunda</p>
+<p><strong>O Primeiro Mistério / Inefável ↔ O Self</strong> — a totalidade psíquica</p>
+<p><strong>Os Arcontes ↔ Os Complexos / as sombras autônomas</strong></p>
+<p><strong>A Antimimon Pneumatos ↔ A Sombra / O ego inflado</strong></p>
+<p><strong>A Centelha de Luz ↔ O Núcleo do Self / a centelha divina da psique</strong></p>
+<p><strong>O Caos ↔ O Inconsciente Pessoal e Coletivo</strong></p>
+<p><strong>Os 13 Arrependimentos ↔ As etapas do processo de individuação</strong></p>
+<p><strong>O Retorno ao Pleroma ↔ A realização do Self — a totalidade consciente integrada</strong></p>
+</div>
+
+<h3 class="subsection" id="samael">Samael Aun Weor e o Gnosticismo do Séc. XX</h3>
+<p><mark class="gold">Samael Aun Weor</mark> (1917–1977), pseudônimo do colombiano Víctor Manuel Gómez Rodríguez, fundou um movimento gnóstico internacional no século XX que continua ativo globalmente. Sua interpretação do PS é profundamente influenciada pela Teosofia de Blavatsky, pelo Martinismo e por elementos do Yoga Tântrico indiano — resultando em um sistema sintético que usa a terminologia gnóstica do PS para descrever um sistema de <strong>alquimia sexual</strong>.</p>
+<p>Para Samael, os "Mistérios" do PS não são apenas iniciações rituais ou espirituais — são práticas concretas de transformação da energia sexual. A "luz" que Sophia perdeu é a energia kundalini, e os Arcontes são os egos psicológicos (desejo, orgulho, ira, inveja, etc.) que consomem esta energia. A redenção de Sophia é, portanto, o despertar da kundalini através da prática do <em>Maithuna</em>. Esta interpretação é academicamente controversa, mas captura algo genuinamente presente no PS: a centralidade da energia, a doutrina das emanações e a transformação da substância luminosa como meio de salvação.</p>
+
+<h3 class="subsection" id="ordens">Ordens Iniciáticas e o Pistis Sophia</h3>
+<p>Numerosas ordens iniciáticas e sociedades esotéricas do século XIX e XX incorporaram elementos do PS em seus sistemas. A <mark class="teal">Ordo Templi Orientis (O.T.O.)</mark>, especialmente na reformulação de Aleister Crowley, incorporou conceitos gnósticos diretamente derivados do PS em sua "Gnóstica Missa" (Liber XV). A figura de Babalon (em Crowley) é derivada em parte da Sophia gnóstica.</p>
+<p>A <mark class="violet">Ecclesia Gnostica</mark> e várias igrejas gnósticas independentes que emergiram a partir do final do século XIX utilizam o PS como texto litúrgico e doutrinário central. Os Treze Arrependimentos são recitados em cerimônias, e a cosmologia do PS informa a teologia sacramental de muitas destas comunidades.</p>
+<p>A <mark class="gold">Fraternitas Saturni</mark>, a ordem alemã do início do século XX, incorporou elementos da astrologia cósmica do PS — especialmente a doutrina dos arcontes planetários — em seu sistema iniciático e em suas práticas rituais. A correspondência entre arcontes e planetas tornava o PS um texto diretamente aplicável ao trabalho mágico com as esferas planetárias.</p>
+</section>
+
+<!-- SEÇÃO X: COMO LER -->
+<section class="section" id="como-ler">
+<div class="section-header"><div class="section-icon">🧭</div><div class="section-title-block"><h2>X. Como Ler o Pistis Sophia</h2><p>Guia para a abordagem ao texto — dificuldades, armadilhas e métodos interpretativos</p></div></div>
+
+<p>Abordar o Pistis Sophia pela primeira vez pode ser uma experiência desconcertante. O texto assume um nível considerável de conhecimento prévio, usa terminologia técnica sem sempre a definir, e alterna entre narrativa, liturgia, exegese e instrução doutrinária de maneiras que não seguem as convenções literárias a que os leitores modernos estão habituados.</p>
+
+<h3 class="subsection">As Principais Dificuldades do Texto</h3>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Dificuldade 1: A Repetição Deliberada</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>O PS repete os mesmos eventos e descrições múltiplas vezes — frequentemente com pequenas variações. Para o leitor moderno habituado à narrativa linear, esta repetição parece descuido. Na verdade, é estrutural e pedagógica. A repetição no PS opera em dois níveis: primeiro, como método de instrução — o ensinamento aprofunda-se gradualmente através das repetições, como uma espiral que passa pelo mesmo ponto em níveis cada vez mais profundos. Segundo, como evidência da compilação editorial — o PS é claramente um texto compilado a partir de múltiplas fontes, e algumas repetições refletem versões paralelas de um mesmo evento.</p>
+</div></div>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Dificuldade 2: A Terminologia Técnica</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>O PS usa uma terminologia técnica densa — mistura de grego (transliterado ou traduzido para o copta), copta nativo e termos hebraicos ou semíticos. Termos como "Primeiro Mistério", "Tesouro da Luz", "Antimimon Pneumatos", "Heimarmenê", "recebedores", "destinadores" têm significados técnicos precisos que precisam ser aprendidos gradualmente. O recomendável para o leitor iniciante é ler primeiro uma introdução acadêmica sólida — como a de Violet Macdermot em sua tradução de 1978, ou a análise de Alastair Logan — que contextualize a terminologia antes de mergulhar no texto primário.</p>
+</div></div>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Dificuldade 3: O Problema das Camadas Textuais</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>O PS não é um texto de autoria única e coerente — é um compilado de materiais de origens diferentes, provavelmente reunidos por um ou mais editores no curso de séculos. Os estudiosos identificam pelo menos duas ou três camadas distintas dentro dos quatro livros, com vocabulário, preocupações teológicas e estilos literários ligeiramente diferentes. Esta natureza compilada significa que o texto por vezes parece contradizer-se — o que tem levado alguns intérpretes a dificuldades desnecessárias ao tentar harmonizar tudo. A posição mais sã é reconhecer as inconsistências como evidências de camadas redacionais múltiplas.</p>
+</div></div>
+
+<div class="expandable" onclick="this.classList.toggle('open')">
+<div class="expandable-header"><h4>⬇ Dificuldade 4: A Hermenêutica Gnóstica dos Salmos</h4><span class="expandable-arrow">▼</span></div>
+<div class="expandable-content">
+<p>Uma das características mais distintivas do PS é o seu método sistemático de interpretar os Salmos do Antigo Testamento como "profecias" dos eventos cósmicos que descreve. Para o leitor não familiarizado com os Salmos, estas seções podem parecer áridas e redundantes. Para o leitor que conhece os Salmos profundamente, elas revelam a sofisticação do método exegético gnóstico — uma relectura radical das Escrituras que as transforma de texto histórico-litúrgico em mapa simbólico de eventos cósmicos eternos.</p>
+</div></div>
+
+<h3 class="subsection">Como Estudiosos e Ocultistas Leem o Texto</h3>
+<div class="compare-grid">
+<div class="compare-col"><h4>🎓 Leitura Acadêmica</h4><ul>
+<li>Foco na análise histórico-crítica do texto</li>
+<li>Identificação de camadas redacionais</li>
+<li>Comparação com textos contemporâneos</li>
+<li>Análise linguística do copta e seus pressupostos gregos</li>
+<li>Contextualização no Gnosticismo do séc. II–IV</li>
+<li>Ceticismo sobre "verdades ocultas"</li>
+<li>Pergunta: o que o texto diz sobre a religiosidade do período?</li>
+</ul></div>
+<div class="compare-col"><h4>🔮 Leitura Esotérica</h4><ul>
+<li>Foco no significado simbólico e iniciático</li>
+<li>Aplicação das categorias do PS a processos espirituais pessoais</li>
+<li>Identificação com Sophia como arquétipo da alma em jornada</li>
+<li>Os Mistérios como práticas rituais reais ou meditativas</li>
+<li>A cosmologia como mapa da experiência espiritual interior</li>
+<li>Interesse em recuperar a tradição gnóstica como prática viva</li>
+<li>Pergunta: como este texto pode transformar quem o lê?</li>
+</ul></div>
+</div>
+
+<div class="callout callout-gold">
+<p class="callout-title">📚 Sequência de Leitura Recomendada</p>
+<p><strong>1ª Etapa:</strong> Leia uma introdução ao Gnosticismo geral — sugestão: <em>The Gnostic Religion</em> de Hans Jonas, ou <em>Gnosis</em> de Kurt Rudolph — para familiarizar-se com o universo conceitual.</p>
+<p><strong>2ª Etapa:</strong> Leia textos gnósticos mais acessíveis de Nag Hammadi — especialmente o <em>Evangelho de Tomé</em> e o <em>Apocryphon de João</em> — antes de abordar o PS.</p>
+<p><strong>3ª Etapa:</strong> Leia a tradução de Mead do PS com seus extensos comentários — mesmo que discorde da interpretação teosófica, é uma excelente introdução ao texto.</p>
+<p><strong>4ª Etapa:</strong> Aborde a tradução acadêmica de Macdermot para uma leitura mais rigorosa.</p>
+<p><strong>5ª Etapa:</strong> Retorne ao texto com as ferramentas hermenêuticas adequadas e leia como um todo — agora capaz de perceber a estrutura, os temas recorrentes e as tensões internas.</p>
+</div>
+</section>
+
+<!-- SEÇÃO XI: GLOSSÁRIO -->
+<section class="section" id="glossario">
+<div class="section-header"><div class="section-icon">📚</div><div class="section-title-block"><h2>XI. Glossário Completo</h2><p>Termos gregos, coptas e técnicos do Pistis Sophia e do Gnosticismo</p></div></div>
+
+<div class="glossary-grid">
+<div class="glossary-item"><div class="glossary-term">Aeon (Éon)</div><div class="glossary-orig">αἰών (aiōn) — grego: "eternidade", "era"</div><div class="glossary-def">Entidade divina que habita o Pleroma. No PS, os éons são emanações do Ineffável e constituem a hierarquia do realm divino. Diferem dos arcontes por serem seres de luz pura sem mistura de trevas.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Antimimon Pneumatos</div><div class="glossary-orig">ἀντίμιμον πνεῦμα — grego: "contrafação do espírito"</div><div class="glossary-def">A "falsa cópia" do espírito divino implantada pelos arcontes em cada alma humana. É o instrumento dos arcontes para espionar a alma, incitá-la ao pecado e testemunhar contra ela no julgamento pós-morte. Elemento exclusivo e original do PS.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Archon (Arconte)</div><div class="glossary-orig">ἄρχων (árchōn) — grego: "governante", "príncipe"</div><div class="glossary-def">Entidades que governam as regiões inferiores do cosmos. São subprodutos da queda de Sophia e parasitam a luz das almas para manter seu poder. Diferentemente dos éons, são seres de trevas com apenas fragmentos de luz roubada.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Barbelo</div><div class="glossary-orig">Βαρβηλώ — origem semítica debatida</div><div class="glossary-def">A Mãe divina suprema — a primeira emanação do Padre Invisível. Equivalente à Mater Admirabilis, à Madre Divina. No PS, ela habita as regiões mais elevadas do Tesouro da Luz e é o arquétipo de toda feminilidade sagrada.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Chaos (Caos)</div><div class="glossary-orig">χάος (cháos) — grego: "abismo", "vazio"</div><div class="glossary-def">No PS, o Caos não é apenas desordem mas um reino real — a região de trevas habitada pelos arcontes inferiores, onde Sophia ficou aprisionada e onde as almas são purificadas (ou punidas) após a morte.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Demiurge (Demiurgo)</div><div class="glossary-orig">δημιουργός (dēmiurgós) — grego: "artesão público"</div><div class="glossary-def">O criador do mundo material — uma divindade inferior e frequentemente ignorante ou malévola. No PS, identificado principalmente com Ialdabaoth. Criou o mundo a partir da substância luminosa de Sophia misturada com trevas.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Gnosis</div><div class="glossary-orig">γνῶσις (gnōsis) — grego: "conhecimento"</div><div class="glossary-def">Não conhecimento intelectual comum, mas conhecimento experiencial e salvífico da própria origem divina. A gnose é o que liberta a alma das amarras dos arcontes — o reconhecimento de que a faísca de luz dentro do ser humano é idêntica ao Divino Supremo.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Heimarmenê</div><div class="glossary-orig">εἱμαρμένη (heimarménē) — grego: "o que foi distribuído"</div><div class="glossary-def">O Destino ou Fado — as esferas astrológicas e os arcontes que as habitam. No PS, a Heimarmenê é o sistema de determinismo cósmico que os arcontes usam para aprisionar as almas em ciclos de reencarnação.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Hyle (Hílico)</div><div class="glossary-orig">ὕλη (hýlē) — grego: "matéria", "madeira"</div><div class="glossary-def">A matéria — o substrato mais baixo do cosmos. Os "hílicos" são os seres humanos dominados pela matéria, sem centelha espiritual significativa. Na doutrina gnóstica, os hílicos são incapazes de salvação.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Ialdabaoth</div><div class="glossary-orig">Ἰαλδαβαώθ — provavelmente aramaico: debates etimológicos</div><div class="glossary-def">O Demiurgo principal nos textos gnósticos — o arconte criador do mundo material. No PS, o governante do Caos mais poderoso e o principal oponente de Sophia. Seu nome tem sido interpretado como "Filho do Caos", "Filho do Deus-pai", ou "Senhor dos Hosts".</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Mysterion (Mistério)</div><div class="glossary-orig">μυστήριον (mystérion) — grego: "mistério", "rito secreto"</div><div class="glossary-def">No PS, refere-se a um rito iniciático concreto que confere ao recipiente a capacidade de ascender pelas esferas dos arcontes após a morte e alcançar o Tesouro da Luz. Há múltiplos graus de Mistérios, do "primeiro" ao "inefável".</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Pleroma</div><div class="glossary-orig">πλήρωμα (plērōma) — grego: "plenitude", "completude"</div><div class="glossary-def">A totalidade do realm divino — o espaço de luz pura onde habitam os éons. Opõe-se ao Kenoma ("vazio") — o mundo material e o Caos. A salvação consiste no retorno da alma e de Sophia ao Pleroma.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Pneuma (Pneumático)</div><div class="glossary-orig">πνεῦμα (pneûma) — grego: "sopro", "espírito"</div><div class="glossary-def">O espírito divino — a centelha luminosa de origem pleromática que habita nos seres humanos "espirituais". Os "pneumáticos" são os gnósticos capazes de receber a gnose e ascender ao Pleroma.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Sophia</div><div class="glossary-orig">Σοφία (Sophía) — grego: "sabedoria"</div><div class="glossary-def">O éon feminino central do sistema gnóstico — a Sabedoria divina que, por um ato de desejo não iluminado, desceu do Pleroma e gerou o cosmos material. No PS, é tanto entidade cósmica específica quanto arquétipo da alma humana em exílio.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Tesouro da Luz</div><div class="glossary-orig">ⲁⲡⲟⲑⲏⲕⲏ ⲙⲡⲟⲩⲟⲉⲓⲛ — copta: "repositório da luz"</div><div class="glossary-def">A região suprema do cosmos — repositório de toda luz divina, sede do Primeiro Mistério. O objetivo final da jornada espiritual no PS é alcançar e ser absorvido no Tesouro da Luz.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Pistis</div><div class="glossary-orig">Πίστις (Pistis) — grego: "fé", "confiança"</div><div class="glossary-def">No contexto do PS, "Pistis" como epíteto de Sophia indica que ela age por fé — desejo de luz sem pleno conhecimento. Também aponta para o fato de que sua salvação depende da fé no Primeiro Mistério. A combinação Pistis-Sophia (Fé-Sabedoria) representa a totalidade do caminho espiritual.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Autodades</div><div class="glossary-orig">Αὐθάδης (Authadēs) — grego: "arrogante", "autocomplacente"</div><div class="glossary-def">O arconte que enganou Sophia — "O Arrogante". Projeta uma falsa luz para atrair Sophia para fora do Pleroma. Representa o princípio do engano espiritual: a ilusão de divindade que atrai a alma para o material.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Kenoma</div><div class="glossary-orig">κένωμα (kénōma) — grego: "vazio", "esvaziamento"</div><div class="glossary-def">O oposto do Pleroma — o "vazio" ou espaço cósmico inferior onde habitam as regiões materiais e o Caos. No PS, o Kenoma é o espaço que existe fora e abaixo da plenitude divina, estruturado pelos arcontes.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Codex Askewianus</div><div class="glossary-orig">Do nome do colecionador Anthony Askew (1722–1774)</div><div class="glossary-def">O nome acadêmico do manuscrito copta que preserva o Pistis Sophia. Atualmente custodiado na British Library como MS Add. 5114. É o único manuscrito completo do PS que sobreviveu.</div></div>
+
+<div class="glossary-item"><div class="glossary-term">Copa do Esquecimento</div><div class="glossary-orig">ⲡⲙⲁ ⲛⲁϩⲉⲧⲉ — copta: "a taça do esquecimento"</div><div class="glossary-def">No PS, a bebida dada pelas almas antes de cada reencarnação para que esqueçam suas existências anteriores. Instrumento dos arcontes para perpetuar o ciclo de aprisionamento. Ressoa com o mito grego do Rio Letes (rio do esquecimento).</div></div>
+</div>
+</section>
+
+<!-- SEÇÃO XII: BIBLIOGRAFIA -->
+<section class="section" id="bibliografia">
+<div class="section-header"><div class="section-icon">📑</div><div class="section-title-block"><h2>XII. Bibliografia e Fontes</h2><p>Obras acadêmicas, esotéricas e textos primários essenciais</p></div></div>
+
+<h3 class="subsection">Textos Primários</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Título</th><th>Editor/Tradutor</th><th>Observação</th></tr></thead>
+<tbody>
+<tr><td>Pistis Sophia (Edição Copta)</td><td>Carl Schmidt (1925)</td><td>Edição crítica do texto copta — a mais importante do período clássico</td></tr>
+<tr><td>Pistis Sophia (Tradução inglesa)</td><td>G.R.S. Mead (1921)</td><td>Primeira tradução inglesa completa; influente no esoterismo</td></tr>
+<tr><td>Pistis Sophia (NHS 9)</td><td>V. Macdermot / C. Schmidt (1978/1984)</td><td>Tradução acadêmica padrão moderna; melhor para estudo rigoroso</td></tr>
+<tr><td>Nag Hammadi Codices</td><td>J.M. Robinson, ed. (1978)</td><td>Os 52 textos de Nag Hammadi — contexto comparativo essencial</td></tr>
+<tr><td>The Gnostic Scriptures</td><td>Bentley Layton (1987)</td><td>Tradução comentada dos principais textos gnósticos</td></tr>
+</tbody></table></div>
+
+<h3 class="subsection">Estudos Acadêmicos Fundamentais</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Obra</th><th>Autor</th><th>Tema</th></tr></thead>
+<tbody>
+<tr><td><em>The Gnostic Religion</em></td><td>Hans Jonas (1958)</td><td>Introdução filosófica clássica ao Gnosticismo</td></tr>
+<tr><td><em>Gnosis und spätantiker Geist</em></td><td>Hans Jonas (1934/1954)</td><td>A análise mais profunda do pensamento gnóstico em alemão</td></tr>
+<tr><td><em>Gnosis</em></td><td>Kurt Rudolph (1977)</td><td>A enciclopédia acadêmica padrão do Gnosticismo</td></tr>
+<tr><td><em>Rethinking "Gnosticism"</em></td><td>Michael Williams (1996)</td><td>Crítica acadêmica da categoria "gnosticismo"</td></tr>
+<tr><td><em>What is Gnosticism?</em></td><td>Karen King (2003)</td><td>Desconstrução histórica do conceito de gnosticismo</td></tr>
+<tr><td><em>Gnostic Truth and Christian Heresy</em></td><td>Alastair Logan (2006)</td><td>Análise do gnosticismo em relação ao cristianismo ortodoxo</td></tr>
+<tr><td><em>The Nag Hammadi Library in English</em></td><td>James Robinson, ed. (1978)</td><td>Tradução padrão de todos os textos de Nag Hammadi</td></tr>
+</tbody></table></div>
+
+<h3 class="subsection">Obras Esotéricas e de Interpretação Espiritual</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Obra</th><th>Autor</th><th>Orientação</th></tr></thead>
+<tbody>
+<tr><td><em>Pistis Sophia — A Gnostic Gospel</em></td><td>G.R.S. Mead (1921)</td><td>Teosófica — a tradução esotérica clássica</td></tr>
+<tr><td><em>Aion — Researches into the Phenomenology of the Self</em></td><td>C.G. Jung (1951)</td><td>Jungiana — análise do Cristo gnóstico e da Sophia</td></tr>
+<tr><td><em>Psychology and Alchemy</em></td><td>C.G. Jung (1944)</td><td>Jungiana — paralelos entre alquimia, gnosticismo e psicologia</td></tr>
+<tr><td><em>The Gnostic Jung</em></td><td>Robert A. Segal, ed. (1992)</td><td>Jungiana — coletânea dos textos jungianos sobre gnosticismo</td></tr>
+<tr><td><em>Sophia: Goddess of Wisdom</em></td><td>Caitlín Matthews (1992)</td><td>Esotérica feminista — análise da Sophia como divino feminino</td></tr>
+<tr><td><em>The Pistis Sophia Unveiled</em></td><td>Samael Aun Weor (1983)</td><td>Gnóstica contemporânea — interpretação através da alquimia sexual</td></tr>
+<tr><td><em>A Doutrina Secreta</em></td><td>Helena P. Blavatsky (1888)</td><td>Teosófica — contexto mais amplo do esoterismo ocidental</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- RODAPÉ -->
+<footer style="background:var(--bg2);border-top:1px solid var(--border);padding:40px 60px;text-align:center;">
+<div style="font-size:2.5rem;margin-bottom:16px;filter:drop-shadow(0 0 12px var(--gold))">☥</div>
+<p style="font-size:0.85rem;color:var(--text-dd);font-style:italic;max-width:600px;margin:0 auto 12px;">
+"E aquele que conhecer a explicação destas palavras ascenderá ao Reino da Luz, e nada do poder dos arcontes o reterá daqui para a eternidade."</p>
+<p style="font-size:0.72rem;color:var(--gold);letter-spacing:0.15em;font-family:'Courier New',monospace;">— PISTIS SOPHIA, LIVRO I</p>
+<div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:24px auto;max-width:400px;"></div>
+<p style="font-size:0.72rem;color:var(--text-dd);letter-spacing:0.1em;">ENCICLOPÉDIA GNÓSTICA DEFINITIVA · PISTIS SOPHIA · CODEX ASKEWIANUS · MS ADD. 5114</p>
+</footer>
+
+</main>
+</div>
+
+<div id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const st=window.pageYOffset||document.documentElement.scrollTop;
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  const p=dh>0?(st/dh)*100:0;
+  document.getElementById('progress-bar').style.width=p+'%';
+  const btn=document.getElementById('scroll-top');
+  if(st>500)btn.classList.add('visible');else btn.classList.remove('visible');
+  updateActiveNav();
+});
+
+function updateActiveNav(){
+  const sections=document.querySelectorAll('section[id],div[id]');
+  const navLinks=document.querySelectorAll('.nav-link');
+  let current='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<150)current=s.id;});
+  navLinks.forEach(l=>{
+    l.classList.remove('active');
+    if(l.getAttribute('href')==='#'+current)l.classList.add('active');
+  });
+}
+
+document.querySelectorAll('.nav-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=link.getAttribute('href').slice(1);
+    const target=document.getElementById(id);
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pistis Sophia Comentado — Códice Esotérico Definitivo</title>
+<style>
+:root{
+  --void:#04020A;--void2:#08051A;--void3:#0C0825;
+  --card:#110D28;--card2:#181232;
+  --amethyst:#6B21A8;--amethyst-l:#A855F7;--amethyst-d:rgba(107,33,168,0.14);
+  --gold:#C48A14;--gold-l:#EEB030;--gold-d:rgba(196,138,20,0.13);
+  --crimson:#881030;--crimson-l:#CC2050;--crimson-d:rgba(136,16,48,0.12);
+  --teal:#0A6060;--teal-l:#14A898;--teal-d:rgba(10,96,96,0.1);
+  --silver:#6878A0;--silver-l:#A8B8D0;
+  --parch:#FFFFFF;--parch-d:rgba(255,255,255,0.96);--parch-dd:rgba(255,255,255,0.92);
+  --border:rgba(196,138,20,0.18);--border2:rgba(107,33,168,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--void);color:var(--parch);
+  font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  line-height:1.9;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 15% 0%,rgba(107,33,168,0.1) 0%,transparent 50%),
+    radial-gradient(ellipse at 85% 100%,rgba(196,138,20,0.07) 0%,transparent 50%);}
+body::before{content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 6% 9%,rgba(196,138,20,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 19% 4%,rgba(221,208,168,0.3) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 34% 14%,rgba(196,138,20,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 52% 7%,rgba(221,208,168,0.35) 0%,transparent 100%),
+    radial-gradient(1px 1px at 71% 18%,rgba(107,33,168,0.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 87% 11%,rgba(221,208,168,0.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 12% 65%,rgba(196,138,20,0.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 78% 72%,rgba(221,208,168,0.2) 0%,transparent 100%);
+  pointer-events:none;z-index:0;animation:sg 14s ease-in-out infinite alternate;}
+@keyframes sg{0%{opacity:0.5}100%{opacity:1}}
+.layout{display:block;min-height:100vh;position:relative;z-index:1;}
+#sidebar{width:0;min-width:0;display:none;background:var(--void2);border-right:1px solid var(--border);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 0;flex-shrink:0;
+  scrollbar-width:thin;scrollbar-color:var(--amethyst-l) var(--void2);}
+#sidebar::-webkit-scrollbar{width:3px;}
+#sidebar::-webkit-scrollbar-thumb{background:var(--amethyst-l);}
+.sb-logo{text-align:center;padding:22px 16px 24px;border-bottom:1px solid var(--border);margin-bottom:12px;}
+.sb-glyph{font-size:2.4rem;display:block;margin-bottom:8px;
+  filter:drop-shadow(0 0 10px var(--gold));animation:gp 6s ease-in-out infinite alternate;}
+@keyframes gp{0%{filter:drop-shadow(0 0 8px var(--gold))}100%{filter:drop-shadow(0 0 22px var(--amethyst-l))}}
+.sb-logo h2{font-size:0.68rem;letter-spacing:0.22em;color:var(--gold);
+  font-family:'Courier New',monospace;text-transform:uppercase;line-height:1.6;}
+.nav-group{margin-bottom:5px;}
+.nav-gt{font-size:0.56rem;letter-spacing:0.28em;color:#EEB030;text-transform:uppercase;
+  padding:8px 20px 3px;font-family:'Courier New',monospace;opacity:0.65;}
+.nav-link{display:block;padding:5px 20px;color:var(--parch-dd);text-decoration:none;
+  font-size:0.76rem;transition:all 0.2s;border-left:2px solid transparent;}
+.nav-link:hover,.nav-link.active{color:var(--gold-l);border-left-color:var(--amethyst-l);
+  background:rgba(196,138,20,0.05);}
+.nav-link.sub{padding-left:32px;font-size:0.71rem;}
+.main{width:100%;max-width:1100px;margin:0 auto;padding:0 0 100px;}
+.hero{background:linear-gradient(160deg,var(--void2) 0%,var(--void3) 50%,rgba(107,33,168,0.1) 100%);
+  border-bottom:1px solid var(--border);padding:88px 64px 68px;position:relative;overflow:hidden;}
+.hero::after{content:'ΠΙΣΤΙΣ ΣΟΦΙΑ';position:absolute;font-size:8rem;
+  color:rgba(196,138,20,0.025);font-family:serif;top:50%;left:50%;
+  transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;}
+.hero-badge{display:inline-block;padding:4px 14px;border:1px solid var(--amethyst-l);
+  color:var(--amethyst-l);font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;
+  font-family:'Courier New',monospace;margin-bottom:20px;border-radius:2px;}
+.hero h1{font-size:clamp(1.7rem,4.5vw,3.8rem);color:var(--gold-l);letter-spacing:0.05em;
+  line-height:1.18;margin-bottom:8px;text-shadow:0 0 40px rgba(196,138,20,0.3);}
+.hero-sub{font-size:0.96rem;color:#FFFFFF;font-style:italic;max-width:700px;line-height:2.1;}
+.hero-meta{display:flex;gap:24px;margin-top:34px;flex-wrap:wrap;}
+.hm{text-align:center;padding:11px 16px;background:rgba(107,33,168,0.07);
+  border:1px solid var(--border);border-radius:3px;}
+.hm .val{font-size:1.3rem;color:var(--amethyst-l);font-family:'Courier New',monospace;display:block;}
+.hm .lbl{font-size:0.58rem;color:var(--parch-dd);letter-spacing:0.15em;text-transform:uppercase;}
+/* MAIN SECTIONS */
+.section{padding:62px 80px 46px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.sh{display:flex;align-items:center;gap:16px;margin-bottom:40px;}
+.si{font-size:1.65rem;width:54px;height:54px;display:flex;align-items:center;
+  justify-content:center;background:var(--amethyst-d);border:1px solid var(--border2);
+  border-radius:3px;flex-shrink:0;}
+.sh h2{font-size:clamp(1.2rem,3vw,1.8rem);color:var(--gold-l);letter-spacing:0.04em;}
+.sh p{font-size:0.82rem;color:rgba(255,255,255,0.85);margin-top:4px;}
+h3.sub{font-size:1.1rem;color:var(--amethyst-l);margin:34px 0 14px;padding-bottom:7px;
+  border-bottom:1px solid var(--border2);}
+h4.ss{font-size:0.96rem;color:var(--teal-l);margin:20px 0 8px;}
+p{margin-bottom:13px;font-size:0.93rem;color:#FFFFFF;}
+p strong{color:#EEB030;}
+
+/* THE QUOTE SYSTEM — Core of this document */
+.passage{background:var(--card);border:1px solid var(--border2);border-radius:6px;
+  margin:24px 0;overflow:hidden;}
+.passage-header{background:var(--card2);padding:12px 18px;display:flex;
+  align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.passage-ref{font-size:0.62rem;color:var(--amethyst-l);letter-spacing:0.18em;
+  text-transform:uppercase;font-family:'Courier New',monospace;}
+.passage-title{font-size:0.88rem;color:#EEB030;font-weight:700;}
+.passage-book{font-size:0.68rem;color:rgba(255,255,255,0.8);}
+.passage-text{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.passage-text blockquote{
+  font-style:italic;color:#FFFFFF;font-size:0.94rem;line-height:2.05;
+  padding-left:18px;border-left:3px solid var(--gold);
+  background:rgba(196,138,20,0.04);padding:14px 18px;border-radius:0 4px 4px 0;}
+.passage-text blockquote cite{
+  display:block;margin-top:10px;font-size:0.7rem;color:var(--gold);
+  font-style:normal;letter-spacing:0.12em;}
+.analysis{padding:20px 24px;}
+.analysis-tabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px;}
+.a-tab{font-size:0.6rem;padding:3px 10px;border-radius:20px;border:1px solid;
+  cursor:pointer;transition:all 0.2s;font-family:'Courier New',monospace;
+  letter-spacing:0.08em;text-transform:uppercase;}
+.a-tab.active,.a-tab:hover{background:var(--amethyst-l);border-color:var(--amethyst-l);color:white;}
+.a-tab{color:var(--amethyst-l);border-color:var(--border2);}
+.analysis-content{font-size:0.88rem;color:#FFFFFF;line-height:1.94;}
+.analysis-content h5{color:var(--gold-l);font-size:0.82rem;margin:12px 0 6px;
+  font-family:'Courier New',monospace;letter-spacing:0.1em;text-transform:uppercase;}
+.analysis-content p{font-size:0.86rem;margin-bottom:10px;color:#FFFFFF;}
+.analysis-block{background:rgba(107,33,168,0.06);border:1px solid var(--border2);
+  border-radius:4px;padding:14px 16px;margin:12px 0;}
+.analysis-label{font-size:0.6rem;color:var(--amethyst-l);letter-spacing:0.2em;
+  text-transform:uppercase;font-family:'Courier New',monospace;margin-bottom:8px;display:block;}
+.expand-analysis{cursor:pointer;} 
+.exp-btn{display:flex;align-items:center;gap:6px;padding:8px 0;color:var(--gold);
+  font-size:0.75rem;letter-spacing:0.1em;font-family:'Courier New',monospace;
+  text-transform:uppercase;border:none;background:none;cursor:pointer;}
+.exp-content{display:none;padding-top:10px;}
+.exp-content.open{display:block;}
+
+/* ARREPENDIMENTOS */
+.repentance-card{border:1px solid;border-radius:8px;margin-bottom:24px;overflow:hidden;}
+.rep-hd{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:background 0.2s;}
+.rep-hd:hover{background:rgba(107,33,168,0.15);}
+.rep-num{font-size:0.62rem;color:var(--amethyst-l);letter-spacing:0.2em;text-transform:uppercase;font-family:'Courier New',monospace;margin-bottom:3px;}
+.rep-title{font-size:0.92rem;color:#FFFFFF;font-weight:600;}
+.rep-body{padding:22px;display:none;}
+.rep-body.open{display:block;}
+
+/* MISC */
+.callout{padding:16px 20px;border-radius:4px;margin:18px 0;border:1px solid;}
+.ca{border-color:var(--amethyst-l);background:var(--amethyst-d);}
+.cg{border-color:var(--gold);background:var(--gold-d);}
+.ct-t{font-size:0.64rem;letter-spacing:0.22em;text-transform:uppercase;
+  font-family:'Courier New',monospace;margin-bottom:8px;}
+.ca .ct-t{color:var(--amethyst-l)}.cg .ct-t{color:var(--gold);}
+.callout p{font-size:0.85rem;margin-bottom:7px;color:#FFFFFF;}
+.callout p:last-child{margin-bottom:0;}
+.tw{overflow-x:auto;margin:18px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+th{background:var(--card2);color:var(--gold);padding:9px 13px;text-align:left;
+  font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+td{padding:8px 13px;border-bottom:1px solid rgba(255,255,255,0.05);color:#FFFFFF;vertical-align:top;}
+td:first-child{color:var(--gold-l);font-weight:600;}
+mark.g{background:rgba(196,138,20,0.2);color:var(--gold-l);padding:1px 4px;border-radius:2px;}
+mark.v{background:rgba(107,33,168,0.2);color:var(--amethyst-l);padding:1px 4px;border-radius:2px;}
+mark.t{background:rgba(10,96,96,0.2);color:var(--teal-l);padding:1px 4px;border-radius:2px;}
+#pbar{position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--amethyst-l));z-index:9999;transition:width 0.1s;}
+#stb{position:fixed;bottom:30px;right:30px;width:42px;height:42px;background:var(--card2);
+  border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;font-size:1rem;color:var(--gold);z-index:1000;
+  opacity:0;transition:opacity 0.3s;}
+#stb.vis{opacity:1;}
+@media(max-width:900px){#sidebar{display:none;}.section{padding:38px 20px;}.hero{padding:48px 20px 40px;}}
+</style>
+</head>
+<body>
+<div id="pbar" style="width:0%"></div>
+<div class="layout">
+
+<main class="main">
+<div class="hero">
+<div class="hero-badge">☽ Volume II · Exegese de Trechos · Códice Comentado</div>
+<h1>Pistis Sophia Comentado</h1>
+<p style="font-style:italic;color:var(--amethyst-l);font-size:0.85rem;letter-spacing:0.1em;margin:8px 0 16px;">Volume II — Atlas de Trechos, Passagens e Análises Profundas</p>
+<p class="hero-sub">Este segundo volume é inteiramente dedicado ao texto do Pistis Sophia em si — suas citações, passagens, hinos, arrependimentos e diálogos, cada um comentado com análise filosófica, esotérica, psicológica e hermenêutica. É uma exegese colossal: o texto fala primeiro, a análise responde.</p>
+<div class="hero-meta">
+<div class="hm"><span class="val">200+</span><span class="lbl">trechos comentados</span></div>
+<div class="hm"><span class="val">13</span><span class="lbl">arrependimentos analisados</span></div>
+<div class="hm"><span class="val">4</span><span class="lbl">livros do texto</span></div>
+<div class="hm"><span class="val">∞</span><span class="lbl">camadas de sentido</span></div>
+</div></div>
+
+<!-- SEÇÃO I: INTRODUÇÃO -->
+<section class="section" id="intro">
+<div class="sh"><div class="si">📜</div><div>
+<h2>I. Introdução — A Arte da Exegese Gnóstica</h2>
+<p>Como ler o Pistis Sophia linha por linha — o método comentarial iniciático</p>
+</div></div>
+
+<p>Este volume parte de um princípio simples mas radical: <mark class="g">o texto deve falar primeiro</mark>. Não há compreensão verdadeira do Pistis Sophia que não passe pelo encontro direto com suas palavras — suas imagens, seu ritmo, seus paradoxos, sua extraordinária linguagem limiar entre o cosmológico e o psicológico, entre o litúrgico e o filosófico.</p>
+
+<p>A exegese que se segue é estruturada em cinco níveis simultâneos, que a tradição judaica de interpretação textual (conhecida como PaRDeS — Pardes, que significa "pomar" ou "jardim") nos ensina a distinguir sem separar:</p>
+
+<div class="callout ca">
+<p class="ct-t">📐 Os Cinco Níveis da Exegese do Pistis Sophia</p>
+<p><strong>1. Peshat (Literal):</strong> O que o texto diz diretamente — a narrativa de superfície, o sentido gramatical e histórico da passagem.</p>
+<p><strong>2. Remez (Alegórico):</strong> O que o texto sugere — os símbolos, as imagens, as alegorias que apontam para realidades não-literais.</p>
+<p><strong>3. Derash (Exegético):</strong> O que o texto implica — as conexões com outros textos sagrados, os paralelos míticos e religiosos, as aplicações éticas e práticas.</p>
+<p><strong>4. Sod (Místico/Iniciático):</strong> O que o texto oculta — os significados que requerem iniciação, os ensinamentos esotéricos que o texto cifra deliberadamente.</p>
+<p><strong>5. Psico-cosmológico (nosso acréscimo):</strong> O que o texto revela sobre a estrutura da consciência — como cada passagem funciona como espelho da psique humana, mapa da experiência interior, guia de transformação.</p>
+</div>
+
+<h3 class="sub" id="metodologia">Metodologia Exegética Aplicada</h3>
+<p>Para cada trecho do Pistis Sophia, a análise que se segue neste volume aplicará, quando relevante, as seguintes perguntas fundamentais:</p>
+<p><strong>Quem fala?</strong> O texto do PS é um drama de vozes — Jesus, Sophia, Maria Madalena, Pedro, os discípulos. Cada voz carrega seu próprio peso simbólico e iniciático. A voz de Jesus não é igual à de Sophia; a pergunta de Maria não é igual à de Pedro.</p>
+<p><strong>Em que contexto cosmológico?</strong> O PS é um texto de localização precisa no espaço espiritual. Uma passagem sobre "o Caos" tem um sentido completamente diferente de uma sobre "o Tesouro da Luz". O espaço cósmico é o contexto interpretativo.</p>
+<p><strong>Qual função iniciática?</strong> O PS não é apenas especulação cosmológica — é um manual de prática. Cada revelação tem uma função: preparar a alma para a jornada, equipá-la com "senhas" e "selos", transformar a compreensão de si mesma.</p>
+<p><strong>Que paralelos iluminam?</strong> O PS existe em diálogo constante com a tradição judaica (Salmos especialmente), o gnosticismo contemporâneo (Valentinianismo, setianismo), o platonismo médio, o hermetismo e a alquimia. Os paralelos não são decorativos — são estruturais.</p>
+</section>
+
+<!-- SEÇÃO II: TRECHOS FUNDAMENTAIS -->
+<section class="section" id="fundamentais">
+<div class="sh"><div class="si">⭐</div><div>
+<h2>II. Trechos Fundamentais Comentados</h2>
+<p>As passagens centrais do Pistis Sophia — texto e análise profunda</p>
+</div></div>
+
+<h3 class="sub" id="abertura">A Abertura do Pistis Sophia — Capítulo 1</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div>
+<div class="passage-ref">Livro I · Capítulo 1 · Abertura</div>
+<div class="passage-title">A Temporalidade dos Ensinamentos — 11 Anos de Instrução</div>
+</div>
+<div class="passage-book">PS Cap. 1</div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E aconteceu depois que Jesus ressuscitou dos mortos, que ele passou onze anos conversando com seus discípulos, e ensinando-lhes somente até às regiões do Primeiro Mandamento e até às regiões do Primeiro Mistério, aquele que está dentro do Véu, dentro do Primeiro Mandamento, que é o vigésimo-quarto mistério, de fora e de dentro — aquele que está no segundo espaço do Primeiro Mistério, que está antes de todos os mistérios, o Pai sob a forma de uma pomba."
+<cite>— Pistis Sophia, Livro I, Capítulo 1 (trad. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>Análise Literal — O Que o Texto Diz</h5>
+<p>A abertura do PS estabelece imediatamente um <mark class="g">paradoxo temporal extraordinário</mark>: Jesus, após a ressurreição, permanece 11 anos com os discípulos. Esta afirmação contradiz diretamente os relatos canônicos (que descrevem 40 dias e a Ascensão) e é a primeira declaração de que este texto opera num registro diferente do dos evangelhos canônicos. Aqui não é a história exotérica — é a instrução esotérica que o Cristo glorificado oferece aos seus iniciados mais próximos.</p>
+<h5>Análise Simbólica — O Número 11</h5>
+<p>Os 11 anos de instrução não são arbitrários. 11 é o número da iniciação no sistema qabalístico (11 Sefirot quando Daath é incluída; 11 = a passagem além do 10 da completude). Mas nestes 11 anos, Jesus ensina apenas os "exteriores" — o Primeiro Mandamento, o Primeiro Mistério em seu aspecto externo. O texto que se segue é a revelação do <mark class="v">interior do interior</mark> — o que está além do Véu que separa os mistérios externos dos internos.</p>
+<h5>O "Vigésimo-Quarto Mistério"</h5>
+<p>A referência ao "vigésimo-quarto mistério" é uma das estruturas hierárquicas mais intrigantes do PS. Os estudiosos identificaram pelo menos três conjuntos de mistérios no texto: mistérios externos (os primeiros), mistérios internos (os segundos), e os mistérios do Inefável (os mais elevados). O "vigésimo-quarto" indica uma posição específica dentro desta hierarquia — suficientemente elevado para ser o objeto de 11 anos de instrução, mas ainda "dentro do Véu", ainda não o mais secreto.</p>
+<h5>Interpretação Iniciática</h5>
+<p>Para o leitor gnóstico, esta abertura é uma declaração de profundidade: o que se segue não é o ensinamento para iniciantes (que foi dado nos 11 anos de instrução pós-ressurreição descrita pelos evangelhos canônicos). É o <mark class="g">ensinamento dos iniciados avançados</mark> — aqueles que já receberam os mistérios externos e estão prontos para os internos. O texto se auto-posiciona como o documento mais secreto e mais elevado da tradição cristã gnóstica.</p>
+<h5>O "Pai sob Forma de Pomba"</h5>
+<p>A imagem do Pai como pomba é uma referência ao Batismo de Jesus (Marcos 1:10 — "E logo, saindo da água, viu os céus se abrindo, e o Espírito como pomba descendo sobre ele"). No PS, esta imagem é ressignificada: a pomba não é o Espírito Santo (terceira pessoa da Trindade ortodoxa), mas o Pai em uma das suas formas de manifestação dentro da hierarquia dos mistérios. É uma transposição cosmológica da imagem canônica para dentro da estrutura gnóstica.</p>
+</div></div></div>
+
+<h3 class="sub" id="descida">A Descida e Ascensão de Jesus — O Atravessamento das Esferas</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div>
+<div class="passage-ref">Livro I · Capítulo 2–4 · A Transformação</div>
+<div class="passage-title">Jesus Atravessa as Esferas e Recebe as Vestes de Luz</div>
+</div>
+<div class="passage-book">PS Cap. 2–4</div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E aconteceu, quando o sol se levantou no oriente, que uma grande força de luz desceu, na qual eu estava, e a força iluminou grandemente o lugar onde eu estava sentado. Quando eu olhei para a força de luz que havia descido sobre mim, encontrei-a na forma de uma vestimenta de luz muito brilhante, e toda a sua luz era incomparavelmente grande. Era um mistério de mistérios, e era o interior do Véu do Tesouro da Grande Luz, de modo que eu nem sequer poderia descrevê-lo."
+<cite>— Pistis Sophia, Livro I, Cap. 2 — Jesus descrevendo sua transformação (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Momento da Revelação — Meio-dia e Oriente</h5>
+<p>A transformação de Jesus acontece quando o sol se levanta no oriente — o símbolo universal de iluminação, nascimento, início. O oriente (Leste) é a direção da aurora, da luz que vence a escuridão, do início de cada ciclo. No sistema qabalístico, o Leste corresponde ao caminho entre Chokmah e Binah — a Sabedoria que encontra a Compreensão. A iluminação de Jesus é, portanto, uma aurora cósmica — não um evento temporal, mas uma viagem estrutural no cosmos.</p>
+<h5>A "Vestimenta de Luz" — O Símbolo Central do PS</h5>
+<p>A <mark class="g">vestimenta de luz</mark> é um dos símbolos mais recorrentes e mais carregados do Pistis Sophia. Em grego, o conceito de vestimenta (<em>endyma</em> ou <em>stolē</em>) tem peso filosófico: é aquilo que reveste, que manifesta externamente uma qualidade interna. Mas no PS, a vestimenta de luz é mais do que um símbolo — é uma <mark class="v">substância ontológica</mark>, algo que se "veste" e que transforma quem a veste.</p>
+<p>No contexto gnóstico mais amplo, a "vestimenta de luz" pode ser rastreada ao conceito de "vestimenta de glória" (<em>malbush ha-kavod</em>) da tradição mística judaica Merkavah, onde o visionário que ascende ao Trono Divino precisa ser revestido de uma vestimenta luminosa para suportar a visão da Glória. Jesus recebe esta vestimenta como sinal de sua elevação ao mais alto grau de iniciação — o "Interior do Véu do Tesouro".</p>
+<h5>Paralelo com o Êxodo e a Transfiguração</h5>
+<p>O rosto de Moisés que brilha após seu encontro com Deus no Sinai (Êxodo 34:29–35) e a Transfiguração de Jesus no Monte (Mateus 17:2 — "E foi transfigurado diante deles; e a sua face resplandeceu como o sol") são os paralelos canônicos mais próximos. O PS expande estes momentos de brilho em uma cosmologia completa: não é apenas o rosto ou o corpo que brilha, mas toda a estrutura ontológica de Jesus é revestida de luz de diferentes graus e naturezas.</p>
+<h5>Interpretação Hermética</h5>
+<p>No Corpus Hermeticum (especialmente o Poimandres), o visionário que ascende pelos planos cósmicos progressivamente "deposita" aspectos do ego material e "veste" atributos espirituais mais elevados. O processo de Jesus no PS é o inverso — ele desceu para ascender novamente, revestindo-se de cada camada de luz que havia depositado na descida. Isto é o processo alquímico da <em>albedo</em> — o embranquecimento, a purificação que precede a síntese final da <em>rubedo</em>.</p>
+</div></div></div>
+
+<div class="passage">
+<div class="passage-header">
+<div>
+<div class="passage-ref">Livro I · Cap. 7–9 · A Inversão das Esferas</div>
+<div class="passage-title">Jesus Inverte a Heimarmenê — A Reestruturação do Cosmos</div>
+</div>
+<div class="passage-book">PS Cap. 7–9</div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E eu achei que Gabriēl e Miguel descenderam do alto para o céu, e tive uma vestimenta que era posta sobre mim. E eu vi toda a luz dos éons reunida. Mas todos os arcontes dos éons foram colocados de cabeça para baixo, e seus poderes e suas ordens e os arcontes das esferas e de todos os éons de suas ordens foram todos enfraquecidos porque o grande Mistério estava em mim. Eles não me conheceram, mas pensaram que eu era o arconte da esfera de luz."
+<cite>— Pistis Sophia, Livro I, Cap. 8 (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Disfarce Divino — A Estratégia do Redentor</h5>
+<p>Esta passagem revela uma das afirmações mais sofisticadas e filosoficamente ricas do PS: Jesus atravessa as esferas dos arcontes <mark class="v">sem ser reconhecido</mark>. Os arcontes — que controlam cada esfera celestial e normalmente "aduaneiriam" qualquer alma que quisesse ascender — não identificam Jesus como o que ele é: o portador do Grande Mistério. Eles o confundem com um arconte menor.</p>
+<p>Esta é a doutrina gnóstica do <mark class="g">Redentor Disfarçado</mark> — presente em múltiplas formas no gnosticismo: no Evangelio de João, onde Jesus desce ao mundo e "o mundo não o conheceu" (João 1:10); no sistema valentiniano, onde o Cristo desce através das esferas embutido numa "vestimenta" que os arcontes não conseguem ver através; na tradição mandaica, onde o mensageiro de luz (<em>manda</em>) desce ao mundo material através de um engano cósmico.</p>
+<h5>O Enfraquecimento dos Arcontes</h5>
+<p>"Todos os arcontes dos éons foram colocados de cabeça para baixo" — esta imagem dramática descreve a inversão da ordem do Destino que Jesus realiza ao atravessar o cosmos. Os arcontes que controlam a Heimarmenê (o Fado/Destino) foram literalmente reorientados, seus poderes sobre as almas humanas enfraquecidos pela passagem do Primeiro Mistério. Esta é a dimensão cosmológica da Redenção: não apenas a salvação de almas individuais, mas a reestruturação do próprio cosmos que as aprisiona.</p>
+<h5>Gabriel e Miguel — Os Anjos como Agentes Cósmicos</h5>
+<p>A menção de Gabriel e Miguel descendo para colocar a vestimenta sobre Jesus é notável. No PS, os anjos não são criações do Deus bíblico — são <mark class="g">agentes do Primeiro Mistério</mark> que operam nos planos intermediários, facilitando a passagem entre regiões. Gabriel e Miguel, os dois anjos mais poderosos da tradição hebraica, são aqui os "portadores da vestimenta" — eles vestem Jesus com cada grau de luz que ele precisa para a descida e a ascensão subsequente.</p>
+</div></div></div>
+
+<h3 class="sub" id="cosmologia-txt">A Cosmologia do PS Através dos Trechos</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div>
+<div class="passage-ref">Livro I · Cap. 12–14 · Estrutura Cósmica</div>
+<div class="passage-title">O Tesouro da Luz e Suas Regiões</div>
+</div>
+<div class="passage-book">PS Cap. 12–14</div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Mas o Tesouro da Grande Luz está além da esfera e de todos os éons, e além do Primeiro Mistério que está dentro do Véu que está em frente do Tesouro da Luz. E é uma grande grande esfera, e existem sete véus dentro dele, e cada véu tem seu arconte-chefe — que é um grande arconte que governa aquele véu."
+<cite>— Pistis Sophia, Livro I, Cap. 12 (cf. Mead/Macdermot)</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"E todas as almas dos homens que receberem os mistérios serão salvas e encontrarão o caminho para o Tesouro da Luz, e herdarão o Tesouro da Luz de acordo com o Mistério que lhes foi dado. E aqueles que não receberem nenhum mistério serão julgados pelos arcontes de acordo com os pecados que cometeram."
+<cite>— Pistis Sophia, Livro II, Cap. 102 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Tesouro da Luz — Ontologia da Plenitude</h5>
+<p>O <mark class="g">Tesouro da Luz</mark> (<em>Thesauros tou Phōtos</em>) é o conceito mais elevado da cosmologia do PS — o equivalente gnóstico do Paraíso, do Nirvana, da Morada do Pai. Mas é muito mais preciso e estruturado do que qualquer um destes equivalentes: é um espaço com arquitetura interna — sete véus, cada um com seu guardião, formando uma progressão de plenitude crescente.</p>
+<p>A estrutura de sete véus é uma das mais ricas do PS. Sete é o número da completude no sistema bíblico (os sete dias da criação), o número dos planetas clássicos, o número das Sefirot da construção (Chesed através de Malkuth na Árvore da Vida). Os sete véus do Tesouro são o sete cósmico em sua versão mais elevada — não os sete planetas que governam o destino material, mas os sete níveis de plenitude divina.</p>
+<h5>Os Arcontes-Chefes dos Véus</h5>
+<p>Surpreendentemente, mesmo no Tesouro da Luz — a região mais elevada — existem "arcontes-chefes" que governam os véus. Isto distingue radicalmente a cosmologia do PS do simples dualismo Luz/Trevas: não há uma ruptura abrupta entre o bem e o mal, mas uma gradação infinita de luz. Os "arcontes" do Tesouro não são malignos — são guardiões legítimos dos graus de plenitude. A palavra grega <em>archon</em> (governante) não implica malevolência per se — apenas autoridade estrutural.</p>
+<h5>Os Mistérios como Passaportes</h5>
+<p>A segunda passagem cita é fundamental para compreender a soteriologia do PS: <mark class="v">os Mistérios são a chave</mark>. As almas que receberam os Mistérios encontram caminho ao Tesouro; as que não receberam são julgadas pelos arcontes. Isto é radicalmente diferente da soteriologia paulina (salvação pela fé) e da salvação por obras do judaísmo. É uma <mark class="g">soteriologia iniciática</mark>: o conhecimento ritual (os Mistérios) como instrumento de libertação.</p>
+<p>Esta é, provavelmente, a afirmação mais polemicamente distante da orthodoxia cristã no texto — e também a mais claramente gnóstica: a salvação não é gratuita, não é pela graça, não é universal. É estruturalmente hierárquica: quem recebeu a iniciação ascende, quem não recebeu enfrenta o julgamento dos arcontes do sistema cósmico.</p>
+</div></div></div>
+</section>
+
+<!-- SEÇÃO III: OS 13 ARREPENDIMENTOS -->
+<section class="section" id="arrependimentos">
+<div class="sh"><div class="si">💧</div><div>
+<h2>III. Os 13 Arrependimentos de Sophia — Texto e Análise Integral</h2>
+<p>Os hinos litúrgicos do exílio divino — cada palavra comentada</p>
+</div></div>
+
+<p>Os Treze Arrependimentos de Sophia constituem a seção mais literariamente elaborada, espiritualmente intensa e hermeneuticamente rica de todo o Pistis Sophia. São composições poéticas que combinam lamento, confissão, clamor e esperança num gênero literário único na história da literatura religiosa — o hino de arrependimento de uma entidade divina.</p>
+
+<div class="callout cg">
+<p class="ct-t">🎵 A Estrutura Litúrgica dos Arrependimentos</p>
+<p>Cada arrependimento segue uma estrutura relativamente consistente: (1) Descrição da situação atual de Sophia no Caos — o lamento; (2) Confissão de culpa ou reconhecimento do erro; (3) Clamor ao Primeiro Mistério por socorro; (4) Memória de condição anterior luminosa; (5) Súplica específica. Esta estrutura é modelada nos Salmos do Antigo Testamento — especialmente nos Salmos de lamento individual (Salmos 22, 69, 71, 130). Jesus depois identifica explicitamente cada arrependimento com um salmo específico, criando uma hermenêutica gnóstica de Escrituras.</p>
+</div>
+
+<!-- ARREPENDIMENTO 1 -->
+<div class="repentance-card" id="arr1" style="border-color:rgba(196,138,20,0.4);background:rgba(196,138,20,0.03)">
+<div class="rep-hd" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'" style="background:rgba(196,138,20,0.08)">
+<div><div class="rep-num">Primeiro Arrependimento</div><div class="rep-title">O Clamor das Profundezas — "Salva-me, ó Luz"</div></div><span>▼</span>
+</div>
+<div class="rep-body">
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 32 · 1º Arrependimento</div>
+<div class="passage-title">Sophia Grita das Profundezas do Caos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Ó Luz das Luzes, em quem eu confiei desde o princípio, ouça minha penitência agora. Salva-me, ó Luz, pois as águas chegaram até a minha alma. Eu estou em um grande caos e trevas, e não há nenhuma luz nele. E se descerei ao Hades, Tu ouves o meu clamor. Que a Tua Luz me salve, pois eu sou no caos. Eu clamo a Ti, ó Luz, enquanto estou nas profundezas do caos e da escuridão. Não desvies a Tua Luz de mim."
+<cite>— Pistis Sophia, Livro I, Cap. 32 — Primeiro Arrependimento de Sophia (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>Contexto — Onde Sophia Está</h5>
+<p>Este primeiro hino é cantado por Sophia nas profundezas mais baixas do Caos — o nadir de sua queda. Ela que habitava a Décima Terceira Região do Éon, imediatamente abaixo do Pleroma, agora está no abismo mais escuro. O texto explicitamente diz que ela está "no caos e nas trevas" — esta é sua realidade fenomenológica imediata quando começa a cantar.</p>
+<h5>Análise Textual — "As Águas Chegaram à Minha Alma"</h5>
+<p>A imagem "as águas chegaram até a minha alma" é diretamente do Salmo 69:1 ("Salva-me, ó Deus, pois as águas chegaram até à alma"). No PS, esta imagem é literalizada cosmologicamente: as "águas" são as forças caóticas do Abismo — o equivalente gnóstico do tehom bíblico (o abismo sem forma do Gênesis 1:2). Sophia está literalmente imersa nestas águas do caos.</p>
+<p>Mas a imagem também funciona psicologicamente: "as águas chegando à alma" descreve a experiência de ser esmagado pela emoção, pelo inconsciente, pelo sofrimento que transcende a capacidade do ego de processar. É a experiência da <mark class="g">crise espiritual profunda</mark> — o que João da Cruz chamou de "noite escura da alma".</p>
+<h5>Interpretação Psicológica — O Ego nas Profundezas do Inconsciente</h5>
+<p>Na perspectiva junguiana, o Primeiro Arrependimento de Sophia descreve o momento em que o ego consciente é completamente inundado pelo conteúdo inconsciente — a "possessão" por complexos autônomos (os arcontes) que fragmentam e aprisionam. "As águas chegaram até a minha alma" é a experiência de alguém que perdeu as ancoragens habituais de identidade e não encontra chão sob os pés.</p>
+<p>O clamor a "a Luz das Luzes" é a voz do Self — o centro mais profundo da psique — que persiste mesmo no colapso do ego. Sophia ainda lembra que há Luz, ainda apela para ela. Esta lembrança, no nível mais escuro da experiência, é o que Jung chamaria de "o fio que conduz de volta ao Si-mesmo".</p>
+<h5>A Identificação com o Salmo — A Hermenêutica Gnóstica</h5>
+<p>Após o hino, Jesus o identifica com o Salmo 69 de Davi: "Ele disse isso em nome de Sophia. E o Senhor interpretou para seus discípulos a palavra que Sophia cantou como seu primeiro arrependimento, dizendo que o profeta Davi tinha profetizado anteriormente sobre Sophia neste salmo."</p>
+<p>Esta identificação revela o método exegético do PS: os salmos do Antigo Testamento não são apenas poesia religiosa humana — são <mark class="v">profecias cósmicas</mark> sobre os dramas eternos do universo espiritual. Davi, ao cantar seus lamentos pessoais, estava inconscientemente articulando os lamentos de Sophia — a alma cósmica cujos sofrimentos se refletem em todos os sofrimentos individuais.</p>
+<h5>O Caminho de Volta — A Esperança no Fundo do Abismo</h5>
+<p>O Primeiro Arrependimento termina não em desespero mas em esperança: "Não desvies a Tua Luz de mim." Sophia ainda confia. Ainda apela. O facto de estar no abismo mais profundo não a silencia — ao contrário, acende nela o clamor mais intenso. Esta é a paradoxia do arrependimento espiritual: é precisamente no ponto mais baixo que a voz mais alta emerge.</p>
+</div></div></div>
+
+</div></div>
+
+<!-- ARREPENDIMENTO 2 -->
+<div class="repentance-card" id="arr2" style="border-color:rgba(107,33,168,0.4);background:rgba(107,33,168,0.03)">
+<div class="rep-hd" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'" style="background:rgba(107,33,168,0.08)">
+<div><div class="rep-num">Segundo Arrependimento</div><div class="rep-title">O Roubo da Luz — "Eles Tomaram a Minha Força"</div></div><span>▼</span>
+</div>
+<div class="rep-body">
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 36 · 2º Arrependimento</div>
+<div class="passage-title">As Forças do Caos Roubam a Luz de Sophia</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Ó Luz, Tu estás rodeada de muita glória, e nisto confio. Não me deixe sem fruição, Ó Luz, pois Tu és o Salvador. Não me deixe afundar por causa dos arcontes que me odeiam. Os arcontes de todos os éons me perseguem. As forças do Leon-faced [Ialdabaoth] me aprisionaram e tomaram minha luz de mim e a consumiram. E por causa disto, o poder que Tu puseste em mim se desgastou, a sua força diminuiu. E o meu poder dentro de mim foi posto em desordem porque não tenho mais a minha veste de luz, e a minha voz foi apagada dentro do alto caos."
+<cite>— Pistis Sophia, Livro I, Cap. 36 — Segundo Arrependimento (cf. Mead/Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Mecanismo do Roubo de Luz</h5>
+<p>O Segundo Arrependimento introduz a <mark class="g">mecânica fundamental da queda</mark>: o roubo de luz pelos arcontes. A força (grego: <em>dynamis</em>) de Sophia está sendo literalmente consumida pelos arcontes que a cercam. Este não é um processo metafórico — para o PS, é uma realidade ontológica: os arcontes, que são entidades geradas de forma aberrante a partir da mistura da luz de Sophia com as trevas do Caos, agora se alimentam da própria fonte da qual emergiram.</p>
+<p>A imagem do "Leon-faced" — o arconte com face de leão — é uma das mais consistentes no gnosticismo setiano (aparece no Apocryphon de João como Ialdabaoth, o Demiurgo). O leão é o símbolo do poder predatório, da força sem sabedoria. O demiurgo com face de leão é o criador que toma o que não criou — que "governa" através da força roubada.</p>
+<h5>A Perda da Veste de Luz</h5>
+<p>"A minha veste de luz" — aqui Sophia lamenta a perda do que é sua essência mais íntima. A veste de luz não é um adorno externo — é a expressão visível de sua natureza luminosa, o corpo glorioso que a identifica como emanação do Pleroma. Perdê-la é como perder a capacidade de ser reconhecida como quem se é — é uma crise de identidade ontológica profunda.</p>
+<p>Na tradição gnóstica, a "veste de luz" tem raízes na literatura judaica apocalíptica: nos <em>Hekhalot Rabbati</em> (literatura mística judaica do misticismo da Merkavah), os visitantes das hostes celestiais precisam de vestimentas especiais de luz para suportar a presença divina. No PS, esta veste não é apenas protetora — é constitutiva da identidade luminosa.</p>
+<h5>Paralelo Alquímico — O Nigredo</h5>
+<p>A perda da veste de luz, o enfraquecimento da força, o aprisionamento no "alto caos" — estas experiências correspondem exatamente ao <mark class="g">Nigredo</mark> alquímico: a fase de escurecimento, dissolução e morte que precede qualquer transformação real. Na alquimia, o nigredo não é o fracasso — é o começo necessário do processo. Sophia no nigredo do segundo arrependimento está, sem saber, iniciando a transformação que culminará em sua glorificação.</p>
+<h5>O Comentário de Jesus — O Salmo 71</h5>
+<p>Jesus identifica este arrependimento com o Salmo 71: "Em Ti, Senhor, eu me abriguei; nunca me deixes envergonhado." A conexão é a súplica de confiança no divino apesar da experiência de ser "apanhado" pelos inimigos. O Salmo 71 é o salmo da velhice e da vulnerabilidade — exatamente a condição de Sophia no caos: vulnerável, diminuída, dependente da intervenção divina que ela ainda confia que virá.</p>
+</div></div></div>
+
+</div></div>
+
+<!-- ARREPENDIMENTO 3 -->
+<div class="repentance-card" id="arr3" style="border-color:rgba(20,168,152,0.4);background:rgba(20,168,152,0.03)">
+<div class="rep-hd" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'" style="background:rgba(10,96,96,0.1)">
+<div><div class="rep-num">Terceiro Arrependimento</div><div class="rep-title">A Responsabilidade — "Eu Sabia, e Mesmo Assim"</div></div><span>▼</span>
+</div>
+<div class="rep-body">
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 41 · 3º Arrependimento</div>
+<div class="passage-title">Sophia Confessa Sua Responsabilidade</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Ó Luz, Tu és a mais poderosa de todas as Luzes, e Tua Luz está em Ti mesma. Tu és a Luz de todos os éons. Não me deixes afundar mais nos trevas profundas, e não abandones a minha Luz para os arcontes-filhos do Authadēs. Pois por causa de Ti eu suportei esses sofrimentos. E por causa da Tua Luz eu me tornei estranha aos meus irmãos, os invisíveis, e aos grandes arcontes, e por causa disto eu moro no caos."
+<cite>— Pistis Sophia, Livro I, Cap. 41 — Terceiro Arrependimento (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Revelação da Motivação Profunda — Por Causa de Ti</h5>
+<p>O Terceiro Arrependimento contém uma das afirmações mais teologicamente significativas de toda a série: "Por causa de Ti eu suportei esses sofrimentos." Sophia não caiu por pura loucura ou capricho — ela caiu buscando a Luz que estava acima dela. Seu erro não foi <mark class="g">o que buscou, mas como</mark> buscou. Ela buscou a Luz suprema, mas foi enganada por uma imitação — a luz de Autodades, o arconte arrogante.</p>
+<p>Esta distinção é fundamental para a teologia do PS: a queda de Sophia não é um pecado moral no sentido convencional — é um erro epistêmico, uma confusão entre a Luz verdadeira e sua imitação. E paradoxalmente, este erro foi motivado pelo mais nobre dos impulsos: o desejo de mais plenitude, de maior união com o Pai da Luz.</p>
+<h5>A Alienação dos "Irmãos" — A Solidão Espiritual</h5>
+<p>"Tornei-me estranha aos meus irmãos, os invisíveis" — Sophia descreve aqui sua condição de <mark class="v">exílio espiritual</mark>. Os "invisíveis" são os outros éons do Pleroma, seus irmãos e irmãs no ser divino. Pela queda, ela se tornou estranha a eles — não porque eles a rejeitaram, mas porque ela agora habita uma região tão diferente da deles que a comunicação se tornou impossível.</p>
+<p>Esta imagem da alienação dos "irmãos espirituais" pela descida ao material é um tema universal nas tradições iniciáticas: o iniciado que adentra o caminho espiritual com seriedade frequentemente experimenta uma forma de alienação de seus laços anteriores — família, amigos, cultura — porque sua perspectiva mudou de forma irrevogável. Sophia que perdeu sua "fraternidade" espiritual ao descer ao Caos é o arquétipo desta experiência.</p>
+<h5>Authadēs — O Arrogante e o Princípio do Ego Inflado</h5>
+<p>Authadēs (<em>Αὐθάδης</em>) é um dos nomes mais reveladores do PS. O termo grego significa literalmente "o autocomplacente", "o arrogante", "aquele que se basta a si mesmo". Ele é o arconte que projetou a falsa luz que atraiu Sophia para fora do Pleroma. Simbolicamente, ele representa o <mark class="g">princípio do ego inflado</mark> — a força que convence a consciência de que ela pode encontrar Deus/Luz por seus próprios meios, sem a orientação correta.</p>
+<p>A "luz de Autodades" é a ilusão espiritual — o brilho do ego espiritual que imita a luz divina mas não a é. Esta é uma advertência profunda para o caminho espiritual: nem toda experiência luminosa é Luz verdadeira. O discernimento — a capacidade de distinguir entre a Luz do Tesouro e a luz de Autodades — é uma das conquistas mais difíceis e mais necessárias da jornada iniciática.</p>
+</div></div></div>
+
+</div></div>
+
+<!-- ARREPENDIMENTOS 4-7 (condensados mas ricos) -->
+<div class="repentance-card" id="arr4-7" style="border-color:rgba(196,138,20,0.3)">
+<div class="rep-hd" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rep-num">Quarto ao Sétimo Arrependimento</div><div class="rep-title">A Espiral da Profundidade — Descida e Esperança Alternadas</div></div><span>▼</span>
+</div>
+<div class="rep-body">
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 46–57 · 4º–7º Arrependimentos</div>
+<div class="passage-title">O Padrão Cíclico — Cada Descida Mais Profunda, Cada Clamor Mais Intenso</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"[4º] Eu direi à minha glória: Tu és a minha salvação, e Tu és a minha força, e só em Ti eu confio. Afasta de mim a força que me prendeu... Olha para minha vergonha e minha angústia, e perdoa todos os meus pecados."
+<cite>— PS, Cap. 46 — 4º Arrependimento</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"[5º] Ó Luz, Tu és o meu pastor e Tu não me abandonarás. Mesmo que eu vá ao meio das sombras da morte, não temerei o mal, pois Tu estás comigo. Tua luz e Tua misericórdia, elas me consolam... Mas, ó Luz, não permitas que Authadēs me derrote completamente, para que eu pereça."
+<cite>— PS, Cap. 50 — 5º Arrependimento</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"[6º] Ouça, ó Luz, o meu arrependimento, e preste atenção à voz das minhas súplicas. Se Tu observares os pecados, quem poderá existir? Mas há misericórdia em Ti... Minha alma confia na Tua Luz; desde as vigílias da manhã, a minha alma aguarda a Tua Luz."
+<cite>— PS, Cap. 53 — 6º Arrependimento</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"[7º] Não permitas que os arcontes que me odeiam se alegrem, ó Luz; aqueles que me aprisionaram sem causa. Porque eu não sei em que eu pequei contra eles. Eles me encheram de trevas. Mas Tu me libertarás, ó Luz, porque Tu és a minha salvação."
+<cite>— PS, Cap. 56 — 7º Arrependimento</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Padrão da Espiral — A Estrutura Psicológica dos Arrependimentos</h5>
+<p>Os arrependimentos 4 a 7 revelam um padrão espiral fascinante: cada um representa uma nova descida mais profunda de Sophia no Caos, alternada com um clamor mais intenso e mais confiante. Não é uma progressão linear de desespero crescente — é uma espiral que aprofunda simultaneamente a crise e a fé.</p>
+<p>O 5º Arrependimento é particularmente notável: claramente modela o Salmo 23 ("O Senhor é o meu pastor") — mas transpõe a experiência do "vale da sombra da morte" para o contexto gnóstico do Caos. Sophia não está passando pelo "vale da sombra da morte" como metáfora — ela está literalmente no Caos, que é o análogo gnóstico do Hades/Sheol bíblico.</p>
+<h5>A Questão da Culpa — "Eu Não Sei em Que Pequei"</h5>
+<p>O 7º Arrependimento contém uma das afirmações mais teologicamente surpreendentes: "Não sei em que eu pequei contra eles [os arcontes]." Isto levanta uma questão profunda: a queda de Sophia foi um pecado ou foi um acidente? A resposta do PS é nuançada: foi um erro epistêmico (confundiu a luz de Autodades com a Luz verdadeira), não uma transgressão moral deliberada. Os arcontes que a aprisionam estão agindo além de qualquer "ofensa" que Sophia lhes tenha feito — eles a aprisionam por sua própria natureza predatória.</p>
+<h5>O Paralelo com Jó</h5>
+<p>A trajetória dos Arrependimentos 4–7 é estruturalmente paralela ao Livro de Jó: um ser justo que sofre sem ter cometido pecado proporcional ao sofrimento, que clama a Deus persistentemente, que questiona a justiça da situação mas nunca abandona a confiança fundamental na divindade. Como Jó, Sophia é uma <mark class="g">testemunha do sofrimento injusto</mark> — e como no caso de Jó, sua persistência na confiança é o que eventualmente produz a intervenção divina.</p>
+</div></div></div>
+
+</div></div>
+
+<!-- ARREPENDIMENTOS 8-13 -->
+<div class="repentance-card" id="arr8-13" style="border-color:rgba(204,32,80,0.3)">
+<div class="rep-hd" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('span').textContent=this.nextElementSibling.classList.contains('open')?'▲':'▼'">
+<div><div class="rep-num">Oitavo ao Décimo Terceiro Arrependimento</div><div class="rep-title">A Ascensão da Esperança — Até o Clamor de Vitória</div></div><span>▼</span>
+</div>
+<div class="rep-body">
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 60–82 · 8º–13º Arrependimentos</div>
+<div class="passage-title">Da Profundeza à Voz de Esperança — O Turning Point</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"[8º] Ó Luz, levanta-me do caos. Reúna minha força a partir dos arcontes que me aprisionaram e reúna meu poder disperso de todos os caos em que eu caí, pois Tu és o meu Salvador... Pois eu soube de perto que Tu me salvarás, pois eu sempre confiei em Ti."
+<cite>— PS, Cap. 60 — 8º Arrependimento</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"[10º] Ó Luz, não deixes para trás minha alma no Caos. Não deixes que os arcontes a cortem. Mas salva-me, Ó Luz, de tudo o que faz mal, e dos que me aprisionaram, e de todos os que me aprisionaram injustamente. Liberta-me dos laços dos arcontes. Pois eu sou Tua, e Tu me criaste, e não deves me abandonar neste caos."
+<cite>— PS, Cap. 66 — 10º Arrependimento</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"[13º] E aconteceu que quando o Primeiro Mistério ouviu Sophia cantando este décimo terceiro arrependimento, ele enviou uma grande luz para ela. E esta luz foi enviada a ela e iluminou o caos ao redor dela, e ela foi guardada pelo poder. E ela viu a luz que estava ao seu redor, e era uma luz muito grande, e Sophia estava muito alegre por causa dela e disse: 'Eu te darei graças, ó Luz, porque tu me salvaste.' E ela cantou um hino de louvor ao Primeiro Mistério."
+<cite>— PS, Cap. 82 — Descrição da Salvação após o 13º Arrependimento</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Turning Point — Do Lamento ao Louvor</h5>
+<p>Os arrependimentos 8 a 13 mostram uma transformação gradual, extraordinariamente bem articulada: Sophia começa a ver luz onde antes havia apenas trevas. Esta não é uma mudança súbita — é uma transformação acumulativa, onde cada arrependimento cria as condições para o próximo grau de abertura.</p>
+<p>No 8º Arrependimento, aparece pela primeira vez uma nota de confiança mais forte: "Eu soube de perto que Tu me salvarás." Esta é uma mudança de qualidade na relação de Sophia com o Primeiro Mistério — de clamor de socorro para afirmação de confiança baseada em algo que ela "soube de perto" — uma espécie de conhecimento intuitivo, de gnose da presença divina mesmo no meio do caos.</p>
+<h5>O 13º Arrependimento — A Conclusão do Ciclo</h5>
+<p>O Décimo Terceiro Arrependimento é o clímax de toda a sequência. O número 13 é semanticamente rico: era o número da Décima Terceira Região do Éon, a região de Sophia — o lugar de onde ela caiu e para onde ela está retornando. A conclusão do 13º Arrependimento com a salvação efetiva é, portanto, um <mark class="g">retorno ao ponto de origem</mark> — mas Sophia que retorna não é a mesma que partiu. Ela foi transformada pela experiência da queda e dos 13 arrependimentos.</p>
+<h5>A Grande Luz Enviada — A Graça Ativa</h5>
+<p>"O Primeiro Mistério enviou uma grande luz para ela" — esta é a estrutura da salvação no PS: não é Sophia que se salva (embora os arrependimentos sejam essenciais), não é ela que encontra o caminho de volta sozinha. É o Primeiro Mistério que envia a luz, que ilumina o caos ao seu redor, que a liberta. A iniciativa final é divina — mas ela só é possível porque Sophia criou as condições para recebê-la através dos 13 arrependimentos.</p>
+<h5>Da Penitência ao Hino de Louvor — A Transformação Ritual</h5>
+<p>A sequência completa dos 13 Arrependimentos é uma liturgia de transformação: começa no lamento mais profundo (1º) e culmina no hino de gratidão (após o 13º). Esta estrutura espelha os grandes rituais de morte e renascimento de todas as tradições iniciáticas: o iniciado "morre" (desce ao caos do ego dissolvido), passa pelo período de transformação (os 13 arrependimentos como processo de purificação), e "renasce" (o louvor após a salvação como primeiro ato da nova identidade transformada).</p>
+</div></div></div>
+
+</div></div>
+</section>
+
+<!-- SEÇÃO IV: FALAS DE JESUS -->
+<section class="section" id="jesus">
+<div class="sh"><div class="si">☀️</div><div>
+<h2>IV. Falas de Jesus Comentadas</h2>
+<p>Os discursos cosmológicos, revelações sobre mistérios e ensinamentos sobre luz e salvação</p>
+</div></div>
+
+<h3 class="sub" id="jesus-misterios">Jesus Sobre os Mistérios e a Hierarquia da Salvação</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 86 · Sobre os Mistérios</div>
+<div class="passage-title">Jesus Explica os Graus dos Mistérios</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E aquele que receber o mistério do Inefável e completar em si mesmo todos os seus tipos e formas — quando ele sair do corpo dos archons, esses arcontes não poderão segurar sua alma, nem nenhuma força nem arconte algum poderá prendê-la. A alma sairá facilmente, passará por todos os arcontes, passará por todos os executores, passará por todos os julgadores, até que chegue ao lugar de seu mistério, e ela ficará em sua herança, no Tesouro da Luz."
+<cite>— Pistis Sophia, Livro I, Cap. 86 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Soteriologia dos Mistérios — Salvo pela Iniciação</h5>
+<p>Esta passagem é a declaração mais clara da soteriologia do PS: <mark class="g">quem recebe o Mistério do Inefável não pode ser retido pelos arcontes</mark>. Esta é uma afirmação de imunidade ontológica — não moral, não emocional, mas estrutural. O iniciado que recebeu os mistérios corretos é literalmente impermeável à autoridade dos arcontes.</p>
+<p>A expressão "completar em si mesmo todos os seus tipos e formas" sugere que a recepção do Mistério não é um evento pontual (como um batismo ou uma ordenação), mas um processo de integração — o Mistério deve ser "completado", vivido, encarnado em toda a estrutura da pessoa. Apenas então ela está completa para a jornada pós-morte.</p>
+<h5>A Passagem pelos Executores e Julgadores</h5>
+<p>"Executores" (<em>paradotai</em> — "entregadores") e "julgadores" (<em>kritai</em>) são as entidades que processam as almas nos planos intermediários após a morte. No sistema do PS, cada camada do cosmos pós-mortem tem suas instâncias burocráticas — uma estrutura que ressoa com os textos egípcios do <em>Livro dos Mortos</em> (onde a alma deve passar por 42 juízes no salão de Maat) e com os textos tibetanos do <em>Bardo Thodol</em> (onde a alma encontra divindades pacíficas e iradas no estado intermediário).</p>
+<h5>Paralelo Hermético — A Ascensão pelos Planos</h5>
+<p>O Poimandres (Corpus Hermeticum Tratado I) descreve um processo idêntico na estrutura: a alma que ascende deposita, em cada esfera planetária, o aspecto correspondente da natureza não-luminosa — até que finalmente, despojada de tudo que não é sua natureza divina, se une ao Uno. No PS, este processo é facilitado pelos Mistérios: eles funcionam como "passaportes" que permitem a passagem direta, sem o processo laborioso de despojamento descripto no Poimandres.</p>
+</div></div></div>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro II · Cap. 100 · Sobre a Hierarquia dos Mistérios</div>
+<div class="passage-title">Jesus Descreve os Três Graus de Mistérios</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"O Mistério do Inefável tem três tipos de herdeiros. O primeiro tipo de herdeiro é aquele que recebe o único mistério do Inefável. O segundo tipo é aquele que recebe o primeiro mistério do Primeiro Mistério. O terceiro tipo é aquele que recebe um dos demais mistérios. Cada tipo de herdeiro tem seu próprio lugar de luz, seu próprio trono de luz, de acordo com o mistério que recebeu."
+<cite>— Pistis Sophia, Livro II, Cap. 100 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Hierarquia Iniciática — Graus de Plenitude</h5>
+<p>Jesus articula aqui uma <mark class="v">hierarquia de destinos pós-morte</mark> baseada no grau de Mistério recebido. Esta estrutura é o equivalente gnóstico das "muitas moradas" no Pai de João 14:2 — mas muito mais explícita: não apenas há múltiplas moradas, há múltiplos <em>graus de plenitude</em> dentro dessas moradas, determinados pelo grau de iniciação recebido em vida.</p>
+<p>Esta estrutura tem consequências profundas para a compreensão do sistema do PS: não é um sistema igualitário de salvação. É uma hierarquia de iluminação — o que o gnosticismo herda das tradições iniciáticas (como os Mistérios de Elêusis, onde havia graus de iniciação com revelações progressivamente mais profundas).</p>
+<h5>Conexão com a Tradição Valentiniana</h5>
+<p>Valentino e seus discípulos descreviam três classes de seres: hílicos (incapazes de salvação), psíquicos (salvos pela fé — os cristãos "comuns") e pneumáticos (completamente salvos pelo gnose — os gnósticos iniciados). O sistema do PS refina esta tripartição: dentro dos pneumáticos, há múltiplos graus de realização dependendo do nível de Mistério recebido.</p>
+</div></div></div>
+
+<h3 class="sub" id="jesus-luz">Jesus Sobre a Natureza da Luz</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 29–30 · A Luz Onipresente</div>
+<div class="passage-title">Jesus Revela a Estrutura da Luz no Cosmos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E há doze espaços de luz e há um Tesouro da Luz que está além deles. Cada luz é diferente da outra luz, e cada espaço de luz é diferente do outro. A luz mais baixa, a mais fraca, é dez mil vezes mais brilhante que a luz solar neste mundo. E a mais alta de todas as luzes é tão grande em comparação com a mais baixa quanto o abismo da vastidão do espaço..."
+<cite>— Pistis Sophia, Livro I, Cap. 29 (cf. Mead)</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"E o Primeiro Mistério que brilha no exterior é chamado de Luz do Tesouro. Ele contém em si mesmo doze agências luminosas de sua herança. No seu interior há o Tesouro que não pode ser medido, no qual habita o grande poder invisível, o grande arquétipo virginal, e os três éons triplos poderosos."
+<cite>— Pistis Sophia, Livro I, Cap. 28 (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Fenomenologia da Luz no PS — Uma Ontologia Luminosa</h5>
+<p>O PS apresenta uma das fenomenologias mais elaboradas da Luz na história do pensamento religioso. A Luz não é uma única substância — é uma hierarquia de substâncias luminosas, cada uma qualitativamente diferente e quantitativamente mais intensa que a anterior. Esta é uma <mark class="g">ontologia gradualista</mark>: o ser real é proporcional ao grau de luminosidade.</p>
+<p>A afirmação de que "a mais baixa de todas as luzes é dez mil vezes mais brilhante que a luz solar" é extraordinariamente reveladora: mesmo no grau mais baixo do cosmos espiritual, a intensidade de realidade é incomparavelmente superior ao que conhecemos no mundo material. O sol — o símbolo máximo de luz e divindade no mundo físico — é uma sombra pálida do menor dos planos espirituais.</p>
+<h5>O "Grande Poder Invisível" e a "Arquétipo Virginal"</h5>
+<p>A menção do "grande poder invisível" e do "grande arquétipo virginal" dentro do Tesouro abre uma dimensão adicional da cosmologia do PS. O "arquétipo virginal" é provavelmente uma referência a Barbelo — a Grande Mãe divina, a "virgem tripla" da tradição setiana — que existe no Tesouro como o modelo original de que todos os seres espirituais são cópias. O conceito de <em>arquétipo</em> (do grego <em>arché</em> + <em>typos</em>) é também o conceito platônico de Forma ou Ideia: o PS está fundindo a cosmologia gnóstica com o platonismo.</p>
+<h5>Paralelo com o Neoplatonismo — Plotino</h5>
+<p>Plotino, no mesmo período em que os textos do PS estavam sendo compostos, descrevia o Uno (a Fonte) como gerando o Nous (Intelecto) que gera a Alma que gera o cosmos material — cada nível menos luminoso que o anterior, mas ainda participante do ser e da luz do Uno. A estrutura dos "doze espaços de luz" mais o Tesouro é a versão gnóstica da hierarquia neoplatônica — mais concreta, mais dramatizada, mais "mitológica", mas estruturalmente análoga.</p>
+</div></div></div>
+
+<h3 class="sub" id="jesus-julgamento">Jesus Sobre o Julgamento das Almas</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro IV · Cap. 132 · O Julgamento</div>
+<div class="passage-title">Jesus Descreve o Destino das Almas no Caos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E quando os arcontes do grande caos e os arcontes da esfera virem que a alma morreu em seus pecados e não completou nenhum mistério — os arcontes do Destino amarram-na e a passam para um dos arcontes abaixo da esfera... Eles a levarão para um rio de fogo no caos, para punição de acordo com os pecados que ela cometeu. E os servos desse arconte atormentarão a alma por um certo tempo de acordo com o pecado que ela cometeu..."
+<cite>— Pistis Sophia, Livro IV, Cap. 132 (cf. Mead)</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"Mas se uma alma recebeu os mistérios e saiu do corpo no qual habitava, e chegou às regiões do caos, cada arconte em cujo lugar ela chegou se afasta e se retira à direita e à esquerda, e a alma passa por eles sem que eles possam detê-la."
+<cite>— Pistis Sophia, Livro IV, Cap. 131 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Mecânica do Julgamento Post-Mortem</h5>
+<p>Estes dois trechos contrastantes revelam o princípio organizador do sistema soteriológico do PS: existe uma mecânica precisa do julgamento pós-morte que pode ser favorável ou desfavorável dependendo do estado da alma. Os arcontes do Destino (<em>Heimarmenê</em>) funcionam como uma espécie de sistema de triagem — eles "amarram" as almas sem mistérios e as encaminham para purificação, enquanto se afastam diante das almas que possuem os mistérios.</p>
+<p>O "rio de fogo no caos" é um dos símbolos mais vívidos do PS e ressoa com múltiplas tradições: o Flegeton do Hades grego (o rio de fogo), o Gehenna do judaísmo tardio (vale de fogo de purificação), o "lago de fogo" do Apocalipse cristão. No PS, este fogo não é eterno — é proporcional ao pecado cometido, uma purificação temporal antes da reencarnação.</p>
+<h5>O Contraste Dramático — Impedidos vs. Não Impedidos</h5>
+<p>A imagem dos arcontes que se "afastam à direita e à esquerda" diante da alma iniciada é de extraordinária beleza dramática: os mesmos seres que atormentam e aprisionam a alma não-iniciada recuam involuntariamente diante da que recebeu os mistérios. Este contraste serve um propósito pedagógico preciso: demonstrar o valor absolutamente concreto e imediato da iniciação.</p>
+<h5>Paralelo com o Livro dos Mortos Egípcio</h5>
+<p>O Livro dos Mortos egípcio contém exatamente a mesma estrutura: o morto que conhece as "palavras de poder" (Heka) e os nomes dos guardiões das portas passa livremente; o que não as conhece é impedido. No PS, os "mistérios" são o equivalente gnóstico cristão destas "palavras de poder" — conhecimento ritual que confere autoridade sobre as forças que governam o pós-morte.</p>
+</div></div></div>
+</section>
+
+<!-- SEÇÃO V: MARIA MADALENA -->
+<section class="section" id="madalena">
+<div class="sh"><div class="si">✨</div><div>
+<h2>V. Maria Madalena no Pistis Sophia — Trechos e Interpretação</h2>
+<p>A discípula suprema — suas perguntas, sua sabedoria e seu papel iniciático</p>
+</div></div>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 17 · Elogio de Maria</div>
+<div class="passage-title">Jesus Elogia Maria como Superior aos Discípulos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Maria Madalena, abençoada entre todas as mulheres sobre a Terra, porque tu serás a completude de todas as completudes e a perfeição de todas as perfeições, pois tu és abençoada além de todas as mulheres da Terra, e serás chamada de Bem-Aventurada em todas as gerações."
+<cite>— Pistis Sophia, Livro I, Cap. 17 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Supremacia de Maria — Uma Declaração Teológica Radical</h5>
+<p>Esta elogio de Jesus a Maria é um dos textos mais extraordinários do corpus gnóstico — e um dos mais controversos do ponto de vista da história do Cristianismo primitivo. "A completude de todas as completudes" (<em>plērōma pantōn plēromaton</em>) é uma afirmação ontológica de alto calibre: Maria não é apenas uma discípula devota — ela é, em termos gnósticos, uma manifestação da Plenitude Divina. Sophia em sua forma mais completa.</p>
+<p>A estrutura "abençoada além de todas as mulheres" ressoa com o elogio de Isabel a Maria (mãe de Jesus) em Lucas 1:42 — mas aqui é aplicado a Maria Madalena, e com uma extensão gnóstica muito mais profunda. A "Bem-Aventurança" de Madalena não é a humildade maternal da Virgem Maria — é a supremacia do conhecimento espiritual direto, da gnose viva.</p>
+</div></div></div>
+
+<h3 class="sub" id="mm-perguntas">As Perguntas de Maria — A Arte da Questão Iniciática</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 19 · A Primeira Grande Pergunta de Maria</div>
+<div class="passage-title">Maria Interpreta o Primeiro Arrependimento de Sophia</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E Maria respondeu na presença de Jesus e disse: 'Meu Senhor, o teu espírito me inspirou, e o meu intelecto me fez entender o que disseste. Portanto ouça enquanto falo sobre o arrependimento que Sophia cantou. Ela encontrou-o escrito no poder que veio do profeta Davi: Salva-me, ó Deus, pois as águas chegaram até a minha alma. Eu afundei na lama profunda, e não há lugar para ficar de pé. Eu vim para as profundezas das águas; e a inundação me cobriu. Clamei até ficar rouco; os meus olhos falharam enquanto eu esperava pelo meu Deus.' E Jesus, ouvindo Maria, disse: 'Excelente, Maria, espiritualmente excelente!'"
+<cite>— Pistis Sophia, Livro I, Cap. 19 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Método de Maria — Gnose como Intuição Imediata</h5>
+<p>Este trecho demonstra o método distintivo de Maria Madalena no PS: ela não faz perguntas simples pedindo informação — ela <mark class="g">oferece interpretações</mark>. Quando Jesus descreve o Primeiro Arrependimento de Sophia, Maria imediatamente o identifica com o Salmo 69 e o cita. Esta não é erudição textual — é intuição gnóstica direta, o "espírito que inspira" e o "intelecto que entende" (combinação de pneuma e nous — as duas faculdades mais elevadas da psique gnóstica).</p>
+<h5>"Espiritualmente Excelente!" — O Elogio de Jesus</h5>
+<p>A resposta de Jesus — "Excelente, Maria, espiritualmente excelente (<em>lian pneumatikē</em>)" — é uma das afirmações mais significativas do texto. "Lian pneumatikē" pode ser traduzido como "completamente espiritual" ou "pura no espírito". É a certificação de Jesus de que Maria opera a partir do nível pneumático mais puro — ela não precisa ser ensinada; ela já sabe. A função dos ensinamentos de Jesus não é dar a ela informação que ela não tem, mas confirmar e aprofundar o que ela já conhece intuitivamente.</p>
+<h5>O Conflito Implícito com Pedro</h5>
+<p>Cada vez que Maria faz uma interpretação e recebe o elogio "espiritualmente excelente!", cria-se um contraste implícito com os outros discípulos — especialmente com Pedro, que em outros momentos do texto reclama que Maria monopoliza o diálogo. Este conflito textual reflete o conflito histórico entre a tradição gnóstica (que reconhecia a autoridade espiritual feminina) e a tradição apostólica em consolidação (que institucionalizava a hierarquia masculina).</p>
+</div></div></div>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 34 · A Pergunta Sobre a Punição</div>
+<div class="passage-title">Maria Pergunta Sobre o Destino das Almas Sem Mistérios</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E Maria se aproximou, caiu diante dos pés de Jesus, e disse: 'Meu Senhor, perdoa-me se te pergunto, pois sou corajosa em te interrogar porque Tua Luz e Tua misericórdia me tornam corajosa. Meu Senhor, será que a alma de um homem que fez o bem em tudo, mas que não conheceu os Mistérios — será que tal alma será privada de herdar o Reino da Luz?' Jesus respondeu a Maria: 'Tal alma não pode herdar o Reino da Luz, mas ela vivirá numa grande paz numa luz abençoada na porção dos justos da esfera.'"
+<cite>— Pistis Sophia, Livro I, Cap. 34 (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Pergunta Mais Difícil — A Justiça da Soteriologia dos Mistérios</h5>
+<p>Esta é uma das perguntas mais corajosas e filosoficamente honestas do texto — e é Maria quem a faz. Ela está questionando implicitamente a justiça do sistema: se um homem virtuoso mas não-iniciado não pode herdar o Reino da Luz, isso não é injusto? A questão é válida e perturbadora.</p>
+<p>A resposta de Jesus é nuançada: a alma virtuosa não-iniciada não vai para o Tesouro da Luz, mas tem "grande paz numa luz abençoada". Não há punição — há uma gradação de destino. Esta resposta é típica da lógica do PS: não é um sistema binário (salvos/condenados), mas uma hierarquia de destinos correspondente à hierarquia de iniciação.</p>
+<h5>"Tua Luz e Tua Misericórdia Me Tornam Corajosa"</h5>
+<p>A frase com que Maria abre sua pergunta é um modelo de relação com o divino: ela é "corajosa" não por arrogância, mas por amor. A Luz e a Misericórdia de Jesus criam o espaço seguro no qual Maria pode fazer perguntas que outros discípulos não ousariam. Este é o modelo gnóstico da relação com o divino: não obediência servil, mas diálogo amoroso onde a questão honesta é bem-vinda.</p>
+</div></div></div>
+
+<h3 class="sub" id="mm-symbol">Simbolismo Feminino — Sophia e Madalena</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro II · Cap. 96 · Pedro vs. Maria</div>
+<div class="passage-title">O Conflito de Gênero Explicitado</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Pedro se levantou e disse a Jesus: 'Meu Senhor, que pena que não possuímos que não podemos suportar essa mulher que ocupa o lugar de todos os nossos irmãos.' E Jesus respondeu e disse a seus discípulos: 'Que aquele cujo espírito é movido a compreender venha à frente e fale. Pedro, tu és sempre iracundo. Agora eu te digo: Aquele que o espírito anima a compreender, que esse venha à frente.'"
+<cite>— Pistis Sophia, Livro II, Cap. 96 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Conflito Pedro-Maria como Drama Teológico</h5>
+<p>Este é o momento mais explícito do conflito entre Pedro e Maria no PS — e a resposta de Jesus é igualmente explícita: ele recusa a objeção de Pedro e reafirma o princípio do espírito sobre a hierarquia de gênero. "Que aquele cujo espírito é movido a compreender venha à frente" — esta é a democracia espiritual do gnosticismo contra a hierarquia institucional do Proto-catolicismo.</p>
+<p>Pedro — aquele sobre o qual Jesus disse "sobre esta pedra edificarei minha Igreja" no evangelho canônico — é aqui caracterizado como "sempre iracundo" e incapaz de compreender a profundidade dos ensinamentos. Maria, a mulher excluída da hierarquia apostólica, é o modelo de compreensão espiritual genuína.</p>
+<h5>O Eco do Evangelho de Maria</h5>
+<p>O Evangelho de Maria (Códice de Berlim, c. séc. II) contém uma estrutura narrativa idêntica: Pedro questiona a autoridade de Maria para transmitir ensinamentos privados de Jesus; Levi (André no PS) defende Maria. Esta consistência entre diferentes textos gnósticos sugere um debate teológico real e persistente no Cristianismo primitivo sobre o papel e a autoridade espiritual das mulheres.</p>
+</div></div></div>
+</section>
+
+<!-- SEÇÃO VI: TRECHOS OBSCUROS -->
+<section class="section" id="obscuros">
+<div class="sh"><div class="si">🌑</div><div>
+<h2>VI. Trechos Mais Obscuros e Difíceis</h2>
+<p>Passagens enigmáticas, paradoxos cosmológicos e linguagem iniciática</p>
+</div></div>
+
+<h3 class="sub" id="antimimon">A Antimimon Pneumatos — O Duplo do Espírito</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 91–92 · A Contrafação</div>
+<div class="passage-title">Jesus Descreve a Antimimon Pneumatos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E os arcontes do Destino nos éons mais baixos têm o poder de plantar nela [na alma] o contrafação do espírito [Antimimon Pneumatos]. E a Antimimon Pneumatos faz com que a alma faça todos os pecados e todas as iniquidades. E ela [a Antimimon Pneumatos] sobe ao arconte do Destino e diz ao arconte o que a alma fez, e o arconte do Destino escreve tudo isso no livro dos mortos."
+<cite>— Pistis Sophia, Livro I, Cap. 91 (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Antimimon Pneumatos — O Conceito Mais Original do PS</h5>
+<p>A <mark class="g">Antimimon Pneumatos</mark> (grego: "a imitação/contrafação do espírito") é uma das contribuições mais originais e perturbadoras do PS para a psicologia espiritual. Esta entidade — implantada pelos arcontes dentro da alma humana — não é simplesmente o "ego" ou a "tendência ao pecado". É algo muito mais específico: um duplo do espírito que <em>age como espião e agente provocador</em> dentro da psique.</p>
+<p>A função da Antimimon Pneumatos é tripla: (1) incitar a alma a pecar — e cada pecado alimenta os arcontes com energia luminosa da alma; (2) espionar a alma e reportar seus movimentos aos arcontes; (3) testemunhar contra a alma no julgamento pós-morte. É, literalmente, um <em>infiltrado divino</em> que os arcontes plantaram dentro de cada ser humano.</p>
+<h5>Paralelos Psicológicos — O Superego e o Crítico Interno</h5>
+<p>Em termos psicológicos freudianos, a Antimimon Pneumatos tem estrutura do <mark class="v">Superego</mark> em seu aspecto mais destrutivo — não a voz da consciência moral genuína (que seria o Pneuma/Espírito), mas a voz punitiva, crítica e policiante que se originou na introjeção de autoridades externas (os "arcontes" culturais e familiares). O Superego freudiano, como a Antimimon, não serve os interesses do self — serve os interesses de uma autoridade externa internalizada.</p>
+<p>Numa leitura jungiana, é a Sombra em seu aspecto mais autônomo — não a Sombra como simplesmente o "lado escuro" reprimido, mas como um complexo que agiu independentemente e sabota o crescimento do ego consciente.</p>
+<h5>A Libertação da Antimimon — Os Mistérios como Exorcismo</h5>
+<p>O PS implica que a recepção dos Mistérios inclui um processo de identificação e neutralização da Antimimon Pneumatos. O iniciado que recebe os mistérios recebe, junto com eles, a capacidade de distinguir entre seu Espírito verdadeiro e a contrafação — e de agir a partir do Espírito em vez da contrafação. Esta é a libertação essencial que os Mistérios oferecem.</p>
+</div></div></div>
+
+<h3 class="sub" id="copa">A Copa do Esquecimento</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro IV · Cap. 144 · A Copa do Esquecimento</div>
+<div class="passage-title">As Almas Bebem o Esquecimento Antes de Reencarnar</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E quando o arconte puniu a alma, ele a entregará ao receptor do recipiente do esquecimento. E o receptor dará à alma uma copa cheia com a água do esquecimento da fonte dos recebedores de Sabaoth, o Bom. E essa fonte está no exterior da esfera. E a alma beberá dessa copa e esquecerá todos os lugares para os quais foi e todas as punições que sofreu. E essa copa com a água do esquecimento se torna o corpo da alma exteriormente. E ela não sabe para onde vai, nem o que aconteceu com ela."
+<cite>— Pistis Sophia, Livro IV, Cap. 144 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Copa do Esquecimento — O Instrumento do Karma Inconsciente</h5>
+<p>Este é um dos trechos mais filosoficamente ricos do PS sobre a mecânica da reencarnação. A "água do esquecimento" não é simplesmente o apagamento da memória — ela é descrita como algo que "se torna o corpo da alma exteriormente". Isto é revelador: o esquecimento não é apenas um estado mental, é uma substância que envolve a alma como um involucro material, condicionando sua próxima existência.</p>
+<p>O eco com o mito grego do Rio Letes (o rio do Esquecimento no Hades, do qual as almas bebem antes de reencarnar) é óbvio. Mas o PS acrescenta uma camada adicional: este esquecimento não é uma misericórdia (como poderia ser interpretado no contexto grego), mas um instrumento dos arcontes para perpetuar o ciclo de aprisionamento. A alma que esquece não pode aprender — e não pode escapar.</p>
+<h5>"Ela Não Sabe Para Onde Vai" — A Condição do Ignorante</h5>
+<p>A frase final — "ela não sabe para onde vai, nem o que aconteceu com ela" — descreve a condição existencial da humanidade ordinária no sistema do PS. A maioria dos seres humanos está neste estado: vivendo sem memória de vidas anteriores, sem compreensão de seu aprisionamento, sem consciência dos arcontes que administram seu destino. Esta é a <mark class="g">ignorância fundamental</mark> (grego: <em>agnōsia</em>) que a gnose vem curar.</p>
+<p>A cura gnóstica é precisamente o oposto da copa do esquecimento: a gnose é a "bebida do conhecimento" que desperta a memória da origem divina, que rompe o ciclo de esquecimento imposto pelos arcontes, que permite à alma "saber para onde vai".</p>
+</div></div></div>
+
+<h3 class="sub" id="trevas">As Trevas Externas</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro IV · Cap. 146 · A Pena Máxima</div>
+<div class="passage-title">Jesus Descreve as Trevas Exteriores</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Haverá lá choro e ranger de dentes dos dentes. E todas as almas que estão nas trevas externas terão seus demônios que as atormentarão e os punirão por causa de toda a sua malícia que cometeram. E eles nunca cessarão de sofrer, e nunca encontrarão misericórdia, e nunca terão paz para além das trevas."
+<cite>— Pistis Sophia, Livro IV, Cap. 146 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Herança dos Evangelhos Canônicos</h5>
+<p>A expressão "choro e ranger de dentes" é uma das fórmulas mais reconhecíveis dos evangelhos canônicos (Mateus 8:12, 13:42, 22:13, etc.) — e sua presença aqui demonstra que o PS, apesar de toda sua originalidade gnóstica, preserva elementos da tradição sinótica que a comunidade que o produziu ainda venerava. A diferença crucial: nos evangelhos, o "choro e ranger de dentes" é o destino de quem foi excluído do festim do Reino; no PS, é o destino específico de almas condenadas às Trevas Externas por pecados específicos e graves.</p>
+<h5>O que São as "Trevas Externas" — O Abismo Além do Sistema</h5>
+<p>As "Trevas Externas" do PS não são simplesmente o Inferno cristão. São algo mais específico e mais aterrorizante: estão <mark class="v">além</mark> do sistema cósmico inteiro — fora das esferas, fora do Caos, fora de qualquer estrutura que o Primeiro Mistério tenha criado. São o "exterior absoluto" — a negação de toda estrutura, toda luz, toda possibilidade de relação com o divino.</p>
+<p>A implicação é que as almas nas Trevas Externas estão fora do alcance de qualquer redenção possível — não porque Deus as abandonou, mas porque elas criaram para si mesmas uma condição ontológica incompatível com qualquer relação com a Luz. Esta é uma das afirmações mais sombrias do PS e a mais próxima do conceito de danação eterna — embora mesmo aqui o texto seja ambíguo quanto à eternidade.</p>
+</div></div></div>
+</section>
+
+<!-- SEÇÃO VII: MAPA COSMOLÓGICO VIA TRECHOS -->
+<section class="section" id="mapa">
+<div class="sh"><div class="si">🌌</div><div>
+<h2>VII. Mapa Cosmológico Através dos Trechos</h2>
+<p>Construindo o cosmos do PS através das próprias palavras do texto</p>
+</div></div>
+
+<h3 class="sub" id="pleroma-txt">O Pleroma — Via os Trechos</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Vários — Síntese das Passagens sobre o Pleroma</div>
+<div class="passage-title">A Estrutura do Pleroma Conforme o PS</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"E há ao redor do Primeiro Mistério um grande espaço chamado de 'O Anterior ao Primeiro Espaço', e nesse espaço estão doze Éons, e doze éons dentro deles, e um grande Éon que é o principal deles. E cada éon tem suas próprias regiões, e cada região tem seu arconte-chefe. E no interior do espaço dos doze éons há o Lugar de Sophia, que é a décima-terceira região."
+<cite>— PS, Livro I (síntese de cap. 12–15)</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"E dentro do Interior do Véu do Tesouro da Luz há o Grande Mistério Inefável, e o Interior do Interior, que é o Primeiro Mistério do Primeiro Mistério, no qual habita o Pai sob a forma de uma pomba. E este interior é cercado por três éons triplos-poderosos e pelo Grande Arquétipo Invisível."
+<cite>— PS, Livro I, Cap. 13 (cf. Macdermot)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Estrutura Concêntrica do Cosmos do PS</h5>
+<p>Montando o cosmos do PS a partir de seus próprios trechos, emerge uma estrutura <mark class="g">concêntrica</mark> — como cebolas de luz aninhadas umas dentro das outras, com o Inefável no centro mais profundo e o mundo material na camada mais externa. A estrutura que os trechos revelam:</p>
+<div class="tw"><table>
+<thead><tr><th>Camada</th><th>Descrição no PS</th><th>Paralelo</th></tr></thead>
+<tbody>
+<tr><td>Interior absoluto</td><td>"O Pai sob forma de pomba" — o Inefável</td><td>Ain Sof / O Uno neoplatônico</td></tr>
+<tr><td>Tesouro da Luz</td><td>Com 7 véus, arcontes-chefes em cada véu</td><td>Kether / As 7 Sefirot superiores</td></tr>
+<tr><td>Os 12 Éons superiores</td><td>Cada um com suas próprias regiões</td><td>As 12 portas da Cidade Santa</td></tr>
+<tr><td>A 13ª Região (Sophia)</td><td>O lugar de onde Sophia desceu</td><td>Daath / O limiar do Abismo</td></tr>
+<tr><td>O Espaço Intermediário</td><td>Habitado pelos "24 Invisíveis"</td><td>O mundo das formas platônicas</td></tr>
+<tr><td>A Heimarmenê</td><td>As 12 esferas do Destino</td><td>As esferas planetárias ptolemaicas</td></tr>
+<tr><td>O Caos</td><td>Onde Sophia ficou aprisionada</td><td>O Hades / Sheol / Inconsciente profundo</td></tr>
+<tr><td>As Trevas Externas</td><td>"Fora" de todo o sistema</td><td>O Abismo sem fundo / Apofático puro</td></tr>
+</tbody></table></div>
+</div></div></div>
+
+<h3 class="sub" id="caos-txt">O Caos — As Trevas como Lugar Real</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro I · Cap. 29–30 · O Caos Descrito</div>
+<div class="passage-title">Jesus Descreve as Habitações do Caos</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"O caos é uma espaço de escuridão e nele habitam os arcontes que são os chefes do caos. E dentro do caos há um leão com a face de um bode, e um bode com a face de um leão, e há serpentes e basiliscos e dragões que habitam no caos. E esses seres aprisionam Sophia e a atormentam. E elas são menores no poder que as forças da Esfera, mas mais cruéis em seu tormento."
+<cite>— PS, Livro I, síntese de cap. 30-31 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>A Bestiário do Caos — Simbologia das Criaturas Híbridas</h5>
+<p>As criaturas híbridas do Caos — leão com face de bode, bode com face de leão, dragões, basiliscos — são um bestiário simbólico extraordinariamente rico. Os híbridos representam, em linguagem simbólica universal, a <mark class="v">mistura aberrante do que deveria permanecer separado</mark>. São o produto da queda de Sophia: sua luz luminosa misturada com as trevas do Caos produz seres que são nem puro bem nem puro mal, mas deformações de ambos.</p>
+<p>O "leão com face de bode" é particularmente revelador: o leão (Ialdabaoth, o Demiurgo) em combinação com o bode (o símbolo de Pan, da força sexual e instintiva) — a autoridade do Demiurgo combinada com a ferocidade instintiva. A criatura híbrida representa o poder corrompido na sua forma mais visceral.</p>
+<h5>O Caos como Inconsciente Coletivo</h5>
+<p>Numa leitura psicológica profunda, o Caos do PS é a <mark class="g">representação mitológica do inconsciente coletivo</mark> — o estrato mais profundo da psique onde habitam os padrões primordiais não integrados. As "criaturas" do Caos são os arquétipos em sua forma não-integrada — o Leão-bode é a Sombra, o dragão é o demônio interno não-reconhecido, o basilisco é o olhar que petrifica (o complexo que paralisa o desenvolvimento).</p>
+</div></div></div>
+
+<h3 class="sub" id="alma-txt">O Destino da Alma — Em Trechos</h3>
+
+<div class="passage">
+<div class="passage-header">
+<div><div class="passage-ref">Livro IV · Cap. 130–131 · O Ciclo das Almas</div>
+<div class="passage-title">Jesus Explica o Circuito Completo da Alma</div></div>
+</div>
+<div class="passage-text">
+<blockquote>
+"Quando a alma deixa o corpo, os recebedores de Sabaoth, o Bom, vêm a ela e a levam através de todas as regiões de todos os arcontes. E se ela não tiver recebido nenhum mistério, os arcontes dos éons torturam-na de acordo com os pecados que ela cometeu. E os recebedores levam-na para o Caos... E se ela não tiver nenhum mistério dentro de si, o caos e toda a escuridão a engolfam, e ela permanecerá no meio do caos por um determinado tempo."
+<cite>— PS, Livro IV, Cap. 130 (cf. Mead)</cite>
+</blockquote>
+<blockquote style="margin-top:12px;">
+"E depois de todos os punimentos a alma receberá uma copa de esquecimento de acordo com o karma de seus pecados, e ela descerá de novo ao corpo de acordo com o caráter que foi determinado por sua escolha e por seus pecados. E ela voltará novamente ao mundo."
+<cite>— PS, Livro IV, Cap. 143 (cf. Mead)</cite>
+</blockquote>
+</div>
+<div class="analysis">
+<div class="analysis-content">
+<h5>O Sistema de Reencarnação do PS — Um Karma Gnóstico</h5>
+<p>Estes dois trechos juntos revelam o sistema completo de reencarnação do PS. A estrutura é: morte → julgamento pelos arcontes → punição no Caos (proporcional aos pecados) → copa do esquecimento → reencarnação em novo corpo. Este é um ciclo que pode se repetir indefinidamente para almas sem mistérios.</p>
+<p>Especialmente reveladora é a frase "de acordo com o karma de seus pecados" — o PS usa o princípio do karma (embora não o nome sânscrito) para explicar a reencarnação. Mas é um karma operado pelos arcontes, não por uma lei impessoal: os arcontes administram o processo, controlam o tipo de corpo que a alma recebe, e determinam as condições da próxima existência.</p>
+<h5>A Prisão do Ciclo — E A Saída</h5>
+<p>A estrutura deste ciclo revela por que a iniciação é tão central no PS: é a única saída do circuito. Almas sem mistérios ficam no ciclo indefinidamente — cada vida produzindo novos "pecados" (energias que alimentam os arcontes) que produzem nova punição que produz nova reencarnação. A <mark class="g">iniciação nos Mistérios</mark> é a interrupção deste ciclo: a alma que recebeu os mistérios passa pelos arcontes sem ser detida, ascende ao Tesouro, e não retorna.</p>
+</div></div></div>
+</section>
+
+<!-- RODAPÉ -->
+<footer style="background:var(--void2);border-top:1px solid var(--border);padding:44px 64px;text-align:center;">
+<div style="font-size:2.5rem;margin-bottom:12px;filter:drop-shadow(0 0 12px var(--gold))">☥</div>
+<p style="font-size:0.86rem;color:rgba(255,255,255,0.88);font-style:italic;max-width:580px;margin:0 auto 12px;">"E Jesus disse: 'Aquele que tem ouvidos para ouvir, que ouça. Aquele cujo espírito o move a compreender, que venha e dê a interpretação.'"</p>
+<p style="font-size:0.67rem;color:var(--gold);letter-spacing:0.22em;font-family:'Courier New',monospace;">— PISTIS SOPHIA, LIVRO I</p>
+<div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:20px auto;max-width:400px;"></div>
+<p style="font-size:0.63rem;color:var(--parch-dd);letter-spacing:0.1em;">PISTIS SOPHIA COMENTADO · VOLUME II · EXEGESE ESOTÉRICA COLOSSAL</p>
+</footer>
+</main>
+</div>
+<div id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',()=>{
+  const st=window.pageYOffset||document.documentElement.scrollTop;
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  const p=dh>0?(st/dh)*100:0;
+  document.getElementById('pbar').style.width=p+'%';
+  const btn=document.getElementById('stb');
+  if(st>500)btn.classList.add('vis');else btn.classList.remove('vis');
+  const sections=document.querySelectorAll('section[id]');
+  const links=document.querySelectorAll('.nav-link');
+  let cur='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s.id;});
+  links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active');});
+});
+document.querySelectorAll('.nav-link').forEach(l=>{
+  l.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.getElementById(l.getAttribute('href').slice(1));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

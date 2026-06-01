@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrologia — Parte I · Fundamentos e os 12 Signos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04020E;
+  --deep:#080418;
+  --gold:#FFD700;--gold-d:rgba(255,215,0,.15);
+  --silver:#C0D0FF;--silver-d:rgba(192,208,255,.12);
+  --fire:#FF6030;--fire-d:rgba(255,96,48,.12);
+  --earth:#80A040;--earth-d:rgba(128,160,64,.12);
+  --air:#60B0FF;--air-d:rgba(96,176,255,.12);
+  --water:#4060C0;--water-d:rgba(64,96,192,.12);
+  --card:#101028;
+  --text:#E8E0F8;--text-d:rgba(232,224,248,.65);--text-dd:rgba(232,224,248,.4);
+  --border:rgba(192,208,255,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--void);
+  background-image:
+    radial-gradient(ellipse 120% 60% at 50% 0%,rgba(48,16,96,.5) 0%,transparent 55%),
+    radial-gradient(ellipse 80% 40% at 0% 60%,rgba(16,32,80,.4) 0%,transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 80%,rgba(80,16,48,.3) 0%,transparent 50%);
+  font-family:'Cormorant Garamond',serif;color:var(--text);line-height:1.9;overflow-x:hidden;
+}
+/* starfield */
+body::before{content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 5% 8%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 13% 22%,rgba(192,208,255,.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 27% 5%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 42% 18%,rgba(255,215,0,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 58% 11%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 71% 28%,rgba(192,208,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 7%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 94% 35%,rgba(255,215,0,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 8% 52%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 19% 68%,rgba(192,208,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 35% 75%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 51% 61%,rgba(255,215,0,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 67% 84%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 79% 72%,rgba(192,208,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 91% 88%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 47% 92%,rgba(255,215,0,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 24% 44%,rgba(255,200,200,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 63% 47%,rgba(200,200,255,.4) 0%,transparent 100%);
+  pointer-events:none;z-index:0;animation:twinkle 8s ease-in-out infinite alternate;
+}
+@keyframes twinkle{0%{opacity:.6}100%{opacity:1}}
+
+.wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 16px 100px}
+
+/* ── HEADER ── */
+header{text-align:center;padding:80px 20px 60px}
+.orrery{font-size:5rem;display:block;margin-bottom:14px;
+  filter:drop-shadow(0 0 30px var(--gold));animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}
+  50%{filter:drop-shadow(0 0 60px var(--gold)) drop-shadow(0 0 100px rgba(255,215,0,.3))}}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,4vw,3rem);
+  color:var(--gold);letter-spacing:.1em;
+  text-shadow:0 0 40px rgba(255,215,0,.4),0 0 80px rgba(255,215,0,.15);line-height:1.25}
+.h-sub{font-family:'IM Fell English',serif;font-style:italic;
+  font-size:clamp(.82rem,2vw,1.05rem);color:rgba(255,215,0,.5);
+  letter-spacing:.22em;margin-top:10px}
+.h-rule{height:1px;margin:20px auto;width:600px;max-width:90%;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),rgba(192,208,255,.6),rgba(255,215,0,.4),transparent)}
+.h-intro{max-width:780px;margin:0 auto;font-size:.94rem;line-height:2.05;color:var(--text-d);font-style:italic}
+
+/* ── NAV PILLS ── */
+.nav-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 40px}
+.pill{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.12em;
+  padding:6px 14px;border-radius:20px;text-decoration:none;
+  border:1px solid rgba(192,208,255,.25);background:rgba(192,208,255,.06);
+  color:var(--silver);transition:all .25s}
+.pill:hover{background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.4);color:var(--gold)}
+
+/* ── CHAPTER ── */
+.ch{text-align:center;margin:70px 0 28px;position:relative}
+.ch::before,.ch::after{content:'';display:block;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+.ch h2{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,2.5vw,1.4rem);
+  letter-spacing:.18em;color:var(--gold-l,#FFE566);text-shadow:0 0 20px rgba(255,215,0,.3)}
+.ch p{font-style:italic;font-size:.86rem;color:var(--text-dd);margin-top:4px}
+
+/* ── SECTION CARDS ── */
+.s-card{border-radius:12px;padding:28px 28px 24px;margin-bottom:20px;
+  border:1px solid var(--border);background:var(--card);position:relative;overflow:hidden}
+.s-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.acc-gold::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.acc-fire::before{background:linear-gradient(90deg,transparent,var(--fire),transparent)}
+.acc-earth::before{background:linear-gradient(90deg,transparent,var(--earth),transparent)}
+.acc-air::before{background:linear-gradient(90deg,transparent,var(--air),transparent)}
+.acc-water::before{background:linear-gradient(90deg,transparent,var(--water),transparent)}
+.acc-silver::before{background:linear-gradient(90deg,transparent,var(--silver),transparent)}
+
+.s-card h3{font-family:'Cinzel Decorative',serif;font-size:clamp(.78rem,1.8vw,1rem);
+  letter-spacing:.15em;margin-bottom:14px}
+.acc-gold h3{color:var(--gold)}
+.acc-fire h3{color:var(--fire)}
+.acc-earth h3{color:var(--earth)}
+.acc-air h3{color:var(--air)}
+.acc-water h3{color:var(--water)}
+.acc-silver h3{color:var(--silver)}
+
+.s-card p{font-size:.9rem;color:var(--text-d);line-height:1.95;margin-bottom:10px}
+.s-card p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+
+/* ── SIGN GRID ── */
+.sign-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:20px 0}
+
+.sign-card{border-radius:12px;overflow:hidden;border:1px solid;
+  background:linear-gradient(160deg,rgba(255,255,255,.03),rgba(0,0,0,.3));
+  transition:transform .3s;position:relative}
+.sign-card:hover{transform:translateY(-3px)}
+
+/* Sign colors */
+.s-ari{border-color:rgba(220,60,30,.35);background:linear-gradient(160deg,rgba(220,60,30,.08),rgba(4,2,14,.95))}
+.s-tau{border-color:rgba(80,160,40,.35);background:linear-gradient(160deg,rgba(80,160,40,.08),rgba(4,2,14,.95))}
+.s-gem{border-color:rgba(200,180,40,.35);background:linear-gradient(160deg,rgba(200,180,40,.08),rgba(4,2,14,.95))}
+.s-can{border-color:rgba(120,160,220,.35);background:linear-gradient(160deg,rgba(120,160,220,.08),rgba(4,2,14,.95))}
+.s-leo{border-color:rgba(220,160,0,.35);background:linear-gradient(160deg,rgba(220,160,0,.08),rgba(4,2,14,.95))}
+.s-vir{border-color:rgba(100,160,80,.35);background:linear-gradient(160deg,rgba(100,160,80,.08),rgba(4,2,14,.95))}
+.s-lib{border-color:rgba(200,120,200,.35);background:linear-gradient(160deg,rgba(200,120,200,.08),rgba(4,2,14,.95))}
+.s-sco{border-color:rgba(160,20,40,.35);background:linear-gradient(160deg,rgba(160,20,40,.08),rgba(4,2,14,.95))}
+.s-sag{border-color:rgba(180,100,20,.35);background:linear-gradient(160deg,rgba(180,100,20,.08),rgba(4,2,14,.95))}
+.s-cap{border-color:rgba(80,80,100,.5);background:linear-gradient(160deg,rgba(80,80,100,.08),rgba(4,2,14,.95))}
+.s-aqu{border-color:rgba(40,160,220,.35);background:linear-gradient(160deg,rgba(40,160,220,.08),rgba(4,2,14,.95))}
+.s-pis{border-color:rgba(80,80,200,.35);background:linear-gradient(160deg,rgba(80,80,200,.08),rgba(4,2,14,.95))}
+
+.sign-head{padding:18px 18px 0;display:flex;align-items:flex-start;gap:14px}
+.sign-sym{font-size:2.6rem;flex-shrink:0;line-height:1}
+.sign-meta{flex:1}
+.sign-name{font-family:'Cormorant Garamond',serif;font-weight:700;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.1}
+.sign-dates{font-size:.75rem;color:var(--text-dd);font-style:italic;margin-top:2px}
+.sign-ruler{font-family:'Cinzel Decorative',serif;font-size:.55rem;letter-spacing:.12em;
+  margin-top:4px;opacity:.7}
+
+.sign-body{padding:14px 18px 20px}
+.sign-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.sp{font-size:.65rem;padding:2px 8px;border-radius:20px;border:1px solid;font-style:italic}
+.sp-fire{color:var(--fire);border-color:rgba(255,96,48,.3);background:var(--fire-d)}
+.sp-earth{color:var(--earth);border-color:rgba(128,160,64,.3);background:var(--earth-d)}
+.sp-air{color:var(--air);border-color:rgba(96,176,255,.3);background:var(--air-d)}
+.sp-water{color:var(--water);border-color:rgba(64,96,192,.3);background:var(--water-d)}
+.sp-gold{color:var(--gold);border-color:rgba(255,215,0,.3);background:var(--gold-d)}
+.sp-silver{color:var(--silver);border-color:rgba(192,208,255,.3);background:var(--silver-d)}
+
+.sign-desc{font-size:.87rem;color:var(--text-d);line-height:1.9}
+.sign-desc p{margin-bottom:8px}
+.sign-desc p:last-child{margin-bottom:0}
+
+.sign-extras{margin-top:10px;padding:10px 12px;border-radius:8px;
+  background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06)}
+.se-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:.75rem;color:var(--text-dd)}
+.se-label{font-family:'Cinzel Decorative',serif;font-size:.5rem;letter-spacing:.12em;
+  color:var(--gold);opacity:.6;display:block;margin-bottom:1px}
+
+/* ── ELEMENT TABLE ── */
+.elem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:16px 0}
+.elem-card{border-radius:10px;padding:18px 20px}
+.e-fire{background:rgba(255,96,48,.07);border:1px solid rgba(255,96,48,.25)}
+.e-earth{background:rgba(128,160,64,.07);border:1px solid rgba(128,160,64,.25)}
+.e-air{background:rgba(96,176,255,.07);border:1px solid rgba(96,176,255,.25)}
+.e-water{background:rgba(64,96,192,.07);border:1px solid rgba(64,96,192,.25)}
+.e-fire h4{color:var(--fire)}
+.e-earth h4{color:var(--earth)}
+.e-air h4{color:var(--air)}
+.e-water h4{color:var(--water)}
+.elem-card h4{font-family:'Cinzel Decorative',serif;font-size:.7rem;letter-spacing:.15em;margin-bottom:8px}
+.elem-card p{font-size:.82rem;color:var(--text-d);line-height:1.85}
+
+/* ── DIVIDER ── */
+.rule{height:1px;margin:40px 0;background:linear-gradient(90deg,transparent,rgba(192,208,255,.15),transparent)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}
+.reveal.vis{opacity:1;transform:none}
+.sign-card{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.sign-card.vis{opacity:1;transform:none}
+
+/* ── SIDEBAR NAV ── */
+.side-nav{position:fixed;top:50%;right:14px;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:5px;z-index:100}
+.sn-dot{width:8px;height:8px;border-radius:50%;
+  background:rgba(255,215,0,.2);border:1px solid rgba(255,215,0,.35);
+  display:block;text-decoration:none;transition:all .22s}
+.sn-dot:hover,.sn-dot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.side-nav{display:none}}
+
+/* responsive */
+@media(max-width:640px){.sign-grid{grid-template-columns:1fr}.elem-grid{grid-template-columns:1fr}}
+
+footer{text-align:center;padding:60px 20px 40px;border-top:1px solid var(--border)}
+.f-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:20px}
+.f-link{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.1em;
+  color:var(--gold);text-decoration:none;padding:6px 14px;
+  border:1px solid rgba(255,215,0,.3);border-radius:20px;
+  background:rgba(255,215,0,.05);transition:all .2s}
+.f-link:hover{background:rgba(255,215,0,.12)}
+.f-text{font-family:'IM Fell English',serif;font-style:italic;font-size:.84rem;
+  color:rgba(255,215,0,.3);letter-spacing:.08em;line-height:2.2}
+</style>
+</head>
+<body>
+<nav class="side-nav">
+  <a class="sn-dot" href="#historia" title="História"></a>
+  <a class="sn-dot" href="#fundamentos" title="Fundamentos"></a>
+  <a class="sn-dot" href="#elementos" title="Elementos"></a>
+  <a class="sn-dot" href="#qualidades" title="Qualidades"></a>
+  <a class="sn-dot" href="#signos" title="Os 12 Signos"></a>
+  <a class="sn-dot" href="#polaridades" title="Polaridades"></a>
+  <a class="sn-dot" href="#correl" title="Correlações"></a>
+</nav>
+<div class="wrap">
+
+<header>
+  <span class="orrery">🌌</span>
+  <h1>Astrologia</h1>
+  <p class="h-sub">Enciclopédia Completa · Parte I · Fundamentos e os 12 Signos</p>
+  <div class="h-rule"></div>
+  <p class="h-intro">A Astrologia é a linguagem mais antiga com que a humanidade tentou decifrar o cosmos e a si mesma. Do zodíaco babilônico às correspondências herméticas, dos signos aos planetas, das casas aos aspectos — este é o mapa completo de uma tradição de 5.000 anos que ainda pulsa viva. Esta primeira parte cobre a história, os fundamentos, os quatro elementos, as três qualidades e os doze signos em profundidade total.</p>
+</header>
+
+<div class="nav-pills reveal">
+  <a class="pill" href="astrologia-parte1.html">I · Fundamentos e Signos</a>
+  <a class="pill" href="astrologia-parte2.html">II · Planetas e Luminares</a>
+  <a class="pill" href="astrologia-parte3.html">III · Casas Astrológicas</a>
+  <a class="pill" href="astrologia-parte4.html">IV · Aspectos, Trânsitos e Avançado</a>
+</div>
+
+<!-- ═══ HISTÓRIA ═══ -->
+<div id="historia" class="ch reveal">
+  <h2>✦ A História da Astrologia ✦</h2>
+  <p>5.000 anos de observação do céu · Da Babilônia a Jung</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>🏛 Origens — Babilônia, Egito e Grécia</h3>
+  <p>A Astrologia nasceu na <strong>Mesopotâmia por volta de 3.000 a.C.</strong>, quando os sacerdotes babilônios (<em>Chaldeans</em>) começaram a registrar sistematicamente os movimentos celestes em tábulas de argila. Para eles, os planetas eram manifestações visíveis dos deuses — Marduk (Júpiter), Nergal (Marte), Nabu (Mercúrio), Ishtar (Vênus), Ninib (Saturno). Observar o céu era observar a vontade divina.</p>
+  <p>O <strong>Zodíaco</strong> foi formalmente dividido em 12 partes iguais de 30° pelos babilônios por volta de 500 a.C. — conveniente porque o ano tem aproximadamente 12 lunações. Cada seção recebeu o nome de uma constelação já conhecida. O <em>Enuma Anu Enlil</em> — tábua de 70 tabuinhas cuneiformes — registra 7.000 presságios astrológicos e é o documento astrológico mais antigo que sobreviveu.</p>
+  <p>No <strong>Egito</strong>, a astrologia se fundiu com a teologia dos deuses — Rá (Sol), Toth (Lua/Mercúrio), Ísis (Sirius). Os egípcios criaram o primeiro calendário solar de 365 dias e alinharam as pirâmides de Gizé com constelações específicas. A Esfinxe olha para o ponto onde o Sol nasce no equinócio de primavera — apontando para a constelação de Leão c. 10.500 a.C.</p>
+  <p>Os gregos absorveram e sistematizaram: <strong>Platão</strong> desenvolveu a teoria das esferas celestes; <strong>Ptolomeu</strong> (séc. II d.C.) escreveu o <em>Tetrabiblos</em> — o texto astrológico mais influente da história ocidental, que ainda serve de base para a astrologia moderna. A astrologia helenística fundiu as tradições babilônica, egípcia e grega numa síntese que atravessou séculos.</p>
+  <p>Na <strong>Idade Média</strong>, a astrologia era ciência respeitada nas universidades europeias — médicos usavam mapas natais para diagnóstico, reis tinham astrólogos de corte. <strong>Kepler</strong> e <strong>Tycho Brahe</strong> eram astrólogos que também faziam astronomia. A separação definitiva entre as duas apenas ocorreu com a Revolução Científica do séc. XVII.</p>
+  <p>No séc. XX, <strong>Carl Jung</strong> reintroduziu a astrologia no pensamento sério ao correlacionar os arquétipos zodiacais com os complexos do inconsciente coletivo. <strong>Dane Rudhyar</strong> fundou a Astrologia Humanística, que trata o mapa natal não como destino fixo, mas como mapa de potenciais. Hoje a astrologia vive um renascimento global, especialmente entre jovens que a usam como ferramenta de autoconhecimento.</p>
+</div>
+
+<div class="s-card acc-silver reveal">
+  <h3>🔭 Astrologia × Astronomia — A Grande Separação</h3>
+  <p>Durante milênios, Astrologia e Astronomia eram a mesma ciência. <strong>Tycho Brahe</strong> (1546–1601) observava os céus com precisão sem precedentes — e usava os dados para fazer horóscopos. <strong>Johannes Kepler</strong> (1571–1630) descobriu as três leis do movimento planetário E era astrólogo: acreditava numa "influência sutil" dos planetas na Terra, mas rejeitava a astrologia popular de sua época por falta de rigor.</p>
+  <p>A separação se deu quando a astronomia adotou o método experimental e matemático do <em>paradigma newtoniano</em>, que exige mecanismos causais mensuráveis — algo que a astrologia não fornece nos termos da física clássica. Mas isso não invalida o sistema simbólico: a astrologia opera como linguagem arquetípica e psicológica, não como previsão mecânica determinista.</p>
+</div>
+
+<!-- ═══ FUNDAMENTOS ═══ -->
+<div id="fundamentos" class="ch reveal">
+  <h2>✦ O Mapa Natal — A Fotografia do Céu ✦</h2>
+  <p>como o zodíaco funciona · o ascendente · o MC · o mapa como mandala</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>🗺 O Que é o Mapa Natal</h3>
+  <p>O <strong>Mapa Natal</strong> (ou Mapa Astral, ou Horóscopo Natal) é a representação gráfica do céu no momento exato do nascimento, visto do lugar de nascimento. É como uma fotografia da disposição dos planetas naquele instante — e é único para cada pessoa, pois o Ascendente muda a cada ~2 horas.</p>
+  <p>O mapa é um <strong>círculo de 360°</strong> dividido em 12 casas (setores) de tamanho variável. O zodíaco — a faixa de constelações por onde os planetas transitam — é projetado ao redor do círculo em 12 signos de 30° cada. Os planetas são marcados na posição que ocupavam em cada signo e casa.</p>
+  <p>Os três elementos fundamentais do mapa: <strong>PLANETAS</strong> (o que — as energias e arquétipos ativos) · <strong>SIGNOS</strong> (como — o estilo ou modo de expressão) · <strong>CASAS</strong> (onde — a área da vida onde se manifesta). A fórmula básica: <em>Planeta + Signo + Casa = Tema + Estilo + Área da Vida</em>.</p>
+  <p>Além disso: os <strong>ASPECTOS</strong> mostram as relações entre planetas (conjunção, trígono, quadratura, oposição, sextil), criando uma teia de conversas entre as energias do mapa.</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>🌅 O Ascendente — A Máscara e o Corpo</h3>
+  <p>O <strong>Ascendente</strong> (ASC) é o signo que estava nascendo no horizonte leste no momento do seu nascimento. É o ponto mais pessoal do mapa — muda a cada 2 horas, motivo pelo qual a hora de nascimento é essencial. O Ascendente define a <strong>Cúspide da Casa 1</strong> — o ponto de início de todo o sistema de casas.</p>
+  <p>Na prática, o Ascendente representa: <strong>a aparência física</strong> (como você parece para o mundo), <strong>a primeira impressão</strong> que causa, <strong>a persona</strong> (no sentido junguiano — a máscara social), e a <strong>abordagem instintiva</strong> diante de situações novas. É o filtro pelo qual o Sol (identidade profunda) se expressa no mundo.</p>
+  <p>O <strong>Meio do Céu</strong> (MC ou Midheaven) é o ponto mais alto do céu na hora do nascimento — a Cúspide da Casa 10, que governa carreira, reputação pública e a direção que a vida toma. O <strong>IC</strong> (fundo do céu) é o ponto oposto — raízes, família de origem, o privado. O <strong>Descendente</strong> (oposto ao Ascendente) mostra o que buscamos nos outros, o parceiro ideal.</p>
+</div>
+
+<!-- ═══ ELEMENTOS ═══ -->
+<div id="elementos" class="ch reveal">
+  <h2>✦ Os Quatro Elementos ✦</h2>
+  <p>Fogo · Terra · Ar · Água · A base de toda a astrologia</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>🔥💧🌬🌍 A Teoria dos Quatro Elementos</h3>
+  <p>Os quatro elementos — <strong>Fogo, Terra, Ar e Água</strong> — são a base cosmológica da astrologia ocidental, herdada de Aristóteles (que os recebeu de Empédocles, séc. V a.C.). Cada elemento governa três signos, formando uma trígono de afinidade natural no mapa. Na alquimia, os mesmos quatro elementos são os estados da matéria: Fogo = plasma/calor, Ar = gás, Água = líquido, Terra = sólido.</p>
+  <p>Na Cabala, os quatro elementos correspondem às quatro letras do Tetragrammaton (יהוה): <em>Yod</em> (Fogo/Chokmah), <em>Heh</em> superior (Água/Binah), <em>Vav</em> (Ar/Tiferet), <em>Heh</em> inferior (Terra/Malkuth). Os quatro naipes do Tarot (Paus=Fogo, Copas=Água, Espadas=Ar, Ouros=Terra) refletem diretamente essa estrutura.</p>
+</div>
+
+<div class="elem-grid reveal">
+  <div class="elem-card e-fire">
+    <h4>🔥 FOGO · Áries · Leão · Sagitário</h4>
+    <p><strong>Natureza:</strong> Ativo, expansivo, masculino (yang), criativo, inspirado. O Fogo é a faísca da vida — o impulso de existir, criar e manifestar. Psicologicamente: intuição (Jung), o Espírito, a Vontade.</p>
+    <p><strong>Expressão:</strong> Entusiasmo, paixão, espontaneidade, liderança, visão, fé no futuro. Em excesso: impulsividade, arrogância, esgotamento. Em falta: apatia, falta de propósito.</p>
+    <p><strong>Alquimia:</strong> Enxofre — o princípio ativo, solar, masculino. O fogo como agente transformador que volatiliza o fixo. <strong>Cabala:</strong> Atziluth — o mundo da Emanação, o mais próximo do divino.</p>
+    <p><strong>Corpo:</strong> Cabeça, coração, fígado — órgãos de calor e vitalidade. Circulação, febre, inflamação.</p>
+  </div>
+  <div class="elem-card e-earth">
+    <h4>🌍 TERRA · Touro · Virgem · Capricórnio</h4>
+    <p><strong>Natureza:</strong> Passivo, receptivo, feminino (yin), prático, concreto. A Terra é a forma que recebe e sustenta o espírito. Psicologicamente: sensação (Jung), o Corpo, o Material.</p>
+    <p><strong>Expressão:</strong> Pragmatismo, paciência, persistência, senso de realidade, confiabilidade. Em excesso: rigidez, materialismo, medo da mudança. Em falta: falta de enraizamento.</p>
+    <p><strong>Alquimia:</strong> Sal — o princípio fixo, lunar, feminino. O corpo e a forma que manifesta. <strong>Cabala:</strong> Assiah — o mundo da Ação e da matéria, Malkuth (o Reino).</p>
+    <p><strong>Corpo:</strong> Ossos, dentes, pele, estrutura — o que sustenta. Metabolismo lento, resistência.</p>
+  </div>
+  <div class="elem-card e-air">
+    <h4>🌬 AR · Gêmeos · Libra · Aquário</h4>
+    <p><strong>Natureza:</strong> Ativo, móvel, masculino (yang), intelectual, comunicativo. O Ar é o pensamento em movimento — a ideia que conecta. Psicologicamente: pensamento (Jung), a Mente, o Intelecto.</p>
+    <p><strong>Expressão:</strong> Comunicação, lógica, objetividade, socialização, curiosidade. Em excesso: dispersão mental, superficialidade, frieza emocional. Em falta: dificuldade de articular pensamento.</p>
+    <p><strong>Alquimia:</strong> Mercúrio — o princípio mediador que une Enxofre e Sal. O sopro que anima. <strong>Cabala:</strong> Yetzirah — o mundo da Formação, onde as ideias ganham estrutura.</p>
+    <p><strong>Corpo:</strong> Pulmões, sistema nervoso, vias aéreas — comunicação interna do organismo.</p>
+  </div>
+  <div class="elem-card e-water">
+    <h4>💧 ÁGUA · Câncer · Escorpião · Peixes</h4>
+    <p><strong>Natureza:</strong> Passivo, receptivo, feminino (yin), emocional, intuitivo. A Água é o sentimento que dissolve fronteiras — o amor, o inconsciente, o divino no humano. Psicologicamente: sentimento (Jung), a Alma.</p>
+    <p><strong>Expressão:</strong> Empatia, intuição, profundidade, cuidado, imaginação. Em excesso: emotividade excessiva, dependência, fusão de limites. Em falta: frieza, dificuldade de sentir.</p>
+    <p><strong>Alquimia:</strong> Mercúrio Feminino — o princípio receptivo, lunar. O solvente universal. <strong>Cabala:</strong> Briah — o mundo da Criação, onde o inconsciente coletivo opera.</p>
+    <p><strong>Corpo:</strong> Sistema linfático, rins, líquidos corporais, órgãos reprodutivos.</p>
+  </div>
+</div>
+
+<!-- ═══ QUALIDADES ═══ -->
+<div id="qualidades" class="ch reveal">
+  <h2>✦ As Três Qualidades ou Modalidades ✦</h2>
+  <p>Cardinal · Fixo · Mutável · O ritmo do tempo no zodíaco</p>
+</div>
+
+<div class="s-card acc-silver reveal">
+  <h3>⚡ Cardinal | 🔒 Fixo | 🌊 Mutável</h3>
+  <p>As três modalidades descrevem o <strong>ritmo e o estilo de ação</strong> de cada signo. Cada elemento tem três signos — um de cada modalidade. Junto com os elementos, as modalidades criam um sistema 4×3 = 12 combinações únicas.</p>
+  <p><strong>⚡ CARDINAL</strong> (Áries, Câncer, Libra, Capricórnio): Os iniciadores. Aparecem no início das estações (equinócios e solstícios), quando há uma grande mudança de energia. Cardinals começam coisas — são líderes, pioneiros, empreendedores. Energia: impulso, início, motivação, ação direta. Fraqueza: dificuldade de terminar o que começou.</p>
+  <p><strong>🔒 FIXO</strong> (Touro, Leão, Escorpião, Aquário): Os sustentadores. Aparecem no meio das estações, quando a energia está no pico. Fixos constroem, perseveram, aprofundam. Energia: determinação, foco, lealdade, resistência. Fraqueza: teimosia, resistência à mudança, possessividade.</p>
+  <p><strong>🌊 MUTÁVEL</strong> (Gêmeos, Virgem, Sagitário, Peixes): Os adaptadores. Aparecem no fim das estações, quando uma energia se dissolve para dar lugar à próxima. Mutáveis transitam, sintetizam, comunicam. Energia: flexibilidade, versatilidade, curiosidade, dissolução. Fraqueza: inconsistência, dificuldade de tomar decisões, dispersão.</p>
+  <p><strong>Correspondência Alquímica:</strong> Cardinal = Solve (dissolver, iniciar a Grande Obra) · Fixo = Coagula (consolidar, fixar o resultado) · Mutável = A Grande Transmutação em si — a transição entre estados.</p>
+</div>
+
+<!-- ═══ OS 12 SIGNOS ═══ -->
+<div id="signos" class="ch reveal">
+  <h2>✦ Os 12 Signos do Zodíaco ✦</h2>
+  <p>Cada signo completo — arquétipo, elemento, mitologia, corpo, sombra e luz</p>
+</div>
+
+<div class="sign-grid">
+
+<!-- ÁRIES -->
+<div class="sign-card s-ari reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♈</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#FF6040">Áries</div>
+      <div class="sign-dates">21 março – 19 abril · O Carneiro</div>
+      <div class="sign-ruler">♂ Regente: Marte · Exaltação: Sol · Queda: Saturno</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-fire">🔥 Fogo</span><span class="sp sp-gold">⚡ Cardinal</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">1ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Guerreiro, o Pioneiro, o Recém-Nascido. Áries é o primeiro signo — o Big Bang do zodíaco. Ele representa o impulso puro de existir, antes de qualquer condicionamento. É a criança que não tem medo porque ainda não aprendeu a ter.</p>
+      <p><strong>Expressão Solar:</strong> Coragem, iniciativa, autenticidade brutal, liderança instintiva, entusiasmo contagiante, amor pela ação. O arianos sabe o que quer e vai buscar — sem pedir licença.</p>
+      <p><strong>Sombra:</strong> Impulsividade sem considerar consequências, impaciência, agressividade, egocentrismo, dificuldade de terminar o que começa. O "eu primeiro" que esquece os outros.</p>
+      <p><strong>Mitologia:</strong> O Carneiro do Velocino de Ouro que Hermes enviou para salvar Frixo e Hele — símbolo do início da jornada heroica. Também Marte/Ares, deus da guerra e da iniciação.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Cabeça, rosto, cérebro</div>
+        <div><span class="se-label">METAL</span>Ferro (Marte)</div>
+        <div><span class="se-label">PEDRA</span>Diamante, Rubi</div>
+        <div><span class="se-label">COR</span>Vermelho vivo</div>
+        <div><span class="se-label">TARÔ</span>O Imperador (IV)</div>
+        <div><span class="se-label">CABALA</span>Geburah (5ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOURO -->
+<div class="sign-card s-tau reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♉</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#80C040">Touro</div>
+      <div class="sign-dates">20 abril – 20 maio · O Touro</div>
+      <div class="sign-ruler">♀ Regente: Vênus · Exaltação: Lua · Queda: Urano</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-earth">🌍 Terra</span><span class="sp sp-gold">🔒 Fixo</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">2ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Construtor, o Artista, o Guardião dos Recursos. Se Áries cria o impulso, Touro cria a forma. É a energia que transforma a semente em raiz, a ideia em produto tangível, o amor em compromisso concreto.</p>
+      <p><strong>Expressão Solar:</strong> Paciência extraordinária, praticidade, senso estético refinado, lealdade inabalável, amor pelo prazer sensorial (comida, música, toque, beleza). Touro constrói para durar.</p>
+      <p><strong>Sombra:</strong> Teimosia obsessiva, possessividade, materialismo excessivo, resistência à mudança mesmo quando ela é necessária, inércia. O "meu" que sufoca.</p>
+      <p><strong>Mitologia:</strong> Zeus transformado em touro branco para raptar Europa — a beleza irresistível que seduz e transforma. Também o Touro de Creta (poder da natureza bruta) e Apis, o touro sagrado egípcio.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Pescoço, garganta, tireoide</div>
+        <div><span class="se-label">METAL</span>Cobre (Vênus)</div>
+        <div><span class="se-label">PEDRA</span>Esmeralda, Quartzo Rosa</div>
+        <div><span class="se-label">COR</span>Verde e Marrom</div>
+        <div><span class="se-label">TARÔ</span>O Hierofante (V)</div>
+        <div><span class="se-label">CABALA</span>Netzach (7ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GÊMEOS -->
+<div class="sign-card s-gem reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♊</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#E8D040">Gêmeos</div>
+      <div class="sign-dates">21 maio – 20 junho · Os Gêmeos</div>
+      <div class="sign-ruler">☿ Regente: Mercúrio · Exaltação: — · Queda: Júpiter</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-air">🌬 Ar</span><span class="sp sp-gold">🌊 Mutável</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">3ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Comunicador, o Estudante Eterno, o Trickster. Gêmeos é a mente em sua fase de coleta de informações — curiosa, ágil, polifacetada. Os gêmeos Castor e Pólux simbolizam a dualidade: o mortal e o imortal, o intelectual e o instintivo, convivendo no mesmo ser.</p>
+      <p><strong>Expressão Solar:</strong> Versatilidade, comunicação brilhante, humor, curiosidade insaciável, adaptabilidade, talento para conectar ideias díspares. O geminiano encontra o ângulo interessante em qualquer assunto.</p>
+      <p><strong>Sombra:</strong> Superficialidade, inconsistência, tendência à mentira ou distorção, ansiedade mental, dificuldade de aprofundar qualquer coisa. O "voo borboleta" que não pousa.</p>
+      <p><strong>Mitologia:</strong> Castor e Pólux, os Dioscuri — um mortal e um divino, que dividem a imortalidade. Hermes/Mercúrio como arquétipo da comunicação que transita entre mundos.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Pulmões, braços, mãos, nervos</div>
+        <div><span class="se-label">METAL</span>Mercúrio/Prata</div>
+        <div><span class="se-label">PEDRA</span>Ágata, Citrino</div>
+        <div><span class="se-label">COR</span>Amarelo, Laranja</div>
+        <div><span class="se-label">TARÔ</span>Os Amantes (VI)</div>
+        <div><span class="se-label">CABALA</span>Hod (8ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CÂNCER -->
+<div class="sign-card s-can reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♋</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#80A0E0">Câncer</div>
+      <div class="sign-dates">21 junho – 22 julho · O Caranguejo</div>
+      <div class="sign-ruler">☽ Regente: Lua · Exaltação: Júpiter · Queda: Marte</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-water">💧 Água</span><span class="sp sp-gold">⚡ Cardinal</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">4ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> A Mãe, o Guardião, o Emocional Profundo. Câncer é o primeiro signo de Água — onde o sentimento toma forma de cuidado e proteção. O caranguejo tem casco duro e interior mole — exatamente como o canceriano: parece fechado mas é o mais sensível do zodíaco.</p>
+      <p><strong>Expressão Solar:</strong> Empatia extraordinária, intuição que beira o sobrenatural, cuidado genuíno com os outros, memória afetiva profunda, lealdade à família (biológica ou escolhida), criatividade que flui das emoções.</p>
+      <p><strong>Sombra:</strong> Melancolia, dependência emocional, manipulação pelo sofrimento, apego ao passado que impede o crescimento, humor instável como as marés. O casco que virou prisão.</p>
+      <p><strong>Mitologia:</strong> O Caranguejo que Hera enviou para distrair Hércules enquanto ele lutava com a Hidra. Ísis, que recolheu os pedaços de Osíris — o amor que restaura o despedaçado. Também: a Grande Mãe, Deméter, Cibele.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Estômago, peito, útero</div>
+        <div><span class="se-label">METAL</span>Prata (Lua)</div>
+        <div><span class="se-label">PEDRA</span>Pérola, Pedra da Lua</div>
+        <div><span class="se-label">COR</span>Branco, Prata</div>
+        <div><span class="se-label">TARÔ</span>A Carruagem (VII)</div>
+        <div><span class="se-label">CABALA</span>Binah (3ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEÃO -->
+<div class="sign-card s-leo reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♌</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#FFD040">Leão</div>
+      <div class="sign-dates">23 julho – 22 agosto · O Leão</div>
+      <div class="sign-ruler">☉ Regente: Sol · Exaltação: — · Queda: Saturno</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-fire">🔥 Fogo</span><span class="sp sp-gold">🔒 Fixo</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">5ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Rei, o Artista, o Criador. Leão é o sol no auge do verão — a energia na plenitude de si mesma. É o signo da expressão criativa, do brilho, da necessidade de ser visto e amado. O leão não apenas existe — ele reina.</p>
+      <p><strong>Expressão Solar:</strong> Generosidade genuína (o rei que cuida do reino), criatividade explosiva, liderança carismática, lealdade profunda aos que ama, alegria de viver, brilho que não precisa de espelho para ser real.</p>
+      <p><strong>Sombra:</strong> Arrogância, necessidade excessiva de aprovação e atenção, inflexibilidade do ego, ciúme quando não está no centro, tendência de fazer tudo grandioso mesmo quando o simples bastaria.</p>
+      <p><strong>Mitologia:</strong> O Leão de Nemeia, primeiro trabalho de Hércules — a força bruta que precisa ser domada pela consciência. Apolo, o deus solar. Ra, o deus-sol egípcio que atravessa o céu a cada dia sem deixar de brilhar.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Coração, costas, coluna</div>
+        <div><span class="se-label">METAL</span>Ouro (Sol)</div>
+        <div><span class="se-label">PEDRA</span>Rubi, Âmbar, Peridoto</div>
+        <div><span class="se-label">COR</span>Dourado, Laranja Solar</div>
+        <div><span class="se-label">TARÔ</span>A Força (VIII / XI)</div>
+        <div><span class="se-label">CABALA</span>Tiferet (6ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIRGEM -->
+<div class="sign-card s-vir reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♍</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#90C060">Virgem</div>
+      <div class="sign-dates">23 agosto – 22 setembro · A Virgem</div>
+      <div class="sign-ruler">☿ Regente: Mercúrio · Exaltação: Mercúrio · Queda: Vênus</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-earth">🌍 Terra</span><span class="sp sp-gold">🌊 Mutável</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">6ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> A Artesã, a Curadora, a Serva do Sagrado. Virgem é a mente (Mercúrio) a serviço do corpo e da saúde — a inteligência que se aplica ao concreto. É o signo da purificação, do discernimento, do artesanato perfeito.</p>
+      <p><strong>Expressão Solar:</strong> Inteligência analítica cirúrgica, atenção ao detalhe que outros perdem, ética do serviço (faz pelo prazer de fazer bem), praticidade que funciona, cuidado genuíno com a saúde (própria e alheia), humildade real.</p>
+      <p><strong>Sombra:</strong> Perfeccionismo que paralisa, crítica excessiva (de si e dos outros), hipocondria, ansiedade sobre imperfeições, dificuldade de delegar por não confiar no trabalho alheio, autocrítica que destrói antes de construir.</p>
+      <p><strong>Mitologia:</strong> Perséfone antes do rapto — a donzela pura nos campos. Deméter na busca pela filha. Astreia, a deusa da justiça e última olímpica a deixar a Terra. Ísis como a grande alquimista.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Intestinos, sistema digestivo</div>
+        <div><span class="se-label">METAL</span>Mercúrio/Prata</div>
+        <div><span class="se-label">PEDRA</span>Safira, Jade</div>
+        <div><span class="se-label">COR</span>Verde Escuro, Azul-Cinza</div>
+        <div><span class="se-label">TARÔ</span>O Eremita (IX)</div>
+        <div><span class="se-label">CABALA</span>Hod (8ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIBRA -->
+<div class="sign-card s-lib reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♎</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#D080D0">Libra</div>
+      <div class="sign-dates">23 setembro – 22 outubro · A Balança</div>
+      <div class="sign-ruler">♀ Regente: Vênus · Exaltação: Saturno · Queda: Sol</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-air">🌬 Ar</span><span class="sp sp-gold">⚡ Cardinal</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">7ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Diplomata, o Juiz, o Artista do Relacionamento. Libra é Vênus no elemento Ar — o amor que pensa, a beleza que se articula, a justiça que pesa antes de decidir. É o único signo do zodíaco que não é representado por ser vivo — a balança é um instrumento, não uma criatura. Isso revela algo: Libra é o ideal da imparcialidade.</p>
+      <p><strong>Expressão Solar:</strong> Diplomacia genuína, sentido estético aguçado, capacidade de ver todos os lados de uma questão, charme natural, habilidade para criar harmonia em ambientes conflituosos, amor pela beleza e pela cultura.</p>
+      <p><strong>Sombra:</strong> Indecisão paralisante (a balança que não se fixa), dependência do outro para se sentir completo, tendência ao acordo que evita o conflito necessário, superficialidade para manter as aparências, codependência velada de encanto.</p>
+      <p><strong>Mitologia:</strong> Astréia (deusa da justiça) e sua balança. Afrodite no aspecto de amor que requer harmonia. Maat, a deusa egípcia da Verdade que usa a balança para pesar almas.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Rins, bexiga, região lombar</div>
+        <div><span class="se-label">METAL</span>Cobre (Vênus)</div>
+        <div><span class="se-label">PEDRA</span>Opala, Lápis-Lazúli</div>
+        <div><span class="se-label">COR</span>Rosa, Azul Claro</div>
+        <div><span class="se-label">TARÔ</span>Justiça (VIII ou XI)</div>
+        <div><span class="se-label">CABALA</span>Netzach (7ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCORPIÃO -->
+<div class="sign-card s-sco reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♏</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#C02040">Escorpião</div>
+      <div class="sign-dates">23 outubro – 21 novembro · O Escorpião</div>
+      <div class="sign-ruler">♂/♇ Regente: Marte (clás.) / Plutão (mod.) · Exaltação: Urano</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-water">💧 Água</span><span class="sp sp-gold">🔒 Fixo</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">8ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Alquimista, o Xamã, o Iniciado. Escorpião é a Água no elemento Fixo — sentimento intenso que não muda facilmente, profundidade que não tem fundo. É o signo da morte e da transformação, dos segredos, do poder oculto, da sexualidade como mistério sagrado.</p>
+      <p><strong>Expressão Solar:</strong> Intensidade que não se quebra, lealdade absoluta (quando confia), intuição que vê através das máscaras, capacidade de transformação radical (a fênix que renasce), força magnética, profundidade emocional que toca o sagrado.</p>
+      <p><strong>Sombra:</strong> Ciúme destrutivo, tendência à manipulação e ao controle, rancor que não perdoa, obsessão, uso do poder para ferir, autodestruição quando a transformação não acontece voluntariamente.</p>
+      <p><strong>Mitologia:</strong> O escorpião que matou Órion. Perséfone como Rainha dos Mortos. Hades e os mistérios do submundo. A Fênix (símbolo esotérico de Escorpião) que queima e renasce das próprias cinzas.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Órgãos sexuais, intestino grosso</div>
+        <div><span class="se-label">METAL</span>Ferro/Plutônio</div>
+        <div><span class="se-label">PEDRA</span>Topázio, Obsidiana, Granada</div>
+        <div><span class="se-label">COR</span>Vermelho Escuro, Preto</div>
+        <div><span class="se-label">TARÔ</span>A Morte (XIII)</div>
+        <div><span class="se-label">CABALA</span>Geburah / Binah</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAGITÁRIO -->
+<div class="sign-card s-sag reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♐</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#E08020">Sagitário</div>
+      <div class="sign-dates">22 novembro – 21 dezembro · O Arqueiro</div>
+      <div class="sign-ruler">♃ Regente: Júpiter · Exaltação: — · Queda: Mercúrio</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-fire">🔥 Fogo</span><span class="sp sp-gold">🌊 Mutável</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">9ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Filósofo, o Viajante, o Arqueiro que Mira nas Estrelas. Sagitário é o Fogo que busca significado — não apenas ação (Áries) ou expressão (Leão), mas sentido, filosofia, verdade universal. É o centauro: metade animal, metade humano, mas o que o define não é nenhum dos dois — é a flecha que dispara em direção ao horizonte que nunca alcança.</p>
+      <p><strong>Expressão Solar:</strong> Otimismo expansivo, amor pela liberdade e pela aventura, honestidade brutal (às vezes brutal demais), generosidade de espírito, visão de mundo ampla, fé genuína no futuro, capacidade de ensinar o que viveu.</p>
+      <p><strong>Sombra:</strong> Excesso de confiança que se torna arrogância filosófica, promessas que não são cumpridas, comprometimento que sufoca, imprudência, o "verdadeiro eu" que nunca se submete a nada — incluindo suas próprias relações.</p>
+      <p><strong>Mitologia:</strong> Quíron, o centauro sábio e curador (embora Sagitário seja mais associado ao centauro selvagem Nessos). Zeus em sua face de expansão e abundância. As Musas e o Monte Parnaso.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Quadris, coxas, fígado</div>
+        <div><span class="se-label">METAL</span>Estanho (Júpiter)</div>
+        <div><span class="se-label">PEDRA</span>Turquesa, Ametista</div>
+        <div><span class="se-label">COR</span>Roxo, Azul Royal</div>
+        <div><span class="se-label">TARÔ</span>Temperança (XIV)</div>
+        <div><span class="se-label">CABALA</span>Chesed (4ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPRICÓRNIO -->
+<div class="sign-card s-cap reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♑</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#A0A0C0">Capricórnio</div>
+      <div class="sign-dates">22 dezembro – 19 janeiro · O Bode-Peixe</div>
+      <div class="sign-ruler">♄ Regente: Saturno · Exaltação: Marte · Queda: Júpiter</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-earth">🌍 Terra</span><span class="sp sp-gold">⚡ Cardinal</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">10ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Arquiteto do Destino, o Mestre, o Ancião que Nasce Jovem. Capricórnio é o signo mais mal compreendido — visto como frio e calculista, quando na verdade é o mais devotado ao construir algo real e duradouro. Governa o tempo, a estrutura e o legado.</p>
+      <p><strong>Expressão Solar:</strong> Ambição que serve a um propósito maior, disciplina forjada no tempo, responsabilidade que não se esquiva, capacidade de adiar gratificação por um objetivo que vale, sabedoria prática construída na experiência.</p>
+      <p><strong>Sombra:</strong> Rigidez excessiva, workaholism, incapacidade de relaxar ou brincar, pessimismo que se disfarça de realismo, controle que sufoca o espontâneo, ascensão que ignora os meios pelos fins.</p>
+      <p><strong>Mitologia:</strong> Pan transformado em bode-peixe ao mergulhar no Nilo para escapar de Tifão — a união dos dois mundos (Terra e Água). Cronos/Saturno como regente do tempo e da lei. O deus que constrói a civilização.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Joelhos, ossos, pele, dentes</div>
+        <div><span class="se-label">METAL</span>Chumbo (Saturno)</div>
+        <div><span class="se-label">PEDRA</span>Ônix, Obsidiana, Turmalina Negra</div>
+        <div><span class="se-label">COR</span>Preto, Cinza, Marrom Escuro</div>
+        <div><span class="se-label">TARÔ</span>O Diabo (XV)</div>
+        <div><span class="se-label">CABALA</span>Binah (3ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AQUÁRIO -->
+<div class="sign-card s-aqu reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♒</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#40B0E0">Aquário</div>
+      <div class="sign-dates">20 janeiro – 18 fevereiro · O Portador d'Água</div>
+      <div class="sign-ruler">♄/♅ Regente: Saturno (clás.) / Urano (mod.) · Exaltação: —</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-air">🌬 Ar</span><span class="sp sp-gold">🔒 Fixo</span>
+      <span class="sp sp-gold">Masculino · Yang</span><span class="sp sp-gold">11ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Visionário, o Revolucionário, o Amigo da Humanidade. O grande paradoxo de Aquário: é um signo de Ar (mental, social) mas é simbolizado por um portador de água. Ele distribui o conhecimento (água = emoção coletiva) para a humanidade. É o signo do futuro, da coletividade, da originalidade que não se encaixa em nenhuma caixa.</p>
+      <p><strong>Expressão Solar:</strong> Originalidade genuína que não imita, idealismo que visa o coletivo, inteligência que pensa em sistemas e redes, amizade como valor supremo, abertura para o diferente e o estranho, visão do futuro como projeto consciente.</p>
+      <p><strong>Sombra:</strong> Frieza emocional disfarçada de objetividade, rebeldia como identidade (não como princípio), desconexão das próprias emoções, elitismo intelectual, incapacidade de intimidade profunda porque todos são "amigos".</p>
+      <p><strong>Mitologia:</strong> Ganimedes, o copeiro dos deuses — o mortal que distribui o néctar divino aos imortais. Prometeu, que roubou o fogo (conhecimento) para a humanidade. A Era de Aquário como promessa coletiva.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Tornozelos, circulação, sistema elétrico</div>
+        <div><span class="se-label">METAL</span>Urânio/Alumínio</div>
+        <div><span class="se-label">PEDRA</span>Ametista, Aquamarina</div>
+        <div><span class="se-label">COR</span>Azul Elétrico, Violeta</div>
+        <div><span class="se-label">TARÔ</span>A Estrela (XVII)</div>
+        <div><span class="se-label">CABALA</span>Chokmah (2ª Sefirá)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PEIXES -->
+<div class="sign-card s-pis reveal">
+  <div class="sign-head">
+    <span class="sign-sym">♓</span>
+    <div class="sign-meta">
+      <div class="sign-name" style="color:#8080E0">Peixes</div>
+      <div class="sign-dates">19 fevereiro – 20 março · Os Peixes</div>
+      <div class="sign-ruler">♃/♆ Regente: Júpiter (clás.) / Netuno (mod.) · Exaltação: Vênus</div>
+    </div>
+  </div>
+  <div class="sign-body">
+    <div class="sign-pills">
+      <span class="sp sp-water">💧 Água</span><span class="sp sp-gold">🌊 Mutável</span>
+      <span class="sp sp-silver">Feminino · Yin</span><span class="sp sp-gold">12ª Casa</span>
+    </div>
+    <div class="sign-desc">
+      <p><strong>O Arquétipo:</strong> O Místico, o Artista da Alma, o Ser da Fronteira. Peixes é o último signo — carrega traços de todos os onze anteriores. É a dissolução antes do próximo ciclo começar. Os dois peixes nadando em direções opostas simbolizam a tensão entre o mundo material e o espiritual, entre o presente e o eterno.</p>
+      <p><strong>Expressão Solar:</strong> Empatia ilimitada (que às vezes beira o sacrifício), imaginação criativa sem fronteiras, espiritualidade que vivencia em vez de teorizar, compaixão que inclui o que outros rejeitam, arte que nasce das profundezas do ser.</p>
+      <p><strong>Sombra:</strong> Fuga da realidade (álcool, drogas, ilusão, fantasia sem âncora), vitimismo, sacrifício como identidade, dissolução de limites que leva à perda de si mesmo, dificuldade de dizer não, confusão entre empatia e fusão.</p>
+      <p><strong>Mitologia:</strong> Afrodite e Eros que se transformam em peixes para escapar de Tifão. Orfeu após a morte — sua música ainda flutua no oceano. Jesus (signo de Peixes como símbolo do peixe, IChTHuS). A dissolução de Osíris no Nilo.</p>
+    </div>
+    <div class="sign-extras">
+      <div class="se-row">
+        <div><span class="se-label">CORPO</span>Pés, sistema linfático, glândula pineal</div>
+        <div><span class="se-label">METAL</span>Platina/Estanho</div>
+        <div><span class="se-label">PEDRA</span>Aquamarina, Pedra da Lua</div>
+        <div><span class="se-label">COR</span>Violeta, Azul-Verde, Branco</div>
+        <div><span class="se-label">TARÔ</span>A Lua (XVIII)</div>
+        <div><span class="se-label">CABALA</span>Kether / Ain Soph</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /sign-grid -->
+
+<!-- ═══ POLARIDADES ═══ -->
+<div id="polaridades" class="ch reveal">
+  <h2>✦ As Polaridades e Oposições do Zodíaco ✦</h2>
+  <p>Como os pares de signos opostos se complementam</p>
+</div>
+
+<div class="s-card acc-silver reveal">
+  <h3>☯ Os Seis Pares Opostos</h3>
+  <p>Os 12 signos formam 6 pares de opostos — signos que se encontram a 180° no zodíaco. Em astrologia, opostos se <strong>complementam e se desafiam</strong>: cada signo possui o que o oposto precisa desenvolver. A tensão entre opostos é criativa — como a tensão entre Yin e Yang, entre Enxofre e Sal na alquimia.</p>
+  <p><strong>♈ Áries × ♎ Libra</strong> — Eu vs. Nós / Iniciativa vs. Diplomacia / Ação vs. Ponderação. Áries afirma "Eu sou", Libra pergunta "Quem somos juntos?" O equilíbrio: agir com consideração pelo outro sem perder a iniciativa.</p>
+  <p><strong>♉ Touro × ♏ Escorpião</strong> — Recursos Próprios vs. Recursos Compartilhados / Prazer vs. Transformação / Segurança vs. Profundidade. O equilíbrio: valorizar o concreto sem temer a transformação que dissolvé o que não serve.</p>
+  <p><strong>♊ Gêmeos × ♐ Sagitário</strong> — Detalhes vs. Visão Geral / Dados vs. Sabedoria / Local vs. Global. O equilíbrio: usar o detalhe a serviço do significado, a informação a serviço da verdade.</p>
+  <p><strong>♋ Câncer × ♑ Capricórnio</strong> — Lar vs. Carreira / Emoção vs. Estrutura / Privado vs. Público. O equilíbrio: construir um legado que não abandone o lar emocional; cuidar sem suffocar com segurança.</p>
+  <p><strong>♌ Leão × ♒ Aquário</strong> — Individual vs. Coletivo / Criatividade vs. Inovação / Coração vs. Mente. O equilíbrio: ser único sem isolar-se do todo; servir o coletivo sem perder a chama individual.</p>
+  <p><strong>♍ Virgem × ♓ Peixes</strong> — Análise vs. Síntese / Saúde vs. Espiritualidade / Crítica vs. Compaixão. O equilíbrio: a precisão que serve ao amor; o cuidado concreto que honra o sagrado.</p>
+</div>
+
+<!-- ═══ CORRESPONDÊNCIAS ═══ -->
+<div id="correl" class="ch reveal">
+  <h2>✦ Correspondências Herméticas ✦</h2>
+  <p>Astrologia · Cabala · Alquimia · Tarot · como os sistemas se espelham</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>🌳 Os 12 Signos na Árvore da Vida</h3>
+  <p>A correlação entre signos astrológicos e a Cabala não é arbitrária — ambos os sistemas compartilham a mesma cosmologia hermética. Os signos correspondem aos <strong>22 caminhos da Árvore da Vida</strong> (12 signos + 7 planetas + 3 elementos = 22 letras hebraicas):</p>
+  <p>Os <strong>12 signos</strong> correspondem às 12 letras simples do alefato hebraico: Áries/Heh, Touro/Vav, Gêmeos/Zain, Câncer/Chet, Leão/Tet, Virgem/Yod, Libra/Lamed, Escorpião/Nun, Sagitário/Samekh, Capricórnio/Ayin, Aquário/Tzaddi, Peixes/Qoph. Cada letra simples governa um dos sentidos humanos e uma direção do espaço.</p>
+  <p>Os <strong>7 planetas clássicos</strong> correspondem às 7 letras duplas (Beth/Mercúrio, Gimel/Lua, Daleth/Vênus, Caf/Júpiter, Peh/Marte, Resh/Sol, Tav/Saturno). Os <strong>3 elementos primordiais</strong> (Fogo, Água, Ar) correspondem às 3 letras-mãe (Shin/Fogo, Mem/Água, Aleph/Ar).</p>
+</div>
+
+<div class="s-card acc-gold reveal">
+  <h3>⚗ A Grande Tríade Alquímica nos Signos</h3>
+  <p>Na alquimia de Paracelso, os três princípios fundamentais da matéria são <strong>Enxofre, Mercúrio e Sal</strong>. Eles correspondem exatamente às três modalidades astrológicas:</p>
+  <p><strong>🔥 Enxofre</strong> (o princípio ativo, solar, masculino) = Signos <strong>Cardinais</strong> (Áries, Câncer, Libra, Capricórnio) — a energia que inicia, que acende, que parte do potencial para o ato.</p>
+  <p><strong>💧 Mercúrio Alquímico</strong> (o princípio mediador, adaptável) = Signos <strong>Mutáveis</strong> (Gêmeos, Virgem, Sagitário, Peixes) — a energia que transita entre estados, que comunica e dissolve fronteiras.</p>
+  <p><strong>🌍 Sal</strong> (o princípio fixo, lunar, feminino) = Signos <strong>Fixos</strong> (Touro, Leão, Escorpião, Aquário) — a energia que cristaliza, sustenta, preserva a forma.</p>
+  <p>A Grande Obra alquímica (Opus Magnum) segue o ciclo: Nigredo (decomposição / signos de Água), Albedo (purificação / signos de Ar), Citrinitas (iluminação / signos de Fogo), Rubedo (realização / signos de Terra). A jornada pelo zodíaco é a Grande Obra em tempo cíclico.</p>
+</div>
+
+<footer>
+  <div class="f-nav">
+    <a class="f-link" href="astrologia-parte1.html">I · Fundamentos</a>
+    <a class="f-link" href="astrologia-parte2.html">II · Planetas</a>
+    <a class="f-link" href="astrologia-parte3.html">III · Casas</a>
+    <a class="f-link" href="astrologia-parte4.html">IV · Aspectos e Avançado</a>
+  </div>
+  <p class="f-text">
+    "A astrologia representa a soma de todo o conhecimento psicológico da antiguidade."<br>
+    — Carl Gustav Jung<br><br>
+    <em>Ptolomeu · Dane Rudhyar · Liz Greene · Robert Hand · Isabel Hickey · Stephen Arroyo</em>
+  </p>
+</footer>
+
+</div>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.06})
+document.querySelectorAll('.reveal,.sign-card').forEach(el=>io.observe(el))
+const secs=[...document.querySelectorAll('[id]')]
+const dots=[...document.querySelectorAll('.sn-dot')]
+const io2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})}})},{threshold:.4})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

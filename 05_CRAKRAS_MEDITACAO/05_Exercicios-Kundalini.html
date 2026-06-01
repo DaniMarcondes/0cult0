@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Kundalini · 20 Minutos · Mulher Gnóstica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06040F;
+  --gold: #C8A84B;
+  --gold-l: #F0D080;
+  --gold-d: rgba(200,168,75,0.15);
+  --rose: #C04878;
+  --rose-l: #FF80B0;
+  --teal: #208878;
+  --teal-l: #60F0C0;
+  --violet: #6030A0;
+  --violet-l: #C080FF;
+  --text: #EDE8D8;
+  --text-d: rgba(237,232,216,0.65);
+  --text-dd: rgba(237,232,216,0.4);
+  --border: rgba(200,168,75,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text);
+  line-height:1.85;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(192,72,120,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 90%,rgba(96,48,160,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 50%,rgba(32,136,120,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+  animation:breathe 14s ease-in-out infinite alternate;
+}
+@keyframes breathe{0%{opacity:.5}100%{opacity:1}}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 8%  9%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 23% 34%,rgba(200,168,75,.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 51% 7%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 76% 18%,rgba(192,72,120,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 42%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 14% 68%,rgba(200,168,75,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 62% 79%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 37% 88%,rgba(96,48,160,.3) 0%,transparent 100%);
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 18px 100px}
+
+/* HEADER */
+header{text-align:center;padding:70px 20px 50px}
+.hdr-icon{font-size:4rem;display:block;margin-bottom:14px;
+  filter:drop-shadow(0 0 30px var(--rose));
+  animation:glow 6s ease-in-out infinite}
+@keyframes glow{
+  0%,100%{filter:drop-shadow(0 0 20px var(--rose))}
+  50%{filter:drop-shadow(0 0 50px var(--rose-l)) drop-shadow(0 0 80px var(--rose))}
+}
+h1{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.2rem,3.5vw,2.2rem);
+  color:var(--gold);
+  letter-spacing:.1em;
+  text-shadow:0 0 40px rgba(200,168,75,.4);
+  line-height:1.3;
+}
+.sub{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(.82rem,2vw,1rem);
+  color:rgba(200,168,75,.5);
+  letter-spacing:.2em;
+  margin-top:10px;
+}
+.hdr-rule{
+  width:400px;max-width:90%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--rose),var(--gold),var(--rose),transparent);
+  margin:22px auto;
+}
+.hdr-text{
+  max-width:680px;margin:0 auto;
+  font-size:.95rem;line-height:2;color:var(--text-d);
+  font-style:italic;
+}
+
+/* AVISO HONESTO */
+.aviso{
+  border-radius:14px;padding:24px 26px;margin:30px 0;
+  background:rgba(192,72,120,0.08);
+  border:1px solid rgba(192,72,120,0.3);
+  position:relative;
+}
+.aviso-icon{font-size:1.6rem;margin-bottom:10px;display:block}
+.aviso h2{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.78rem;letter-spacing:.2em;color:var(--rose-l);
+  margin-bottom:10px;
+}
+.aviso p{font-size:.9rem;line-height:1.9;color:var(--text-d)}
+.aviso strong{color:var(--rose-l)}
+
+/* TIMELINE CARD */
+.timeline{margin:40px 0}
+.tl-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.78rem;letter-spacing:.22em;
+  color:var(--gold);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.tl-title::before,.tl-title::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,168,75,.3),transparent);
+}
+.tl-grid{display:flex;flex-direction:column;gap:0}
+.tl-item{
+  display:flex;gap:0;
+  position:relative;
+}
+.tl-left{
+  width:120px;flex-shrink:0;
+  padding:20px 16px 20px 0;
+  text-align:right;
+}
+.tl-period{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.65rem;letter-spacing:.1em;
+  line-height:1.4;
+}
+.tl-marker{
+  width:2px;
+  background:linear-gradient(180deg,rgba(200,168,75,0),rgba(200,168,75,.4),rgba(200,168,75,0));
+  flex-shrink:0;
+  position:relative;
+}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;
+  position:absolute;top:24px;left:50%;
+  transform:translateX(-50%);
+  border:2px solid;
+}
+.tl-right{
+  flex:1;padding:20px 0 20px 20px;
+}
+.tl-phase{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.05rem;
+  margin-bottom:6px;
+}
+.tl-desc{font-size:.85rem;color:var(--text-d);line-height:1.8}
+.tl-signs{
+  margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;
+}
+.sign{
+  font-size:.68rem;padding:3px 8px;border-radius:20px;
+  border:1px solid;font-style:italic;
+}
+
+/* Fase colors */
+.f1 .tl-period{color:rgba(192,72,120,0.8)}
+.f1 .tl-dot{background:rgba(192,72,120,.3);border-color:var(--rose)}
+.f1 .tl-phase{color:var(--rose-l)}
+.f1 .sign{color:var(--rose-l);border-color:rgba(192,72,120,.3);background:rgba(192,72,120,.07)}
+
+.f2 .tl-period{color:rgba(200,168,75,0.8)}
+.f2 .tl-dot{background:rgba(200,168,75,.2);border-color:var(--gold)}
+.f2 .tl-phase{color:var(--gold-l)}
+.f2 .sign{color:var(--gold-l);border-color:rgba(200,168,75,.3);background:rgba(200,168,75,.07)}
+
+.f3 .tl-period{color:rgba(32,136,120,0.8)}
+.f3 .tl-dot{background:rgba(32,136,120,.2);border-color:var(--teal)}
+.f3 .tl-phase{color:var(--teal-l)}
+.f3 .sign{color:var(--teal-l);border-color:rgba(32,136,120,.3);background:rgba(32,136,120,.07)}
+
+.f4 .tl-period{color:rgba(96,48,160,0.8)}
+.f4 .tl-dot{background:rgba(96,48,160,.2);border-color:var(--violet)}
+.f4 .tl-phase{color:var(--violet-l)}
+.f4 .sign{color:var(--violet-l);border-color:rgba(96,48,160,.3);background:rgba(96,48,160,.07)}
+
+/* SECTION HEADERS */
+.sec-head{
+  text-align:center;margin:50px 0 24px;
+}
+.sec-head h2{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(.75rem,2vw,.95rem);
+  letter-spacing:.2em;color:var(--gold);
+  text-shadow:0 0 20px rgba(200,168,75,.3);
+}
+.sec-head p{
+  font-style:italic;font-size:.85rem;
+  color:var(--text-dd);margin-top:6px;
+}
+.sec-rule{
+  width:300px;max-width:80%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:10px auto 0;
+}
+
+/* ROUTINE BLOCK */
+.routine{
+  border-radius:14px;overflow:hidden;
+  border:1px solid var(--border);
+  margin-bottom:16px;
+}
+.routine-head{
+  padding:16px 20px;
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+  user-select:none;
+}
+.routine-icon{font-size:1.6rem;flex-shrink:0}
+.routine-meta{flex:1}
+.routine-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.05rem;
+}
+.routine-sub{
+  font-size:.78rem;color:var(--text-dd);
+  font-style:italic;margin-top:2px;
+}
+.routine-time{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.7rem;letter-spacing:.1em;
+  color:var(--gold);white-space:nowrap;
+}
+.routine-body{
+  padding:0 20px;
+  max-height:0;overflow:hidden;
+  transition:max-height .5s ease, padding .3s ease;
+}
+.routine-body.open{max-height:2000px;padding:18px 20px 22px}
+
+.step{
+  display:flex;gap:12px;margin-bottom:14px;
+  align-items:flex-start;
+}
+.step:last-child{margin-bottom:0}
+.step-num{
+  width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel Decorative',serif;
+  font-size:.6rem;flex-shrink:0;margin-top:2px;
+}
+.step-body{flex:1}
+.step-name{
+  font-weight:700;font-size:.92rem;
+  margin-bottom:3px;
+}
+.step-desc{font-size:.83rem;color:var(--text-d);line-height:1.85}
+.step-tip{
+  margin-top:6px;
+  padding:8px 12px;border-radius:6px;
+  font-size:.78rem;font-style:italic;
+  color:var(--text-dd);
+  background:rgba(255,255,255,.025);
+  border-left:2px solid rgba(200,168,75,.25);
+}
+
+/* Routine color themes */
+.r-rose .routine-name{color:var(--rose-l)}
+.r-rose .routine-head{border-bottom-color:rgba(192,72,120,.2)}
+.r-rose .step-num{background:rgba(192,72,120,.15);border:1px solid rgba(192,72,120,.3);color:var(--rose-l)}
+.r-rose .routine-icon{filter:drop-shadow(0 0 8px var(--rose))}
+
+.r-gold .routine-name{color:var(--gold-l)}
+.r-gold .routine-head{border-bottom-color:rgba(200,168,75,.2)}
+.r-gold .step-num{background:rgba(200,168,75,.12);border:1px solid rgba(200,168,75,.25);color:var(--gold-l)}
+
+.r-teal .routine-name{color:var(--teal-l)}
+.r-teal .routine-head{border-bottom-color:rgba(32,136,120,.2)}
+.r-teal .step-num{background:rgba(32,136,120,.12);border:1px solid rgba(32,136,120,.25);color:var(--teal-l)}
+
+.r-violet .routine-name{color:var(--violet-l)}
+.r-violet .routine-head{border-bottom-color:rgba(96,48,160,.2)}
+.r-violet .step-num{background:rgba(96,48,160,.12);border:1px solid rgba(96,48,160,.25);color:var(--violet-l)}
+
+/* WEEKLY GRID */
+.week-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin:16px 0;
+}
+.day-card{
+  border-radius:10px;padding:12px 6px;
+  text-align:center;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+}
+.day-name{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.5rem;letter-spacing:.1em;
+  color:var(--text-dd);margin-bottom:6px;
+}
+.day-icon{font-size:1.2rem;display:block;margin-bottom:4px}
+.day-focus{font-size:.65rem;color:var(--text-d);line-height:1.5}
+
+/* MANTRAM */
+.mantram-block{
+  border-radius:12px;padding:22px;
+  background:rgba(96,48,160,.07);
+  border:1px solid rgba(96,48,160,.25);
+  margin:12px 0;
+  text-align:center;
+}
+.mantram-text{
+  font-family:'IM Fell English',serif;
+  font-size:1.3rem;
+  color:var(--violet-l);
+  letter-spacing:.2em;
+  margin-bottom:8px;
+}
+.mantram-syllables{
+  font-size:.8rem;color:var(--text-dd);
+  letter-spacing:.15em;
+  line-height:2;
+}
+.mantram-meaning{
+  font-size:.82rem;color:var(--text-d);
+  font-style:italic;margin-top:8px;
+}
+
+/* PRANAYAMA VISUAL */
+.prana-cycle{
+  display:flex;align-items:stretch;gap:4px;
+  margin:12px 0;border-radius:10px;overflow:hidden;
+}
+.prana-phase{
+  flex:1;padding:10px 6px;text-align:center;
+  font-size:.72rem;line-height:1.6;
+}
+.prana-inhale{background:rgba(32,136,120,.15);border:1px solid rgba(32,136,120,.25)}
+.prana-hold{background:rgba(200,168,75,.12);border:1px solid rgba(200,168,75,.2)}
+.prana-exhale{background:rgba(192,72,120,.12);border:1px solid rgba(192,72,120,.22)}
+.prana-label{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.52rem;letter-spacing:.1em;
+  display:block;margin-bottom:3px;
+}
+.prana-inhale .prana-label{color:var(--teal-l)}
+.prana-hold .prana-label{color:var(--gold-l)}
+.prana-exhale .prana-label{color:var(--rose-l)}
+.prana-counts{font-weight:700;font-size:1.1rem}
+.prana-inhale .prana-counts{color:var(--teal-l)}
+.prana-hold .prana-counts{color:var(--gold-l)}
+.prana-exhale .prana-counts{color:var(--rose-l)}
+.prana-desc{color:var(--text-dd);font-size:.7rem}
+
+/* CHAKRA LADDER */
+.chakra-ladder{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.chakra-row{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;border-radius:9px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.06);
+}
+.chakra-dot{
+  width:14px;height:14px;border-radius:50%;
+  flex-shrink:0;
+}
+.chakra-info{flex:1}
+.chakra-name{font-size:.85rem;font-weight:600}
+.chakra-note{font-size:.75rem;color:var(--text-dd);margin-top:1px}
+.chakra-vis{
+  font-size:.75rem;font-style:italic;
+  color:var(--text-dd);text-align:right;
+  max-width:180px;line-height:1.5;
+}
+
+/* WARNING BLOCK */
+.warning{
+  border-radius:12px;padding:20px 22px;margin:20px 0;
+  background:rgba(200,168,75,.06);
+  border:1px solid rgba(200,168,75,.2);
+}
+.warning h3{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.7rem;letter-spacing:.15em;
+  color:var(--gold);margin-bottom:10px;
+}
+.warning p{font-size:.85rem;color:var(--text-d);line-height:1.85}
+
+/* DIVIDER */
+.rule{
+  height:1px;margin:36px 0;
+  background:linear-gradient(90deg,transparent,rgba(200,168,75,.2),transparent);
+}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .tl-left{width:80px}
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+  .prana-cycle{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<header>
+  <span class="hdr-icon">🌹</span>
+  <h1>Plano de Despertar · 20 Minutos por Dia</h1>
+  <p class="sub">para a mulher gnóstica solteira · em seu caminho solo</p>
+  <div class="hdr-rule"></div>
+  <p class="hdr-text">
+    Este plano foi construído especificamente para você: mulher, gnóstica, solteira, praticando sozinha. Ele respeita sua tradição, é honesto sobre os limites e as possibilidades do caminho solo, e entrega práticas reais que funcionam — extraídas do tantra, da gnose, do pranayama e da meditação de chakras.
+  </p>
+</header>
+
+<!-- AVISO HONESTO -->
+<div class="aviso reveal">
+  <span class="aviso-icon">🕊</span>
+  <h2>✦ A Verdade Honesta Antes de Começar ✦</h2>
+  <p>Na tradição gnóstica de Samael Aun Weor, a <strong>transmutação completa do Ens Seminis</strong> (a transmutação química radical descrita no Arcano AZF) requer o casal — o contato entre os dois polos físicos é parte do processo que ele descreve. O próprio portal Gnose Online confirma: "os solteiros <strong>não transmutam o sêmen</strong>, o que podem fazer é <strong>sublimar a energia sexual</strong>".</p>
+  <p style="margin-top:10px">Mas aqui está o que isso significa na prática: <strong>a sublimação é um caminho legítimo e poderoso</strong>. Não é um prêmio de consolação — é o mesmo caminho trilhado por virgens vestais, yoginis solteiras e místicas de todas as tradições. Kundalini <strong>pode e desperta</strong> pela via solo. Os <em>sinais</em> serão os mesmos, o processo é diferente: em vez do calor do contato sexual, você usará o <strong>fogo interior da respiração, do mantram e da visualização</strong> como catalisadores. É mais lento — e igualmente real.</p>
+</div>
+
+<!-- TIMELINE DE DESPERTAR -->
+<div class="timeline reveal">
+  <div class="tl-title">✦ Quando vai despertar — projeção honesta ✦</div>
+  <div class="tl-grid">
+
+    <div class="tl-item f1">
+      <div class="tl-left">
+        <div class="tl-period">Meses<br>1 – 3</div>
+      </div>
+      <div class="tl-marker"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-phase">Limpeza e Preparação dos Canais</div>
+        <div class="tl-desc">O corpo sutil começa a ser limpo. Os nadis (canais energéticos) que estavam obstruídos por padrões emocionais, tensões físicas e hábitos inconscientes começam a se abrir. Você provavelmente não vai "sentir a kundalini" ainda — mas vai sentir outros sinais que confirmam que algo está acontecendo.</div>
+        <div class="tl-signs">
+          <span class="sign">Sonhos mais vívidos</span>
+          <span class="sign">Calor no cóccix ou base da coluna</span>
+          <span class="sign">Emoções aflorando sem razão aparente</span>
+          <span class="sign">Intuição aguçada</span>
+          <span class="sign">Sincronicidades</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item f2">
+      <div class="tl-left">
+        <div class="tl-period">Meses<br>3 – 9</div>
+      </div>
+      <div class="tl-marker"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-phase">Ativação — A Serpente Começa a Mover</div>
+        <div class="tl-desc">Com prática consistente diária, os primeiros movimentos reais de energia começam. Isso não é imaginação — é fisiologicamente real: o sistema nervoso parassimpático está sendo reconfigurado. A energia começa a subir dos chakras inferiores para o plexo solar e, eventualmente, o coração.</div>
+        <div class="tl-signs">
+          <span class="sign">Formigamento ou vibração na coluna</span>
+          <span class="sign">Calor subindo durante meditação</span>
+          <span class="sign">Kriyas (movimentos espontâneos)</span>
+          <span class="sign">Visões de luz durante olhos fechados</span>
+          <span class="sign">Amor expansivo sem razão</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item f3">
+      <div class="tl-left">
+        <div class="tl-period">Meses<br>9 – 18</div>
+      </div>
+      <div class="tl-marker"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-phase">Ascensão pelos Chakras — O Fogo Sobe</div>
+        <div class="tl-desc">A energia começa a percorrer a coluna com mais frequência e clareza. Cada chakra que é tocado pela Kundalini traz suas próprias purificações: Chakra do Plexo Solar — questões de poder e identidade. Chakra do Coração — abertura emocional profunda, às vezes com choros inexplicáveis. Chakra da Garganta — impulso criativo, necessidade de expressão autêntica.</div>
+        <div class="tl-signs">
+          <span class="sign">Pressão no centro da testa (Ajna)</span>
+          <span class="sign">Tinido ou silêncio profundo nos ouvidos</span>
+          <span class="sign">Estados de êxtase durante meditação</span>
+          <span class="sign">Saída do corpo / experiências sutis</span>
+          <span class="sign">Aumento de sensibilidade espiritual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item f4">
+      <div class="tl-left">
+        <div class="tl-period">Anos<br>2 – 4</div>
+      </div>
+      <div class="tl-marker"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-phase">O Despertar Pleno — A Coroa se Abre</div>
+        <div class="tl-desc">A Kundalini completa a jornada de Muladhara (cóccix) a Sahasrara (coroa). Este é o momento que as tradições chamam de Samadhi, Iluminação, Cristo Interno manifesto. Com 20 minutos diários e consistência real, este horizonte é alcançável. Não é raro — é o resultado natural da prática constante e do trabalho de dissolução do ego (o que os gnósticos chamam de "morte do ego").</div>
+        <div class="tl-signs">
+          <span class="sign">Silêncio mental profundo e permanente</span>
+          <span class="sign">Amor incondicional como estado base</span>
+          <span class="sign">Percepção expandida constante</span>
+          <span class="sign">Unidade com tudo</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- A ROTINA: OS 20 MINUTOS -->
+<div class="sec-head reveal">
+  <h2>✦ Os 20 Minutos · A Rotina Sagrada Diária ✦</h2>
+  <p>cada minuto tem uma função precisa — não é improvisação</p>
+  <div class="sec-rule"></div>
+</div>
+
+<!-- ROTINA 1: ABERTURA -->
+<div class="routine r-rose reveal">
+  <div class="routine-head" onclick="toggle(this)">
+    <span class="routine-icon">🕯</span>
+    <div class="routine-meta">
+      <div class="routine-name">1 · Abertura e Ancoragem</div>
+      <div class="routine-sub">preparar o corpo e declarar a intenção sagrada</div>
+    </div>
+    <div class="routine-time">⏱ 2 min</div>
+  </div>
+  <div class="routine-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--rose-l)">Postura — Siddhasana ou Sukhasana</div>
+        <div class="step-desc">Sente-se com a coluna ereta — não rígida, ereta. A coluna é o canal. Se ela está curvada, o canal está fechado. Use almofada sob o quadril se precisar. Mãos sobre os joelhos com a palma para cima (receptividade) ou em Jnana Mudra (indicador tocando o polegar = circuito de energia fechado).</div>
+        <div class="step-tip">💡 Se não consegue sentar no chão, uma cadeira serve — contanto que a coluna esteja reta e os pés toquem o chão.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--rose-l)">A Declaração Interior (1 minuto)</div>
+        <div class="step-desc">Antes de qualquer respiração, diga interiormente — com convicção, não apenas com palavras:</div>
+        <div class="mantram-block">
+          <div class="mantram-text">"Divina Mãe Kundalini, acende em mim o Fogo Sagrado"</div>
+          <div class="mantram-meaning">Esta invocação não é religiosa no sentido dogmático — é um ato de intenção direcionada. A Kundalini, nas tradições tântricas, é sempre feminina (Shakti), e invocar a Mãe Divina como guia do processo é, na gnose, o caminho seguro: ela não desperta de forma que o iniciado não possa suportar.</div>
+        </div>
+        <div class="step-tip">💡 Na gnose de Samael: a Divina Mãe controla a ascensão da Kundalini vértebra por vértebra, conforme a conquista espiritual. Ela não desperta de forma que você não possa suportar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROTINA 2: PRANAYAMA -->
+<div class="routine r-teal reveal">
+  <div class="routine-head" onclick="toggle(this)">
+    <span class="routine-icon">🌬</span>
+    <div class="routine-meta">
+      <div class="routine-name">2 · Pranayama Nadi Shodhana + Mula Bandha</div>
+      <div class="routine-sub">purificar os canais e bombar a energia para cima</div>
+    </div>
+    <div class="routine-time">⏱ 7 min</div>
+  </div>
+  <div class="routine-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--teal-l)">Nadi Shodhana — Respiração Alternada</div>
+        <div class="step-desc">A respiração alternada purifica os dois canais — Idá (esquerdo/lunar/feminino) e Pingalá (direito/solar/masculino) — preparando o Sushumna central para receber a Kundalini. É o pranayama mais recomendado para esse fim em todas as tradições.</div>
+        <div class="prana-cycle">
+          <div class="prana-phase prana-inhale">
+            <span class="prana-label">INSPIRE</span>
+            <div class="prana-counts">4</div>
+            <div class="prana-desc">pela narina<br>esquerda<br>(Idá / Lua)</div>
+          </div>
+          <div class="prana-phase prana-hold">
+            <span class="prana-label">RETENHA</span>
+            <div class="prana-counts">4</div>
+            <div class="prana-desc">ambas as<br>narinas<br>fechadas</div>
+          </div>
+          <div class="prana-phase prana-exhale">
+            <span class="prana-label">EXPIRE</span>
+            <div class="prana-counts">4</div>
+            <div class="prana-desc">pela narina<br>direita<br>(Pingalá / Sol)</div>
+          </div>
+        </div>
+        <div class="step-desc" style="margin-top:8px">Depois repita o lado inverso: inspire pela direita · retenha · expire pela esquerda. Isso é 1 ciclo completo. Faça <strong>14 ciclos completos</strong> (~5 minutos). À medida que semanas passam, avance para 4-8-8-8-4 (inspire 4, retenha 8, expire 8, retenha vazio 4).</div>
+        <div class="step-tip">💡 Use Vishnu Mudra: polegar fecha narina direita, anelar + mínimo fecham a esquerda. Indicador e médio dobrados para a palma.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--teal-l)">Mula Bandha — O Bloqueio Raiz</div>
+        <div class="step-desc">Durante a <strong>retenção</strong> (os 4 segundos de ar retido), contraia suavemente o assoalho pélvico — como se você fosse interromper o fluxo de urina, mas de forma suave e consciente. Esta contração é o que bomba a energia sexual de Muladhara (cóccix) para cima pelo canal Sushumna.</div>
+        <div class="step-desc" style="margin-top:6px">Não force. Não contraia o abdômen ou as nádegas — apenas o períneo. Com o tempo, você sentirá um calor ou formigamento subindo pela coluna durante essa contração.</div>
+        <div class="step-tip">💡 Na terminologia gnóstica: o Mula Bandha é o mecanismo físico que direciona o Ens Seminis (energia criadora) para cima, em vez de deixá-la dissipar. É a chave física da sublimação.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--teal-l)">Bhramari — A Respiração da Abelha (2 min)</div>
+        <div class="step-desc">Feche os ouvidos com os polegares, os olhos com os indicadores, as narinas com os médios (levemente), a boca permanece fechada. Inspire profundamente e, ao expirar, produza um <strong>zumbido "Hmmm"</strong> — como uma abelha. Sinta a vibração no crânio, na testa, no topo da cabeça.</div>
+        <div class="step-desc" style="margin-top:6px">Esta vibração estimula a glândula pineal (o Terceiro Olho) e o Sahasrara. Faça 5–7 repetições. É particularmente poderosa para a ativação do Ajna chakra.</div>
+        <div class="step-tip">💡 O zumbido é o som da abelha construindo o favo — você está construindo o campo energético que vai sustentar o despertar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROTINA 3: MANTRAM -->
+<div class="routine r-violet reveal">
+  <div class="routine-head" onclick="toggle(this)">
+    <span class="routine-icon">🔮</span>
+    <div class="routine-meta">
+      <div class="routine-name">3 · Mantram Sagrado</div>
+      <div class="routine-sub">as sílabas que vibram nos chakras e despertam a serpente</div>
+    </div>
+    <div class="routine-time">⏱ 5 min</div>
+  </div>
+  <div class="routine-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--violet-l)">DIONISOS — O Mantram da Transmutação Sexual (Samael)</div>
+        <div class="step-desc">Este é o mantram que Samael Aun Weor prescrevia especificamente para a transmutação da libido. Ele ressalta que, ao ser silabado com devoção, a energia sexual se transforma voluntariamente.</div>
+        <div class="mantram-block">
+          <div class="mantram-text">DI · ON · IS · IO · S</div>
+          <div class="mantram-syllables">
+            DI — vibração nos órgãos criadores · ativa Muladhara<br>
+            ON — movimento da energia pelo sistema nervoso · ativa Svadhisthana<br>
+            IS — evoca Ísis, os mistérios sagrados femininos · ativa Manipura<br>
+            IO — união do espírito com a matéria · ativa Anahata<br>
+            S — o silvo da serpente que sobe, o Sushumna aberto
+          </div>
+          <div class="mantram-meaning">"Sibilando a vogal I e a letra S, com um silvo doce e aprazível, invoca-se a serpente sexual para que suba, vitoriosa, pelo canal medular espinhal." — Samael Aun Weor</div>
+        </div>
+        <div class="step-desc"><strong>Como praticar:</strong> Sente-se ereta. Feche os olhos. Respire fundo. A cada expiração, pronuncie — em voz baixa ou apenas mentalmente — as sílabas lentamente: <em>Diiiii… Ooon… Iiis… Iooo… Ssssss</em>. Ao pronunciar cada sílaba, visualize a energia subindo pela coluna um pouco mais.</div>
+        <div class="step-tip">💡 Faça 7–9 repetições completas. Cerca de 3 minutos de pronunciação lenta e consciente.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--violet-l)">SO HAM — O Mantram da Identidade (2 min)</div>
+        <div class="step-desc">Após o Dionisos, entre no silêncio com o mantram respiratório SO-HAM:</div>
+        <div class="mantram-block">
+          <div class="mantram-text">SO · HAM</div>
+          <div class="mantram-syllables">
+            SO — ao inspirar (soa como o ar entrando naturalmente)<br>
+            HAM — ao expirar (soa como o ar saindo naturalmente)
+          </div>
+          <div class="mantram-meaning">"EU SOU ISSO" — a consciência que reconhece ser a própria Kundalini Shakti, a força que desperta em si mesma.</div>
+        </div>
+        <div class="step-desc">Não pronuncie em voz alta — sinta as sílabas no ritmo natural da respiração. Cada respiração é o mantram. A respiração é o mantram. Você respira Deus.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROTINA 4: MEDITAÇÃO CHAKRAS -->
+<div class="routine r-gold reveal">
+  <div class="routine-head" onclick="toggle(this)">
+    <span class="routine-icon">🐍</span>
+    <div class="routine-meta">
+      <div class="routine-name">4 · Meditação da Serpente Subindo</div>
+      <div class="routine-sub">visualização guiada pelos 7 chakras — o coração do despertar</div>
+    </div>
+    <div class="routine-time">⏱ 4 min</div>
+  </div>
+  <div class="routine-body">
+    <div class="step">
+      <div class="step-num">★</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--gold-l)">A Visualização — Como Fazer</div>
+        <div class="step-desc">Feche os olhos. Mantenha a coluna ereta. Imagine no cóccix — na base da sua coluna — uma chama dourado-rosada, pequena e pulsante. Ela está adormecida, enrolada três vezes e meia. A cada respiração, ela aquece levemente. Com cada Mula Bandha suave (contração do períneo), ela desperta um pouco mais e começa a subir.</div>
+        <div class="step-desc" style="margin-top:8px">Passe <strong>30 segundos em cada chakra</strong>, visualizando a cor e sentindo a qualidade dessa energia:</div>
+      </div>
+    </div>
+    <div class="chakra-ladder">
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#FF2020;box-shadow:0 0 8px #FF2020"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#FF6060">Muladhara · Cóccix</div>
+          <div class="chakra-note">Vermelho intenso · Raiz · Segurança</div>
+        </div>
+        <div class="chakra-vis">Sinta o chão sob você. Você está aqui, presente, segura. A serpente acorda.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#FF6820;box-shadow:0 0 8px #FF6820"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#FFA060">Svadhisthana · Sacro</div>
+          <div class="chakra-note">Laranja · Criatividade · Vida</div>
+        </div>
+        <div class="chakra-vis">O fogo sobe para a região do sacro. Sinta o calor ali. A energia criadora se transforma.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#FFD800;box-shadow:0 0 8px #FFD800"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#FFE860">Manipura · Plexo Solar</div>
+          <div class="chakra-note">Amarelo dourado · Vontade · Poder</div>
+        </div>
+        <div class="chakra-vis">Calor no plexo solar. A Vontade se acende. Você tem o poder de sustentar este caminho.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#20D060;box-shadow:0 0 8px #20D060"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#60F090">Anahata · Coração</div>
+          <div class="chakra-note">Verde esmeralda · Amor · Tiferet</div>
+        </div>
+        <div class="chakra-vis">O fogo chega ao coração. Você sente uma expansão. Amor sem causa. O Cristo Interior aqui habita.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#20A0D0;box-shadow:0 0 8px #20A0D0"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#60D0F0">Vishuddha · Garganta</div>
+          <div class="chakra-note">Azul claro · Verbo · Verdade</div>
+        </div>
+        <div class="chakra-vis">A energia chega à garganta. O Verbo se purifica. Apenas verdade sai desta boca.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#4040E0;box-shadow:0 0 8px #6060FF"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#A0A0FF">Ajna · Terceiro Olho</div>
+          <div class="chakra-note">Índigo · Visão · Glândula Pineal</div>
+        </div>
+        <div class="chakra-vis">Pressão suave na testa. A visão interior se expande. Você começa a ver além do visível.</div>
+      </div>
+      <div class="chakra-row">
+        <div class="chakra-dot" style="background:#C060FF;box-shadow:0 0 12px #C060FF"></div>
+        <div class="chakra-info">
+          <div class="chakra-name" style="color:#E0A0FF">Sahasrara · Coroa</div>
+          <div class="chakra-note">Violeta / Branco · União · Kether</div>
+        </div>
+        <div class="chakra-vis">O fogo chega ao topo. Uma luz branca ou violeta. Você toca o Divino. A serpente uniu o cóccix à coroa.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">★</div>
+      <div class="step-body">
+        <div class="step-desc">Ao chegar ao Sahasrara, permaneça ali em silêncio por alguns respiros. Sinta a luz que irradia do topo da cabeça em todas as direções. Você é uma vela acesa. Depois, lentamente, desça a consciência pela coluna de volta ao coração — e permaneça aí.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROTINA 5: FECHAMENTO -->
+<div class="routine r-rose reveal">
+  <div class="routine-head" onclick="toggle(this)">
+    <span class="routine-icon">🌙</span>
+    <div class="routine-meta">
+      <div class="routine-name">5 · Fechamento e Integração</div>
+      <div class="routine-sub">selar a prática e carregar a energia pelo dia</div>
+    </div>
+    <div class="routine-time">⏱ 2 min</div>
+  </div>
+  <div class="routine-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--rose-l)">Agradecimento à Divina Mãe</div>
+        <div class="step-desc">Com as mãos no coração (uma sobre a outra), diga interiormente: <em>"Divina Mãe, guardo este fogo dentro de mim durante todo o dia. Que ele ilumine cada ato, cada palavra, cada pensamento."</em> Isso não é formalidade — é a intenção de manter o canal aberto fora da meditação.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--rose-l)">O Diário da Serpente (1 min)</div>
+        <div class="step-desc">Mantenha um caderno dedicado apenas a este processo. Após cada sessão, escreva em 3–5 linhas: <strong>O que senti no corpo. O que surgiu na mente. Qual chakra pareceu mais ativo.</strong> Ao longo de semanas e meses, esse diário se tornará o mapa do seu despertar — e você verá a progressão real com clareza.</div>
+        <div class="step-tip">💡 Em 6 meses de diário, você conseguirá ver exatamente em que chakra a energia está trabalhando e o que ainda precisa de atenção.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-name" style="color:var(--rose-l)">Permanência — Não saia correndo</div>
+        <div class="step-desc">Após os 20 minutos, permaneça em silêncio por 1–2 minutos antes de pegar o celular ou falar com alguém. A energia que foi ativada precisa desse tempo para se assentar. A pressa de voltar ao mundo mundano imediatamente é o que dispersa o que foi construído.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- GRADE SEMANAL -->
+<div class="sec-head reveal">
+  <h2>✦ A Grade Semanal · Cada Dia tem um Foco ✦</h2>
+  <p>a rotina de 20 minutos é diária — mas o foco da visualização e intensidade varia</p>
+  <div class="sec-rule"></div>
+</div>
+
+<div class="week-grid reveal">
+  <div class="day-card">
+    <div class="day-name">DOM</div>
+    <span class="day-icon">☀</span>
+    <div class="day-focus" style="color:var(--gold-l)">Sol · Coração<br>Amor Universal<br>Anahata</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">SEG</div>
+    <span class="day-icon">🌙</span>
+    <div class="day-focus" style="color:#C0C0F0">Lua · Fundação<br>Muladhara<br>Enraizamento</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">TER</div>
+    <span class="day-icon">♦</span>
+    <div class="day-focus" style="color:#FF8060">Marte · Vontade<br>Manipura<br>Disciplina</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">QUA</div>
+    <span class="day-icon">☿</span>
+    <div class="day-focus" style="color:var(--teal-l)">Mercúrio · Mente<br>Vishuddha<br>Clareza</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">QUI</div>
+    <span class="day-icon">♃</span>
+    <div class="day-focus" style="color:var(--violet-l)">Júpiter · Graça<br>Sahasrara<br>Expansão</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">SEX</div>
+    <span class="day-icon">♀</span>
+    <div class="day-focus" style="color:var(--rose-l)">Vênus · Amor<br>Svadhisthana<br>Criatividade</div>
+  </div>
+  <div class="day-card">
+    <div class="day-name">SÁB</div>
+    <span class="day-icon">♄</span>
+    <div class="day-focus" style="color:#A0A0A0">Saturno · Morte<br>do ego · Silêncio<br>Dissolução</div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- PRÁTICAS COMPLEMENTARES -->
+<div class="sec-head reveal">
+  <h2>✦ O Que Acelera · O Que Atrasa ✦</h2>
+  <p>além dos 20 minutos — o estilo de vida que apoia o despertar</p>
+  <div class="sec-rule"></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0" class="reveal">
+  <div style="border-radius:12px;padding:20px;background:rgba(32,136,120,.07);border:1px solid rgba(32,136,120,.25)">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;letter-spacing:.18em;color:var(--teal-l);margin-bottom:12px">✦ ACELERA O DESPERTAR</div>
+    <div style="font-size:.85rem;color:var(--text-d);line-height:2">
+      🌿 Alimentação limpa e leve<br>
+      💧 Hidratação abundante<br>
+      🌅 Praticar ao amanhecer (Brahma Muhurta — entre 4h–6h)<br>
+      📖 Leitura de textos sagrados<br>
+      🚶 Caminhada silenciosa na natureza<br>
+      ✍ Diário espiritual diário<br>
+      🎵 Música instrumental durante o dia<br>
+      🛌 Sono regular e suficiente<br>
+      🙏 Trabalho com os próprios defeitos (Ego)<br>
+      📿 Uso de Mala (rosário) para contar mantrams
+    </div>
+  </div>
+  <div style="border-radius:12px;padding:20px;background:rgba(192,72,120,.07);border:1px solid rgba(192,72,120,.25)">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;letter-spacing:.18em;color:var(--rose-l);margin-bottom:12px">✦ ATRASA O DESPERTAR</div>
+    <div style="font-size:.85rem;color:var(--text-d);line-height:2">
+      🥩 Carne vermelha e alimentos pesados<br>
+      🍷 Álcool e substâncias<br>
+      📱 Excesso de telas após a prática<br>
+      😡 Raiva não elaborada<br>
+      💬 Fofoca e conversas vazias<br>
+      😴 Praticar com sono (adormecer meditando)<br>
+      ⏩ Pressa — querer "ver resultados" rápido<br>
+      🔁 Inconsistência (pular dias sem motivo)<br>
+      💭 Excesso de conteúdo espiritual sem praticar<br>
+      🫀 Dispersão sexual (energia dissipada)
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- SOBRE A DISPERSÃO SEXUAL -->
+<div class="aviso reveal" style="background:rgba(200,168,75,.06);border-color:rgba(200,168,75,.25)">
+  <span class="aviso-icon">🔥</span>
+  <h2 style="color:var(--gold-l)">✦ A Questão da Energia Sexual Solteira ✦</h2>
+  <p>Como mulher gnóstica solteira, a principal prática complementar é a <strong>continência sexual solo</strong> — não como repressão, mas como escolha consciente de não dissipar a energia que está sendo cultivada. A gnose de Samael é clara: a masturbação dispersa a energia que a prática está acumulando. Isso não é julgamento moral — é uma equação energética. A energia que sobe pelo Sushumna durante a meditação é a mesma que se dispersa no orgasmo. Você escolhe para onde ela vai.</p>
+  <p style="margin-top:10px">Nos períodos em que a prática estiver forte e você sentir energia subindo, esse é o sinal de que o processo está funcionando. Nesses momentos, <strong>a respiração profunda, o Mula Bandha e a visualização da energia subindo</strong> são o que transforma o impulso sexual em combustível espiritual. Não se trata de negar o corpo — trata-se de honrá-lo com um uso mais alto da sua força.</p>
+</div>
+
+<!-- PROGRESSÃO DOS MANTRAMS -->
+<div class="sec-head reveal">
+  <h2>✦ Como Progredir ao Longo dos Meses ✦</h2>
+  <p>a prática não é estática — ela evolui com você</p>
+  <div class="sec-rule"></div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px;margin:20px 0" class="reveal">
+  <div style="border-radius:10px;padding:16px 18px;background:rgba(255,255,255,.025);border:1px solid rgba(200,168,75,.15);display:flex;gap:14px;align-items:flex-start">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;color:var(--rose-l);width:80px;flex-shrink:0;margin-top:3px">MÊS 1–2</div>
+    <div>
+      <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Fundação — apenas a estrutura básica</div>
+      <div style="font-size:.82rem;color:var(--text-d);line-height:1.8">Foco total em aprender o Nadi Shodhana corretamente e o Mula Bandha. Não force a visualização — deixe surgir naturalmente. O Mantram Dionisos 7×. A consistência diária supera qualquer intensidade.</div>
+    </div>
+  </div>
+  <div style="border-radius:10px;padding:16px 18px;background:rgba(255,255,255,.025);border:1px solid rgba(200,168,75,.15);display:flex;gap:14px;align-items:flex-start">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;color:var(--gold-l);width:80px;flex-shrink:0;margin-top:3px">MÊS 3–6</div>
+    <div>
+      <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Aprofundamento — aumentar a retenção</div>
+      <div style="font-size:.82rem;color:var(--text-d);line-height:1.8">Avance a proporção do pranayama para 4-16-8 (inspire 4, retenha 16, expire 8). Adicione o Uddiyana Bandha (contração abdominal durante a retenção). A visualização dos chakras deve ser mais vívida — adicione sons a cada chakra (LAM, VAM, RAM, YAM, HAM, OM, silêncio).</div>
+    </div>
+  </div>
+  <div style="border-radius:10px;padding:16px 18px;background:rgba(255,255,255,.025);border:1px solid rgba(200,168,75,.15);display:flex;gap:14px;align-items:flex-start">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;color:var(--teal-l);width:80px;flex-shrink:0;margin-top:3px">MÊS 6–12</div>
+    <div>
+      <div style="font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:4px">Intensificação — os chakras superiores</div>
+      <div style="font-size:.82rem;color:var(--text-d);line-height:1.8">Neste ponto, se a prática foi consistente, você já deve ter sentido calor ou formigamento na coluna. Adicione o Trataka (foco visual fixo numa vela ou ponto) antes da meditação. Comece a adicionar 5 minutos de silêncio total ao final — apenas observando o que surge no espaço interior. Este é o Pratyahara, a retirada dos sentidos.</div>
+    </div>
+  </div>
+  <div style="border-radius:10px;padding:16px 18px;background:rgba(255,255,255,.025);border:1px solid rgba(200,168,75,.15);display:flex;gap:14px;align-items:flex-start">
+    <div style="font-family:'Cinzel Decorative',serif;font-size:.65rem;color:var(--violet-l);width:80px;flex-shrink:0;margin-top:3px">ANO 2+</div>
+    <div>
+      <div style="font-size:.88min;font-weight:600;color:var(--text);margin-bottom:4px">O Silêncio que Fala — Samadhi aproximando</div>
+      <div style="font-size:.82rem;color:var(--text-d);line-height:1.8">A prática começa a se tornar contínua — não apenas nos 20 minutos, mas ao longo do dia. Você começa a observar seus próprios pensamentos sem se identificar com eles. Os gnósticos chamam isso de o início do "trabalho com o ego" real — não como teoria, mas como percepção viva. A Kundalini neste ponto não é um evento dramático — é uma presença constante de clareza, amor e percepção expandida.</div>
+    </div>
+  </div>
+</div>
+
+<!-- AVISOS FINAIS -->
+<div class="warning reveal">
+  <h3>✦ Sinais que pedem atenção ✦</h3>
+  <p>Se durante ou após a prática você sentir: dor física intensa na coluna, pressão muito forte na cabeça, palpitações fortes, sensação de perda de controle ou ansiedade severa — <strong>reduza a intensidade da prática</strong>. Diminua o tempo de retenção do pranayama, faça mais poses enraizadoras (pés no chão, caminhadas descalça na terra). A Kundalini é um processo que a própria tradição alerta como que precisa de gradualidade. Não há competição. Não há pressa. Há apenas o caminho.</p>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center;padding:60px 20px 30px;border-top:1px solid var(--border)">
+  <span style="font-size:2.5rem;display:block;margin-bottom:14px">🌹</span>
+  <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:rgba(200,168,75,.35);letter-spacing:.1em;line-height:2.2">
+    "A Kundalini não sobe uma só vértebra<br>se as condições de santidade para aquela vértebra<br>não tenham sido conquistadas."<br><br>
+    — Samael Aun Weor<br><br>
+    <em>A santidade não é perfeição. É intenção real, dia após dia.</em>
+  </p>
+</footer>
+
+</div>
+
+<script>
+function toggle(head){
+  const body = head.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// Auto-open first section
+document.querySelectorAll('.routine-head')[0].click();
+
+// Scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

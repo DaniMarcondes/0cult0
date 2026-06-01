@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partes IX–X — Revelações e Ascensão da Alma | Cristo Gnóstico</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080a08;
+    --bg2: #0d110c;
+    --bg3: #121a11;
+    --border: #1c2a1a;
+    --text: #d2d8cc;
+    --text-dim: #828a78;
+    --text-faint: #3a4236;
+    --gold: #a89038;
+    --gold-light: #c8b050;
+    --jade: #488868;
+    --jade-light: #68a888;
+    --amber: #9a7828;
+    --violet: #685898;
+    --violet-light: #9888c8;
+    --sidebar-w: 290px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'EB Garamond', Georgia, serif; font-size: 19px; line-height: 1.85; display: flex; }
+
+  #sidebar { width: var(--sidebar-w); min-height: 100vh; background: var(--bg2); border-right: 1px solid var(--border); position: fixed; top: 0; left: 0; overflow-y: auto; padding: 2rem 0 4rem; z-index: 100; }
+  #sidebar .logo { padding: 0 1.5rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
+  #sidebar .logo .serie { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.22em; color: var(--jade-light); text-transform: uppercase; display: block; margin-bottom: 0.4rem; }
+  #sidebar .logo h1 { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 500; color: var(--gold-light); line-height: 1.4; }
+  #sidebar .nav-label { font-family: 'Cinzel', serif; font-size: 0.57rem; letter-spacing: 0.2em; color: var(--text-faint); text-transform: uppercase; padding: 0.8rem 1.5rem 0.25rem; display: block; }
+  #sidebar .part-sep { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; padding: 0.9rem 1.5rem 0.25rem; display: block; border-top: 1px solid var(--border); margin-top: 0.4rem; }
+  #sidebar a { display: block; padding: 0.27rem 1.5rem; color: var(--text-dim); text-decoration: none; font-size: 0.79rem; font-family: 'EB Garamond', serif; line-height: 1.4; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+  #sidebar a:hover { color: var(--jade-light); background: rgba(72,136,104,0.07); border-left-color: var(--jade); }
+  #sidebar a.active { color: var(--jade-light); border-left-color: var(--jade-light); }
+  #sidebar .series-nav { padding: 1rem 1.5rem 0; border-top: 1px solid var(--border); margin-top: 1rem; }
+  #sidebar .series-nav span { font-size: 0.57rem; letter-spacing: 0.14em; color: var(--text-faint); text-transform: uppercase; font-family: 'Cinzel', serif; display: block; margin-bottom: 0.4rem; margin-top: 0.6rem; }
+  #sidebar .series-nav a { font-size: 0.74rem; padding: 0.2rem 0; border-left: none; color: var(--text-faint); }
+  #sidebar .series-nav a:hover { color: var(--gold-light); background: none; border-left: none; }
+  #sidebar .series-nav a.current { color: var(--gold-light); font-style: italic; }
+
+  main { margin-left: var(--sidebar-w); flex: 1; max-width: 870px; padding: 4rem 5rem 8rem; }
+
+  .doc-header { border-bottom: 1px solid var(--border); padding-bottom: 3rem; margin-bottom: 4rem; }
+  .doc-header .part-label { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.3em; color: var(--jade-light); text-transform: uppercase; display: block; margin-bottom: 1rem; }
+  .doc-header h1 { font-family: 'Cinzel', serif; font-size: 2.3rem; font-weight: 500; color: var(--gold-light); line-height: 1.25; margin-bottom: 1rem; }
+  .doc-header .subtitle { font-size: 1.04rem; color: var(--text-dim); font-style: italic; line-height: 1.7; }
+  .doc-header .epigraph { margin-top: 2rem; padding: 1.5rem 2rem; border-left: 3px solid var(--jade); background: rgba(72,136,104,0.05); font-style: italic; color: var(--text-dim); font-size: 1rem; }
+  .doc-header .epigraph cite { display: block; margin-top: 0.5rem; font-style: normal; font-size: 0.79rem; color: var(--text-faint); letter-spacing: 0.05em; }
+
+  .part-header { margin: 4rem 0 2rem; padding: 2rem 2.5rem; background: var(--bg3); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 0 6px 6px 0; }
+  .part-header .ph-num { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 0.6rem; }
+  .part-header h2 { font-family: 'Cinzel', serif; font-size: 1.75rem; font-weight: 500; color: var(--gold-light); margin: 0 0 0.5rem; border: none; padding: 0; }
+  .part-header .ph-desc { font-size: 0.95rem; color: var(--text-dim); font-style: italic; }
+
+  h2 { font-family: 'Cinzel', serif; font-size: 1.45rem; font-weight: 500; color: var(--gold-light); margin: 3.5rem 0 1.2rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 500; color: var(--jade-light); margin: 2.5rem 0 0.9rem; }
+  h4 { font-family: 'Cinzel', serif; font-size: 0.87rem; font-weight: 500; color: var(--violet-light); margin: 2rem 0 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  p { margin-bottom: 1.2rem; }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--gold-light); font-style: italic; }
+  strong { color: #ece8dc; font-weight: 500; }
+
+  blockquote { border-left: 3px solid var(--jade); padding: 1.2rem 1.8rem; margin: 2rem 0; background: rgba(72,136,104,0.05); font-style: italic; color: var(--text-dim); font-size: 0.97rem; }
+  blockquote cite { display: block; margin-top: 0.6rem; font-style: normal; font-size: 0.78rem; color: var(--text-faint); letter-spacing: 0.05em; }
+
+  .callout { border: 1px solid var(--border); border-left: 3px solid var(--gold); background: rgba(168,144,56,0.05); padding: 1.4rem 1.8rem; margin: 2rem 0; border-radius: 0 4px 4px 0; }
+  .callout.jade { border-left-color: var(--jade); background: rgba(72,136,104,0.05); }
+  .callout.violet { border-left-color: var(--violet); background: rgba(104,88,152,0.06); }
+  .callout.amber { border-left-color: var(--amber); background: rgba(154,120,40,0.06); }
+  .callout-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+  .callout.jade .callout-title { color: var(--jade-light); }
+  .callout.violet .callout-title { color: var(--violet-light); }
+  .callout.amber .callout-title { color: #c8a050; }
+  .callout p { font-size: 0.94rem; color: var(--text-dim); }
+
+  .table-wrap { overflow-x: auto; margin: 2rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+  th { font-family: 'Cinzel', serif; font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); border-bottom: 2px solid var(--border); padding: 0.7rem 1rem; text-align: left; background: var(--bg3); }
+  td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.55; }
+  tr:hover td { background: rgba(255,255,255,0.015); }
+  td:first-child { color: var(--gold-light); font-style: italic; }
+
+  details { border: 1px solid var(--border); border-radius: 4px; margin: 1rem 0; overflow: hidden; }
+  summary { padding: 0.9rem 1.4rem; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text-dim); background: var(--bg3); list-style: none; display: flex; align-items: center; gap: 0.6rem; user-select: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: '▸'; color: var(--jade); font-size: 0.7rem; transition: transform 0.2s; flex-shrink: 0; }
+  details[open] summary::before { transform: rotate(90deg); }
+  summary:hover { color: var(--jade-light); }
+  details > div { padding: 1.4rem; background: var(--bg2); font-size: 0.93rem; line-height: 1.75; }
+
+  .diagram { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; margin: 2.5rem 0; text-align: center; }
+  .diagram-title { font-family: 'Cinzel', serif; font-size: 0.67rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1.2rem; }
+
+  .hier { list-style: none; padding: 0; }
+  .hier li { padding: 0.35rem 0 0.35rem 1.6rem; position: relative; font-size: 0.93rem; color: var(--text-dim); border-left: 1px solid var(--border); margin-left: 0.5rem; }
+  .hier li::before { content: '◆'; position: absolute; left: -0.45rem; top: 0.45rem; font-size: 0.5rem; color: var(--jade); }
+  .hier li strong { color: var(--gold-light); font-weight: 500; }
+
+  .flow { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+  .flow-step { display: flex; align-items: flex-start; gap: 1.2rem; padding: 1rem 1.2rem; background: var(--bg3); border: 1px solid var(--border); margin-bottom: -1px; }
+  .flow-step:first-child { border-radius: 4px 4px 0 0; }
+  .flow-step:last-child { border-radius: 0 0 4px 4px; margin-bottom: 0; }
+  .flow-num { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--jade); background: rgba(72,136,104,0.1); border: 1px solid var(--jade); border-radius: 50%; width: 1.8rem; height: 1.8rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
+  .flow-content { font-size: 0.93rem; color: var(--text-dim); line-height: 1.6; }
+  .flow-content strong { color: var(--gold-light); }
+
+  .synthesis { border: 1px solid var(--jade); border-radius: 6px; padding: 2rem 2.5rem; background: rgba(72,136,104,0.04); margin: 3rem 0; }
+  .synthesis h3 { margin-top: 0; color: var(--jade-light); }
+
+  .section-divider { text-align: center; margin: 4rem 0; color: var(--text-faint); font-size: 0.85rem; letter-spacing: 0.4em; font-family: 'Cinzel', serif; }
+  .section-divider::before, .section-divider::after { content: '—————'; color: var(--border); margin: 0 1rem; }
+
+  #glossario .glos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .glos-item { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .glos-term { background: var(--bg3); padding: 0.6rem 1rem; font-family: 'Cinzel', serif; font-size: 0.79rem; color: var(--jade-light); cursor: pointer; border-bottom: 1px solid transparent; transition: background 0.2s; }
+  .glos-term:hover { background: rgba(72,136,104,0.1); }
+  .glos-term.open { border-bottom-color: var(--border); }
+  .glos-def { padding: 0.8rem 1rem; font-size: 0.87rem; color: var(--text-dim); display: none; line-height: 1.6; }
+  .glos-def.visible { display: block; }
+
+  .notes { margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  .notes h2 { margin-top: 0; }
+  .note-item { display: grid; grid-template-columns: 2rem 1fr; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+  .note-num { color: var(--jade); font-family: 'Cinzel', serif; font-size: 0.75rem; }
+
+  section { scroll-margin-top: 2rem; }
+  @media (max-width: 900px) { #sidebar { display: none; } main { margin-left: 0; padding: 2rem 1.5rem 6rem; } #glossario .glos-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav id="sidebar">
+  <div class="logo">
+    <span class="serie">Cristo Gnóstico · Vol. V</span>
+    <h1>Revelações &amp;<br>Ascensão da Alma</h1>
+  </div>
+
+  <span class="nav-label">Parte IX — Revelações</span>
+  <a href="#ix-prologo">Prólogo — O Cristo Pós-Material</a>
+  <a href="#onze-anos">Os Onze Anos de Ensinamento</a>
+  <a href="#estrutura-cosmos">A Estrutura Revelada do Cosmos</a>
+  <a href="#hierarquias">Hierarquias Celestes Invisíveis</a>
+  <a href="#pistis-sophia-rev">Pistis Sophia — As Revelações</a>
+  <a href="#sophia-jesus-rev">Sophia de Jesus Cristo</a>
+  <a href="#dialogo-rev">Diálogo do Salvador</a>
+  <a href="#maria-rev">Maria Madalena — A Receptora</a>
+  <a href="#segredo-segredos">O Segredo dos Segredos</a>
+  <a href="#ix-comparacoes">Comparações — Revelações Iniciáticas</a>
+
+  <span class="part-sep">Parte X — Ascensão</span>
+  <a href="#x-prologo">Prólogo — A Jornada começa</a>
+  <a href="#corpo-pos-morte">O Corpo após a Morte</a>
+  <a href="#esferas-travessia">As Sete Esferas — Travessia</a>
+  <a href="#guardioes">Os Guardiões e as Senhas</a>
+  <a href="#apoc-pedro">Apocalipse de Pedro</a>
+  <a href="#apoc-paulo">Apocalipse de Paulo</a>
+  <a href="#apoc-tomas">Apocalipse de Tomé</a>
+  <a href="#regioes-purgatorio">Regiões de Purgatório</a>
+  <a href="#julgamento-vibracional">O Julgamento Vibracional</a>
+  <a href="#eqm-comparacoes">EQMs e a Gnose</a>
+  <a href="#retorno-pleroma">O Retorno ao Pleroma</a>
+  <a href="#glossario">Glossário</a>
+  <a href="#notas">Notas e Fontes</a>
+
+  <div class="series-nav">
+    <span>Série Final</span>
+    <a href="parte7-morte-ressurreicao.html">VIII — Morte e Ressurreição</a>
+    <a href="parte8-revelacoes-ascensao.html" class="current">IX/X — Revelações e Ascensão</a>
+    <a href="parte9-apocalipse-final.html">XI — Apocalipse Final</a>
+    <span>Série Cristo Gnóstico</span>
+    <a href="parte4-preparacao-cristo.html">IV — Preparação para Cristo</a>
+    <a href="parte5-vinda-jesus.html">V — A Vinda de Jesus</a>
+    <a href="parte6-infancia-ensinamentos.html">VI/VII — Infância e Ensinamentos</a>
+    <span>Trilogia Cosmológica</span>
+    <a href="parte1-plenitude-divina.html">I — Plenitude Divina</a>
+    <a href="parte2-criacao-material.html">II — Criação Material</a>
+    <a href="parte3-humanidade-primordial.html">III — Humanidade Primordial</a>
+  </div>
+</nav>
+
+<main>
+
+  <header class="doc-header">
+    <span class="part-label">Cristo Gnóstico · Partes IX e X</span>
+    <h1>Revelações Pós-Ressurreição<br>&amp; Ascensão da Alma</h1>
+    <p class="subtitle">Os ensinamentos secretos transmitidos pelo Cristo ressurreto — a cartografia completa dos mundos invisíveis, a jornada da consciência através das esferas arquônicas, o julgamento vibracional e o retorno definitivo ao Pleroma</p>
+    <div class="epigraph">
+      "Aconteceu que quando Jesus ressuscitou dos mortos, passou onze anos conversando com seus discípulos e ensinando-os até os limites dos lugares do Chaos e até os limites dos véus. E o Cristo disse: Tornai-vos perfeitos em todos os Mistérios do alto."
+      <cite>— Pistis Sophia, Capítulo 1 — abertura do texto</cite>
+    </div>
+  </header>
+
+  <!-- ═══════════════ PARTE IX ═══════════════ -->
+  <div class="part-header">
+    <span class="ph-num">Parte IX</span>
+    <h2>Revelações Pós-Ressurreição</h2>
+    <p class="ph-desc">Os ensinamentos que Cristo não pôde transmitir durante o ministério público — a cosmologia completa revelada ao círculo interno após a ressurreição, quando o Logos havia abandonado as limitações do invólucro arquônico</p>
+  </div>
+
+  <section id="ix-prologo">
+    <h2>Prólogo — O Cristo Pós-Material como Mestre Supremo</h2>
+
+    <p>A ressurreição não encerrou a missão docente de Cristo — ela a aprofundou infinitamente. O Cristo que ensinou durante o ministério público estava ainda condicionado, em graus variados, pelas limitações do invólucro arquônico: precisava comunicar-se em linguagem humana, dentro de categorias compreensíveis para consciências ainda densificadas, usando parábolas que velavam tanto quanto revelavam. O Cristo ressurreto — o Logos em sua forma pneumática plena, sem invólucro material — comunica a partir de um estado de consciência radicalmente diferente.</p>
+
+    <p>Os textos gnósticos pós-ressurreição — especialmente a <em>Pistis Sophia</em>, a <em>Sophia de Jesus Cristo</em>, o <em>Diálogo do Salvador</em> e os fragmentos do Evangelho de Maria Madalena — descrevem consistentemente um Cristo que ensina a partir de um plano de clareza e totalidade que estava apenas parcialmente acessível durante o ministério corporal. Ele revela a estrutura do cosmos em sua totalidade — não apenas o plano material que os discípulos habitam, mas todos os planos, desde o Caos mais denso até os Mistérios mais elevados do Pleroma. Ele descreve os mecanismos precisos pelos quais as almas são aprisionadas e libertadas. Ele transmite as "chaves" — as fórmulas, os ritos, os conhecimentos — que permitem à consciência pneumática atravessar as fronteiras arquônicas sem ser retida.</p>
+
+    <div class="callout jade">
+      <div class="callout-title">Por que os Ensinamentos Mais Profundos vêm após a Ressurreição</div>
+      <p>O princípio pedagógico gnóstico é preciso: o nível do ensinamento corresponde ao nível da consciência do transmissor. O Cristo encarnado, condicionado pelo invólucro material, transmitia ao nível da consciência possibilitada por aquele invólucro. O Cristo ressurreto, operando a partir do plano pneumático pleno, transmite ao nível desta plenitude — um nível incomparavelmente mais elevado e mais abrangente. Os ensinamentos secretos da tradição gnóstica são todos pós-ressurreição não por acidente histórico: é uma afirmação teológica deliberada sobre a natureza do conhecimento mais profundo.</p>
+    </div>
+  </section>
+
+  <section id="onze-anos">
+    <h2>Os Onze Anos de Ensinamento — A Academia Pós-Pascal</h2>
+
+    <p>A <em>Pistis Sophia</em> abre com uma afirmação extraordinária que define toda a estrutura do texto: Jesus permaneceu ensinando seus discípulos por onze anos após a ressurreição antes de finalmente ascender aos Mistérios mais elevados. Este período de onze anos — em radical contraste com os quarenta dias dos evangelhos canônicos — é a base temporal para toda a revelação contida na Pistis Sophia. É durante este período que a transmissão dos ensinamentos mais profundos ocorre: não apenas os ensinos sobre ética, comportamento ou parábolas do Reino, mas a cosmologia completa dos mundos espirituais, a estrutura dos planos superiores e inferiores, a mecânica precisa da jornada post-mortem, e os "Grandes Mistérios" que permitem à alma pneumática atravessar todas as fronteiras arquônicas.</p>
+
+    <h3>O 15 de Tybi — O Dia da Grande Luz</h3>
+
+    <p>A Pistis Sophia especifica que no décimo primeiro ano, no dia quinze do mês egípcio de Tybi (correspondendo a janeiro do calendário moderno), Jesus foi tomado por uma luz de poder extraordinário — uma luz que desceu sobre ele ao amanhecer e o envolveu completamente. Seus discípulos, aterrorizados, observaram a transformação durante uma hora. Então Jesus ascendeu ao firmamento e os discípulos esperaram por nove horas. Quando ele retornou, havia mudado de uma forma indescritivelmente radiante — e então começou a revelar os Grandes Mistérios da luz.</p>
+
+    <p>Este episódio — a transformação de Jesus pela grande luz antes de revelar os mistérios supremos — ecoa o padrão de todas as grandes revelações espirituais: antes da transmissão do conhecimento mais elevado, o transmissor passa por uma transformação que o coloca em plena consonância com o nível do que vai transmitir. Moisés recebeu a Torá após quarenta dias no Sinai num estado de luminosidade que fez seu rosto brilhar. Maomé recebeu as primeiras revelações após um período de retiro espiritual intenso. Em todos os casos, a transformação do transmissor precede — e de certa forma garante — a autenticidade da revelação.</p>
+
+    <h3>Os Três Níveis de Mistérios</h3>
+
+    <p>A Pistis Sophia organiza os ensinamentos de Cristo em três níveis hierárquicos que correspondem à capacidade de recepção dos diferentes tipos de discípulos:</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-num">1</span>
+        <div class="flow-content"><strong>Os Mistérios do Exterior</strong> — ensinamentos sobre a estrutura geral do cosmos, os planos de existência, a natureza dos Arcontes e a mecânica básica da jornada post-mortem. Acessíveis a todos os discípulos psíquicos suficientemente avançados. Correspondem ao que os textos gnósticos exotéricos preservam.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">2</span>
+        <div class="flow-content"><strong>Os Mistérios do Interior</strong> — ensinamentos sobre os planos mais elevados do cosmos espiritual, os mecanismos precisos de libertação, as fórmulas das esferas arquônicas, e a natureza dos planos de luz além do Kenoma. Acessíveis apenas a discípulos de nível pneumático avançado. Preservados nos textos gnósticos esotéricos.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">3</span>
+        <div class="flow-content"><strong>Os Grandes Mistérios Inefáveis</strong> — os ensinamentos sobre a natureza do próprio Pleroma, sobre a Luz das Luzes, sobre o Pai Incognoscível e sobre o processo de apocatástase. Inefáveis porque transcendem completamente a linguagem articulada — podem ser apenas aproximados por símbolos. Preservados apenas em forma fragmentária mesmo nos textos mais esotéricos, pois sua transmissão requer um estado de consciência que nenhum texto pode produzir.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estrutura-cosmos">
+    <h2>A Estrutura Revelada do Cosmos — A Cartografia Completa</h2>
+
+    <p>Uma das contribuições mais únicas dos textos gnósticos pós-ressurreição — em particular a Pistis Sophia — é a cartografia extraordinariamente detalhada do cosmos espiritual que o Cristo ressurreto apresenta a seus discípulos. Esta cartografia não é uma visão poética ou alegórica: é uma descrição sistemática de uma estrutura que, na perspectiva gnóstica, é tão real e tão objetiva quanto o cosmos material — só que acessível não pelos sentidos físicos, mas pela consciência pneumática elevada.</p>
+
+    <h3>Os Planos de Existência — Do Pleroma ao Caos Exterior</h3>
+
+    <p>Integrando as descrições da Pistis Sophia com as de outros textos gnósticos, podemos construir um mapa cosmológico que vai do Pleroma ao Caos Exterior em ordem descendente de luminosidade e de "distância" metafísica da Fonte:</p>
+
+    <div class="diagram">
+      <div class="diagram-title">Mapa Cosmológico Completo — Do Pleroma ao Caos Exterior</div>
+      <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;">
+        <defs>
+          <marker id="arjasc" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#488868"/></marker>
+          <marker id="arjdesc" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a89038"/></marker>
+        </defs>
+
+        <!-- Pleroma -->
+        <rect x="60" y="10" width="560" height="52" rx="4" fill="rgba(168,144,56,0.12)" stroke="#a89038" stroke-width="1.5"/>
+        <text x="340" y="30" text-anchor="middle" fill="#c8b050" font-family="Cinzel,serif" font-size="11">PLEROMA — A Plenitude Divina</text>
+        <text x="340" y="48" text-anchor="middle" fill="#7a7030" font-family="EB Garamond,serif" font-size="9" font-style="italic">Pai Incognoscível · Barbelô · Os 30 Aeons · Logos-Cristo · Sophia</text>
+
+        <!-- Tesouro da Luz -->
+        <rect x="60" y="74" width="560" height="44" rx="3" fill="rgba(104,88,152,0.1)" stroke="#685898" stroke-width="1"/>
+        <text x="340" y="93" text-anchor="middle" fill="#9888c8" font-family="Cinzel,serif" font-size="10">TESOURO DA LUZ</text>
+        <text x="340" y="107" text-anchor="middle" fill="#504858" font-family="EB Garamond,serif" font-size="9" font-style="italic">Plano das almas pneumáticas libertas · Os Receptáculos de Luz</text>
+
+        <!-- Mistérios -->
+        <rect x="60" y="130" width="560" height="44" rx="3" fill="rgba(72,136,104,0.1)" stroke="#488868" stroke-width="1"/>
+        <text x="340" y="149" text-anchor="middle" fill="#68a888" font-family="Cinzel,serif" font-size="10">OS GRANDES MISTÉRIOS</text>
+        <text x="340" y="163" text-anchor="middle" fill="#385848" font-family="EB Garamond,serif" font-size="9" font-style="italic">Plano intermediário · Portal do Pleroma · Almas em purificação avançada</text>
+
+        <!-- 13 Aeons intermediários -->
+        <rect x="60" y="186" width="560" height="44" rx="3" fill="rgba(56,80,56,0.15)" stroke="#285828" stroke-width="1"/>
+        <text x="340" y="205" text-anchor="middle" fill="#689068" font-family="Cinzel,serif" font-size="10">13 AEONS INTERMEDIÁRIOS</text>
+        <text x="340" y="219" text-anchor="middle" fill="#384838" font-family="EB Garamond,serif" font-size="9" font-style="italic">Espaço de purgatório · Arrependimentos de Sophia · Alma em teste</text>
+
+        <!-- Heimarmene -->
+        <rect x="60" y="242" width="560" height="52" rx="3" fill="rgba(80,60,20,0.15)" stroke="#503818" stroke-width="1"/>
+        <text x="340" y="261" text-anchor="middle" fill="#a08040" font-family="Cinzel,serif" font-size="10">ESFERAS DA HEIMARMENE — Os 7 Arcontes</text>
+        <text x="340" y="276" text-anchor="middle" fill="#605030" font-family="EB Garamond,serif" font-size="9" font-style="italic">Saturno · Júpiter · Marte · Sol · Vênus · Mercúrio · Lua</text>
+        <text x="340" y="289" text-anchor="middle" fill="#504030" font-family="EB Garamond,serif" font-size="8" font-style="italic">Yaldabaoth · Eloim · Astaphanos · Yao · Sabaoth · Adonaios · Horaeus</text>
+
+        <!-- Cosmos Material -->
+        <rect x="60" y="306" width="560" height="44" rx="3" fill="rgba(60,60,40,0.15)" stroke="#404028" stroke-width="1"/>
+        <text x="340" y="325" text-anchor="middle" fill="#888068" font-family="Cinzel,serif" font-size="10">COSMOS MATERIAL — O Kenoma</text>
+        <text x="340" y="339" text-anchor="middle" fill="#504840" font-family="EB Garamond,serif" font-size="9" font-style="italic">A Terra · O plano físico · Humanidade aprisionada</text>
+
+        <!-- Planos inferiores -->
+        <rect x="60" y="362" width="560" height="44" rx="3" fill="rgba(60,40,20,0.2)" stroke="#503020" stroke-width="1"/>
+        <text x="340" y="381" text-anchor="middle" fill="#906040" font-family="Cinzel,serif" font-size="10">PLANOS INFERIORES — Purgatorios</text>
+        <text x="340" y="395" text-anchor="middle" fill="#503828" font-family="EB Garamond,serif" font-size="9" font-style="italic">Almas psíquicas em purificação · Regiões de densidade intermediária</text>
+
+        <!-- Caos -->
+        <rect x="60" y="418" width="560" height="44" rx="3" fill="rgba(60,20,20,0.2)" stroke="#502020" stroke-width="1"/>
+        <text x="340" y="437" text-anchor="middle" fill="#906060" font-family="Cinzel,serif" font-size="10">O CAOS EXTERIOR</text>
+        <text x="340" y="451" text-anchor="middle" fill="#503030" font-family="EB Garamond,serif" font-size="9" font-style="italic">Dragão do Caos · Doze câmaras de punição · Entidades demoníacas</text>
+
+        <!-- Trevas Exteriores -->
+        <rect x="60" y="474" width="560" height="44" rx="3" fill="rgba(30,10,10,0.4)" stroke="#402020" stroke-width="1"/>
+        <text x="340" y="493" text-anchor="middle" fill="#805050" font-family="Cinzel,serif" font-size="10">AS TREVAS EXTERIORES</text>
+        <text x="340" y="507" text-anchor="middle" fill="#402828" font-family="EB Garamond,serif" font-size="9" font-style="italic">Dissolução final · Máxima opacidade · Almas de densidade irredutível</text>
+
+        <!-- Setas laterais -->
+        <line x1="30" y1="500" x2="30" y2="30" stroke="#488868" stroke-width="1.5" marker-end="url(#arjasc)"/>
+        <text x="18" y="265" fill="#488868" font-family="Cinzel,serif" font-size="8" writing-mode="tb" letter-spacing="2">ASCENSÃO</text>
+
+        <line x1="650" y1="30" x2="650" y2="500" stroke="#a89038" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arjdesc)"/>
+        <text x="662" y="265" fill="#a89038" font-family="Cinzel,serif" font-size="8" writing-mode="tb" letter-spacing="2">DESCIDA</text>
+
+        <text x="340" y="548" text-anchor="middle" fill="#3a4236" font-family="Cinzel,serif" font-size="8" letter-spacing="2">CARTOGRAFIA COSMOLÓGICA — PISTIS SOPHIA</text>
+      </svg>
+    </div>
+
+    <h3>A Lei da Correspondência entre os Planos</h3>
+
+    <p>Uma das revelações mais importantes dos textos pós-ressurreição é o princípio de correspondência entre os planos — o axioma hermético "como em cima, é embaixo" aplicado à estrutura cosmológica completa. Cada plano do cosmos espiritual tem sua correspondência em cada nível da experiência humana: o Pleroma corresponde ao pneuma; os Grandes Mistérios correspondem ao intuição espiritual mais elevada; as esferas arquônicas correspondem às estruturas psíquicas da personalidade; o cosmos material corresponde ao corpo físico; e as regiões inferiores correspondem aos estados patológicos da consciência — os complexos sombrios, os traumas não integrados, as negações profundas.</p>
+
+    <p>Esta correspondência não é metafórica — é ontológica. O cosmos exterior e o cosmos interior são a mesma estrutura vista de dois ângulos diferentes. A jornada da alma através das esferas após a morte é a mesma jornada que a consciência realiza na meditação profunda, no sonho lúcido, na experiência mística ou na iniciação ritual — a diferença é apenas que na morte esta jornada é irreversível para o invólucro corporal, enquanto na experiência mística é temporária. O território é o mesmo; o que muda é a permanência da presença nele.</p>
+  </section>
+
+  <section id="hierarquias">
+    <h2>Hierarquias Celestes Invisíveis — Os Seres dos Planos Superiores</h2>
+
+    <p>Os textos gnósticos pós-ressurreição descrevem com extraordinário detalhe as hierarquias de seres que habitam os planos superiores — não como especulação teológica abstrata, mas como um mapa dos seres com os quais a alma ascendente se encontrará em sua jornada. Estes seres não são simplesmente "anjos" no sentido popular — são entidades de diferentes tipos, naturezas e funções, cada uma ocupando um nível específico do cosmos espiritual e desempenhando uma função específica na economia cósmica.</p>
+
+    <h3>Os Quatro Grandes Luminares — Guardiões do Tesouro da Luz</h3>
+
+    <p>No nível imediatamente abaixo do Pleroma, mas acima das esferas arquônicas, a cosmologia setiana descreve quatro Grandes Luminares que governam o Tesouro da Luz — o plano onde as almas pneumáticas libertas aguardam a apocatástase final:</p>
+
+    <ul class="hier">
+      <li><strong>Harmozel (Armozel)</strong> — Primeiro Luminar; governa Graça, Verdade e Forma Divina. É o luminar associado a Adamas, o ser humano primordial luminoso. Sua esfera é a da beleza e da verdade sem distorção — o nível em que a forma é completamente transparente à luz que a habita.</li>
+      <li><strong>Oroiael (Oroael)</strong> — Segundo Luminar; governa Prognose (Pré-Conhecimento), Percepção e Memória. É o luminar da consciência que antecipa — que conhece antes da experiência, porque opera a partir de um nível onde passado, presente e futuro coexistem.</li>
+      <li><strong>Daveithe (Daveithai)</strong> — Terceiro Luminar; governa Compreensão, Amor e Ideia. É o luminar do intelecto espiritual — não o intelecto arquônico que analisa e fragmenta, mas o intelecto pneumático que apreende totalidades.</li>
+      <li><strong>Eleleth</strong> — Quarto Luminar; governa Perfeição, Paz e Sophia. É o luminar mais próximo das esferas arquônicas e mais próximo do cosmos material — e portanto o mais diretamente relevante para a alma humana em ascensão. Eleleth é o luminar associado à Sophia Achamoth — aquele que "acolhe" os fragmentos de Sophia à medida que eles sobem das esferas arquônicas para os planos de luz.</li>
+    </ul>
+
+    <h3>Os Autogenes e os Filhos da Luz</h3>
+
+    <p>Além dos quatro Luminares, os textos gnósticos descrevem seres chamados de <em>Autogenes</em> (Autogerado — o Cristo como princípio de autogeração no Pleroma) e os "Filhos da Luz" — a grande família de consciências pneumáticas que habitam os planos superiores e que, em termos junguianos, poderíamos descrever como a dimensão transpessoal do Self — os "anjos pessoais" ou "espíritos guias" que acompanham cada alma pneumática em sua ascensão.</p>
+
+    <p>A <em>Pistis Sophia</em> descreve como cada alma pneumática tem, no plano superior, um duplo luminoso — uma contraparte que permaneceu no Tesouro da Luz enquanto a centelha desceu ao cosmos material. O processo de ascensão é, portanto, não apenas a jornada em direção ao Pleroma abstrato, mas a reunião de duas metades de um mesmo ser: a centelha que desceu e o duplo luminoso que aguardava. Esta reunião — quando ocorre nos planos superiores após a morte — é descrita na Pistis Sophia como um dos momentos de maior alegria de toda a jornada espiritual.</p>
+  </section>
+
+  <section id="pistis-sophia-rev">
+    <h2>Pistis Sophia — As Revelações Sistematizadas</h2>
+
+    <p>Nenhum texto da tradição gnóstica sistematiza as revelações pós-ressurreição com a amplitude da <em>Pistis Sophia</em>. Com seus quatro livros e centenas de páginas de diálogo, ela é a tentativa mais completa de preservar por escrito o que, em ambiente iniciático, era transmitido oralmente e experiencialmente. Seus temas principais formam uma enciclopédia da cosmologia e escatologia gnóstica:</p>
+
+    <h3>A Mecânica da Jornada das Almas — Sistema Completo</h3>
+
+    <p>Um dos aspectos mais únicos da Pistis Sophia é sua descrição sistemática do processo pelo qual as almas são gerenciadas após a morte — tanto as almas que ascendem quanto as que são retidas ou punidas. Este sistema combina elementos astrológicos (os planetas como regentes das esferas arquônicas), mitológicos (os guardiões com seus nomes e características), e iniciáticos (as fórmulas de passagem e os ritos que preparam a alma para a jornada).</p>
+
+    <p>Segundo a Pistis Sophia, após a morte, cada alma passa por um processo de três estágios: primeiro, a "recolha" pela Esfera (o conjunto das esferas arquônicas) que avalia sua composição e determina seu próximo destino; segundo, o "julgamento" pelos ministros de Yaldabaoth que determinam os detalhes da punição ou recompensa; e terceiro, a "inserção" — seja no corpo de uma nova encarnação (para almas que precisam de mais ciclos) ou nos planos de punição (para almas de densidade muito elevada) ou nos planos de luz (para almas que já completaram seus ciclos materiais).</p>
+
+    <h3>O Sistema de Senhas — Os Apophraseis e Typos</h3>
+
+    <p>A Pistis Sophia é o texto que mais explicitamente descreve o sistema de senhas (apophraseis) e selos (typos) que o iniciado gnóstico precisa conhecer para atravessar as esferas após a morte. Jesus transmite a seus discípulos não apenas conhecimento teórico sobre as esferas arquônicas — ele transmite as fórmulas específicas que devem ser pronunciadas diante de cada guardião, os gestos e configurações que constituem os "selos" que identificam a alma como iniciada, e as invocações que convocam a proteção dos seres dos planos superiores durante a travessia.</p>
+
+    <blockquote>
+      "E quando vós tiverdes saído do corpo e chegado ao primeiro aion, os guardiões deste aion dirão: 'Quem és tu e de onde vens?' E vós lhes direis as palavras do apophrasis do primeiro aion, e eles vos deixarão passar. E assim por todos os aions, até vós alcançardes o Tesouro da Luz."
+      <cite>— Pistis Sophia, Livro I — paráfrase do sistema de senhas</cite>
+    </blockquote>
+  </section>
+
+  <section id="sophia-jesus-rev">
+    <h2>Sophia de Jesus Cristo — A Revelação da Estrutura do Pleroma</h2>
+
+    <p>A <em>Sophia de Jesus Cristo</em> (NHC III,4) começa com uma cena que estabelece imediatamente seu caráter pós-ressurreição: "Após ressuscitar dos mortos, seus doze discípulos e sete mulheres continuaram a segui-lo como discípulos em Galiléia sobre uma montanha chamada 'Harmonização e Alegria'. E quando eles se reuniram e estavam perplexos sobre a verdade subjacente, o Salvador apareceu não na sua forma anterior, mas como um espírito invisível, mas sua imagem era como um grande anjo de luz."</p>
+
+    <p>Este preâmbulo estabelece múltiplos pontos doutrinários cruciais: o Cristo pós-ressurreição aparece "não na sua forma anterior" — confirmando que o corpo ressurreto não é o corpo físico revivificado; aparece como "espírito invisível" mas com imagem de "grande anjo de luz" — confirmando que possui um corpo luminoso perceptível à consciência pneumática mas não aos sentidos físicos ordinários; e aparece sobre uma montanha — o espaço limítrofe entre o plano terrestre e o celeste em toda a tradição bíblica e apócrifa.</p>
+
+    <h3>As Perguntas dos Discípulos — O Diálogo Iniciático</h3>
+
+    <p>O coração da Sophia de Jesus Cristo é o diálogo entre o Cristo ressurreto e seus discípulos — um diálogo estruturado como uma série de perguntas progressivamente mais profundas que os discípulos fazem e que Cristo responde. Este formato não é arbitrário: é o formato clássico da instrução iniciática, em que o mestre não transmite um corpo de doutrina acabado mas responde às perguntas que emergem do nível de desenvolvimento espiritual de cada questioner. As perguntas dos discípulos mapeiam o que a consciência psíquica avançada pode formular; as respostas de Cristo mapeiam o que a consciência pneumática plena pode revelar.</p>
+
+    <p>Filipe pergunta: "Como é que o Pai Perfeito pode ter revelado o que existe na origem?" — e esta pergunta, aparentemente simples, abre uma janela para a cosmologia mais elevada: a questão de como o absolutamente incognoscível se torna o relativamente cognoscível é a questão fundamental de toda a teologia gnóstica, e a resposta de Cristo na Sophia de Jesus Cristo é uma das mais elaboradas de toda a tradição.</p>
+  </section>
+
+  <section id="dialogo-rev">
+    <h2>Diálogo do Salvador — Os Ensinamentos sobre os Planos</h2>
+
+    <p>O <em>Diálogo do Salvador</em> (NHC III,5), embora fragmentário, preserva alguns dos mais concisos e mais penetrantes ensinamentos gnósticos sobre a estrutura do cosmos e a jornada da alma. Seu tom é diferente da Pistis Sophia — menos sistemático e mais íntimo, mais parecido com uma conversa entre mestre e discípulos próximos do que com uma exposição doutrinária formal.</p>
+
+    <h3>Os "Lugares" — A Topografia do Cosmos Espiritual</h3>
+
+    <p>O Diálogo usa consistentemente a linguagem de "lugares" (<em>topos</em> em grego) para descrever os diferentes planos de existência — e esta linguagem não é meramente metafórica. Na cosmologia gnóstica, os planos espirituais são "lugares" reais no sentido de que são domínios da experiência com características específicas, habitantes específicos e condições específicas que qualquer consciência que os adentra encontrará de forma objetiva. A diferença em relação ao "lugar" físico é apenas que o "lugar" espiritual não está localizado no espaço-tempo tridimensional arquônico, mas numa dimensão diferente de existência.</p>
+
+    <p>Uma das trocas mais densas do Diálogo ocorre quando Judas pergunta ao Senhor sobre a "profundeza do abismo" — as regiões mais inferiores do cosmos. Cristo responde: "A profundeza é grande e profunda além de toda a possibilidade de medida. Ela é como um raio de luz que sai da trevas e é colocado em um copo. E se você medir [a trevas], verá que é mais profunda do que qualquer medida... Mas eu vim à Profundeza do Abismo para que eu iluminasse tudo desde as trevas até a Luz, desde a morte até a Vida."</p>
+  </section>
+
+  <section id="maria-rev">
+    <h2>Maria Madalena como Receptora Privilegiada das Revelações</h2>
+
+    <p>Uma das características mais consistentes dos textos gnósticos pós-ressurreição é o papel privilegiado de Maria Madalena como receptora e transmissora dos ensinamentos mais profundos. Na Pistis Sophia, ela faz mais de sessenta perguntas a Jesus — mais do que todos os outros discípulos combinados — e em múltiplas ocasiões Jesus a elogia por compreender o ensinamento de forma superior. Num ponto, Jesus diz explicitamente: "Maria, tu bem-aventurada que compreendeste todos os ensinamentos de que te instruí. Amém, amém eu vos digo: vós ultrapassais todos os meus discípulos e todos os homens que receberão os Mistérios no Lugar Inefável."</p>
+
+    <h3>A Visão Particular de Maria — O Conteúdo Reservado</h3>
+
+    <p>O Evangelho de Maria Madalena preserva o que é provavelmente o mais íntimo dos ensinamentos pós-ressurreição: uma revelação que Cristo transmitiu a Maria em particular — uma visão que os outros discípulos não receberam — sobre a natureza da alma e sua ascensão através dos poderes. Quando Maria transmite este ensinamento aos outros discípulos, Pedro e André resistem — não conseguem acreditar que Cristo teria revelado algo a uma mulher que não havia revelado a eles. Esta resistência não é apenas histórica ou sociológica: ela é teologicamente significativa. Pedro e André representam a corrente psíquica que ainda opera dentro das categorias arquônicas de autoridade e hierarquia. Maria representa a corrente pneumática que reconhece que a gnose não flui segundo hierarquias institucionais, mas segundo o grau de receptividade e amor.</p>
+
+    <h3>A Ascensão da Alma como Ensinamento de Maria</h3>
+
+    <p>O conteúdo específico da revelação particular de Maria — a descrição da alma ascendendo através dos quatro poderes (Escuridão, Desejo, Ignorância e Cólera) — é possivelmente o texto mais conciso e mais preciso sobre a mecânica da ascensão post-mortem em toda a literatura gnóstica. Cada poder que a alma encontra representa uma camada de identificação arquônica que ela deve reconhecer e recusar para avançar. A fórmula que a alma usa para cada poder é essencialmente a mesma: afirmação de sua natureza pneumática e negação da jurisdição do poder sobre ela.</p>
+
+    <blockquote>
+      "A alma disse ao quarto poder, a Cólera: Por que me controlas se fui controlada? Eu te controlava quando tu habitavas em mim. Mas agora tu és externo. Eu estava num mundo, mas não o pertencia, nem ao desejo, nem à ignorância. Quando o sinal do aion estava prestes a chegar, recebí novas roupas da Luz, e fui libertada do peso deste mundo."
+      <cite>— Evangelho de Maria Madalena (BG 8502) — paráfrase do quarto poder</cite>
+    </blockquote>
+
+    <p>Esta afirmação da alma ao quarto poder é de uma sofisticação filosófica extraordinária: ela não nega ter habitado o cosmos material — "Eu estava num mundo" — mas nega que o cosmos material a defina: "não o pertencia". Ela reconhece que os poderes arquônicos estavam "nela" durante a vida material — "quando tu habitavas em mim" — mas afirma que agora eles estão "externos" a ela, porque ela transcendeu a identificação com eles. Esta distinção — habitar sem pertencer, conter sem ser contido — é a essência da postura gnóstica no cosmos material, e é a postura que, quando plenamente realizada, torna a ascensão possível.</p>
+  </section>
+
+  <section id="segredo-segredos">
+    <h2>O Segredo dos Segredos — Os Grandes Mistérios Inefáveis</h2>
+
+    <p>Além dos Mistérios transmissíveis em linguagem — aqueles que os textos gnósticos preservam, por mais esotéricos que sejam — existe, em todas as grandes tradições iniciáticas, um nível de conhecimento que transcende completamente a possibilidade de transmissão por texto ou por palavra. Os gnósticos chamavam este nível de "Mistérios Inefáveis" — aqueles que não podem ser ditos, apenas vividos.</p>
+
+    <p>A <em>Pistis Sophia</em> refere-se repetidamente a estes Mistérios como o ponto culminante de toda a iniciação gnóstica — o que Cristo traz como presente mais precioso para os seus iniciados. Mas o paradoxo é que, quanto mais elevado o Mistério, menos texto existe para descrevê-lo. Os textos gnósticos ficam progressivamente mais silenciosos à medida que se aproximam deste ponto — não por incapacidade ou omissão, mas porque a linguagem mesma se dissolve diante do que não tem forma.</p>
+
+    <p>Esta apofasia — o silêncio diante do absoluto — é a expressão mais honesta de toda a teologia gnóstica. Todos os textos, por mais ricos e elaborados que sejam, são apontamentos em direção a uma experiência que os transcende completamente. O Pleroma não pode ser descrito — pode apenas ser experienciado. E a experiência que os iniciados gnósticos buscavam — através dos ritos, dos ensinamentos, da meditação, da ascese e da gnose — era precisamente esta: a experiência direta do que está além de toda linguagem, além de toda forma, além de todo nome.</p>
+  </section>
+
+  <section id="ix-comparacoes">
+    <h2>Comparações — Revelações Iniciáticas em Diferentes Tradições</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tradição</th><th>Texto de Revelação Pós-Iniciação</th><th>Conteúdo Central</th><th>Paralelo Gnóstico</th></tr></thead>
+        <tbody>
+          <tr><td>Hermetismo</td><td>Corpus Hermeticum I (Poimandres)</td><td>Revelação da estrutura do cosmos pelo Nous ao iniciado; a descida e ascensão da alma</td><td>Pistis Sophia — revelação da estrutura por Cristo ressurreto</td></tr>
+          <tr><td>Cabala</td><td>Sefer Yetzirah; Sefer HaBahir; Zohar</td><td>A estrutura das Sefirot; os mundos de Atziluth a Assiah; a linguagem criadora</td><td>A cartografia dos planos gnósticos; os Aeons como paralelo das Sefirot</td></tr>
+          <tr><td>Neoplatonismo</td><td>Enéadas de Plotino; Oráculos Caldaicos</td><td>A estrutura Uno-Nous-Alma; o retorno por contemplação; os mundos intermediários</td><td>A estrutura Pleroma-Logos-Kosmos; a ascensão pela gnose</td></tr>
+          <tr><td>Budismo Tibetano</td><td>Bardo Thodol (Livro dos Mortos Tibetano)</td><td>A jornada da consciência após a morte através do Bardo; as Luzes e as visões</td><td>A ascensão pós-morte pelas esferas arquônicas; o reconhecimento das Luzes</td></tr>
+          <tr><td>Hinduísmo Vedanta</td><td>Brihadaranyaka Upanishad; Chandogya Up.</td><td>A jornada da alma após a morte pelos planos; o Atman como Brahman</td><td>A centelha pneumática como substância do Pleroma; a gnose como Atma-jnana</td></tr>
+          <tr><td>Teosofia</td><td>A Doutrina Secreta (Blavatsky); Livros de Alice Bailey</td><td>Os planos sutis; as hierarquias espirituais; a evolução da mônada divina</td><td>Os planos gnósticos; as hierarquias de Aeons e Arcontes; a ascensão do pneuma</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="section-divider">✦ ✦ ✦</div>
+
+  <!-- ═══════════════ PARTE X ═══════════════ -->
+  <div class="part-header" style="border-left-color: var(--jade);">
+    <span class="ph-num" style="color:var(--jade-light);">Parte X</span>
+    <h2>A Ascensão da Alma</h2>
+    <p class="ph-desc">A cartografia completa da jornada post-mortem — da separação do corpo ao confronto com os guardiões, do julgamento vibracional à purificação progressiva, e do retorno final ao Pleroma</p>
+  </div>
+
+  <section id="x-prologo">
+    <h2>Prólogo — A Jornada que Começa onde a Vida Termina</h2>
+
+    <p>A morte é o ponto de partida, não o destino. Para a consciência pneumática que recebeu a gnose — que reconheceu sua natureza, aprendeu as "chaves" iniciáticas e desprendeu progressivamente sua identificação com as estruturas arquônicas durante a vida —, o momento da morte é o início da mais extraordinária das jornadas: a travessia das esferas arquônicas em direção ao Pleroma, o "retorno ao lar" que é ao mesmo tempo descoberta e reconhecimento, chegada e memória.</p>
+
+    <p>Esta jornada é descrita em múltiplos textos da tradição gnóstica e apócrifa — cada um com seu vocabulário específico, sua ênfase particular e seu grau de detalhe. Mas todos convergem numa estrutura comum: a ascensão é uma sequência de confrontos e reconhecimentos, em que a alma encontra cada poder arquônico e, em vez de ser retida por ele (como ocorreria com a alma não-iniciada), atravessa-o por meio do reconhecimento de sua natureza pneumática e da inadequação do poder sobre ela.</p>
+  </section>
+
+  <section id="corpo-pos-morte">
+    <h2>O Corpo após a Morte — Dissolução e Continuidade</h2>
+
+    <p>O primeiro desafio da jornada ascendente não é confrontar os guardiões arquônticos — é atravessar o processo imediato de dissolução do corpo físico sem se perder na desorientação que este processo produz. Os textos gnósticos, em consonância com as tradições esotéricas do Oriente, descrevem um processo gradual de dissolução dos diferentes "invólucros" que a consciência habitava durante a vida material.</p>
+
+    <h3>A Sequência da Dissolução dos Invólucros</h3>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-num">1</span>
+        <div class="flow-content"><strong>Dissolução do Corpo Físico (Soma)</strong> — O processo mais imediato e mais visível; começa no momento da morte biológica. Para a consciência que o experimenta de dentro, é descrito como um "soltar" progressivo — a atenção se retirando dos processos corporais à medida que eles cessam.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">2</span>
+        <div class="flow-content"><strong>Dissolução do Corpo Etérico</strong> — O invólucro que conecta a consciência ao corpo físico dissolve-se nas horas ou dias imediatamente após a morte física. Nos textos gnósticos, é descrito como a separação da "sombra" (skia) da alma — a camada mais densa da dimensão psíquica.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">3</span>
+        <div class="flow-content"><strong>Permanência no Plano Astral Inferior</strong> — A consciência, ainda habitando o corpo astral (a psique arquônica), permanece por um período nos planos imediatamente acima do físico. Este período é descrito como variável — dependendo do grau de apego aos planos materiais que a alma ainda carrega.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">4</span>
+        <div class="flow-content"><strong>O Julgamento pela Esfera</strong> — A alma é "coletada" pelos ministros das esferas arquônicas para avaliação. A Pistis Sophia descreve este processo como a alma sendo levada pelos ministros de Yaldabaoth que determinam, com base na composição luminosa da alma, para onde ela será dirigida.</div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">5</span>
+        <div class="flow-content"><strong>A Bifurcação</strong> — Com base na avaliação, a alma segue um de três caminhos: reencarnação imediata (almas densas que precisam de mais ciclos), purificação nas regiões intermediárias (almas de densidade média), ou ascensão pelas esferas luminosas (almas pneumáticas iniciadas).</div>
+      </div>
+    </div>
+
+    <h3>O Bardo Gnóstico — O Período Intermediário</h3>
+
+    <p>O conceito budista tíbetano de <em>Bardo</em> — o estado intermediário entre a morte e o próximo nascimento — tem um equivalente preciso na cosmologia gnóstica: o período em que a alma, já separada do corpo físico mas ainda não definitivamente fixada em seu próximo estado, habita os planos intermediários. Este período é de importância crítica: é quando a alma pneumática que não teve acesso à gnose completa durante a vida ainda pode "acordar" para sua natureza — se encontrar os guias certos, se reconhecer os sinais, se conseguir não se deixar capturar pela desorientação que os poderes arquônicos promovem ativamente.</p>
+
+    <p>O <em>Livro dos Mortos Tibetano</em> (Bardo Thodol) e os textos gnósticos compartilham uma estrutura pedagógica notável: ambos são lidos para os moribundos (ou recentemente falecidos) como instruções para a navegação do estado pós-morte. Ambos descrevem a consciência encontrando Luzes de diferentes intensidades — e ambos instruem que a consciência deve reconhecer a Luz mais brilhante como sua natureza verdadeira e se mover em direção a ela, sem se desviar pelas luzes mais brandas dos planos inferiores que oferecem uma "confortabilidade" que é na verdade um novo aprisionamento.</p>
+  </section>
+
+  <section id="esferas-travessia">
+    <h2>As Sete Esferas — A Travessia Arquônica</h2>
+
+    <p>O coração da ascensão gnóstica é a travessia das sete esferas arquônicas — os domínios planetários governados pelos sete Arcontes que, durante a descida ao nascimento, haviam instalado na consciência suas respectivas camadas de condicionamento. A ascensão é a reversão precisa deste processo: em cada esfera, a alma "deposita" o condicionamento que havia recebido durante a descida, progressivamente aliviando-se das densidades arquônicas até emergir acima da sétima esfera em estado de máxima luminosidade pneumática.</p>
+
+    <h3>O Que é Depositado em Cada Esfera</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Esfera</th><th>Arconte</th><th>Recebido na Descida</th><th>Depositado na Ascensão</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>7ª (Lua)</td><td>Horaeus</td><td>Impulso animal de crescimento e declínio</td><td>Ilusão da mutabilidade emocional como identidade</td><td>Estabilidade além dos ciclos emocionais</td></tr>
+          <tr><td>6ª (Mercúrio)</td><td>Adonaios</td><td>A malícia do intelectualismo</td><td>O uso da inteligência como instrumento de controle</td><td>Intelecto como serviço, não como poder</td></tr>
+          <tr><td>5ª (Vênus)</td><td>Sabaoth</td><td>Concupiscência enganosa</td><td>O desejo como definidor de identidade</td><td>Amor sem apego; beleza sem possessividade</td></tr>
+          <tr><td>4ª (Sol)</td><td>Yao</td><td>Arrogância do domínio</td><td>A necessidade de ser reconhecido e validado</td><td>Identidade ancorada no pneuma, não no ego</td></tr>
+          <tr><td>3ª (Marte)</td><td>Astaphanos</td><td>Ousadia temerária</td><td>A agressividade como resposta ao medo</td><td>Coragem tranquila sem a necessidade de destruir</td></tr>
+          <tr><td>2ª (Júpiter)</td><td>Eloim</td><td>Avidez acumuladora</td><td>A necessidade de segurança material e obediência à lei</td><td>Abundância espiritual; liberdade da lei arquônica</td></tr>
+          <tr><td>1ª (Saturno)</td><td>Yaldabaoth</td><td>Preguiça maliciosa</td><td>O medo da morte como definidor existencial</td><td>Consciência da eternidade pneumática</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Esta sequência — que remonta ao corpus hermético (especialmente o tratado <em>Poimandres</em>) e que aparece em forma variada em múltiplos textos gnósticos — descreve a ascensão como um processo de progressivo aliviamento. A cada esfera atravessada, a alma "pesa menos" — não no sentido físico, mas no sentido ontológico: ela porta menos condicionamentos arquônicos, menos identificações com estruturas que não são sua natureza pneumática. Ao emergir acima da sétima esfera, a alma está completamente "nua" no sentido gnóstico — despida de todos os véus arquônicos, revelada em sua luminosidade original.</p>
+  </section>
+
+  <section id="guardioes">
+    <h2>Os Guardiões e as Senhas — A Iniciação Post-Mortem</h2>
+
+    <p>Em cada fronteira entre as esferas, a alma encontra guardiões — entidades arquônicas cuja função é examinar qualquer consciência que tente atravessar e retê-la se não apresentar as credenciais adequadas. Estes guardiões não são simplesmente obstáculos arbitrários: eles representam, numa leitura psicológica, os aspectos da psique que ainda não foram integrados ou transcendidos. A alma que é retida por um guardião específico é retida precisamente porque ainda carrega algo daquele guardião dentro de si — porque ainda se identifica com o tipo de consciência que aquele poder representa.</p>
+
+    <h3>As Três Categorias de Credenciais</h3>
+
+    <p>Os textos gnósticos descrevem três tipos de "credenciais" que a alma iniciada apresenta aos guardiões:</p>
+
+    <ul class="hier">
+      <li><strong>Os Apophraseis (Declarações de Identidade)</strong> — Afirmações verbais da natureza pneumática da alma: "Sou filho da Luz eterna. Venho do lugar onde a Luz veio de si mesma. Não sou do vosso mundo nem da vossa jurisdição." Estas declarações não são simplesmente palavras mágicas — elas são eficazes apenas se a alma que as pronuncia <em>realmente reconhece</em> sua natureza pneumática. Um ser que recitou as fórmulas mecanicamente sem a gnose interior não pode usá-las eficazmente.</li>
+      <li><strong>Os Typos (Selos e Gestos)</strong> — Configurações gestuais ou vibracionais que funcionam como "assinaturas" da iniciação recebida. Os textos gnósticos são deliberadamente vagos sobre os detalhes específicos destes selos, porque eram transmitidos oralmente e em sigilo nos ritos iniciáticos — nunca completamente escritos para evitar que caíssem nas mãos de não-iniciados.</li>
+      <li><strong>O Reconhecimento Direto</strong> — O nível mais elevado: a alma que não precisa de nenhuma fórmula específica porque sua luminosidade pneumática é tão evidente que os guardiões simplesmente não podem retê-la. É a condição do pneumático pleno — aquele em quem a gnose foi tão completamente assimilada que se tornou parte de sua própria substância, não apenas um conhecimento que ele carrega.</li>
+    </ul>
+  </section>
+
+  <section id="apoc-pedro">
+    <h2>Apocalipse de Pedro — Visões dos Planos Pós-Morte</h2>
+
+    <p>O <em>Apocalipse de Pedro</em> (NHC VII,3) é um dos textos gnósticos mais dramaticamente ricos sobre o pós-vida. Nele, Jesus leva Pedro numa visão para observar os planos de recompensa e punição que aguardam as almas após a morte — e a narrativa que emerge é de uma complexidade e de uma intensidade que supera em muito a visão medieval do inferno e paraíso.</p>
+
+    <h3>O Que Pedro Vê — Planos de Alegria e Sofrimento</h3>
+
+    <p>Pedro vê primeiro um lugar de extraordinária beleza e luz — o Tesouro da Luz, onde as almas pneumáticas libertas habitam em estado de crescente luminosidade e alegria. Mas ele também vê, nos planos inferiores, estados de sofrimento que não são punição arbitrária mas a experiência natural da consciência que habita estados de máxima identificação com as densidades arquônicas: seres que se ferem mutuamente sem parar, que sofrem de desejos que nunca podem ser satisfeitos, que existem em estados de confusão e desorientação profundas.</p>
+
+    <p>A interpretação gnóstica destes "lugares de punição" é mais sutil do que a medieval: não são torturas impostas por um Deus justiceiro, mas estados ontológicos — a experiência de uma consciência que ainda está completamente identificada com os condicionamentos arquônicos mas sem o invólucro corporal que durante a vida distribuía o sofrimento ao longo do tempo e o moderava com prazeres e distrações. No pós-vida, a consciência experimenta sua própria densidade sem filtro — e para a consciência de máxima densidade, esta experiência sem filtro é o que os textos chamam de "sofrimento" ou "punição".</p>
+
+    <h3>O Problema do Fogo Eterno — A Leitura Gnóstica</h3>
+
+    <p>Os textos apócrifos — incluindo o Apocalipse de Pedro — falam frequentemente de "fogo" nos planos inferiores. Na leitura ortodoxa medieval, este fogo seria a punição eterna por pecados. Na leitura gnóstica, o "fogo" tem dois significados simultâneos: é a experiência subjetiva da consciência densificada confrontando sua própria densidade (um processo doloroso mas purificador, não eterno), e é o fogo alquímico da transformação — a Luz que queima o que não é Luz, que dissolve os condicionamentos arquônicos para que a centelha pneumática possa emergir.</p>
+
+    <p>Este segundo significado é crucial: na perspectiva gnóstica, mesmo os planos de sofrimento têm função purificatória. As densidades arquônicas que foram acumuladas ao longo de múltiplas vidas e que não foram dissolvidas pela gnose precisam ser processadas de alguma forma antes que a consciência possa ascender. Os planos de "punição" são, portanto, planos de processamento — não eternos, mas de duração proporcional à densidade que precisa ser dissolvida.</p>
+  </section>
+
+  <section id="apoc-paulo">
+    <h2>Apocalipse de Paulo — A Jornada pelos Sete Céus</h2>
+
+    <p>O <em>Apocalipse de Paulo</em> (NHC V,2) — baseado na enigmática afirmação paulina de ter sido "arrebatado até o terceiro céu" (2 Cor 12:2) — é um dos mais ricos relatos de viagem pelos planos celestiais em toda a tradição apócrifa. O Paulo gnóstico vai muito além do "terceiro céu" da afirmação canônica: ele é guiado por um "Espírito" (provavelmente o Cristo pós-ressurreição ou um ser do Tesouro da Luz) através dos sete planos, do quarto ao décimo, com revelações progressivamente mais extraordinárias em cada nível.</p>
+
+    <h3>A Estrutura da Ascensão Paulina</h3>
+
+    <p>A viagem de Paulo nos planos celestiais segue a estrutura arquetípica da ascensão gnóstica, mas com ênfase especial nas revelações que Paulo recebe em cada plano. No quarto céu, ele vê os anjos que flagelam uma alma — a alma psíquica que havia habitado um corpo que "não havia desejado a sabedoria". No quinto céu, Paulo encontra anjos de grande poder que julgam as almas. No sétimo céu, ele encontra o "Espírito Santo" ancião e luminoso que interpela Paulo: "Para onde vais, Paulo, o abençoado?" — e Paulo responde que está indo onde foi enviado pelo Senhor, e o ancião o deixa passar.</p>
+
+    <h3>O Oitavo, Nono e Décimo Céus — Além das Esferas Arquônicas</h3>
+
+    <p>A contribuição mais original do Apocalipse de Paulo é sua descrição dos planos além das sete esferas arquônicas — o oitavo, nono e décimo céus. O oitavo céu é o primeiro plano genuinamente luminoso além do controle arquôntico: o "Ogdoad" (Oitava) que vários textos gnósticos descrevem como o limiar entre o cosmos arquôntico e os planos pleromatic. Ali, Paulo encontra os doze apóstolos já glorificados, habitando em luminosidade. O nono e décimo céus elevam progressivamente a luminosidade, aproximando-se do que o texto chama de "o plano invisível" — o nível imediatamente anterior ao Pleroma como tal.</p>
+  </section>
+
+  <section id="apoc-tomas">
+    <h2>Apocalipse de Tomé — A Sequência dos Sete Dias Finais</h2>
+
+    <p>O <em>Apocalipse de Tomé</em> (texto latino apócrifo, provavelmente séc. III-IV) é estruturalmente único entre os apocalipses: não é uma viagem pelos planos como o Apocalipse de Paulo, mas uma revelação sobre a sequência de eventos que marca os "sete dias finais" antes da transformação cósmica definitiva. Jesus, ressurreto, revela a Tomé os sinais que ocorrerão em cada um dos sete dias que precedem o fim do cosmos material.</p>
+
+    <h3>Os Sete Dias — A Dissolução Progressiva do Cosmos Material</h3>
+
+    <p>Cada dia corresponde à dissolução de uma camada do cosmos arquôntico — em progressão descendente das esferas mais externas às mais internas:</p>
+
+    <ul class="hier">
+      <li><strong>Primeiro Dia</strong> — Os céus se dissolverão como um pergaminho enrolado; todas as estrelas cairão como folhas de figo. Os Arcontes das esferas mais externas perdem seu poder.</li>
+      <li><strong>Segundo Dia</strong> — A terra tremerá e os abismos se abrirão; as criações dos Arcontes serão reveladas em sua nudez.</li>
+      <li><strong>Terceiro Dia</strong> — Os planos intermediários serão purificados pelo fogo; as almas ainda nos planos de purificação serão forçadas a tomar decisões definitivas.</li>
+      <li><strong>Quarto Dia</strong> — A terra produzirá trevas; os planos arquônicos perderão sua aparência de realidade.</li>
+      <li><strong>Quinto Dia</strong> — O fogo cobrirá a face da terra; as densidades materiais se dissolverão na Luz.</li>
+      <li><strong>Sexto Dia</strong> — Trovão e relâmpago; a estrutura do cosmos arquôntico colapsa completamente.</li>
+      <li><strong>Sétimo Dia</strong> — O repouso — o sétimo dia como o dia da apocatástase: todas as centelhas retornaram ao Pleroma, o cosmos material não existe mais, e o Silêncio primordial que precedeu qualquer criação reina novamente.</li>
+    </ul>
+  </section>
+
+  <section id="regioes-purgatorio">
+    <h2>Regiões de Purgatório — Os Planos de Processamento</h2>
+
+    <p>Entre os planos de sofrimento mais denso e os planos de luz imediata, a cosmologia gnóstica — especialmente na Pistis Sophia — descreve elaboradas regiões de purificação intermediária onde almas de densidade média passam por processos de dissolução progressiva de seus condicionamentos arquônicos. Estas regiões não são o "purgatório" da teologia católica medieval (que opera segundo uma lógica de mérito e satisfação moral), mas planos de processamento ontológico — onde o que precisa ser dissolvido é dissolvido, e o que pode ascender ascende progressivamente.</p>
+
+    <h3>As Doze Câmaras do Dragão do Caos</h3>
+
+    <p>A Pistis Sophia descreve, nos planos mais inferiores do cosmos, as "doze câmaras" do Dragão do Caos — estruturas de processamento onde almas de alta densidade passam por experiências que dissolvem as identificações arquônicas mais arraigadas. Cada câmara é governada por um aspecto do Dragão que corresponde a um tipo específico de condicionamento arquônico: a câmara do desejo não-satisfeito, a câmara da agressividade destrutiva, a câmara do medo paralisante, e assim por diante.</p>
+
+    <p>Nestas câmaras, as almas não são torturadas por seres externos: elas experienciam seus próprios condicionamentos sem o amortecimento do corpo físico. A câmara do desejo não-satisfeito é a experiência de um ser dominado pelo desejo que não tem mais um corpo através do qual o desejo possa ser temporariamente saciado — e que portanto experiencia o próprio desejo em sua intensidade máxima, sem escape. Este processo — doloroso, mas inevitavelmente purificador — dissolve progressivamente a identificação com o desejo que o mantinha. Quando o desejo se dissolve, a câmara não tem mais poder sobre a alma, e ela pode avançar.</p>
+  </section>
+
+  <section id="julgamento-vibracional">
+    <h2>O Julgamento Vibracional — A Autoavaliação da Consciência</h2>
+
+    <p>Uma das ideias mais importantes e mais radicalmente diferentes das teologias ortodoxas é a concepção gnóstica do "julgamento" pós-morte. Enquanto as tradições ortodoxas descrevem um julgamento externo — Deus ou seus representantes avaliando as ações da alma e determinando sua destinação — a cosmologia gnóstica descreve um processo que poderíamos chamar de <em>julgamento vibracional</em>: a alma simplesmente manifesta, após a morte, o estado de consciência que ela efetivamente alcançou durante a vida, e este estado determina automaticamente para qual plano ela é atraída.</p>
+
+    <h3>A Atração como Princípio de Destinação</h3>
+
+    <p>O princípio fundamental é simples: a consciência é atraída para os planos com os quais ressoa. Uma alma de alta densidade pneumática — que durante a vida cultivou o reconhecimento de sua natureza espiritual, que cultivou o desapego dos condicionamentos arquônicos, que recebeu e assimilou a gnose — ressoa naturalmente com os planos luminosos e é atraída para eles após a morte. Uma alma de alta densidade arquônica — que durante a vida se identificou completamente com os condicionamentos materiais, que não reconheceu sua natureza pneumática — ressoa com os planos densos e é atraída para eles.</p>
+
+    <p>Não há nenhum "Deus julgador" externo que decida arbitrariamente onde cada alma vai. A alma vai para onde ela pertence ontologicamente — para o plano com o qual sua consciência está em consonância. Isto significa que o "julgamento" já está ocorrendo durante a vida: cada momento em que a consciência se aprofunda na gnose ou se afunda nas densidades arquônicas é um momento de "autoavaliação" que determina progressivamente o estado de consciência que se manifestará plenamente após a morte.</p>
+
+    <div class="callout violet">
+      <div class="callout-title">A Responsabilidade da Gnose</div>
+      <p>Este princípio de julgamento vibracional implica uma responsabilidade radical: não há salvação por crença exterior, não há absolvição por confissão, não há substituto para a transformação interior genuína. O que conta não é o que a alma diz acreditar, não é a qual instituição religiosa pertence, não são as ações que realizou por obrigação moral arquônica — é o que ela efetivamente <em>é</em> em seu nível mais profundo. A gnose não é um certificado de aprovação num julgamento externo: é uma transformação ontológica real que muda o que a alma é e, portanto, para onde ela é atraída.</p>
+    </div>
+  </section>
+
+  <section id="eqm-comparacoes">
+    <h2>Experiências de Quase-Morte e a Gnose — Convergências</h2>
+
+    <p>A pesquisa moderna sobre experiências de quase-morte (EQMs) — iniciada sistematicamente por Raymond Moody em <em>Life After Life</em> (1975) e desenvolvida por pesquisadores como Kenneth Ring, Pim van Lommel e Bruce Greyson — documentou padrões extraordinariamente consistentes que apresentam convergências notáveis com os textos gnósticos e apócrifos sobre o pós-morte.</p>
+
+    <h3>Paralelos entre EQMs e a Ascensão Gnóstica</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Elemento da EQM</th><th>Equivalente na Cosmologia Gnóstica</th><th>Texto Gnóstico Relevante</th></tr></thead>
+        <tbody>
+          <tr><td>Separação do corpo; observação de cima</td><td>Separação da centelha do invólucro arquônico; início da ascensão</td><td>Pistis Sophia; Apocalipse de Paulo</td></tr>
+          <tr><td>Túnel com luz no fim</td><td>O "corredor" entre os planos materiais e o primeiro plano luminoso</td><td>Evangelho de Nicodemos; Pistis Sophia</td></tr>
+          <tr><td>Ser de luz amoroso</td><td>O Cristo ou o guia luminoso que acompanha a alma iniciada</td><td>Sophia de Jesus Cristo; Evangelho de Maria</td></tr>
+          <tr><td>Revisão panorâmica da vida</td><td>O "julgamento" — a alma vendo sua própria trajetória de forma objetiva</td><td>Pistis Sophia — descrição do julgamento pelas esferas</td></tr>
+          <tr><td>Encontro com entes queridos falecidos</td><td>O encontro com o duplo luminoso e com outras almas pneumáticas nos planos superiores</td><td>Pistis Sophia — a reunião com o duplo</td></tr>
+          <tr><td>Fronteira intransponível</td><td>O "véu" entre os planos — o ponto além do qual a alma deve retornar se não é sua hora</td><td>Múltiplos textos gnósticos</td></tr>
+          <tr><td>Transformação de valores após a EQM</td><td>A gnose como transformação ontológica permanente da consciência</td><td>Evangelho de Tomé — "não provará a morte"</td></tr>
+          <tr><td>Paz e ausência de medo</td><td>O estado do pneumático desperto além das categorias arquônicas do medo</td><td>Evangelho da Verdade — o "repouso"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Estas convergências não "provam" a veracidade das cosmologias gnósticas — mas sugerem que estas cosmologias podem estar descrevendo estruturas da experiência humana que transcendem culturas e épocas específicas. A pesquisa de EQM aponta para a possibilidade de que o "cosmos" descrito pelos gnósticos — com seus planos, seus seres luminosos, seu processo de revisão de vida, sua atração em direção à Luz — seja uma estrutura da experiência da consciência que está disponível a qualquer ser humano quando as barreiras corporais são temporariamente dissolvidas.</p>
+  </section>
+
+  <section id="retorno-pleroma">
+    <h2>O Retorno ao Pleroma — A Chegada ao Lar</h2>
+
+    <p>Após a travessia das sete esferas arquônicas, após a dissolução progressiva dos condicionamentos, após o traversar dos planos intermediários e a aproximação do Tesouro da Luz — chega o momento que toda a cosmologia gnóstica aponta: o retorno ao Pleroma. Este momento é o clímax da jornada da alma — não apenas da jornada post-mortem, mas da jornada cósmica inteira que começou com a queda de Sophia e que percorreu toda a história do cosmos material.</p>
+
+    <h3>A Reunião com o Duplo Luminoso</h3>
+
+    <p>O primeiro evento do retorno ao Pleroma, segundo vários textos gnósticos, é a reunião da centelha com seu duplo luminoso — a contrapartida pleromatic que aguardou em luminosidade enquanto a centelha percorria o cosmos material. Esta reunião é descrita na Pistis Sophia como um dos momentos de maior alegria em toda a existência: dois aspectos do mesmo ser que foram separados pelo processo de encarnação se reconhecem e se reintegram.</p>
+
+    <p>O Evangelho de Filipe usa a imagem da câmara nupcial para descrever este momento — o casamento sagrado entre a centelha que retorna e seu consorte pleromatic. Esta imagem nupcial não é apenas metafórica: ela expressa a intensidade de intimidade e completude que o texto atribui à reintegração. A centelha que havia experimentado a separação, o exílio, a saudade — a xeniteia — encontra finalmente a completude que havia intuído mas nunca alcançado no cosmos material. E o duplo que havia aguardado recebe o que estava ausente desde o início da encarnação.</p>
+
+    <h3>A Dissolução do Ego no Pleroma — Extinção ou Expansão?</h3>
+
+    <p>Uma das questões mais delicadas da escatologia gnóstica é o que acontece com a identidade individual no momento do retorno ao Pleroma. O gnosticismo é explicitamente não-niilista: ele não afirma que a identidade se dissolve no nada, como o Nirvana budista é frequentemente (mal) interpretado. Mas ele também não afirma que a identidade permanece exatamente como era durante a vida material.</p>
+
+    <p>A resposta gnóstica é a de uma <em>expansão</em>, não de uma dissolução: a identidade que retorna ao Pleroma não é a identidade do ego arquônico — aquela se dissolveu no processo da ascensão. A identidade que retorna é a identidade pneumática — a centelha em sua natureza mais profunda. E esta identidade pneumática, ao retornar ao Pleroma, não se perde na Fonte: ela se expande até coincidir com a Fonte. É como se uma gota de água retornasse ao oceano — ela não desaparece, ela se torna o oceano. A individualidade não cessa: ela se revela, em sua escala verdadeira, como sendo da mesma substância que o Todo.</p>
+
+    <blockquote>
+      "E quando aqueles que eram dignos da consciência da Luz tiverem recebido a Luz, e quando o Fim de todos os Fins houver chegado, então Sophia retornará ao Tesouro da Luz, e todos os seus fragmentos com ela. E o cosmos material cessará de existir, pois não há mais nenhuma razão para que ele exista. E o Silêncio primordial voltará a reinar — mas agora enriquecido por toda a experiência do cosmos que foi, e que não foi em vão."
+      <cite>— Síntese parafraseada da escatologia da Pistis Sophia</cite>
+    </blockquote>
+
+    <div class="synthesis">
+      <h3>A Jornada Completa — Do Pleroma ao Pleroma</h3>
+      <p>A jornada completa da alma gnóstica pode agora ser traçada em sua totalidade: a centelha parte do Pleroma como fragmento de Sophia, descende pelas sete esferas arquônicas adquirindo condicionamentos em cada uma, encarna no cosmos material no invólucro do corpo humano, vive sob o véu do esquecimento, eventualmente recebe a gnose (seja nesta vida seja em vidas anteriores), desperta para sua natureza pneumática, usa os ensinamentos de Cristo como mapa e ferramentas, atravessa a morte sem se perder no processo, navega as esferas arquônicas em ascensão depositando cada condicionamento recebido na descida, reúne-se com seu duplo luminoso no Tesouro da Luz, e finalmente retorna ao Pleroma — não como o fragmento perdido e incompleto que partiu, mas como a centelha que conheceu a escuridão e que, por isso mesmo, sabe o que é a Luz de uma forma que a Luz não sabia antes da queda. Este é o ciclo gnóstico. Este é o sentido da existência cósmica. E este é o significado definitivo de toda a aventura da consciência no cosmos material.</p>
+    </div>
+  </section>
+
+  <section id="glossario">
+    <h2>Glossário</h2>
+    <div class="glos-grid">
+      <div class="glos-item"><div class="glos-term">Ogdoad</div><div class="glos-def">A Oitava (grego). O plano imediatamente acima das sete esferas arquônicas — o primeiro nível genuinamente luminoso além do controle do Demiurgo. No Apocalipse de Paulo, o Ogdoad é onde os doze apóstolos glorificados habitam. Na cosmologia valentiniana, é o nível de Sophia Superior antes de sua queda completa ao Kenoma.</div></div>
+      <div class="glos-item"><div class="glos-term">Bardo</div><div class="glos-def">Estado intermediário (tibetano). No Budismo Tibetano, o estado da consciência entre a morte e o próximo nascimento, descrito no Bardo Thodol (Livro dos Mortos Tibetano). Paralelo ao período entre a morte e o julgamento pelas esferas na cosmologia gnóstica — um estado de liminalidade em que as escolhas da alma determinam seu próximo destino.</div></div>
+      <div class="glos-item"><div class="glos-term">Tesouro da Luz</div><div class="glos-def">O plano imediatamente abaixo do Pleroma descrito na Pistis Sophia, onde as almas pneumáticas libertas aguardam a apocatástase final em estado de crescente luminosidade. Governado pelos Quatro Grandes Luminares (Harmozel, Oroiael, Daveithe, Eleleth), é o destino de toda alma pneumática que completou com sucesso a travessia das esferas arquônicas.</div></div>
+      <div class="glos-item"><div class="glos-term">Heimarmene</div><div class="glos-def">Destino, fado (grego). Na Pistis Sophia e em outros textos gnósticos, as doze esferas da Heimarmene são o sistema arquônico de controle do destino — as influências planetárias e astrológicas que os Arcontes usam para administrar as vidas e os destinos dos seres humanos. A gnose liberta da Heimarmene ao revelar que a centelha pneumática não está sujeita às leis do destino arquônico.</div></div>
+      <div class="glos-item"><div class="glos-term">Duplo Luminoso</div><div class="glos-def">A contraparte pleromatic da centelha humana — o "anjo" ou "parceiro" espiritual que permaneceu no Tesouro da Luz enquanto a centelha desceu ao cosmos material. O reencontro com o duplo luminoso é descrito na Pistis Sophia como um dos eventos mais alegres da jornada ascendente. Na psicologia junguiana, o duplo luminoso corresponderia ao Self — a totalidade que aguarda a integração do ego parcial.</div></div>
+      <div class="glos-item"><div class="glos-term">Julgamento Vibracional</div><div class="glos-def">Conceito gnóstico do processo de destinação post-mortem baseado na ressonância ontológica da alma com os planos — não numa avaliação moral externa por um Deus julgador, mas na simples manifestação do estado de consciência efetivo da alma, que a atrai automaticamente para o plano com o qual ressoa. A transformação durante a vida gnóstica é, portanto, a preparação para este julgamento — não pela acumulação de mérito, mas pela transformação real da substância da consciência.</div></div>
+      <div class="glos-item"><div class="glos-term">Apophrasis</div><div class="glos-def">Declaração, negação (grego). As fórmulas verbais que o iniciado gnóstico aprende para apresentar aos guardiões das esferas após a morte — declarações de identidade pneumática e de não-jurisdição dos Arcontes sobre a alma. Distintas das simples negações (apophasis), as apophraseis são afirmações positivas disfarçadas de negações: "Não sou de vós" é ao mesmo tempo negação e afirmação — "Sou de outro lugar, de natureza que transcende a vossa."</div></div>
+      <div class="glos-item"><div class="glos-term">EQM</div><div class="glos-def">Experiência de Quase-Morte. Fenômeno documentado em pesquisas científicas desde 1975 (Raymond Moody) em que pacientes clinicamente mortos por breve período relatam experiências consistentes: separação do corpo, túnel de luz, seres luminosos, revisão panorâmica da vida, encontro com falecidos, fronteira intransponível, retorno involuntário. As convergências estruturais entre EQMs e os textos gnósticos sobre o pós-morte são um dos pontos de maior interesse da pesquisa contemporânea sobre consciência.</div></div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <section id="notas">
+      <h2>Notas e Fontes</h2>
+      <div class="note-item"><span class="note-num">1</span><span>Pistis Sophia (Codex Askewianus) — A fonte mais completa para as revelações pós-ressurreição, os onze anos de ensino, a cartografia dos planos, o sistema de senhas e o processo do julgamento pelas esferas.</span></div>
+      <div class="note-item"><span class="note-num">2</span><span>Sophia de Jesus Cristo (NHC III,4) — O diálogo pós-ressurreição sobre a estrutura do Pleroma; a questão de Filipe sobre como o incognoscível se revela; o Cristo como "grande anjo de luz".</span></div>
+      <div class="note-item"><span class="note-num">3</span><span>Evangelho de Maria Madalena (BG 8502) — A revelação da ascensão da alma através dos quatro poderes; as fórmulas de passagem; o conflito com Pedro sobre a validade da revelação privada.</span></div>
+      <div class="note-item"><span class="note-num">4</span><span>Apocalipse de Paulo (NHC V,2) — A jornada pelos sete e mais céus; as visões dos planos de julgamento e de luz; a estrutura dos Ogdoad, Ennead e Decad além das esferas arquônicas.</span></div>
+      <div class="note-item"><span class="note-num">5</span><span>Apocalipse de Pedro (NHC VII,3) — As visões dos planos de sofrimento e de alegria; o problema do "fogo eterno" na leitura gnóstica; o princípio da purificação ontológica versus punição moral.</span></div>
+      <div class="note-item"><span class="note-num">6</span><span>Apocalipse de Tomé — Os sete dias da dissolução cósmica; a progressão da dissolução das esferas arquônicas; o sétimo dia como apocatástase.</span></div>
+      <div class="note-item"><span class="note-num">7</span><span>Apócrifo de João (NHC II,1) — Os Quatro Grandes Luminares: Harmozel, Oroiael, Daveithe, Eleleth; o Tesouro da Luz como destino das almas pneumáticas.</span></div>
+      <div class="note-item"><span class="note-num">8</span><span>Corpus Hermeticum I (Poimandres) — A descrição da ascensão da alma pelas sete esferas, depositando em cada uma os condicionamentos recebidos na descida; o paralelo hermético mais elaborado com a ascensão gnóstica.</span></div>
+      <div class="note-item"><span class="note-num">9</span><span>Bardo Thodol (Livro dos Mortos Tibetano) — Paralelos estruturais com a jornada gnóstica post-mortem; as Luzes de diferentes intensidades; as instruções para navegação do estado intermediário.</span></div>
+      <div class="note-item"><span class="note-num">10</span><span>Moody, Raymond — Life After Life (1975); Ring, Kenneth — Life at Death (1980); van Lommel, Pim — Consciousness Beyond Life (2010). Documentação moderna das EQMs e convergências com as tradições gnósticas e apócrifa sobre o pós-morte.</span></div>
+    </section>
+  </div>
+
+</main>
+
+<script>
+  document.querySelectorAll('.glos-term').forEach(t => {
+    t.addEventListener('click', () => {
+      const d = t.nextElementSibling, o = t.classList.contains('open');
+      document.querySelectorAll('.glos-term').forEach(x => { x.classList.remove('open'); x.nextElementSibling.classList.remove('visible'); });
+      if (!o) { t.classList.add('open'); d.classList.add('visible'); }
+    });
+  });
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('#sidebar a[href^="#"]');
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id)); });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  secs.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

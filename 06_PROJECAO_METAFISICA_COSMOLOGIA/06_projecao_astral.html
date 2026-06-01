@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeção Astral — Guia Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #040714;
+    --navy: #070d24;
+    --indigo: #0d1640;
+    --violet: #1a0a3d;
+    --purple: #2d1065;
+    --accent1: #7c3aed;
+    --accent2: #a78bfa;
+    --accent3: #c4b5fd;
+    --gold: #f5c842;
+    --gold2: #e0a020;
+    --silver: #d4d8ff;
+    --cyan: #67e8f9;
+    --rose: #f0abfc;
+    --text: #e8e4ff;
+    --textdim: #a89ec9;
+    --glow: rgba(124,58,237,0.4);
+    --glow2: rgba(167,139,250,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── STARS BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(45,16,101,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(13,22,64,0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(7,13,36,0.8) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── STAR PARTICLES ── */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .stars::before, .stars::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(200,180,255,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 8%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 55%, rgba(180,200,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(2px 2px at 85% 70%, rgba(220,200,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 10%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 80%, rgba(180,220,255,0.7) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 30% 90%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 85%, rgba(200,180,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 45%, rgba(255,240,200,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 48% 30%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 18% 60%, rgba(200,220,255,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 90% 40%, rgba(255,220,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.7) 0%, transparent 100%);
+    background-size: 100% 100%;
+    animation: twinkle 6s ease-in-out infinite alternate;
+  }
+  .stars::after {
+    background-image:
+      radial-gradient(1px 1px at 15% 35%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 20%, rgba(180,200,255,0.8) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 65% 65%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 15%, rgba(200,180,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 22% 75%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 48%, rgba(180,220,255,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 88% 88%, rgba(255,240,200,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 3% 50%, rgba(255,255,255,0.8) 0%, transparent 100%);
+    animation-delay: -3s;
+    animation-duration: 8s;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+
+  .hero-nebula {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45,16,101,0.7) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 30% 60%, rgba(124,58,237,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 70% 30%, rgba(103,232,249,0.1) 0%, transparent 60%);
+    animation: nebulaPulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes nebulaPulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .hero-symbol {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: floatSymbol 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(167,139,250,0.8));
+  }
+
+  @keyframes floatSymbol {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .hero-eyeline {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, var(--accent3) 30%, var(--gold) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 30px rgba(167,139,250,0.5));
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 400;
+    color: var(--accent3);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--textdim);
+    max-width: 600px;
+    line-height: 1.9;
+    margin-bottom: 3rem;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+  }
+  .hero-divider span {
+    color: var(--gold);
+    font-size: 1.3rem;
+  }
+
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .toc-item {
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--accent3);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .toc-item:hover {
+    background: rgba(124,58,237,0.3);
+    border-color: var(--accent2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+  }
+  .toc-item .num {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  section + section {
+    border-top: 1px solid rgba(124,58,237,0.15);
+  }
+
+  .section-eyeline {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.6em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, var(--accent3) 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  .section-title.gold {
+    background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p { margin-bottom: 1.4rem; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 3px solid var(--accent1);
+    background: rgba(124,58,237,0.1);
+    border-radius: 0 12px 12px 0;
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+  .callout::before {
+    content: attr(data-icon);
+    position: absolute;
+    top: -0.8rem;
+    left: 1.5rem;
+    background: var(--deep);
+    padding: 0 0.5rem;
+    font-size: 1.3rem;
+  }
+  .callout.gold-box {
+    border-left-color: var(--gold);
+    background: rgba(245,200,66,0.07);
+  }
+  .callout.cyan-box {
+    border-left-color: var(--cyan);
+    background: rgba(103,232,249,0.07);
+  }
+  .callout.rose-box {
+    border-left-color: var(--rose);
+    background: rgba(240,171,252,0.07);
+  }
+
+  .callout-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .callout.gold-box .callout-title { color: var(--gold); }
+  .callout.cyan-box .callout-title { color: var(--cyan); }
+  .callout.rose-box .callout-title { color: var(--rose); }
+
+  /* ── VISUAL IMAGE BLOCKS ── */
+  .visual-block {
+    margin: 3rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: var(--indigo);
+    border: 1px solid rgba(124,58,237,0.3);
+  }
+
+  .visual-scene {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Astral scenes with CSS art */
+  .scene-hero {
+    background: radial-gradient(ellipse at 50% 60%, rgba(45,16,101,0.9) 0%, rgba(7,13,36,1) 70%);
+  }
+  .scene-hero::before {
+    content: '';
+    position: absolute;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167,139,250,0.4), transparent 70%);
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    animation: glowPulse 3s ease-in-out infinite;
+    box-shadow: 0 0 60px rgba(124,58,237,0.6), 0 0 120px rgba(124,58,237,0.2);
+  }
+
+  .scene-silver-cord {
+    background: radial-gradient(ellipse at 50% 30%, rgba(13,22,64,1) 0%, rgba(4,7,20,1) 70%);
+  }
+
+  .scene-plane {
+    background: radial-gradient(ellipse at 30% 50%, rgba(103,232,249,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.3) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(4,7,20,1) 0%, rgba(13,22,64,1) 100%);
+  }
+
+  .visual-caption {
+    padding: 1.2rem 1.8rem;
+    background: rgba(0,0,0,0.4);
+    font-style: italic;
+    color: var(--textdim);
+    font-size: 0.95rem;
+    text-align: center;
+    border-top: 1px solid rgba(124,58,237,0.2);
+  }
+
+  /* Body leaving body illustration */
+  .body-art {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 50% 50%, rgba(45,16,101,0.6) 0%, rgba(4,7,20,1) 70%);
+  }
+  .body-physical {
+    position: relative;
+    width: 60px;
+    height: 160px;
+    background: linear-gradient(180deg, rgba(180,160,255,0.15), rgba(100,80,200,0.1));
+    border: 1px solid rgba(124,58,237,0.4);
+    border-radius: 30px 30px 20px 20px;
+    box-shadow: 0 0 20px rgba(124,58,237,0.2);
+  }
+  .body-physical::before {
+    content: '';
+    position: absolute;
+    top: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: rgba(180,160,255,0.15);
+    border: 1px solid rgba(124,58,237,0.4);
+  }
+  .body-astral {
+    position: absolute;
+    width: 60px;
+    height: 160px;
+    background: linear-gradient(180deg, rgba(124,58,237,0.4), rgba(167,139,250,0.15));
+    border: 1px solid rgba(167,139,250,0.6);
+    border-radius: 30px 30px 20px 20px;
+    box-shadow: 0 0 40px rgba(124,58,237,0.5), inset 0 0 20px rgba(167,139,250,0.1);
+    animation: astralFloat 3s ease-in-out infinite;
+    left: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .body-astral::before {
+    content: '';
+    position: absolute;
+    top: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: rgba(124,58,237,0.4);
+    border: 1px solid rgba(167,139,250,0.6);
+    box-shadow: 0 0 20px rgba(124,58,237,0.6);
+  }
+  .silver-cord-art {
+    position: absolute;
+    top: 50%; left: 47.5%;
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, rgba(212,216,255,0.3), rgba(212,216,255,0.8), rgba(212,216,255,0.3));
+    box-shadow: 0 0 8px rgba(212,216,255,0.5);
+    transform: translateY(-30px) rotate(-5deg);
+    animation: cordPulse 2s ease-in-out infinite;
+  }
+  @keyframes astralFloat {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-55%) translateX(5px); }
+  }
+  @keyframes cordPulse {
+    0%, 100% { opacity: 0.6; box-shadow: 0 0 8px rgba(212,216,255,0.5); }
+    50% { opacity: 1; box-shadow: 0 0 16px rgba(212,216,255,0.9); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.6; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin: 2.5rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.8rem;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent3), var(--gold));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.55rem;
+    top: 0.4rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 10px var(--accent1);
+    border: 2px solid var(--deep);
+  }
+  .timeline-period {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--accent3);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .timeline-text { color: var(--textdim); font-size: 0.95rem; }
+
+  /* ── EXPERIENCE CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .exp-card {
+    background: linear-gradient(135deg, rgba(45,16,101,0.3) 0%, rgba(13,22,64,0.5) 100%);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 16px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent3));
+  }
+  .exp-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(124,58,237,0.25);
+  }
+  .exp-card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .exp-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+  .exp-card p { color: var(--textdim); font-size: 0.95rem; margin: 0; }
+
+  /* ── SENSATIONS ── */
+  .sensation-list {
+    list-style: none;
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .sensation-list li {
+    background: rgba(103,232,249,0.05);
+    border: 1px solid rgba(103,232,249,0.2);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .sensation-list li .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .sensation-list li strong { color: var(--cyan); font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.05em; display: block; margin-bottom: 0.2rem; }
+
+  /* ── TECHNIQUES ── */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .tech-card {
+    background: linear-gradient(135deg, rgba(26,10,61,0.6) 0%, rgba(7,13,36,0.8) 100%);
+    border: 1px solid rgba(245,200,66,0.25);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+  }
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold2), var(--gold), var(--gold2));
+  }
+  .tech-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .tech-level {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .tech-level.iniciante { background: rgba(34,197,94,0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .tech-level.intermediario { background: rgba(245,200,66,0.2); color: var(--gold); border: 1px solid rgba(245,200,66,0.3); }
+  .tech-level.avancado { background: rgba(124,58,237,0.2); color: var(--accent3); border: 1px solid rgba(124,58,237,0.3); }
+  .tech-card p { color: var(--textdim); font-size: 0.95rem; }
+
+  /* ── STEP BY STEP ── */
+  .steps {
+    counter-reset: steps;
+    margin: 2.5rem 0;
+  }
+  .step {
+    counter-increment: steps;
+    position: relative;
+    padding: 1.8rem 1.8rem 1.8rem 5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(45,16,101,0.2) 0%, rgba(13,22,64,0.3) 100%);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+  .step:hover {
+    border-color: rgba(124,58,237,0.5);
+    box-shadow: 0 4px 20px rgba(124,58,237,0.15);
+  }
+  .step::before {
+    content: counter(steps);
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem; height: 2.5rem;
+    background: linear-gradient(135deg, var(--accent1), var(--purple));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0 0 15px rgba(124,58,237,0.4);
+  }
+  .step-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+  .step p { color: var(--text); font-size: 0.97rem; margin: 0; }
+
+  /* ── QUOTE ── */
+  .big-quote {
+    margin: 3rem 0;
+    text-align: center;
+    padding: 3rem 2rem;
+    background: radial-gradient(ellipse at 50% 50%, rgba(45,16,101,0.3) 0%, transparent 70%);
+    position: relative;
+  }
+  .big-quote::before {
+    content: '❝';
+    position: absolute;
+    top: 1rem; left: 2rem;
+    font-size: 4rem;
+    color: var(--accent1);
+    opacity: 0.4;
+    font-family: serif;
+    line-height: 1;
+  }
+  .big-quote blockquote {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--accent3);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+  .big-quote cite {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ── PLANE DESCRIPTIONS ── */
+  .planes-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .plane-card {
+    background: linear-gradient(135deg, rgba(7,13,36,0.8) 0%, rgba(26,10,61,0.4) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(167,139,250,0.2);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .plane-icon {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .plane-icon.p1 { background: radial-gradient(circle, rgba(103,232,249,0.3), rgba(103,232,249,0.05)); border: 1px solid rgba(103,232,249,0.4); }
+  .plane-icon.p2 { background: radial-gradient(circle, rgba(124,58,237,0.3), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.4); }
+  .plane-icon.p3 { background: radial-gradient(circle, rgba(245,200,66,0.3), rgba(245,200,66,0.05)); border: 1px solid rgba(245,200,66,0.4); }
+  .plane-icon.p4 { background: radial-gradient(circle, rgba(240,171,252,0.3), rgba(240,171,252,0.05)); border: 1px solid rgba(240,171,252,0.4); }
+  .plane-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .plane-card p { color: var(--textdim); font-size: 0.95rem; margin: 0; }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid rgba(124,58,237,0.2);
+    padding: 1.5rem 0;
+  }
+  .faq-q {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--accent2);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .faq-q::before {
+    content: '?';
+    width: 24px; height: 24px;
+    background: rgba(124,58,237,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    color: var(--accent3);
+  }
+  .faq-a { color: var(--textdim); font-size: 0.97rem; padding-left: 2rem; }
+
+  /* ── GUIDE FINAL ── */
+  .guide-final {
+    background: linear-gradient(135deg, rgba(26,10,61,0.8) 0%, rgba(7,13,36,0.9) 100%);
+    border: 1px solid rgba(245,200,66,0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .guide-final::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent1), var(--gold), var(--accent3), var(--cyan));
+  }
+
+  /* ── DIVIDERS ── */
+  .ornament {
+    text-align: center;
+    color: var(--accent1);
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    opacity: 0.6;
+    letter-spacing: 0.5rem;
+  }
+
+  .section-end {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--accent1);
+    font-size: 1.2rem;
+    opacity: 0.4;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(124,58,237,0.2);
+    color: var(--textdim);
+    font-size: 0.9rem;
+  }
+  footer .footer-symbol { font-size: 3rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 0 15px rgba(124,58,237,0.5)); }
+  footer p { max-width: 500px; margin: 0 auto; }
+
+  /* ── HIGHLIGHT TEXT ── */
+  .hl { color: var(--accent3); font-weight: 600; }
+  .hl-gold { color: var(--gold); font-weight: 600; }
+  .hl-cyan { color: var(--cyan); font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .plane-card { grid-template-columns: 1fr; }
+    .body-astral { display: none; }
+    .silver-cord-art { display: none; }
+    .guide-final { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-nebula"></div>
+  <div style="position:relative;z-index:2;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="hero-symbol">🌙</div>
+    <div class="hero-eyeline">Guia Completo · Do Básico ao Avançado</div>
+    <h1 class="hero-title">Projeção Astral</h1>
+    <h2 class="hero-subtitle">Desdobramento Astral</h2>
+    <p class="hero-desc">
+      Uma jornada profunda pelos mistérios da consciência além do corpo físico — 
+      história, ciência, técnicas, experiências e um guia passo a passo para sua primeira projeção.
+    </p>
+    <div class="hero-divider"><span>✦</span></div>
+    <nav class="toc">
+      <a href="#oque" class="toc-item"><span class="num">01</span> O que é?</a>
+      <a href="#historia" class="toc-item"><span class="num">02</span> História & Origens</a>
+      <a href="#ciencia" class="toc-item"><span class="num">03</span> Ciência & Estudos</a>
+      <a href="#corpo" class="toc-item"><span class="num">04</span> O Corpo Astral</a>
+      <a href="#cordo-prata" class="toc-item"><span class="num">05</span> O Cordão de Prata</a>
+      <a href="#sensacoes" class="toc-item"><span class="num">06</span> Sensações & Sinais</a>
+      <a href="#planos" class="toc-item"><span class="num">07</span> Para Onde Vamos?</a>
+      <a href="#experiencias" class="toc-item"><span class="num">08</span> Experiências Relatadas</a>
+      <a href="#tecnicas" class="toc-item"><span class="num">09</span> Técnicas</a>
+      <a href="#dicas" class="toc-item"><span class="num">10</span> Dicas & Cuidados</a>
+      <a href="#guia" class="toc-item"><span class="num">11</span> Guia Passo a Passo</a>
+      <a href="#faq" class="toc-item"><span class="num">12</span> Perguntas Frequentes</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     01 · O QUE É
+═══════════════════════════════════════════════ -->
+<section id="oque">
+<div class="container">
+  <div class="section-eyeline">Capítulo 01</div>
+  <h2 class="section-title">O que é a Projeção Astral?</h2>
+
+  <!-- Visual: corpo separando do físico -->
+  <div class="visual-block">
+    <div class="body-art">
+      <div style="display:flex;align-items:center;gap:3rem;position:relative;">
+        <div style="position:relative;">
+          <div class="body-physical"></div>
+          <div style="position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--textdim);text-align:center;white-space:nowrap;">CORPO FÍSICO</div>
+        </div>
+        <div class="silver-cord-art"></div>
+        <div style="position:relative;">
+          <div class="body-astral"></div>
+          <div style="position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--accent3);text-align:center;white-space:nowrap;">CORPO ASTRAL</div>
+        </div>
+      </div>
+    </div>
+    <div class="visual-caption">O corpo astral se separa do corpo físico — ambos permanecem conectados pelo Cordão de Prata</div>
+  </div>
+
+  <p>A <span class="hl">projeção astral</span> — também chamada de <span class="hl">desdobramento astral</span>, <span class="hl">experiência fora do corpo</span> (OBE, do inglês <em>Out-of-Body Experience</em>) ou <span class="hl">viagem astral</span> — é o fenômeno em que a consciência humana, ou o chamado "corpo astral", aparentemente se separa do corpo físico e passa a existir de forma independente em um plano não-físico de realidade.</p>
+
+  <p>Durante uma projeção, o praticante relata ser capaz de observar seu próprio corpo físico de fora, mover-se livremente pelo ambiente físico sem limitações do corpo, viajar para locais distantes, e até mesmo acessar dimensões ou planos de existência que transcendem o mundo material que conhecemos.</p>
+
+  <div class="callout" data-icon="🔑">
+    <div class="callout-title">Definição Essencial</div>
+    <p>A projeção astral é a experiência em que a consciência opera externamente ao corpo físico, seja de forma espontânea (em momentos de sono, trauma ou meditação profunda) ou induzida voluntariamente por meio de técnicas específicas. A experiência é caracterizada por uma vivacidade e lucidez muitas vezes superiores às do sonho comum.</p>
+  </div>
+
+  <p>É importante distinguir a projeção astral de outros estados alterados de consciência. Diferente de um <span class="hl-gold">sonho lúcido</span> — onde a pessoa se torna consciente de que está sonhando dentro de um cenário onírico — na projeção astral, o ambiente percebido é descrito como sendo <em>idêntico</em> à realidade física, ou uma versão muito próxima dela, com detalhes que o praticante não poderia imaginar conscientemente.</p>
+
+  <p>Diferentes tradições e escolas de pensamento interpretam o fenômeno de maneiras distintas: para as tradições espirituais e esotéricas, trata-se de uma viagem real da alma; para a ciência contemporânea, é um estado neurológico alterado. Independente da interpretação, o fenômeno é <span class="hl">amplamente documentado</span> em todas as culturas humanas ao longo da história.</p>
+
+  <div class="callout cyan-box" data-icon="📊">
+    <div class="callout-title">Dados Relevantes</div>
+    <p>Pesquisas científicas indicam que entre <strong>8% e 20% da população mundial</strong> reporta ter tido pelo menos uma experiência fora do corpo ao longo da vida. Isso representa centenas de milhões de pessoas. O fenômeno não discrimina por idade, gênero, crença ou cultura.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     02 · HISTÓRIA
+═══════════════════════════════════════════════ -->
+<section id="historia">
+<div class="container">
+  <div class="section-eyeline">Capítulo 02</div>
+  <h2 class="section-title">História e Origens</h2>
+
+  <p>O conhecimento sobre a projeção astral não é uma novidade da Era New Age. Ela está <span class="hl">entrelaçada com a história humana</span> há milênios, aparecendo nos registros mais antigos de civilizações ao redor do globo.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-period">≈ 5.000 a.C.</div>
+      <div class="timeline-title">Egito Antigo — O "Ka" e o "Ba"</div>
+      <p class="timeline-text">Os egípcios acreditavam que o ser humano possuía múltiplos corpos: o <em>Ka</em> (duplo vital) e o <em>Ba</em> (alma que podia viajar livremente durante o sono). O Livro dos Mortos contém instruções detalhadas sobre como navegar nos planos espirituais após a morte — e durante o sono. Os sacerdotes egípcios praticavam deliberadamente o desdobramento como parte de seus ritos iniciáticos.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">≈ 2.000 a.C.</div>
+      <div class="timeline-title">Hinduísmo — O Corpo Sutil (Sukshma Sharira)</div>
+      <p class="timeline-text">Os Upanishads e textos védicos descrevem o <em>sukshma sharira</em> (corpo sutil), que pode deixar o corpo grosseiro durante o sono ou meditação. O conceito de <em>astral</em> em si tem raízes no sânscrito — o plano astral (<em>kama-loka</em>) é descrito com detalhes precisos. Yogues avançados eram acreditados como capazes de projetar-se deliberadamente.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">≈ 500 a.C.</div>
+      <div class="timeline-title">China Antiga — O Hun e o Po</div>
+      <p class="timeline-text">A tradição taoísta descreve duas almas: o <em>Hun</em> (alma celestial, que pode viajar) e o <em>Po</em> (alma terrestre, ligada ao corpo). Práticas de <em>Qigong</em> e meditação taoísta incluíam exercícios específicos para desenvolver a capacidade de viajar espiritualmente. O <em>Zhuangzi</em> narra viagens espirituais a reinos além do físico.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">≈ 400 a.C.</div>
+      <div class="timeline-title">Grécia Antiga — Platão e os Mistérios</div>
+      <p class="timeline-text">Platão, em seu diálogo <em>A República</em>, narra o "Mito de Er" — um soldado que morre em batalha, viaja pelo plano espiritual e retorna para contar o que viu. Nos mistérios de Elêusis e em escolas neoplatônicas, a separação da alma do corpo era um tema central. O filósofo Plotino descreveu experiências de consciência expansiva que correspondem a descrições modernas de projeção.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">Séculos XI–XVIII</div>
+      <div class="timeline-title">Tradições Esotéricas Medievais e Renascentistas</div>
+      <p class="timeline-text">A Cabala judaica descreve viagens espirituais pelos quatro mundos (Atziluth, Beriah, Yetzirah, Assiah). Alquimistas e hermetistas medievais preservaram o conhecimento dos corpos sutis. Emanuel Swedenborg (1688-1772), cientista e místico sueco, documentou extensamente suas viagens a "outros mundos" em estado de transe — descrevendo detalhes que impressionaram até mesmo seus críticos.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">Séculos XIX–XX</div>
+      <div class="timeline-title">Teosofia e Sistematização Moderna</div>
+      <p class="timeline-text">Helena Petrovna Blavatsky e a Sociedade Teosófica sistematizaram o conceito de "viagem astral" como o conhecemos hoje, mapeando os sete planos de existência. Annie Besant e Charles Leadbeater publicaram trabalhos extensivos sobre o corpo astral. Em 1929, Sylvan Muldoon e Hereward Carrington publicaram <em>The Projection of the Astral Body</em>, o primeiro tratado moderno e sistemático sobre o tema.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">1956 – Presente</div>
+      <div class="timeline-title">Robert Monroe e a Era Moderna</div>
+      <p class="timeline-text">Robert Monroe, empresário americano, começou a ter OBEs espontâneas em 1958. Fundou o Monroe Institute e publicou a trilogia <em>Journeys Out of the Body</em>, <em>Far Journeys</em> e <em>Ultimate Journey</em>. Seu trabalho foi pioneiro em sistematizar técnicas e mapear territórios do plano astral. William Buhlman, Robert Bruce, Thomas Campbell e outros continuaram e expandiram suas pesquisas.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-period">1960s – Presente</div>
+      <div class="timeline-title">Brasil — Kardecismo e Umbanda</div>
+      <p class="timeline-text">O Brasil possui uma das mais ricas tradições de estudos sobre desdobramento astral do mundo. Chico Xavier relatou experiências de projeção em suas médiuns. Waldo Vieira, discípulo de Chico Xavier, fundou a Conscienciologia e criou a Projeciologia como ciência — publicando a enciclopédica obra <em>Projeciologia</em> (1986), com mais de 900 páginas e 1.900 referências a experiências de projeção.</p>
+    </div>
+
+  </div>
+
+  <div class="callout gold-box" data-icon="🌍">
+    <div class="callout-title">Universalidade do Fenômeno</div>
+    <p>Nenhuma cultura isolada "inventou" a projeção astral. O fato de que povos completamente isolados uns dos outros — dos nativos australianos aos shamanistas siberianos, dos astecas aos tibetanos — descrevem fenômenos praticamente idênticos sugere que se trata de uma experiência intrínseca à condição humana, não uma invenção cultural.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     03 · CIÊNCIA
+═══════════════════════════════════════════════ -->
+<section id="ciencia">
+<div class="container">
+  <div class="section-eyeline">Capítulo 03</div>
+  <h2 class="section-title">O que a Ciência Diz?</h2>
+
+  <p>A ciência tem abordado a projeção astral primariamente como uma manifestação neurológica — um fenômeno do cérebro. Porém, alguns pesquisadores vão além e argumentam que os dados sugerem algo que a neurociência convencional ainda não consegue explicar completamente.</p>
+
+  <div class="cards-grid">
+    <div class="exp-card">
+      <span class="exp-card-icon">🧠</span>
+      <div class="exp-card-title">Hipótese Neurológica</div>
+      <p>Neurocientistas como Olaf Blanke (EPFL, Suíça) identificaram que a estimulação da junção temporoparietal direita (TPJ) pode induzir sensações de saída do corpo. A TPJ é responsável pela integração de informações sensoriais multissensoriais e pelo senso de localização do "eu" no espaço.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">😴</span>
+      <div class="exp-card-title">Paralisia do Sono</div>
+      <p>Muitas OBEs ocorrem durante ou logo após o estado de paralisia do sono — quando o corpo está paralisado mas a mente está consciente. Neste estado (hipnagógico/hipnopômpico), o cérebro produz estados alterados intensos que podem incluir a sensação de flutuar ou sair do corpo.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🔬</span>
+      <div class="exp-card-title">Estudos de Verificação</div>
+      <p>Pesquisadores como Charles Tart e Janet Lee Mitchell conduziram experimentos onde projetores relataram informações verificáveis sobre ambientes que não poderiam acessar fisicamente. Alguns resultados foram estatisticamente significativos, desafiando a explicação puramente neurológica.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">💡</span>
+      <div class="exp-card-title">Ondas Cerebrais</div>
+      <p>EEGs de praticantes experientes mostram padrões cerebrais únicos durante OBEs: alta atividade em ondas Theta (4-8 Hz) — o estado hipnagógico — combinada com lucidez Alpha e momentos de alta amplitude Gamma. Um estado neurológico raro e específico.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">❤️</span>
+      <div class="exp-card-title">Experiências de Quase Morte (NDE)</div>
+      <p>Estudos rigorosos sobre NDEs (Pam Reynolds, Pim van Lommel) documentam pacientes que descrevem detalhes precisos de cirurgias e ambientes enquanto clínicamente mortos — com atividade cerebral mínima. Estes casos desafiam a teoria de que a consciência é puramente cerebral.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🌐</span>
+      <div class="exp-card-title">Projeto de Visão Remota</div>
+      <p>O programa militar norte-americano "Stargate" (1970-1995) gastou milhões de dólares pesquisando a "visão remota" — capacidade de perceber locais distantes com a mente. Os resultados foram considerados suficientemente válidos para uso em operações de inteligência real.</p>
+    </div>
+  </div>
+
+  <div class="big-quote">
+    <blockquote>"A consciência não pode ser reduzida a processos cerebrais. O cérebro pode ser o transmissor, não o gerador, da experiência consciente."</blockquote>
+    <cite>— Dr. Pim van Lommel, cardiologista e pesquisador de NDEs</cite>
+  </div>
+
+  <p>O debate científico permanece aberto. O que é incontestável é que as experiências fora do corpo são <span class="hl">reais como experiências</span> — aqueles que as vivem descrevem como sendo mais vívidas e reais do que qualquer sonho, e frequentemente transformadoras o suficiente para mudar fundamentalmente sua visão de vida e morte.</p>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     04 · O CORPO ASTRAL
+═══════════════════════════════════════════════ -->
+<section id="corpo">
+<div class="container">
+  <div class="section-eyeline">Capítulo 04</div>
+  <h2 class="section-title">O Corpo Astral</h2>
+
+  <p>Segundo as tradições esotéricas e os relatos de praticantes experientes, o ser humano possui não apenas um, mas vários corpos ou "veículos de manifestação", cada um operando em uma frequência ou dimensão diferente de existência.</p>
+
+  <div class="planes-grid">
+    <div class="plane-card">
+      <div class="plane-icon p1">🧱</div>
+      <div>
+        <div class="plane-name">Corpo Físico (1º Veículo)</div>
+        <p>O corpo denso e material que habitamos na vigília. É o veículo mais lento em vibração e o mais limitado em termos de percepção. É o corpo que dorme quando projetamos.</p>
+      </div>
+    </div>
+    <div class="plane-card">
+      <div class="plane-icon p2">⚡</div>
+      <div>
+        <div class="plane-name">Corpo Etérico (2º Veículo)</div>
+        <p>Uma cópia energética do corpo físico, composta de "éter vital". É a matriz energética sobre a qual o corpo físico se constrói. Responsável pela vitalidade e saúde. Está intimamente ligado ao físico e raramente se separa muito dele durante projeções.</p>
+      </div>
+    </div>
+    <div class="plane-card">
+      <div class="plane-icon p3" style="font-size:1.8rem;">✨</div>
+      <div>
+        <div class="plane-name">Corpo Astral (3º Veículo) — O Veículo da Projeção</div>
+        <p>O veículo central da projeção. É luminoso, maleável e capaz de mover-se livremente pelo plano astral e pela dimensão física. Responde diretamente aos pensamentos e emoções — a mente move o corpo astral instantaneamente. Durante a projeção, é neste corpo que a consciência "veste". Ele pode assumir qualquer forma, atravessar paredes e voar sem limitações físicas.</p>
+      </div>
+    </div>
+    <div class="plane-card">
+      <div class="plane-icon p4">💫</div>
+      <div>
+        <div class="plane-name">Corpo Mental (4º Veículo)</div>
+        <p>O veículo dos pensamentos, memórias e intelecto. Em projeções mais profundas, a consciência pode operar a partir deste veículo, acessando planos de existência ainda mais sutis e elevados que o astral convencional. Experiências a partir do corpo mental são descritas como de extrema clareza e ausência de forma.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" data-icon="🌟">
+    <div class="callout-title">Características do Corpo Astral</div>
+    <p>O corpo astral é frequentemente descrito como: <span class="hl">luminoso e semi-transparente</span>, capaz de atravessar matéria sólida, respondendo instantaneamente à intenção e ao pensamento, capaz de ver em 360 graus simultâneos, sensitivo à energia e emoção dos ambientes, e dotado de todos os sentidos físicos — mais outros sentidos exclusivos do plano astral, como a percepção direta de estados emocionais alheios.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     05 · CORDÃO DE PRATA
+═══════════════════════════════════════════════ -->
+<section id="cordo-prata">
+<div class="container">
+  <div class="section-eyeline">Capítulo 05</div>
+  <h2 class="section-title gold">O Cordão de Prata</h2>
+
+  <!-- Visual: cordão de prata -->
+  <div class="visual-block">
+    <div class="visual-scene scene-hero" style="height:220px;flex-direction:column;gap:0.5rem;">
+      <div style="font-size:5rem;animation:floatSymbol 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(212,216,255,0.9));">🌟</div>
+      <div style="width:3px;height:80px;background:linear-gradient(180deg,rgba(212,216,255,0.9),rgba(124,58,237,0.3));box-shadow:0 0 12px rgba(212,216,255,0.6);border-radius:2px;animation:cordPulse 2s ease-in-out infinite;"></div>
+      <div style="font-size:3rem;opacity:0.5;">🛏️</div>
+    </div>
+    <div class="visual-caption">O Cordão de Prata conecta o corpo astral ao físico durante toda a projeção</div>
+  </div>
+
+  <p>O <span class="hl-gold">Cordão de Prata</span> é um dos elementos mais consistentemente relatados em experiências de projeção astral ao redor do mundo. É descrito como um filamento luminoso, prateado ou azulado, que conecta o corpo astral ao corpo físico durante toda a duração da projeção.</p>
+
+  <p>Referências ao Cordão de Prata aparecem na Bíblia, no Eclesiastes 12:6 — <em>"Antes que o cordão de prata se quebre..."</em> — interpretado por esotéricos como referência ao laço entre alma e corpo. Aparece também nos textos teosoóficos do século XIX e é mencionado em praticamente todos os relatos modernos de projeção.</p>
+
+  <div class="callout gold-box" data-icon="💫">
+    <div class="callout-title">Propriedades do Cordão</div>
+    <p><strong>Extensibilidade infinita:</strong> O cordão pode se estender indefinidamente — projetores relatam tê-lo percebido durante viagens a locais muito distantes, ou até a outros planos de existência, sem que ele quebre ou se torne um obstáculo. <br><br>
+    <strong>Invisível na maioria das projeções:</strong> Nem todo projetor percebe o cordão. Muitos só o notam ao olhar conscientemente para trás em direção ao corpo físico. <br><br>
+    <strong>Retorno automático:</strong> Qualquer perturbação forte — barulho súbito, toque no corpo físico, medo intenso — causa retração imediata pelo cordão. <br><br>
+    <strong>Segurança absoluta:</strong> Segundo praticamente todas as tradições e praticantes experientes, o cordão não rompe durante a vida. O rompimento definitivo do Cordão de Prata equivaleria à morte.</p>
+  </div>
+
+  <p>A existência do Cordão de Prata é um dos argumentos que os praticantes usam para afirmar que a projeção astral é completamente segura: enquanto o praticante estiver vivo, o cordão jamais romperá, e ele sempre poderá retornar ao corpo físico.</p>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     06 · SENSAÇÕES E SINAIS
+═══════════════════════════════════════════════ -->
+<section id="sensacoes">
+<div class="container">
+  <div class="section-eyeline">Capítulo 06</div>
+  <h2 class="section-title">Sensações e Sinais da Projeção</h2>
+
+  <p>A projeção astral não acontece abruptamente. Existe um processo de transição entre o estado físico normal e o estado projetado, marcado por sensações físicas e perceptivas muito características. Conhecer esses sinais ajuda o praticante a reconhecer quando está próximo da projeção e evitar se assustar e interrompê-la.</p>
+
+  <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent2);margin:2rem 0 1rem;letter-spacing:0.05em;">⚡ Fase 1 · Relaxamento e Entrada no Hipnagógico</h3>
+  <ul class="sensation-list">
+    <li><span class="icon">😴</span><div><strong>Peso no Corpo</strong>Sensação de extremo peso nos membros, como se o corpo ficasse de chumbo. Dificuldade em mover os dedos ou pálpebras.</div></li>
+    <li><span class="icon">🌊</span><div><strong>Ondas de Relaxamento</strong>Ondas de calor ou formigamento que sobem dos pés até a cabeça, acompanhadas de sensação de afundamento.</div></li>
+    <li><span class="icon">👁️</span><div><strong>Fósfenos</strong>Pontos de luz, padrões geométricos, cores e formas que surgem com os olhos fechados — indicam entrada no estado hipnagógico.</div></li>
+    <li><span class="icon">🔊</span><div><strong>Sons Internos</strong>Zumbidos, vibrações sonoras internas, sons de vento, cliques, sussurros ou música sem fonte aparente.</div></li>
+  </ul>
+
+  <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent2);margin:2rem 0 1rem;letter-spacing:0.05em;">⚡ Fase 2 · Sinais de Separação Iminente</h3>
+  <ul class="sensation-list">
+    <li><span class="icon">⚡</span><div><strong>As Vibrações</strong>O sinal mais clássico e consistentemente relatado. Uma vibração intensa percorre o corpo inteiro — como uma descarga elétrica ou corrente pulsante. Pode ser suave ou muito intensa. Indica que a separação está muito próxima.</div></li>
+    <li><span class="icon">🏋️</span><div><strong>Paralisia do Sono</strong>O corpo fica completamente imóvel, incapaz de se mover fisicamente. A mente está alerta, mas o corpo não responde — o mecanismo de proteção que impede de agir os sonhos físicamente.</div></li>
+    <li><span class="icon">🫧</span><div><strong>Leveza Súbita</strong>Após o peso inicial, uma sensação de leveza extrema — como se o corpo estivesse prestes a flutuar. Alguns descrevem como "sentir-se de algodão".</div></li>
+    <li><span class="icon">💨</span><div><strong>Vento ou Pressão</strong>Sensação de vento soprando ao redor da cabeça ou pressão intensa na testa ou nuca. Pode ser acompanhada de ruído de vendaval.</div></li>
+    <li><span class="icon">🔃</span><div><strong>Rotação</strong>Sensação de girar ou de que o ambiente está girando. Muitos praticantes usam este sinal como gatilho para "rolar para fora" do corpo.</div></li>
+  </ul>
+
+  <h3 style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--accent2);margin:2rem 0 1rem;letter-spacing:0.05em;">⚡ Fase 3 · Já Projetado</h3>
+  <ul class="sensation-list">
+    <li><span class="icon">🦅</span><div><strong>Flutuação</strong>Sensação inconfundível de levitar a centímetros acima da cama. O corpo astral está solto do físico.</div></li>
+    <li><span class="icon">🌈</span><div><strong>Hiperlucidez</strong>A percepção fica mais nítida que na vida desperta normal. Cores são mais vívidas, detalhes são percebidos com precisão extraordinária.</div></li>
+    <li><span class="icon">💭</span><div><strong>Pensamento Acelerado</strong>O processo mental fica mais veloz e claro. Memórias acessadas com mais facilidade. Compreensões surgem espontaneamente.</div></li>
+    <li><span class="icon">🌡️</span><div><strong>Ausência de Frio ou Calor</strong>O corpo astral geralmente não sente frio, calor ou dor física. Uma suave temperatura neutra permeia a experiência.</div></li>
+  </ul>
+
+  <div class="callout rose-box" data-icon="⚠️">
+    <div class="callout-title">Sobre as Vibrações</div>
+    <p>As "vibrações" são o sinal mais famoso e consistente da projeção. Quando elas surgem, muitos iniciantes se assustam e interrompem o processo. A orientação unânime dos praticantes experientes é: <strong>não resista</strong>. As vibrações são completamente inofensivas — são apenas o processo de separação entre os veículos. Permita-as fluir, intensifique-as mentalmente se possível, e use-as como trampolim para a separação.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     07 · PARA ONDE VAMOS
+═══════════════════════════════════════════════ -->
+<section id="planos">
+<div class="container">
+  <div class="section-eyeline">Capítulo 07</div>
+  <h2 class="section-title">Para Onde Vamos? Os Planos de Existência</h2>
+
+  <p>Uma das perguntas mais fascinantes sobre a projeção astral é: onde exatamente o projetor vai? As respostas variam conforme a tradição e a experiência individual, mas há um mapa geral que emerge de milênios de relatos consistentes.</p>
+
+  <!-- Visual: planos de existência -->
+  <div class="visual-block">
+    <div class="visual-scene scene-plane" style="height:200px;flex-direction:column;justify-content:center;gap:0.3rem;">
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <div style="padding:0.3rem 1rem;background:rgba(240,171,252,0.2);border:1px solid rgba(240,171,252,0.5);border-radius:20px;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;color:var(--rose);">PLANO CAUSAL</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <div style="padding:0.3rem 1rem;background:rgba(245,200,66,0.2);border:1px solid rgba(245,200,66,0.5);border-radius:20px;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;color:var(--gold);">PLANO MENTAL</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <div style="padding:0.3rem 1rem;background:rgba(124,58,237,0.3);border:1px solid rgba(124,58,237,0.6);border-radius:20px;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;color:var(--accent3);">PLANO ASTRAL</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <div style="padding:0.3rem 1rem;background:rgba(103,232,249,0.15);border:1px solid rgba(103,232,249,0.4);border-radius:20px;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;color:var(--cyan);">PLANO ETÉRICO</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <div style="padding:0.3rem 1rem;background:rgba(180,160,255,0.1);border:1px solid rgba(180,160,255,0.3);border-radius:20px;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;color:var(--text);">PLANO FÍSICO</div>
+      </div>
+    </div>
+    <div class="visual-caption">Os planos de existência — cada camada vibra em uma frequência mais elevada que a anterior</div>
+  </div>
+
+  <div class="planes-grid">
+
+    <div class="plane-card">
+      <div class="plane-icon p1">🌊</div>
+      <div>
+        <div class="plane-name">Zona de Vibração Baixa — O Plano Etérico</div>
+        <p>A primeira "camada" acima do físico. É uma cópia quase perfeita do mundo material, mas com nuances sutis — objetos podem ter um leve brilho, a luz pode ser mais difusa. A maioria das projeções iniciantes começa aqui. O projetor pode ver seu próprio quarto, casa, cidade. Este plano é habitado por entidades de baixa vibração, sonhos petrificados e padrões energéticos residuais. Representa a "periferia" do plano astral.</p>
+      </div>
+    </div>
+
+    <div class="plane-card">
+      <div class="plane-icon p2">🌌</div>
+      <div>
+        <div class="plane-name">Plano Astral Médio</div>
+        <p>O ambiente começa a diferir do físico. A arquitetura é mais fluida, as cores são mais intensas e saturadas — um céu que pode ser violeta, vermelho ou dourado. Aqui o pensamento cria a realidade com mais facilidade: imaginar um lugar pode transportar o projetor até lá. É neste plano que a maioria dos encontros com outras consciências ocorre — sejam guias, falecidos ou outros projetores. O ambiente pode ser de extrema beleza.</p>
+      </div>
+    </div>
+
+    <div class="plane-card">
+      <div class="plane-icon p3">☀️</div>
+      <div>
+        <div class="plane-name">Plano Astral Superior — A Zona de Luz</div>
+        <p>Ambientes de luz intensa, paz absoluta e amor incondicional. Aqui o projetor frequentemente experimenta expansões de consciência profundas, compreensões sobre sua vida e propósito, e encontros com entidades de alto desenvolvimento. Muitos NDEs (experiências de quase-morte) se passam aqui. O tempo parece não existir. A beleza é indescritível segundo os relatos.</p>
+      </div>
+    </div>
+
+    <div class="plane-card">
+      <div class="plane-icon p4">💎</div>
+      <div>
+        <div class="plane-name">Plano Mental e Causal</div>
+        <p>Acessível apenas em projeções muito profundas, geralmente por praticantes experientes. A forma individual dissolve-se progressivamente. A consciência experimenta estados de expansão que transcendem a ideia de "eu" e "outro". Compreensões sobre a natureza da existência, o cosmos e a própria identidade surgem espontaneamente. Poucos projetores chegam aqui e ainda menos conseguem trazer memórias claras de volta.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--accent2);font-size:1rem;margin:2rem 0 1rem;letter-spacing:0.05em;">O QUE SE PODE FAZER NO PLANO ASTRAL</h3>
+
+  <div class="cards-grid">
+    <div class="exp-card">
+      <span class="exp-card-icon">🏠</span>
+      <div class="exp-card-title">Explorar o Mundo Físico</div>
+      <p>Viajar conscientemente para qualquer lugar do planeta — verificar situações em locais distantes, visitar pessoas, explorar lugares nunca visitados fisicamente.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">👥</span>
+      <div class="exp-card-title">Encontrar Outros Consciências</div>
+      <p>Encontrar pessoas falecidas (de acordo com tradições espiritualistas), guias espirituais, outros projetores, ou entidades que habitam o plano astral.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🔮</span>
+      <div class="exp-card-title">Buscar Conhecimento</div>
+      <p>Acessar informações, receber ensinamentos de guias, ou simplesmente explorar realidades que expandem a compreensão sobre a existência.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🌿</span>
+      <div class="exp-card-title">Trabalho Pessoal</div>
+      <p>Resolver questões emocionais, curar padrões inconscientes, visualizar objetivos com força muito maior que na meditação comum.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">⏳</span>
+      <div class="exp-card-title">Percepção do Tempo</div>
+      <p>No astral, o tempo funciona de forma diferente. Minutos físicos podem parecer horas. Alguns relatam vislumbres de eventos passados ou futuros durante projeções.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🌈</span>
+      <div class="exp-card-title">Experiência Estética</div>
+      <p>Simplesmente existir no plano astral já é uma experiência de extraordinária beleza — cores, sons, sensações e luz de uma intensidade inexistente no plano físico.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     08 · EXPERIÊNCIAS RELATADAS
+═══════════════════════════════════════════════ -->
+<section id="experiencias">
+<div class="container">
+  <div class="section-eyeline">Capítulo 08</div>
+  <h2 class="section-title">Experiências Relatadas — Da Literatura e Praticantes</h2>
+
+  <p>Ao longo dos séculos, inúmeras pessoas documentaram suas projeções. A seguir, uma seleção de tipos de experiências com base em relatos clássicos da literatura sobre o tema.</p>
+
+  <div class="callout" data-icon="📖">
+    <div class="callout-title">Robert Monroe — Primeira Projeção Espontânea (1958)</div>
+    <p>Monroe, deitado para uma soneca, sentiu uma vibração intensa percorrer seu corpo. Assustado, tentou resistir, mas a vibração persistiu. Em um momento, percebeu que sua mão atravessava o colchão. Olhando para baixo, viu seu próprio corpo deitado abaixo dele. Em pânico, voltou imediatamente. Nas semanas seguintes, as mesmas vibrações retornaram repetidamente. Monroe gradualmente aprendeu a trabalhar com elas em vez de resistir — e as experiências tornaram-se cada vez mais profundas e controladas, inspirando décadas de pesquisa e três livros fundamentais.</p>
+  </div>
+
+  <div class="callout gold-box" data-icon="💡">
+    <div class="callout-title">Sylvan Muldoon — A Projeção da Criança</div>
+    <p>Muldoon relatou sua primeira experiência aos 12 anos, durante uma visita à casa de um investigador espiritual. Adormeceu e acordou "fora" de seu corpo, flutuando. Tentou acordar os outros no quarto, mas sua mão passava diretamente pelas pessoas. Descreve ter sentido o cordão de prata pulsando, e notar que o cordão saía de sua nuca e conectava-se ao corpo físico adormecido. Ao tentar tocar alguém com força, foi subitamente retractado de volta ao corpo. A experiência o marcou para a vida inteira, levando-o a pesquisar e documentar o fenômeno.</p>
+  </div>
+
+  <div class="callout cyan-box" data-icon="🌟">
+    <div class="callout-title">Experiência de Quase-Morte — Pam Reynolds (1991)</div>
+    <p>O caso de Pam Reynolds é talvez o mais documentado e verificado da história. Durante uma cirurgia cerebral complexa de alto risco, ela foi clinicamente morta: temperatura corporal de 15°C, sem atividade cerebral mensurável, sem batimentos cardíacos. Após a cirurgia, ela descreveu detalhes precisos do procedimento — as ferramentas específicas utilizadas, o aspecto de sua cabeça raspada, conversas da equipe cirúrgica. Ela também descreveu entrar em um túnel luminoso e encontrar falecidos. Os detalhes foram verificados pela equipe médica, que não encontrou explicação neurológica convencional para o nível de detalhamento e precisão das descrições.</p>
+  </div>
+
+  <div class="callout rose-box" data-icon="🌙">
+    <div class="callout-title">Uma Experiência Típica de Iniciante (relato composto)</div>
+    <p>Estava deitado tentando relaxar profundamente quando senti meu corpo ficar pesado como chumbo. Comecei a ouvir um zumbido que aumentava progressivamente. Então as vibrações chegaram — meu corpo inteiro vibrava, parecia que ia desmontar. Senti medo mas lembrei das instruções e respirei mentalmente. As vibrações se intensificaram e de repente senti que estava levitando. Rolei para o lado instintivamente e caí... mas não no chão. Estava flutuando a meio metro do meu corpo. Olhei para baixo e vi meu próprio rosto adormecido. O quarto estava idêntico ao normal, mas havia uma leve luminescência em tudo. Fui até a janela e atravessei o vidro como se não existisse — sem resistência nenhuma. Do lado de fora, o mundo estava normal, mas os detalhes eram nítidos de uma forma que nunca havia experimentado acordado. Durou talvez dois minutos antes de um barulho externo me trazer de volta ao corpo com um solavanco.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     09 · TÉCNICAS
+═══════════════════════════════════════════════ -->
+<section id="tecnicas">
+<div class="container">
+  <div class="section-eyeline">Capítulo 09</div>
+  <h2 class="section-title gold">Técnicas de Projeção Astral</h2>
+
+  <p>Existem dezenas de técnicas catalogadas para induzir a projeção astral. Elas compartilham uma base comum: atingir um estado de profundo relaxamento físico com manutenção da consciência mental. Aqui estão as principais, organizadas por nível de dificuldade.</p>
+
+  <div class="tech-grid">
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica do Despertar no Corpo Astral</div>
+      <span class="tech-level iniciante">Iniciante</span>
+      <p>Ao acordar naturalmente às 4–5h da manhã, permaneça deitado com os olhos fechados sem se mover. Mantenha a consciência enquanto o corpo tenta voltar a dormir. Foque sua atenção em algum ponto do espaço à frente. Com frequência, o corpo astral simplesmente se soltará quando o corpo físico adormecer novamente. A chave é: corpo dormindo, mente acordada.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica da Rotação (Roll Out)</div>
+      <span class="tech-level iniciante">Iniciante</span>
+      <p>Ao sentir as vibrações ou a sensação de leveza, visualize e "sinta" que está rolando lentamente para fora do seu corpo — como se estivesse rolando para fora da cama em câmera lenta. Não mova o corpo físico. O corpo astral responde à intenção. Esta é a técnica mais recomendada para iniciantes por ser intuitiva e funcional.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica WILD (Wake-Initiated Lucid Dream)</div>
+      <span class="tech-level intermediario">Intermediário</span>
+      <p>Transição direta da vigília para o estado projetado sem perder consciência. Deite-se e foque em relaxar progressivamente cada parte do corpo (relaxamento progressivo). Ao atingir a paralisia do sono com consciência intacta, visualize-se levantando do corpo. Requer treinamento para manter a consciência sem adormecer completamente.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica do Pêndulo</div>
+      <span class="tech-level intermediario">Intermediário</span>
+      <p>Durante o estado hipnagógico (entre vigília e sono), visualize seu corpo astral balançando suavemente como um pêndulo — para frente e para trás ou de lado a lado. A cada balanço, aumente o arco do movimento. Quando o balanceamento parecer real e você sentir a sensação física, use o impulso do próximo balanço para "atirar" o corpo astral para fora.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica da Corda (Robert Bruce)</div>
+      <span class="tech-level intermediario">Intermediário</span>
+      <p>Durante relaxamento profundo ou paralisia do sono, visualize uma corda imaginária pendendo do teto acima de você. Sem mover o corpo físico, sinta-se agarrando a corda com as mãos astrais e escalando-a. Concentre toda a atenção na sensação tátil imaginada das mãos agarrando a corda. Esta técnica é particularmente eficaz por seu foco tátil.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica Monroe — Foco 10 e 12</div>
+      <span class="tech-level intermediario">Intermediário</span>
+      <p>Robert Monroe desenvolveu um sistema de "estados de foco". O Foco 10 é o estado de "mente alerta, corpo adormecido". O Foco 12 é um estado de consciência expandida. Usando afirmações mentais progressivas ("Estou no Foco 10... meu corpo está completamente relaxado..."), o praticante avança pelos estados até atingir a separação. Frequentemente acompanhado de binaural beats.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Técnica de Visualização de Local</div>
+      <span class="tech-level avancado">Avançado</span>
+      <p>Em estado de profundo relaxamento, visualize com máximo detalhe um local que você conhece bem — cada textura, cheiro, temperatura. Torne a visualização tão vívida que ela pareça mais real que o quarto onde você está. Com prática, a consciência literalmente "trans-loca" para o local visualizado, contornando completamente o estágio das vibrações.</p>
+    </div>
+
+    <div class="tech-card">
+      <div class="tech-name">Binaural Beats + Projeção</div>
+      <span class="tech-level iniciante">Iniciante</span>
+      <p>Sons binaurais (duas frequências ligeiramente diferentes em cada ouvido) induzem o cérebro a sincronizar nas frequências Theta/Delta — as ondas do estado hipnagógico. Use fones de ouvido, deite-se, e permita que o som te conduza ao estado. Funciona especialmente bem como pré-condicionamento antes de outras técnicas. Disponível gratuitamente em plataformas de streaming.</p>
+    </div>
+
+  </div>
+
+  <div class="callout gold-box" data-icon="🎯">
+    <div class="callout-title">O Segredo das Técnicas: WILD (Wake-Initiated)</div>
+    <p>Independentemente da técnica, o objetivo central é sempre o mesmo: atingir o estado em que <strong>o corpo físico está dormindo (ou em estado de paralisia)</strong> enquanto <strong>a consciência permanece ativa e lúcida</strong>. O "truque" mais eficaz de todos é despertar após 4–6 horas de sono, ficar acordado por 30–60 minutos fazendo algo tranquilo (ler sobre projeção, meditar levemente), depois deitar novamente com a intenção específica de projetar. Neste momento, o cérebro entra rapidamente no sono REM — o estado mais propício para a projeção.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     10 · DICAS E CUIDADOS
+═══════════════════════════════════════════════ -->
+<section id="dicas">
+<div class="container">
+  <div class="section-eyeline">Capítulo 10</div>
+  <h2 class="section-title">Dicas, Obstáculos e Cuidados</h2>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--accent2);font-size:1rem;margin:1.5rem 0 1rem;letter-spacing:0.05em;">✅ FATORES QUE FACILITAM</h3>
+  <div class="cards-grid">
+    <div class="exp-card">
+      <span class="exp-card-icon">🌙</span>
+      <div class="exp-card-title">Horário Ideal</div>
+      <p>As primeiras horas da manhã (4h–7h) são as mais propícias. O ciclo de sono REM está em seu pico, o corpo está descansado e a consciência lúcida é mais facilmente mantida.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🧘</span>
+      <div class="exp-card-title">Prática Regular</div>
+      <p>Como qualquer habilidade, a projeção melhora com prática constante. Praticantes experientes podem projetar em questão de minutos. A consistência importa mais que longas sessões esporádicas.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">📔</span>
+      <div class="exp-card-title">Diário de Sonhos</div>
+      <p>Manter um diário de sonhos treina a memória onírica — essencial para lembrar das projeções. Escreva imediatamente ao acordar, sem sair da cama. Com o tempo, a lembrança de sonhos melhora dramaticamente.</p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-card-icon">🌿</span>
+      <div class="exp-card-title">Corpo e Mente Preparados</div>
+      <p>Evite álcool, cafeína e refeições pesadas antes das tentativas. Uma mente relaxada, sem ansiedade excessiva, entra no estado hipnagógico muito mais facilmente.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Cinzel',serif;color:var(--rose);font-size:1rem;margin:2rem 0 1rem;letter-spacing:0.05em;">⚠️ OBSTÁCULOS COMUNS</h3>
+  <div class="cards-grid">
+    <div class="exp-card" style="border-color:rgba(240,171,252,0.2);">
+      <span class="exp-card-icon">😱</span>
+      <div class="exp-card-title" style="color:var(--rose);">O Medo</div>
+      <p>O maior obstáculo para a projeção. Quando as vibrações chegam ou a sensação de saída começa, o medo instintivo interrompe o processo. Conhecimento previne o medo: entenda o que é cada sensação antes de tentar.</p>
+    </div>
+    <div class="exp-card" style="border-color:rgba(240,171,252,0.2);">
+      <span class="exp-card-icon">💤</span>
+      <div class="exp-card-title" style="color:var(--rose);">Adormecer Completamente</div>
+      <p>O equilíbrio sutil entre relaxamento e consciência é o maior desafio técnico. Muitos simplesmente adormecem. Solução: praticar nos períodos em que não está com muito sono (ao despertar de madrugada).</p>
+    </div>
+    <div class="exp-card" style="border-color:rgba(240,171,252,0.2);">
+      <span class="exp-card-icon">🧊</span>
+      <div class="exp-card-title" style="color:var(--rose);">Excesso de Esforço</div>
+      <p>A projeção não se força — se permite. Quanto mais ansioso e concentrado em "fazer acontecer", menor a chance de sucesso. O estado necessário requer passividade ativa: intenção presente, mas sem tensão.</p>
+    </div>
+    <div class="exp-card" style="border-color:rgba(240,171,252,0.2);">
+      <span class="exp-card-icon">📱</span>
+      <div class="exp-card-title" style="color:var(--rose);">Distrações e Interrupções</div>
+      <p>Qualquer barulho súbito, vibração do celular ou luz intensa pode interromper o processo. Silencie todos os dispositivos, use máscara de dormir se necessário, informe as pessoas da casa para não perturbarem.</p>
+    </div>
+  </div>
+
+  <div class="callout cyan-box" data-icon="🛡️">
+    <div class="callout-title">Sobre Segurança — O que Dizem os Praticantes</div>
+    <p>A literatura especializada e a tradição esotérica são unânimes: a projeção astral, quando praticada conscientemente e com boas intenções, é segura. O Cordão de Prata garante o retorno ao corpo. O maior risco real é psicológico — encontrar entidades perturbadoras em planos inferiores pode ser assustador para pessoas com disposição à ansiedade. A recomendação é: pratique a partir de um estado de paz interior, mantenha pensamentos positivos e elevados durante a experiência, e se encontrar qualquer ambiente ou entidade que pareça negativa, simplesmente deseje seu retorno ao corpo — ele ocorrerá instantaneamente.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     11 · GUIA PASSO A PASSO
+═══════════════════════════════════════════════ -->
+<section id="guia">
+<div class="container">
+  <div class="section-eyeline">Capítulo 11</div>
+  <h2 class="section-title gold">Guia Passo a Passo para Sua Primeira Projeção</h2>
+
+  <p>Este guia combina as técnicas mais eficazes para iniciantes em um protocolo coeso e testado. Siga-o com paciência — a maioria das pessoas precisa de várias tentativas antes da primeira projeção completa, e isso é completamente normal.</p>
+
+  <div class="guide-final">
+
+    <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">📋 PREPARAÇÃO (Dias antes)</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Inicie um Diário de Sonhos</div>
+        <p>Durante pelo menos uma semana antes, coloque um caderno ao lado da cama. Ao acordar — mesmo de madrugada — escreva imediatamente tudo que lembrar dos seus sonhos. Não julgue a qualidade das memórias. Isso treina a ponte entre o consciente e o inconsciente, fundamental para a projeção.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Leia e Visualize</div>
+        <p>Leia relatos de projeção antes de dormir. Visualize vividamente como seria flutuar acima do seu corpo, ver o quarto de cima, atravessar a janela. Quanto mais a mente familiariza-se com o processo, mais facilmente ele ocorrerá.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Defina uma Intenção Clara</div>
+        <p>Decida onde quer ir ou o que quer fazer na projeção. Ter uma intenção específica ("vou flutuar pelo meu quarto e examinar cada detalhe") mantém a consciência ativa e dá propósito à experiência, evitando que degenere em sonho comum.</p>
+      </div>
+    </div>
+
+    <div class="ornament">✦ · · · ✦ · · · ✦</div>
+
+    <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">🌙 NO DIA DA TENTATIVA</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Escolha o Horário Correto</div>
+        <p>Configure um alarme para acordar 5 horas após adormecer. Ao despertar, fique acordado por 30–60 minutos em atividade leve: leia sobre projeção astral, medite suavemente, escreva no diário. Então deite-se novamente com a intenção de projetar. Seu cérebro estará em alto ciclo REM nas próximas horas.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Prepare o Ambiente</div>
+        <p>Silencie completamente o celular. Escureça o quarto. Use tampões de ouvido se necessário. Certifique-se de que não será perturbado por pelo menos 90 minutos. Temperatura ideal: levemente fresca (o corpo físico adormece mais facilmente no frescor).</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Deite-se na Posição Ideal</div>
+        <p>De costas (posição supina) é a mais indicada para projeção, pois permite o máximo relaxamento físico. Pernas paralelas e ligeiramente afastadas. Braços ao longo do corpo ou sobre o abdômen. Se precisar de travesseiro, mantenha-o baixo. A postura de lado também funciona — use o que for mais natural para você.</p>
+      </div>
+    </div>
+
+    <div class="ornament">✦ · · · ✦ · · · ✦</div>
+
+    <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">⚡ O PROCESSO DE INDUÇÃO</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Relaxamento Progressivo Profundo</div>
+        <p>Comece pelos pés: contraia os músculos dos pés por 5 segundos, relaxe completamente. Suba pelas panturrilhas, coxas, quadril, abdômen, peito, ombros, pescoço, rosto. Ao terminar, todo o corpo deve estar completamente solto. Respire lentamente — 4 contagens de entrada, 4 de saída. Faça 3–5 ciclos completos, sentindo o corpo afundar na cama a cada exalação.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Aprofunde o Estado Hipnagógico</div>
+        <p>Com os olhos fechados, observe os fósfenos (luzes e padrões que surgem). Não foque em nenhum — apenas observe passivamente. Quando imagens começarem a surgir (fragmentos de cenas, rostos, paisagens), você está no hipnagógico. Continue respirando lentamente. Neste estado, o corpo pode começar a "adormecer" enquanto a mente mantém uma observação tranquila.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Mantenha a Consciência Sem Tensão</div>
+        <p>Este é o passo mais sutil e importante. Mantenha um fio de consciência — uma presença suave — sem esforçar. Se perceber que está prestes a adormecer, diga mentalmente: "Estou conscientemente acordado." Se perceber que está tensionando, relaxe. O equilíbrio entre atenção e passividade é o estado ideal — análogo a assistir um filme sem pensar ativamente.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Reconheça e Trabalhe com as Vibrações</div>
+        <p>Quando as vibrações chegarem (e elas chegarão se você manteve o estado correto), NÃO SE ASSUSTE. Respire mentalmente e permita-as. Elas podem começar suaves e intensificar-se — isso é exatamente o que deve acontecer. Mentalmente, "incentive" as vibrações: imagine-as aumentando, expandindo por todo o corpo. Quanto mais aceitar e colaborar, mais intensas e rápidas serão — e mais próxima estará a separação.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">A Separação — Escolha Sua Técnica</div>
+        <p>No pico das vibrações ou quando sentir a leveza extrema, use uma destas abordagens: <strong>(A) Role para fora</strong> — mentalmente, sinta-se rolando lentamente para o lado como se saísse da cama; <strong>(B) Levante-se</strong> — imagine-se sentando e levantando em linha reta; <strong>(C) A Corda</strong> — imagine uma corda acima e sinta-se escalando-a com as mãos astrais. Não mova o corpo físico. Todo movimento é mental/intencional.</p>
+      </div>
+    </div>
+
+    <div class="ornament">✦ · · · ✦ · · · ✦</div>
+
+    <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">🌟 DURANTE A PROJEÇÃO</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Afaste-se do Corpo Imediatamente</div>
+        <p>Ao separar-se, não fique parado sobre o corpo. Isso tende a causar retorno involuntário. Movimente-se imediatamente — caminhe pelo quarto, vá até a janela, afaste-se. Quanto mais ativo você for nos primeiros momentos, mais estável a projeção se tornará.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Estabilize a Experiência</div>
+        <p>Se a visão estiver borrada ou a consciência parecer fraca, esfregue as mãos astrais uma na outra. Olhe para suas mãos com atenção. Toque objetos ao redor. Diga em voz alta (mentalmente): "Clareza agora!" ou "Estabilidade!" Estas técnicas ajudam a consolidar o estado.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Explore com Consciência</div>
+        <p>Lembre-se da sua intenção prévia e siga-a. Mova-se com intenção — no plano astral, pensar em um lugar frequentemente transporta você até lá. Explore com curiosidade e abertura. Se encontrar algo assustador, lembre-se: você é uma consciência em visita. Nada pode realmente te machucar. Simplesmente volte ao corpo com um pensamento intencional.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Memorize o Que Vê</div>
+        <p>Conscientemente memorize detalhes: cores, formas, texturas, qualquer ser encontrado, qualquer insight recebido. A memória da projeção tende a dissipar-se rapidamente após o retorno, assim como os sonhos. A intenção consciente de lembrar ajuda a preservar as memórias.</p>
+      </div>
+    </div>
+
+    <div class="ornament">✦ · · · ✦ · · · ✦</div>
+
+    <h3 style="font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;">🌅 APÓS O RETORNO</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-title">Registre Imediatamente no Diário</div>
+        <p>Não levante da cama sem registrar tudo que lembrar. Detalhes, sensações, locais, seres, insights — qualquer coisa. Use linguagem presente ("estou flutuando...") em vez de passado para ajudar na recuperação de memórias. Esta é a etapa mais negligenciada e mais importante para o desenvolvimento progressivo.</p>
+      </div>
+      <div class="step">
+        <div class="step-title">Reflita e Integre</div>
+        <p>Sente-se com a experiência. O que sentiu? O que viu? O que aprendeu? As projeções astrais têm potencial transformador — especialmente quando integradas conscientemente na vida desperta. Muitos praticantes relatam mudanças profundas na visão de mundo, redução do medo da morte, e maior paz interior.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout gold-box" data-icon="🎁" style="margin-top:2rem;">
+    <div class="callout-title">Expectativas Realistas</div>
+    <p>A maioria das pessoas não projeta na primeira tentativa — e isso é completamente normal. As primeiras tentativas bem-sucedidas frequentemente resultam em projetos curtas (segundos a poucos minutos) que terminam abruptamente por excitação ou medo. Com prática regular, a duração e a profundidade aumentam progressivamente. Alguns praticam por semanas antes da primeira experiência completa. A persistência e a consistência são as únicas "chaves" que realmente abrem esta porta.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     12 · FAQ
+═══════════════════════════════════════════════ -->
+<section id="faq">
+<div class="container">
+  <div class="section-eyeline">Capítulo 12</div>
+  <h2 class="section-title">Perguntas Frequentes</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">A projeção astral é perigosa?</div>
+    <div class="faq-a">Segundo a literatura especializada e a vasta maioria dos praticantes, não. O Cordão de Prata garante que você sempre retornará ao corpo enquanto vivo. O maior risco real é psicológico — encontrar imagens perturbadoras em estados hipnagógicos ou planos de vibração baixa pode assustar. Pessoas com transtornos dissociativos, psicose ativa ou instabilidade psicológica severa devem consultar um profissional de saúde antes de praticar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">É possível não conseguir voltar ao corpo?</div>
+    <div class="faq-a">Não há registro credível de isso ter acontecido. O retorno ao corpo é automático e ocorre com qualquer excitação emocional forte, barulho externo, ou simplesmente pela intenção consciente de retornar. É fisicamente impossível "ficar preso" fora do corpo enquanto vivo — o Cordão de Prata sempre retraí a consciência de volta.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Todo mundo pode aprender a se projetar?</div>
+    <div class="faq-a">A grande maioria das pessoas tem a capacidade de se projetar — afinal, alguns pesquisadores acreditam que todos nós nos projetamos inconscientemente durante o sono REM, simplesmente sem lembrar. Desenvolvê-la como habilidade consciente requer treinamento, paciência e um certo relaxamento da necessidade de "controlar" a experiência. Não há predisposição genética ou espiritual conhecida que impeça completamente a prática.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">O que são as entidades encontradas no astral?</div>
+    <div class="faq-a">Diferentes tradições oferecem diferentes respostas. Espiritualistas acreditam que podem ser espíritos desencarnados, guias, anjos ou elementais. A perspectiva psicológica sugere que são projeções do inconsciente. Outros praticantes acreditam serem entidades independentes de naturezas variadas. Na prática, projetores relatam encontrar desde seres de aparente extrema sabedoria e amor até entidades assustadoras. A recomendação universal é: mantenha sua vibração (estado emocional) elevada e positiva — isso atrai experiências correspondentes.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Projeção astral e sonho lúcido são a mesma coisa?</div>
+    <div class="faq-a">São estados relacionados mas distintos. No sonho lúcido, você se torna consciente de que está em um ambiente criado pela sua mente. Na projeção, o ambiente percebido é descrito como o mundo físico real ou planos genuinamente diferentes dele — não uma criação onírica. A fronteira pode ser turva, especialmente no início, mas praticantes experientes descrevem a distinção como muito clara: a projeção tem uma qualidade de "mais real que real".</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Quais os melhores recursos para aprender mais?</div>
+    <div class="faq-a"><strong>Livros fundamentais:</strong> "Journeys Out of the Body" (Robert Monroe), "Astral Dynamics" (Robert Bruce), "Projeciologia" (Waldo Vieira), "Adventures Beyond the Body" (William Buhlman), "The Phase" (Michael Raduga). <strong>Institutos:</strong> The Monroe Institute (EUA), Centro de Altos Estudos da Consciência — CEAC (Brasil). <strong>Online:</strong> A comunidade r/AstralProjection tem centenas de milhares de membros compartilhando experiências e técnicas.</div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <span class="footer-symbol">🌙</span>
+  <p style="font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--accent2);text-transform:uppercase;margin-bottom:1rem;">Projeção Astral · Guia Completo</p>
+  <p>Este material tem propósito educativo e informativo. A projeção astral é um fenômeno amplamente documentado na história humana, abordado aqui desde perspectivas históricas, científicas e práticas. Cada experiência é única e pessoal.</p>
+  <div style="margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;opacity:0.3;">
+    <div style="height:1px;width:100px;background:linear-gradient(90deg,transparent,var(--accent1));"></div>
+    <span style="font-size:1rem;">✦</span>
+    <div style="height:1px;width:100px;background:linear-gradient(90deg,var(--accent1),transparent);"></div>
+  </div>
+</footer>
+
+</body>
+</html>

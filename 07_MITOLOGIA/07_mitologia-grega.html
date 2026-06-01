@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitologia Grega — Enciclopédia Completa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070510;
+  --bg2:#0D0820;
+  --gold:#C8A84B;
+  --gold-l:#F0D080;
+  --gold-d:rgba(200,168,75,0.12);
+  --blue:#3060A0;
+  --blue-l:#80B0FF;
+  --sea:#106878;
+  --sea-l:#40D0C0;
+  --fire:#C84020;
+  --fire-l:#FF8040;
+  --silver:#8090B0;
+  --silver-l:#C0D0F0;
+  --wine:#700838;
+  --wine-l:#D04080;
+  --olive:#486028;
+  --olive-l:#80C040;
+  --purple:#503090;
+  --purple-l:#B080FF;
+  --text:#EDE8D8;
+  --text-d:rgba(237,232,216,0.65);
+  --text-dd:rgba(237,232,216,0.4);
+  --border:rgba(200,168,75,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  font-family:'Cormorant Garamond',serif;
+  color:var(--text);
+  line-height:1.88;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(48,96,160,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 80%,rgba(200,64,32,0.05) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 50%,rgba(80,48,144,0.06) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+  animation:cosmic 18s ease-in-out infinite alternate;
+}
+@keyframes cosmic{0%{opacity:.4}100%{opacity:1}}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 6% 8%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 21% 31%,rgba(200,168,75,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 48% 6%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 73% 17%,rgba(128,176,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 86% 41%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 13% 66%,rgba(200,168,75,.3) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 59% 76%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 36% 87%,rgba(200,64,32,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 62%,rgba(255,255,255,.4) 0%,transparent 100%);
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 18px 120px}
+
+/* ── HEADER ──────────────────────────────────── */
+header{text-align:center;padding:80px 20px 60px;position:relative}
+.hdr-emblem{font-size:5rem;display:block;margin-bottom:16px;
+  filter:drop-shadow(0 0 30px var(--gold));
+  animation:aureate 7s ease-in-out infinite}
+@keyframes aureate{
+  0%,100%{filter:drop-shadow(0 0 24px var(--gold))}
+  50%{filter:drop-shadow(0 0 60px var(--gold-l)) drop-shadow(0 0 120px rgba(200,168,75,.3))}
+}
+h1.title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.5rem,4.5vw,3.2rem);
+  color:var(--gold);
+  letter-spacing:.1em;
+  text-shadow:0 0 60px rgba(200,168,75,.4),0 0 120px rgba(200,168,75,.15);
+  line-height:1.25;
+}
+.title-sub{
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:clamp(.85rem,2vw,1.1rem);
+  color:rgba(200,168,75,.5);
+  letter-spacing:.25em;
+  margin-top:12px;
+}
+.hdr-rule{
+  width:600px;max-width:95%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue-l),var(--gold),var(--fire-l),transparent);
+  margin:24px auto;
+}
+.intro-text{
+  max-width:780px;margin:0 auto;
+  font-size:1rem;line-height:2.1;
+  color:var(--text-d);
+  font-style:italic;
+}
+
+/* ── CHAPTER HEADERS ──────────────────────────── */
+.chapter{
+  text-align:center;
+  margin:70px 0 36px;
+  padding:30px 20px;
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.chapter::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+}
+.ch-zeus::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ch-titans::before{background:linear-gradient(90deg,transparent,var(--fire-l),transparent)}
+.ch-sea::before{background:linear-gradient(90deg,transparent,var(--sea-l),transparent)}
+.ch-under::before{background:linear-gradient(90deg,transparent,var(--purple-l),transparent)}
+.ch-heroes::before{background:linear-gradient(90deg,transparent,var(--silver-l),transparent)}
+.ch-creatures::before{background:linear-gradient(90deg,transparent,var(--wine-l),transparent)}
+.ch-mitos::before{background:linear-gradient(90deg,transparent,var(--olive-l),transparent)}
+
+.chapter-num{
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:1.4rem;
+  opacity:.45;
+  display:block;margin-bottom:8px;
+}
+.chapter h2{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1rem,3vw,1.8rem);
+  letter-spacing:.15em;
+  line-height:1.3;
+}
+.chapter p{
+  font-style:italic;font-size:.9rem;
+  color:var(--text-dd);margin-top:10px;
+  letter-spacing:.05em;
+}
+
+/* ── GOD CARDS ──────────────────────────────── */
+.god-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:24px 0}
+.god-wide{grid-column:1/-1}
+
+.god{
+  border-radius:14px;overflow:hidden;
+  border:1px solid;
+  position:relative;
+  transition:transform .35s ease,box-shadow .35s ease;
+  animation:risein .6s ease forwards;opacity:0;
+}
+.god:hover{transform:translateY(-4px)}
+@keyframes risein{to{opacity:1;transform:translateY(0)}}
+
+/* Delay cascade */
+.god:nth-child(1){animation-delay:.05s}.god:nth-child(2){animation-delay:.1s}
+.god:nth-child(3){animation-delay:.15s}.god:nth-child(4){animation-delay:.2s}
+.god:nth-child(5){animation-delay:.25s}.god:nth-child(6){animation-delay:.3s}
+.god:nth-child(7){animation-delay:.35s}.god:nth-child(8){animation-delay:.4s}
+
+/* Color schemes for gods */
+.g-zeus{background:linear-gradient(145deg,rgba(30,50,100,.8),rgba(8,10,24,.95));border-color:rgba(128,176,255,.3)}
+.g-zeus:hover{box-shadow:0 12px 40px rgba(48,96,160,.25)}
+.g-hera{background:linear-gradient(145deg,rgba(70,20,50,.8),rgba(8,4,14,.95));border-color:rgba(200,80,140,.3)}
+.g-hera:hover{box-shadow:0 12px 40px rgba(160,40,100,.25)}
+.g-pos{background:linear-gradient(145deg,rgba(10,50,60,.8),rgba(4,14,18,.95));border-color:rgba(64,208,192,.3)}
+.g-pos:hover{box-shadow:0 12px 40px rgba(16,104,120,.25)}
+.g-dem{background:linear-gradient(145deg,rgba(40,50,12,.8),rgba(10,14,4,.95));border-color:rgba(128,192,64,.3)}
+.g-dem:hover{box-shadow:0 12px 40px rgba(72,96,40,.25)}
+.g-ath{background:linear-gradient(145deg,rgba(30,40,60,.8),rgba(8,10,18,.95));border-color:rgba(140,170,220,.3)}
+.g-ath:hover{box-shadow:0 12px 40px rgba(50,80,140,.25)}
+.g-apo{background:linear-gradient(145deg,rgba(60,40,0,.8),rgba(18,10,0,.95));border-color:rgba(220,168,40,.3)}
+.g-apo:hover{box-shadow:0 12px 40px rgba(180,130,20,.25)}
+.g-art{background:linear-gradient(145deg,rgba(20,30,50,.8),rgba(6,10,18,.95));border-color:rgba(160,200,240,.3)}
+.g-art:hover{box-shadow:0 12px 40px rgba(40,80,140,.25)}
+.g-ares{background:linear-gradient(145deg,rgba(80,12,8,.8),rgba(20,4,4,.95));border-color:rgba(220,60,40,.3)}
+.g-ares:hover{box-shadow:0 12px 40px rgba(160,30,20,.25)}
+.g-aph{background:linear-gradient(145deg,rgba(80,24,40,.8),rgba(20,6,10,.95));border-color:rgba(240,100,140,.3)}
+.g-aph:hover{box-shadow:0 12px 40px rgba(180,50,80,.25)}
+.g-hef{background:linear-gradient(145deg,rgba(70,24,8,.8),rgba(18,6,2,.95));border-color:rgba(200,100,40,.3)}
+.g-hef:hover{box-shadow:0 12px 40px rgba(150,60,20,.25)}
+.g-her{background:linear-gradient(145deg,rgba(20,50,30,.8),rgba(6,16,10,.95));border-color:rgba(80,200,120,.3)}
+.g-her:hover{box-shadow:0 12px 40px rgba(20,120,60,.25)}
+.g-dio{background:linear-gradient(145deg,rgba(50,8,50,.8),rgba(14,2,14,.95));border-color:rgba(180,60,180,.3)}
+.g-dio:hover{box-shadow:0 12px 40px rgba(100,20,100,.25)}
+.g-hest{background:linear-gradient(145deg,rgba(70,30,8,.8),rgba(18,8,2,.95));border-color:rgba(220,120,40,.3)}
+.g-hest:hover{box-shadow:0 12px 40px rgba(160,70,20,.25)}
+.g-had{background:linear-gradient(145deg,rgba(10,4,20,.95),rgba(2,2,8,.98));border-color:rgba(80,40,120,.35)}
+.g-had:hover{box-shadow:0 12px 40px rgba(60,20,100,.25)}
+.g-per{background:linear-gradient(145deg,rgba(30,10,40,.8),rgba(8,4,14,.95));border-color:rgba(160,80,200,.3)}
+.g-per:hover{box-shadow:0 12px 40px rgba(100,40,140,.25)}
+.g-hec{background:linear-gradient(145deg,rgba(14,4,24,.9),rgba(4,2,10,.98));border-color:rgba(100,40,160,.3)}
+.g-hec:hover{box-shadow:0 12px 40px rgba(80,20,120,.25)}
+.g-eros{background:linear-gradient(145deg,rgba(80,10,30,.8),rgba(20,4,8,.95));border-color:rgba(240,80,120,.3)}
+.g-eros:hover{box-shadow:0 12px 40px rgba(180,30,70,.25)}
+.g-gen{background:linear-gradient(145deg,rgba(20,20,30,.8),rgba(6,6,14,.95));border-color:rgba(120,120,180,.3)}
+.g-gen:hover{box-shadow:0 12px 40px rgba(60,60,120,.25)}
+
+/* God card anatomy */
+.god-top{padding:22px 20px 0;display:flex;align-items:flex-start;gap:14px}
+.god-icon{font-size:2.8rem;flex-shrink:0;line-height:1}
+.god-header{flex:1}
+.god-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:clamp(1.2rem,2.5vw,1.5rem);
+  line-height:1.1;
+}
+.god-also{font-size:.78rem;color:var(--text-dd);font-style:italic;margin-top:2px}
+.god-roman{
+  display:inline-block;margin-top:5px;
+  font-family:'Cinzel Decorative',serif;
+  font-size:.58rem;letter-spacing:.12em;
+  padding:2px 8px;border-radius:20px;
+  background:rgba(200,168,75,.1);border:1px solid rgba(200,168,75,.25);
+  color:var(--gold-l);
+}
+.god-body{padding:16px 20px 22px}
+.god-desc{font-size:.9rem;line-height:1.95;color:var(--text-d);margin-bottom:12px}
+.god-section{margin-bottom:12px}
+.god-section-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.58rem;letter-spacing:.18em;
+  color:var(--gold);opacity:.7;
+  margin-bottom:5px;
+}
+.sym-list{
+  display:flex;flex-wrap:wrap;gap:5px;
+}
+.sym{
+  font-size:.72rem;padding:3px 9px;
+  border-radius:20px;font-style:italic;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text-d);
+}
+.myth-text{font-size:.85rem;color:var(--text-d);line-height:1.88}
+.myth-text p{margin-bottom:8px}
+.myth-text p:last-child{margin-bottom:0}
+strong.hl{color:var(--gold-l);font-weight:600}
+em.myth{color:var(--text-dd);font-style:italic}
+
+/* ── TITÃS ──────────────────────────────────── */
+.titan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:20px 0}
+.titan{
+  border-radius:12px;padding:18px;
+  background:linear-gradient(145deg,rgba(60,20,10,.7),rgba(14,6,4,.95));
+  border:1px solid rgba(200,100,40,.25);
+  transition:transform .3s;
+}
+.titan:hover{transform:translateY(-3px)}
+.titan-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.1rem;
+  color:var(--fire-l);margin-bottom:4px;
+}
+.titan-role{font-size:.78rem;color:var(--gold);font-style:italic;margin-bottom:8px}
+.titan-desc{font-size:.83rem;color:var(--text-d);line-height:1.85}
+
+/* ── HEROES ──────────────────────────────────── */
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:20px 0}
+.hero{
+  border-radius:14px;
+  border:1px solid rgba(192,208,240,.2);
+  background:linear-gradient(145deg,rgba(20,28,46,.8),rgba(6,8,16,.95));
+  overflow:hidden;
+  transition:transform .35s;
+}
+.hero:hover{transform:translateY(-4px)}
+.hero-head{
+  padding:18px 20px 0;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-icon{font-size:2rem;flex-shrink:0}
+.hero-meta{flex:1}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.2rem;
+  color:var(--silver-l);
+}
+.hero-epithet{font-size:.75rem;color:var(--text-dd);font-style:italic}
+.hero-body{padding:14px 20px 20px}
+.hero-desc{font-size:.88rem;color:var(--text-d);line-height:1.9;margin-bottom:10px}
+.hero-feats{
+  border-radius:8px;padding:10px 12px;
+  background:rgba(255,255,255,.025);
+  border-left:2px solid rgba(192,208,240,.3);
+}
+.hero-feats-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.55rem;letter-spacing:.15em;
+  color:var(--silver-l);margin-bottom:6px;
+}
+.feat-list{list-style:none;font-size:.8rem;color:var(--text-d);line-height:1.9}
+.feat-list li::before{content:"✦ ";color:var(--gold);opacity:.6;font-size:.65rem}
+
+/* ── CRIATURAS ──────────────────────────────── */
+.creature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin:20px 0}
+.creature{
+  border-radius:12px;padding:18px;
+  background:linear-gradient(145deg,rgba(50,8,18,.8),rgba(12,2,6,.95));
+  border:1px solid rgba(200,40,80,.2);
+  transition:transform .3s;
+}
+.creature:hover{transform:translateY(-3px)}
+.creature-name{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.1rem;
+  color:var(--wine-l);margin-bottom:4px;
+}
+.creature-type{font-size:.72rem;color:var(--text-dd);font-style:italic;margin-bottom:8px}
+.creature-desc{font-size:.83rem;color:var(--text-d);line-height:1.85}
+.creature-symbol{
+  margin-top:8px;font-size:.75rem;
+  color:var(--text-dd);font-style:italic;
+  padding-top:8px;
+  border-top:1px solid rgba(200,40,80,.15);
+}
+
+/* ── MITOS ──────────────────────────────────── */
+.myth-block{
+  border-radius:14px;padding:26px;
+  border:1px solid rgba(128,192,64,.2);
+  background:linear-gradient(145deg,rgba(30,40,10,.7),rgba(8,12,2,.95));
+  margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.myth-block::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(128,192,64,.5),transparent);
+}
+.myth-title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.3rem;
+  color:var(--olive-l);margin-bottom:8px;
+}
+.myth-source{
+  font-size:.72rem;font-style:italic;
+  color:var(--text-dd);margin-bottom:14px;
+  display:block;
+}
+.myth-p{font-size:.92rem;color:var(--text-d);line-height:2.05;margin-bottom:10px}
+.myth-p:last-child{margin-bottom:0}
+.myth-meaning{
+  margin-top:14px;padding:12px 16px;
+  border-radius:8px;
+  background:rgba(128,192,64,.06);
+  border-left:3px solid rgba(128,192,64,.3);
+  font-size:.83rem;font-style:italic;
+  color:rgba(128,192,64,.8);
+  line-height:1.85;
+}
+
+/* ── CORRESPONDENCE TABLE ───────────────────── */
+.corr-table{
+  width:100%;border-collapse:collapse;
+  margin:16px 0;
+  font-size:.83rem;
+}
+.corr-table th{
+  font-family:'Cinzel Decorative',serif;
+  font-size:.6rem;letter-spacing:.15em;
+  color:var(--gold);padding:10px 12px;
+  background:rgba(200,168,75,.06);
+  border-bottom:1px solid rgba(200,168,75,.2);
+  text-align:left;
+}
+.corr-table td{
+  padding:9px 12px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  color:var(--text-d);
+  vertical-align:top;
+}
+.corr-table tr:hover td{background:rgba(255,255,255,.02)}
+.corr-table td:first-child{color:var(--gold-l);font-weight:600}
+
+/* ── DIVIDERS ────────────────────────────────── */
+.rule{height:1px;margin:50px 0;background:linear-gradient(90deg,transparent,rgba(200,168,75,.2),transparent)}
+
+/* ── REVEAL ──────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* ── NAV SIDEBAR ─────────────────────────────── */
+.nav-side{
+  position:fixed;top:50%;right:14px;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:7px;
+  z-index:100;
+}
+.nav-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:rgba(200,168,75,.2);
+  border:1px solid rgba(200,168,75,.35);
+  transition:all .25s;display:block;
+  text-decoration:none;cursor:pointer;
+}
+.nav-dot:hover,.nav-dot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.nav-side{display:none}}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:640px){
+  .god-grid,.hero-grid{grid-template-columns:1fr}
+  .titan-grid,.creature-grid{grid-template-columns:1fr}
+  .corr-table{font-size:.75rem}
+}
+
+/* FOOTER */
+footer{text-align:center;padding:80px 20px 40px;border-top:1px solid var(--border)}
+.foot-symbol{font-size:3.5rem;display:block;margin-bottom:16px;animation:aureate 7s infinite}
+.foot-text{
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:.88rem;color:rgba(200,168,75,.3);
+  letter-spacing:.12em;line-height:2.5;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-side">
+  <a class="nav-dot" href="#cosmogonia" title="Cosmogonia"></a>
+  <a class="nav-dot" href="#primordiais" title="Deuses Primordiais"></a>
+  <a class="nav-dot" href="#titans" title="Titãs"></a>
+  <a class="nav-dot" href="#olimpianos" title="12 Olímpicos"></a>
+  <a class="nav-dot" href="#menores" title="Deuses Menores"></a>
+  <a class="nav-dot" href="#herois" title="Heróis"></a>
+  <a class="nav-dot" href="#criaturas" title="Criaturas"></a>
+  <a class="nav-dot" href="#granmitos" title="Os Grandes Mitos"></a>
+  <a class="nav-dot" href="#correspondencias" title="Correspondências"></a>
+  <a class="nav-dot" href="#legado" title="Legado"></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════ -->
+<header>
+  <span class="hdr-emblem">☽ ✦ ⊙ ✦ ☽</span>
+  <h1 class="title">Mitologia Grega</h1>
+  <p class="title-sub">Enciclopédia Completa — Deuses · Titãs · Heróis · Criaturas · Mitos · Símbolos</p>
+  <div class="hdr-rule"></div>
+  <p class="intro-text">
+    Antes de existir a filosofia, antes de existir a ciência, havia o mito. Os gregos antigos criaram um sistema de narrativas tão completo, tão rico em simbolismo e tão profundamente humano que continuamos a habitá-lo — em nossos sonhos, em nossa psicologia, em nossa arte, em nossa linguagem. Cada deus é uma força cósmica. Cada herói é uma jornada da alma. Cada monstro é um medo que precisa ser encarado. Esta enciclopédia reúne tudo: as origens do cosmos, as gerações divinas, os grandes olímpicos, os heróis épicos, as criaturas extraordinárias e os mitos que explicam a condição humana.
+  </p>
+</header>
+
+<!-- ════════════════════════════════════════════
+     I. A COSMOGONIA — O NASCIMENTO DO COSMOS
+     ════════════════════════════════════════════ -->
+<div id="cosmogonia" class="chapter ch-zeus reveal">
+  <span class="chapter-num">Capítulo Primeiro</span>
+  <h2 style="color:var(--blue-l)">A Cosmogonia — No Princípio Era o Caos</h2>
+  <p>como o universo grego nasceu do vazio primordial · a Teogonia de Hesíodo</p>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(128,176,255,.2);background:linear-gradient(145deg,rgba(8,20,50,.7),rgba(4,8,18,.95))">
+  <div class="myth-title" style="color:var(--blue-l)">A Teogonia — O Nascimento dos Deuses</div>
+  <span class="myth-source">Fonte: Hesíodo, Teogonia, séc. VIII a.C. — a genealogia completa dos deuses gregos</span>
+  <p class="myth-p">No princípio havia apenas o <strong class="hl">Caos</strong> — não o caos no sentido moderno de desordem, mas o vazio primordial, o abismo informe do qual tudo emergiu. A palavra grega <em>χάος</em> (kháos) significa literalmente "espaço vasto e aberto", a lacuna entre o céu e a terra antes de existirem. Do Caos, espontaneamente, surgiram os primeiros seres.</p>
+  <p class="myth-p"><strong class="hl">Gaia</strong> (a Terra) emergiu do Caos e se tornou a mãe de todos os seres. Ela gerou por si só <strong class="hl">Urano</strong> (o Céu), que depois se tornou seu consorte, e <strong class="hl">Ponto</strong> (o Mar primordial). Do Caos também brotaram <strong class="hl">Nix</strong> (a Noite), <strong class="hl">Érebo</strong> (as Trevas profundas) e <strong class="hl">Eros</strong> (o Amor primordial) — não o deus do amor romântico que conhecemos depois, mas a força de atração fundamental que permite que as coisas se unam e gerem vida.</p>
+  <p class="myth-p">Gaia e Urano se uniram e geraram os <strong class="hl">doze Titãs</strong> — seis machos e seis fêmeas — além dos <strong class="hl">Ciclopes</strong> (três gigantes de um olho só) e os <strong class="hl">Hecatônquiros</strong> (três gigantes de cem braços e cinquenta cabeças). Urano, aterrorizado com a estranheza de seus filhos, os enfiava de volta para o ventre da terra assim que nasciam. Gaia, sofrendo com essa violência, convenceu seu filho <strong class="hl">Cronos</strong> a castrá-lo com uma foice de adamanto.</p>
+  <p class="myth-p">O sangue de Urano caindo no mar gerou <strong class="hl">Afrodite</strong> — a deusa do amor nascida da espuma. As gotas que caíram na terra geraram as <strong class="hl">Erínias</strong> (as Fúrias), as <strong class="hl">Melíades</strong> (ninfas dos freixos) e os <strong class="hl">Gigantes</strong>. A castração de Urano marca a passagem do tempo primordial para o tempo dos Titãs.</p>
+  <div class="myth-meaning">🌌 Simbolismo profundo: o Caos grego não é ausência, mas potencialidade. É o estado antes da diferenciação. Gaia representa o princípio material, receptivo e gerador. Urano representa o princípio espiritual, criativo e expansivo. A tensão entre eles gera toda a existência. A castração de Urano é o mito do nascimento do Tempo (Cronos = Tempo) — quando o Céu foi separado da Terra, o espaço para a existência temporal se criou.</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     II. DEUSES PRIMORDIAIS
+     ════════════════════════════════════════════ -->
+<div id="primordiais" class="chapter ch-titans reveal">
+  <span class="chapter-num">Capítulo Segundo</span>
+  <h2 style="color:var(--fire-l)">Os Deuses Primordiais — Antes do Olimpo</h2>
+  <p>as forças originárias que precederam tudo</p>
+</div>
+
+<div class="titan-grid reveal">
+  <div class="titan" style="border-color:rgba(60,60,60,.5);background:linear-gradient(145deg,rgba(20,20,30,.8),rgba(4,4,10,.95))">
+    <div class="titan-name" style="color:#A0A0C0">Caos</div>
+    <div class="titan-role">O Vazio Primordial · A Potencialidade Absoluta</div>
+    <div class="titan-desc">Não é um deus com personalidade, mas a condição primeira de tudo. Do Caos emanaram Gaia, Tártaro, Eros, Nix e Érebo. Representa o não-manifesto do qual o manifesto emerge — o silêncio antes da primeira nota.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(80,120,40,.4);background:linear-gradient(145deg,rgba(20,40,10,.8),rgba(6,14,4,.95))">
+    <div class="titan-name" style="color:#80C040">Gaia</div>
+    <div class="titan-role">A Mãe-Terra · Protetora da Vida · Primordial Feminina</div>
+    <div class="titan-desc">A Terra personificada. Mãe de Urano, Ponto, Titãs, Ciclopes, Hecatônquiros, Gigantes, Tifão, Equidna. É o princípio materno universal — não apenas o planeta, mas o substrato de toda existência física. A palavra "Geo-" em geometria, geologia, geografia vem de Gaia.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(80,80,140,.4);background:linear-gradient(145deg,rgba(16,16,40,.8),rgba(4,4,14,.95))">
+    <div class="titan-name" style="color:#8080C0">Urano</div>
+    <div class="titan-role">O Céu Estrelado · O Princípio Masculino Celestial</div>
+    <div class="titan-desc">O Céu personificado. Cobria Gaia como um dossel. Aterrorizado com seus filhos monstruosos, os prendia no ventre da terra. Castrado por Cronos, seu sangue gerou Afrodite. Corresponde ao princípio espiritual-patriarcal que, quando repressivo, impede o nascimento do novo.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(20,20,60,.8);background:linear-gradient(145deg,rgba(8,4,20,.9),rgba(2,2,8,.98))">
+    <div class="titan-name" style="color:#5050A0">Tártaro</div>
+    <div class="titan-role">O Abismo Profundo · A Prisão dos Condenados</div>
+    <div class="titan-desc">A região mais profunda do universo — abaixo do Hades. Aqui Zeus aprisionou os Titãs após a Titanomaquia. É tanto um lugar quanto uma divindade. Representa o inconsciente mais profundo, o que foi suprimido e não pode retornar facilmente.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(120,20,60,.4);background:linear-gradient(145deg,rgba(30,6,16,.8),rgba(8,2,4,.95))">
+    <div class="titan-name" style="color:#D04080">Eros (Primordial)</div>
+    <div class="titan-role">O Amor Cósmico · A Força da Atração Universal</div>
+    <div class="titan-desc">O Eros primordial não é o filho de Afrodite (deus do amor romântico). É a força de coesão do universo — o que faz as partículas se atraírem, que faz a vida se reproduzir, que faz o Caos se organizar em Cosmos. É o Amor como princípio físico e metafísico.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(10,10,30,.9);background:linear-gradient(145deg,rgba(6,4,14,.9),rgba(2,2,6,.98))">
+    <div class="titan-name" style="color:#6060B0">Nix</div>
+    <div class="titan-role">A Noite · Mãe dos Mistérios · Deusa Temida pelos Deuses</div>
+    <div class="titan-desc">A personificação da Noite. Filha do Caos. Gerou Hemera (o Dia), Hipnos (o Sono), Tânatos (a Morte), Moros (o Destino), as Moiras (as Parcas), Nêmesis, Éris (a Discórdia), Ápate (o Engano), Geras (a Velhice) e as Hespérides. Até Zeus a temia e evitava contrariá-la.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(40,20,10,.7);background:linear-gradient(145deg,rgba(16,8,4,.9),rgba(6,4,2,.98))">
+    <div class="titan-name" style="color:#C08040">Érebo</div>
+    <div class="titan-role">As Trevas · A Escuridão Profunda · Irmão de Nix</div>
+    <div class="titan-desc">A personificação das trevas que preenchem os lugares mais escuros do submundo. Junto com Nix, gerou Éter (o ar puro celestial) e Hemera (o Dia). A união das trevas com a noite para gerar a luz — um dos paradoxos fundamentais da cosmogonia grega.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(40,80,40,.4);background:linear-gradient(145deg,rgba(12,24,12,.8),rgba(4,8,4,.95))">
+    <div class="titan-name" style="color:#60A060">Ponto</div>
+    <div class="titan-role">O Mar Primordial · O Oceano Primordial</div>
+    <div class="titan-desc">O Mar gerado por Gaia sem parceiro. Pai de Nereu (o Velho do Mar), Taumante, Fórcis, Ceto e Euríbia. Representa as profundezas aquáticas primordiais, distintas do Oceano (o Titã que cerca a terra como um rio).</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     III. OS TITÃS
+     ════════════════════════════════════════════ -->
+<div id="titans" class="chapter ch-titans reveal">
+  <span class="chapter-num">Capítulo Terceiro</span>
+  <h2 style="color:var(--fire-l)">Os Titãs — A Segunda Geração Divina</h2>
+  <p>os governantes do cosmos antes dos Olímpicos · a Titanomaquia · Prometeu e o fogo</p>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(200,100,40,.25);background:linear-gradient(145deg,rgba(40,15,5,.7),rgba(10,4,2,.95))">
+  <div class="myth-title" style="color:var(--fire-l)">A Titanomaquia — A Guerra que Mudou o Cosmos</div>
+  <span class="myth-source">Hesíodo, Teogonia · 10 anos de guerra entre Titãs e Olímpicos</span>
+  <p class="myth-p"><strong class="hl">Cronos</strong>, o mais jovem e astuto dos Titãs, castrou Urano e tornou-se o rei do cosmos. Uniu-se à Titânide <strong class="hl">Reia</strong> e gerou os primeiros Olímpicos: Héstia, Deméter, Hera, Hades, Poseidon e Zeus. Mas uma profecia dizia que seria derrubado por um de seus filhos — assim como derrubou o pai. Por medo, devorava cada filho ao nascer.</p>
+  <p class="myth-p">Reia, desesperada, enganou Cronos quando Zeus nasceu: embrulhou uma pedra em fralda e deu ao Titã, que a engoliu pensando ser o bebê. Zeus foi criado em Creta, protegido pelas Curétes (guerreiros que mascaravam seu choro com o barulho de espadas e escudos) e alimentado pela cabra Amalteia. Quando adulto, Zeus obrigou Cronos a vomitar os irmãos, e a guerra começou.</p>
+  <p class="myth-p">A <strong class="hl">Titanomaquia</strong> durou dez anos. Zeus libertou os Ciclopes do Tártaro (onde Cronos os havia aprisionado), que em gratidão forjaram para ele o raio, para Poseidon o tridente e para Hades o capacete da invisibilidade. Zeus também libertou os Hecatônquiros — os gigantes de cem braços — que atiravam rochas e montanhas contra os Titãs. Ao fim, os Titãs foram confinados ao Tártaro, guardados pelos Hecatônquiros.</p>
+  <div class="myth-meaning">⚡ Significado: A Titanomaquia é o mito da passagem de uma era. Os Titãs representam forças naturais brutas e não diferenciadas; os Olímpicos representam a consciência organizada, as forças que tomam forma e nome definidos. É a transição do caos pré-consciente para a ordem divina — metáfora da própria civilização.</div>
+</div>
+
+<div class="titan-grid reveal">
+  <div class="titan">
+    <div class="titan-name" style="color:#FF8040">Cronos</div>
+    <div class="titan-role">Titã do Tempo · Rei dos Titãs · O Devorador</div>
+    <div class="titan-desc">Filho de Gaia e Urano. Castrou o pai com uma foice de adamanto. Devorou seus filhos por medo de ser deposto. Corresponde ao Saturno romano. Símbolo: a foice, o tempo que devora tudo. O mito do "tempo que devora seus filhos" é a mais poderosa metáfora da impermanência — cada momento cria e destrói o seguinte.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#FFD080">Reia</div>
+    <div class="titan-role">Titânide da Fertilidade · Mãe dos Olímpicos · A Grande Mãe</div>
+    <div class="titan-desc">Esposa de Cronos. Filha de Gaia e Urano. Seu símbolo é o leão — ela é frequentemente representada em um carro puxado por leões. Corresponde a Cibele (anatólia) e Ops (romana). É a Mãe Divina em seu aspecto de proteção dos filhos contra a opressão paterna.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#FFB060">Prometeu</div>
+    <div class="titan-role">Titã da Previsão · Criador da Humanidade · Doador do Fogo</div>
+    <div class="titan-desc">O mais benevolente dos Titãs. Modelou os humanos com argila e água (em algumas versões). Roubou o fogo dos deuses e o deu à humanidade, capacitando a civilização. Punido por Zeus com acorrentamento eterno no Cáucaso, onde uma águia comia seu fígado diariamente (que regenerava à noite). Libertado por Hércules. Símbolo do intelecto humano que desafia os limites impostos pelo poder.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#90A0FF">Océano</div>
+    <div class="titan-role">Titã das Águas · O Rio que Circunda o Mundo</div>
+    <div class="titan-desc">Filho de Gaia e Urano. Representa o grande rio oceânico que, na cosmologia grega, circundava toda a terra como um anel. Pai de todos os rios e das 3.000 Oceânides (ninfas dos cursos d'água). Não participou da Titanomaquia — permaneceu neutro, razão pela qual não foi aprisionado.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#FFD040">Hipérion</div>
+    <div class="titan-role">Titã da Luz Celestial · Pai do Sol, Lua e Aurora</div>
+    <div class="titan-desc">Seu nome significa "aquele que vai acima". Casou-se com Téia e geraram Hélio (o Sol), Selene (a Lua) e Eos (a Aurora). É a personificação da luz no sentido mais cósmico — não apenas o sol, mas a luminosidade como princípio do cosmos.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#C0D0FF">Mnemosine</div>
+    <div class="titan-role">Titânide da Memória · Mãe das Musas</div>
+    <div class="titan-desc">Personificação da Memória. Zeus se uniu a ela por nove noites consecutivas e ela gerou as nove Musas. Para os gregos, a Memória era divina — não apenas a memória pessoal, mas a Memória Cósmica que preserva tudo o que aconteceu. As Musas são, portanto, filhas da Memória: toda arte é memória transmitida.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#E0A0FF">Témis</div>
+    <div class="titan-role">Titânide da Lei Divina · da Ordem e da Justiça</div>
+    <div class="titan-desc">Segunda esposa de Zeus (antes de Hera). Representa a Lei cósmica imutável — não a lei humana, mas a ordem que sustenta o cosmos. Mãe das Moiras (o Destino), das Horas (as estações) e das Equidades. Em Delfos, foi ela quem presidiu o oráculo antes de Apolo.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#FFA040">Epimeteu</div>
+    <div class="titan-role">Titã da Imprudência · Irmão de Prometeu</div>
+    <div class="titan-desc">Nome significa "aquele que pensa depois" — em contraste com Prometeu ("aquele que pensa antes"). Recebeu Pandora de Zeus e, apesar dos avisos do irmão, aceitou o presente. Quando Pandora abriu o jarro, todos os males se espalharam pelo mundo, restando apenas a Esperança no fundo.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#80D080">Atlas</div>
+    <div class="titan-role">Titã da Resistência · Carregador do Cosmos</div>
+    <div class="titan-desc">Participou da Titanomaquia e foi punido por Zeus com a tarefa de carregar o peso dos céus pelos ombros — não a terra (como se pensa popularmente), mas a abóbada celeste. Pai das Plêiades, Híades e Hespérides. Perseu o transformou em montanha usando a cabeça da Medusa. O Monte Atlas no noroeste africano leva seu nome.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#D080D0">Hécate (Titânide)</div>
+    <div class="titan-role">Titânide da Magia · das Encruzilhadas · da Lua Tripla</div>
+    <div class="titan-desc">Uma das pouquíssimas figuras que manteve seu poder após a Titanomaquia, sendo honrada por Zeus. Tripla face: jovem, mãe e anciã — as três fases da lua. Deusa das encruzilhadas, da magia, dos espectros e do parto. Sua tríade era ofertada nas encruzilhadas na lua nova. É um dos arquétipos mais antigos da divindade feminina.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#A0E0B0">Ganimedes</div>
+    <div class="titan-role">Copeiro dos Deuses · O Mortal Amado pelos Imortais</div>
+    <div class="titan-desc">Príncipe troiano de beleza incomparável. Zeus se apaixonou por ele, assumiu forma de águia e o raptou para o Olimpo, onde Ganimedes se tornou o copeiro dos deuses, servindo-lhes néctar e ambrosia. Em troca, Zeus deu a seus pais uma manada de cavalos divinos e uma videira de ouro.</div>
+  </div>
+  <div class="titan">
+    <div class="titan-name" style="color:#FFB0B0">Leto</div>
+    <div class="titan-role">Titânide da Maternidade Discreta · Mãe de Apolo e Ártemis</div>
+    <div class="titan-desc">Amante de Zeus que, grávida dos gêmeos divinos, foi perseguida por Hera por todo o mundo. Nenhuma terra a recebia por medo da rainha dos deuses. Finalmente, a ilha flutuante de Delos a acolheu — e lá nasceram Apolo e Ártemis. Símbolo da mãe que suporta tudo pelo filho.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     IV. OS 12 OLÍMPICOS
+     ════════════════════════════════════════════ -->
+<div id="olimpianos" class="chapter ch-zeus reveal">
+  <span class="chapter-num">Capítulo Quarto</span>
+  <h2 style="color:var(--gold-l)">Os Doze Olímpicos — O Panteão Supremo</h2>
+  <p>os deuses que governam o cosmos desde o topo do Monte Olimpo · o Dodecateão</p>
+</div>
+
+<div class="god-grid reveal">
+
+  <!-- ZEUS -->
+  <div class="god g-zeus god-wide">
+    <div class="god-top">
+      <span class="god-icon">⚡</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#80B0FF">Zeus</div>
+        <div class="god-also">Ζεύς · Dyaus · Dikespater · O Pai dos Deuses e dos Homens</div>
+        <span class="god-roman">Romano: Júpiter</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">O rei dos deuses e dos homens. Filho de Cronos e Reia, irmão de Hera, Poseidon, Hades, Deméter e Héstia. Governa o Olimpo e os céus, sendo o árbitro supremo de toda ordem cósmica. Zeus não é apenas poderoso — é o guardião da <em>xenia</em> (hospitalidade sagrada), da <em>dike</em> (justiça) e do <em>cosmos</em> (ordem). Seu nome deriva de *Dyeu-pəter, "Pai-Céu" — a mesma raiz que "Deus" em português e "Dieu" em francês.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS E ATRIBUTOS</div>
+        <div class="sym-list">
+          <span class="sym">⚡ Raio / Keraunos</span><span class="sym">🦅 Águia</span>
+          <span class="sym">🌳 Carvalho sagrado de Dodona</span><span class="sym">👑 Cetro</span>
+          <span class="sym">🐂 Touro (transformação)</span><span class="sym">☁ Nuvens e trovões</span>
+          <span class="sym">🌊 Cisne (sedução de Leda)</span><span class="sym">🥇 Chuva de ouro (Dânae)</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">NATUREZA E DOMÍNIOS</div>
+        <div class="myth-text">
+          <p>Zeus preside o céu, o trovão, o raio, a lei, a ordem, a justiça, o destino e a autoridade. É protetor dos suplicantes, dos viajantes e da hospitalidade. Como deus celeste, está acima de qualquer força exceto as Moiras (o Destino) — nem Zeus pode mudar o destino fixado por elas.</p>
+          <p>Sua personalidade é contraditória: sábio e impulsivo, justo e adúltero, protetor e castigador. Isso reflete a visão grega da autoridade suprema — não perfeita, mas legítima. Seus amores com mortais e deusas geraram a maioria dos heróis e divindades secundárias da mitologia.</p>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">PRINCIPAIS MITOS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Nascimento e Ascensão:</strong> Salvo por Reia, criado em Creta, libertou seus irmãos e venceu a Titanomaquia. Depois, venceu também a <em>Gigantomaquia</em> (guerra contra os Gigantes) e <em>Tifonomaquia</em> (contra Tifão, o mais poderoso monstro).</p>
+          <p><strong class="hl">Os Amores de Zeus:</strong> Métis (sua primeira esposa, que engoliu por medo que o filho a depusesse — Atena nasceu de sua cabeça) · Mnemosine (9 noites = 9 Musas) · Deméter (Perséfone) · Leto (Apolo e Ártemis) · Leda (como cisne: Castor, Pólux, Helena e Clitemnestra) · Europa (como touro: Minos, Radamanto e Sarpédon) · Dânae (como chuva de ouro: Perseu) · Alcmena (como seu marido: Hércules) · Sêmele (Dionísio).</p>
+          <p><strong class="hl">O Julgamento de Zeus:</strong> Preside o julgamento das almas dos mortos junto com Hades, Radamanto e Éaco. Sua escala de ouro pesa os destinos dos guerreiros em batalha.</p>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">CULTO E TEMPLOS</div>
+        <div class="myth-text"><p>Principal templo: Olímpia (onde estavam os Jogos Olímpicos, realizados a cada 4 anos em sua honra). A estátua de Zeus em Olímpia, obra de Fídias, era uma das Sete Maravilhas do Mundo Antigo. Oráculo principal: Dodona (onde o vento nas folhas de um carvalho revelava sua vontade).</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERA -->
+  <div class="god g-hera">
+    <div class="god-top">
+      <span class="god-icon">👑</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#E080B0">Hera</div>
+        <div class="god-also">Ἥρα · A Rainha do Olimpo · Senhora do Casamento</div>
+        <span class="god-roman">Romano: Juno</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Rainha dos deuses. Irmã e esposa de Zeus (casamento dos opostos: o céu e a terra em sua versão divina). Deusa do casamento sagrado, dos partos e da vida das mulheres. Sua natureza é dupla: protetora do lar legítimo e vingativa com as amantes e filhos bastardos de Zeus.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🦚 Pavão</span><span class="sym">🐄 Vaca</span>
+          <span class="sym">🌸 Lírios e romãs</span><span class="sym">👑 Coroa de ouro</span>
+          <span class="sym">⚙ Cetro com cuco</span><span class="sym">🌙 Lua (em alguns cultos)</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">A Perseguição de Hércules:</strong> Jamais perdoou que Zeus tivesse gerado um filho com a mortal Alcmena. Enviou serpentes à cuna do bebê, induziu nele a loucura que o fez matar mulher e filhos, e colocou em seu caminho todos os obstáculos que pôde durante sua vida. Paradoxalmente, os doze Trabalhos impostos como penitência tornaram Hércules imortal.</p>
+          <p><strong class="hl">A Punição de Io:</strong> Zeus transformou a ninfa Io em vaca para escondê-la de Hera. Hera pediu a vaca de presente e pôs o gigante Argos Panoptes (de cem olhos) como guarda. Zeus mandou Hermes matar Argos. Hera enviou um moscão que perseguiu Io por todo o mundo. Os olhos de Argos foram colocados nas penas do pavão de Hera.</p>
+          <p><strong class="hl">O Casamento Sagrado (Hierogamia):</strong> Seu casamento com Zeus era um ritual cósmico — a união do céu e da terra que fertiliza o mundo. Em Creta existia um culto à Hera pré-olímpica como Grande Deusa, anterior ao domínio de Zeus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSEIDON -->
+  <div class="god g-pos">
+    <div class="god-top">
+      <span class="god-icon">🔱</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#40D0C0">Poseidon</div>
+        <div class="god-also">Ποσειδῶν · Senhor dos Mares · Abalador da Terra</div>
+        <span class="god-roman">Romano: Netuno</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Irmão de Zeus e Hades. Governa os mares, os oceanos, as tempestades e os terremotos. Possui um palácio nas profundezas do mar em Égaion. Criou o cavalo (em algumas versões, batendo com o tridente na pedra de onde surgiu o primeiro cavalo). Feroz e implacável como o oceano.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🔱 Tridente</span><span class="sym">🐬 Golfinho</span>
+          <span class="sym">🐴 Cavalo</span><span class="sym">🦑 Polvo</span>
+          <span class="sym">🌊 Ondas</span><span class="sym">🏛 Carruagem do mar</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Disputa por Atenas:</strong> Poseidon e Atena competiram pelo padroado de Atenas. Poseidon fincou o tridente na Acrópole e fez brotar água salgada (ou um cavalo). Atena fez brotar uma oliveira. Os deuses (ou os cidadãos) julgaram o presente de Atena mais útil. Poseidon ficou furioso — as inundações que assolavam Ática eram sua vengança.</p>
+          <p><strong class="hl">Poseidon e Medusa:</strong> Medusa era uma sacerdotisa de Atena, jovem e bela. Poseidon se uniu a ela no templo sagrado de Atena. A deusa, furiosa com a profanação, transformou Medusa em monstro (cabelos de serpente, olhar que petrifica). Do sangue de Medusa decapitada por Perseu nasceram Pégaso e Crisaor.</p>
+          <p><strong class="hl">Perseguição de Odisseu:</strong> Após Odisseu cegar Polifemo (filho de Poseidon), o deus dos mares se tornou seu inimigo mortal e atrasou seu retorno a Ítaca por 10 anos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMÉTER -->
+  <div class="god g-dem">
+    <div class="god-top">
+      <span class="god-icon">🌾</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#80C040">Deméter</div>
+        <div class="god-also">Δημήτηρ · A Mãe da Terra · Deusa das Estações</div>
+        <span class="god-roman">Romano: Ceres</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Irmã de Zeus. Deusa da agricultura, das colheitas, dos cereais e das estações. Sua dor pelo rapto de Perséfone explica o inverno — quando a mãe chora, a terra não produz. Presidia os Mistérios de Elêusis, os mais secretos e importantes rituais de toda a Grécia.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🌾 Espiga de trigo</span><span class="sym">🌺 Papoila</span>
+          <span class="sym">🐍 Serpente</span><span class="sym">⚙ Foice</span>
+          <span class="sym">🐖 Porco</span><span class="sym">🏺 Cornucópia</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITO DE PERSÉFONE E AS ESTAÇÕES</div>
+        <div class="myth-text">
+          <p>Hades se apaixonou por Perséfone, filha de Deméter, e a raptou para o submundo. Deméter, inconsolável, vagou pelo mundo disfarçada de velha durante nove dias e noites, sem comer, sem dormir, segurando duas tochas. A terra parou de produzir. Zeus, pressionado pelo clamor dos homens famintos, mandou Hermes buscar Perséfone — mas ela havia comido seis sementes de romã no submundo.</p>
+          <p>Quem come a comida dos mortos pertence aos mortos. Perséfone teria que retornar ao submundo por seis meses por ano (outono/inverno, quando Deméter chora) e poderia ficar na terra por seis meses (primavera/verão, quando a mãe se alegra e a terra floresce). O mito mais profundo da agricultura e das estações.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ATENA -->
+  <div class="god g-ath">
+    <div class="god-top">
+      <span class="god-icon">🦉</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#A0C0E0">Atena</div>
+        <div class="god-also">Ἀθηνᾶ · Palas Atena · A Deusa dos Olhos de Coruja</div>
+        <span class="god-roman">Romano: Minerva</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filha de Zeus e Métis. Nasceu completamente adulta, armada e em armadura, da cabeça de Zeus — após ele engolir sua mãe grávida. Deusa da sabedoria estratégica, das artes e ofícios, da guerra justa (em oposição à violência de Ares) e da razão. Padroeira de Atenas. Virgem eterna.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🦉 Coruja (sabedoria)</span><span class="sym">🫒 Oliveira sagrada</span>
+          <span class="sym">⚔ Lança e escudo (Égide)</span><span class="sym">🪖 Capacete de ouro</span>
+          <span class="sym">🐍 Serpente (no escudo)</span><span class="sym">👁 Olhos de coruja (visão)</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Aracne:</strong> A mortal Aracne desafiou Atena a um concurso de tecelagem. Teceu tapeçarias que mostravam os crimes e amores dos deuses com maestria perfeita. Atena, furiosa com a arrogância e com o conteúdo subversivo, destruiu a tapeçaria. Aracne se enforcou. Atena, tomada de compaixão, a transformou em aranha — o ser que tece para sempre.</p>
+          <p><strong class="hl">Medusa:</strong> Transformou a bela sacerdotisa em monstro após a profanação do templo por Poseidon. Depois auxiliou Perseu: deu-lhe o escudo polido como espelho para ver Medusa sem ser petrificado.</p>
+          <p><strong class="hl">Odisseu:</strong> Sua maior protegida. Acompanhou-o em toda a Odisseia disfarçada de várias formas. A sabedoria de Odisseu era reflexo do favor de Atena.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APOLO -->
+  <div class="god g-apo">
+    <div class="god-top">
+      <span class="god-icon">☀</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#E8C840">Apolo</div>
+        <div class="god-also">Ἀπόλλων · Febo Apolo · O Radiante · O Arqueiro de Prata</div>
+        <span class="god-roman">Romano: Apolo (nome mantido)</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filho de Zeus e Leto, gêmeo de Ártemis. O mais belo dos deuses. Deus da luz solar, da música e poesia, da profecia, da medicina, da purificação, das artes em geral e da jovialidade. O oráculo de Delfos era seu. Representa o ideal grego da perfeição: belo, inteligente, artístico, moderado. Seu lema em Delfos: "Conhece-te a ti mesmo" e "Nada em excesso".</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🏹 Arco e flechas de prata</span><span class="sym">🎵 Lira</span>
+          <span class="sym">🌿 Coroa de louros</span><span class="sym">🦅 Corvo (mensageiro)</span>
+          <span class="sym">🐬 Golfinho</span><span class="sym">🐍 Python (vencida)</span>
+          <span class="sym">🌞 Carro solar</span><span class="sym">🌿 Cipreste</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Python e Delfos:</strong> Recém-nascido, Apolo matou a serpente Python que guardava o monte Parnaso e se instalou em Delfos — o umbigo do mundo. A Pítia, sacerdotisa de Apolo, sentava sobre a fissura da rocha de onde emanavam vapores e transmitia seus oráculos em estado de transe.</p>
+          <p><strong class="hl">Orfeu:</strong> Deu a Orfeu a lira de ouro — o instrumento cuja música era capaz de mover pedras, acalmar rios e encantar animais. Essa lira representa a musicoterapia mais antiga do mundo.</p>
+          <p><strong class="hl">Dáfne:</strong> A ninfa Dáfne fugiu de Apolo e pediu à mãe Gaia que a transformasse. Tornou-se uma loureiro — e Apolo adotou o louros como símbolo eterno, usando uma coroa dele pela eternidade. É o mito do amor que não se pode possuir, que se torna arte.</p>
+          <p><strong class="hl">Cassandra:</strong> A profetisa troiana. Apolo lhe deu o dom da profecia em troca de sua companhia. Ela recusou. Apolo, não podendo retirar o dom dado, amaldiçoou-a: ela sempre diria a verdade, mas nunca seria acreditada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÁRTEMIS -->
+  <div class="god g-art">
+    <div class="god-top">
+      <span class="god-icon">🌙</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#A0C0E8">Ártemis</div>
+        <div class="god-also">Ἄρτεμις · Diana · Senhor das Feras · A Virgem Caçadora</div>
+        <span class="god-roman">Romano: Diana</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Gêmea de Apolo, filha de Zeus e Leto. Deusa da caça, da natureza selvagem, da Lua, dos partos e da proteção das mulheres jovens. Virgem eterna por escolha própria — desde criança pediu a Zeus que lhe garantisse a virgindade. Guarda feroce de sua castidade e da de suas ninfas seguidoras.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🏹 Arco e flechas de prata</span><span class="sym">🦌 Corça dourada</span>
+          <span class="sym">🌙 Lua crescente</span><span class="sym">🐻 Ursa (Calisto)</span>
+          <span class="sym">🐶 Cão de caça</span><span class="sym">🌲 Cipreste e cedro</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Actéon:</strong> O caçador Actéon, vagando pela floresta, viu acidentalmente Ártemis banhando-se nua numa fonte. Ártemis, furiosa, transformou-o em veado — e seus próprios cães de caça o despedaçaram. O mito da vista proibida, do sagrado que não pode ser violado impunemente.</p>
+          <p><strong class="hl">Órion:</strong> O único caçador que Ártemis amou (ou que foi seu companheiro). Apolo, ciumento da amma da irmã, enganou-a para que ela atirasse uma flecha em Órion enquanto ele nadava no mar. Após perceber o que fez, Ártemis pôs Órion entre as estrelas como constelação.</p>
+          <p><strong class="hl">Calisto:</strong> Ninfa de sua comitiva que Zeus seduziu disfarçado de Ártemis. Calisto engravidou e foi expulsa. Zeus a transformou em ursa para protegê-la da ira de Hera. Ártemis a matou sem saber durante a caça. Zeus a colocou no céu como Ursa Maior.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARES -->
+  <div class="god g-ares">
+    <div class="god-top">
+      <span class="god-icon">⚔</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#FF6040">Ares</div>
+        <div class="god-also">Ἄρης · O Deus da Guerra Brutal · O Destruidor</div>
+        <span class="god-roman">Romano: Marte</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filho de Zeus e Hera. O único deus genuinamente odiado por seus próprios pais. Deus da violência, do caos da batalha e da carnificina. Em contraste com Atena (guerra estratégica), Ares representa a guerra como destruição bruta, irracional e excessiva. Mesmo assim, era o amante de Afrodite — a mais bela deusa escolheu o deus mais brutal.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">⚔ Espada e lança</span><span class="sym">🛡 Escudo ensanguentado</span>
+          <span class="sym">🐶 Cão de guerra</span><span class="sym">🦅 Abutre (nos campos de batalha)</span>
+          <span class="sym">🚗 Carro de guerra</span><span class="sym">🔥 Tocha</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Ares e Afrodite:</strong> O caso mais famoso do Olimpo. O deus do amor (Hefesto) descobriu o caso da esposa com o deus da guerra, forjou uma rede invisível e os aprisionou em pleno ato. Chamou todos os deuses para testemunhar. Os deuses riram — Ares, o poderoso, preso e humilhado. O mito do amor que sempre supera a força.</p>
+          <p><strong class="hl">Diomedes fere Ares:</strong> Na Guerra de Troia, o herói mortal Diomedes, auxiliado por Atena, feriu Ares com sua lança. O deus da guerra gritou como dez mil guerreiros e fugiu para o Olimpo, onde Zeus o repreendeu duramente.</p>
+          <p><strong class="hl">Filhos de Ares:</strong> Fobos (Medo) e Deimos (Terror) o acompanhavam nas batalhas. Também foi pai de Eros (em algumas versões) e de Cícone, os Amazons descendiam de Ares.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFRODITE -->
+  <div class="god g-aph">
+    <div class="god-top">
+      <span class="god-icon">🌹</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#FF80A0">Afrodite</div>
+        <div class="god-also">Ἀφροδίτη · Nascida da Espuma · Cypris · A Dourada</div>
+        <span class="god-roman">Romano: Vênus</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Nascida do sangue de Urano lançado ao mar após sua castração — a espuma (<em>áphrós</em>) gerou a mais bela das deusas. Em outras versões, filha de Zeus e da Titânide Dione. Deusa do amor, da beleza, do prazer, da procriação e da fertilidade. Seu poder é absoluto — até os deuses estão sujeitos a ela.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🌹 Rosa vermelha</span><span class="sym">🐦 Pomba</span>
+          <span class="sym">🐚 Concha marinha</span><span class="sym">🌿 Mirto</span>
+          <span class="sym">♀ Espelho de ouro</span><span class="sym">🍎 Maçã de ouro</span>
+          <span class="sym">🔥 Cinto mágico (Cestos)</span><span class="sym">🦢 Cisne</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">O Julgamento de Páris:</strong> As três deusas — Hera, Atena e Afrodite — disputaram a maçã de ouro de Éris (inscrita "para a mais bela"). Zeus se recusou a julgar e designou o príncipe troiano Páris. Hera ofereceu poder; Atena, sabedoria; Afrodite, a mulher mais bela do mundo (Helena). Páris escolheu Afrodite — desencadeando a Guerra de Troia.</p>
+          <p><strong class="hl">Eros e Psique:</strong> Afrodite, enciumada da beleza mortal de Psique, mandou Eros fazer a jovem se apaixonar por um monstro. Eros se apaixonou por ela. Uma série de provações até a imortalidade de Psique — o amor como caminho de ascensão da alma.</p>
+          <p><strong class="hl">Adônis:</strong> O jovem caçador mais belo do mundo. Afrodite e Perséfone disputavam seu amor. Zeus decidiu que passaria 4 meses com cada uma e 4 meses como escolhesse (escolheu Afrodite). Morreu atacado por um javali enviado por Ares. Dos gotas de seu sangue nasceram anêmonas vermelhas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEFESTO -->
+  <div class="god g-hef">
+    <div class="god-top">
+      <span class="god-icon">🔨</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#E09050">Hefesto</div>
+        <div class="god-also">Ἥφαιστος · O Deus Coxo · O Ferreiro Divino · O Artesão dos Deuses</div>
+        <span class="god-roman">Romano: Vulcano</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filho de Zeus e Hera (ou de Hera sozinha, por partenogênese, em algumas versões). O único deus fisicamente feio e coxo — jogado do Olimpo seja pelo pai (por tomar o partido de Hera) seja pela mãe (ao ver que nascera deformado). Criou maravilhas incomparáveis com sua forja: as armas dos deuses, o palácio do Olimpo, a armadura de Aquiles, as correntes de Prometeu, o autômato de bronze Talos.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🔨 Martelo e bigorna</span><span class="sym">🔥 Fogo (vulcão)</span>
+          <span class="sym">🐴 Jumento</span><span class="sym">⚙ Tenaz</span>
+          <span class="sym">🌋 Vulcão (morada)</span><span class="sym">🪖 Capacete forjado</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">CRIAÇÕES DIVINAS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Pandora:</strong> A primeira mulher, criada por Hefesto com argila e água, por ordem de Zeus para "punir" a humanidade que recebeu o fogo de Prometeu. Cada deus lhe deu um dom: Afrodite a beleza, Hermes a persuasão, Atena a habilidade, Apolo a música... Ela recebeu também um jarro (não caixa — erro de tradução de Erasmo) com todos os males do mundo.</p>
+          <p><strong class="hl">Armadura de Aquiles:</strong> Após Aquiles perder sua armadura para Heitor, Tétis pediu a Hefesto uma nova. O escudo forjado mostrava cenas de toda a civilização humana — casamentos, colheitas, batalhas, danças — o universo humano gravado em metal.</p>
+          <p><strong class="hl">Talos:</strong> Um gigante de bronze criado para proteger a ilha de Creta, circulando sua costa três vezes ao dia e lançando pedras imensas contra invasores. O primeiro autômato da imaginação humana.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERMES -->
+  <div class="god g-her">
+    <div class="god-top">
+      <span class="god-icon">🪄</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#60E090">Hermes</div>
+        <div class="god-also">Ἑρμῆς · O Mensageiro · Psicopompo · O Guia das Almas</div>
+        <span class="god-roman">Romano: Mercúrio</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filho de Zeus e da Plêiade Maia. O mais versátil dos deuses: mensageiro divino, guia dos mortos ao submundo (psicopompo), protetor dos viajantes, comerciantes, ladrões, inventores, atletas e oradores. Inventor da lira (com a carapaça de tartaruga) e da flauta (com canas). O único deus que transita livremente entre o Olimpo, a terra e o submundo.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">⚕ Caduceu (vara com serpentes)</span><span class="sym">🪖 Capacete alado (Pétasos)</span>
+          <span class="sym">👟 Sandálias aladas (Tálaras)</span><span class="sym">🐢 Tartaruga (lira)</span>
+          <span class="sym">🔑 Chave do submundo</span><span class="sym">🛣 Hermas (marcos de pedra)</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Invenção da Lira:</strong> No dia em que nasceu, enquanto Maia dormia, Hermes escapou da caverna e roubou o rebanho de Apolo. De volta, encontrou uma tartaruga e com sua carapaça e cordas de intestino bovino criou a primeira lira. Quando Apolo o confrontou, Hermes tocou a lira — Apolo se apaixonou pela música e aceitou o gado em troca.</p>
+          <p><strong class="hl">Argos Panoptes:</strong> Zeus mandou Hermes libertar Io da vigilância de Argos (cem olhos). Hermes se aproximou de Argos tocando flauta e contando histórias tediosas até todos os olhos do gigante adormecerem — então o decapitou. Foi seu primeiro assassinato.</p>
+          <p><strong class="hl">Psicopompo:</strong> Guiava as almas dos mortos até a margem do rio Estige, onde Caronte as transportava. Hermes é o único ser vivo capaz de fazer essa viagem e retornar — símbolo da consciência que pode explorar o inconsciente profundo e voltar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIONÍSIO -->
+  <div class="god g-dio">
+    <div class="god-top">
+      <span class="god-icon">🍇</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#C060C0">Dionísio</div>
+        <div class="god-also">Διόνυσος · Baco · O Deus Duas Vezes Nascido · O Libertador</div>
+        <span class="god-roman">Romano: Baco / Líber</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filho de Zeus e da mortal Sêmele. Duas vezes nascido: Sêmele pediu a Zeus que se revelasse em toda sua glória — e a luz divina a incinerou. Zeus salvou o feto e o costurou em sua coxa até terminar a gestação. Dionísio nasceu da coxa de Zeus. Deus do vinho, do teatro, do êxtase místico, da transformação, da loucura sagrada e da fertilidade. O mais humano dos deuses por ter mãe mortal.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🍇 Uva e vinho</span><span class="sym">🌿 Coroa de hera</span>
+          <span class="sym">🌿 Tirso (vara com pinha)</span><span class="sym">🐆 Leopardo/pantera</span>
+          <span class="sym">🐃 Touro (forma sagrada)</span><span class="sym">🎭 Máscara de teatro</span>
+          <span class="sym">🍷 Cálice</span><span class="sym">🐍 Serpente</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">MITOS PRINCIPAIS</div>
+        <div class="myth-text">
+          <p><strong class="hl">Origem do Teatro:</strong> Os festivais dionisíacos (Grandes Dionísias) em Atenas eram a origem do teatro ocidental. Os participantes usavam máscaras de Dionísio e encenavam mitos — da tragédia (que explora o sofrimento) à comédia (que celebra a vida). Ésquilo, Sófocles, Eurípides e Aristófanes nasceram nesses festivais.</p>
+          <p><strong class="hl">Ariadne:</strong> Após Teseu a abandonar em Naxos, Dionísio a encontrou e se apaixonou. Casaram-se e ela se tornou imortal. O deus dos mortais escolheu uma mortal abandonada — o amor como redenção.</p>
+          <p><strong class="hl">As Bacantes / Mênades:</strong> Suas seguidoras femininas entravam em estado de possessão divina (enthousiasmos = "deus dentro de você"), correndo pelas florestas, arrancando animais com as mãos nuas. O rei Penteu de Tebas proibiu o culto e foi despedaçado por sua própria mãe Ágave, possuída pelo furor divino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HÉSTIA -->
+  <div class="god g-hest">
+    <div class="god-top">
+      <span class="god-icon">🕯</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#E8A040">Héstia</div>
+        <div class="god-also">Ἑστία · A Primeira e a Última · Guardiã da Lareira Sagrada</div>
+        <span class="god-roman">Romano: Vesta</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">A mais velha dos filhos de Cronos (foi a primeira a ser engolida, portanto a última a ser vomitada — é a "mais velha e mais jovem"). Deusa do lar, da lareira, do fogo doméstico e da arquitetura. Recusou os pedidos de casamento de Apolo e Poseidon, pedindo a Zeus manter-se virgem eternamente. A mais discreta e menos dramática dos Olímpicos — não tem mitos dramáticos porque nunca saiu de casa. Mas sua lareira era o centro sagrado de toda cidade.</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🔥 Chama eterna da lareira</span><span class="sym">🏛 Templo redondo</span>
+          <span class="sym">⚱ Ânfora</span><span class="sym">🕯 Vela/tocha</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">SIGNIFICADO PROFUNDO</div>
+        <div class="myth-text"><p>Héstia é o centro. Em toda casa grega, a lareira era o altar de Héstia — não havia altar separado, pois ela habitava no próprio coração do lar. Em toda cidade, havia uma lareira pública no Prytaneion (sede do governo) com seu fogo jamais extinto. Quando uma colônia era fundada, levavam fogo da lareira da cidade-mãe para acender a lareira da nova cidade — Héstia criava continuidade civilizacional.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /god-grid -->
+
+<!-- ════════════════════════════════════════════
+     V. DEUSES MENORES E DIVINDADES SECUNDÁRIAS
+     ════════════════════════════════════════════ -->
+<div id="menores" class="chapter ch-sea reveal">
+  <span class="chapter-num">Capítulo Quinto</span>
+  <h2 style="color:var(--sea-l)">Deuses Menores e Divindades Secundárias</h2>
+  <p>Hades · Perséfone · Hécate · Eros · Íris · Nêmesis · Hipnos · Tânatos e muitos outros</p>
+</div>
+
+<div class="god-grid reveal">
+  <!-- HADES -->
+  <div class="god g-had">
+    <div class="god-top">
+      <span class="god-icon">💀</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#9060C0">Hades</div>
+        <div class="god-also">Ἅιδης · Plutão · O Senhor do Submundo · O Invisível</div>
+        <span class="god-roman">Romano: Plutão / Dis</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Irmão de Zeus e Poseidon. Após a Titanomaquia, o cosmos foi dividido: Zeus ficou com o céu, Poseidon com o mar e Hades com o submundo. Governa o reino dos mortos com justiça inexorável — não é cruel, mas implacável. Diferente do "Diabo" cristão: não é o mal, apenas o senhor do inevitável. Tão poderoso que os gregos evitavam pronunciar seu nome, referindo-se a ele como Plutão ("o Rico" — pois todas as riquezas minerais da terra vêm do submundo).</div>
+      <div class="god-section">
+        <div class="god-section-title">SÍMBOLOS</div>
+        <div class="sym-list">
+          <span class="sym">🐕 Cérbero (cão de 3 cabeças)</span><span class="sym">🔱 Bidente</span>
+          <span class="sym">🪖 Capacete da invisibilidade</span><span class="sym">🌿 Narciso e cipreste</span>
+          <span class="sym">🐍 Serpente</span><span class="sym">🪙 Moeda dos mortos</span>
+        </div>
+      </div>
+      <div class="god-section">
+        <div class="god-section-title">A GEOGRAFIA DO SUBMUNDO</div>
+        <div class="myth-text">
+          <p>O submundo de Hades é organizado e complexo: O rio <strong class="hl">Estige</strong> (o juramento dos deuses) forma sua fronteira. <strong class="hl">Caronte</strong> transporta as almas para o outro lado mediante uma moeda (por isso os gregos enterravam os mortos com uma moeda na boca ou nos olhos). <strong class="hl">Cérbero</strong> guarda a entrada: deixa todos entrar, deixa ninguém sair.</p>
+          <p>Dentro: os <strong class="hl">Campos Elísios</strong> (paraíso para os heróis e virtuosos), a <strong class="hl">Ilha dos Bem-Aventurados</strong> (para os que alcançam Elísio três vezes), o <strong class="hl">Asfódelo</strong> (para as almas comuns, que viveam uma existência vaga e sem memória) e o <strong class="hl">Tártaro</strong> (prisão de punição para os grandes criminosos: Sísifo, Tântalo, Ixíon, as Danaides).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSÉFONE -->
+  <div class="god g-per">
+    <div class="god-top">
+      <span class="god-icon">🌷</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#C080E0">Perséfone</div>
+        <div class="god-also">Περσεφόνη · Coré (a Jovem) · Rainha do Submundo · A Primavera</div>
+        <span class="god-roman">Romano: Proserpina</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Filha de Zeus e Deméter. Raptada por Hades enquanto colhia flores no campo (narcisos eram a armadilha). Tornou-se Rainha do Submundo — mas não uma rainha passiva. Nos poemas mais antigos, ela é feroz e poderosa: foi ela quem convenceu Hades a deixar Orfeu levar Eurídice, e foi ela quem guardou Psique enquanto esta cumpria as tarefas impostas por Afrodite.</div>
+      <div class="god-section">
+        <div class="god-section-title">SIGNIFICADO SIMBÓLICO</div>
+        <div class="myth-text"><p>Perséfone representa a dualidade da existência: é tanto a jovem (Coré) que recolhe flores na primavera quanto a rainha terrível dos mortos. Representa o grão de trigo que "morre" enterrado no inverno e "renasce" na primavera — o ciclo eterno de morte e renovação que é o segredo dos Mistérios de Elêusis.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HÉCATE -->
+  <div class="god g-hec">
+    <div class="god-top">
+      <span class="god-icon">🌑</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#A060D0">Hécate</div>
+        <div class="god-also">Ἑκάτη · A Tríplice Deusa · Senhora das Encruzilhadas · Feiticeira Suprema</div>
+        <span class="god-roman">Romano: Trivia</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">Titânide de imensa importância, honrada por Zeus com poderes sobre terra, mar e céu. Deusa da magia, da feitiçaria, dos espíritos, das encruzilhadas, da lua (especialmente a lua nova/escura), dos partos e das coisas da noite. Representada com três faces ou três corpos (para ver em todas as direções numa encruzilhada). Segura duas tochas, chaves ou serpentes. Acompanhada por cães uivantes.</div>
+      <div class="god-section">
+        <div class="god-section-title">O CULTO DAS ENCRUZILHADAS</div>
+        <div class="myth-text"><p>Na lua nova, oferendas eram deixadas nas encruzilhadas — locais sagrados a Hécate por serem pontos de transição, onde os mundos se tocam. A oferenda (<em>Deipnon Hekates</em>) incluía alho, ovos, peixes, queijo e mel. Qualquer pobre que passasse poderia comê-la. Medeia, a grande feiticeira, era sacerdotisa de Hécate.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EROS -->
+  <div class="god g-eros">
+    <div class="god-top">
+      <span class="god-icon">💘</span>
+      <div class="god-header">
+        <div class="god-name" style="color:#FF6090">Eros</div>
+        <div class="god-also">Ἔρως · Cupido · O Flecheiro do Amor · Filho de Afrodite</div>
+        <span class="god-roman">Romano: Cupido / Amor</span>
+      </div>
+    </div>
+    <div class="god-body">
+      <div class="god-desc">O Eros olímpico (filho de Afrodite e Ares ou de Afrodite e Hermes, conforme a versão) é diferente do Eros primordial. Garoto travesso com asas douradas, arco e flechas: as flechas douradas fazem alguém se apaixonar imediatamente; as de prata (ou chumbo) causam repulsa. Nenhum ser — mortal ou imortal — está imune às suas flechas.</div>
+      <div class="god-section">
+        <div class="god-section-title">O MITO DE EROS E PSIQUE</div>
+        <div class="myth-text"><p>A história mais completa: Psique era tão bela que as pessoas paravam de adorar Afrodite. A deusa enviou Eros para fazê-la se apaixonar por um monstro. Eros se feriu com sua própria flecha e se apaixonou. Ela foi levada a um palácio encantado onde se unia a ele no escuro (ele nunca podia ser visto). As irmãs invejosas a convenceram de que era um monstro. Psique acendeu uma lamparina e viu o deus mais belo. Eros fugiu. Psique passou por quatro tarefas impossíveis impostas por Afrodite até Zeus conceder sua imortalidade. O amor como caminho para a imortalidade da alma.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DIVINDADES MENORES ADICIONAIS -->
+<div class="titan-grid reveal">
+  <div class="titan" style="border-color:rgba(100,160,220,.3);background:linear-gradient(145deg,rgba(20,40,60,.8),rgba(6,12,20,.95))">
+    <div class="titan-name" style="color:#80B0E0">Íris</div>
+    <div class="titan-role">Mensageira dos Deuses · Personificação do Arco-Íris</div>
+    <div class="titan-desc">Filha de Taumante e Electra. O arco-íris é o caminho que ela percorre entre o Olimpo e a terra. Mais rápida que qualquer deus, carrega mensagens em um jarro de água do Estige (usado pelos deuses para fazer juramentos). Casada com Zéfiro (o vento ocidental).</div>
+  </div>
+  <div class="titan" style="border-color:rgba(80,80,100,.4);background:linear-gradient(145deg,rgba(16,16,24,.8),rgba(6,6,10,.95))">
+    <div class="titan-name" style="color:#A0A0C0">Hipnos</div>
+    <div class="titan-role">Deus do Sono · Irmão Gêmeo da Morte</div>
+    <div class="titan-desc">Filho de Nix. Mora numa caverna onde o rio Lete (esquecimento) flui — quem bebe esquece tudo. Pai dos Ôniros (sonhos). Sua presença adormece tudo ao redor — incluso Zeus, que ele adormeceu a pedido de Hera durante a Guerra de Troia. O sono como morte temporária, preparação para o sono eterno do irmão.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(60,60,80,.5);background:linear-gradient(145deg,rgba(12,12,18,.9),rgba(4,4,8,.98))">
+    <div class="titan-name" style="color:#8080A0">Tânatos</div>
+    <div class="titan-role">Deus da Morte · Irmão de Hipnos</div>
+    <div class="titan-desc">A morte como entidade — não Hades (o reino), mas o ato da morte em si. Filho de Nix. Os gregos o representavam como um jovem alado adormecido, oposto à imagem de esqueleto medieval. A morte é o gêmeo do sono, não um horror, mas um descanso.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(160,60,20,.3);background:linear-gradient(145deg,rgba(36,14,4,.8),rgba(10,4,2,.95))">
+    <div class="titan-name" style="color:#E08040">Nêmesis</div>
+    <div class="titan-role">Deusa da Retribuição · do Equilíbrio · da Justa Indignação</div>
+    <div class="titan-desc">Filha de Nix. Distribui sorte boa e má igualmente — ninguém deve ter mais do que merece. Pune o <em>hybris</em> (orgulho excessivo) com inexorável retribuição. Seu pássaro sagrado é o ganso; carrega uma espada e uma balança. Narciso foi punido por ela pela arrogância de não amar ninguém.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(60,100,40,.3);background:linear-gradient(145deg,rgba(14,24,8,.8),rgba(4,8,2,.95))">
+    <div class="titan-name" style="color:#80C040">As Moiras (Parcas)</div>
+    <div class="titan-role">As Tecelãs do Destino · As Três Irmãs do Fado</div>
+    <div class="titan-desc">Cloto (a Fiandeira — fia o fio da vida), Láquesis (a Sorteadora — determina o comprimento) e Átropos (a Inflexível — corta o fio). Filhas de Zeus e Témis (ou de Nix). Nem os deuses podem mudar o que as Moiras tecem. Toda vida é um fio: tem começo, desenvolvimento e corte inevitável.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(100,40,140,.3);background:linear-gradient(145deg,rgba(20,8,30,.8),rgba(6,2,10,.95))">
+    <div class="titan-name" style="color:#A060C0">As 9 Musas</div>
+    <div class="titan-role">Inspiradoras das Artes e Ciências</div>
+    <div class="titan-desc">Filhas de Zeus e Mnemosine. Calíope (poesia épica), Clio (história), Érato (poesia amorosa), Euterpe (música), Melpômene (tragédia), Polímnia (hinos sagrados), Terpsícore (dança), Tália (comédia) e Urânia (astronomia). Habitam no Monte Helicão. Todo artista grego invocava a Musa antes de sua obra.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(200,160,40,.3);background:linear-gradient(145deg,rgba(40,30,8,.8),rgba(12,8,2,.95))">
+    <div class="titan-name" style="color:#D0A040">Eos</div>
+    <div class="titan-role">Deusa da Aurora · A Rosy-Fingered Dawn de Homero</div>
+    <div class="titan-desc">Filha de Hipérion e Téia. "Aurora de dedos rosados" — abre as portas do céu para Hélio (o sol) a cada amanhecer. Apaixonou-se pelo mortal Títono e pediu a Zeus sua imortalidade — mas esqueceu de pedir sua eterna juventude. Títono envelheceu infinitamente enquanto ela permanecia jovem.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(40,80,140,.3);background:linear-gradient(145deg,rgba(10,20,36,.8),rgba(4,6,12,.95))">
+    <div class="titan-name" style="color:#6090C0">Anfitrite</div>
+    <div class="titan-role">Rainha dos Mares · Esposa de Poseidon</div>
+    <div class="titan-desc">Nereide, filha de Nereu. Poseidon a cortejou mas ela recusou. Ele enviou um golfinho como mensageiro, que a persuadiu tão gentilmente que ela aceitou. Em gratidão, Poseidon colocou o golfinho entre as estrelas. Preside as profundezas do oceano.</div>
+  </div>
+  <div class="titan" style="border-color:rgba(160,80,40,.3);background:linear-gradient(145deg,rgba(36,18,8,.8),rgba(10,4,2,.95))">
+    <div class="titan-name" style="color:#C08060">Pan</div>
+    <div class="titan-role">Deus do Pastoreio · dos Campos · da Selva · do Pânico</div>
+    <div class="titan-desc">Filho de Hermes e uma ninfa. Metade humano, metade bode — patas, chifres e barbas de bode. Toca a flauta de junco (sírinx). Deus dos campos, rebanhos, da natureza selvagem e da sexualidade. Seu grito súbito causava terror inexplicável nos caminhantes solitários — daí "pânico" (o medo de Pan).</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     VI. OS GRANDES HERÓIS
+     ════════════════════════════════════════════ -->
+<div id="herois" class="chapter ch-heroes reveal">
+  <span class="chapter-num">Capítulo Sexto</span>
+  <h2 style="color:var(--silver-l)">Os Grandes Heróis — A Ponte entre Deuses e Mortais</h2>
+  <p>semideuses, campeões e mortais extraordinários que moldaram o mundo</p>
+</div>
+
+<div class="hero-grid reveal">
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">💪</span>
+      <div class="hero-meta">
+        <div class="hero-name">Héracles (Hércules)</div>
+        <div class="hero-epithet">O mais forte dos mortais · filho de Zeus e Alcmena</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">O maior de todos os heróis. Filho de Zeus e da mortal Alcmena — Zeus se disfarçou de seu marido Anfitrião. Perseguido por Hera desde o nascimento (enviou serpentes à sua cuna — o bebê as estrangulou). Casado com Mégara, foi possuído por uma loucura enviada por Hera e matou mulher e filhos. Como penitência, cumpriu os Doze Trabalhos sob ordem do rei Euristeu.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">OS 12 TRABALHOS</div>
+        <ul class="feat-list">
+          <li>Matar o Leão de Nemeia (pele impenetrável — usada como armadura)</li>
+          <li>Destruir a Hidra de Lerna (9 cabeças que se multiplicavam)</li>
+          <li>Capturar a Corça Ceriênia (de chifres dourados, sagrada de Ártemis)</li>
+          <li>Capturar o Javali do Monte Erimanto (vivo)</li>
+          <li>Limpar os Estábulos de Augias em um dia (20 anos de esterco)</li>
+          <li>Expulsar as Aves do Lago Estinfalo (flechas de bronze)</li>
+          <li>Capturar o Touro de Creta (pai do Minotauro)</li>
+          <li>Capturar as Éguas Diomedas (que comiam carne humana)</li>
+          <li>Obter o Cinto de Hipólita (rainha das Amazonas)</li>
+          <li>Capturar os Bois de Gerião (monstro de três corpos)</li>
+          <li>Obter as Maçãs de Ouro das Hespérides (segredadas pelo Atlas)</li>
+          <li>Trazer Cérbero do Submundo (sem armas)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">⚔</span>
+      <div class="hero-meta">
+        <div class="hero-name">Aquiles</div>
+        <div class="hero-epithet">O Pé-Veloz · o maior guerreiro · herói da Ilíada</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">Filho do herói Peleu e da nereide Tétis. Sua mãe o banhara no rio Estige para torná-lo invulnerável — exceto pelo calcanhar onde o segurou. O maior guerreiro grego da Guerra de Troia. Protagonista da Ilíada de Homero — que não conta toda a guerra, apenas a ira de Aquiles após Agamenon lhe roubar a escrava Briseida.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">MOMENTOS-CHAVE</div>
+        <ul class="feat-list">
+          <li>Retirada da guerra por orgulho ferido (a Mênis — a Ira)</li>
+          <li>Morte de Pátroclo (seu amado companheiro) por Heitor</li>
+          <li>Retorno furioso — massacra troianos sem piedade</li>
+          <li>Mata Heitor e arrasta seu corpo três vezes em torno das muralhas</li>
+          <li>Cena comovente: devolve o corpo a Príamo (pai de Heitor)</li>
+          <li>Morto por Páris com uma flecha guiada por Apolo no calcanhar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">🧠</span>
+      <div class="hero-meta">
+        <div class="hero-name">Odisseu (Ulisses)</div>
+        <div class="hero-epithet">O Astucioso · O de Muitos Recursos · Rei de Ítaca</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">O mais inteligente dos heróis. Idealizou o Cavalo de Troia — a estratégia que venceu a guerra. Protagonista da Odisseia — 10 anos tentando voltar a Ítaca após a guerra, enfrentando monstros, deuses e tentações. Favorito de Atena. Símbolo da inteligência e astúcia humana diante das forças que superam a força bruta.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">AVENTURAS DA ODISSEIA</div>
+        <ul class="feat-list">
+          <li>Cíclope Polifemo — cegou-o dizendo que seu nome era "Ninguém"</li>
+          <li>Circe — a feiticeira que transformou seus homens em porcos</li>
+          <li>Descida ao submundo para consultar Tirésias</li>
+          <li>As Sereias — se amarrou ao mastro para resistir ao canto</li>
+          <li>Cila e Caríbdis — o monstro de seis cabeças e o redemoinho</li>
+          <li>Calipso — a ninfa que o reteve 7 anos querendo dar-lhe imortalidade</li>
+          <li>Retorno e matança dos pretendentes de sua fiel esposa Penélope</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">🏛</span>
+      <div class="hero-meta">
+        <div class="hero-name">Teseu</div>
+        <div class="hero-epithet">O Fundador de Atenas · Matador do Minotauro</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">Filho de Egeu (rei de Atenas) e de Poseidon simultaneamente (segundo algumas versões). Unificou a Ática sob Atenas. Voluntariou-se como tributo a Creta para enfrentar o Minotauro. Com o fio de Ariadne (que se apaixonou por ele) navegou o labirinto, matou a besta e voltou — mas esqueceu de mudar as velas pretas por brancas no retorno. Seu pai Egeu, avistando o navio de velas pretas (sinal de morte), se lançou ao mar — daí o nome "Mar Egeu".</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">FEITOS PRINCIPAIS</div>
+        <ul class="feat-list">
+          <li>Matou o Minotauro no labirinto de Dédalo</li>
+          <li>Limpou a estrada de Trezena a Atenas de 6 bandidos</li>
+          <li>Tentou raptar Perséfone com Pirítoo — preso no submundo</li>
+          <li>Guerreou contra as Amazonas — raptou Hipólita</li>
+          <li>Participou da caça ao Javali Calidônio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">⭐</span>
+      <div class="hero-meta">
+        <div class="hero-name">Perseu</div>
+        <div class="hero-epithet">O Matador da Medusa · Filho de Zeus e Dânae</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">Filho de Zeus (que veio como chuva de ouro) e Dânae. O rei Polidectes queria Dânae para si e enviou Perseu em missão suicida: buscar a cabeça da Medusa. Com ajuda dos deuses (Atena deu o escudo-espelho, Hermes as sandálias aladas e a espada, as Ninfas deram o capacete da invisibilidade e a alforje) — decapitou a Medusa sem olhar diretamente. Do pescoço cortado nasceram Pégaso e Crisaor. No retorno, salvou Andrômeda de um monstro marinho e a desposou.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">ELEMENTOS SIMBÓLICOS</div>
+        <ul class="feat-list">
+          <li>O espelho-escudo: vencer o monstro sem olhá-lo de frente</li>
+          <li>As sandálias aladas: elevar-se acima do plano terrestre</li>
+          <li>O capacete da invisibilidade: agir sem ser visto</li>
+          <li>A cabeça da Medusa como arma: o horror que destruiu o oponente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">🎵</span>
+      <div class="hero-meta">
+        <div class="hero-name">Orfeu</div>
+        <div class="hero-epithet">O Músico Divino · O que desceu ao Hades</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">Filho de Apolo e da Musa Calíope (ou do rei Éagro). Recebia a lira de ouro de Apolo. Sua música era capaz de mover pedras, acalmar rios bravios, encantar animais selvagens e adormecer monstros. Casou-se com Eurídice, que morreu de picada de cobra. Desceu ao Hades tocando lira — Caronte o transportou de graça, Cérbero adormeceu, Tântalo e Sísifo pararam seus suplícios, as Erínias choraram. Mas olhou para trás um segundo antes de chegar à luz.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">LEGADO ÓRFICO</div>
+        <ul class="feat-list">
+          <li>O Orfismo: tradição mística que pregava reencarnação e purificação</li>
+          <li>As Tábuas Órficas: textos de ouro encontrados em túmulos</li>
+          <li>Influência no pitagorismo e no platonismo</li>
+          <li>A lira de Orfeu foi lançada ao rio Héber e fluiu cantando até Lesbos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">🚢</span>
+      <div class="hero-meta">
+        <div class="hero-name">Jasão e os Argonautas</div>
+        <div class="hero-epithet">O Líder dos 50 heróis · Buscador do Velocino de Ouro</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">Filho do rei deposto de Iolcos. Para recuperar o trono, o rei Pélias o enviou buscar o Velocino de Ouro (o tosão de um carneiro alado dourado) na Cólquida, na extremidade do mundo conhecido. Jasão reuniu cinquenta heróis na nau Argo — incluindo Hércules, Orfeu, Teseu, Cástor e Pólux, Atalanta — e partiu numa das maiores aventuras coletivas da mitologia. Na Cólquida, a princesa Medeia (feiticeira filha do rei Aeetes) se apaixonou por Jasão e o ajudou. Depois, Jasão a abandonou por uma princesa mais conveniente — e Medeia se vingou de forma terrível.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">A EXPEDIÇÃO</div>
+        <ul class="feat-list">
+          <li>Passagem pelas Simplégades (rochas que se chocavam)</li>
+          <li>Harpias combatidas em Salmidesso</li>
+          <li>Três tarefas impossíveis na Cólquida (com ajuda de Medeia)</li>
+          <li>Fuga com o Velocino e Medeia</li>
+          <li>Traição de Jasão — abandono de Medeia</li>
+          <li>Medeia mata os filhos e a nova noiva — Jasão morre sozinho e miserável</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-head">
+      <span class="hero-icon">🎭</span>
+      <div class="hero-meta">
+        <div class="hero-name">Édipo</div>
+        <div class="hero-epithet">O Rei de Tebas · O Solucionador de Enigmas · A Tragédia do Destino</div>
+      </div>
+    </div>
+    <div class="hero-body">
+      <div class="hero-desc">O mito mais profundamente psicológico da Grécia — que deu nome ao "Complexo de Édipo" de Freud. O oráculo de Delfos profetizou que o filho de Laio mataria o pai e se casaria com a mãe. O bebê foi abandonado com os pés perfurados (daí o nome Édipo = "pés inchados"). Adotado pelo rei de Corinto. Adulto, ouviu a profecia e fugiu de casa (achando que seus pais adotivos eram os pais reais). No caminho, matou um velho em uma briga — era seu pai Laio. Chegando a Tebas, solucionou o enigma da Esfinge ("o que anda de manhã com quatro pés, ao meio-dia com dois e à tarde com três?") e libertou a cidade. Tornou-se rei e se casou com a rainha viúva Jocasta — sua mãe.</div>
+      <div class="hero-feats">
+        <div class="hero-feats-title">O QUE ÉDIPO SIMBOLIZA</div>
+        <ul class="feat-list">
+          <li>O enigma da Esfinge: "O Homem" — a consciência de si mesmo</li>
+          <li>A tentativa de fugir do destino que o cumpre</li>
+          <li>A hybris de querer saber a verdade a qualquer custo</li>
+          <li>Cegou-se ao descobrir a verdade — preferiu não ver</li>
+          <li>Base do teatro de Sófocles: Édipo Rei, Édipo em Colono, Antígona</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════
+     VII. AS CRIATURAS MÍTICAS
+     ════════════════════════════════════════════ -->
+<div id="criaturas" class="chapter ch-creatures reveal">
+  <span class="chapter-num">Capítulo Sétimo</span>
+  <h2 style="color:var(--wine-l)">As Criaturas Míticas — O Bestiário do Cosmos Grego</h2>
+  <p>monstros, seres fantásticos, guardiões e as forças do caos não domesticadas</p>
+</div>
+
+<div class="creature-grid reveal">
+  <div class="creature">
+    <div class="creature-name">Medusa</div>
+    <div class="creature-type">Górgona · "Ela que Paralisa"</div>
+    <div class="creature-desc">Uma das três Górgonas (junto com Esteno e Euríale). A única mortal. Cabelos de serpentes vivas, olhar que petrifica qualquer ser vivo. Sacerdotisa de Atena transformada em monstro. Do seu sangue decapitado nasceram Pégaso (cavalo alado) e Crisaor. Sua cabeça continuou petrificando mesmo após a morte.</div>
+    <div class="creature-symbol">🪞 Símbolo: O olhar que não pode ser enfrentado diretamente — só refletido. A confrontação indireta com o que nos amedronta.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Minotauro</div>
+    <div class="creature-type">Híbrido Humano-Touro · Filho de Pasífae e o Touro de Creta</div>
+    <div class="creature-desc">Cabeça de touro, corpo humano. Filho da rainha Pasífae de Creta (amaldiçoada por Poseidon a se apaixonar pelo touro sagrado) e do Touro Branco enviado por Poseidon. Mantido no Labirinto de Dédalo, alimentado com tributos humanos de Atenas (7 jovens e 7 donzelas a cada 9 anos). Morto por Teseu.</div>
+    <div class="creature-symbol">🌀 Símbolo: O labirinto como mente inconsciente; o Minotauro como o monstro no centro de nós mesmos que precisa ser enfrentado.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Cérbero</div>
+    <div class="creature-type">Cão de Três Cabeças · Guardião do Submundo</div>
+    <div class="creature-desc">Filho de Tifão e Equidna. Três cabeças (em algumas versões 50 ou 100). Cauda de serpente, serpentes no dorso. Deixa todos entrar no submundo, impede qualquer um de sair. Domado por Hércules (12º Trabalho), adormecido pela música de Orfeu, distraído com mel por Psique, e subornado com bolos de mel por Enéias.</div>
+    <div class="creature-symbol">🔐 Símbolo: A fronteira irreversível entre vida e morte. O inconsciente que guarda o que não pode retornar facilmente.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Hidra de Lerna</div>
+    <div class="creature-type">Serpente de Múltiplas Cabeças · Filha de Tifão e Equidna</div>
+    <div class="creature-desc">Serpente aquática monstruosa com 9 cabeças (algumas versões: 100 ou mais). Quando uma cabeça era cortada, cresciam duas no lugar. Uma cabeça era imortal. Hércules precisou da ajuda de Iolau (que cauterizava os cotos com fogo) e enterrou a cabeça imortal sob uma pedra enorme. Envenenou as pontas de suas flechas com o veneno da Hidra.</div>
+    <div class="creature-symbol">♾ Símbolo: O problema que se multiplica quando atacado pela metade — a necessidade de combater o mal em sua raiz.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Quimera</div>
+    <div class="creature-type">Monstro Composto · Filha de Tifão e Equidna</div>
+    <div class="creature-desc">Cabeça de leão, corpo de cabra, cauda de dragão ou serpente. Cuspia fogo. Devastava a Lícia até ser morta por Belerofonte montado em Pégaso — atirou uma lança com chumbo na ponta pela boca: o fogo derreteu o chumbo que sufocou o monstro por dentro.</div>
+    <div class="creature-symbol">🔥 Hoje "quimera" significa qualquer ilusão grandiosa ou sonho impossível — da impossibilidade da forma mista.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Escila e Caríbdis</div>
+    <div class="creature-type">Os Dois Perigos do Estreito · Entre o Monstro e o Redemoinho</div>
+    <div class="creature-desc">Escila: monstro de 12 patas, 6 cabeças com três fileiras de dentes afiados, habitava uma rocha num estreito. Caríbdis: um redemoinho gigantesco que engolia e regurgitava o mar três vezes por dia. Odisseu teve de passar entre os dois — escolheu Escila (perdendo 6 homens) a arriscar o redemoinho que poderia destruir o navio inteiro.</div>
+    <div class="creature-symbol">⚖ Símbolo: A expressão "estar entre Escila e Caríbdis" — entre dois males igualmente terríveis, sem saída perfeita.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Sereias</div>
+    <div class="creature-type">Criatura Híbrida Mulher-Pássaro (ou Mulher-Peixe) · Sedutoras Fatais</div>
+    <div class="creature-desc">Originalmente mulheres-pássaro (não peixes — a imagem de sereia-peixe é medieval). Seu canto era irresistível — atraía os marinheiros para as rochas. Seus ossos branqueavam nas praias. Odisseu ordenou que seus homens tapasem os ouvidos com cera; ele mesmo se amarrou ao mastro para ouvir sem se lançar ao mar. Orfeu, com sua música superior, cobriu o canto das Sereias e os Argonautas passaram ilesos.</div>
+    <div class="creature-symbol">🎵 Símbolo: O prazer que leva à destruição; a beleza como armadilha; o desejo que nos desvia do caminho.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Pégaso</div>
+    <div class="creature-type">Cavalo Alado · Nascido do Sangue da Medusa</div>
+    <div class="creature-desc">Nasceu do pescoço cortado de Medusa quando Perseu a decapitou. Filho de Poseidon e Medusa. Pata que golpeou o Monte Helicão fez brotar a fonte Hipocrene (fonte das Musas). Domado por Belerofonte com um freio dourado dado por Atena. Transportou Belerofonte em suas aventuras. Quando Belerofonte tentou voar ao Olimpo, Zeus enviou um moscão que picou Pégaso — o cavaleiro caiu, cego e aleijado. Pégaso chegou ao Olimpo sozinho.</div>
+    <div class="creature-symbol">✨ Símbolo: A imaginação poética que eleva além do mundano; a hybris de querer ser mais do que se é.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Tifão</div>
+    <div class="creature-type">O Mais Terrível de Todos os Monstros · Filho de Gaia e Tártaro</div>
+    <div class="creature-desc">Gerado por Gaia como vingança pela derrota dos Titãs. Tocava o céu com as cabeças de serpente; seus pés eram serpentes que se agitavam no Tártaro. Cem cabeças de dragão, olhos de fogo, vozes de cem animais. Quase derrotou Zeus — roubou seus tendões e os escondeu numa caverna. Hermes os recuperou. Zeus o esmagou sob o Monte Etna — as erupções são seus roncos de ira.</div>
+    <div class="creature-symbol">🌋 Símbolo: O caos absoluto que desafia a ordem divina; as forças da natureza indomável.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">As Erínias (Fúrias)</div>
+    <div class="creature-type">Deusas da Vingança · Perseguidoras do Crime</div>
+    <div class="creature-desc">Três irmãs: Alecto (a Implacável), Megera (a Invejosa), Tisífone (a Vingadora). Nascidas do sangue de Urano. Vivem no submundo mas sobem à terra para perseguir aqueles que cometeram crimes de sangue, especialmente contra familiares. Têm cabelos de serpente, asas de morcego, olhos que vertem sangue e carregam tochas e açoites. Perseguiram Orestes por matar a própria mãe (Clitemnestra) — mesmo que ela tivesse matado seu pai (Agamenon).</div>
+    <div class="creature-symbol">⚖ Símbolo: A culpa que não se apaga — a consciência que persegue sem descanso.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Os Ciclopes</div>
+    <div class="creature-type">Gigantes de Um Só Olho · Filhos de Gaia e Urano</div>
+    <div class="creature-desc">Três irmãos: Brontes (Trovão), Estéropes (Relâmpago), Arges (Brilho). Forjeiros divinos que criaram o raio de Zeus, o tridente de Poseidon e o capacete da invisibilidade de Hades. Polifemo (da Odisseia) é um ciclope diferente — filho de Poseidon, pastor selvagem e canibal, que Odisseu cegou com uma estaca de oliveira em brasa.</div>
+    <div class="creature-symbol">👁 Símbolo: A visão unilateral; a força sem nuances; o artesão divino versus o monstro primitivo — dois aspectos do mesmo ser.</div>
+  </div>
+  <div class="creature">
+    <div class="creature-name">Esfinge</div>
+    <div class="creature-type">Guardiã do Enigma · Rosto de Mulher · Corpo de Leão · Asas de Águia</div>
+    <div class="creature-desc">Enviada por Hera a Tebas como punição. Propunha um enigma aos passantes e devorava os que não respondiam: "O que anda com quatro patas de manhã, duas ao meio-dia e três à tarde?" Édipo respondeu: "O Homem" (bebê gateando, adulto andando, velho com bengala). A Esfinge se atirou ao abismo. O enigma foi resolvido — mas não o destino de Édipo.</div>
+    <div class="creature-symbol">❓ Símbolo: O enigma da própria identidade humana — a pergunta que nos define como espécie consciente.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     VIII. OS GRANDES MITOS
+     ════════════════════════════════════════════ -->
+<div id="granmitos" class="chapter ch-mitos reveal">
+  <span class="chapter-num">Capítulo Oitavo</span>
+  <h2 style="color:var(--olive-l)">Os Grandes Mitos — Histórias que Explicam o Mundo</h2>
+  <p>a Guerra de Troia · Prometeu · Pandora · Narciso · Ícaro · e muito mais</p>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">A Guerra de Troia</div>
+  <span class="myth-source">Fonte: Homero (Ilíada, Odisseia) · Higino · Ovídio · 10 anos de guerra, c. 1200 a.C.</span>
+  <p class="myth-p">Tudo começou com uma maçã de ouro. No casamento de Peleu e Tétis, a deusa Éris (Discórdia) — não convidada — lançou uma maçã inscrita "para a mais bela". Hera, Atena e Afrodite disputaram. Páris de Troia foi o juiz: Afrodite venceu prometendo-lhe Helena, a mulher mais bela do mundo — casada com Menelau, rei de Esparta.</p>
+  <p class="myth-p">Páris raptou (ou seduziu) Helena. Menelau convocou todos os reis gregos ligados por juramento (o "Juramento de Tíndaro") para recuperá-la. Mil navios foram lançados ao mar. A frota ficou presa em Áulis por vento contrário — Agamenon sacrificou sua filha Ifigênia a Ártemis para obter o vento favorável (vento que mais tarde Clitemnestra usaria como justificativa para matar o marido).</p>
+  <p class="myth-p">Dez anos de cerco. Heitor, o mais nobre guerreiro troiano, filho de Príamo, defendia a cidade. Aquiles, o mais poderoso dos gregos, retirou-se em ira. Pátroclo morreu usando sua armadura. Aquiles retornou e matou Heitor. O cavalo de Troia (estratégia de Odisseu) finalmente abriu as portas. Troia caiu — e com ela um mundo inteiro.</p>
+  <div class="myth-meaning">⚔ Significado: A Guerra de Troia não é apenas uma guerra histórica (possivelmente baseada em eventos reais). É o relato do fim de uma era — a Era dos Heróis — e do início do tempo dos homens comuns. É o mito da beleza (Helena) que pode destruir civilizações inteiras. É a tragédia do orgulho (Aquiles) que custa vidas preciosas. É a advertência de que os deuses usam os homens como peças em seu jogo.</div>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">Narciso e Eco</div>
+  <span class="myth-source">Fonte: Ovídio, Metamorfoses · o mito mais psicologicamente rico da antiguidade</span>
+  <p class="myth-p">Eco era uma ninfa que foi castigada por Hera: por ter distraído a deusa com longas conversas enquanto Zeus se divertia com ninfas, Eco perdeu a voz e só podia repetir as últimas palavras do que ouvia. Se apaixonou por Narciso, jovem caçador de beleza incomparável. Mas só podia repetir suas últimas palavras, nunca iniciar uma conversa. Narciso a rejeitou com crueldade. Ela se consumiu de amor até restar apenas a voz.</p>
+  <p class="myth-p">Nêmesis puniu Narciso fazendo-o ver sua própria imagem numa fonte. Ele se apaixonou por si mesmo — por aquela imagem que não podia tocar sem destruí-la. Ficou horas olhando para a própria reflexão, consumindo-se, até morrer. No lugar onde morreu nasceu a flor narciso.</p>
+  <div class="myth-meaning">🪞 Significado: O narcisismo como prisão da própria imagem; o amor que se devora a si mesmo. Eco representa o amor que perde a voz — que só pode repetir o outro, perdendo-se. O espelho d'água não mostra o ser real, apenas sua superfície — amar apenas a aparência, jamais a profundidade.</div>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">Prometeu e o Fogo</div>
+  <span class="myth-source">Ésquilo, Prometeu Acorrentado · Hesíodo, Teogonia e Os Trabalhos e os Dias</span>
+  <p class="myth-p">Prometeu (cujo nome significa "aquele que pensa antes") era o Titã mais inteligente e o mais benevolente para com a humanidade. Quando Zeus decidiu privar os mortais do fogo — mantendo-os em dependência dos deuses — Prometeu escalou o Olimpo, acendeu uma tocha no carro solar de Hélio e descendeu à terra com o fogo escondido num talo de funcho.</p>
+  <p class="myth-p">Zeus, furioso, o acorrentou a uma rocha no Cáucaso. Todos os dias, uma águia devorava seu fígado (que se regenerava à noite — ele era imortal, não podia morrer, apenas sofrer infinitamente). Manteve-se assim por séculos, até que Hércules, no 11º Trabalho, matou a águia e o libertou.</p>
+  <p class="myth-p">O preço para a humanidade foi Pandora — criada por Hefesto, presenteada com todos os males no jarro, que os liberou pelo mundo. Só restou a Esperança (Elpis) no fundo.</p>
+  <div class="myth-meaning">🔥 Significado: O conhecimento dado contra a vontade do poder. O sofrimento do intelectual que serve a humanidade contra o poder estabelecido. O fogo como tecnologia, ciência, civilização — todos os avanços humanos que vêm com um custo. Marx usou Prometeu como símbolo da revolução; os românticos como símbolo do gênio isolado; Nietzsche como símbolo do super-homem. O mito mais interpretado da antiguidade.</div>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">Dédalo e Ícaro</div>
+  <span class="myth-source">Ovídio, Metamorfoses · o mito da ambição e de seus limites</span>
+  <p class="myth-p">Dédalo era o maior artesão, inventor e arquiteto do mundo antigo — construiu o Labirinto de Creta para Minos. Mas depois de ajudar Teseu a fugir, Minos o aprisionou na ilha com seu filho Ícaro. Como o mar era vigiado, Dédalo criou asas de penas e cera. Advertiu Ícaro: não voe muito alto (o sol derrete a cera) nem muito baixo (o mar úmido alia as penas).</p>
+  <p class="myth-p">Ícaro, entusiasmado pela liberdade do voo, subiu cada vez mais alto — até a cera derreter. Caiu no mar. Dédalo chegou à Sicília sozinho, o coração despedaçado. Pendurou suas asas num templo de Apolo — nunca mais voou.</p>
+  <div class="myth-meaning">☀ Significado: A metáfora mais perfeita da hybris. O caminho do meio (nem muito alto, nem muito baixo) como sabedoria. Mas há outra leitura: Ícaro escolheu voar alto, mesmo que brevemente — e muitos argumentam que esse instante de gloria impossível vale mais do que uma vida de voo seguro e medíocre. O mito suporta as duas interpretações.</div>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">Sísifo</div>
+  <span class="myth-source">O mais perspicaz dos mortais · condenado ao trabalho eterno</span>
+  <p class="myth-p">Sísifo era o rei mais astuto que vivera — enganou a morte duas vezes. Na primeira, acorrentou Tânatos (a Morte personificada), impedindo qualquer mortal de morrer por um tempo — o que perturbou toda a ordem cósmica. Na segunda, convenceu Perséfone a deixá-lo voltar brevemente ao mundo dos vivos "para organizar seu funeral" — e simplesmente não voltou.</p>
+  <p class="myth-p">Zeus, no fim, o capturou e o condenou para sempre: empurrar uma pedra imensa até o topo de uma montanha. Quando quase chegava ao topo, a pedra rolava de volta — e ele recomeçava eternamente.</p>
+  <div class="myth-meaning">🪨 Significado: Albert Camus escreveu "O Mito de Sísifo" (1942) — seu ensaio fundamental sobre o absurdo da existência. "É preciso imaginar Sísifo feliz" — a aceitação lúcida do trabalho sem sentido como única forma de revolta significativa contra o absurdo. O trabalho cotidiano repetitivo como condição humana universal.</div>
+</div>
+
+<div class="myth-block reveal">
+  <div class="myth-title">Orfeu e Eurídice</div>
+  <span class="myth-source">O mito do amor que transcende a morte — e da dúvida que o destrói</span>
+  <p class="myth-p">Orfeu e Eurídice se amavam. No dia do casamento, Eurídice morreu de picada de cobra. Orfeu desceu ao submundo — o único ser vivo a fazê-lo e retornar por vontade própria — e tocou sua lira diante de Hades e Perséfone. Toda a música que havia composto de dor, todo amor que sentia, verteu em notas. Os juízes dos mortos choraram. O próprio Hades, comovido, concordou: ela poderia retornar — com uma condição. Orfeu deveria caminhar à sua frente, sem olhar para trás, até chegarem à luz do sol.</p>
+  <p class="myth-p">Orfeu caminhou. A ascensão foi longa. O silêncio atrás de si começou a pesar — ela estava ali? E se tivesse tropeçado? E se Hades tivesse mentido? Um segundo antes de chegarem à luz — ele olhou. Eurídice desapareceu para sempre.</p>
+  <div class="myth-meaning">💔 Significado: A confiança impossível. O amor que se perde no último instante pela dúvida. A ansiedade que destrói exatamente o que mais amamos. Mas também: talvez Orfeu soubesse que não merecia Eurídice devolta — e o olhar foi uma forma de honrá-la liberando-a. O mais trágico e o mais belo dos mitos de amor.</div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     IX. CORRESPONDÊNCIAS
+     ════════════════════════════════════════════ -->
+<div id="correspondencias" class="chapter ch-zeus reveal">
+  <span class="chapter-num">Capítulo Nono</span>
+  <h2 style="color:var(--gold-l)">Correspondências — Deuses Gregos, Romanos, Planetas e Arquétipos</h2>
+  <p>como o panteão grego se conecta com outras tradições e com a psicologia moderna</p>
+</div>
+
+<table class="corr-table reveal">
+  <thead>
+    <tr>
+      <th>Grego</th>
+      <th>Romano</th>
+      <th>Planeta</th>
+      <th>Domínio</th>
+      <th>Arquétipo Junguiano</th>
+      <th>Chakra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Zeus</td><td>Júpiter</td><td>♃ Júpiter</td><td>Céu, lei, autoridade</td><td>O Rei, o Pai</td><td>Sahasrara (Coroa)</td></tr>
+    <tr><td>Hera</td><td>Juno</td><td>☽ Lua (consort.)</td><td>Casamento, poder feminino</td><td>A Rainha, a Sombra do Poder</td><td>Anahata (Coração)</td></tr>
+    <tr><td>Poseidon</td><td>Netuno</td><td>♆ Netuno</td><td>Mar, emoções profundas</td><td>O Inconsciente</td><td>Svadhisthana (Sacro)</td></tr>
+    <tr><td>Deméter</td><td>Ceres</td><td>⚳ Ceres</td><td>Fertilidade, nutrição</td><td>A Grande Mãe</td><td>Muladhara (Base)</td></tr>
+    <tr><td>Atena</td><td>Minerva</td><td>♂ Marte (estratég.)</td><td>Sabedoria, estratégia</td><td>O Animus, a Sábia</td><td>Ajna (Terceiro Olho)</td></tr>
+    <tr><td>Apolo</td><td>Apolo</td><td>☉ Sol</td><td>Luz, razão, arte</td><td>O Herói Luminoso, o Self</td><td>Manipura (Plexo Solar)</td></tr>
+    <tr><td>Ártemis</td><td>Diana</td><td>☽ Lua</td><td>Natureza, intuição</td><td>A Virgem, a Caçadora</td><td>Ajna (Terceiro Olho)</td></tr>
+    <tr><td>Ares</td><td>Marte</td><td>♂ Marte</td><td>Guerra, agressividade</td><td>A Sombra Masculina</td><td>Muladhara (Base)</td></tr>
+    <tr><td>Afrodite</td><td>Vênus</td><td>♀ Vênus</td><td>Amor, beleza, desejo</td><td>Anima, a Amante</td><td>Anahata (Coração)</td></tr>
+    <tr><td>Hefesto</td><td>Vulcano</td><td>♂ Marte (forja)</td><td>Artesanato, tecnologia</td><td>O Artífice Ferido</td><td>Manipura (Plexo)</td></tr>
+    <tr><td>Hermes</td><td>Mercúrio</td><td>☿ Mercúrio</td><td>Comunicação, viagem</td><td>O Trickster, o Mensageiro</td><td>Vishuddha (Garganta)</td></tr>
+    <tr><td>Dionísio</td><td>Baco</td><td>♆ Netuno</td><td>Êxtase, transformação</td><td>O Autodevastador, o Liberador</td><td>Svadhisthana (Sacro)</td></tr>
+    <tr><td>Hades</td><td>Plutão</td><td>♇ Plutão</td><td>Morte, riqueza oculta</td><td>A Sombra, o Inconsciente</td><td>Muladhara (Base)</td></tr>
+    <tr><td>Hécate</td><td>Trivia</td><td>☽ Lua (escura)</td><td>Magia, encruzilhadas</td><td>A Velha Sábia (Wise Woman)</td><td>Ajna (Terceiro Olho)</td></tr>
+    <tr><td>Eros</td><td>Cupido</td><td>♀ Vênus (jovem)</td><td>Desejo, atração</td><td>Eros (pulsão de vida de Freud)</td><td>Anahata (Coração)</td></tr>
+    <tr><td>Héstia</td><td>Vesta</td><td>♄ Saturno (estab.)</td><td>Lar, centro, fogo</td><td>A Contemplativa, o Centro</td><td>Muladhara (Base)</td></tr>
+    <tr><td>Cronos</td><td>Saturno</td><td>♄ Saturno</td><td>Tempo, limitação</td><td>O Velho Rei, o Devorador</td><td>Muladhara/Bindu</td></tr>
+    <tr><td>Prometeu</td><td>Prometeu</td><td>♅ Urano</td><td>Rebeldia, invenção</td><td>O Rebelde, o Intelectual</td><td>Ajna (Terceiro Olho)</td></tr>
+    <tr><td>Pan</td><td>Fauno</td><td>♂ Marte (natural)</td><td>Natureza, instinto</td><td>O Instinto Primordial</td><td>Muladhara/Svadhisthana</td></tr>
+    <tr><td>Nêmesis</td><td>Invidius</td><td>♎ Libra</td><td>Equilíbrio, retribuição</td><td>O Regulador Kármico</td><td>Manipura (Plexo)</td></tr>
+  </tbody>
+</table>
+
+<!-- ════════════════════════════════════════════
+     X. LEGADO E INFLUÊNCIA
+     ════════════════════════════════════════════ -->
+<div id="legado" class="chapter ch-zeus reveal">
+  <span class="chapter-num">Capítulo Décimo</span>
+  <h2 style="color:var(--gold-l)">O Legado Eterno — A Mitologia Grega no Mundo de Hoje</h2>
+  <p>como os deuses e mitos sobreviveram e continuam vivos em nossa civilização</p>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(200,168,75,.25);background:linear-gradient(145deg,rgba(30,24,8,.7),rgba(8,6,2,.95))">
+  <div class="myth-title" style="color:var(--gold-l)">Nos Nomes dos Planetas e Constelações</div>
+  <p class="myth-p">Os sete planetas visíveis a olho nu receberam nomes de deuses romanos (derivados dos gregos). Os dias da semana em inglês e outras línguas europeias preservam esses nomes: Sunday/Sol, Monday/Lua, Tuesday/Tiw (Marte), Wednesday/Woden (Mercúrio), Thursday/Thor (Júpiter), Friday/Frigg (Vênus), Saturday/Saturno. 88 constelações reconhecidas pela astronomia moderna têm nomes gregos.</p>
+  <div class="myth-meaning">As 88 constelações reconhecidas pela astronomia moderna têm nomes greco-romanos. Cada vez que você olha para o céu e vê Órion, Andromeda, Perseu ou as Plêiades, você está habitando o universo dos mitos.</div>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(200,168,75,.25);background:linear-gradient(145deg,rgba(30,24,8,.7),rgba(8,6,2,.95))">
+  <div class="myth-title" style="color:var(--gold-l)">Na Psicologia — Os Deuses como Arquétipos</div>
+  <p class="myth-p">Sigmund Freud nomeou seu conceito central de "Complexo de Édipo". Carl Jung desenvolveu a teoria dos <strong class="hl">arquétipos</strong> — padrões universais do inconsciente coletivo — usando figuras mitológicas como modelos: o Herói, a Sombra, a Anima/Animus, o Self, o Velho Sábio, a Grande Mãe. A psicóloga Jean Shinoda Bolen escreveu "Deusas em Toda Mulher" e "Deuses em Todo Homem" — mostrando como os perfis psicológicos humanos correspondem aos arquétipos olímpicos.</p>
+  <p class="myth-p">Cada deus grego é um modo de ser no mundo: a pessoa que vive como Ares (impulso agressivo e guerra) versus a que vive como Apolo (racionalidade e arte) versus a que vive como Dionísio (êxtase e transformação). A mitologia grega é, no fundo, uma psicologia simbólica antes da psicologia existir como ciência.</p>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(200,168,75,.25);background:linear-gradient(145deg,rgba(30,24,8,.7),rgba(8,6,2,.95))">
+  <div class="myth-title" style="color:var(--gold-l)">Na Linguagem Cotidiana</div>
+  <p class="myth-p">Centenas de palavras do português moderno têm origem nos mitos: <strong class="hl">pânico</strong> (medo de Pan), <strong class="hl">música</strong> (das Musas), <strong class="hl">narcisismo</strong> (Narciso), <strong class="hl">eco</strong> (a ninfa Eco), <strong class="hl">caos</strong> (a primeira divindade), <strong class="hl">higiênico</strong> (Higeia, filha de Asclépio/saúde), <strong class="hl">afrodisíaco</strong> (Afrodite), <strong class="hl">erote</strong>/<strong class="hl">erótico</strong> (Eros), <strong class="hl">cronologia</strong> (Cronos), <strong class="hl">oceano</strong> (Oceano-Titã), <strong class="hl">atlas</strong> (o Titã), <strong class="hl">quimera</strong> (o monstro composto), <strong class="hl">tantalizar</strong> (Tântalo), <strong class="hl">herculano</strong>, <strong class="hl">odisseia</strong>, <strong class="hl">psique</strong> (Psique), <strong class="hl">mentor</strong> (o tutor de Telêmaco), <strong class="hl">estige</strong> (o rio), <strong class="hl">olímpico</strong>, <strong class="hl">néctar</strong>, <strong class="hl">ambrosia</strong>.</p>
+</div>
+
+<div class="myth-block reveal" style="border-color:rgba(200,168,75,.25);background:linear-gradient(145deg,rgba(30,24,8,.7),rgba(8,6,2,.95))">
+  <div class="myth-title" style="color:var(--gold-l)">No Esoterismo e nas Tradições Herméticas</div>
+  <p class="myth-p">A mitologia grega é a espinha dorsal do hermetismo ocidental. Os deuses olímpicos correspondem aos sete planetas astrológicos, que por sua vez correspondem a metais alquímicos, a órgãos do corpo, a notas musicais, a letras hebraicas e a chakras. O Caduceu de Hermes (Mercúrio) tornou-se o símbolo da medicina. A Lira de Apolo é o modelo das escalas musicais. O Labirinto de Dédalo é o modelo do caminho iniciático. Cada figura mítica é uma chave para um sistema de correspondências que unifica astronomia, psicologia, alquimia e espiritualidade.</p>
+  <p class="myth-p">Na Cabala integrada com a Mitologia (como em Éliphas Lévi e na Golden Dawn), os deuses gregos são mapeados na Árvore da Vida: Zeus/Kether, Hefesto/Geburah, Afrodite/Netzach, Hermes/Hod, Deméter/Malkuth. O panteão grego não é separado do sistema esotérico — é uma de suas linguagens.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-symbol">☽ ✦ ⊙ ✦ ☽</span>
+  <p class="foot-text">
+    "Os mitos são histórias públicas sobre sonhos privados."<br>
+    — Joseph Campbell, O Herói de Mil Faces<br><br>
+    "A mitologia não é mentira. A mitologia é poesia, é metáfora.<br>
+    Foi mal interpretada como biologia, história, astronomia.<br>
+    Mas a mitologia é uma arte muito fina."<br>
+    — Joseph Campbell<br><br>
+    <em>Fontes: Hesíodo (Teogonia · Os Trabalhos e os Dias) · Homero (Ilíada · Odisseia)<br>
+    Ovídio (Metamorfoses) · Ésquilo · Sófocles · Eurípides · Píndaro<br>
+    Pierre Grimal (Dicionário de Mitologia Grega e Romana) · Robert Graves (Os Mitos Gregos)<br>
+    Jean Shinoda Bolen (Deusas em Toda Mulher · Deuses em Todo Homem)</em>
+  </p>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})
+},{threshold:.06})
+document.querySelectorAll('.reveal,.god,.hero,.titan,.creature,.myth-block').forEach(el=>io.observe(el))
+
+// Nav dots
+const secs = [...document.querySelectorAll('[id]')]
+const dots = [...document.querySelectorAll('.nav-dot')]
+const io2 = new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      const id=x.target.id
+      dots.forEach(d=>{
+        d.classList.toggle('act',d.getAttribute('href')==='#'+id)
+      })
+    }
+  })
+},{threshold:.35})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

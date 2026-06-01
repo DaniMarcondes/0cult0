@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livro dos Mortos Egípcio — Enciclopédia Iniciática Total</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   LIVRO DOS MORTOS — DESIGN EGÍPCIO INICIÁTICO
+   Paleta: Papiro · Ouro Antigo · Lápis-Lazúli · Hieróglifos
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Papiro e Areia */
+  --papyrus-light: #f2e8c9;
+  --papyrus:       #e8d9a8;
+  --papyrus-dark:  #d4c080;
+  --papyrus-deep:  #c0a855;
+  --sand:          #b89040;
+  /* Ouro Egípcio */
+  --gold:          #d4a017;
+  --gold-bright:   #f0c040;
+  --gold-pale:     #e8d070;
+  --gold-dark:     #a07810;
+  --gold-deep:     #705008;
+  /* Lápis-Lazúli */
+  --lapis:         #1a3a6b;
+  --lapis-bright:  #2a5aab;
+  --lapis-light:   #4070c0;
+  --lapis-pale:    rgba(42,90,171,0.12);
+  /* Tinta Egípcia */
+  --ink:           #1a1205;
+  --ink-mid:       #2e2008;
+  --ink-soft:      #3d2d0f;
+  /* Carmesim do Deserto */
+  --desert-red:    #8b2a0f;
+  --desert-red-b:  #b03a18;
+  --desert-faint:  rgba(139,42,15,0.08);
+  /* Verde Osiríaco */
+  --osiris-green:  #1a4a2a;
+  --osiris-light:  #2a7040;
+  --osiris-faint:  rgba(26,74,42,0.08);
+  /* Noche do Duat */
+  --duat-dark:     #080512;
+  --duat-mid:      #100a20;
+  --duat-blue:     #0d1535;
+  --sidebar-w:     300px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--papyrus);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.3'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23f)' opacity='0.06'/%3E%3C/svg%3E");
+  color: var(--ink-soft);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.88;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--papyrus-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ═══ BARRA DE PROGRESSO ═══ */
+#reading-progress {
+  position: fixed; top: 0; left: var(--sidebar-w); right: 0;
+  height: 4px; background: var(--papyrus-dark); z-index: 300;
+}
+#reading-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--desert-red), var(--gold), var(--gold-bright));
+  width: 0%; transition: width .12s;
+}
+
+/* ═══ SIDEBAR EGÍPCIA ═══ */
+#sidebar {
+  position: fixed; left: 0; top: 0;
+  width: var(--sidebar-w); height: 100vh;
+  background: var(--duat-dark);
+  background-image:
+    linear-gradient(180deg, rgba(212,160,23,0.05) 0%, transparent 30%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.04'/%3E%3C/svg%3E");
+  border-right: 2px solid var(--gold-dark);
+  overflow-y: auto; z-index: 100; padding: 0 0 40px;
+  transition: transform .3s ease;
+  box-shadow: 5px 0 40px rgba(0,0,0,0.6);
+}
+
+#sidebar-header {
+  background: linear-gradient(180deg, #1a0a00 0%, var(--duat-dark) 100%);
+  padding: 24px 16px 20px;
+  border-bottom: 1px solid var(--gold-dark);
+  text-align: center; position: relative;
+}
+#sidebar-header::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 15%; right: 15%;
+  height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.sidebar-eye {
+  display: block; text-align: center;
+  margin-bottom: 8px; font-size: 10px;
+  letter-spacing: 3px; color: var(--gold);
+  opacity: .7;
+}
+
+/* Olho de Hórus em SVG embutido */
+.sidebar-horus {
+  display: block; margin: 0 auto 12px;
+}
+
+.sidebar-title-main {
+  font-family: 'Cinzel Decorative', serif; font-size: 11px;
+  color: var(--gold-pale); letter-spacing: 2px; display: block;
+  margin-bottom: 4px;
+}
+.sidebar-title-sub {
+  font-family: 'Cinzel', serif; font-size: 8px;
+  letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase;
+  display: block;
+}
+
+/* Hieróglifos decorativos na sidebar */
+.sidebar-hieroglyph {
+  text-align: center; padding: 10px 0 2px;
+  font-size: 20px; color: var(--gold-dark); opacity: 0.5;
+  letter-spacing: 4px;
+}
+
+.nav-group-title {
+  font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold-dark);
+  padding: 12px 16px 4px;
+  border-top: 1px solid rgba(212,160,23,0.12);
+  margin-top: 6px; display: block;
+}
+.nav-group-title:first-of-type { border-top: none; margin-top: 0; }
+
+.nav-link {
+  display: block; padding: 5px 16px;
+  color: rgba(232,217,168,0.7);
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif; font-size: 13px; line-height: 1.45;
+  border-left: 2px solid transparent;
+  transition: all .2s;
+}
+.nav-link:hover {
+  color: var(--gold-pale); border-left-color: var(--gold);
+  background: rgba(212,160,23,0.08); padding-left: 22px;
+}
+.nav-link.sub { padding-left: 28px; font-size: 12px; color: rgba(232,217,168,0.45); }
+.nav-link.sub:hover { padding-left: 34px; }
+.nav-active {
+  color: var(--gold-bright) !important;
+  border-left-color: var(--gold-bright) !important;
+  background: rgba(212,160,23,0.12) !important;
+}
+
+/* ═══ TOGGLE SIDEBAR ═══ */
+#sidebar-toggle {
+  position: fixed; left: var(--sidebar-w); top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold-dark); color: var(--papyrus-light);
+  border: none; padding: 15px 6px; cursor: pointer;
+  z-index: 101; border-radius: 0 6px 6px 0;
+  font-family: 'Cinzel', serif; font-size: 9px;
+  letter-spacing: 2px; writing-mode: vertical-rl;
+  transition: all .3s; box-shadow: 3px 0 12px rgba(0,0,0,0.4);
+}
+#sidebar-toggle:hover { background: var(--gold); color: var(--ink); }
+
+/* ═══ MAIN ═══ */
+#main { margin-left: var(--sidebar-w); min-height: 100vh; transition: margin-left .3s; }
+
+/* ═══ HERO — PORTÃO DO DUAT ═══ */
+#hero {
+  min-height: 100vh;
+  background: var(--duat-dark);
+  background-image:
+    radial-gradient(ellipse at 50% 20%, rgba(212,160,23,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(26,58,107,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(139,42,15,0.2) 0%, transparent 45%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 40px 70px;
+  position: relative; overflow: hidden;
+}
+
+/* Grade de estrelas */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(240,192,64,0.6) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.07; pointer-events: none;
+}
+
+/* Linha horizontal de hieróglifos */
+.hero-hieroglyphs {
+  font-size: 24px; color: var(--gold-dark);
+  letter-spacing: 8px; opacity: .5;
+  margin-bottom: 24px; display: block;
+  animation: fade-float 6s ease-in-out infinite;
+}
+@keyframes fade-float {
+  0%,100% { opacity: .35; transform: translateY(0); }
+  50%      { opacity: .6;  transform: translateY(-4px); }
+}
+
+/* Olho de Hórus central hero */
+.hero-eye-container {
+  width: 120px; height: 80px; margin: 0 auto 30px;
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 4.5vw, 60px);
+  color: var(--gold-pale);
+  line-height: 1.15; margin-bottom: 8px;
+  text-shadow: 0 0 60px rgba(212,160,23,0.4), 0 2px 30px rgba(0,0,0,0.9);
+}
+.hero-title-eg {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: clamp(16px, 2.5vw, 26px);
+  color: var(--gold); margin-bottom: 6px;
+  letter-spacing: 2px;
+}
+.hero-title-pt {
+  font-family: 'Cinzel', serif; font-size: clamp(13px, 1.8vw, 18px);
+  color: var(--papyrus-dark); letter-spacing: 5px;
+  text-transform: uppercase; margin-bottom: 40px;
+}
+
+.hero-rule {
+  width: 100%; max-width: 600px; margin: 0 auto 36px;
+  position: relative; text-align: center;
+}
+.hero-rule::before {
+  content: '';
+  display: block; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+}
+.hero-rule-icon {
+  display: inline-block; margin-top: -10px;
+  background: var(--duat-dark); padding: 0 16px;
+  color: var(--gold); font-size: 18px;
+}
+
+.hero-desc {
+  max-width: 720px;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: rgba(232,217,168,0.82);
+  line-height: 1.95; margin-bottom: 52px;
+}
+
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.hero-tag {
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2.5px;
+  padding: 5px 14px; text-transform: uppercase;
+  border: 1px solid var(--gold-dark); color: var(--gold-dark);
+  background: rgba(212,160,23,0.07); transition: all .2s; cursor: default;
+}
+.hero-tag:hover { background: rgba(212,160,23,0.18); color: var(--gold); border-color: var(--gold); }
+
+/* ═══ SECTIONS ═══ */
+.section {
+  padding: 80px 70px;
+  border-bottom: 1px solid var(--papyrus-dark);
+  position: relative;
+}
+.section.night {
+  background: var(--duat-mid);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)' opacity='0.03'/%3E%3C/svg%3E");
+  color: var(--papyrus-light);
+}
+.section.night p, .section.night li { color: rgba(232,217,168,0.82); }
+.section.night h2.content-h2 { color: var(--gold-pale); border-bottom-color: rgba(212,160,23,0.25); }
+.section.night h3.content-h3 { color: var(--gold); }
+.section.night h4.content-h4 { color: var(--gold-pale); }
+.section.papyrus { background: var(--papyrus-light); }
+.section.sand    { background: var(--papyrus); }
+
+/* Borda ornamental de seção */
+.section::before {
+  content: '';
+  display: block; height: 4px; margin-bottom: 64px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--papyrus-dark) 8%,
+    var(--gold-dark) 30%, var(--gold) 50%,
+    var(--gold-dark) 70%, var(--papyrus-dark) 92%, transparent 100%);
+}
+.section.night::before {
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(212,160,23,0.3) 8%,
+    var(--gold-dark) 30%, var(--gold) 50%,
+    var(--gold-dark) 70%, rgba(212,160,23,0.3) 92%, transparent 100%);
+}
+
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-number {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 6px;
+  color: var(--gold-dark); text-transform: uppercase; display: block; margin-bottom: 14px;
+}
+.night .section-number { color: var(--gold-dark); }
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(20px, 3vw, 38px);
+  color: var(--desert-red); line-height: 1.22; margin-bottom: 14px;
+}
+.night .section-title { color: var(--gold-pale); }
+.section-subtitle {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: var(--ink-mid); margin-bottom: 22px;
+}
+.night .section-subtitle { color: rgba(232,217,168,0.65); }
+.section-divider {
+  text-align: center; color: var(--gold-dark); font-size: 18px; letter-spacing: 10px;
+}
+
+/* ═══ HEADINGS ═══ */
+h2.content-h2 {
+  font-family: 'Cinzel', serif; font-size: 23px; color: var(--desert-red);
+  margin: 58px 0 22px; padding-bottom: 11px;
+  border-bottom: 1px solid var(--papyrus-dark);
+  position: relative;
+}
+h2.content-h2::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; width: 80px; height: 2px;
+  background: var(--gold-dark);
+}
+h3.content-h3 {
+  font-family: 'Cinzel', serif; font-size: 17px; color: var(--gold-deep);
+  margin: 42px 0 16px; letter-spacing: .5px;
+}
+h4.content-h4 {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 600;
+  font-size: 18px; color: var(--desert-red); margin: 28px 0 12px;
+}
+
+/* ═══ TYPOGRAPHY ═══ */
+p { margin-bottom: 22px; text-align: justify; hyphens: auto; }
+em  { color: var(--ink-mid); font-style: italic; }
+strong { color: var(--ink); font-weight: 600; }
+
+.dropcap::first-letter {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 82px; float: left; line-height: .74;
+  margin: 8px 14px 0 0; color: var(--gold-dark);
+  text-shadow: 2px 3px 0 var(--desert-red), 4px 5px 10px rgba(0,0,0,0.2);
+}
+
+.em-gold  { color: var(--gold-dark); font-weight: 600; }
+.em-red   { color: var(--desert-red); font-weight: 600; }
+.em-lapis { color: var(--lapis-bright); font-weight: 600; }
+.em-green { color: var(--osiris-green); font-weight: 600; }
+.em-lat   { font-style: italic; color: var(--ink-mid); }
+.em-eg    { font-style: italic; color: var(--desert-red); letter-spacing: .5px; }
+
+/* Hieróglifos inline */
+.hiero {
+  display: inline-block; font-size: 1.3em; line-height: 1;
+  color: var(--gold-dark); vertical-align: middle;
+  padding: 0 3px;
+}
+
+/* ═══ BLOCKQUOTE ═══ */
+blockquote {
+  border-left: 4px solid var(--gold-dark);
+  padding: 20px 30px; margin: 38px 0;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 17px; color: var(--ink-mid);
+  background: rgba(212,160,23,0.07);
+  position: relative;
+}
+blockquote::before {
+  content: '𓂀'; /* Olho de Hórus */
+  position: absolute; top: -10px; left: 20px;
+  font-size: 24px; color: var(--gold-dark); opacity: .6;
+  background: var(--papyrus-light); padding: 0 6px; line-height: 1;
+}
+blockquote cite {
+  display: block; margin-top: 12px;
+  font-size: 11px; color: var(--gold-dark); font-style: normal;
+  font-family: 'Cinzel', serif; letter-spacing: 2px; text-transform: uppercase;
+}
+.night blockquote { background: rgba(212,160,23,0.06); color: rgba(232,217,168,0.85); }
+.night blockquote::before { background: var(--duat-mid); }
+
+/* ═══ CALLOUT BOXES ═══ */
+.callout {
+  padding: 24px 30px; margin: 38px 0;
+  border: 1px solid var(--papyrus-dark);
+  position: relative; background: rgba(255,255,255,0.4);
+}
+.callout::before {
+  content: attr(data-label);
+  position: absolute; top: -11px; left: 20px;
+  padding: 0 12px;
+  font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.callout.osiris   { border-color: var(--osiris-green); background: var(--osiris-faint); }
+.callout.osiris::before   { color: var(--osiris-green); background: var(--papyrus-light); }
+.callout.ra       { border-color: var(--gold-dark); background: rgba(212,160,23,0.08); }
+.callout.ra::before       { color: var(--gold-dark); background: var(--papyrus-light); }
+.callout.maat     { border-color: var(--lapis); background: var(--lapis-pale); }
+.callout.maat::before     { color: var(--lapis); background: var(--papyrus-light); }
+.callout.anubis   { border-color: var(--ink-mid); background: rgba(30,20,8,0.06); }
+.callout.anubis::before   { color: var(--ink-mid); background: var(--papyrus-light); }
+.callout.duat     { border-color: var(--lapis-bright); background: rgba(42,90,171,0.07); }
+.callout.duat::before     { color: var(--lapis-bright); background: var(--papyrus-light); }
+.callout.warning  { border-color: var(--desert-red); background: var(--desert-faint); }
+.callout.warning::before  { color: var(--desert-red); background: var(--papyrus-light); }
+/* Night versions */
+.night .callout::before   { background: var(--duat-mid); }
+.night .callout.ra::before { background: var(--duat-mid); }
+.night .callout.maat::before { background: var(--duat-mid); }
+.night .callout.osiris::before { background: var(--duat-mid); }
+.night .callout.duat::before { background: var(--duat-mid); }
+
+/* ═══ TABLES ═══ */
+.table-wrapper { overflow-x: auto; margin: 38px 0; border: 1px solid var(--papyrus-dark); }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+thead tr { background: var(--ink); }
+th {
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-pale);
+  padding: 13px 16px; text-align: left; border-bottom: 2px solid var(--gold-dark);
+}
+td { padding: 11px 16px; border-bottom: 1px solid var(--papyrus-dark); vertical-align: top; }
+tr:nth-child(even) td { background: rgba(192,168,80,0.1); }
+tr:hover td { background: rgba(212,160,23,0.1); }
+
+/* ═══ CARDS ═══ */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 22px; margin: 38px 0; }
+.card {
+  border: 1px solid var(--papyrus-dark); padding: 26px;
+  background: rgba(255,255,255,0.45);
+  transition: all .3s; position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--desert-red));
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(0,0,0,0.12); border-color: var(--gold); }
+.card:hover::before { transform: scaleX(1); }
+.card-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+.card-title { font-family: 'Cinzel', serif; font-size: 14px; color: var(--desert-red); margin-bottom: 10px; letter-spacing: .5px; }
+.card-text  { font-size: 14px; color: var(--ink-soft); line-height: 1.72; }
+
+/* God cards */
+.god-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; margin: 36px 0; }
+.god-card {
+  border: 1px solid var(--papyrus-dark); padding: 22px;
+  background: rgba(255,255,255,0.4); transition: all .3s;
+  text-align: center; position: relative;
+}
+.god-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.god-symbol { font-size: 44px; display: block; margin-bottom: 10px; }
+.god-name { font-family: 'Cinzel', serif; font-size: 16px; color: var(--desert-red); margin-bottom: 4px; }
+.god-epithet { font-family: 'IM Fell English', serif; font-style: italic; font-size: 13px; color: var(--gold-dark); margin-bottom: 10px; display: block; }
+.god-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.65; text-align: left; }
+
+/* ═══ SOUL PARTS ═══ */
+.soul-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; margin: 36px 0; }
+.soul-part {
+  border: 1px solid; padding: 22px; transition: all .3s;
+  background: rgba(255,255,255,0.4);
+}
+.soul-part:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.soul-part.ka  { border-color: var(--gold-dark); }
+.soul-part.ba  { border-color: var(--lapis); }
+.soul-part.akh { border-color: var(--osiris-green); }
+.soul-part.ib  { border-color: var(--desert-red); }
+.soul-part.ren { border-color: var(--gold-dark); }
+.soul-part.sheut { border-color: var(--ink-mid); }
+.soul-label {
+  font-family: 'Cinzel Decorative', serif; font-size: 20px;
+  margin-bottom: 6px; display: block;
+}
+.soul-part.ka .soul-label  { color: var(--gold-dark); }
+.soul-part.ba .soul-label  { color: var(--lapis); }
+.soul-part.akh .soul-label { color: var(--osiris-green); }
+.soul-part.ib .soul-label  { color: var(--desert-red); }
+.soul-part.ren .soul-label { color: var(--gold-dark); }
+.soul-part.sheut .soul-label { color: var(--ink-mid); }
+.soul-eg { font-family: 'IM Fell English', serif; font-style: italic; font-size: 13px; color: var(--gold-dark); display: block; margin-bottom: 10px; }
+.soul-def { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; }
+
+/* ═══ TABS ═══ */
+.tabs-container { margin: 38px 0; }
+.tabs-header { display: flex; gap: 3px; border-bottom: 2px solid var(--papyrus-dark); flex-wrap: wrap; }
+.tab-btn {
+  background: var(--papyrus-dark); border: 1px solid var(--papyrus-dark); border-bottom: none;
+  color: var(--ink-soft); padding: 9px 18px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 1px;
+  transition: all .2s; margin-bottom: -2px;
+}
+.tab-btn:hover { background: var(--papyrus-light); color: var(--desert-red); }
+.tab-btn.active { background: var(--papyrus-light); color: var(--desert-red); border-color: var(--papyrus-dark); border-bottom-color: var(--papyrus-light); }
+.tab-panel { display: none; padding: 28px; border: 1px solid var(--papyrus-dark); border-top: none; background: var(--papyrus-light); }
+.tab-panel.active { display: block; }
+
+/* ═══ ACCORDION ═══ */
+.accordion { margin: 22px 0; }
+.accordion-item { border: 1px solid var(--papyrus-dark); margin-bottom: 4px; }
+.accordion-header {
+  background: none; border: none; width: 100%; text-align: left;
+  padding: 14px 20px; cursor: pointer;
+  font-family: 'Cinzel', serif; font-size: 13px; color: var(--ink-mid);
+  display: flex; justify-content: space-between; align-items: center; transition: all .2s;
+}
+.accordion-header:hover { background: rgba(212,160,23,0.08); color: var(--desert-red); }
+.accordion-header.active { background: rgba(139,42,15,0.07); color: var(--desert-red); border-bottom: 1px solid var(--papyrus-dark); }
+.accordion-arrow { transition: transform .3s; font-size: 12px; color: var(--gold-dark); }
+.accordion-header.active .accordion-arrow { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height .45s ease; padding: 0 20px; }
+.accordion-body.open { max-height: 6000px; padding: 18px 20px 24px; }
+
+/* ═══ TIMELINE ═══ */
+.timeline { position: relative; padding: 10px 0; margin: 38px 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 72px; top: 0; bottom: 0;
+  width: 1px; background: linear-gradient(180deg, transparent, var(--gold-dark), transparent);
+}
+.timeline-item { display: flex; gap: 22px; margin-bottom: 30px; position: relative; }
+.timeline-year { min-width: 62px; font-family: 'Cinzel', serif; font-size: 12px; color: var(--gold-dark); text-align: right; padding-top: 2px; }
+.timeline-dot { position: absolute; left: 65px; top: 6px; width: 16px; height: 16px; border: 2px solid var(--gold-dark); background: var(--papyrus-light); border-radius: 50%; }
+.timeline-content { flex: 1; padding-left: 26px; }
+.timeline-event { font-family: 'Cinzel', serif; font-size: 14px; color: var(--desert-red); margin-bottom: 5px; }
+.timeline-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.65; }
+.night .timeline-dot { background: var(--duat-mid); }
+.night .timeline-event { color: var(--gold-pale); }
+
+/* ═══ GLOSSARY ═══ */
+.glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 18px; margin: 28px 0; }
+.glossary-item { border: 1px solid var(--papyrus-dark); padding: 20px; background: rgba(255,255,255,0.4); }
+.glossary-term { font-family: 'Cinzel', serif; font-size: 15px; color: var(--desert-red); margin-bottom: 4px; letter-spacing: .5px; }
+.glossary-eg { font-family: 'IM Fell English', serif; font-style: italic; font-size: 12px; color: var(--gold-dark); margin-bottom: 8px; display: block; }
+.glossary-def { font-size: 13.5px; color: var(--ink-soft); line-height: 1.72; }
+
+/* ═══ MAGIC SQUARE / QUADRANTS ═══ */
+.spell-box {
+  border: 2px solid var(--gold-dark); padding: 28px 32px; margin: 38px 0;
+  background: rgba(212,160,23,0.05);
+  position: relative;
+}
+.spell-box::before {
+  content: '𓂀 ' attr(data-spell) ' 𓂀';
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--papyrus-light); padding: 0 16px;
+  font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px;
+  color: var(--gold-dark); text-transform: uppercase; white-space: nowrap;
+}
+.night .spell-box::before { background: var(--duat-mid); }
+.spell-formula {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 19px; color: var(--desert-red); text-align: center;
+  margin-bottom: 18px; line-height: 1.6;
+}
+.night .spell-box { border-color: rgba(212,160,23,0.4); }
+.night .spell-formula { color: var(--gold-pale); }
+
+/* ═══ VERSE / MEDITATION ═══ */
+.verse {
+  text-align: center; padding: 38px 60px; margin: 44px 0;
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: 19px; line-height: 2.1;
+  border-top: 1px solid var(--papyrus-dark); border-bottom: 1px solid var(--papyrus-dark);
+  color: var(--desert-red); position: relative;
+}
+.night .verse { color: var(--gold-pale); border-color: rgba(212,160,23,0.2); }
+
+/* ═══ DIAGRAMS ═══ */
+.diagram-wrapper { text-align: center; margin: 44px 0; }
+.diagram-title {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+  color: var(--gold-dark); text-transform: uppercase; margin-bottom: 20px;
+}
+
+/* ═══ FOOTNOTES ═══ */
+.footnotes { border-top: 1px solid var(--papyrus-dark); margin-top: 64px; padding-top: 28px; }
+.footnote-item { font-size: 13px; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.65; opacity: .8; }
+
+/* ═══ ORNAMENT ═══ */
+.ornament { text-align: center; color: var(--gold-dark); font-size: 22px; margin: 36px 0; letter-spacing: 8px; }
+
+/* ═══ BACK TO TOP ═══ */
+#back-top {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--gold-dark); color: var(--papyrus-light);
+  border: none; width: 46px; height: 46px; border-radius: 50%;
+  cursor: pointer; font-size: 18px; opacity: 0; transition: all .3s; z-index: 100;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+#back-top.visible { opacity: 1; }
+#back-top:hover { background: var(--gold); color: var(--ink); transform: translateY(-3px); }
+
+/* ═══ TAGS ═══ */
+.tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 16px 0; }
+.tag { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; padding: 4px 12px; border: 1px solid var(--gold-dark); color: var(--gold-dark); text-transform: uppercase; background: rgba(212,160,23,0.07); }
+
+/* ═══ COMPARISON GRID ═══ */
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 14px; margin: 28px 0; }
+.comparison-col { border: 1px solid var(--papyrus-dark); padding: 18px; background: rgba(255,255,255,0.35); }
+.comparison-col-title { font-family: 'Cinzel', serif; font-size: 12px; color: var(--desert-red); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--papyrus-dark); letter-spacing: .5px; }
+.comparison-item { font-size: 13px; color: var(--ink-soft); padding: 4px 0; border-bottom: 1px solid rgba(0,0,0,0.05); line-height: 1.5; }
+
+/* ═══ DUAT MAP ═══ */
+.duat-map { background: var(--duat-dark); border: 2px solid var(--gold-dark); padding: 30px; margin: 38px 0; }
+.duat-map svg text { fill: var(--papyrus-light); font-family: 'Cinzel', serif; }
+
+/* ═══ SIDEBAR COLLAPSED ═══ */
+.sidebar-collapsed #sidebar { transform: translateX(-100%); }
+.sidebar-collapsed #sidebar-toggle { left: 0; }
+.sidebar-collapsed #main { margin-left: 0; }
+.sidebar-collapsed #reading-progress { left: 0; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 960px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar { transform: translateX(-300px); width: 300px; }
+  .sidebar-open #sidebar { transform: translateX(0); }
+  #sidebar-toggle { left: 0; }
+  .section { padding: 50px 24px; }
+  #hero { padding: 60px 24px; }
+  .hero-title { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+<div id="reading-progress"><div id="reading-bar"></div></div>
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<nav id="sidebar">
+  <div id="sidebar-header">
+    <!-- Olho de Hórus SVG -->
+    <svg class="sidebar-horus" width="80" height="55" viewBox="0 0 80 55" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5,27 Q40,5 75,27 Q40,49 5,27 Z" fill="none" stroke="#d4a017" stroke-width="1.5" opacity="0.8"/>
+      <circle cx="40" cy="27" r="9" fill="none" stroke="#d4a017" stroke-width="1.5" opacity="0.9"/>
+      <circle cx="40" cy="27" r="4" fill="#d4a017" opacity="0.7"/>
+      <path d="M31,27 L20,38 L25,40 L31,32" fill="none" stroke="#d4a017" stroke-width="1.3" opacity="0.7"/>
+      <path d="M31,20 L18,14" stroke="#d4a017" stroke-width="1.2" opacity="0.6"/>
+      <path d="M49,20 L62,14" stroke="#d4a017" stroke-width="1.2" opacity="0.6"/>
+      <path d="M49,27 L60,38 L55,40 L49,32" fill="none" stroke="#d4a017" stroke-width="1.3" opacity="0.7"/>
+    </svg>
+    <span class="sidebar-title-main">Livro dos Mortos</span>
+    <span class="sidebar-title-sub">Enciclopédia Iniciática Total</span>
+  </div>
+
+  <div class="sidebar-hieroglyph">𓂀 𓆣 𓇯 𓋹 𓏏</div>
+
+  <span class="nav-group-title">Prolegômenos</span>
+  <a href="#hero" class="nav-link">𓂀 Entrada do Templo</a>
+  <a href="#sec-intro" class="nav-link">𓆣 Sobre Esta Enciclopédia</a>
+
+  <span class="nav-group-title">I — O Livro Sagrado</span>
+  <a href="#sec-oqueeh" class="nav-link">O Que É o Livro dos Mortos</a>
+  <a href="#sec-origem" class="nav-link sub">→ Origem e História</a>
+  <a href="#sec-evolucao" class="nav-link sub">→ Textos das Pirâmides</a>
+  <a href="#sec-tituloegipcio" class="nav-link sub">→ Título Egípcio Real</a>
+  <a href="#sec-producao" class="nav-link sub">→ Produção e Papiros</a>
+
+  <span class="nav-group-title">II — Cosmologia Egípcia</span>
+  <a href="#sec-cosmo" class="nav-link">Cosmologia e Estrutura da Alma</a>
+  <a href="#sec-alma" class="nav-link sub">→ Ka · Ba · Akh · Ib</a>
+  <a href="#sec-duat" class="nav-link sub">→ A Duat — Mundo dos Mortos</a>
+  <a href="#sec-maat" class="nav-link sub">→ Maat e a Ordem Cósmica</a>
+  <a href="#sec-julgamento" class="nav-link sub">→ Julgamento de Osíris</a>
+
+  <span class="nav-group-title">III — Leitura Comentada</span>
+  <a href="#sec-leitura" class="nav-link">Leitura Comentada Completa</a>
+  <a href="#sec-feitico1" class="nav-link sub">→ Capítulos Fundamentais</a>
+  <a href="#sec-negativas" class="nav-link sub">→ Confissões Negativas</a>
+  <a href="#sec-transformacao" class="nav-link sub">→ Feitiços de Transformação</a>
+
+  <span class="nav-group-title">IV — Jornada da Alma</span>
+  <a href="#sec-jornada" class="nav-link">A Jornada na Duat</a>
+  <a href="#sec-portoes" class="nav-link sub">→ Os Portões e Guardiões</a>
+  <a href="#sec-apofis" class="nav-link sub">→ Apófis e os Monstros</a>
+  <a href="#sec-barcasolar" class="nav-link sub">→ Barca Solar de Rá</a>
+  <a href="#sec-iaru" class="nav-link sub">→ Campos de Iaru</a>
+
+  <span class="nav-group-title">V — Os Deuses</span>
+  <a href="#sec-deuses" class="nav-link">Os Deuses do Livro</a>
+  <a href="#sec-osiris" class="nav-link sub">→ Osíris</a>
+  <a href="#sec-ra" class="nav-link sub">→ Rá</a>
+  <a href="#sec-anubis" class="nav-link sub">→ Anúbis</a>
+  <a href="#sec-thoth" class="nav-link sub">→ Thoth</a>
+  <a href="#sec-outros-deuses" class="nav-link sub">→ Ísis · Maat · Hórus · Outros</a>
+
+  <span class="nav-group-title">VI — Magia e Linguagem</span>
+  <a href="#sec-heka" class="nav-link">Heka — Magia Sagrada</a>
+  <a href="#sec-hieroglifos" class="nav-link sub">→ Hieróglifos e Poder</a>
+  <a href="#sec-nomes" class="nav-link sub">→ Nomes Secretos</a>
+
+  <span class="nav-group-title">VII — Interpretação</span>
+  <a href="#sec-iniciática" class="nav-link">Leitura Iniciática</a>
+  <a href="#sec-psicologia" class="nav-link sub">→ Psicologia Simbólica</a>
+  <a href="#sec-arquétipos" class="nav-link sub">→ Arquétipos e Jung</a>
+
+  <span class="nav-group-title">VIII — Comparações</span>
+  <a href="#sec-comparacoes" class="nav-link">Tradições Comparadas</a>
+  <a href="#sec-bardo" class="nav-link sub">→ Livro Tibetano dos Mortos</a>
+  <a href="#sec-hermetismo" class="nav-link sub">→ Hermetismo e Gnose</a>
+  <a href="#sec-alquimia" class="nav-link sub">→ Alquimia</a>
+
+  <span class="nav-group-title">IX — Arqueologia</span>
+  <a href="#sec-arqueologia" class="nav-link">Manuscritos e Traduções</a>
+  <a href="#sec-papiroani" class="nav-link sub">→ Papiro de Ani</a>
+  <a href="#sec-champollion" class="nav-link sub">→ Champollion</a>
+
+  <span class="nav-group-title">X — Referência</span>
+  <a href="#sec-modernidade" class="nav-link">Influência Moderna</a>
+  <a href="#sec-comoestu" class="nav-link">Como Estudar o Texto</a>
+  <a href="#sec-glossario" class="nav-link">Glossário Completo</a>
+  <a href="#sec-timeline" class="nav-link">Linha do Tempo</a>
+  <a href="#sec-conclusao" class="nav-link">Meditação Final</a>
+</nav>
+
+<button id="sidebar-toggle" onclick="toggleSidebar()">☰ ÍNDICE</button>
+<div id="main">
+<!-- HERO -->
+<section id="hero">
+  <span class="hero-hieroglyphs">𓂀 𓆣 𓇯 𓋹 𓏏 𓎟 𓊽 𓅓 𓆑 𓇋</span>
+
+  <!-- Olho de Hórus central -->
+  <svg width="160" height="100" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:28px;">
+    <path d="M10,50 Q80,10 150,50 Q80,90 10,50 Z" fill="none" stroke="#d4a017" stroke-width="2" opacity="0.9"/>
+    <ellipse cx="80" cy="50" rx="18" ry="18" fill="none" stroke="#d4a017" stroke-width="2"/>
+    <ellipse cx="80" cy="50" rx="8" ry="8" fill="#d4a017" opacity="0.8"/>
+    <path d="M62,50 L40,72 L50,75 L62,62" fill="none" stroke="#d4a017" stroke-width="1.8" opacity="0.8"/>
+    <path d="M60,35 L32,22" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+    <path d="M100,35 L128,22" stroke="#d4a017" stroke-width="1.5" opacity="0.7"/>
+    <path d="M98,50 L120,72 L110,75 L98,62" fill="none" stroke="#d4a017" stroke-width="1.8" opacity="0.8"/>
+    <circle cx="80" cy="50" r="3" fill="#f0c040"/>
+    <!-- Raios externos -->
+    <line x1="80" y1="28" x2="80" y2="18" stroke="#d4a017" stroke-width="1" opacity="0.4"/>
+    <line x1="80" y1="72" x2="80" y2="82" stroke="#d4a017" stroke-width="1" opacity="0.4"/>
+    <line x1="58" y1="30" x2="52" y2="22" stroke="#d4a017" stroke-width="1" opacity="0.4"/>
+    <line x1="102" y1="30" x2="108" y2="22" stroke="#d4a017" stroke-width="1" opacity="0.4"/>
+  </svg>
+
+  <h1 class="hero-title">Livro dos Mortos<br>Egípcio</h1>
+  <div class="hero-title-eg">Reu Nu Pert Em Heru</div>
+  <div class="hero-title-pt">𓂀 Livro Para Sair ao Dia 𓂀</div>
+
+  <div class="hero-rule">
+    <div style="height:1px;background:linear-gradient(90deg,transparent,#d4a017,#f0c040,#d4a017,transparent);"></div>
+    <span class="hero-rule-icon">𓇯</span>
+  </div>
+
+  <p class="hero-desc">Uma enciclopédia iniciática total sobre o texto sagrado mais complexo do Egito Antigo. Da cosmologia à psicologia do além, dos feitiços de transformação à jornada da alma na Duat — tudo que um iniciado, estudioso ou buscador precisa compreender antes de abrir o papiro sagrado.</p>
+
+  <div class="hero-tags">
+    <span class="hero-tag">Egiptologia</span>
+    <span class="hero-tag">Cosmologia</span>
+    <span class="hero-tag">Ka · Ba · Akh</span>
+    <span class="hero-tag">Duat</span>
+    <span class="hero-tag">Maat</span>
+    <span class="hero-tag">Osíris</span>
+    <span class="hero-tag">Heka · Magia</span>
+    <span class="hero-tag">Hieróglifos</span>
+    <span class="hero-tag">Hermetismo</span>
+    <span class="hero-tag">Jung · Arquétipos</span>
+    <span class="hero-tag">Alquimia</span>
+    <span class="hero-tag">Iniciação</span>
+  </div>
+</section>
+
+<!-- SOBRE ESTA ENCICLOPÉDIA -->
+<section class="section papyrus" id="sec-intro">
+  <div class="section-header">
+    <span class="section-number">𓂀 Prolegômenos 𓂀</span>
+    <h1 class="section-title">Sobre Esta Enciclopédia</h1>
+    <p class="section-subtitle">Natureza, método e propósito deste atlas do submundo egípcio</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">Este volume nasceu de uma convicção simples e exigente: o <em class="em-eg">Reu Nu Pert Em Heru</em> — o que os modernos chamam de "Livro dos Mortos Egípcio" — é um dos documentos espirituais mais complexos, mais belos e mais profundamente incompreendidos que a humanidade jamais produziu. Abri-lo sem preparação é como tentar ler uma partitura orquestral sem nunca ter estudado música: as notas estão todas lá, mas a música permanece surda. Esta enciclopédia é o estudo da música antes de tocar a partitura.</p>
+
+  <p>Ao longo destas páginas, o leitor encontrará não um resumo, mas uma <strong class="em-gold">viagem iniciática guiada</strong> pelos estratos sobrepostos de um texto que é, simultaneamente, um manual de ritual funerário, um mapa da consciência pós-morte, uma sistematização da cosmologia egípcia, um sistema de magia verbal sofisticadíssimo, uma iniciação mistérica e — na interpretação que os melhores estudiosos modernos desenvolveram — um mapa dos estados da consciência humana disfarçado de guia para o além.</p>
+
+  <div class="callout ra" data-label="Quatro Níveis de Leitura">
+    <p>Esta enciclopédia opera em quatro níveis simultâneos, espelhando a tradição egípcia de interpretação múltipla dos textos sagrados: <strong class="em-gold">(1) Nível Literal-Funerário</strong> — o que o texto fazia concretamente para o morto; <strong class="em-gold">(2) Nível Histórico-Arqueológico</strong> — o que os estudiosos modernos descobriram sobre sua composição e uso; <strong class="em-gold">(3) Nível Simbólico-Cosmológico</strong> — o que os símbolos revelam sobre a visão egípcia do cosmos; <strong class="em-gold">(4) Nível Iniciático-Psicológico</strong> — o que a jornada da alma representa para a transformação interior de qualquer ser humano, em qualquer época.</p>
+  </div>
+
+  <blockquote>
+    "Conhecer os nomes é conhecer as essências. Aquele que conhece o nome de uma coisa torna-se senhor dessa coisa."
+    <cite>— Princípio fundamental da magia egípcia (Heka)</cite>
+  </blockquote>
+</section>
+
+<!-- O QUE É O LIVRO DOS MORTOS -->
+<section class="section sand" id="sec-oqueeh">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo I 𓂀</span>
+    <h1 class="section-title">O Que É o Livro dos Mortos</h1>
+    <p class="section-subtitle">Origem, natureza, função e contexto histórico do texto sagrado mais famoso do Egito</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">O que chamamos de "Livro dos Mortos Egípcio" é, na verdade, uma denominação completamente moderna e razoavelmente enganosa para um texto que os egípcios nunca chamaram assim. O título foi cunhado em 1842 pelo egiptólogo alemão Karl Richard Lepsius, que editou uma coleção de textos funerários e a denominou <em>Das Todtenbuch der Ägypter</em> — "O Livro dos Mortos dos Egípcios". O nome pegou, espalhou-se pelo mundo acadêmico e popular, e permanece até hoje como a designação padrão para um corpus de fórmulas e capítulos funerários que os próprios egípcios chamavam por um nome radicalmente diferente — e muito mais revelador.</p>
+
+  <h2 class="content-h2" id="sec-tituloegipcio">O Título Egípcio Real — Reu Nu Pert Em Heru</h2>
+
+  <p>Em egípcio antigo, o texto se chama <em class="em-eg">Reu Nu Pert Em Heru</em> (𓂀 𓈖 𓊪𓂋𓏏 𓇋𓏠𓆗 𓇯) — literalmente: <strong class="em-gold">"Fórmulas Para Sair ao Dia"</strong>, ou mais poeticamente, <strong class="em-gold">"Capítulos do Sair à Luz do Dia"</strong>. Esta diferença de nomenclatura é extraordinariamente significativa e revela uma diferença filosófica fundamental entre a visão egípcia e a visão moderna da morte.</p>
+
+  <p>O título moderno — "Livro dos <em>Mortos</em>" — coloca a ênfase na morte, na passagem, no fim. O título egípcio — "Livro Para <em>Sair à Luz</em>" — coloca a ênfase no renascimento, na luz, na liberação, no movimento ascendente. Para os egípcios, o processo descrito no texto não era sobre como ficar morto — era sobre como <em class="em-red">transcender a morte</em>, como renascer ao lado do Sol, como transformar-se de morto (<em class="em-lat">maat</em>) em transfigurado (<em class="em-lat">akh</em>). A morte, no pensamento egípcio, não é um fim mas uma transição — e o Livro dos Mortos é o manual dessa transição.</p>
+
+  <div class="callout osiris" data-label="Etimologia — Pert Em Heru">
+    <p><strong class="em-green">Pert</strong> (𓊪𓂋𓏏): do verbo <em>pri</em>, "sair", "emergir", "brotar" — o mesmo radical usado para descrever o brotar das plantas e o nascer do sol. <strong class="em-green">Em</strong>: preposição, "no", "em", "para dentro de". <strong class="em-green">Heru</strong> (𓇯): "dia", "luz do dia", "o céu luminoso" — e também o nome do deus Hórus. A combinação é deliberadamente ambígua: "sair para o dia" significa simultaneamente sair para a luz física do sol e sair para a presença de Hórus — a divindade solar que representa a consciência plena e iluminada. O título completo do texto é, portanto, um programa espiritual condensado em quatro palavras: sair da escuridão para a luz, da morte para o renascimento, da ignorância para a consciência.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-origem">Origem, História e Evolução</h2>
+
+  <p>O corpus que conhecemos como Livro dos Mortos é o resultado de uma evolução de aproximadamente dois mil anos de tradição religiosa funerária egípcia. Ele não foi criado por um único autor, em um único período, com um único propósito — é antes uma antologia acumulativa de fórmulas, hinos, encantamentos e instruções que foram compostos, revisados, expandidos e reorganizados ao longo de séculos. Para compreender o que ele é, é necessário traçar sua genealogia.</p>
+
+  <h3 class="content-h3" id="sec-evolucao">Fase I — Textos das Pirâmides (c. 2400–2200 a.C.)</h3>
+
+  <p>A mais antiga camada de textos funerários egípcios de que temos conhecimento são os chamados <strong class="em-gold">Textos das Pirâmides</strong> (<em class="em-lat">Pyramid Texts</em>) — gravados nas paredes internas das pirâmides dos faraós do Reino Antigo, começando com a pirâmide do faraó Unis (c. 2375–2345 a.C.), da V Dinastia. Esses textos são os mais antigos documentos religiosos extensos da humanidade.</p>
+
+  <p>Os Textos das Pirâmides são compostos de <em class="em-lat">utterances</em> (fórmulas ou pronunciamentos) — cerca de 800 textos diferentes que sobreviveram, distribuídos entre as pirâmides de aproximadamente dez faraós do Reino Antigo. Seu propósito era exclusivamente real: eram textos para proteger a alma do <em>faraó morto</em>, garantir sua ressurreição e sua jornada ao céu. O faraó, identificado com Osíris em sua morte e com Hórus em seu renascimento, precisava desses textos para navegar pelos perigos do além e alcançar a eternidade ao lado dos deuses.</p>
+
+  <div class="callout anubis" data-label="Contexto — Exclusividade Real">
+    <p>No período do Reino Antigo, os textos funerários eram <strong>privilégio exclusivo do faraó</strong>. A ideia subjacente era que apenas o rei — como representante divino dos deuses na terra — tinha acesso à ressurreição plena e à vida eterna no além. O povo comum morria e... desaparecia. Ao longo do tempo, esse monopólio real da imortalidade foi gradualmente se democratizando — um processo que os egiptólogos chamam de "democratização da vida após a morte" — até que, no Reino Novo, qualquer pessoa que pudesse pagar um escriba para produzir um papiro poderia ter seu próprio "Livro para Sair ao Dia".</p>
+  </div>
+
+  <h3 class="content-h3">Fase II — Textos dos Sarcófagos (c. 2100–1800 a.C.)</h3>
+
+  <p>No período do Primeiro Período Intermediário e início do Reino Médio, ocorre a primeira grande democratização dos textos funerários. Os <strong class="em-gold">Textos dos Sarcófagos</strong> (<em class="em-lat">Coffin Texts</em>) — assim chamados porque eram pintados ou inscritos no interior de sarcófagos de madeira — representam uma expansão e adaptação das fórmulas dos Textos das Pirâmides para uso de membros da nobreza e da classe média alta. O círculo de potenciais beneficiários se expandiu: já não apenas o faraó, mas nobrezes, sacerdotes e funcionários de alto escalão podiam ter acesso à ressurreição.</p>
+
+  <p>Os Textos dos Sarcófagos também introduzem novidades teológicas importantes: a ideia dos <em class="em-eg">Campos de Iaru</em> — um paraíso agrícola no além — torna-se proeminente. A identificação do morto não apenas com Osíris mas também com o deus solar Rá em sua jornada noturna começa a ser desenvolvida. A cosmologia do além se torna mais complexa e sistematizada.</p>
+
+  <h3 class="content-h3">Fase III — O Livro dos Mortos Propriamente Dito (c. 1550 a.C. – séc. I a.C.)</h3>
+
+  <p>O corpus que conhecemos como Livro dos Mortos se cristaliza no início do <strong class="em-gold">Reino Novo</strong> (c. 1550 a.C.), durante a XVIII Dinastia, o período mais glorioso da história egípcia — a era de Tutmósis III, Amenhotep III, Akhenaton, Tutancâmon e Ramsés II. Nesse período, os textos funerários são transferidos dos sarcófagos para <strong class="em-red">papiros</strong>, tornando-os portáteis, personalizáveis e — com o tempo — relativamente acessíveis a um estrato social mais amplo.</p>
+
+  <p>Durante o Reino Novo, o texto não tinha um conteúdo fixo e universalmente padronizado. Diferentes escribas, diferentes tradições regionais, diferentes mecenas produziam papiros com diferentes seleções de capítulos. Os egiptólogos identificaram aproximadamente <strong class="em-gold">192 capítulos ou feitiços distintos</strong> que compõem o corpus total — mas nenhum papiro individual contém todos os 192. Cada papiro era uma seleção personalizada, determinada pelas preferências do cliente, pelo custo, pelo escriba disponível e pelas tradições locais do templo que supervisionava a produção.</p>
+
+  <div class="callout maat" data-label="Padronização Ptolemaica — A Versão Saíta">
+    <p>O único momento em que algo próximo a uma versão "canônica" do Livro dos Mortos existe é o chamado <strong class="em-lapis">Período Saíta</strong> (c. 664–525 a.C.) e o subsequente Período Ptolemaico (305–30 a.C.), quando sacerdotes e escribas realizaram um esforço sistemático de padronização. A chamada <strong class="em-lapis">Versão Saíta</strong> estabeleceu uma sequência relativamente fixa de capítulos e se tornou o modelo para os papiros produzidos nos últimos séculos do Egito faraônico. É esta versão padronizada que Lepsius editou em 1842 e que se tornou a base das primeiras traduções ocidentais.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-producao">Produção dos Papiros Funerários</h2>
+
+  <p>A produção de um papiro funerário personalizado era uma indústria sofisticada e cara no Egito Antigo. O processo envolveria múltiplas etapas e múltiplos especialistas:</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-icon">📜</span>
+      <div class="card-title">1. O Suporte — Papiro</div>
+      <div class="card-text">O suporte material era o papiro (<em>Cyperus papyrus</em>) — uma planta aquática nativa do Delta do Nilo. As fibras do caule eram cortadas em tiras, entrelaçadas perpendicularmente, prensadas e polidas para criar uma superfície de escrita suave. Papiros de alta qualidade para uso funerário podiam ter vários metros de comprimento — o Papiro de Ani, por exemplo, tem aproximadamente 23 metros.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">✍️</span>
+      <div class="card-title">2. O Escriba — Sesh</div>
+      <div class="card-text">A cópia do texto era obra de escribas especializados (<em class="em-eg">sesh</em>) associados ao templo. Eles usavam cálamos de junco e tintas à base de goma arábica — tinta preta (carvão) para o texto principal e tinta vermelha (óxido de ferro) para títulos, rubricas e passagens de especial importância mágica. Os erros eram corrigidos com pasta branca, e espaços em branco eram deixados para inserção posterior do nome do morto.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎨</span>
+      <div class="card-title">3. O Artista — Ilustrações</div>
+      <div class="card-text">Os papiros mais luxuosos eram ricamente ilustrados — as vinhetas (<em>vignettes</em>) que acompanham os capítulos. Artistas especializados pintavam cenas do além, retratos dos deuses, representações do julgamento, mapas da Duat. O sistema de cores egípcio era simbólico: verde = regeneração, azul = o divino e o celestial, dourado = o eterno, preto = a terra fértil e a morte como fertilidade.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏛️</span>
+      <div class="card-title">4. A Personalização</div>
+      <div class="card-text">O ponto mais revelador sobre a produção de papiros funerários é que muitos eram claramente produzidos em massa, com espaços em branco para inserção posterior do nome e título do proprietário. Em vários papiros famosos, os nomes estão escritos em caligrafia diferente e às vezes até errados — o escriba que personalizava nem sempre sabia ler o que estava escrevendo. Isso indica uma indústria desenvolvida de papiros "de prateleira" que eram então personalizados para o cliente.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🪦</span>
+      <div class="card-title">5. O Uso Ritual</div>
+      <div class="card-text">O papiro era enrolado, amarrado e colocado dentro do sarcófago — geralmente entre as pernas do morto ou dentro de uma estátua oca de Osíris colocada junto ao corpo. Em alguns casos, excertos do texto eram inscritos nas bandagens de linho da múmia, nas paredes do caixão, nos amuletos e nas placas funerárias. O texto, portanto, envolvia literalmente o morto de todos os lados.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">6. Custo e Acesso Social</div>
+      <div class="card-text">Um papiro funerário completo e ricamente ilustrado era extraordinariamente caro — acessível apenas à elite mais abastada. Papiros mais simples, com poucos capítulos e sem ilustrações, eram mais acessíveis. Os mais pobres tinham fórmulas escritas em tabletes de cerâmica, em amuletos simples, ou simplesmente não tinham nenhum texto funerário. A vida eterna, no Egito Antigo, tinha um preço de mercado.</div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">A Visão Egípcia da Morte — Fundamentos</h2>
+
+  <p>Para compreender o Livro dos Mortos, é absolutamente necessário primeiro compreender que os egípcios tinham uma relação com a morte fundamentalmente diferente da nossa. Na visão ocidental moderna (herdeira do judaísmo, do gnosticismo, do estoicismo e do Iluminismo), a morte é tipicamente encarada como o fim definitivo ou como uma transição para um estado radicalmente diferente. Para os egípcios, a morte era parte de um ciclo — como o pôr do sol que sempre será seguido pelo nascer do sol. A morte não era o oposto da vida — era o oposto do <em>nascimento</em>. Ambos eram fases do mesmo ciclo eterno.</p>
+
+  <p>O modelo cosmológico central é o do <strong class="em-gold">ciclo solar</strong>: o Sol (<em class="em-eg">Rá</em>) nasce a leste como <em class="em-eg">Khepri</em> (o besouro, o escaravelho — símbolo do devir e do autoaperfeiçoamento), atravessa o céu durante o dia como <em class="em-eg">Rá</em> em sua plenitude, e mergulha no horizonte ocidental como <em class="em-eg">Atum</em>, o Sol vespertino. Durante a noite, o Sol viaja pela <em class="em-eg">Duat</em> — o submundo egípcio — enfrentando perigos, combatendo a serpente do caos (<em class="em-eg">Apófis</em>), e renascendo ao amanhecer. A morte humana é análoga ao pôr do sol: não um fim, mas o início de uma jornada que, se bem navegada, resultará num renascimento glorioso.</p>
+
+  <div class="callout ra" data-label="Ciclo Solar — Modelo Cosmológico Fundamental">
+    <p>O Livro dos Mortos é, em seu nível mais profundo, um manual para ajudar o morto a se identificar com o Sol em sua jornada noturna — para se tornar um companheiro de Rá, para "entrar na barca solar" e emergir com o Sol ao amanhecer. O morto que completa com sucesso a jornada descrita no texto não vai para algum "paraíso" separado — ele se <strong class="em-gold">une ao ciclo cósmico eterno</strong>, tornando-se parte do processo pelo qual o universo se renova a cada dia.</p>
+  </div>
+</section>
+
+<!-- COSMOLOGIA E ESTRUTURA DA ALMA -->
+<section class="section night" id="sec-cosmo">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo II 𓂀</span>
+    <h1 class="section-title">Cosmologia Egípcia e Estrutura da Alma</h1>
+    <p class="section-subtitle">Ka · Ba · Akh · Ib · Ren · Sheut — As Partes da Alma Imortal</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">A alma humana, para os egípcios antigos, não era uma entidade simples e unificada como o conceito ocidental de "alma" tendeu a ser. Era uma complexidade estruturada — uma série de componentes ou aspectos, cada um com sua natureza específica, seu destino próprio após a morte e suas necessidades rituais particulares. Compreender essa anatomia da alma é compreender por que o Livro dos Mortos existe e o que ele está tentando fazer com seus feitiços e fórmulas.</p>
+
+  <h2 class="content-h2" id="sec-alma">As Partes da Alma — Anatomia do Ser Imortal</h2>
+
+  <div class="soul-grid">
+    <div class="soul-part ka">
+      <span class="soul-label">Ka 𓂓</span>
+      <span class="soul-eg">Duplo Vital · Força de Vida</span>
+      <div class="soul-def">O Ka é talvez o aspecto mais fundamental da personalidade imortal egípcia. É o "duplo vital" — a força de vida que torna um ser vivo. O Ka é criado junto com o corpo no momento do nascimento e permanece ligado ao corpo físico mesmo após a morte. Por isso, as oferendas funerárias (comida, bebida, incenso) são tecnicamente feitas "para o Ka" do morto — o Ka precisa ser alimentado para manter sua existência. O Ka é representado pelos hieróglifos dos dois braços levantados 𓂓, como em ato de abraçar ou receber.</div>
+    </div>
+    <div class="soul-part ba">
+      <span class="soul-label">Ba 𓅽</span>
+      <span class="soul-eg">Alma Individual · Personalidade</span>
+      <div class="soul-def">O Ba é o aspecto da alma que mais se aproxima do conceito ocidental de "alma" — é a personalidade única e individual, a essência pessoal que torna uma pessoa em si mesma e não outra. É representado como um pássaro com cabeça humana 𓅽 — podendo voar livremente entre o mundo dos vivos e o mundo dos mortos. O Ba pode deixar a tumba durante o dia (daí os textos para "sair ao dia") e retornar ao corpo durante a noite. A jornada do Ba pela Duat é o tema central do Livro dos Mortos.</div>
+    </div>
+    <div class="soul-part akh">
+      <span class="soul-label">Akh 𓇼</span>
+      <span class="soul-eg">Espírito Transfigurado · Ser de Luz</span>
+      <div class="soul-def">O Akh é o aspecto mais elevado e o objetivo último da jornada pós-morte. É o ser transfigurado, luminoso, que resulta da bem-sucedida reunião do Ba com o Ka e da superação dos julgamentos e provações da Duat. A palavra Akh vem do radical que significa "eficaz", "luminoso", "brilhante" — e é frequentemente escrita com o hieróglifo do íbis crestado 𓇼, que é também o símbolo do planeta Lua. O Akh é a alma glorificada que pode existir entre os deuses, que pode viajar pelo cosmos e que se tornou, efetivamente, imortal no sentido pleno.</div>
+    </div>
+    <div class="soul-part ib">
+      <span class="soul-label">Ib 𓄤</span>
+      <span class="soul-eg">Coração · Sede da Consciência</span>
+      <div class="soul-def">O Ib é o coração — mas não apenas o órgão físico: é a sede da consciência, da vontade, da memória e do caráter moral. É o coração que é pesado na balança de Maat durante o julgamento do morto — e que deve ser leve como uma pena para que o morto passe. Por isso, os mumificadores preservavam cuidadosamente o coração dentro do corpo (ao contrário dos outros órgãos viscerais, que eram removidos e colocados em vasos canópicos). Vários capítulos do Livro dos Mortos são especificamente dedicados a proteger e fortalecer o coração.</div>
+    </div>
+    <div class="soul-part ren">
+      <span class="soul-label">Ren 𓂝</span>
+      <span class="soul-eg">Nome · Identidade Essencial</span>
+      <div class="soul-def">O Ren é o nome — e na magia egípcia, o nome não é uma mera etiqueta convencional mas a essência real de um ser. Conhecer o verdadeiro nome de algo é ter poder sobre isso. Destruir o nome de alguém — apagá-lo de monumentos, omiti-lo dos textos — era literalmente destruir a identidade imortal dessa pessoa. Por isso, os egípcios tinham horreur de ter seus nomes apagados. E por isso, os papiros funerários repetiam obsessivamente o nome do morto em todos os feitiços — garantindo que o nome existisse eternamente no mundo espiritual.</div>
+    </div>
+    <div class="soul-part sheut">
+      <span class="soul-label">Sheut 𓍶</span>
+      <span class="soul-eg">Sombra · Duplo Escuro</span>
+      <div class="soul-def">O Sheut é a sombra — outro aspecto da alma, mais misterioso e menos discutido que os outros. A sombra acompanha a pessoa em vida como a projeção física de seu ser. Após a morte, o Sheut pode existir independentemente e precisa de proteção. Em alguns textos, a sombra é representada como um duplo escuro que pode habitar o mundo dos mortos. Na interpretação psicológica jungiana, o Sheut é frequentemente associado ao conceito de "sombra" — o aspecto inconsciente e reprimido da psique que precisa ser integrado.</div>
+    </div>
+  </div>
+
+  <h2 class="content-h2" id="sec-duat">A Duat — O Mundo dos Mortos Egípcio</h2>
+
+  <p>A <em class="em-eg">Duat</em> (𓇽𓏏𓇖) é o submundo egípcio — mas "submundo" é uma tradução que precisa de qualificação cuidadosa. A Duat não é exatamente "abaixo" da terra no sentido que a palavra evoca para nós, nem é simplesmente um "mundo dos mortos" estático. É uma região cosmológica de natureza extremamente complexa e geograficamente detalhada — um cosmos paralelo que existe em relação ao nosso cosmos vivo da mesma forma que a noite existe em relação ao dia.</p>
+
+  <div class="diagram-wrapper">
+    <div class="diagram-title">𓂀 Mapa Cosmológico da Duat 𓂀</div>
+    <div class="duat-map">
+      <svg width="100%" height="380" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;margin:0 auto;display:block;">
+        <!-- Fundo do universo -->
+        <rect width="700" height="380" fill="#080512"/>
+        <!-- Estrelas -->
+        <circle cx="50" cy="30" r="1" fill="#f0c040" opacity=".6"/>
+        <circle cx="120" cy="15" r="1.5" fill="#f0c040" opacity=".5"/>
+        <circle cx="250" cy="25" r="1" fill="#f0c040" opacity=".7"/>
+        <circle cx="400" cy="10" r="1.2" fill="#f0c040" opacity=".6"/>
+        <circle cx="580" cy="20" r="1" fill="#f0c040" opacity=".5"/>
+        <circle cx="650" cy="35" r="1.5" fill="#f0c040" opacity=".7"/>
+        <circle cx="680" cy="12" r="1" fill="#f0c040" opacity=".4"/>
+        <!-- Firmamento — Nut a deusa do céu -->
+        <path d="M0,60 Q350,0 700,60" fill="none" stroke="#2a5aab" stroke-width="1.5" stroke-dasharray="8,4" opacity=".5"/>
+        <text x="350" y="30" text-anchor="middle" fill="#4070c0" font-size="11" font-family="Cinzel, serif" opacity=".8">NUT — DEUSA DO CÉU</text>
+        <!-- Terra — Geb -->
+        <rect x="0" y="200" width="700" height="4" fill="#4a3520" opacity=".8"/>
+        <text x="350" y="195" text-anchor="middle" fill="#8b6914" font-size="11" font-family="Cinzel, serif" opacity=".8">GEB — DEUS DA TERRA</text>
+        <!-- Nilo celestial - barca do dia -->
+        <path d="M30,100 Q350,70 670,100" fill="none" stroke="#d4a017" stroke-width="1.5" opacity=".6"/>
+        <ellipse cx="350" cy="82" rx="35" ry="14" fill="rgba(212,160,23,0.15)" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="350" y="87" text-anchor="middle" fill="#f0c040" font-size="11" font-family="serif">☉</text>
+        <text x="350" y="60" text-anchor="middle" fill="#d4a017" font-size="10" font-family="Cinzel, serif" opacity=".9">BARCA SOLAR — JORNADA DIURNA</text>
+        <!-- A Duat -->
+        <rect x="0" y="204" width="700" height="176" fill="rgba(10,5,30,0.9)"/>
+        <text x="350" y="240" text-anchor="middle" fill="#d4a017" font-size="14" font-family="Cinzel Decorative, serif" letter-spacing="4" opacity=".9">D U A T — O SUBMUNDO</text>
+        <!-- Barca noturna -->
+        <path d="M50,300 Q350,260 650,300" fill="none" stroke="#2a5aab" stroke-width="1.5" opacity=".7"/>
+        <ellipse cx="350" cy="277" rx="35" ry="14" fill="rgba(42,90,171,0.2)" stroke="#2a5aab" stroke-width="1.5"/>
+        <text x="350" y="282" text-anchor="middle" fill="#4070c0" font-size="11" font-family="serif">🌙</text>
+        <text x="350" y="314" text-anchor="middle" fill="#4070c0" font-size="10" font-family="Cinzel, serif" opacity=".8">BARCA NOTURNA — JORNADA PELAS 12 HORAS DA NOITE</text>
+        <!-- Portões da Duat -->
+        <line x1="100" y1="204" x2="100" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="200" y1="204" x2="200" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="300" y1="204" x2="300" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="400" y1="204" x2="400" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="500" y1="204" x2="500" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="600" y1="204" x2="600" y2="380" stroke="rgba(212,160,23,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="50"  y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">I</text>
+        <text x="150" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">II</text>
+        <text x="250" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">III</text>
+        <text x="350" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">IV–VI</text>
+        <text x="450" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">VII–IX</text>
+        <text x="550" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">X–XI</text>
+        <text x="650" y="368" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="9" font-family="Cinzel, serif">XII</text>
+        <text x="350" y="355" text-anchor="middle" fill="rgba(212,160,23,0.4)" font-size="9" font-family="Cinzel, serif">12 HORAS DA NOITE — 12 DIVISÕES DA DUAT</text>
+        <!-- Nascente/Poente -->
+        <text x="15" y="158" fill="#d4a017" font-size="10" font-family="serif" opacity=".8">🌅</text>
+        <text x="15" y="172" fill="#d4a017" font-size="8" font-family="Cinzel, serif" opacity=".7">LESTE</text>
+        <text x="665" y="158" fill="#d4a017" font-size="10" font-family="serif" opacity=".8">🌇</text>
+        <text x="665" y="172" fill="#d4a017" font-size="8" font-family="Cinzel, serif" opacity=".7">OESTE</text>
+        <!-- Renascimento -->
+        <path d="M30,204 Q30,140 90,100" fill="none" stroke="#d4a017" stroke-width="1.2" stroke-dasharray="3,3" opacity=".6"/>
+        <text x="30" y="95" fill="#d4a017" font-size="9" font-family="Cinzel, serif" opacity=".7">RENASCER</text>
+      </svg>
+    </div>
+  </div>
+
+  <p>A Duat tem uma geografia detalhada, descrita em vários textos funerários complementares ao Livro dos Mortos — especialmente o <em class="em-eg">Amduat</em> ("O que está no Além"), o <em class="em-eg">Livro das Portas</em> e o <em class="em-eg">Livro das Cavernas</em>. Ela é dividida em <strong class="em-gold">doze divisões ou cavernas</strong> — correspondendo às doze horas da noite — cada uma com sua própria paisagem, seus próprios habitantes, seus próprios perigos e suas próprias divindades.</p>
+
+  <h2 class="content-h2" id="sec-maat">Maat — Ordem Cósmica, Verdade e Justiça</h2>
+
+  <p>Nenhum conceito é mais central para o Livro dos Mortos — e para a civilização egípcia em geral — do que <em class="em-eg">Maat</em> (𓌀𓂝𓏏). É ao mesmo tempo uma deusa, um princípio filosófico, uma norma ética, uma lei cósmica e o critério de julgamento após a morte. Traduzir Maat por uma única palavra é impossível — ela é simultaneamente "verdade", "justiça", "retidão", "equilíbrio", "ordem cósmica" e "harmonia universal".</p>
+
+  <p>Maat é o princípio que mantém o cosmos funcionando — que faz o Sol nascer regularmente, que faz o Nilo inundar na época certa, que mantém os planetas em seus cursos, que sustenta a sociedade humana em sua ordem natural. O oposto de Maat é <em class="em-eg">Isfet</em> — caos, injustiça, desordem, mentira. O trabalho de toda a civilização egípcia — do faraó ao camponês — era manter Maat e combater Isfet.</p>
+
+  <div class="callout maat" data-label="Maat — Síntese Filosófica">
+    <p>Maat é representada como uma mulher com uma pena de avestruz na cabeça — e essa pena é precisamente aquela contra a qual o coração do morto é pesado no julgamento. A pena de Maat é a leveza perfeita — o peso de zero ego, zero mentira, zero crueldade, zero injustiça. O coração que foi toda a vida guiado por Maat torna-se leve como essa pena e passa na balança. O coração que acumulou o peso das falsidades, das crueldades, das injustiças, é mais pesado do que a pena — e é então devorado por Ammit. O julgamento de Osiris é, portanto, a verificação de uma vida inteira de alinhamento ou desalinhamento com a ordem cósmica.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-julgamento">O Julgamento de Osíris — A Psicostasia</h2>
+
+  <p>O capítulo mais famoso de todo o Livro dos Mortos é provavelmente o Capítulo 125 — a descrição do <strong class="em-gold">julgamento da alma</strong> perante o tribunal de Osíris. Esta cena, frequentemente ilustrada nas vinhetas dos papiros, é uma das imagens mais icônicas da cultura egípcia e continua a ser um dos documentos mais intrigantes já produzidos sobre a ética e o destino pós-morte.</p>
+
+  <p>A cena, chamada pelos academicos de <em class="em-lat">psicostasia</em> (do grego, "pesagem da alma"), se passa no <em class="em-eg">Hall das Duas Verdades</em> (<em class="em-eg">Maati</em>). O morto comparece diante de um tribunal de 42 divindades — os 42 juízes, que representam as 42 províncias do Egito. Anúbis conduz o morto e supervisiona a balança. Thoth registra o resultado com seu cálamo de escriba. Rá ou Hórus presidem.</p>
+
+  <div class="diagram-wrapper">
+    <div class="diagram-title">𓂀 A Psicostasia — O Julgamento da Alma 𓂀</div>
+    <div class="duat-map">
+      <svg width="100%" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;margin:0 auto;display:block;">
+        <rect width="700" height="300" fill="#080512"/>
+        <!-- Sala das Duas Verdades -->
+        <rect x="20" y="20" width="660" height="260" fill="none" stroke="rgba(212,160,23,0.3)" stroke-width="1"/>
+        <text x="350" y="40" text-anchor="middle" fill="rgba(212,160,23,0.7)" font-size="11" font-family="Cinzel, serif" letter-spacing="3">HALL DAS DUAS VERDADES — MAATI</text>
+        <!-- Osíris entronado à direita -->
+        <rect x="570" y="60" width="80" height="200" fill="rgba(26,74,42,0.3)" stroke="rgba(26,74,42,0.5)" stroke-width="1"/>
+        <text x="610" y="90" text-anchor="middle" fill="#2a7040" font-size="10" font-family="Cinzel, serif">OSÍRIS</text>
+        <text x="610" y="105" text-anchor="middle" fill="rgba(42,112,64,0.7)" font-size="8" font-family="serif">JUIZ SUPREMO</text>
+        <circle cx="610" cy="130" r="15" fill="rgba(26,74,42,0.5)" stroke="#2a7040" stroke-width="1.5"/>
+        <text x="610" y="135" text-anchor="middle" fill="#2a7040" font-size="16">𓊽</text>
+        <!-- Ísis e Néftis atrás de Osíris -->
+        <text x="560" y="140" fill="rgba(212,160,23,0.5)" font-size="9" font-family="serif">ÍSiS</text>
+        <text x="640" y="140" fill="rgba(212,160,23,0.5)" font-size="9" font-family="serif">NÉFTIS</text>
+        <!-- Balança central -->
+        <line x1="350" y1="70" x2="350" y2="100" stroke="#d4a017" stroke-width="2"/>
+        <line x1="280" y1="100" x2="420" y2="100" stroke="#d4a017" stroke-width="1.8"/>
+        <!-- Braço esquerdo - coração -->
+        <line x1="280" y1="100" x2="260" y2="140" stroke="#d4a017" stroke-width="1.5"/>
+        <circle cx="260" cy="148" r="14" fill="rgba(139,42,15,0.4)" stroke="#8b2a0f" stroke-width="1.5"/>
+        <text x="260" y="153" text-anchor="middle" fill="#d4a017" font-size="11">𓄤</text>
+        <text x="260" y="175" text-anchor="middle" fill="rgba(212,160,23,0.7)" font-size="9" font-family="Cinzel, serif">IB</text>
+        <text x="260" y="186" text-anchor="middle" fill="rgba(212,160,23,0.5)" font-size="8" font-family="serif">CORAÇÃO</text>
+        <!-- Braço direito - pena de Maat -->
+        <line x1="420" y1="100" x2="440" y2="140" stroke="#d4a017" stroke-width="1.5"/>
+        <circle cx="440" cy="148" r="14" fill="rgba(42,90,171,0.3)" stroke="#2a5aab" stroke-width="1.5"/>
+        <text x="440" y="153" text-anchor="middle" fill="#4070c0" font-size="11">𓇯</text>
+        <text x="440" y="175" text-anchor="middle" fill="rgba(64,112,192,0.7)" font-size="9" font-family="Cinzel, serif">MAAT</text>
+        <text x="440" y="186" text-anchor="middle" fill="rgba(64,112,192,0.5)" font-size="8" font-family="serif">PENA DA VERDADE</text>
+        <!-- Anúbis -->
+        <rect x="300" y="160" width="60" height="80" fill="rgba(30,20,8,0.4)" stroke="rgba(62,45,15,0.5)" stroke-width="1"/>
+        <text x="330" y="185" text-anchor="middle" fill="rgba(212,160,23,0.7)" font-size="10" font-family="Cinzel, serif">ANÚBIS</text>
+        <text x="330" y="200" text-anchor="middle" fill="rgba(212,160,23,0.5)" font-size="9" font-family="serif">GUIA DA BALANÇA</text>
+        <text x="330" y="220" text-anchor="middle" fill="rgba(212,160,23,0.6)" font-size="16">𓀭</text>
+        <!-- Thoth -->
+        <rect x="160" y="160" width="65" height="80" fill="rgba(42,90,171,0.2)" stroke="rgba(42,90,171,0.4)" stroke-width="1"/>
+        <text x="193" y="185" text-anchor="middle" fill="rgba(64,112,192,0.8)" font-size="10" font-family="Cinzel, serif">THOTH</text>
+        <text x="193" y="200" text-anchor="middle" fill="rgba(64,112,192,0.5)" font-size="9" font-family="serif">REGISTRADOR</text>
+        <text x="193" y="220" text-anchor="middle" fill="rgba(64,112,192,0.6)" font-size="16">𓅭</text>
+        <!-- O morto -->
+        <rect x="50" y="130" width="55" height="110" fill="rgba(212,160,23,0.1)" stroke="rgba(212,160,23,0.3)" stroke-width="1"/>
+        <text x="78" y="155" text-anchor="middle" fill="rgba(212,160,23,0.7)" font-size="9" font-family="Cinzel, serif">O MORTO</text>
+        <text x="78" y="185" text-anchor="middle" fill="rgba(212,160,23,0.5)" font-size="24">𓀀</text>
+        <text x="78" y="210" text-anchor="middle" fill="rgba(212,160,23,0.4)" font-size="8" font-family="serif">EM BRANCO</text>
+        <text x="78" y="222" text-anchor="middle" fill="rgba(212,160,23,0.4)" font-size="8" font-family="serif">= INOCENTE</text>
+        <!-- Ammit -->
+        <rect x="430" y="220" width="70" height="60" fill="rgba(139,42,15,0.15)" stroke="rgba(139,42,15,0.4)" stroke-width="1"/>
+        <text x="465" y="242" text-anchor="middle" fill="rgba(176,58,24,0.8)" font-size="9" font-family="Cinzel, serif">AMMIT</text>
+        <text x="465" y="256" text-anchor="middle" fill="rgba(176,58,24,0.5)" font-size="8" font-family="serif">DEVORADORA</text>
+        <text x="465" y="270" text-anchor="middle" fill="rgba(176,58,24,0.6)" font-size="14">𓆙</text>
+        <!-- 42 juízes -->
+        <text x="350" y="290" text-anchor="middle" fill="rgba(212,160,23,0.35)" font-size="9" font-family="Cinzel, serif">42 JUÍZES DAS 42 PROVÍNCIAS DO EGITO</text>
+      </svg>
+    </div>
+  </div>
+
+  <h3 class="content-h3">As 42 Confissões Negativas</h3>
+
+  <p>No Capítulo 125, o morto dirige-se primeiro aos 42 juízes e depois a cada um deles individualmente, declarando sua inocência de uma série de 42 transgressões específicas. Estas são as chamadas <strong class="em-gold">Confissões Negativas</strong> — tecnicamente chamadas de "declarações de inocência" pelos acadêmicos.</p>
+
+  <p>As Confissões Negativas são um documento extraordinário do pensamento ético egípcio — a lista mais completa que temos dos valores morais que os egípcios consideravam fundamentais. Incluem tanto transgresses religiosas quanto éticas e sociais:</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Confissão</th><th>Texto Original (Adaptado)</th><th>Significado Ético</th><th>Divindade Juíza</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>"Não cometi o mal contra homens"</td><td>Proibição geral do dano intencional a outrem</td><td>Usekh-Nemmat ("O de Pescoço Largo")</td></tr>
+        <tr><td>2</td><td>"Não maltratei os animais domésticos"</td><td>Proteção dos animais — notavelmente avançada para a época</td><td>Hept-Seshes</td></tr>
+        <tr><td>3</td><td>"Não cometi o que é abominável para os deuses"</td><td>Respeito ao sagrado e às práticas rituais</td><td>Fenti ("O de Narinas")</td></tr>
+        <tr><td>4</td><td>"Não aflijí os miseráveis"</td><td>Dever de cuidado com os vulneráveis</td><td>Am-Khaibetu</td></tr>
+        <tr><td>5</td><td>"Não fiz o que os deuses abominam"</td><td>Alinhamento com a ordem divina</td><td>Neha-Hau</td></tr>
+        <tr><td>6</td><td>"Não induzí o servo a ser maltratado por seu senhor"</td><td>Proibição de abuso de poder hierárquico</td><td>Ruruti</td></tr>
+        <tr><td>7</td><td>"Não causarei que alguém chore"</td><td>Empatia como obrigação moral</td><td>Arfi-Em-Khet</td></tr>
+        <tr><td>8</td><td>"Não matei nem ordenei que matassem"</td><td>Proibição do assassinato — direta e por procuração</td><td>Neba ("O Flamejante")</td></tr>
+        <tr><td>9</td><td>"Não adulterarei os alimentos"</td><td>Honestidade no comércio de alimentos</td><td>Set-Qesu</td></tr>
+        <tr><td>10</td><td>"Não diminuí a medida do cereal"</td><td>Proibição de pesos falsos — desonestidade comercial</td><td>Utu-Nesert</td></tr>
+        <tr><td>11</td><td>"Não roubei a oferta dos deuses"</td><td>Respeito às oferendas sagradas</td><td>Qerti ("Os Dois Vórtices")</td></tr>
+        <tr><td>12</td><td>"Não desviei a terra de seu limite"</td><td>Respeito às fronteiras de propriedade</td><td>Hetch-Abehu</td></tr>
+        <tr><td>13</td><td>"Não adicionei ao peso da balança"</td><td>Pesos e medidas honestos</td><td>Am-Senefu</td></tr>
+        <tr><td>14</td><td>"Não trapaceei no ponteiro da balança"</td><td>Integridade na pesagem e medição</td><td>Utu-Rekhit</td></tr>
+        <tr><td>15</td><td>"Não tirei o leite da boca das crianças"</td><td>Proteção dos mais vulneráveis</td><td>Neheb-Nefert</td></tr>
+        <tr><td>16</td><td>"Não conduzi o gado de suas pastagens"</td><td>Respeito à propriedade alheia</td><td>Neheb-Kau</td></tr>
+        <tr><td>17</td><td>"Não caçarei em território vedado"</td><td>Respeito às leis de caça e propriedade</td><td>Tcheser-Tep</td></tr>
+        <tr><td>18</td><td>"Não espiei os sacerdotes nos seus ritos"</td><td>Respeito aos mistérios sagrados</td><td>An-Af ("O Respirador")</td></tr>
+        <tr><td>19</td><td>"Não me opus a um deus em seu avanço"</td><td>Não resisti à vontade divina</td><td>Tua-Mef</td></tr>
+        <tr><td>20</td><td>"Sou puro, sou puro, sou puro, sou puro"</td><td>Proclamação final de pureza ritual</td><td>Todos os 42 juízes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="content-h3">Ammit — A Devoradora dos Corações</h3>
+
+  <p><em class="em-eg">Ammit</em> (𓂀𓆣𓅓) — cujo nome significa "Devoradora" ou "Grande Devoradora" — é uma das criaturas mais fascinantes e perturbadoras de toda a mitologia egípcia. Ela não é exatamente um deus — os egípcios não a veneravam como divindade — mas uma espécie de executor cósmico, o instrumento da consequência final para a alma que falhou no julgamento.</p>
+
+  <p>Ammit é descrita e representada como uma criatura quimérica composta de três dos animais mais perigosos do Egito Antigo: a cabeça de <strong class="em-red">crocodilo</strong> (o animal mais mortífero do Nilo), o corpo anterior de <strong class="em-red">leão ou leopardo</strong> (o maior felino predador do Egito), e a parte posterior de <strong class="em-red">hipopótamo</strong> (um animal que era símbolo de caos e perigo nas águas). Esta composição tripla de perigos concentra simbolicamente tudo o que o Egito tinha de ameaçador e mortal.</p>
+
+  <div class="callout warning" data-label="A Segunda Morte — Annihilação Total">
+    <p>Se o coração do morto se mostra mais pesado que a pena de Maat — se a vida foi vivida em desalinhamento com a verdade, a justiça e a ordem cósmica — Ammit devora o coração. E esta devoração não é um "inferno" no sentido de punição eterna: é <strong class="em-red">a segunda morte definitiva</strong>, a aniquilação total da identidade — o fim do Ka, do Ba, do Akh, do Ren. A alma que Ammit devora simplesmente <em>deixa de existir</em> em qualquer sentido significativo. Para os egípcios, esta era a pena máxima: não o sofrimento eterno, mas o <em>fim eterno</em>. A cessação completa da existência individual.</p>
+  </div>
+</section>
+
+<!-- LEITURA COMENTADA -->
+<section class="section papyrus" id="sec-leitura">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo III 𓂀</span>
+    <h1 class="section-title">Leitura Comentada do Livro dos Mortos</h1>
+    <p class="section-subtitle">Análise profunda dos capítulos mais importantes — símbolo, ritual, magia e iniciação</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">Uma leitura cuidadosa do Livro dos Mortos revela um texto de extraordinária complexidade estratificada. Cada capítulo opera simultaneamente como fórmula ritualística (com efeito prático pretendido no mundo do além), como afirmação cosmológica (descrevendo a estrutura do universo espiritual), como declaração de identidade divina (o morto se identifica com os deuses), e como sistema de símbolos que aponta para verdades sobre a consciência humana. Aqui percorremos os capítulos mais importantes com a atenção e a profundidade que merecem.</p>
+
+  <h2 class="content-h2" id="sec-feitico1">Capítulo 1 — Hino ao Nascer do Sol</h2>
+
+  <div class="spell-box" data-spell="Capítulo 1 · Hino a Rá">
+    <div class="spell-formula">"Glória seja a ti, Rá, no teu grande esplendor no teu emergir;<br>tu que vieste a existir, cujo semblante ilumina o céu e a terra.<br>O horizonte te recebe com alegria; as duas terras se unem em adoração."</div>
+  </div>
+
+  <p>O Capítulo 1 é habitualmente o primeiro dos grandes papiros — e essa posição é deliberada. O texto abre com um hino ao deus solar Rá em seu nascer — o momento da vitória sobre a escuridão, o triunfo da luz sobre o caos. Esta abertura é programática: ela anuncia o tema central de todo o texto. O morto que está para empreender a jornada pela Duat está sendo lembrado, logo no início, de qual é o objetivo: sair, como o Sol, à luz do dia.</p>
+
+  <div class="tabs-container">
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab(this,'c1-ritualista')">Análise Ritualista</button>
+      <button class="tab-btn" onclick="switchTab(this,'c1-simbolica')">Análise Simbólica</button>
+      <button class="tab-btn" onclick="switchTab(this,'c1-iniciática')">Análise Iniciática</button>
+      <button class="tab-btn" onclick="switchTab(this,'c1-psicologica')">Análise Psicológica</button>
+    </div>
+    <div id="c1-ritualista" class="tab-panel active">
+      <h4 class="content-h4">Função Ritual</h4>
+      <p>O hino ao nascer do Sol tinha uma função ritual concreta no contexto funerário: era provavelmente recitado pelo sacerdote durante a preparação do papiro ou durante os rituais funerários que acompanhavam o enterramento. O ato de recitar o hino — de fazer os sons e as palavras — era em si mesmo um ato mágico que alinhava o morto com o ciclo solar e iniciava sua identificação com Rá.</p>
+      <p>A recitação dos hinos solares ao amanhecer era também uma prática ritual dos sacerdotes dos templos egípcios — eram pronunciados diariamente quando o Sol subia. O Capítulo 1 do Livro dos Mortos transporta essa prática diária do mundo dos vivos para o contexto do mundo dos mortos: o morto, ao ter este capítulo em seu papiro, estava sendo incorporado ao ritual cotidiano do cosmos.</p>
+    </div>
+    <div id="c1-simbolica" class="tab-panel">
+      <h4 class="content-h4">Simbolismo Solar</h4>
+      <p>O Sol, para os egípcios, era o símbolo maior de tudo que é constante no universo: a morte e o renascimento eterno, a luta perpétua entre a luz e as trevas, a vitória cotidiana da ordem sobre o caos. O Sol nunca deixa de nascer — e nisso está a promessa implícita do Livro dos Mortos: que o morto, identificado com o Sol, também nunca deixará de renascer.</p>
+      <p>Mas o símbolo é mais sutil do que parece. O Sol egípcio não é apenas uma fonte de luz física — é a manifestação da consciência divina tornando-se visível. Quando Rá emerge do horizonte oriental, ele não apenas ilumina o mundo — ele <em>cria</em> o mundo ao iluminá-lo. A luz do Sol é a mesma substância que a realidade — e a jornada do morto em direção à luz solar é uma jornada em direção à realidade mais plena.</p>
+    </div>
+    <div id="c1-iniciática" class="tab-panel">
+      <h4 class="content-h4">Leitura Iniciática</h4>
+      <p>Do ponto de vista iniciático, o Capítulo 1 estabelece a orientação fundamental de todo o processo que se seguirá: a jornada da Duat não é uma descida ao inferno — é uma preparação para o nascimento. O morto começa sendo lembrado do Sol — do objetivo final, do estado de plena luminosidade e consciência que ele está tentando alcançar.</p>
+      <p>Em termos de iniciação mistérica, este capítulo funcionaria como uma "orientação" — o candidato a iniciado recebe, no início do processo, uma visão do que ele está tentando se tornar. Antes de entrar na câmara escura da transformação, ele contempla a luz para a qual está se dirigindo. Isto é pedagogicamente sofisticado: a visão do destino no início da jornada alimenta a coragem necessária para atravessar as trevas.</p>
+    </div>
+    <div id="c1-psicologica" class="tab-panel">
+      <h4 class="content-h4">Interpretação Psicológica</h4>
+      <p>Jung e seus seguidores viam no ciclo solar egípcio uma representação do ciclo psicológico de consciência e inconsciência, de integração e dissolução do ego. O Sol que nasce é a consciência que emerge do inconsciente; o Sol que se põe é a consciência que se dissolve de volta no inconsciente para se renovar.</p>
+      <p>O Capítulo 1, nessa leitura, é um hino à consciência em seu estado mais pleno — o ponto de referência para a jornada de transformação que se seguirá. O "morto" que embarca na jornada da Duat pode ser lido como o ego que precisa mergulhar no inconsciente, enfrentar seus conteúdos (os monstros, os guardiões), integrar suas sombras, e emergir transformado — como o Sol que renasce com mais força após cada noite.</p>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Capítulos 17–18 — A Grande Litania Cosmológica</h2>
+
+  <p>O Capítulo 17 é um dos mais longos e mais densamente cosmológicos de todo o corpus — uma litania que descreve os grandes mitos de criação, os aspectos do deus solar em suas múltiplas formas, e os segredos do cosmos espiritual. É frequentemente acompanhado por comentários ou glosas escritas em tinta diferente — o que sugere que o texto tinha camadas de interpretação e que diferentes grupos — sacerdotes, iniciados, estudiosos — tinham diferentes leituras dos mesmos versos.</p>
+
+  <div class="spell-box" data-spell="Capítulo 17 · Hino Cosmológico">
+    <div class="spell-formula">"Eu sou Atum em seu emergir do caos primordial.<br>Eu sou Rá em seu esplendor do amanhecer.<br>Eu sou Khepri tornando-me a si mesmo eternamente.<br>Eu sou o Deus Único que não tem igual."</div>
+  </div>
+
+  <p>A estrutura fundamental do Capítulo 17 — e de muitos outros capítulos do Livro dos Mortos — é a <strong class="em-gold">identificação do morto com o deus</strong>. O morto não reza <em>para</em> os deuses pedindo favor; ele <em>se torna</em> o deus. "Eu sou Osiris", "Eu sou Rá", "Eu sou Hórus" — estas afirmações de identidade divina são o coração do sistema mágico do texto.</p>
+
+  <div class="callout ra" data-label="A Lógica da Identificação Divina">
+    <p>Por que o morto se identifica com os deuses em vez de pedir sua ajuda? A lógica é magistral do ponto de vista mágico: se você <em>é</em> Osíris, você não precisa que Osíris te proteja — você já tem todo o poder de Osíris. Se você <em>é</em> Rá, você não precisa que Rá te leve em sua barca — você já é a própria barca. A identificação divina é a forma mais direta e eficaz de magia porque elimina completamente a distância entre o operador e o poder que ele busca. Não há intermediário, não há petição, não há possibilidade de recusa: você simplesmente <em>é</em> o que você precisa ser.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-negativas">Capítulo 125 — As Confissões Negativas e o Julgamento</h2>
+
+  <p>Já discutido em parte na seção anterior, o Capítulo 125 merece uma análise mais aprofundada de sua estrutura e significado. Ele se divide em três partes principais, cada uma com sua função específica:</p>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Primeira Parte — O Discurso do Morto no Hall das Duas Verdades
+        <span class="accordion-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <p>O morto entra no Hall das Duas Verdades (<em class="em-eg">Maati</em>) e se dirige a Osíris com um discurso de apresentação formal. Anuncia seu nome, seus títulos, sua procedência. Declara que veio "tendo conhecimento" — ou seja, conhecendo os nomes secretos, as fórmulas corretas, os protocolos de etiqueta do mundo dos mortos. Este conhecimento prévio é apresentado como prova de sua qualificação para passar pelo julgamento.</p>
+        <p>A afirmação "venho tendo conhecimento" é extraordinariamente reveladora: o que garante ao morto o direito de passar não é simplesmente ter sido bom durante a vida — é também ter adquirido o conhecimento espiritual necessário para navegar corretamente pelo mundo dos mortos. Isto introduz um elemento iniciático no texto: a preparação em vida, o estudo dos textos sagrados, o aprendizado das fórmulas — tudo isso é parte integrante da qualificação para a vida eterna.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Segunda Parte — As 42 Confissões aos 42 Juízes
+        <span class="accordion-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <p>Após o discurso inicial, o morto dirige-se individualmente a cada um dos 42 juízes, pronunciando o nome do juiz e declarando sua inocência da transgressão específica que aquele juiz julga. Esta estrutura de 42 declarações individualizadas é única na literatura religiosa antiga e representa o mais sistemático inventário ético que sobreviveu da civilização egípcia.</p>
+        <p>As confissões cobrem um espectro notavelmente amplo: desde transgressões religiosas (profanar os templos, roubar oferendas divinas), até crimes sociais (assassinato, roubo, fraude comercial), passando por injustiças econômicas (manipular pesos e medidas, roubar terras), crueldades (fazer chorar, maltratar os pobres e os animais) e abusos de poder (explorar servos, caçar em território vedado).</p>
+        <p>O que é notável é a amplitude da ética egípcia: ela inclui não apenas o respeito ao divino e o cumprimento dos ritos, mas também — e talvez primariamente — a justiça social. A crueldade com os animais e com os vulneráveis é listada ao lado do roubo dos templos. Para os egípcios, a ordem cósmica (Maat) incluía a ordem social — uma sociedade injusta era tão perturbadora do cosmos quanto um ritual profanado.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        Terceira Parte — A Psicostasia e a Sentença
+        <span class="accordion-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <p>Após as confissões, o coração do morto é pesado na balança contra a pena de Maat, supervisionado por Anúbis e registrado por Thoth. Há um momento dramático de tensão — e então a declaração da sentença. Nos papiros que foram produzidos para clientes específicos (como o Papiro de Ani), o resultado é invariavelmente positivo: o coração é leve como a pena, Thoth registra o resultado favorável, e o morto é conduzido à presença de Osíris para receber a promessa de vida eterna.</p>
+        <p>Mas há uma ironia histórica aqui: os papiros que sobreviveram foram todos produzidos para pessoas que pagaram por eles — e quem pagava por um papiro funerário claramente queria que o texto dissesse que tinha passado no julgamento. Nenhum papiro diz "e o coração do morto era mais pesado que a pena de Maat". Isso levanta uma questão acadêmica interessante: o texto era descritivo (descrevendo o que aconteceria no julgamento real) ou prescritivo/performativo (o texto <em>tornava</em> verdadeiro o resultado favorável pelo simples fato de ser pronunciado)? A evidência aponta para a segunda interpretação — o Livro dos Mortos funcionava como magia performativa, criando a realidade que descrevia.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="content-h2" id="sec-transformacao">Capítulos 76–88 — Os Feitiços de Transformação</h2>
+
+  <p>Uma das seções mais extraordinárias e filosoficamente ricas do Livro dos Mortos são os chamados <strong class="em-gold">Feitiços de Transformação</strong> — os capítulos que permitem ao morto se transformar em várias formas ou entidades para navegar pelos perigos específicos da Duat. Estes capítulos têm títulos como "Feitiço para se Transformar em Falcão Dourado", "Feitiço para se Transformar em Lótus Sagrado", "Feitiço para se Transformar no Deus Ptah", "Feitiço para se Transformar numa Cobra".</p>
+
+  <p>A ideia subjacente é profunda: na Duat, o morto não está preso em uma única forma fixa. Ele pode assumir a forma da criatura ou entidade que melhor serve a cada situação específica. Isso reflete a visão egípcia da identidade como fluida e multiforme — o ser humano, em sua essência espiritual, não está limitado a uma forma única mas pode se mover livremente entre múltiplas manifestações.</p>
+
+  <div class="spell-box" data-spell="Capítulo 83 · Transformação em Fênix">
+    <div class="spell-formula">"Eu existo como o grande Benu que está na Heliópolis.<br>Eu sou o Benu, a alma de Rá, que guia os deuses ao Duat.<br>Sou aquele que não é destruído pelo fogo. Sou o horizonte do nascente."</div>
+  </div>
+
+  <p>O <em class="em-eg">Benu</em> (𓅝) — o pássaro que os gregos chamaram de Fênix — é a forma mais elevada de transformação que o morto pode alcançar. O Benu era uma das formas mais sagradas de Rá e de Osíris: um garça-real de plumagem dourada que, segundo o mito, pousou na colina primordial no momento da criação do mundo e anunciou o amanhecer da existência com seu grito. O Benu era, literalmente, a voz que criou o cosmos.</p>
+
+  <p>Ao se transformar no Benu, o morto não está apenas adquirindo o poder de renascer das cinzas (como a versão grega do mito sugere) — está se identificando com o ato primordial de criação, com o grito inaugural que fez o universo existir. É a forma mais elevada de identificação cósmica que o sistema mágico egípcio oferecia.</p>
+
+  <h2 class="content-h2">Capítulo 130 — A Entrada na Barca Solar</h2>
+
+  <div class="spell-box" data-spell="Capítulo 130 · Barca de Rá">
+    <div class="spell-formula">"Abre-te para mim, tu que estás no horizonte!<br>Que eu me sente na barca solar de Rá!<br>Que eu navegue com ele nos campos celestiais!<br>Meu coração está em equilíbrio. Minha alma é pura."</div>
+  </div>
+
+  <p>O Capítulo 130 descreve a entrada do morto na barca solar — o veículo cósmico no qual Rá faz sua jornada diária e noturna. Entrar na barca de Rá é o ápice da jornada da Duat: significa que o morto foi aceito como companheiro eterno do Sol, que ele navegará para sempre com a tripulação divina, que ele nunca mais poderá ser ameaçado pelos inimigos do Sol.</p>
+
+  <p>A barca solar egípcia (<em class="em-eg">Mandjet</em> para a jornada diurna, <em class="em-eg">Mesektet</em> para a jornada noturna) é um símbolo de extraordinária riqueza. Ela é o único meio de transporte que pode atravessar todos os domínios do cosmos — o céu, as águas primordiais, a Duat. Seus tripulantes são os próprios deuses. Entrar na barca é entrar na família divina, tornar-se parte da mecânica fundamental do universo.</p>
+</section>
+
+<!-- JORNADA DA ALMA NA DUAT -->
+<section class="section night" id="sec-jornada">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo IV 𓂀</span>
+    <h1 class="section-title">A Jornada da Alma na Duat</h1>
+    <p class="section-subtitle">Os Portões, os Guardiões, Apófis e as Doze Horas da Noite Cósmica</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">A jornada da alma pela Duat é o coração narrativo do Livro dos Mortos. O morto, após o enterramento, embarca numa jornada através de doze divisões ou "horas" da noite cósmica — cada uma com sua própria paisagem, seus próprios habitantes, seus próprios perigos e seus próprios guardiões. Esta jornada é simultaneamente um relato cosmológico (descrevendo a estrutura real do além), uma narrativa mítica (paralela à jornada noturna do Sol), um guia prático (as fórmulas para passar por cada portão) e um mapa espiritual (cada estágio representa uma transformação da consciência).</p>
+
+  <h2 class="content-h2" id="sec-portoes">Os Portões e Guardiões da Duat</h2>
+
+  <p>O Livro dos Mortos descreve numerosos portões, portas e portais que o morto deve atravessar durante sua jornada. O número varia conforme a versão: o <em class="em-eg">Livro das Portas</em> (um texto complementar ao Livro dos Mortos) descreve 12 grandes portais correspondentes às 12 horas; outros textos mencionam 7 portões, 21 portões, ou até 42 portões. Em todos os casos, a estrutura é a mesma: cada portão tem um guardião (ou múltiplos guardiões) cujo nome secreto deve ser pronunciado para que o portão se abra.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Portão</th><th>Nome do Guardião</th><th>Natureza do Obstáculo</th><th>Fórmula Necessária</th><th>Significado Iniciático</th></tr></thead>
+      <tbody>
+        <tr><td>1º Portão</td><td>Nebi ("O Flamejante")</td><td>Guardião com espada de fogo; examina pureza ritual</td><td>Pronunciar o nome correto e declarar pureza</td><td>O limiar entre o mundo dos vivos e o submundo; confronto com a própria mortalidade</td></tr>
+        <tr><td>2º Portão</td><td>Mes-Peh ("O Nascido da Faca")</td><td>Cobra gigante que cospe fogo; ameaça de incineração</td><td>Feitiço para neutralizar o fogo</td><td>A tentação do ego de se agarrar à identidade anterior; o fogo que purifica</td></tr>
+        <tr><td>3º Portão</td><td>Neha-Her ("Aquele que Afasta o Rosto")</td><td>Guardião que tenta fazer o morto esquecer seu nome e identidade</td><td>Recitar o próprio nome e os nomes divinos</td><td>O perigo da perda de identidade; a necessidade de conhecer-se a si mesmo</td></tr>
+        <tr><td>4º Portão</td><td>Akh-En-Maat ("O Espírito de Maat")</td><td>Julgamento das obras da vida; pesagem prévia</td><td>Declaração de atos justos; confissão negativa parcial</td><td>Confronto com a própria consciência moral; a sombra acusatória</td></tr>
+        <tr><td>5º Portão</td><td>Teka-Hra ("O de Rosto Invertido")</td><td>Guardião que olha para trás; representa o peso do passado</td><td>Feitiço para libertar-se das amarras do passado</td><td>A necessidade de soltar o passado; o perigo da nostalgia e do apego</td></tr>
+        <tr><td>6º Portão</td><td>Mentes ("O Senhor da Escuridão")</td><td>Abismo de trevas absolutas; perda de orientação</td><td>Feitiço para ver no escuro; invocar a luz interior</td><td>A "noite escura da alma"; o estado entre formas; o vazio criativo</td></tr>
+        <tr><td>7º Portão</td><td>Akenti ("O da Câmara Secreta")</td><td>Guardião dos mistérios mais profundos; só passa quem conhece os segredos</td><td>Pronunciar as fórmulas dos mistérios maiores</td><td>O portal da iniciação mais profunda; o conhecimento como passaporte</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2" id="sec-apofis">Apófis — A Serpente do Caos Primordial</h2>
+
+  <p><em class="em-eg">Apófis</em> (<em class="em-lat">Apophis</em>, em grego — também chamado de <em class="em-eg">Apep</em>) é o antagonista cósmico supremo do panteão egípcio — e um dos mais poderosos símbolos de caos na história das religiões. Ele é uma serpente descomunal — "cujo tamanho não pode ser medido", dizem os textos — que habita as profundezas das águas primordiais da Duat e que, todas as noites, tenta devorar o Sol durante sua jornada pelas trevas.</p>
+
+  <p>A batalha entre Rá e Apófis é o drama cósmico central da cosmologia egípcia. Ela se repete todas as noites — nunca termina definitivamente porque Apófis não pode ser destruído para sempre: cada noite ele se regenera, cada noite o confronto recomeça. Isso não é uma falha do sistema mitológico — é uma afirmação filosófica sofisticada: o caos não pode ser eliminado definitivamente do cosmos. Ele precisa ser combatido continuamente. A ordem (Maat) não é um estado estático que pode ser alcançado uma vez e mantido para sempre — é um processo ativo de luta permanente.</p>
+
+  <div class="callout duat" data-label="Apófis — Síntese Filosófica e Iniciática">
+    <p>Na interpretação iniciática, Apófis representa aquilo que em cada ser humano resiste à transformação, ao crescimento, à consciência. É o poder do habitual, do automático, do inconsciente — a tendência da mente de retornar ao caos indiferenciado. O fato de que Rá (a consciência solar) deve combater Apófis <em>todas as noites</em>, sem jamais vencer definitivamente, é uma afirmação profunda sobre a natureza da vida espiritual: não há "vitória final" sobre o ego, sobre o inconsciente, sobre as tendências negativas. É um trabalho diário, um combate renovado a cada ciclo. A iluminação não é um destino — é uma prática contínua.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-barcasolar">A Barca Solar — Mandjet e Mesektet</h2>
+
+  <p>A barca solar é talvez o símbolo mais onipresente de toda a iconografia religiosa egípcia. Rá viaja pelo céu e pela Duat em uma barca — durante o dia, a barca <em class="em-eg">Mandjet</em> ("A que se torna Poderosa"), carregada pelas divindades solares; durante a noite, a barca <em class="em-eg">Mesektet</em> ("A que se vai Pondo"), puxada pelos deuses e pelos mortos justificados que viajam com Rá.</p>
+
+  <p>A tripulação da barca noturna inclui figuras divinas como Thoth, Hórus, Seth (que protege Rá contra Apófis com sua lança), Maat, Isis — mas também, crucialmente, os <em class="em-eg">akh</em>u (os espíritos transfigurados dos mortos justificados). Entrar na barca é, portanto, tornar-se parte da tripulação divina — participar ativamente do processo pelo qual o universo se sustenta.</p>
+
+  <h2 class="content-h2" id="sec-iaru">Os Campos de Iaru — O Paraíso Egípcio</h2>
+
+  <p>O destino final do morto justificado — aquele que passou pelo julgamento de Maat, que atravessou todos os portões da Duat, que entrou na barca solar — são os <em class="em-eg">Campos de Iaru</em> (𓇗𓏏𓈐𓇋𓇋𓏏𓏌𓏛) — literalmente "Campos dos Juncos", o paraíso egípcio. São também chamados de <em class="em-eg">Campos de Paz</em> (<em class="em-eg">Sekhet-Hetepet</em>).</p>
+
+  <p>Os Campos de Iaru são descritos como uma terra de extraordinária fertilidade — uma versão idealizada do Egito, com o Nilo transbordando de peixes, campos cobertos de trigo dourado altíssimo, pássaros em abundância, palmeiras carregadas de frutos. O morto beato vive lá em perfeita felicidade — mas não em ociosidade passiva: ele trabalha os campos, planta, colhe, pesca. O paraíso egípcio é um paraíso agrícola ativo, não uma bem-aventurança contemplativa passiva.</p>
+
+  <div class="callout osiris" data-label="Shabtis — Os Substitutos do Trabalho">
+    <p>Uma das consequências mais interessantes da visão dos Campos de Iaru como paraíso de trabalho agrícola é a tradição dos <strong class="em-green">shabtis</strong> (também chamados <em>ushabtis</em>) — pequenas estátuas funerárias que eram enterradas com o morto para trabalharem em seu lugar nos Campos de Iaru quando fosse chamado para corvéia divina. Os tumulos mais ricos continham centenas de shabtis — um para cada dia do ano, com supervisores adicionais para cada grupo de dez trabalhadores. Esta prática revela não apenas a crença na realidade material do além, mas também a projeção das estruturas sociais egípcias — incluindo o trabalho obrigatório — para dentro do paraíso.</p>
+  </div>
+</section>
+
+<!-- OS DEUSES -->
+<section class="section papyrus" id="sec-deuses">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo V 𓂀</span>
+    <h1 class="section-title">Os Deuses do Livro dos Mortos</h1>
+    <p class="section-subtitle">Osíris · Rá · Anúbis · Thoth · Ísis · Maat · Hórus e as Divindades do Além</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">O Livro dos Mortos é habitado por um panteão extraordinariamente rico e complexo — dezenas de divindades com funções específicas, histórias interligadas, símbolos precisos e significados cosmológicos profundos. Compreender esses deuses não como entidades arbitrárias mas como manifestações de forças cósmicas reais — e como arquétipos de estados da consciência — é essencial para uma leitura profunda do texto.</p>
+
+  <div class="god-grid">
+    <div class="god-card" id="sec-osiris">
+      <span class="god-symbol">𓊽</span>
+      <div class="god-name">Osíris — Ousir</div>
+      <span class="god-epithet">Senhor do Além · O Eterno</span>
+      <div class="god-desc">O deus mais central do Livro dos Mortos é Osíris (<em>Ousir</em> em egípcio) — o Senhor dos Mortos, o Juiz Supremo, o Deus Ressuscitado por excelência. Seu mito é o mais importante da religião egípcia: rei legítimo do Egito, foi assassinado por seu irmão Seth, que dividiu seu corpo em 14 (ou 42) pedaços e os espalhou pelo Egito. Ísis, sua esposa e irmã, reuniu os pedaços, reconstituiu o corpo com a ajuda de Anúbis, e ressuscitou Osíris — mas apenas o suficiente para conceber Hórus. Após isso, Osíris tornou-se o Senhor eterno do Além.</div>
+    </div>
+    <div class="god-card" id="sec-ra">
+      <span class="god-symbol">𓇯</span>
+      <div class="god-name">Rá — O Sol Eterno</div>
+      <span class="god-epithet">Senhor do Horizonte · Criador</span>
+      <div class="god-desc">Rá é o deus solar supremo do panteão egípcio — e, em certo sentido, o protagonista cosmológico do Livro dos Mortos. É Rá que faz a jornada pela Duat toda noite; é com Rá que o morto deseja viajar; é como Rá que o morto transfigurado brilha no além. Rá tem três formas principais correspondentes às três fases do dia: Khepri (ao nascer — o besouro), Rá (ao meio-dia — o disco solar em seu esplendor), e Atum (ao pôr do sol — o ancião que completa o ciclo).</div>
+    </div>
+    <div class="god-card" id="sec-anubis">
+      <span class="god-symbol">𓀭</span>
+      <div class="god-name">Anúbis — Inpu</div>
+      <span class="god-epithet">Guia dos Mortos · Senhor da Mumificação</span>
+      <div class="god-desc">Anúbis (<em>Inpu</em> em egípcio) é o deus da cabeça de chacal que guia os mortos pela Duat e supervisa o julgamento na balança de Maat. É o protetor das tumbas, o senhor da mumificação, o guardião dos segredos do embalsamamento. O chacal egípcio (provavelmente o lobo-dourado) era visto rondando cemitérios — e dessa observação animal emergiu a divindade que protege os corpos dos mortos. Anúbis é o psicopompo egípcio — o condutor das almas.</div>
+    </div>
+    <div class="god-card" id="sec-thoth">
+      <span class="god-symbol">𓅭</span>
+      <div class="god-name">Thoth — Djehuty</div>
+      <span class="god-epithet">Senhor da Sabedoria · Escriba dos Deuses</span>
+      <div class="god-desc">Thoth (<em>Djehuty</em> em egípcio) é o deus-íbis (ou deus-babuíno) da sabedoria, da escrita, da magia, da lua, do tempo e das ciências. É ele quem registra o resultado do julgamento de Maat. É o inventor dos hieróglifos e de toda a escrita sagrada. É o patrono dos escribas e dos magos. Hermes Trismegisto — a figura central do hermetismo — é diretamente derivado da fusão de Thoth com o deus grego Hermes, enfatizando a tradição de sabedoria que ambos representam.</div>
+    </div>
+    <div class="god-card">
+      <span class="god-symbol">𓋹</span>
+      <div class="god-name">Ísis — Aset</div>
+      <span class="god-epithet">A Grande Mãe · Mestra da Magia</span>
+      <div class="god-desc">Ísis (<em>Aset</em> em egípcio) é a deusa da magia, da cura, da proteção e do amor conjugal. Foi ela quem reuniu os pedaços do corpo de Osíris e o ressuscitou com sua magia. É a mãe de Hórus. Seus braços alados — representados nas bordas dos caixões egípcios — abraçam e protegem o morto. Ísis é o arquétipo da magia divina feminina: conhece os nomes secretos dos deuses, inclusive o nome secreto de Rá, que ela extorquiu do deus quando ele era velho usando uma serpente de veneno.</div>
+    </div>
+    <div class="god-card">
+      <span class="god-symbol">𓌀</span>
+      <div class="god-name">Maat — A Verdade</div>
+      <span class="god-epithet">Deusa da Ordem Cósmica · A Balança</span>
+      <div class="god-desc">Maat é ao mesmo tempo deusa e princípio filosófico — simultaneamente uma divindade que pode ser invocada e uma lei impessoal que governa o cosmos. Representada com uma pena de avestruz na cabeça (e frequentemente toda vestida de verde), ela personifica a verdade, a justiça, a ordem cósmica e o equilíbrio universal. É sua pena que está na balança durante o julgamento do morto. "Viver em Maat" — agir em conformidade com a verdade e a justiça — era o ideal ético central da civilização egípcia.</div>
+    </div>
+    <div class="god-card" id="sec-outros-deuses">
+      <span class="god-symbol">𓅃</span>
+      <div class="god-name">Hórus — Hor</div>
+      <span class="god-epithet">O Céu · Filho de Osíris</span>
+      <div class="god-desc">Hórus (<em>Hor</em> em egípcio) é o deus-falcão, filho de Osíris e Ísis, rei legítimo do Egito. É simultaneamente o deus solar do céu (seus olhos são o sol e a lua), o vingador de seu pai Osíris, e o arquétipo do faraó reinante. O olho de Hórus — o <em class="em-eg">Wedjat</em> (𓂀) — é o amuleto de proteção por excelência. O morto aspira a se tornar um Akh e viajar com Hórus — identificando-se tanto com o pai (Osíris, o morto ressuscitado) quanto com o filho (Hórus, o ser de luz celeste).</div>
+    </div>
+    <div class="god-card">
+      <span class="god-symbol">𓆙</span>
+      <div class="god-name">Ammit — A Devoradora</div>
+      <span class="god-epithet">O Terror Final · Cabeça de Crocodilo</span>
+      <div class="god-desc">Ammit ("A Devoradora" ou "Comedora dos Mortos") é a criatura quimérica que devora os corações dos mortos que falharam no julgamento. Com cabeça de crocodilo, corpo de leão e traseiro de hipopótamo — os três animais mais perigosos do Egito — ela representa a "segunda morte": a aniquilação total da identidade, o fim definitivo da existência individual. Ammit não é propriamente adorada, mas sua presença na cena do julgamento serve como motivação ética poderosa.</div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Os 42 Filhos de Hórus e os Vasos Canópicos</h2>
+
+  <p>Uma das práticas funerárias mais importantes do Egito Antigo — diretamente relacionada ao Livro dos Mortos — é a preservação dos órgãos internos do morto em <strong class="em-gold">vasos canópicos</strong>. Durante o processo de mumificação, quatro órgãos principais eram removidos do corpo — pulmões, fígado, estômago e intestinos — e preservados em quatro vasos selados, cada um com a tampa em forma de cabeça de um dos Quatro Filhos de Hórus.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Filho de Hórus</th><th>Cabeça</th><th>Órgão Protegido</th><th>Deusa Protetora</th><th>Ponto Cardinal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Imset</strong> (Amset)</td><td>Humana</td><td>Fígado</td><td>Ísis</td><td>Sul</td></tr>
+        <tr><td><strong>Hapy</strong></td><td>Babuíno</td><td>Pulmões</td><td>Néftis</td><td>Norte</td></tr>
+        <tr><td><strong>Duamutef</strong></td><td>Chacal</td><td>Estômago</td><td>Neith</td><td>Leste</td></tr>
+        <tr><td><strong>Qebehsenuef</strong></td><td>Falcão</td><td>Intestinos</td><td>Selkis</td><td>Oeste</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>O coração — o <em class="em-eg">ib</em> — era o único órgão que <em>não</em> era removido: permanecia no corpo porque seria necessário para o julgamento na balança de Maat. Em muitas múmias, o coração real era substituído por um escaravelho de pedra com o Capítulo 30B do Livro dos Mortos gravado em sua base — o Capítulo do Coração, que ordenava ao coração que não testemunhasse contra seu dono no julgamento.</p>
+</section>
+
+<!-- MAGIA E HEKA -->
+<section class="section sand" id="sec-heka">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo VI 𓂀</span>
+    <h1 class="section-title">Heka — Magia, Palavra e Poder Sagrado</h1>
+    <p class="section-subtitle">O poder criador da palavra, os nomes secretos e a linguagem como força cósmica</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">O conceito de <em class="em-eg">Heka</em> (𓅔𓎡𓂋) é fundamental para compreender o Livro dos Mortos em sua totalidade. Heka é a força mágica primordial — a "magia" egípcia — que permeia o cosmos e que, quando manipulada corretamente por quem conhece as fórmulas e os nomes corretos, pode alterar a realidade. Mas Heka não é "magia" no sentido fantástico ou ilusório que a palavra evoca para nós: é uma força natural do cosmos tão real quanto a gravidade ou o magnetismo — simplesmente operando em um nível de realidade que a percepção ordinária não acessa.</p>
+
+  <h2 class="content-h2" id="sec-hieroglifos">Hieróglifos e o Poder da Escrita</h2>
+
+  <p>Para os egípcios, a escrita não era uma tecnologia de armazenamento de informação — era uma forma de criação de realidade. Os hieróglifos (<em>mdw ntr</em> — "palavras dos deuses" — eram literalmente as palavras com as quais o criador havia feito o mundo. Escrever algo era uma extensão do ato de criação: tornar algo permanente no papiro ou na pedra era torná-lo permanente na realidade.</p>
+
+  <p>Esta visão tem consequências profundas para a interpretação do Livro dos Mortos. Cada fórmula inscrita no papiro não é apenas uma instrução ou uma oração — é uma <em>criação</em> da realidade que descreve. O escriba que escreve "o morto passará pelos portões da Duat" está, por esse ato de escrita, fazendo o morto passar pelos portões da Duat — no nível da realidade em que os hieróglifos operam. O texto não descreve o que acontecerá; ele <em>faz acontecer</em> o que descreve.</p>
+
+  <div class="callout ra" data-label="Hieróglifos — Palavras que São Coisas">
+    <p>Em egípcio antigo, a mesma palavra — <em class="em-eg">mdw</em> — significa tanto "palavra" quanto "coisa". Esta não é uma coincidência linguística: é uma afirmação filosófica. Para os egípcios, a palavra não representa uma coisa — ela <em>é</em> a coisa em seu nível de essência mais profundo. O hieróglifo de um leão não representa a ideia de leão — ele <em>é</em> o leão em seu nível de existência divina. Por isso, as representações de inimigos nas tumbas eram fisicamente mutiladas (braços cortados, pernas removidas) para que não pudessem prejudicar o morto: o hieróglifo de um inimigo <em>era</em> o inimigo, e destruir o hieróglifo era destruir o inimigo.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-nomes">Os Nomes Secretos — A Magia do Ren</h2>
+
+  <p>Um dos princípios mais centrais da magia egípcia é que <strong class="em-gold">conhecer o verdadeiro nome de uma entidade é ter poder sobre ela</strong>. O nome (<em class="em-eg">ren</em>) não é uma etiqueta arbitrária — é a essência concentrada do ser. Conhecer o nome de um deus é conhecer sua natureza mais profunda; e quem conhece a natureza mais profunda de um ser pode operar sobre esse ser.</p>
+
+  <p>O mito mais famoso sobre o poder dos nomes secretos é o mito de <strong class="em-gold">Ísis e o Nome Secreto de Rá</strong>. Segundo o texto — preservado em um papiro do Reino Novo — Rá tinha um nome secreto que era a fonte de todo o seu poder e que ele guardava com cuidado supremo. Ísis, desejando ter poder igual ao de Rá para proteger seu filho Hórus, criou uma serpente com o cuspe de Rá e a colocou no caminho do deus solar. A serpente picou Rá, que ficou gravemente enfermo. Ísis ofereceu sua magia para curar Rá — mas apenas se ele lhe revelasse seu nome secreto. O deus, em agonia, revelou o nome — e Ísis curou-o, tornando-se assim a "mais poderosa maga do mundo".</p>
+
+  <p>Este mito não é apenas uma história sobre poder divino — é uma afirmação sobre a natureza do conhecimento espiritual. O nome secreto de Rá representa o conhecimento da essência mais profunda da realidade — o que, em outras tradições, seria chamado de "logos", "Tao", "Brahman" ou "Ein Sof". Quem conhece essa essência tem acesso ao poder criador fundamental do cosmos.</p>
+
+  <p>No Livro dos Mortos, o morto demonstra constantemente que conhece os nomes secretos — dos guardiões dos portões, dos deuses do tribunal, dos elementos da barca solar. Este conhecimento é o verdadeiro "passaporte" que permite ao morto atravessar todos os obstáculos da Duat. Não é a bondade da vida passada por si só que garante a passagem — é a combinação de ter vivido bem (Maat) e ter adquirido o conhecimento sagrado (Heka).</p>
+</section>
+
+<!-- LEITURA INICIÁTICA -->
+<section class="section papyrus" id="sec-iniciática">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo VII 𓂀</span>
+    <h1 class="section-title">Interpretação Iniciática Mastigada</h1>
+    <p class="section-subtitle">Como ler o Livro dos Mortos como mapa da transformação interior da consciência</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">A interpretação iniciática do Livro dos Mortos não é uma invenção moderna — ela tem raízes antigas. Os escribas do Reino Novo que produziram as glosas e comentários ao Capítulo 17 já estavam engajados numa leitura alegórica e filosófica do texto. Os sacerdotes que conheciam os mistérios de Osíris provavelmente interpretavam a jornada da Duat como um mapa de estados espirituais que os vivos podiam experienciar em vida através de rituais de iniciação. Esta tradição de interpretação espiritual interior do texto egípcio é tão antiga quanto o próprio texto.</p>
+
+  <h2 class="content-h2">Como Evitar o Literalismo</h2>
+
+  <p>O maior perigo na abordagem do Livro dos Mortos é o literalismo. O literalismo crédulo — tomar o texto como um guia de viagem turística para o submundo, com portões numerados e monstros catalogados — empobrece o texto. O literalismo cético — "é tudo superstição primitiva" — é igualmente empobrecedor. Ele projeta sobre os egípcios uma ingenuidade que eles não tinham. Os sacerdotes que desenvolveram esses textos ao longo de séculos eram pessoas sofisticadas, treinadas em cosmologia, medicina, astronomia e filosofia.</p>
+
+  <div class="callout maat" data-label="O Julgamento como Processo Interior">
+    <p>A cena do julgamento no Hall das Duas Verdades pode ser lida como uma descrição de um processo que ocorre <em>durante a vida</em> tanto quanto após a morte. O "coração pesado" é a consciência onerada pela culpa, pela injustiça, pela crueldade não reconhecida. A "pena de Maat" é o ideal de vida autêntica, verdadeira, justa. O "julgamento" é o confronto inevitável de cada ser humano consigo mesmo — aquele momento de clareza interior em que a vida vivida é vista com total honestidade. O Livro dos Mortos está, entre outras coisas, descrevendo esse processo de autoconhecimento radical que todos atravessamos.</p>
+  </div>
+
+  <h2 class="content-h2" id="sec-psicologia">A Duat como Mapa dos Estados de Consciência</h2>
+
+  <p>Uma das interpretações mais fecundas do Livro dos Mortos — desenvolvida a partir de Jung e amplificada por psicólogos analíticos posteriores como Marie-Louise von Franz — é a leitura da jornada da Duat como um mapa dos <strong class="em-gold">estados de consciência</strong> que o ser humano atravessa nos processos de transformação psíquica profunda.</p>
+
+  <p>As doze horas da Duat — as doze divisões do submundo que o Sol e o morto atravessam durante a noite cósmica — correspondem, nessa interpretação, às doze fases de um processo de morte e renascimento psicológico. A descida ao submundo é o mergulho no inconsciente; os monstros são os complexos psíquicos que ameaçam dissolver a identidade; o julgamento é o confronto com a Sombra; a entrada na barca solar é a integração dos opostos; o renascimento com o Sol é a individuação.</p>
+
+  <h3 class="content-h3">Os Monstros como Complexos Psicológicos</h3>
+
+  <p>Os guardiões e monstros da Duat — as serpentes de fogo, os crocodilos, os demônios com faces invertidas — são, na interpretação psicológica, projeções dos conteúdos não integrados da psique. Eles "ameaçam" o morto na Duat da mesma forma que os complexos não integrados "ameaçam" o ego nos processos de transformação psicológica: tentam paralisar, desviar, consumir, fazer esquecer.</p>
+
+  <p>A fórmula para passar por cada guardião — pronunciar o nome secreto do guardião — é, psicologicamente, o ato de <strong class="em-gold">nomear o complexo</strong>: identificar conscientemente o que antes era uma força inconsciente anônima. Jung observou que dar nome a um complexo — torná-lo consciente, articulado, nomeado — é a primeira e mais fundamental forma de dissolução do seu poder. O monstro inominado tem todo o poder do desconhecido; o monstro nomeado e encarado torna-se integrável.</p>
+
+  <h2 class="content-h2" id="sec-arquétipos">Jung e os Arquétipos Egípcios</h2>
+
+  <p>Carl Gustav Jung desenvolveu conceitos que se encaixam extraordinariamente bem com a estrutura do Livro dos Mortos. Sua teoria dos <strong class="em-gold">arquétipos</strong> — padrões universais de experiência que habitam o inconsciente coletivo e se manifestam em mitos, sonhos, religiões e símbolos de todas as culturas — fornece uma estrutura poderosa para interpretar as figuras do texto.</p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Divindade Egípcia</th><th>Arquétipo Jungiano</th><th>Aspecto Psicológico</th><th>No Processo de Individuação</th></tr></thead>
+      <tbody>
+        <tr><td>Osíris</td><td>O Rei Ferido / O Self</td><td>A identidade central que foi fragmentada e precisa ser reconstituída</td><td>O objetivo do processo — o Self integrado</td></tr>
+        <tr><td>Set (Seth)</td><td>A Sombra</td><td>O aspecto negativo, destrutivo, rejeitado da personalidade</td><td>A Sombra que deve ser reconhecida sem ser destruída</td></tr>
+        <tr><td>Ísis</td><td>Anima / Grande Mãe</td><td>O princípio feminino integrador; a magia criativa do inconsciente</td><td>A função que restaura a totalidade fragmentada</td></tr>
+        <tr><td>Hórus</td><td>O Herói</td><td>O ego em seu potencial mais elevado; o filho do Self</td><td>O novo ego que emerge após a transformação</td></tr>
+        <tr><td>Thoth</td><td>O Velho Sábio / Hermes</td><td>A função transcendente; o psicopompo interior</td><td>A guia que conduz o ego através do processo</td></tr>
+        <tr><td>Anúbis</td><td>Psicopompo</td><td>O guia entre mundos; o que conduz entre consciente e inconsciente</td><td>A função que torna a descida ao inconsciente segura</td></tr>
+        <tr><td>Maat</td><td>O Self / Verdade</td><td>O princípio de totalidade e autenticidade; o eu mais profundo</td><td>O critério de julgamento da individuação</td></tr>
+        <tr><td>Apófis</td><td>O Dragão / Resistência</td><td>A resistência radical à consciência; o poder regressivo do inconsciente</td><td>O que deve ser enfrentado mas não destruído permanentemente</td></tr>
+        <tr><td>Ammit</td><td>A Devoradora</td><td>A consequência da não-integração; a dissolução da identidade</td><td>O que acontece quando o processo de individuação é negado</td></tr>
+        <tr><td>Rá</td><td>O Self Solar / Consciência</td><td>A consciência em seu estado mais pleno e luminoso</td><td>O estado de individuação realizada — a luz que nasce a cada dia</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="content-h2">Como os Deuses São Arquétipos — E Como Evitar a Redução</h2>
+
+  <p>Uma advertência importante: tratar os deuses egípcios apenas como "arquétipos psicológicos" é uma redução que falsifica tanto a psicologia quanto a religião egípcia. Para os egípcios, Osíris não era um símbolo de um processo psicológico — era uma entidade real, uma força cósmica objetiva, com sua própria existência independente da mente humana.</p>
+
+  <p>A interpretação jungiana — que é genuinamente rica e fecunda — deve ser usada como uma <em>lente adicional</em>, não como uma redução ou substituição. Ela revela como os padrões descritos no Livro dos Mortos se manifestam na experiência interior humana — sem negar que esses padrões possam ser também objetivos e cósmicos. As duas interpretações não são excludentes: o que é verdadeiro no nível psicológico pode ser igualmente verdadeiro no nível cosmológico. Como diz o Esmeralda de Hermes: "Como em cima, assim embaixo."</p>
+
+  <div class="callout osiris" data-label="O Mito de Osíris como Mapa da Individuação">
+    <p>O mito de Osíris — o rei que é fragmentado por Set, reunido por Ísis, e ressuscitado para reinar eternamente no além — é talvez o mapa mais perfeito do processo de individuação jungiana que a mitologia mundial produziu. A <strong class="em-green">fragmentação</strong> por Set é a "crise" que inicia o processo — a desestruturação do ego antigo, rígido e insuficiente. A <strong class="em-green">reunião dos fragmentos por Ísis</strong> é o trabalho terapêutico de integração — juntar os pedaços dispersos da personalidade. A <strong class="em-green">ressurreição</strong> é a individuação realizada — não o ego antigo restaurado, mas um Self novo e mais completo emergindo da transformação. O fato de que Osíris ressuscitado reina no além (não retorna ao mundo dos vivos) indica que a transformação é irreversível: não há volta ao estado anterior ao processo.</p>
+  </div>
+</section>
+
+<!-- COMPARAÇÕES -->
+<section class="section night" id="sec-comparacoes">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo VIII 𓂀</span>
+    <h1 class="section-title">Tradições Comparadas</h1>
+    <p class="section-subtitle">O Livro dos Mortos nas grandes correntes espirituais do mundo</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">O Livro dos Mortos não existe em isolamento — é parte de um fenômeno universal: a tentativa humana de compreender a morte, mapear o além e fornecer ao morto as ferramentas para navegar sua transformação. Comparar o texto egípcio com outras tradições não é diminuí-lo — é enriquecê-lo, situá-lo numa conversa milenar que revela padrões profundos sobre a natureza da consciência, da morte e do renascimento.</p>
+
+  <div class="tabs-container">
+    <div class="tabs-header">
+      <button class="tab-btn active" onclick="switchTab(this,'comp-bardo')">Livro Tibetano</button>
+      <button class="tab-btn" onclick="switchTab(this,'comp-herm')">Hermetismo</button>
+      <button class="tab-btn" onclick="switchTab(this,'comp-alq')">Alquimia</button>
+      <button class="tab-btn" onclick="switchTab(this,'comp-gnost')">Gnosticismo</button>
+      <button class="tab-btn" onclick="switchTab(this,'comp-crist')">Cristianismo</button>
+      <button class="tab-btn" onclick="switchTab(this,'comp-jung')">Jung</button>
+    </div>
+    <div id="comp-bardo" class="tab-panel active">
+      <h4 class="content-h4">Livro dos Mortos Egípcio vs. Bardo Thodol (Livro Tibetano dos Mortos)</h4>
+      <p>A comparação mais frequente e mais rica é com o <em>Bardo Thodol</em> — o "Livro Tibetano dos Mortos" compilado pelo mestre Padmasambhava no século VIII e redescoberto no XIV. A semelhança das duas obras é tão notável que C.G. Jung e outros estudiosos especularam sobre possíveis conexões históricas — embora a visão acadêmica dominante seja que se trata de convergência independente de experiências humanas fundamentais.</p>
+      <p><strong class="em-gold">Convergências:</strong> ambos os textos são lidos para o moribundo ou ao morto recém-falecido; ambos descrevem uma jornada através de estados intermediários entre morte e renascimento; ambos enfatizam o <em>conhecimento espiritual</em> como fator decisivo; ambos incluem figuras aterrorizantes que o morto deve enfrentar sem medo; ambos culminam numa visão de luz suprema com a qual o morto deve se identificar.</p>
+      <p><strong class="em-gold">Diferenças fundamentais:</strong> O Bardo Thodol opera num framework budista de não-eu e liberação do ciclo de renascimentos; o Livro dos Mortos Egípcio opera num framework de afirmação do eu individual e de sua persistência imortal. Para o texto tibetano, o objetivo último é a dissolução do ego na luz primordial; para o egípcio, o objetivo é a glorificação do eu individual como Akh eterno. São dois caminhos diferentes através da mesma paisagem da morte.</p>
+      <div class="comparison-grid" style="margin-top:20px;">
+        <div class="comparison-col">
+          <div class="comparison-col-title">𓂀 Livro Egípcio</div>
+          <div class="comparison-item">Lido durante enterramento e cerimônias</div>
+          <div class="comparison-item">Jornada pela Duat — 12 divisões</div>
+          <div class="comparison-item">Julgamento pela balança de Maat</div>
+          <div class="comparison-item">Identificação com deuses solares</div>
+          <div class="comparison-item">Objetivo: Akh — ser de luz individual</div>
+          <div class="comparison-item">Passaporte: nomes secretos + ética vivida</div>
+        </div>
+        <div class="comparison-col">
+          <div class="comparison-col-title">☸ Bardo Thodol</div>
+          <div class="comparison-item">Lido ao ouvido do moribundo</div>
+          <div class="comparison-item">Jornada pelo Bardo — estado intermediário</div>
+          <div class="comparison-item">Julgamento por Yama, Senhor dos Mortos</div>
+          <div class="comparison-item">Visão dos Dhyani-Buddhas — pacíficos e airados</div>
+          <div class="comparison-item">Objetivo: dissolução na Clear Light — sem-ego</div>
+          <div class="comparison-item">Passaporte: reconhecimento da natureza da mente</div>
+        </div>
+      </div>
+    </div>
+    <div id="comp-herm" class="tab-panel">
+      <h4 class="content-h4">O Livro dos Mortos e o Hermetismo</h4>
+      <p>A relação entre o Livro dos Mortos Egípcio e o Hermetismo é direta e historicamente documentável. O Hermetismo — a tradição filosófico-espiritual do período helenístico-romano cujos textos foram atribuídos ao "Hermes Trismegisto" — emergiu no Egito greco-romano dos séculos I a.C. ao III d.C., onde a tradição espiritual egípcia nativa estava sendo reformulada em termos da filosofia grega.</p>
+      <p>Hermes Trismegisto é a fusão de <strong class="em-gold">Thoth</strong> (o escriba divino egípcio) com <strong class="em-gold">Hermes</strong> (o psicopompo grego), tornada possível pelo sincretismo religioso do Egito helenístico. O Corpus Hermeticum contém várias ideias diretamente derivadas da tradição do Livro dos Mortos: a ascensão da alma através das esferas planetárias (equivalente à jornada pela Duat), a importância do conhecimento gnóstico como passaporte para a libertação, a identificação da alma com a luz divina como objetivo final.</p>
+      <p>O tratado hermético <em>Pimandro</em> descreve a criação e a queda da alma num cosmos estratificado e seu retorno ascendente através dos planos — que é estruturalmente análogo à cosmologia do Livro dos Mortos. A influência egípcia sobre o hermetismo não é apenas temática — é profundamente estrutural e operativa.</p>
+    </div>
+    <div id="comp-alq" class="tab-panel">
+      <h4 class="content-h4">O Livro dos Mortos e a Alquimia</h4>
+      <p>A alquimia helenístico-egípcia que floresceu em Alexandria entre os séculos I e III d.C. é outro herdeiro direto da tradição espiritual egípcia que alimentou o Livro dos Mortos. Os primeiros alquimistas eram sacerdotes e escribas do templo egípcio que estavam traduzindo os símbolos da transformação espiritual (morte, dissolução, purificação, reintegração, glorificação) em uma linguagem química.</p>
+      <p>O processo alquímico do Opus Magnum — <strong class="em-gold">Nigredo</strong> (putrefação negra), <strong class="em-gold">Albedo</strong> (purificação branca), <strong class="em-gold">Citrinitas</strong> (iluminação amarela), <strong class="em-gold">Rubedo</strong> (glorificação vermelha) — é estruturalmente análogo à jornada da alma na Duat: a morte (Nigredo) corresponde à descida ao submundo; a purificação no Hall das Duas Verdades corresponde ao Albedo; a glorificação do morto como Akh brilhante corresponde ao Rubedo.</p>
+      <p>Os símbolos alquímicos fundamentais — o Sol e a Lua como opostos a serem integrados, o Mercúrio como intermediário e psicopompo, a serpente Ouroboros como símbolo da eternidade cíclica — derivam diretamente da iconografia e mitologia do Livro dos Mortos Egípcio, especialmente da cosmologia solar de Rá e da serpente Apófis.</p>
+    </div>
+    <div id="comp-gnost" class="tab-panel">
+      <h4 class="content-h4">O Livro dos Mortos e o Gnosticismo</h4>
+      <p>O gnosticismo — o movimento espiritual complexo que floresceu nos primeiros séculos da era cristã — tem raízes parcialmente egípcias e compartilha estruturas profundas com o Livro dos Mortos. A ideia gnóstica central de que a alma está aprisionada num cosmos material hostil e precisa ascender através de múltiplas esferas guardadas por <em>Arcontes</em> para atingir o Pleroma (a plenitude divina) é notavelmente paralela à estrutura da jornada da Duat.</p>
+      <p>Os Arcontes gnósticos — os guardiões das esferas planetárias que ameaçam a alma em sua ascensão — correspondem funcionalmente aos guardiões dos portões da Duat. O conhecimento secreto dos nomes e das senhas que permite passar pelos Arcontes é diretamente análogo às fórmulas do Livro dos Mortos. Textos gnósticos como o <em>Pistis Sophia</em> descrevem a alma de Maria Madalena passando por uma série de guardiões numa jornada ascendente — numa estrutura quase diretamente derivada da mitologia funerária egípcia, filtrada através do platonismo e da teologia cristã nascente.</p>
+    </div>
+    <div id="comp-crist" class="tab-panel">
+      <h4 class="content-h4">O Livro dos Mortos e o Cristianismo Primitivo</h4>
+      <p>A influência egípcia sobre o Cristianismo primitivo — especialmente o Cristianismo copta do Egito — é bem documentada. O Egito era o país da ressurreição de Osíris, dos mistérios de Ísis — e foi nesse ambiente que o Cristianismo desenvolveu algumas de suas ideias mais características sobre morte, ressurreição e vida eterna.</p>
+      <p>O julgamento cristão — com os justos no paraíso e os pecadores no inferno — tem estrutura análoga ao julgamento egípcio com a balança de Maat. O paraíso cristão tem semelhanças estruturais com os Campos de Iaru — um locus amoenus de paz e fertilidade. A ideia cristã de um "livro de vida" no qual as obras de cada pessoa são registradas para o julgamento final é paralela à função de Thoth como registrador do julgamento.</p>
+      <p>Mais profundamente, o mito central do Cristianismo — o deus que morre e ressuscita, salvando as almas humanas da morte — é estruturalmente idêntico ao mito de Osíris. As semelhanças são tão marcantes que apologistas cristãos primitivos como Tertuliano as notaram e as explicaram como imitações diabólicas antecipadas. A explicação historicamente mais sólida é a influência direta da tradição religiosa egípcia sobre o pensamento que produziu o Cristianismo.</p>
+    </div>
+    <div id="comp-jung" class="tab-panel">
+      <h4 class="content-h4">O Livro dos Mortos e a Psicologia de Jung</h4>
+      <p>Jung reconheceu explicitamente a importância da mitologia egípcia para a compreensão do inconsciente coletivo. Em seus escritos sobre alquimia (<em>Psicologia e Alquimia</em>, 1944; <em>Mysterium Coniunctionis</em>, 1956), Jung traçou as correspondências entre os processos alquímicos — que derivam diretamente da tradição egípcia — e os processos da transformação psicológica profunda.</p>
+      <p>O conceito jungiano de <strong class="em-gold">individuação</strong> — o processo pelo qual o ego se relaciona com o Self mais amplo, integrando os conteúdos inconscientes (Sombra, Anima/Animus, Velho Sábio) para atingir uma personalidade mais completa — é estruturalmente análogo à jornada descrita no Livro dos Mortos. O "morto" que atravessa a Duat, enfrenta os guardiões, passa pelo julgamento de Maat e emerge como Akh glorificado está realizando, nos termos da cosmologia egípcia, o mesmo processo que Jung descreve em termos de psicologia profunda.</p>
+      <p>Para Jung, o Livro dos Mortos egípcio e o Bardo Thodol tibetano eram documentos de importância fundamental não por razões históricas ou religiosas, mas porque mapeavam estados da psique que são universalmente humanos — os estados da transformação profunda que todos os seres humanos podem atravessar, consciente ou inconscientemente, em vida ou na morte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARQUEOLOGIA -->
+<section class="section papyrus" id="sec-arqueologia">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo IX 𓂀</span>
+    <h1 class="section-title">Arqueologia, Manuscritos e Traduções</h1>
+    <p class="section-subtitle">Os Papiros Famosos, Champollion e a História das Decifração</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">A história da descoberta, decifração e tradução do Livro dos Mortos é ela própria uma narrativa fascinante — que vai desde os estudiosos medievais que admiravam os hieróglifos sem conseguir lê-los, passando pela decifração revolucionária de Champollion em 1822, até as pesquisas computacionais do século XXI. Cada geração de estudiosos aportou novas ferramentas e perspectivas — e cada nova perspectiva revelou camadas de significado que as anteriores não haviam percebido.</p>
+
+  <h2 class="content-h2">A Pedra de Roseta e Champollion</h2>
+
+  <p>Em 1799, soldados da expedição napoleônica ao Egito descobriram em Roseta (Rashid) uma estela de granito com o mesmo texto em três sistemas de escrita: hieróglifos, demótico e grego. O texto — um decreto dos sacerdotes de Ptolomeu V datado de 196 a.C. — oferecia pela primeira vez um texto bilíngue como chave para a decifração.</p>
+
+  <p>Jean-François Champollion (1790–1832), um prodígio linguístico que conhecia latim, grego, hebraico, árabe, persa, sânscrito e copta desde a adolescência, dedicou anos ao problema. Em 14 de setembro de 1822, anunciou que havia decifrado o sistema hieroglífico — desmontando a hipótese corrente de que os hieróglifos eram puramente simbólicos, e provando que representavam sons. Esta data marca o nascimento da Egyptologia moderna.</p>
+
+  <h2 class="content-h2" id="sec-papiroani">Os Papiros Fundamentais</h2>
+
+  <div class="cards-grid">
+    <div class="card">
+      <span class="card-icon">📜</span>
+      <div class="card-title">Papiro de Ani — c. 1275 a.C.</div>
+      <div class="card-text">O mais famoso de todos os papiros do Livro dos Mortos — atualmente no Museu Britânico (EA 10470). Mede aproximadamente 23 metros de comprimento, com 37 pinturas coloridas de extraordinária qualidade artística. Ani era escriba real e tesoureiro dos templos de Amon durante o reinado de Ramsés II. Adquirido de forma eticamente questionável por Wallis Budge em 1888; cortado em seções durante o transporte, destruindo sua continuidade original.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">Papiro de Hunefer — c. 1275 a.C.</div>
+      <div class="card-text">Também no Museu Britânico, contém algumas das mais belas vinhetas do julgamento de Maat já pintadas. A cena da psicostasia com Anúbis segurando a balança, Thoth registrando e Ammit aguardando é uma das imagens mais reproduzidas de toda a arte egípcia. Hunefer era escriba e mordomo real durante o reinado de Seti I.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔬</span>
+      <div class="card-title">Papiro de Nebseny — c. 1550 a.C.</div>
+      <div class="card-text">Um dos papiros mais antigos que sobreviveram — da XVIII Dinastia. Representa o estágio mais antigo do desenvolvimento do corpus do Livro dos Mortos, sem as elaboradas vinhetas coloridas dos papiros mais tardios. Seu valor acadêmico é enorme como testemunho das origens do texto.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">👩</span>
+      <div class="card-title">Papiro de Heruben — c. 1000 a.C.</div>
+      <div class="card-text">Conservado no Museu Egípcio do Cairo, pertenceu a uma mulher — a cantora do deus Amon, Heruben. Ilustra a forma feminina de aplicação dos textos funerários e contém variantes interessantes das fórmulas padrão, adaptadas para uma mulher de alta posição religiosa.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📖</span>
+      <div class="card-title">A Tradução de Budge (1895) — E os seus Problemas</div>
+      <div class="card-text">E.A. Wallis Budge publicou em 1895 a primeira tradução integral amplamente disponível em inglês — e durante décadas foi a versão mais lida. Infelizmente, é academicamente obsoleta: cheia de erros de tradução, interpretações idiossincrásicas e preconceitos do século XIX. Mas popularizou enormemente o texto e levou o Livro dos Mortos à cultura popular ocidental.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💻</span>
+      <div class="card-title">Totenbuchprojekt — Universidade de Bonn</div>
+      <div class="card-text">O maior empreendimento acadêmico moderno para o estudo sistemático do corpus. Catalogou mais de 3.000 manuscritos em coleções do mundo inteiro, criou um banco de dados digital de todos os feitiços e suas variantes, e está produzindo uma edição crítica definitiva do corpus completo. O texto que os egípcios criaram há 3.500 anos entrou na era do computador.</div>
+    </div>
+  </div>
+
+  <h2 class="content-h2" id="sec-champollion">Debates Acadêmicos Modernos</h2>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Debate 1 — Feitiços como Magia Performativa ou Descritiva?<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Um dos debates mais importantes na Egyptologia do Livro dos Mortos é sobre a natureza dos feitiços: eles descrevem o que acontecerá na Duat (<em>magia descritiva</em>), ou eles <em>criam</em> o que descrevem pelo simples ato de serem pronunciados ou escritos (<em>magia performativa</em>)? A evidência — especialmente o fato de que todos os papiros que sobreviveram mostram o morto passando no julgamento, nunca falhando — aponta fortemente para a segunda interpretação. O texto não previa o futuro: ele o criava.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Debate 2 — Autoria e Autoridade dos Textos<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Quem escreveu os feitiços originais, e que autoridade eles tinham? Os egípcios atribuíam os textos ao deus Thoth — o escriba divino que os revelou aos sacerdotes. Academicamente, os textos claramente evoluíram ao longo do tempo, foram compostos por múltiplos autores em múltiplos centros de culto (Heliópolis, Mênfis, Tebas), e sofreram revisões e expansões ao longo de séculos. Não há um "autor original" — há uma tradição viva que se desenvolveu organicamente.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Debate 3 — O Que os Egípcios Realmente Acreditavam?<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Um dos debates mais difíceis é epistemológico: o que significa "acreditar" no contexto religioso egípcio? Os egípcios acreditavam literalmente que encontrariam uma serpente de três cabeças no quarto portão? Ou a fórmula para passar pelo quarto portão era compreendida de forma mais simbólica, como um ato ritual que operava num nível diferente da realidade ordinária? A resposta honesta é que provavelmente havia um espectro de interpretações — do mais literal ao mais simbólico — dependendo do nível de sofisticação teológica do praticante.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">Debate 4 — Era o Julgamento de Maat Justo ou Meramente Formal?<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body">
+        <p>Um debate historiográfico interessante: dado que todos os papiros que sobreviveram mostram o morto passando com sucesso no julgamento, seria o "julgamento" uma mera formalidade — uma peça teatral cujo resultado já estava determinado pela posse do papiro e pelas fórmulas corretas? Ou era entendido como julgamento real, com possibilidade real de falha? A evidência textual e iconográfica sugere que ambas as visões coexistiam — o julgamento era entendido como real, mas as fórmulas corretas podiam "garantir" o resultado. É a mesma lógica de qualquer sistema mágico: o ritual cria a realidade, mas presupõe que a realidade poderia ser diferente sem o ritual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFLUÊNCIA MODERNA -->
+<section class="section sand" id="sec-modernidade">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo X 𓂀</span>
+    <h1 class="section-title">Influência Moderna do Livro dos Mortos</h1>
+    <p class="section-subtitle">Golden Dawn · Thelema · Psicologia · Cinema · Cultura Pop</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">O Livro dos Mortos Egípcio não permaneceu confinado às tumbas e museus. Desde que Champollion abriu as portas da leitura dos hieróglifos no século XIX, o texto vivo do além egípcio percorreu um caminho extraordinário pela cultura ocidental — alimentando o ocultismo vitoriano, inspirando a psicanálise, colorindo a fantasia literária e cinematográfica, e influenciando movimentos espirituais contemporâneos de formas que seus criadores nunca poderiam ter imaginado.</p>
+
+  <h2 class="content-h2">O Ocultismo Vitoriano — Golden Dawn e Thelema</h2>
+
+  <p>A Hermetic Order of the Golden Dawn — fundada em Londres em 1888 — absorveu profundamente a tradição egípcia em seu sistema mágico. Os deuses egípcios foram integrados ao sistema de correspondências cabalístico-astrológico: Thoth foi associado a Mercúrio e à Sefirah Hod; Ísis à Lua; Osíris a Tiphereth. Os rituais de iniciação incluíam invocações de deuses egípcios e cerimônias modeladas sobre os rituais funerários egípcios.</p>
+
+  <p>Aleister Crowley teve uma experiência decisiva no Museu do Cairo em 1904, contemplando a "Estele da Revelação" — um objeto funerário egípcio da XXI Dinastia com as figuras de Nut, Hadit e Ra-Hoor-Khuit. Segundo Crowley, foi esta visão que precipitou a recepção do <em>Liber AL vel Legis</em> — o texto sagrado fundacional da Thelema. O centro de sua experiência era profundamente egípcio: os deuses da estela tornaram-se as divindades centrais do sistema telemita.</p>
+
+  <h2 class="content-h2">Psicologia — Freud, Jung e o Egito</h2>
+
+  <p>Tanto Sigmund Freud quanto Carl Jung foram profundamente influenciados pela civilização egípcia. Freud, em seus últimos anos, escreveu <em>Moisés e o Monoteísmo</em> (1939), argumentando que Moisés era um sacerdote egípcio do culto de Akhenaton e que o monoteísmo hebraico derivava do monoteísmo solar egípcio. Jung foi ainda mais diretamente influenciado: seu conceito de inconsciente coletivo foi desenvolvido em parte através do estudo de mitologias antigas, incluindo a egípcia. Sua análise de sonhos com imagens egípcias em pacientes que nunca haviam estudado Egito levou-o à teoria dos arquétipos.</p>
+
+  <h2 class="content-h2">Influência na Cultura Popular</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Domínio</th><th>Obra / Fenômeno</th><th>Influência do Livro dos Mortos</th></tr></thead>
+      <tbody>
+        <tr><td>Cinema</td><td><em>A Múmia</em> (1932, 1999, 2017)</td><td>Papiro do Livro dos Mortos como artefato central que ressuscita múmias</td></tr>
+        <tr><td>Literatura</td><td>Norman Mailer, <em>Ancient Evenings</em> (1983)</td><td>Jornada de reencarnação baseada diretamente no Livro dos Mortos</td></tr>
+        <tr><td>Literatura</td><td>Umberto Eco, <em>O Pêndulo de Foucault</em></td><td>Tradição hermética egípcia como tema central</td></tr>
+        <tr><td>Videogames</td><td><em>Assassin's Creed: Origins</em></td><td>Cosmologia da Duat e panteão egípcio como ambientação central</td></tr>
+        <tr><td>Música</td><td>Iron Maiden, Powerwolf e outros</td><td>Iconografia e mitologia egípcia nas letras e artes visuais</td></tr>
+        <tr><td>Espiritualidade</td><td>New Age / Neo-Paganismo / Kemetismo</td><td>Invocação de deuses egípcios e práticas baseadas no Livro dos Mortos</td></tr>
+        <tr><td>Psicoterapia</td><td>Psicoterapia transpessoal e junguiana</td><td>A jornada da Duat como modelo para estados alterados de consciência</td></tr>
+        <tr><td>Arte</td><td>Numerosos artistas contemporâneos</td><td>Hieróglifos, olho de Hórus e iconografia do Livro dos Mortos ubíquos</td></tr>
+        <tr><td>Tatuagem</td><td>Cultura da tatuagem contemporânea</td><td>Olho de Hórus, Anúbis e Osíris entre os motivos mais populares do mundo</td></tr>
+        <tr><td>Maçonaria</td><td>Rituais dos graus da Maçonaria Egípcia</td><td>Ritos de Memphis-Misraim baseados explicitamente na tradição funerária egípcia</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- COMO ESTUDAR -->
+<section class="section papyrus" id="sec-comoestu">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo XI 𓂀</span>
+    <h1 class="section-title">Como Estudar o Livro dos Mortos</h1>
+    <p class="section-subtitle">Dificuldades, tradições interpretativas, ordem de leitura e abordagem iniciática</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <p class="dropcap">Estudar o Livro dos Mortos com a profundidade real que o texto merece é um projeto de longa duração. Não porque o texto seja inacessível em termos de língua — existem excelentes traduções modernas — mas porque ele pressupõe um universo conceitual completamente diferente do nosso, que precisa ser construído pacientemente antes que os textos possam ser lidos com compreensão genuína. Quem abre o Capítulo 17 sem ter estudado a cosmologia egípcia, os nomes e funções dos deuses e o sistema de magia Heka está lendo palavras sem compreender o texto.</p>
+
+  <h2 class="content-h2">Principais Dificuldades</h2>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">1. Não Existe uma "Versão Definitiva" do Texto<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>Ao contrário da Bíblia ou do Corão, o Livro dos Mortos não tem um texto canônico fixo. Existem mais de 3.000 manuscritos conhecidos, cada um com sua própria seleção de capítulos e sua própria redação. Quando uma tradução cita "o Livro dos Mortos", ela está inevitavelmente fazendo escolhas editoriais sobre qual versão de qual manuscrito usar. O leitor inteligente deve estar ciente de que está lendo uma edição — não "o" texto original.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">2. O Problema das Traduções — Budge vs. Faulkner vs. Modernas<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>A tradução de E.A. Wallis Budge (1895) ainda é a mais facilmente disponível — especialmente em edições baratas online. É também a mais desatualizada e, em muitos pontos, incorreta. O conhecimento da gramática egípcia avançou enormemente desde Budge. A tradução de Raymond Faulkner (1972, reeditada pela Chronicle Books em 2008 com ilustrações do Papiro de Ani) é muito superior academicamente. Para estudo sério, é a melhor opção disponível em inglês. Em alemão, a tradução de Erik Hornung é considerada a melhor por muitos especialistas.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">3. Leitura Literal vs. Simbólica — O Dilema Hermenêutico<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>O maior desafio interpretativo não é linguístico mas hermenêutico: em que nível ler cada passagem? Os egípcios certamente acreditavam na realidade dos rituais e dos seres descritos — mas em que sentido "acreditavam"? Como pensavam que os feitiços funcionavam? A resposta honesta é: provavelmente havia um espectro de interpretações dependendo do nível de sofisticação do praticante. Os sacerdotes mais cultos provavelmente tinham uma leitura mais simbólica; o cliente médio que comprava o papiro, uma expectativa mais literal. Não diferente de como qualquer texto sagrado funciona em qualquer tradição religiosa.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">4. O Perigo das Projeções Esotéricas Superficiais<span class="accordion-arrow">▼</span></button>
+      <div class="accordion-body"><p>O Livro dos Mortos tem sido sistematicamente mal-usado por movimentos esotéricos que projetam sobre ele seus próprios sistemas de crença sem base histórica ou textual. Proclamações como "os egípcios conheciam os chakras" ou "Osíris é Jesus são o mesmo" são, generosamente, simplificações que destroem a especificidade cultural e histórica do texto. O estudante que aborda o Livro dos Mortos com rigor intelectual deve distinguir entre: o que os textos realmente dizem; as interpretações alegóricas plausíveis dentro do universo conceitual egípcio; as comparações que revelam paralelos genuínos; e as projeções anacrônicas que leem no texto o que não está lá.</p></div>
+    </div>
+  </div>
+
+  <h2 class="content-h2">Ordem Recomendada de Estudo</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 1</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Contexto Histórico e Civilizacional</div>
+        <div class="timeline-desc">Antes de abrir o Livro dos Mortos, estudar a história do Egito antigo — os reinos, os faraós, a organização social, os templos. Obras recomendadas: Toby Wilkinson, <em>The Rise and Fall of Ancient Egypt</em>; Ian Shaw (ed.), <em>The Oxford History of Ancient Egypt</em>.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 2</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Religião, Cosmologia e Deuses</div>
+        <div class="timeline-desc">Estudar os deuses, os mitos fundamentais (especialmente o mito de Osíris), a cosmologia e o sistema de magia Heka. Obras recomendadas: Richard Wilkinson, <em>The Complete Gods and Goddesses of Ancient Egypt</em>; Erik Hornung, <em>Conceptions of God in Ancient Egypt</em>.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 3</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Textos das Pirâmides e dos Sarcófagos</div>
+        <div class="timeline-desc">Estudar os precursores diretos do Livro dos Mortos. Obras recomendadas: James Allen (trad.), <em>The Ancient Egyptian Pyramid Texts</em>; Raymond Faulkner (trad.), <em>The Ancient Egyptian Coffin Texts</em> (3 vols.).</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 4</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Primeira Leitura Completa</div>
+        <div class="timeline-desc">Leitura completa da tradução de Faulkner. Objetivo: ter uma impressão do todo, não compreender cada detalhe. Anotar os capítulos que chamam mais atenção, os símbolos que se repetem, as estruturas recorrentes.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 5</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Estudo Profundo com Comentários Acadêmicos</div>
+        <div class="timeline-desc">Releitura capítulo por capítulo com consulta a comentários. Obras fundamentais: John Taylor, <em>Journey Through the Afterlife</em>; Eva Von Dassow (ed.), edição comentada Chronicle Books. Trabalho de meses ou anos.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Fase 6</div><div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-event">Textos Complementares da Duat</div>
+        <div class="timeline-desc">Estudo do Amduat, do Livro das Portas e do Livro das Cavernas — os grandes textos descritivos do submundo que complementam o Livro dos Mortos com uma cartografia detalhada da Duat. Obra fundamental: Erik Hornung, <em>The Ancient Egyptian Books of the Afterlife</em>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSÁRIO -->
+<section class="section sand" id="sec-glossario">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo XII 𓂀</span>
+    <h1 class="section-title">Glossário Egípcio Completo</h1>
+    <p class="section-subtitle">Termos essenciais da religião, cosmologia, alma e magia egípcias</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <div class="glossary-term">Akh (𓇼)</div>
+      <div class="glossary-eg">Egípcio: "luminoso", "eficaz", "glorificado"</div>
+      <div class="glossary-def">O espírito transfigurado e glorificado — o estado que a alma alcança após completar com sucesso a jornada da Duat. O Akh é o ser de luz imortal, que habita o céu e a companhia dos deuses. Associado ao íbis crestado. É o objetivo final de todo o processo descrito no Livro dos Mortos: não basta sobreviver à morte — é preciso se tornar um ser de luz consciente.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Ammit (𓆙𓅱𓏏)</div>
+      <div class="glossary-eg">Egípcio: "Devoradora dos Mortos"</div>
+      <div class="glossary-def">Criatura quimérica — cabeça de crocodilo, corpo de leão, traseiro de hipopótamo — que devora o coração dos mortos que falharam no julgamento de Maat. Representa a "segunda morte" — a aniquilação total da identidade individual. Não era adorada como divindade, mas sua presença como executora da justia cósmica era fundamental na cosmologia funerária egípcia.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Apófis / Apep (𓆙)</div>
+      <div class="glossary-eg">Egípcio: "o que serpenteia", "o que força o caminho"</div>
+      <div class="glossary-def">A gigantesca serpente do caos primordial que habita as profundezas das águas da Duat e que, todas as noites, tenta devorar o Sol durante sua jornada pelas trevas. É o antagonista cósmico supremo — personificação de Isfet (caos) contra Maat (ordem). Ele não pode ser destruído definitivamente; é combatido em eterno recomeço, todas as noites.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Ba (𓅽)</div>
+      <div class="glossary-eg">Egípcio: "alma" — aspecto individual da personalidade</div>
+      <div class="glossary-def">O aspecto da alma que mais se aproxima do conceito ocidental de "alma" — a personalidade única e individual. Representado como um pássaro com cabeça humana, o Ba pode voar livremente entre o mundo dos vivos e o mundo dos mortos. A jornada do Ba pela Duat é o tema central do Livro dos Mortos.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Campo de Iaru (𓇗𓏏𓈐𓋹)</div>
+      <div class="glossary-eg">Egípcio: "Campos dos Juncos" / "Campos de Paz"</div>
+      <div class="glossary-def">O paraíso egípcio — uma terra de extraordinária fertilidade onde o morto justificado vive em perfeita felicidade. Uma versão idealizada do Egito, com o Nilo transbordando, campos de trigo altíssimo, pássaros em abundância. O morto trabalha os campos ativamente — o paraíso egípcio é um paraíso de trabalho agrícola farto, não de contemplação passiva.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Duat (𓇽𓏏𓇖)</div>
+      <div class="glossary-eg">Egípcio: "Mundo dos Mortos" / "O Além"</div>
+      <div class="glossary-def">O submundo egípcio — a região cosmológica pela qual o Sol viaja durante a noite e pela qual a alma do morto deve viajar após a morte. Um cosmos paralelo ao cosmos visível, com sua própria geografia, habitantes e leis. Dividida em doze divisões correspondentes às doze horas da noite. Não é um "inferno" de punição — é o caminho necessário para o renascimento.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Heka (𓅔𓎡)</div>
+      <div class="glossary-eg">Egípcio: "magia", "poder mágico primordial"</div>
+      <div class="glossary-def">A força mágica primordial que permeia o cosmos — tanto deusa personificada quanto princípio impessoal. É através de Heka que as fórmulas do Livro dos Mortos têm efeito. Heka é descrito como existindo antes dos próprios deuses — é a força pela qual o criador criou o cosmos. Quem domina Heka domina a realidade em seu nível mais fundamental.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Ib (𓄤)</div>
+      <div class="glossary-eg">Egípcio: "coração"</div>
+      <div class="glossary-def">O coração — não apenas o órgão físico mas a sede da consciência, da vontade, da memória e do caráter moral. É o Ib que é pesado na balança de Maat no julgamento. É o único órgão não removido durante a mumificação. Amuletos de escaravelho com o Capítulo 30B inscrito eram colocados sobre o coração para protegê-lo no julgamento.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Isfet</div>
+      <div class="glossary-eg">Egípcio: "caos", "injustiça", "desordem"</div>
+      <div class="glossary-def">O oposto de Maat — o princípio do caos, da injustiça e da desordem. Cada ato humano imoral é um ato de Isfet que enfraquece a ordem cósmica. Apófis — a serpente do caos primordial — é a personificação suprema de Isfet no cosmos. A missão de toda a civilização egípcia — e de cada indivíduo — era manter Maat e combater Isfet.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Ka (𓂓)</div>
+      <div class="glossary-eg">Egípcio: "duplo vital", "força de vida"</div>
+      <div class="glossary-def">O "duplo vital" — a força de vida que torna um ser vivo. Criado junto com o corpo no nascimento, permanece ligado ao corpo físico mesmo após a morte. As oferendas funerárias são feitas "para o Ka" do morto — que precisa ser alimentado para manter sua existência. Representado pelos dois braços levantados em ato de abraçar (𓂓).</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Maat (𓌀𓂝𓏏)</div>
+      <div class="glossary-eg">Egípcio: "verdade", "justiça", "ordem cósmica", "equilíbrio"</div>
+      <div class="glossary-def">Simultaneamente uma deusa e um princípio filosófico — a verdade, a justiça, a ordem cósmica e o equilíbrio universal. Representada com uma pena de avestruz na cabeça, é essa pena que está na balança durante o julgamento do morto. "Viver em Maat" era o ideal ético central da civilização egípcia. Seu oposto é Isfet (caos, injustiça).</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Mdw Ntr — Hieróglifos</div>
+      <div class="glossary-eg">Egípcio: "Palavras dos Deuses"</div>
+      <div class="glossary-def">O nome egípcio dos hieróglifos. A escrita hieroglífica não era apenas uma tecnologia de comunicação — era um sistema sagrado de criação de realidade. Escrever algo era uma extensão do ato de criação. Cada hieróglifo era um ser vivo no nível espiritual — por isso representações de inimigos nas tumbas eram fisicamente mutiladas: destruir o hieróglifo era destruir o inimigo.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Pert Em Heru</div>
+      <div class="glossary-eg">Egípcio: "Sair ao Dia" / "Emergir à Luz"</div>
+      <div class="glossary-def">O título egípcio real do Livro dos Mortos — literalmente "Fórmulas para Sair ao Dia" ou "Capítulos do Sair à Luz do Dia". A diferença entre este título e o nome moderno "Livro dos Mortos" revela toda a diferença entre a visão egípcia da morte (como transição para a luz) e a visão moderna (como fim).</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Psicostasia</div>
+      <div class="glossary-eg">Grego: "pesagem da alma" (psyche + stasis)</div>
+      <div class="glossary-def">O termo acadêmico para a cena do julgamento no Hall das Duas Verdades — a pesagem do coração na balança contra a pena de Maat. Descrita no Capítulo 125 e ilustrada nas famosas vinhetas do Papiro de Ani e do Papiro de Hunefer. É a cena mais iconicamente reconhecível de toda a arte e mitologia egípcia.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Ren (𓂝𓈖)</div>
+      <div class="glossary-eg">Egípcio: "nome" — a essência da identidade</div>
+      <div class="glossary-def">O nome — não uma etiqueta convencional mas a essência real de um ser. Conhecer o verdadeiro nome de algo é ter poder sobre isso. Destruir o nome de alguém era destruir sua identidade imortal. Os papiros funerários repetiam obsessivamente o nome do morto — garantindo sua existência eterna no mundo espiritual.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Shabtis / Ushabtis</div>
+      <div class="glossary-eg">Egípcio: "os que respondem"</div>
+      <div class="glossary-def">Pequenas estátuas funerárias — tipicamente mumiformes, em faiança azul-esverdeada — enterradas com o morto para trabalhar em seu lugar nos Campos de Iaru quando fossem chamados para corvéia divina. O Capítulo 6 do Livro dos Mortos é o "Capítulo do Shabti" que animava essas estátuas. Os túmulos mais ricos continham até 365 shabtis — um para cada dia do ano.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Sheut (𓍶)</div>
+      <div class="glossary-eg">Egípcio: "sombra"</div>
+      <div class="glossary-def">A sombra — um aspecto da alma mais misterioso que os outros. Acompanha a pessoa em vida e, após a morte, pode existir independentemente. Precisa de proteção durante a jornada da Duat. Na interpretação jungiana, frequentemente associado ao conceito de "sombra" psicológica — o aspecto inconsciente que precisa ser reconhecido e integrado.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Vasos Canópicos</div>
+      <div class="glossary-eg">Grego: "cânopo" — referência à cidade egípcia de Cânope</div>
+      <div class="glossary-def">Os quatro vasos selados nos quais os órgãos internos removidos durante a mumificação eram preservados — cada um com a tampa em forma da cabeça de um dos Quatro Filhos de Hórus: Imset (humana) = fígado; Hapy (babuíno) = pulmões; Duamutef (chacal) = estômago; Qebehsenuef (falcão) = intestinos. O coração nunca era removido.</div>
+    </div>
+    <div class="glossary-item">
+      <div class="glossary-term">Wedjat — Olho de Hórus (𓂀)</div>
+      <div class="glossary-eg">Egípcio: "o que está inteiro", "o que está sadio"</div>
+      <div class="glossary-def">O amuleto de proteção por excelência da cultura egípcia — o olho ferido de Hórus, curado por Thoth, e que se tornou símbolo de proteção, saúde, restauração e poder real. Era um dos amuletos mais comuns colocados nas múmias e nos sarcófagos. Em seu aspecto matemático, as partes do olho representavam frações da medida de grão, indicando a integração do cosmos material e espiritual.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section class="section night" id="sec-timeline">
+  <div class="section-header">
+    <span class="section-number">𓂀 Capítulo XIII 𓂀</span>
+    <h1 class="section-title">Linha do Tempo</h1>
+    <p class="section-subtitle">Do Egito Pré-Dinástico ao Século XXI</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">c.3100 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Unificação do Egito — I Dinastia</div><div class="timeline-desc">Nármer unifica o Alto e Baixo Egito. Desenvolvimento dos primeiros ritos funerários elaborados e crenças na vida após a morte desde os períodos mais remotos da história egípcia.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c.2375 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Textos das Pirâmides — Pirâmide de Unis</div><div class="timeline-desc">Os documentos religiosos mais antigos do mundo gravados nas paredes internas da pirâmide do faraó Unis da V Dinastia — aproximadamente 228 fórmulas funerárias. Ancestral direto do Livro dos Mortos.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c.2055 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Reino Médio — Textos dos Sarcófagos</div><div class="timeline-desc">Reunificação do Egito pela XI Dinastia. Desenvolvimento dos Textos dos Sarcófagos — versão ampliada e democratizada dos Textos das Pirâmides, agora acessível à nobreza. Introdução dos Campos de Iaru como paraíso pós-morte.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c.1550 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Reino Novo — Surgimento do Livro dos Mortos em Papiro</div><div class="timeline-desc">Início do Reino Novo com a XVIII Dinastia. Os textos funerários são transferidos dos sarcófagos para papiros portáteis e personalizáveis. O Livro dos Mortos propriamente dito se cristaliza como gênero literário e ritual.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c.1275 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Papiros de Ani e Hunefer</div><div class="timeline-desc">Reinado de Ramsés II — período de maior produção e mais alta qualidade artística dos papiros do Livro dos Mortos. Os Papiros de Ani e Hunefer, hoje no Museu Britânico, representam o auge da forma artística e textual.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">c.664 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Período Saíta — Padronização do Texto</div><div class="timeline-desc">A XXVI Dinastia saitica promove um renascimento cultural e a padronização dos textos religiosos. A "Versão Saíta" estabelece uma sequência relativamente fixa de capítulos — o mais próximo de uma versão "canônica" que o texto jamais terá.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">305–30 a.C.</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Período Ptolemaico — Sincretismo Helenístico</div><div class="timeline-desc">Os Ptolomeus adotam a religião egípcia e continuam a patrocinar papiros funerários. O sincretismo egípcio-grego deste período alimenta o surgimento do hermetismo, do gnosticismo e do culto de Ísis-Osíris no Mediterrâneo.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1799</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Descoberta da Pedra de Roseta</div><div class="timeline-desc">Soldados da expedição napoleônica descobrem em Roseta uma estela trilíngue que se tornará a chave para a decifração dos hieróglifos. Início do período moderno da Egyptologia.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1822</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Champollion Decifra os Hieróglifos</div><div class="timeline-desc">14 de setembro: Jean-François Champollion anuncia a decifração. O Egito antigo começa a falar novamente após 1.400 anos de silêncio. Início da Egyptologia moderna como disciplina científica.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1842</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Lepsius — Primeira Edição Sistemática</div><div class="timeline-desc">Karl Richard Lepsius publica <em>Das Todtenbuch der Ägypter</em> — a primeira edição sistemática, cunhando o nome "Livro dos Mortos" e estabelecendo a numeração de capítulos ainda usada academicamente.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1888</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Wallis Budge e o Papiro de Ani no Museu Britânico</div><div class="timeline-desc">Budge adquire o Papiro de Ani para o Museu Britânico e publica sua tradução pioneira mas problemática. No mesmo ano é fundado o Golden Dawn — que absorve profundamente a tradição egípcia em seu sistema mágico.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1904</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Crowley e a Estele da Revelação</div><div class="timeline-desc">Aleister Crowley contempla a "Estele da Revelação" no Museu do Cairo — experiência que precipita a recepção do <em>Liber AL vel Legis</em> e funda a Thelema. Os deuses egípcios da estela tornam-se centrais no sistema telemita.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">1972</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Tradução Definitiva de Faulkner</div><div class="timeline-desc">Raymond Faulkner publica <em>The Ancient Egyptian Book of the Dead</em> — a tradução acadêmica mais rigorosa e equilibrada do corpus, ainda a referência padrão em inglês.</div></div></div>
+    <div class="timeline-item"><div class="timeline-year">2005–hoje</div><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-event">Era Digital — Totenbuchprojekt</div><div class="timeline-desc">O projeto digital da Universidade de Bonn cataloga mais de 3.000 manuscritos em todo o mundo, criando o mais completo banco de dados já produzido. O texto criado há 3.500 anos entra na era do computador.</div></div></div>
+  </div>
+</section>
+
+<!-- CONCLUSÃO / MEDITAÇÃO FINAL -->
+<section class="section night" id="sec-conclusao">
+  <div class="section-header">
+    <span class="section-number">𓂀 Epilogos Sagrado 𓂀</span>
+    <h1 class="section-title">Meditação Final</h1>
+    <p class="section-subtitle">O que o Livro dos Mortos ainda nos diz hoje</p>
+    <div class="section-divider">𓆣 𓇯 𓋹</div>
+  </div>
+
+  <div class="verse">
+    Abre-te para mim, ó portal do horizonte!<br>
+    Meu coração é leve como a pena de Maat.<br>
+    Meu nome não será apagado eternamente.<br>
+    Eu sou aquele que sai à luz do dia.<br>
+    Eu sou o que emerge das trevas em direção ao Sol.<br>
+    — Síntese do Livro dos Mortos Egípcio
+  </div>
+
+  <p class="dropcap">Chegando ao fim desta enciclopédia, impõe-se uma questão que vai além da Egyptologia: por que o Livro dos Mortos importa para nós, humanos do século XXI? A resposta é mais simples e mais profunda do que poderíamos imaginar.</p>
+
+  <p>O Livro dos Mortos foi criado por seres humanos que sabiam que iriam morrer. Que viviam numa cultura onde a morte era onipresente — a mortalidade infantil altíssima, as epidemias, as guerras, a crueldade implacável do deserto. Eles criaram, durante dois mil anos de contemplação coletiva, um dos mapas mais ricos e mais detalhados que a mente humana jamais produziu sobre a questão que nenhuma ciência pode responder definitivamente: o que acontece à consciência após a morte?</p>
+
+  <p>Nós não sabemos se a resposta egípcia está correta — se há mesmo uma Duat, se o coração é realmente pesado numa balança, se existem guardiões de portões de fogo que precisam ser nomeados. Mas sabemos — porque os textos demonstram a cada capítulo — que a pergunta que os egípcios estavam fazendo com o Livro dos Mortos é a mesma que nós fazemos: <strong class="em-gold">como viver de tal forma que, confrontado com a totalidade da própria vida, o coração seja leve?</strong></p>
+
+  <p>Esta é a questão permanente por trás das 42 confissões negativas — não um teste burocrático para uma divindade caprichosa, mas o espelho mais honesto que uma civilização jamais produziu: quando toda a cortina cair, quando toda a pose social for removida, quando o ego confrontar a totalidade do que foi — será possível dizer, com honestidade absoluta, que o coração não foi alojado com crueldade, com mentira, com injustiça?</p>
+
+  <div class="callout osiris" data-label="O Legado Permanente do Livro dos Mortos">
+    <p>O legado permanente do Livro dos Mortos não é esotérico nem arqueológico — é <strong class="em-green">ético</strong>. Ele nos lembra que cada ação que praticamos em vida deixa um peso no coração. Que a verdade (<em>Maat</em>) não é um ideal abstrato mas a textura concreta de como tratamos as pessoas ao nosso redor — "não fiz chorar ninguém", "não tirei o leite da boca das crianças", "não maltratei os animais". Que o cosmos tem uma estrutura moral — e que viver em conformidade com essa estrutura não é apenas eticamente correto mas <em>cosmicamente</em> necessário para a manutenção da ordem que sustenta a existência.</p>
+  </div>
+
+  <blockquote>
+    "Venho até vós sem pecado, sem maldade, sem falsidade,<br>sem aquilo que é abominável,<br>sem crime. Eu vivo de Maat,<br>eu me nutro de Maat.<br>Eu cumpri o que os homens desejam e o que os deuses aprovam."
+    <cite>— Capítulo 125, Declaração de Inocência (Livro dos Mortos)</cite>
+  </blockquote>
+
+  <p>Há algo de extraordinariamente contemporâneo nesta declaração — e de extraordinariamente exigente. "Cumpri o que os homens desejam e o que os deuses aprovam" é um dos critérios de vida mais completos já formulados: ao mesmo tempo a ética social (o que os homens desejam — justiça, compaixão, honestidade) e a ética cósmica (o que os deuses aprovam — alinhamento com a ordem do universo). Não um mas dois critérios, e ambos precisam ser satisfeitos.</p>
+
+  <p>O Livro dos Mortos nos diz: a morte não é o fim, mas o julgamento. E o julgamento não é arbitrário — é a revelação da verdade que cada vida já continha. A pena de Maat não decide nada — ela apenas torna visível o que já era. O coração que era leve durante a vida permanece leve na balança. O coração que se tornava pesado a cada crueldade, cada mentira, cada injustiça — permanece pesado.</p>
+
+  <p>Esta visão, que os egípcios desenvolveram ao longo de dois mil anos de meditação coletiva sobre a morte, permanece — três mil e quinhentos anos depois — uma das mais poderosas e mais honestamente desafiadoras que a mente humana já produziu sobre como devemos viver.</p>
+
+  <div class="ornament">𓂀 𓆣 𓇯 𓋹 𓏏 𓇖 𓊽 𓂀</div>
+
+  <div class="footnotes">
+    <h3 class="content-h3">Notas e Referências</h3>
+    <div class="footnote-item">¹ FAULKNER, Raymond. <em>The Ancient Egyptian Book of the Dead</em>. London: British Museum Press, 1972. — A tradução acadêmica mais rigorosa disponível em inglês.</div>
+    <div class="footnote-item">² HORNUNG, Erik. <em>The Ancient Egyptian Books of the Afterlife</em>. Ithaca: Cornell University Press, 1999. — O estudo mais abrangente dos textos complementares ao Livro dos Mortos (Amduat, Livro das Portas, etc.).</div>
+    <div class="footnote-item">³ ASSMANN, Jan. <em>Death and Salvation in Ancient Egypt</em>. Ithaca: Cornell University Press, 2005. — A mais sofisticada análise filosófico-religiosa da concepção egípcia da morte.</div>
+    <div class="footnote-item">⁴ TAYLOR, John H. <em>Journey Through the Afterlife: Ancient Egyptian Book of the Dead</em>. London: British Museum Press, 2010. — Catálogo da exposição do Museu Britânico; excelente introdução acessível com imagens de alta qualidade.</div>
+    <div class="footnote-item">⁵ WILKINSON, Richard. <em>The Complete Gods and Goddesses of Ancient Egypt</em>. London: Thames & Hudson, 2003. — O guia de referência mais completo sobre o panteão egípcio.</div>
+    <div class="footnote-item">⁶ JUNG, C.G. "Psychological Commentary on The Tibetan Book of the Dead." In: <em>Psychology and Religion: West and East</em>. CW 11. Princeton: Princeton University Press, 1969. — A interpretação psicológica fundamental dos textos funerários do além.</div>
+    <div class="footnote-item">⁷ BUDGE, E.A. Wallis. <em>The Book of the Dead: The Papyrus of Ani</em>. London: British Museum, 1895. — Historicamente importante mas academicamente ultrapassado; leia com Faulkner ao lado para comparação.</div>
+  </div>
+</section>
+
+</div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function toggleSidebar(){document.body.classList.toggle('sidebar-collapsed')}
+window.addEventListener('scroll',function(){
+  const st=window.scrollY,dh=document.body.scrollHeight-window.innerHeight;
+  document.getElementById('reading-bar').style.width=(st/dh*100)+'%';
+  const bt=document.getElementById('back-top');
+  st>500?bt.classList.add('visible'):bt.classList.remove('visible');
+  let cur='';
+  document.querySelectorAll('section[id], div[id]').forEach(s=>{if(s.offsetTop && st>=s.offsetTop-130)cur=s.id});
+  document.querySelectorAll('.nav-link').forEach(l=>{
+    l.classList.remove('nav-active');
+    if(l.getAttribute('href')==='#'+cur)l.classList.add('nav-active');
+  });
+});
+function switchTab(btn,id){
+  const c=btn.closest('.tabs-container');
+  c.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  c.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');document.getElementById(id).classList.add('active');
+}
+function toggleAccordion(btn){
+  const body=btn.nextElementSibling,open=body.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.accordion-body').forEach(b=>b.classList.remove('open'));
+  btn.closest('.accordion').querySelectorAll('.accordion-header').forEach(b=>b.classList.remove('active'));
+  if(!open){body.classList.add('open');btn.classList.add('active')}
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+// Parallax hero
+const hero=document.getElementById('hero');
+if(hero){window.addEventListener('scroll',function(){
+  const s=window.scrollY;
+  if(s<window.innerHeight)hero.style.transform='translateY('+(s*0.14)+'px)';
+})}
+</script>
+</body>
+</html>

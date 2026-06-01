@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sefer Yetzirah — Enciclopédia Iniciática Definitiva</title>
+<style>
+:root {
+  --bg:#06050F;--bg2:#0B0920;--bg3:#100E2A;--card:#130F2C;--card2:#1A1640;
+  --gold:#C8921A;--gold-l:#F0B030;--gold-d:rgba(200,146,26,0.14);
+  --sapphire:#1A40A0;--sapphire-l:#3060D0;--sapphire-d:rgba(26,64,160,0.15);
+  --crimson:#8B1A3A;--crimson-l:#D03060;--crimson-d:rgba(139,26,58,0.12);
+  --teal:#0A7070;--teal-l:#20B0A0;--teal-d:rgba(10,112,112,0.1);
+  --parchment:#E8D8A0;--parchment-d:rgba(232,216,160,0.65);--parchment-dd:rgba(232,216,160,0.38);
+  --border:rgba(200,146,26,0.18);--border2:rgba(48,96,208,0.22);
+  --glow:0 0 24px rgba(200,146,26,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--parchment);
+  font-family:'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif;
+  line-height:1.88;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 15% 0%,rgba(26,64,160,0.1) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 100%,rgba(200,146,26,0.07) 0%,transparent 55%),
+    radial-gradient(ellipse at 50% 50%,rgba(139,26,58,0.04) 0%,transparent 70%);
+}
+body::before{content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%,rgba(200,146,26,0.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 22% 6%,rgba(232,216,160,0.35) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 38% 18%,rgba(200,146,26,0.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 58% 8%,rgba(232,216,160,0.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 74% 22%,rgba(48,96,208,0.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 14%,rgba(232,216,160,0.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 95% 55%,rgba(200,146,26,0.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 5% 60%,rgba(232,216,160,0.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 45% 78%,rgba(200,146,26,0.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 70% 88%,rgba(232,216,160,0.3) 0%,transparent 100%);
+  pointer-events:none;z-index:0;animation:stars 12s ease-in-out infinite alternate;}
+@keyframes stars{0%{opacity:0.6}100%{opacity:1}}
+
+/* LAYOUT */
+.layout{display:flex;min-height:100vh;position:relative;z-index:1;}
+
+/* SIDEBAR */
+#sidebar{width:290px;min-width:290px;background:var(--bg2);border-right:1px solid var(--border);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:20px 0;flex-shrink:0;
+  scrollbar-width:thin;scrollbar-color:var(--gold) var(--bg2);}
+#sidebar::-webkit-scrollbar{width:3px;}
+#sidebar::-webkit-scrollbar-thumb{background:var(--gold);}
+.sb-logo{text-align:center;padding:22px 16px 26px;border-bottom:1px solid var(--border);margin-bottom:14px;}
+.sb-logo .heb{font-size:2.2rem;color:var(--gold-l);display:block;letter-spacing:0.3em;
+  text-shadow:var(--glow);margin-bottom:8px;font-family:serif;}
+.sb-logo h2{font-size:0.7rem;letter-spacing:0.25em;color:var(--gold);
+  font-family:'Courier New',monospace;text-transform:uppercase;}
+.nav-group{margin-bottom:6px;}
+.nav-group-title{font-size:0.58rem;letter-spacing:0.28em;color:var(--gold);
+  text-transform:uppercase;padding:8px 22px 4px;font-family:'Courier New',monospace;opacity:0.65;}
+.nav-link{display:block;padding:5px 22px;color:var(--parchment-dd);text-decoration:none;
+  font-size:0.78rem;transition:all 0.2s;border-left:2px solid transparent;font-family:Georgia,serif;}
+.nav-link:hover,.nav-link.active{color:var(--gold-l);border-left-color:var(--gold);
+  background:rgba(200,146,26,0.06);}
+.nav-link.sub{padding-left:34px;font-size:0.72rem;}
+
+/* MAIN */
+.main{flex:1;min-width:0;padding:0 0 100px;}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--bg2) 0%,var(--bg3) 50%,rgba(26,64,160,0.12) 100%);
+  border-bottom:1px solid var(--border);padding:90px 64px 70px;position:relative;overflow:hidden;}
+.hero::after{content:'ספר יצירה';position:absolute;font-size:9rem;
+  color:rgba(200,146,26,0.035);font-family:serif;top:50%;left:50%;
+  transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:0.5em;}
+.hero-badge{display:inline-block;padding:4px 14px;border:1px solid var(--gold);
+  color:var(--gold);font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;
+  font-family:'Courier New',monospace;margin-bottom:22px;border-radius:2px;}
+.hero h1{font-size:clamp(1.8rem,5vw,4.2rem);color:var(--gold-l);letter-spacing:0.06em;
+  line-height:1.15;margin-bottom:10px;text-shadow:0 0 40px rgba(200,146,26,0.3);}
+.hero-heb{font-size:clamp(1.4rem,4vw,3rem);color:rgba(200,146,26,0.55);
+  letter-spacing:0.4em;display:block;margin-bottom:18px;font-family:serif;}
+.hero-sub{font-size:1rem;color:var(--parchment-d);font-style:italic;max-width:700px;line-height:2.05;}
+.hero-meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;}
+.hm-item{text-align:center;padding:12px 18px;background:rgba(200,146,26,0.06);
+  border:1px solid var(--border);border-radius:3px;}
+.hm-val{font-size:1.4rem;color:var(--gold);font-family:'Courier New',monospace;display:block;}
+.hm-label{font-size:0.6rem;color:var(--parchment-dd);letter-spacing:0.18em;text-transform:uppercase;}
+
+/* SECTIONS */
+.section{padding:64px 64px 48px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.section-hd{display:flex;align-items:center;gap:18px;margin-bottom:44px;}
+.section-icon{font-size:1.7rem;width:58px;height:58px;display:flex;align-items:center;
+  justify-content:center;background:var(--gold-d);border:1px solid var(--border);
+  border-radius:3px;flex-shrink:0;}
+.section-hd h2{font-size:clamp(1.2rem,3vw,1.85rem);color:var(--gold-l);letter-spacing:0.04em;}
+.section-hd p{font-size:0.83rem;color:var(--parchment-dd);font-style:italic;margin-top:4px;}
+
+h3.sub{font-size:1.15rem;color:var(--sapphire-l);margin:38px 0 16px;padding-bottom:8px;
+  border-bottom:1px solid var(--border2);}
+h4.subsub{font-size:0.98rem;color:var(--teal-l);margin:24px 0 10px;}
+
+p{margin-bottom:14px;font-size:0.94rem;color:var(--parchment-d);}
+p strong{color:var(--parchment);}
+ul.prose{margin:10px 0 14px 20px;}
+ul.prose li{font-size:0.88rem;color:var(--parchment-d);margin-bottom:5px;line-height:1.8;}
+
+/* HEBREW TEXT */
+.heb-word{font-family:serif;font-size:1.2em;color:var(--gold-l);letter-spacing:0.1em;
+  direction:rtl;unicode-bidi:embed;}
+.heb-inline{color:var(--gold);font-size:1.05em;font-style:normal;font-family:serif;}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin:24px 0;}
+.card{background:var(--card);border:1px solid var(--border2);border-radius:4px;padding:20px;
+  transition:border-color 0.3s;}
+.card:hover{border-color:var(--gold);}
+.card-icon{font-size:1.5rem;margin-bottom:10px;}
+.card h4{font-size:0.92rem;color:var(--gold);margin-bottom:8px;}
+.card p{font-size:0.8rem;margin:0;line-height:1.78;}
+
+/* QUOTES */
+blockquote{border-left:3px solid var(--gold);padding:16px 20px 16px 24px;margin:24px 0;
+  background:var(--gold-d);border-radius:0 4px 4px 0;font-style:italic;
+  color:var(--parchment-d);font-size:0.92rem;line-height:2.05;}
+blockquote cite{display:block;margin-top:10px;font-size:0.72rem;color:var(--gold);
+  font-style:normal;letter-spacing:0.12em;}
+blockquote.heb-quote{direction:rtl;unicode-bidi:embed;font-family:serif;
+  font-size:1.1rem;letter-spacing:0.08em;border-left-color:var(--sapphire-l);}
+
+/* CALLOUTS */
+.callout{padding:20px 24px;border-radius:4px;margin:22px 0;border:1px solid;}
+.callout-gold{border-color:var(--gold);background:rgba(200,146,26,0.07);}
+.callout-sapphire{border-color:var(--sapphire);background:rgba(26,64,160,0.08);}
+.callout-teal{border-color:var(--teal);background:rgba(10,112,112,0.07);}
+.callout-crimson{border-color:var(--crimson);background:rgba(139,26,58,0.07);}
+.callout-title{font-size:0.67rem;letter-spacing:0.22em;text-transform:uppercase;
+  font-family:'Courier New',monospace;margin-bottom:10px;}
+.callout-gold .callout-title{color:var(--gold);}
+.callout-sapphire .callout-title{color:var(--sapphire-l);}
+.callout-teal .callout-title{color:var(--teal-l);}
+.callout-crimson .callout-title{color:var(--crimson-l);}
+.callout p{font-size:0.87rem;margin-bottom:8px;}
+.callout p:last-child{margin-bottom:0;}
+
+/* TABLES */
+.tw{overflow-x:auto;margin:22px 0;}
+table{width:100%;border-collapse:collapse;font-size:0.83rem;}
+th{background:var(--card2);color:var(--gold);padding:11px 15px;text-align:left;
+  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);}
+td{padding:9px 15px;border-bottom:1px solid rgba(255,255,255,0.05);
+  color:var(--parchment-d);vertical-align:top;}
+tr:hover td{background:rgba(200,146,26,0.03);}
+td:first-child{color:var(--gold-l);font-weight:600;}
+td.heb{font-family:serif;font-size:1.1em;direction:rtl;color:var(--gold);}
+
+/* LETTER GRID */
+.letter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:20px 0;}
+.letter-card{background:var(--card);border:1px solid var(--border);border-radius:4px;
+  padding:16px;text-align:center;transition:all 0.3s;}
+.letter-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.letter-heb{font-size:2.4rem;color:var(--gold-l);display:block;margin-bottom:6px;
+  font-family:serif;text-shadow:var(--glow);}
+.letter-name{font-size:0.82rem;color:var(--parchment);font-weight:700;margin-bottom:3px;}
+.letter-num{font-size:0.68rem;color:var(--gold);font-family:'Courier New',monospace;margin-bottom:6px;}
+.letter-info{font-size:0.72rem;color:var(--parchment-dd);line-height:1.65;}
+
+/* SEFIROT VISUAL */
+.sefira-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:20px 0;}
+.sefira-card{background:var(--card);border:1px solid;border-radius:6px;padding:18px;transition:all 0.3s;}
+.sefira-card:hover{transform:translateY(-2px);}
+.sefira-num{font-family:'Courier New',monospace;font-size:0.62rem;letter-spacing:0.15em;
+  text-transform:uppercase;margin-bottom:6px;}
+.sefira-name{font-size:1rem;font-weight:700;margin-bottom:3px;}
+.sefira-heb{font-family:serif;font-size:1.1rem;margin-bottom:8px;}
+.sefira-desc{font-size:0.78rem;color:var(--parchment-dd);line-height:1.72;}
+
+/* EXPANDABLE */
+.expand{margin:10px 0;}
+.expand-hd{display:flex;align-items:center;justify-content:space-between;
+  padding:13px 20px;background:var(--card);border:1px solid var(--border2);
+  border-radius:4px;cursor:pointer;transition:all 0.2s;user-select:none;}
+.expand-hd:hover{border-color:var(--gold);}
+.expand-hd h4{font-size:0.88rem;color:var(--gold);margin:0;}
+.expand-arrow{color:var(--gold);transition:transform 0.3s;font-size:0.78rem;}
+.expand-body{padding:20px;background:rgba(19,15,44,0.5);border:1px solid var(--border2);
+  border-top:none;border-radius:0 0 4px 4px;display:none;}
+.expand.open .expand-body{display:block;}
+.expand.open .expand-arrow{transform:rotate(180deg);}
+
+/* SVG TREE */
+.svg-container{margin:24px auto;text-align:center;}
+.svg-container svg text{font-family:serif;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:34px;margin:24px 0;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--gold),var(--sapphire-l),var(--teal-l));}
+.tl-item{position:relative;margin-bottom:28px;}
+.tl-item::before{content:'';position:absolute;left:-28px;top:6px;width:10px;height:10px;
+  border-radius:50%;background:var(--gold);border:2px solid var(--bg);}
+.tl-year{font-size:0.68rem;color:var(--gold);font-family:'Courier New',monospace;
+  letter-spacing:0.15em;margin-bottom:4px;}
+.tl-item h4{font-size:0.94rem;color:var(--parchment);margin-bottom:5px;}
+.tl-item p{font-size:0.82rem;margin:0;}
+
+/* COMPARE */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+.cmp-col{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:20px;}
+.cmp-col h4{font-size:0.83rem;color:var(--gold);margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1px solid var(--border);}
+.cmp-col li{font-size:0.8rem;color:var(--parchment-d);margin-bottom:6px;
+  padding-left:14px;position:relative;list-style:none;}
+.cmp-col li::before{content:'◆';position:absolute;left:0;font-size:0.48rem;color:var(--gold);top:5px;}
+
+/* MARKS */
+mark.g{background:rgba(200,146,26,0.2);color:var(--gold-l);padding:1px 4px;border-radius:2px;}
+mark.s{background:rgba(26,64,160,0.2);color:var(--sapphire-l);padding:1px 4px;border-radius:2px;}
+mark.t{background:rgba(10,112,112,0.2);color:var(--teal-l);padding:1px 4px;border-radius:2px;}
+mark.c{background:rgba(139,26,58,0.2);color:var(--crimson-l);padding:1px 4px;border-radius:2px;}
+
+/* PROGRESS & SCROLL */
+#pbar{position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--sapphire-l));z-index:9999;transition:width 0.1s;}
+#stb{position:fixed;bottom:32px;right:32px;width:44px;height:44px;background:var(--card2);
+  border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;font-size:1.1rem;color:var(--gold);z-index:1000;
+  opacity:0;transition:opacity 0.3s;}
+#stb.vis{opacity:1;}
+
+/* RESPONSIVE */
+@media(max-width:920px){#sidebar{display:none;}.section{padding:40px 24px;}.hero{padding:52px 24px 44px;}}
+@media(max-width:650px){.cmp-grid{grid-template-columns:1fr;}.letter-grid{grid-template-columns:repeat(3,1fr);}}
+</style>
+</head>
+<body>
+<div id="pbar" style="width:0%"></div>
+<!-- SIDEBAR -->
+<div class="layout">
+<aside id="sidebar">
+<div class="sb-logo"><span class="heb">ספר יצירה</span><h2>Sefer Yetzirah<br>Enciclopédia Iniciática</h2></div>
+<div class="nav-group"><div class="nav-group-title">I. Fundamentos</div>
+<a class="nav-link" href="#intro">Visão Geral</a>
+<a class="nav-link sub" href="#historia">História e Autoria</a>
+<a class="nav-link sub" href="#versoes">Versões do Texto</a>
+<a class="nav-link sub" href="#contexto">Contexto Místico</a></div>
+<div class="nav-group"><div class="nav-group-title">II. Os 32 Caminhos</div>
+<a class="nav-link" href="#32vias">As 32 Vias da Sabedoria</a>
+<a class="nav-link sub" href="#sefirot">As 10 Sefirot Belimah</a>
+<a class="nav-link sub" href="#22letras">As 22 Letras Sagradas</a></div>
+<div class="nav-group"><div class="nav-group-title">III. As Letras</div>
+<a class="nav-link" href="#maes">As 3 Letras-Mãe</a>
+<a class="nav-link sub" href="#duplas">As 7 Letras Duplas</a>
+<a class="nav-link sub" href="#simples">As 12 Letras Simples</a>
+<a class="nav-link sub" href="#letras-cosm">Letras como Forças Cósmicas</a></div>
+<div class="nav-group"><div class="nav-group-title">IV. Cosmologia</div>
+<a class="nav-link" href="#cosmos">Cosmos, Tempo e Alma</a>
+<a class="nav-link sub" href="#cubo">O Cubo do Espaço</a>
+<a class="nav-link sub" href="#arvore">Árvore da Vida</a></div>
+<div class="nav-group"><div class="nav-group-title">V. Leitura Comentada</div>
+<a class="nav-link" href="#leitura">Capítulo 1 — As Sefirot</a>
+<a class="nav-link sub" href="#cap2">Capítulo 2 — As Letras</a>
+<a class="nav-link sub" href="#cap3">Capítulo 3 — Letras-Mãe</a>
+<a class="nav-link sub" href="#cap4">Capítulo 4 — Letras Duplas</a>
+<a class="nav-link sub" href="#cap5">Capítulo 5 — Letras Simples</a>
+<a class="nav-link sub" href="#cap6">Capítulo 6 — O Golem</a></div>
+<div class="nav-group"><div class="nav-group-title">VI. Técnicas</div>
+<a class="nav-link" href="#gematria">Gematria</a>
+<a class="nav-link sub" href="#notarikon">Notarikon e Temurah</a>
+<a class="nav-link sub" href="#meditacao">Meditação e Contemplação</a>
+<a class="nav-link sub" href="#iniciacao">Leitura Iniciática</a></div>
+<div class="nav-group"><div class="nav-group-title">VII. Paralelos</div>
+<a class="nav-link" href="#paralelos">Comparações Filosóficas</a>
+<a class="nav-link sub" href="#hermetismo">Hermetismo e Alquimia</a>
+<a class="nav-link sub" href="#ordens">Ordens Ocultistas</a></div>
+<div class="nav-group"><div class="nav-group-title">VIII. Conclusão</div>
+<a class="nav-link" href="#como-estudar">Como Estudar</a>
+<a class="nav-link" href="#glossario">Glossário</a>
+<a class="nav-link" href="#biblio">Bibliografia</a></div>
+</aside>
+<main class="main">
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge">☽ Misticismo Hebraico ☽ Cabala Primitiva ☽ Séc. II–VI d.C.</div>
+<span class="hero-heb">ספר יצירה</span>
+<h1>Sefer Yetzirah</h1>
+<p class="hero-sub">Enciclopédia Iniciática Definitiva — Das 32 Vias da Sabedoria ao Cubo do Espaço, das 22 Letras Sagradas às 10 Sefirot — Análise Histórica, Filosófica, Esotérica e Iniciática Completa do Livro da Formação</p>
+<div class="hero-meta">
+<div class="hm-item"><span class="hm-val">32</span><span class="hm-label">vias da sabedoria</span></div>
+<div class="hm-item"><span class="hm-val">10</span><span class="hm-label">sefirot belimah</span></div>
+<div class="hm-item"><span class="hm-val">22</span><span class="hm-label">letras sagradas</span></div>
+<div class="hm-item"><span class="hm-val">231</span><span class="hm-label">portais (zirufim)</span></div>
+<div class="hm-item"><span class="hm-val">6</span><span class="hm-label">capítulos</span></div>
+<div class="hm-item"><span class="hm-val">séc. II–VI</span><span class="hm-label">datação</span></div>
+</div></div>
+
+<!-- SEÇÃO I: INTRODUÇÃO -->
+<section class="section" id="intro">
+<div class="section-hd"><div class="section-icon">📜</div><div>
+<h2>I. O Que é o Sefer Yetzirah</h2>
+<p>O fundamento da cosmologia cabalística — entre o mais antigo e o mais enigmático dos textos místicos judaicos</p>
+</div></div>
+
+<p>O <mark class="g">Sefer Yetzirah</mark> — cujo título hebraico <span class="heb-inline">ספר יצירה</span> significa literalmente <mark class="s">Livro da Formação</mark> ou <mark class="t">Livro da Criação</mark> — é, sem exagero, um dos textos mais profundos, enigmáticos e influentes de toda a tradição mística judaica. Em sua brevidade deceptiva (o texto mais curto tem apenas cerca de 1.300 palavras; a versão mais longa não passa de 2.500), o Sefer Yetzirah contém uma cosmologia completa, uma filosofia da linguagem, uma teoria da criação divina através de números e letras, e um mapa da consciência humana que influenciaria o pensamento esotérico ocidental por mais de quinze séculos.</p>
+
+<p>O texto apresenta-se — ou foi compreendido pela tradição — como o registro dos ensinamentos que <mark class="g">Abraão</mark> recebeu ou intuiu quando "olhou, investigou, esquadrinhou, visualizou e entendeu". Esta atribuição patriarcal não é meramente honorífica: ela afirma que o conhecimento contido no Sefer Yetzirah é tão antigo quanto a própria fundação da tradição hebraica — que a sabedoria sobre a estrutura do cosmos remonta ao primeiro monoteísta. Esta é uma declaração sobre a <em>anterioridade da sabedoria esotérica</em> em relação à revelação textual mais conhecida.</p>
+
+<p>O Sefer Yetzirah descreve a criação do universo pelo <mark class="g">Santo Bendito</mark> através de três instrumentos primordiais: <strong>Números</strong> (<span class="heb-inline">ספר</span> — Sefer), <strong>Escrita</strong> (<span class="heb-inline">סיפור</span> — Sippur) e <strong>Comunicação</strong> (<span class="heb-inline">ספר</span> — Sefar). Estes três aspectos — que no original hebraico são quase homófonos, sugerindo uma unidade profunda entre contar, narrar e comunicar — constituem os instrumentos através dos quais o Divino manifesta a realidade a partir do nada.</p>
+
+<blockquote>"Com trinta e dois caminhos maravilhosos de sabedoria, Jah gravou: Senhor dos Exércitos, Deus de Israel, Deus Vivo e Rei do Universo, El Shaddai, Misericordioso e Gracioso, Exaltado e Habita na Eternidade, cujo Nome é Santo — gravou e criou Seu universo com três sefarim: com Sefer, com Sippur e com Sefar."<cite>— Sefer Yetzirah, Capítulo 1:1 (trad. Aryeh Kaplan)</cite></blockquote>
+
+<p>Esta abertura imediata com a declaração dos "trinta e dois caminhos maravilhosos de sabedoria" estabelece o programa do texto: <strong>32 = 10 Sefirot + 22 Letras do alfabeto hebraico</strong>. Os números não são acessórios — eles são a estrutura metafísica da realidade. A criação não foi um ato arbitrário de vontade, mas uma manifestação ordenada através de um sistema de estruturas numéricas e linguísticas que o texto se propõe revelar ao iniciado.</p>
+
+<div class="callout callout-gold">
+<p class="callout-title">🔑 A Estrutura Nuclear do Sefer Yetzirah</p>
+<p><strong>32 Vias da Sabedoria:</strong> A totalidade do sistema — 10 Sefirot (emanações divinas primordiais) + 22 Letras (os blocos construtores da criação).</p>
+<p><strong>10 Sefirot Belimah:</strong> Os dez números/dimensões primordiais que estruturam o cosmos — não ainda a Árvore da Vida do misticismo medieval, mas seus precursores diretos.</p>
+<p><strong>22 Letras Hebraicas:</strong> Divididas em 3 grupos: 3 Letras-Mãe (elementos), 7 Duplas (planetas), 12 Simples (signos do zodíaco) — espelhando perfeitamente 3+7+12=22.</p>
+<p><strong>O Princípio Central:</strong> O universo é criado, sustentado e pode ser compreendido através de linguagem sagrada — os números e as letras não representam a realidade, eles <em>constituem</em> a realidade.</p>
+</div>
+
+<h3 class="sub" id="historia">História, Autoria e Datação</h3>
+<p>A questão da autoria e datação do Sefer Yetzirah é um dos temas mais debatidos da historiografia do misticismo judaico. A tradição atribui o texto ao Patriarca <mark class="g">Abraão</mark>, e alguns manuscritos o intitulam explicitamente "Sefer Yetzirah, que foi entregue a Abraão nosso Pai". Esta atribuição é obviamente uma <em>pseudepígrafe</em> — um recurso comum na literatura religiosa antiga para conferir autoridade e antiguidade a textos que se desejava elevar ao status de revelação.</p>
+
+<p>A outra atribuição tradicional, igualmente importante, é ao <mark class="g">Rabi Akiva</mark> (c. 50–135 d.C.) — um dos maiores sábios do período tanaítico, mártir durante a revolta de Bar Kochba (135 d.C.) e figura central na história do misticismo judaico primitivo. Akiva é identificado nos textos Hekhalot como um dos quatro que "entraram no Pardes" (o jardim/paraíso místico) — dos quais apenas ele "entrou em paz e saiu em paz". A associação do Sefer Yetzirah com Akiva não é casual: ela situa o texto no contexto do misticismo Merkavah (da Carruagem Divina) que floresceu no período tanaítico-amoraítico.</p>
+
+<div class="timeline">
+<div class="tl-item"><div class="tl-year">Séc. I–III d.C.</div><h4>Período de Composição Mais Provável</h4><p>A maioria dos acadêmicos modernos situa a composição básica do Sefer Yetzirah entre os séculos I e III d.C., no contexto do misticismo Merkavah e da efervescência filosófica do período. O texto apresenta características linguísticas da Mishná (séc. II d.C.).</p></div>
+<div class="tl-item"><div class="tl-year">Séc. III–VI d.C.</div><h4>Período Alternativo — Gershom Scholem</h4><p>Gershom Scholem, o grande historiador do misticismo judaico, argumentou por uma datação entre os séculos III e VI d.C., situando o texto no ambiente do Neoplatonismo e da literatura Hekhalot tardia. Esta datação é aceita por muitos acadêmicos modernos.</p></div>
+<div class="tl-item"><div class="tl-year">Séc. IX d.C.</div><h4>Saadia Gaon — Primeiro Comentário Conhecido</h4><p>Saadia Gaon (882–942 d.C.) escreve o primeiro comentário completo conhecido do Sefer Yetzirah, em árabe (c. 931 d.C.). Sua interpretação é racionalista e influenciada pela filosofia islâmica e pelo neoplatonismo.</p></div>
+<div class="tl-item"><div class="tl-year">Séc. X–XII d.C.</div><h4>Proliferação de Comentários</h4><p>Período de intensa atividade comentarial: Dunash ibn Tamim, Shabbetai Donnolo, Yehudah ben Barzillai e outros escrevem comentários extensivos, cada um interpretando o texto à luz de sua tradição filosófica e geográfica.</p></div>
+<div class="tl-item"><div class="tl-year">Séc. XII–XIII d.C.</div><h4>Integração na Cabala Medieval</h4><p>O Sefer Yetzirah é incorporado ao projeto cabalístico medieval emergente. O Sefer ha-Bahir (c. 1150-1200) desenvolve algumas de suas ideias. O Zohar (c. 1280) pressupõe familiaridade com suas estruturas.</p></div>
+<div class="tl-item"><div class="tl-year">Séc. XVI d.C.</div><h4>Isaac Luria e a Reinterpretação Luriânica</h4><p>O sistema luriânico (Ari) reinterpreta as Sefirot do Sefer Yetzirah à luz da Tzimtzum, do Shevirat ha-Kelim e do Tikkun — expandindo radicalmente o sistema original numa cosmologia teosófica completa.</p></div>
+<div class="tl-item"><div class="tl-year">Séc. XIX–XX d.C.</div><h4>Integração no Esoterismo Ocidental</h4><p>A Golden Dawn, a Teosofia e o Ocultismo moderno incorporam o Sefer Yetzirah. MacGregor Mathers publica uma tradução influente (1887). Aleister Crowley integra o sistema ao Thelema. Aryeh Kaplan produz a tradução acadêmica e esotérica definitiva moderna (1990).</p></div>
+</div>
+
+<h3 class="sub" id="versoes">As Versões do Texto — Um Problema Textual Central</h3>
+<p>Um dos desafios mais sérios para qualquer estudioso do Sefer Yetzirah é a multiplicidade de versões do texto, cada uma com variações significativas. Ao contrário de muitos textos religiosos que têm uma versão canônica estabelecida, o Sefer Yetzirah existe em pelo menos <mark class="g">três recensions principais</mark>, além de numerosas variantes menores e textos mistos.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Versão</th><th>Extensão</th><th>Característica</th><th>Associação</th></tr></thead>
+<tbody>
+<tr><td>Versão Curta (Kitzur)</td><td>~1.300 palavras</td><td>Mais arcaica linguisticamente; menos elaborada</td><td>Tradição ashkenazita; Saadia Gaon</td></tr>
+<tr><td>Versão Longa (Arukh)</td><td>~2.500 palavras</td><td>Mais explicativa; possível expansão medieval</td><td>Tradição sefardita; Donnolo</td></tr>
+<tr><td>Versão Gra</td><td>Intermediária</td><td>Editada pelo Gaon de Vilna; considerada a mais "correta"</td><td>Cabala luriânica; uso moderno</td></tr>
+<tr><td>Versão de Saadia</td><td>Variante</td><td>Base para seu comentário árabe</td><td>Tradição gaônica egípcia</td></tr>
+</tbody></table></div>
+
+<p>As diferenças entre as versões não são meramente tipográficas — em alguns casos, elas implicam interpretações cosmológicas fundamentalmente diferentes. Por exemplo, a sequência das letras duplas e suas correspondências planetárias varia entre versões, o que afeta diretamente a astrologia cabalística e o sistema de correspondências. Esta variabilidade textual é, em si mesma, um testemunho da natureza viva do texto: cada comunidade adaptou-o às suas necessidades espirituais e filosóficas.</p>
+
+<h3 class="sub" id="contexto">Contexto — Merkavah, Hekhalot e a Cabala Primitiva</h3>
+<p>Para compreender o Sefer Yetzirah em sua dimensão histórica, é essencial situá-lo dentro do ecossistema maior do misticismo judaico primitivo. O período do século I ao VII d.C. viu florescer no judaísmo uma rica tradição de especulação mística que se desenvolvia em paralelo — e frequentemente em tensão — com o Rabinismo normativo que se consolidava após a destruição do Segundo Templo (70 d.C.).</p>
+
+<p>O <mark class="g">Misticismo da Merkavah</mark> (Carruagem Divina) — assim chamado por sua base na visão profética de Ezequiel da Carruagem Celestial — focava-se nas perigosas jornadas místicas pelos sete Palacos Celestiais (Hekhalot) até a presença do Trono Divino. Os praticantes desta tradição buscavam a contemplação direta da Glória Divina (Kavod) e a recitação de hinos à Divindade (<em>Piyutim</em>). O Sefer Yetzirah compartilha com esta tradição o foco na estrutura do cosmos e na linguagem sagrada, mas o supera em elaboração filosófica e sistematização.</p>
+
+<div class="callout callout-sapphire">
+<p class="callout-title">🏛️ O Contexto Intelectual do Sefer Yetzirah</p>
+<p><strong>Misticismo da Merkavah:</strong> Especulação sobre o Trono Divino, as esferas celestiais e a ascensão mística.</p>
+<p><strong>Misticismo Ma'aseh Bereshit:</strong> Especulação sobre a Criação (<em>Bereshit</em> = "No princípio") — exatamente o domínio do Sefer Yetzirah.</p>
+<p><strong>Neoplatonismo:</strong> A filosofia emanacionista de Plotino e Porfírio circulava amplamente no mundo mediterrâneo. A estrutura das Sefirot como emanações do Uno tem paralelos claros com as hipóstases neoplatônicas.</p>
+<p><strong>Pitagorismo Tardio:</strong> A sacralidade dos números, especialmente os primeiros dez, e sua relação com a estrutura do cosmos — o Tetraktys pitagórico ecoa nas 10 Sefirot.</p>
+<p><strong>Gnosticismo:</strong> A ênfase na criação através de emanações intermediárias e a estrutura hierárquica do cosmos têm paralelos com sistemas gnósticos do mesmo período.</p>
+</div>
+</section>
+
+<!-- SEÇÃO II: OS 32 CAMINHOS -->
+<section class="section" id="32vias">
+<div class="section-hd"><div class="section-icon">✡</div><div>
+<h2>II. As 32 Vias da Sabedoria</h2>
+<p>O coração do sistema — 10 Sefirot Belimah e 22 Letras Sagradas como instrumentos da Criação</p>
+</div></div>
+
+<p>A abertura do Sefer Yetzirah declara que <mark class="g">Jah</mark> — um dos nomes divinos, frequentemente associado ao aspecto mais transcendente de Deus — gravou (ou "esculpiu", <span class="heb-inline">חקק</span>, <em>chakak</em>) o universo com <strong>trinta e dois caminhos maravilhosos de sabedoria</strong>. Este número 32 não é arbitrário: é a soma de 10 (as Sefirot) e 22 (as Letras), e corresponde também ao valor numérico da palavra hebraica <span class="heb-inline">לב</span> (<em>Lev</em>) — que significa <strong>Coração</strong>.</p>
+
+<p>Esta correspondência é profundamente significativa para a tradição cabalística: os 32 caminhos são o <em>coração</em> do cosmos — o centro pulsante através do qual flui toda a vida e toda a criação. A sabedoria não é uma propriedade intelectual abstrata, mas a estrutura viva do universo percebida a partir de seu centro.</p>
+
+<p>O adjetivo aplicado a esses caminhos — <span class="heb-inline">פליאות</span> (<em>peliot</em>), "maravilhosas" ou "misteriosas" — sugere que estes caminhos não são plenamente apreensíveis pela mente ordinária. São "maravilhosos" no sentido hebraico de <em>pele</em> — algo que transcende a compreensão comum, algo do qual se deve manter reverência. O acesso a esses caminhos é, portanto, uma iniciação — não uma mera aquisição de informações.</p>
+
+<h3 class="sub" id="sefirot">As 10 Sefirot Belimah</h3>
+<p>O termo <mark class="g">Sefirot Belimah</mark> (<span class="heb-inline">עשר ספירות בלימה</span>) é uma das expressões mais carregadas e debatidas do texto. Vamos analisá-la palavra por palavra:</p>
+<p><mark class="g">Sefirot</mark> (<span class="heb-inline">ספירות</span>): O plural de <em>Sefira</em>, que compartilha raiz com as palavras <em>Sapphire</em> (safira), <em>Sippur</em> (narrativa/número), e <em>Sefer</em> (livro/escrita). A raiz <span class="heb-inline">ס-פ-ר</span> (<em>S-P-R</em>) evoca simultaneamente contar, narrar, comunicar, brilhar e escrever. As Sefirot são, portanto: os "contadores" primordiais, as "narrações" da realidade, as "escritas" do cosmos, os "brilhos" do Divino — tudo simultaneamente.</p>
+<p><mark class="g">Belimah</mark> (<span class="heb-inline">בלימה</span>): Palavra de interpretação especialmente difícil e debatida. Lida como duas palavras — <em>beli mah</em> (<span class="heb-inline">בלי מה</span>) — significa "sem o quê" ou "sem substância". Esta leitura sugere que as Sefirot são entidades que existem sem substância determinada — puras dimensões ou aspectos do Ser Divino, não objetos concretos. O Sefer Yetzirah ordena: "Feche a boca de quem fala e abra o coração de quem medita" sobre as Sefirot — elas estão além da linguagem ordinária.</p>
+<p>Esta designação <em>belimah</em> distingue as Sefirot do Sefer Yetzirah das Sefirot da Cabala medieval posterior: aqui não são ainda os dez atributos divinos personalizados da Árvore da Vida — são dimensões ontológicas puras, quase no sentido de categorias kantianas, mas de natureza divina e cósmica.</p>
+
+<div class="sefira-grid">
+<div class="sefira-card" style="border-color:rgba(200,146,26,0.5);background:rgba(200,146,26,0.06)">
+<div class="sefira-num" style="color:var(--gold)">Sefira 1</div>
+<div class="sefira-name" style="color:var(--gold-l)">Ruach Elohim Chayyim</div>
+<div class="sefira-heb" style="color:var(--gold)">רוח אלהים חיים</div>
+<div class="sefira-desc">O Espírito do Deus Vivo — a primeira e mais elevada das dimensões. O Sopro Divino, o Pneuma primordial. No Sefer Yetzirah, esta é a única Sefira nomeada descritivamente. Corresponde ao kether da Árvore posterior e ao Ponto Inicial da Emanação.</div>
+</div>
+<div class="sefira-card" style="border-color:rgba(48,96,208,0.5);background:rgba(48,96,208,0.06)">
+<div class="sefira-num" style="color:var(--sapphire-l)">Sefira 2</div>
+<div class="sefira-name" style="color:var(--sapphire-l)">Vento do Vento</div>
+<div class="sefira-heb" style="color:var(--sapphire-l)">רוח מרוח</div>
+<div class="sefira-desc">O Ar criado do Espírito — a segunda Sefira. O vento que emerge do vento espiritual primordial. O Ar como primeiro elemento manifesto, o medium através do qual o som e a linguagem se propagam. Base das 22 letras que serão gravadas nele.</div>
+</div>
+<div class="sefira-card" style="border-color:rgba(10,112,112,0.5);background:rgba(10,112,112,0.06)">
+<div class="sefira-num" style="color:var(--teal-l)">Sefira 3</div>
+<div class="sefira-name" style="color:var(--teal-l)">Água do Vento</div>
+<div class="sefira-heb" style="color:var(--teal-l)">מים מרוח</div>
+<div class="sefira-desc">A Água primordial — o caos informe (<em>Tohu</em>) sobre o qual o Espírito pairava. A Água como substrato da criação material, do qual emergirão a Terra e o cosmos físico. As 22 letras foram gravadas no Ar, mas é na Água primordial que as formas começam a se solidificar.</div>
+</div>
+<div class="sefira-card" style="border-color:rgba(139,26,58,0.5);background:rgba(139,26,58,0.06)">
+<div class="sefira-num" style="color:var(--crimson-l)">Sefira 4</div>
+<div class="sefira-name" style="color:var(--crimson-l)">Fogo da Água</div>
+<div class="sefira-heb" style="color:var(--crimson-l)">אש ממים</div>
+<div class="sefira-desc">O Fogo gerado da Água — paradoxo essencial. O Trono da Glória, os Serafins e as hostes angelicais são criados do Fogo primordial. Esta Sefira corresponde ao reino espiritual intermediário entre o Divino e o material.</div>
+</div>
+<div class="sefira-card" style="border-color:rgba(80,60,140,0.5);background:rgba(80,60,140,0.06)">
+<div class="sefira-num" style="color:#C0A0F0">Sefirot 5–10</div>
+<div class="sefira-name" style="color:#C0A0F0">As Seis Direções</div>
+<div class="sefira-heb" style="color:#C0A0F0">שש קצוות</div>
+<div class="sefira-desc">As seis direções do espaço — Norte, Sul, Leste, Oeste, Acima, Abaixo — que constituem o Cubo do Espaço tridimensional. Estas seis Sefirot estabelecem o cosmos como um cubo perfeito de seis lados, com o Espírito Divino em seu centro. O universo físico é assim definido em termos de extensão espacial geométrica.</div>
+</div>
+</div>
+
+<div class="callout callout-sapphire">
+<p class="callout-title">⚠️ As Sefirot do SY vs. as Sefirot da Cabala Medieval</p>
+<p>É crucial distinguir as <strong>Sefirot Belimah do Sefer Yetzirah</strong> das <strong>10 Sefirot da Árvore da Vida cabalística medieval</strong>. No Sefer Yetzirah, as Sefirot são: (1) dimensões cósmicas primordiais, (2) associadas a elementos e direções espaciais, (3) sem os nomes personalizados da Árvore posterior (Kether, Chokmah, etc.), (4) e organizadas numa estrutura de 1 (Espírito) + 3 (Elementos) + 6 (Direções). A Árvore da Vida medieval, tal como se encontra no Bahir e no Zohar, é uma elaboração posterior que expandiu e sistematizou as intuições embrionárias do Sefer Yetzirah.</p>
+</div>
+
+<h3 class="sub" id="22letras">As 22 Letras Sagradas — Visão Geral</h3>
+<p>Se as 10 Sefirot constituem o aspecto <em>numérico</em> da criação (o <em>quantum</em>, o quanto), as 22 Letras constituem o aspecto <em>linguístico</em> (o <em>quale</em>, o como e o que). Juntos, números e letras formam a gramática completa da realidade manifesta.</p>
+<p>O Sefer Yetzirah organiza as 22 letras do alfabeto hebraico em <strong>três grupos cosmológicos</strong>, cada um correspondendo a uma dimensão diferente da manifestação:</p>
+<div class="card-grid">
+<div class="card"><div class="card-icon">🔥</div><h4>3 Letras-Mãe (Imot)</h4><p>Aleph, Mem, Shin — os três elementos primordiais (Ar, Água, Fogo). São as "mães" das demais letras, assim como os elementos são as mães de todas as substâncias. Estabelecem o eixo vertical do cosmos.</p></div>
+<div class="card"><div class="card-icon">🪐</div><h4>7 Letras Duplas (Kfoulot)</h4><p>Bet, Guimel, Dalet, Kaf, Pe, Resh, Tav — as letras com dois sons (duro/suave). Correspondem aos sete planetas clássicos, sete dias da semana, sete portais do corpo humano, e sete ciclos temporais.</p></div>
+<div class="card"><div class="card-icon">♈</div><h4>12 Letras Simples (Pshutot)</h4><p>As 12 letras restantes. Correspondem aos 12 signos do zodíaco, 12 meses do ano, 12 órgãos ou funções do corpo, e 12 direções diagonais do cubo do espaço expandido.</p></div>
+</div>
+<p>Esta estrutura 3+7+12 = 22 é um espelho perfeito da cosmologia antiga: <strong>3 elementos primordiais</strong> (base ontológica), <strong>7 astros</strong> (a arquitetura temporal-celestial), <strong>12 constelações</strong> (o ciclo completo do cosmos manifesto). As letras não são arbitrariamente associadas a estas realidades cósmicas — elas <em>são</em>, em sua essência, essas realidades exprimidas em forma linguística.</p>
+</section>
+
+<!-- SEÇÃO III: AS LETRAS -->
+<section class="section" id="maes">
+<div class="section-hd"><div class="section-icon">🔥</div><div>
+<h2>III. As Letras Hebraicas como Forças Cósmicas</h2>
+<p>As 22 letras sagradas — arquétipos primordiais, forças de criação, mapas da consciência</p>
+</div></div>
+
+<p>O Sefer Yetzirah não trata as letras hebraicas como meros símbolos fonéticos ou convenções gráficas. Para o texto, as letras são <mark class="g">forças ontológicas primordiais</mark> — entidades reais que existem antes do universo manifesto e através das quais o universo manifesto foi criado e continua sendo sustentado. Esta é uma das afirmações mais radicais e fascinantes de toda a filosofia da linguagem: a linguagem não descreve a realidade — ela a constitui.</p>
+
+<blockquote>"Vinte e duas letras fundamentais: gravou-as, esculpiu-as, pesou-as, permutas-as, combinou-as, e com elas formou a alma de tudo o que foi formado e de tudo o que será formado."<cite>— Sefer Yetzirah, Capítulo 2:2</cite></blockquote>
+
+<p>Este verso fundamental revela um processo criativo de <strong>cinco fases</strong> através das letras: gravar (<em>chakak</em>), esculpir (<em>chatzav</em>), pesar (<em>shaphar</em>), permutar (<em>hemiran</em>), combinar (<em>tzaraf</em>). Cada fase representa um grau diferente de materialização da letra — do mais sutil (gravar) ao mais denso (combinar em formas complexas). É uma fenomenologia completa da manifestação através da linguagem.</p>
+
+<h3 class="sub">As 3 Letras-Mãe — Imot ha-Otiyot</h3>
+<p>As três letras-mãe — <mark class="g">Aleph (א), Mem (מ), Shin (ש)</mark> — representam os três elementos primordiais através dos quais o universo manifesto foi organizado. A correspondência elementar é: <strong>Aleph = Ar</strong>, <strong>Mem = Água</strong>, <strong>Shin = Fogo</strong>. Notavelmente, a Terra não aparece como elemento primordial no Sefer Yetzirah — ela é derivada, criada a partir dos três primeiros.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Letra</th><th>Nome</th><th>Valor Num.</th><th>Elemento</th><th>No Cosmos</th><th>No Ano</th><th>Na Alma</th></tr></thead>
+<tbody>
+<tr><td class="heb">א</td><td>Aleph</td><td>1</td><td>Ar (Ruach)</td><td>O Ar entre o Fogo e a Água; equilíbrio</td><td>Estação temperada</td><td>O peito / respiração</td></tr>
+<tr><td class="heb">מ</td><td>Mem</td><td>40</td><td>Água (Mayim)</td><td>A Terra e o frio</td><td>Inverno</td><td>O ventre</td></tr>
+<tr><td class="heb">ש</td><td>Shin</td><td>300</td><td>Fogo (Esh)</td><td>O céu e o calor</td><td>Verão</td><td>A cabeça</td></tr>
+</tbody></table></div>
+
+<p>A lógica das letras-mãe como elementos vai além da associação elementar simples. O Sefer Yetzirah apresenta uma visão cosmológica onde os três elementos se organizam numa relação de equilíbrio: Shin (Fogo) e Mem (Água) são as forças opostas — quente/frio, acima/abaixo, céu/terra. Aleph (Ar) é a força mediadora que previne que os opostos se anulem mutuamente. Este modelo de dois opostos e um equilíbrio (<em>mateh/zakut/mashkal</em>) permeia todo o sistema do Sefer Yetzirah e antecipa a dialética triádica que encontraremos em muitos sistemas filosóficos posteriores.</p>
+
+<h3 class="sub" id="duplas">As 7 Letras Duplas — Kfulot</h3>
+<p>As sete letras duplas — <mark class="g">Bet, Guimel, Dalet, Kaf, Pe, Resh, Tav</mark> — recebem este nome porque cada uma delas tinha, no hebraico clássico, dois valores fonéticos: um som duro (oclusivo) e um som suave (fricativo), dependendo da posição na palavra. Esta dualidade fonética é interpretada pelo Sefer Yetzirah como espelho de uma dualidade ontológica mais profunda: cada letra dupla governa um par de opostos na experiência humana.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Letra</th><th>Nome</th><th>Planeta</th><th>Dia</th><th>Par de Opostos</th><th>Porta do Corpo</th></tr></thead>
+<tbody>
+<tr><td class="heb">ב</td><td>Bet</td><td>Saturno</td><td>Shabat</td><td>Sabedoria / Loucura</td><td>Olho Direito</td></tr>
+<tr><td class="heb">ג</td><td>Guimel</td><td>Júpiter</td><td>Quinta-feira</td><td>Riqueza / Pobreza</td><td>Olho Esquerdo</td></tr>
+<tr><td class="heb">ד</td><td>Dalet</td><td>Marte</td><td>Terça-feira</td><td>Semente / Esterilidade</td><td>Orelha Direita</td></tr>
+<tr><td class="heb">כ</td><td>Kaf</td><td>Sol</td><td>Domingo</td><td>Vida / Morte</td><td>Orelha Esquerda</td></tr>
+<tr><td class="heb">פ</td><td>Pe</td><td>Vênus</td><td>Sexta-feira</td><td>Dominação / Submissão</td><td>Narina Direita</td></tr>
+<tr><td class="heb">ר</td><td>Resh</td><td>Mercúrio</td><td>Quarta-feira</td><td>Paz / Guerra</td><td>Narina Esquerda</td></tr>
+<tr><td class="heb">ת</td><td>Tav</td><td>Lua</td><td>Segunda-feira</td><td>Graça / Fealdade</td><td>Boca</td></tr>
+</tbody></table></div>
+
+<p>A dualidade das letras duplas revela um princípio filosófico central do Sefer Yetzirah: o cosmos manifesto é governado pela <mark class="g">dialética dos opostos</mark>. Cada domínio da existência — saúde, riqueza, fertilidade, vida, poder, paz, beleza — tem necessariamente sua contraparte negativa. O iniciado não deve ver estes opostos como inimigos, mas como dois "tons" da mesma "nota" cósmica. As letras duplas são a gramática desta dualidade.</p>
+
+<h3 class="sub" id="simples">As 12 Letras Simples</h3>
+<p>As 12 letras simples — <mark class="g">He, Vav, Zayin, Chet, Tet, Yod, Lamed, Nun, Samekh, Ayin, Tzaddi, Kuf</mark> — correspondem aos 12 signos do zodíaco, 12 meses do ano, 12 funções ou atividades humanas fundamentais, e as 12 direções diagonais do cubo expandido do espaço.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Letra</th><th>Signo</th><th>Mês</th><th>Função Humana</th><th>Direção Diagonal</th></tr></thead>
+<tbody>
+<tr><td class="heb">ה</td><td>Áries</td><td>Nissan (Mar–Abr)</td><td>Fala / Expressão</td><td>Nordeste Superior</td></tr>
+<tr><td class="heb">ו</td><td>Touro</td><td>Iyar (Abr–Mai)</td><td>Pensamento / Mente</td><td>Sudeste Superior</td></tr>
+<tr><td class="heb">ז</td><td>Gêmeos</td><td>Sivan (Mai–Jun)</td><td>Movimento</td><td>Leste Superior</td></tr>
+<tr><td class="heb">ח</td><td>Câncer</td><td>Tamuz (Jun–Jul)</td><td>Visão</td><td>Nordeste Inferior</td></tr>
+<tr><td class="heb">ט</td><td>Leão</td><td>Av (Jul–Ago)</td><td>Audição</td><td>Sudeste Inferior</td></tr>
+<tr><td class="heb">י</td><td>Virgem</td><td>Elul (Ago–Set)</td><td>Ação (mão direita)</td><td>Leste Inferior</td></tr>
+<tr><td class="heb">ל</td><td>Libra</td><td>Tishri (Set–Out)</td><td>Coito/Geração</td><td>Noroeste Superior</td></tr>
+<tr><td class="heb">נ</td><td>Escorpião</td><td>Cheshvan (Out–Nov)</td><td>Olfato</td><td>Sudoeste Superior</td></tr>
+<tr><td class="heb">ס</td><td>Sagitário</td><td>Kislev (Nov–Dez)</td><td>Sono</td><td>Oeste Superior</td></tr>
+<tr><td class="heb">ע</td><td>Capricórnio</td><td>Tevet (Dez–Jan)</td><td>Raiva / Cólera</td><td>Noroeste Inferior</td></tr>
+<tr><td class="heb">צ</td><td>Aquário</td><td>Shevat (Jan–Fev)</td><td>Marcha (caminhar)</td><td>Sudoeste Inferior</td></tr>
+<tr><td class="heb">ק</td><td>Peixes</td><td>Adar (Fev–Mar)</td><td>Riso</td><td>Oeste Inferior</td></tr>
+</tbody></table></div>
+
+<h3 class="sub" id="letras-cosm">As Letras como Forças Cósmicas — Análise Profunda</h3>
+<p>Para o Sefer Yetzirah, cada letra hebraica é simultaneamente: (1) um som, (2) um arquétipo, (3) uma força cósmica, e (4) um estado de consciência. Esta quadruplicidade é fundamental para entender como o texto pode ser lido tanto como cosmologia quanto como psicologia e como guia de meditação.</p>
+
+<div class="letter-grid">
+<div class="letter-card"><span class="letter-heb">א</span><div class="letter-name">Aleph</div><div class="letter-num">Valor: 1 | Letra-Mãe</div><div class="letter-info">O Boi. Silencioso. Ar primordial. O Uno antes da dualidade. O pulmão. A respiração divina. O Aleph é o som silencioso — a glotal stop. O início antes do início.</div></div>
+<div class="letter-card"><span class="letter-heb">ב</span><div class="letter-name">Bet</div><div class="letter-num">Valor: 2 | Dupla</div><div class="letter-info">A Casa. Saturno. Primeira letra do Gênesis ("Bereshit"). A dualidade primordial. O espaço interior. A morada. O início da manifestação como dualidade.</div></div>
+<div class="letter-card"><span class="letter-heb">ג</span><div class="letter-name">Guimel</div><div class="letter-num">Valor: 3 | Dupla</div><div class="letter-info">O Camelo. Júpiter. O movimento entre opostos. A generosidade e a abundância. O camelo que atravessa o deserto — a alma que traversa o cosmos.</div></div>
+<div class="letter-card"><span class="letter-heb">ד</span><div class="letter-name">Dalet</div><div class="letter-num">Valor: 4 | Dupla</div><div class="letter-info">A Porta. Marte. O limiar entre mundos. A quarta dimensão. O acesso e a recusa. A porta que pode abrir ou fechar o caminho espiritual.</div></div>
+<div class="letter-card"><span class="letter-heb">ה</span><div class="letter-name">He</div><div class="letter-num">Valor: 5 | Simples</div><div class="letter-info">A Janela. Áries. A expiração, o sopro criador. No Nome Divino (YHVH), He aparece duas vezes — como Binah e Malkuth. A janela que deixa entrar a luz.</div></div>
+<div class="letter-card"><span class="letter-heb">ו</span><div class="letter-name">Vav</div><div class="letter-num">Valor: 6 | Simples</div><div class="letter-info">O Gancho/Prego. Touro. A conexão, o elo. No Nome Divino, Vav conecta o superior ao inferior. Os seis dias da criação. O microcosmo humano (seis lados).</div></div>
+<div class="letter-card"><span class="letter-heb">ז</span><div class="letter-name">Zayin</div><div class="letter-num">Valor: 7 | Simples</div><div class="letter-info">A Espada. Gêmeos. O sétimo dia, o Shabat. A distinção que corta e separa. O poder de discernimento. A palavra como espada que divide a realidade.</div></div>
+<div class="letter-card"><span class="letter-heb">ח</span><div class="letter-name">Chet</div><div class="letter-num">Valor: 8 | Simples</div><div class="letter-info">A Cerca/Graça. Câncer. O número oito — além do sete, além do ciclo. A circuncisão no oitavo dia. A graça divina que transcende a lei natural.</div></div>
+<div class="letter-card"><span class="letter-heb">ט</span><div class="letter-name">Tet</div><div class="letter-num">Valor: 9 | Simples</div><div class="letter-info">A Serpente. Leão. O bem oculto. O primeiro "tov" (bom) no Gênesis. A sabedoria que serpenteia. O movimento espiral da força vital.</div></div>
+<div class="letter-card"><span class="letter-heb">י</span><div class="letter-name">Yod</div><div class="letter-num">Valor: 10 | Simples</div><div class="letter-info">A Mão. Virgem. A menor letra — e a mais importante. O ponto primordial de toda criação. No Nome Divino, Yod é o início. O átomo espiritual, o grão de mostarda.</div></div>
+<div class="letter-card"><span class="letter-heb">כ</span><div class="letter-name">Kaf</div><div class="letter-num">Valor: 20 | Dupla</div><div class="letter-info">A Palma. Sol. A capacidade de receber e dar. O receptáculo de toda energia solar. A coroa — Keter soa como Kaf-Tav-Resh. O poder de manifestação.</div></div>
+<div class="letter-card"><span class="letter-heb">ל</span><div class="letter-name">Lamed</div><div class="letter-num">Valor: 30 | Simples</div><div class="letter-info">O Cajado/Aprender. Libra. A única letra que se eleva acima da linha base. A aspiração espiritual. Ensinar e aprender. A balança em equilíbrio perfeito.</div></div>
+<div class="letter-card"><span class="letter-heb">מ</span><div class="letter-name">Mem</div><div class="letter-num">Valor: 40 | Letra-Mãe</div><div class="letter-info">A Água. O útero primordial. Memória, profundidade, inconsciente. Os 40 anos no deserto. O Mem fechado (ם) — o útero selado; Mem aberto — as águas que fluem.</div></div>
+<div class="letter-card"><span class="letter-heb">נ</span><div class="letter-name">Nun</div><div class="letter-num">Valor: 50 | Simples</div><div class="letter-info">O Peixe. Escorpião. As 50 Portas do Entendimento (Binah). O portal da compreensão profunda. O movimento do peixe nas profundezas — intuição, instinto.</div></div>
+<div class="letter-card"><span class="letter-heb">ס</span><div class="letter-name">Samekh</div><div class="letter-num">Valor: 60 | Simples</div><div class="letter-info">O Suporte. Sagitário. O círculo perfeito — a letra mais redonda do alfabeto. O apoio divino. A serpente mordendo a própria cauda (Ouroboros). Completude.</div></div>
+<div class="letter-card"><span class="letter-heb">ע</span><div class="letter-name">Ayin</div><div class="letter-num">Valor: 70 | Simples</div><div class="letter-info">O Olho. Capricórnio. A visão — física e espiritual. Os 70 nomes de Deus. Os 70 anciãos de Israel. A percepção direta. O Ayin e o Ain (Nada) — o olho que vê o Nada.</div></div>
+<div class="letter-card"><span class="letter-heb">פ</span><div class="letter-name">Pe</div><div class="letter-num">Valor: 80 | Dupla</div><div class="letter-info">A Boca. Vênus. A palavra como criação. A boca que sopra o sopro de vida. O silêncio interior antes da fala. O criador que fala o cosmos à existência.</div></div>
+<div class="letter-card"><span class="letter-heb">צ</span><div class="letter-name">Tzaddi</div><div class="letter-num">Valor: 90 | Simples</div><div class="letter-info">O Anzol/Justo. Aquário. O Tzaddik — o Justo. A pesca espiritual — capturar a sabedoria das profundezas. O anzol que atrai o bem oculto à superfície.</div></div>
+<div class="letter-card"><span class="letter-heb">ק</span><div class="letter-name">Kuf</div><div class="letter-num">Valor: 100 | Simples</div><div class="letter-info">O Buraco da Agulha. Peixes. O único letra que desce abaixo da linha — a sombra. O ciclo de reencarnação. O sagrado e o profano em tensão. A agulha que costura mundos.</div></div>
+<div class="letter-card"><span class="letter-heb">ר</span><div class="letter-name">Resh</div><div class="letter-num">Valor: 200 | Dupla</div><div class="letter-info">A Cabeça. Mercúrio. O princípio, o líder, o início. O racional — a cabeça como sede da consciência. Mercúrio como o mensageiro entre mundos. A razão mediadora.</div></div>
+<div class="letter-card"><span class="letter-heb">ש</span><div class="letter-name">Shin</div><div class="letter-num">Valor: 300 | Letra-Mãe</div><div class="letter-info">O Fogo/Dente. O Espírito Santo — Shin é o fogo divino que desce. A letra de Deus: Shin é a última letra de "Elohim". Os três ramos do Shin = três forças primordiais.</div></div>
+<div class="letter-card"><span class="letter-heb">ת</span><div class="letter-name">Tav</div><div class="letter-num">Valor: 400 | Dupla</div><div class="letter-info">A Marca/Cruz. Lua. A última letra — a conclusão e o retorno. O selo de todo o processo criativo. O Tav como a marca divina (Ezequiel 9:4). A completude do ciclo.</div></div>
+</div>
+</section>
+
+<!-- SEÇÃO IV: COSMOLOGIA -->
+<section class="section" id="cosmos">
+<div class="section-hd"><div class="section-icon">🌌</div><div>
+<h2>IV. Cosmos, Tempo e Alma — A Tríade Cosmológica</h2>
+<p>O universo, o ano e o ser humano como espelhos uns dos outros</p>
+</div></div>
+
+<p>Uma das contribuições mais originais e filosoficamente profundas do Sefer Yetzirah é a sua estrutura cosmológica triádica: o texto aplica sistematicamente cada grupo de letras (e suas correspondências) a três domínios simultâneos — <mark class="g">Olam</mark> (Universo/Espaço), <mark class="g">Shanah</mark> (Ano/Tempo) e <mark class="g">Nefesh</mark> (Alma/Ser humano). Esta tríade é enunciada repetidamente no texto e constitui sua estrutura organizacional fundamental.</p>
+
+<blockquote>"Os três fundamentos: Universo, Ano e Alma. Estabeleceu as formas no Universo, testou o período no Ano, corrigiu o caminho na Alma — estas três coisas combatendo-se uma à outra."<cite>— Sefer Yetzirah, Capítulo 3:4 (versão longa)</cite></blockquote>
+
+<p>Esta estrutura triádica (<em>Olam-Shanah-Nefesh</em>) estabelece o princípio do <mark class="g">macrocosmo e microcosmo</mark> como fundamento epistemológico do sistema. O cosmos, o tempo e o ser humano não são realidades separadas — são três expressões da mesma realidade em diferentes escalas. Cada força cósmica (cada letra) manifesta-se simultaneamente em todos os três domínios:</p>
+
+<div class="card-grid">
+<div class="card"><div class="card-icon">🌍</div><h4>Olam — O Universo Espacial</h4><p>As letras se manifestam como elementos físicos, direções do espaço, estruturas cósmicas. O universo físico é a "materialização" mais densa das forças letterais.</p></div>
+<div class="card"><div class="card-icon">📅</div><h4>Shanah — O Ano Temporal</h4><p>As letras se manifestam como estações, meses, dias, ciclos temporais. O tempo não é neutro — cada momento é governado por uma força letteral específica.</p></div>
+<div class="card"><div class="card-icon">🧠</div><h4>Nefesh — A Alma Humana</h4><p>As letras se manifestam como funções corporais, faculdades mentais, estados emocionais. O ser humano é um microcosmo completo — um universo em miniatura.</p></div>
+</div>
+
+<h3 class="sub" id="cubo">O Cubo do Espaço — A Geometria Sagrada do Cosmos</h3>
+<p>O Sefer Yetzirah apresenta uma das mais belas e originais visões da estrutura do cosmos na história do pensamento esotérico: o <mark class="g">Cubo do Espaço</mark>. O cosmos é descrito como um cubo perfeito definido por seis direções cardinais (Norte, Sul, Leste, Oeste, Acima, Abaixo) — cada uma correspondendo a uma das seis Sefirot inferiores (5–10) — com o Espírito Divino como sétimo elemento central que governa todas.</p>
+
+<div class="svg-container">
+<svg width="340" height="320" viewBox="0 0 340 320">
+  <defs>
+    <style>
+      .cube-face{fill:rgba(200,146,26,0.07);stroke:rgba(200,146,26,0.5);stroke-width:1.5;}
+      .cube-inner{fill:rgba(48,96,208,0.08);stroke:rgba(48,96,208,0.4);stroke-width:1;}
+      .cube-text{font-size:11px;fill:#C8921A;font-family:serif;}
+      .cube-heb{font-size:14px;fill:#F0B030;font-family:serif;}
+      .center-glow{fill:rgba(200,146,26,0.15);stroke:rgba(200,146,26,0.8);stroke-width:2;}
+    </style>
+  </defs>
+  <!-- Cube back face -->
+  <polygon class="cube-face" points="120,60 260,60 260,200 120,200"/>
+  <!-- Cube top face -->
+  <polygon class="cube-face" points="120,60 260,60 300,20 160,20"/>
+  <!-- Cube right face -->
+  <polygon class="cube-face" points="260,60 300,20 300,160 260,200"/>
+  <!-- Cube front face (main) -->
+  <polygon class="cube-face" points="80,100 220,100 220,240 80,240" style="fill:rgba(200,146,26,0.12)"/>
+  <!-- Cube bottom face -->
+  <polygon class="cube-face" points="80,240 220,240 260,200 120,200"/>
+  <!-- Cube left face -->
+  <polygon class="cube-face" points="80,100 120,60 120,200 80,240"/>
+  <!-- Center point -->
+  <circle class="center-glow" cx="170" cy="150" r="16"/>
+  <text class="cube-heb" x="162" y="156">יה</text>
+  <!-- Direction labels -->
+  <text class="cube-text" x="145" y="170" text-anchor="middle">CENTRO</text>
+  <text class="cube-text" x="145" y="50" text-anchor="middle" fill="#C0D0F0">ACIMA ▲ Shin</text>
+  <text class="cube-text" x="145" y="272" text-anchor="middle" fill="#C0D0F0">ABAIXO ▼ Tav</text>
+  <text class="cube-text" x="22" y="175" text-anchor="middle" fill="#A0F0D0">OESTE ◀ Kaf</text>
+  <text class="cube-text" x="320" y="130" text-anchor="middle" fill="#A0F0D0">LESTE ▶ Bet</text>
+  <text class="cube-text" x="80" y="30" text-anchor="middle" fill="#F0C840">NORTE ▲ Dalet</text>
+  <text class="cube-text" x="300" y="220" text-anchor="middle" fill="#F0C840">SUL ▼ Resh</text>
+  <!-- Diagonal lines from center -->
+  <line x1="170" y1="150" x2="170" y2="80" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="150" x2="170" y2="230" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="150" x2="100" y2="150" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="150" x2="240" y2="150" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="150" x2="210" y2="110" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="150" x2="130" y2="190" stroke="rgba(200,146,26,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+</svg>
+<p style="font-size:0.76rem;color:var(--parchment-dd);margin-top:8px;font-style:italic;">O Cubo do Espaço — As 6 direções como Sefirot governadas pelo Espírito Central</p>
+</div>
+
+<p>O cubo do espaço não é apenas uma metáfora geométrica. Para o Sefer Yetzirah, ele representa a estrutura real do cosmos manifesto: <strong>seis dimensões de extensão</strong> (três eixos de um sistema de coordenadas tridimensional, cada um com polaridade positiva e negativa), ancoradas num <strong>sétimo princípio central</strong> que as transcende e contém. Quando as 12 Letras Simples são acrescentadas, elas governam as 12 <em>arestas</em> do cubo — completando a geometria sagrada.</p>
+
+<div class="callout callout-teal">
+<p class="callout-title">📐 Geometria Sagrada do Cubo</p>
+<p><strong>6 faces = 6 Sefirot (direções cardinais) = 7 Letras Duplas menos uma (6 planetas visíveis)</strong></p>
+<p><strong>12 arestas = 12 Letras Simples = 12 signos zodiacais = 12 meses</strong></p>
+<p><strong>8 vértices = 8 combinações do cubo = 8 notas da oitava musical</strong></p>
+<p><strong>1 centro = Espírito Divino = O Ponto de onde todas as direções emanam</strong></p>
+<p>O cubo é também o "cubo perfeito" de Ezequiel (capítulo 40) e o Santo dos Santos do Templo — um cubo perfeito de 20 côvados de lado. O espaço sagrado é estruturalmente idêntico ao cosmos.</p>
+</div>
+
+<h3 class="sub" id="arvore">A Árvore da Vida — Do Sefer Yetzirah à Cabala Plena</h3>
+<p>A chamada "Árvore da Vida" (<span class="heb-inline">עץ חיים</span>, <em>Etz Chayyim</em>) como diagrama visual com 10 círculos (Sefirot) e 22 linhas (caminhos correspondentes às letras) não aparece explicitamente no Sefer Yetzirah. O diagrama que conhecemos hoje como Árvore da Vida é uma elaboração posterior — provavelmente sistematizada entre os séculos XII e XIV — que usa as estruturas do Sefer Yetzirah como fundamento.</p>
+
+<div class="svg-container">
+<svg width="300" height="500" viewBox="0 0 300 500">
+  <defs>
+    <style>
+      .s-circle{fill:rgba(19,15,44,0.9);stroke-width:2;}
+      .s-line{stroke-width:1.2;stroke-dasharray:none;fill:none;}
+      .s-name{font-size:10px;font-family:serif;text-anchor:middle;}
+      .s-heb{font-size:12px;font-family:serif;text-anchor:middle;}
+    </style>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Paths/Lines between Sefirot -->
+  <line class="s-line" x1="150" y1="40" x2="90" y2="130" stroke="rgba(200,146,26,0.4)"/>
+  <line class="s-line" x1="150" y1="40" x2="210" y2="130" stroke="rgba(200,146,26,0.4)"/>
+  <line class="s-line" x1="90" y1="130" x2="210" y2="130" stroke="rgba(200,146,26,0.3)"/>
+  <line class="s-line" x1="90" y1="130" x2="150" y2="220" stroke="rgba(200,146,26,0.4)"/>
+  <line class="s-line" x1="210" y1="130" x2="150" y2="220" stroke="rgba(200,146,26,0.4)"/>
+  <line class="s-line" x1="90" y1="130" x2="50" y2="270" stroke="rgba(48,96,208,0.5)"/>
+  <line class="s-line" x1="210" y1="130" x2="250" y2="270" stroke="rgba(48,96,208,0.5)"/>
+  <line class="s-line" x1="150" y1="220" x2="50" y2="270" stroke="rgba(48,96,208,0.4)"/>
+  <line class="s-line" x1="150" y1="220" x2="250" y2="270" stroke="rgba(48,96,208,0.4)"/>
+  <line class="s-line" x1="150" y1="220" x2="150" y2="360" stroke="rgba(200,146,26,0.5)"/>
+  <line class="s-line" x1="50" y1="270" x2="150" y2="360" stroke="rgba(48,96,208,0.4)"/>
+  <line class="s-line" x1="250" y1="270" x2="150" y2="360" stroke="rgba(48,96,208,0.4)"/>
+  <line class="s-line" x1="50" y1="270" x2="250" y2="270" stroke="rgba(200,146,26,0.3)"/>
+  <line class="s-line" x1="50" y1="270" x2="90" y2="410" stroke="rgba(10,112,112,0.5)"/>
+  <line class="s-line" x1="250" y1="270" x2="210" y2="410" stroke="rgba(10,112,112,0.5)"/>
+  <line class="s-line" x1="150" y1="360" x2="90" y2="410" stroke="rgba(10,112,112,0.4)"/>
+  <line class="s-line" x1="150" y1="360" x2="210" y2="410" stroke="rgba(10,112,112,0.4)"/>
+  <line class="s-line" x1="90" y1="410" x2="150" y2="470" stroke="rgba(200,146,26,0.5)"/>
+  <line class="s-line" x1="210" y1="410" x2="150" y2="470" stroke="rgba(200,146,26,0.5)"/>
+  <line class="s-line" x1="90" y1="410" x2="210" y2="410" stroke="rgba(200,146,26,0.3)"/>
+  <!-- Middle pillar vertical -->
+  <line x1="150" y1="40" x2="150" y2="470" stroke="rgba(200,146,26,0.15)" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Kether -->
+  <circle class="s-circle" cx="150" cy="40" r="26" stroke="#F0B030" filter="url(#glow)"/>
+  <text class="s-heb" x="150" y="37" fill="#F0B030">כ</text>
+  <text class="s-name" x="150" y="50" fill="#C8921A">Kether</text>
+
+  <!-- Chokmah -->
+  <circle class="s-circle" cx="90" cy="130" r="22" stroke="#3060D0"/>
+  <text class="s-heb" x="90" y="127" fill="#3060D0">ח</text>
+  <text class="s-name" x="90" y="140" fill="#3060D0">Chokmah</text>
+
+  <!-- Binah -->
+  <circle class="s-circle" cx="210" cy="130" r="22" stroke="#3060D0"/>
+  <text class="s-heb" x="210" y="127" fill="#3060D0">ב</text>
+  <text class="s-name" x="210" y="140" fill="#3060D0">Binah</text>
+
+  <!-- Chesed -->
+  <circle class="s-circle" cx="50" cy="270" r="20" stroke="#20B0A0"/>
+  <text class="s-heb" x="50" y="267" fill="#20B0A0">ח</text>
+  <text class="s-name" x="50" y="279" fill="#20B0A0">Chesed</text>
+
+  <!-- Gevurah -->
+  <circle class="s-circle" cx="250" cy="270" r="20" stroke="#D03060"/>
+  <text class="s-heb" x="250" y="267" fill="#D03060">ג</text>
+  <text class="s-name" x="250" y="279" fill="#D03060">Gevurah</text>
+
+  <!-- Tiferet -->
+  <circle class="s-circle" cx="150" cy="220" r="22" stroke="#F0B030" filter="url(#glow)"/>
+  <text class="s-heb" x="150" y="217" fill="#F0B030">ת</text>
+  <text class="s-name" x="150" y="229" fill="#C8921A">Tiferet</text>
+
+  <!-- Netzach -->
+  <circle class="s-circle" cx="90" cy="410" r="20" stroke="#20B0A0"/>
+  <text class="s-heb" x="90" y="407" fill="#20B0A0">נ</text>
+  <text class="s-name" x="90" y="420" fill="#20B0A0">Netzach</text>
+
+  <!-- Hod -->
+  <circle class="s-circle" cx="210" cy="410" r="20" stroke="#20B0A0"/>
+  <text class="s-heb" x="210" y="407" fill="#20B0A0">ה</text>
+  <text class="s-name" x="210" y="420" fill="#20B0A0">Hod</text>
+
+  <!-- Yesod -->
+  <circle class="s-circle" cx="150" cy="360" r="22" stroke="#A060E0"/>
+  <text class="s-heb" x="150" y="357" fill="#A060E0">י</text>
+  <text class="s-name" x="150" y="369" fill="#A060E0">Yesod</text>
+
+  <!-- Malkuth -->
+  <circle class="s-circle" cx="150" cy="470" r="24" stroke="#C8921A"/>
+  <text class="s-heb" x="150" y="467" fill="#C8921A">מ</text>
+  <text class="s-name" x="150" y="479" fill="#C8921A">Malkuth</text>
+</svg>
+<p style="font-size:0.76rem;color:var(--parchment-dd);margin-top:8px;font-style:italic;">Árvore da Vida — Elaboração Medieval das 10 Sefirot do Sefer Yetzirah</p>
+</div>
+</section>
+
+<!-- SEÇÃO V: LEITURA COMENTADA -->
+<section class="section" id="leitura">
+<div class="section-hd"><div class="section-icon">📖</div><div>
+<h2>V. Leitura Comentada Completa</h2>
+<p>Percurso pelos seis capítulos — análise acadêmica, esotérica e iniciática</p>
+</div></div>
+
+<h3 class="sub">Capítulo 1 — As 10 Sefirot Belimah</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 1:1 — A Declaração Inaugural</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p><strong>Texto:</strong> "Com trinta e dois caminhos maravilhosos de sabedoria, Jah... gravou e criou Seu universo com três sefarim: com Sefer, com Sippur e com Sefar."</p>
+<p><strong>Análise Linguística:</strong> O verbo usado para a criação divina é <span class="heb-inline">חקק</span> (<em>chakak</em>) — "gravar", "esculpir", "decretar". Não é <em>bara</em> (criar do nada, como no Gênesis 1:1) nem <em>yatzar</em> (moldar como o oleiro, como em Gênesis 2:7). É uma criação por gravação — como quando se esculpe em pedra ou se grava em metal. A realidade é "gravada" na substância do ser pela linguagem divina.</p>
+<p><strong>Os Três Sefarim:</strong> Esta tripla — Sefer, Sippur, Sefar — é objeto de controvérsia interpretativa intensa. As interpretações variam: (a) Número, Escrita, Comunicação verbal; (b) Texto, Número, Comunicação; (c) Mundo, Ano, Alma (a tríade cosmológica já discutida). O que é certo é que representam três modos ou dimensões da linguagem divina criadora — distintos mas inseparáveis.</p>
+<p><strong>Interpretação Iniciática:</strong> Para o iniciado, esta abertura é um convite: o cosmos foi criado por três instrumentos que o próprio iniciado possui — a capacidade de contar/quantificar, de escrever/estruturar, e de comunicar/transmitir. Criar como Deus criou é aprender a usar estes três instrumentos com consciência e intenção divinas.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 1:2 — Dez Sefirot de Nada (Belimah)</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p><strong>Texto:</strong> "Dez Sefirot de Nada: dez e não nove, dez e não onze. Compreenda com sabedoria, e seja sábio com compreensão. Examine com elas, sonde com elas, estabilize o assunto, e retorne o Criador a Seu lugar."</p>
+<p><strong>A Precisão Numérica:</strong> A insistência "dez e não nove, dez e não onze" é filosoficamente profunda. Ela indica que as 10 Sefirot não são uma convenção arbitrária, mas uma necessidade ontológica. Nove seria insuficiente para a estrutura completa do cosmos; onze seria excesso. Dez é o número da completude — a Tétrade pitagórica (1+2+3+4=10), o sistema decimal, os dez dedos, os dez mandamentos.</p>
+<p><strong>"Compreenda com sabedoria, seja sábio com compreensão":</strong> Esta instrução paradoxal indica que sabedoria e compreensão são faculdades complementares — cada uma deve informar a outra. Não é suficiente compreender intelectualmente (Binah) sem sabedoria intuitiva (Chokmah), nem ter intuição sem entendimento estruturado.</p>
+<p><strong>"Retorne o Criador a Seu lugar":</strong> Frase enigmática. A interpretação mais poderosa é que o Criador, ao criar, "desceu" para os mundos inferiores — e a meditação nas Sefirot é o processo de "retornar" o Criador (e a consciência do meditador) ao Lugar de Origem. A contemplação das Sefirot é o retorno à Fonte.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 1:3 — Os Atributos das 10 Sefirot</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p><strong>Texto:</strong> "Dez Sefirot de Nada: a medida de dez que não tem fim — profundidade do começo e profundidade do fim, profundidade do bem e profundidade do mal, profundidade acima e profundidade abaixo, profundidade do leste e profundidade do oeste, profundidade do norte e profundidade do sul — e o único Senhor Deus Fiel, Rei do Universo, governa-as a todas a partir de Sua morada sagrada para sempre e por toda a eternidade."</p>
+<p><strong>As 10 "Profundezas":</strong> O texto apresenta as 10 Sefirot como 10 "profundezas" (abismos) — cinco pares de opostos: começo/fim, bem/mal, acima/abaixo, leste/oeste, norte/sul. Esta estrutura revela que as Sefirot não são apenas "emanações" benevolentes, mas dimensões completas que incluem seus opostos. A Sefira do "bem" implica necessariamente a do "mal" — não como uma força independente maligna, mas como o polo oposto necessário para que o bem seja bem.</p>
+<p><strong>O "Único Senhor" Central:</strong> Deus não é uma das dez Sefirot — Ele é o décimo primeiro, que governa todas do centro. Esta é a resolução do paradoxo: as Sefirot são as dimensões do cosmos; Deus é o que as transcende e contém. É a diferença entre o Mapa e o Território.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 1:4–8 — Os Quatro Primeiros Sefirot e a Cadeia de Emanação</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>Os versículos 4 a 8 do primeiro capítulo descrevem a cadeia de emanação das quatro primeiras Sefirot:</p>
+<p><strong>1ª Sefira — Ruach Elohim Chayyim:</strong> O Espírito do Deus Vivo. O texto descreve que "a sua aparência é como uma aparição de luz-relâmpago" — a metáfora do relâmpago (<em>baraq</em>) indica a natureza da primeira manifestação: instantânea, total, de uma intensidade além da percepção ordinária.</p>
+<p><strong>2ª Sefira — Ar (Ruach) do Espírito:</strong> "Ele esculpiu e gravou nela vinte e duas letras fundamentais". Esta é uma afirmação crucial: as 22 letras não são uma criação independente — elas são gravadas no Ar que emana do Espírito Primordial. A linguagem sagrada é, literalmente, a substância do segundo nível de realidade.</p>
+<p><strong>3ª Sefira — Água do Ar:</strong> Da substância linguística do Ar emerge a Água — o caos primordial (<em>Tohu</em>) sobre o qual o Espírito pairava no Gênesis 1:2. O texto descreve que Deus "esculpiu e gravou nela o Tohu e o Bohu, a lama e a argila" — é da Água primordial que a Terra futura emergirá.</p>
+<p><strong>4ª Sefira — Fogo da Água:</strong> O Fogo que nasce da Água — paradoxo que aponta para a natureza não-convencional destas emanações. O Fogo cósmico cria o Trono da Glória, as hostes angelicais e o Templo Celestial. Esta é a morada espiritual que está "acima" do cosmos material.</p>
+</div></div>
+
+<h3 class="sub" id="cap2">Capítulo 2 — As 22 Letras Fundamentais</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 2:1 — A Natureza das Letras como Instrumentos</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p><strong>Texto:</strong> "Vinte e duas letras fundamentais: três primeiras, sete duplas e doze simples. Os três primeiros fundamentam-se em sua escala. Ele os pesou e transpôs eles, Aleph com todos e todos com Aleph, Bet com todos e todos com Bet..."</p>
+<p>O capítulo 2 introduz o conceito das <mark class="g">permutações das letras</mark> (<em>Tzeruf</em>, <em>Tziruf</em>) — um dos aspectos mais práticos e ao mesmo tempo mais místicos do Sefer Yetzirah. A ideia central é: todas as combinações possíveis de letras já existem na estrutura potencial da linguagem divina. O ato criativo consiste em "selecionar" combinações específicas deste reservatório infinito de possibilidades.</p>
+<p><strong>Os 231 Portais:</strong> O texto instrui a construção de uma "roda" ou "círculo" das 22 letras, e a permutação de todas as combinações de duas letras. O número de combinações possíveis de 22 letras tomadas 2 a 2 (sem repetição) é 22×21/2 = 231. Estes são os <strong>231 Portais</strong> (<em>Sha'arim</em>) — as 231 "portas" através das quais toda linguagem possível, toda criação possível, pode ser acessada. Em sentido positivo (combinações ordenadas para o bem), há 231 portais; em sentido negativo, os mesmos 231 ordenados ao mal. A linguagem é moralmente neutra em sua estrutura, mas carregada de potencial em ambas as direções.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 2:2 — A Roda das Letras e o Golem</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O capítulo 2 contém a semente da tradição do Golem — a criação de um ser artificial através das letras sagradas. O texto instrui que Aleph é permutado com todas as letras e todas com Aleph, em ciclo sem fim. Este é o "giro" da Roda das Letras — a permutação circular que, segundo a tradição, quando realizada com perfeita concentração e intenção ritual, tem poder criativo real.</p>
+<p>A conexão com o Golem é explicitada em versão posterior do texto: "Se alguém criar uma criação sozinho, assim como nossos ancestrais o fizeram, ele deve segurar as 221 letras [uma versão alternativa da contagem dos portais]". A tradição do Golem — especialmente a associada a Rabi Loew de Praga (século XVI) — é diretamente derivada deste princípio: criar através de permutações de letras sagradas.</p>
+<p><strong>Implicação Filosófica:</strong> A permutação de letras não é apenas uma prática mágica — é uma meditação sobre a natureza da criatividade divina. Ao permutar as letras, o iniciado <em>repete</em> o gesto criativo primordial de Deus. A meditação nas permutações é uma forma de <em>imitatio Dei</em> — imitar Deus através de seus próprios instrumentos de criação.</p>
+</div></div>
+
+<h3 class="sub" id="cap3">Capítulo 3 — As Três Letras-Mãe</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 3:1–3 — Aleph, Mem, Shin</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O capítulo 3 é um dos mais elegantes do texto. Ele aplica sistematicamente a tríade Aleph-Mem-Shin a cada um dos três domínios cosmológicos (Universo, Ano, Alma), criando uma matriz 3×3 de correspondências.</p>
+<p><strong>No Universo:</strong> Shin = Céu (fogo celestial); Mem = Terra (a água primordial solidificada); Aleph = Ar (o espaço intermediário que os separa e une).</p>
+<p><strong>No Ano:</strong> Shin = Verão (calor extremo); Mem = Inverno (frio extremo); Aleph = As estações intermediárias.</p>
+<p><strong>Na Alma:</strong> Shin = A cabeça (sede do fogo intelectual); Mem = O ventre (o "mar" das emoções e digestão); Aleph = O peito e o diafragma (que respira o ar mediador).</p>
+<p>Esta correspondência tripla revela o princípio do macrocosmo-microcosmo em sua forma mais pura: o mesmo padrão que se manifesta nas grandes dimensões do cosmos (céu/terra/ar) se manifesta identicamente no ciclo anual (verão/inverno/transição) e na anatomia humana (cabeça/ventre/peito).</p>
+</div></div>
+
+<h3 class="sub" id="cap4">Capítulo 4 — As Sete Letras Duplas</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 4:1–12 — Os Sete Planetas e as Sete Polaridades</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O capítulo 4 aplica as sete letras duplas ao modelo planetário da cosmologia antiga — um sistema de sete "planetas" (incluindo Sol e Lua) que governavam o cosmos segundo a cosmovisão pré-copernicana.</p>
+<p>O princípio da <strong>dualidade das letras duplas</strong> é apresentado aqui em sua dimensão existencial: cada aspecto positivo da vida humana (sabedoria, riqueza, saúde, vida, favor, paz, beleza) tem sua contraparte negativa (loucura, pobreza, doença, morte, desfavor, guerra, fealdade). Estas sete polaridades correspondem aos sete "portões" do ser humano: dois olhos, dois ouvidos, duas narinas e a boca.</p>
+<p>A instrução do texto é que o iniciado "grave e esculpa" (o mesmo processo criativo do Divino) estas sete letras no cosmos, no ano e na alma — realizando assim a mesma operação cosmogônica que o Criador realizou ao criar o mundo. A prática meditativa com as letras duplas é, portanto, uma recapitulação iniciática do gesto criativo primordial.</p>
+</div></div>
+
+<h3 class="sub" id="cap5">Capítulo 5 — As Doze Letras Simples</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 5:1–10 — O Zodíaco, os Meses e as Funções Humanas</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O capítulo 5 é a aplicação mais elaborada e sistemática do princípio cosmológico triádico. As 12 letras simples correspondem ao zodíaco (a divisão do ano em 12), às funções humanas (fala, pensamento, movimento, etc.), e às 12 direções diagonais do cubo expandido do espaço.</p>
+<p>A introdução das <strong>direções diagonais</strong> é especialmente fascinante: às seis direções cardinais (Norte, Sul, Leste, Oeste, Acima, Abaixo), acrescentam-se 12 direções diagonais — os vetores que partem do centro do cubo em direção a cada uma das 12 arestas. Isto expande o modelo cúbico do espaço de 6 para 18 dimensões, criando uma geometria espacial mais complexa que modela com maior precisão a experiência multidimensional do espaço vivido.</p>
+</div></div>
+
+<h3 class="sub" id="cap6">Capítulo 6 — O Golem e a Conclusão</h3>
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ 6:1–7 — Abraão, o Golem e a Aliança</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O capítulo final do Sefer Yetzirah é o mais conciso e o mais denso em significado. Ele contém a referência a Abraão, o fundamento prático de toda a teoria, e a instrução sobre como "criar" usando as letras sagradas.</p>
+<p><strong>A Criação do Golem:</strong> O texto instrui que, após compreender os 32 caminhos, o iniciado pode "criar" — e a tradição comenta que Abraão usou este conhecimento para criar um ser artificial. A criação do Golem não é magia "negra" no sentido popular, mas a demonstração prática de que o iniciado compreendeu a gramática da criação — ele pode usar os instrumentos de Deus porque aprendeu como Deus criou.</p>
+<p><strong>"Abraão Olhou e Investigou":</strong> O texto conclui descrevendo a recompensa pelo estudo do Sefer Yetzirah: Deus manifestou-se a Abraão, chamou-o de "amigo", e estabeleceu com ele a Aliança. O estudo do Sefer Yetzirah não é apenas conhecimento teórico — é o caminho para a aliança com o Divino, para a relação íntima que fez de Abraão o pai da fé.</p>
+<p><strong>A Brit Lashon (Aliança da Língua):</strong> O capítulo menciona a Brit Bein ha-Betarim (Aliança entre as Partes) e a Brit Milah (Aliança da Circuncisão), mas também — e isto é exclusivo do Sefer Yetzirah — a <em>Brit Lashon</em>, a Aliança da Língua. A língua, o instrumento da linguagem, é elevada ao mesmo status sagrado da circuncisão. Dominar a linguagem sagrada é uma aliança com Deus.</p>
+</div></div>
+</section>
+
+<!-- SEÇÃO VI: TÉCNICAS -->
+<section class="section" id="gematria">
+<div class="section-hd"><div class="section-icon">🔢</div><div>
+<h2>VI. Técnicas Cabalísticas — Gematria, Notarikon, Temurah</h2>
+<p>Os instrumentos hermenêuticos e meditativos da tradição cabalística</p>
+</div></div>
+
+<h3 class="sub">Gematria — O Valor Numérico das Letras</h3>
+<p>A <mark class="g">Gematria</mark> (de origem grega — <em>geōmetria</em> ou possivelmente <em>grammateia</em>) é o sistema pelo qual cada letra hebraica corresponde a um valor numérico. Esta correspondência não é apenas mnemônica — para a tradição cabalística, ela revela conexões ontológicas profundas entre conceitos aparentemente distintos que compartilham o mesmo valor numérico.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Letra</th><th>Nome</th><th>Valor</th><th>Conexão Simbólica</th></tr></thead>
+<tbody>
+<tr><td class="heb">א</td><td>Aleph</td><td>1</td><td>A unidade, o Uno, Deus como Uno</td></tr>
+<tr><td class="heb">ב</td><td>Bet</td><td>2</td><td>Dualidade, parceria, casa (bet = casa)</td></tr>
+<tr><td class="heb">ג</td><td>Guimel</td><td>3</td><td>Tríade, os três patriarcas, os três elementos-mãe</td></tr>
+<tr><td class="heb">ד</td><td>Dalet</td><td>4</td><td>Quatro direções, quatro mundos cabalísticos</td></tr>
+<tr><td class="heb">ה</td><td>He</td><td>5</td><td>Cinco livros de Moisés, cinco dedos</td></tr>
+<tr><td class="heb">ו</td><td>Vav</td><td>6</td><td>Seis dias da criação, seis direções do cubo</td></tr>
+<tr><td class="heb">ז</td><td>Zayin</td><td>7</td><td>Shabat, sete planetas, sete letras duplas</td></tr>
+<tr><td class="heb">ח</td><td>Chet</td><td>8</td><td>Além do ciclo de sete, eternidade, circuncisão</td></tr>
+<tr><td class="heb">ט</td><td>Tet</td><td>9</td><td>Gravidez (9 meses), gestação espiritual</td></tr>
+<tr><td class="heb">י</td><td>Yod</td><td>10</td><td>As 10 Sefirot, o sistema decimal</td></tr>
+<tr><td class="heb">כ</td><td>Kaf</td><td>20</td><td>Vinte anos de Jacó, vinte e quatro horas</td></tr>
+<tr><td class="heb">ל</td><td>Lamed</td><td>30</td><td>Trinta dias do mês lunar, os 30 anos de Jesus</td></tr>
+<tr><td class="heb">מ</td><td>Mem</td><td>40</td><td>Quarenta dias de dilúvio, quarenta anos no deserto</td></tr>
+<tr><td class="heb">נ</td><td>Nun</td><td>50</td><td>Cinquenta Portas de Entendimento, Jubileu (50 anos)</td></tr>
+<tr><td class="heb">ס</td><td>Samekh</td><td>60</td><td>Sessenta tractatos da Mishná</td></tr>
+<tr><td class="heb">ע</td><td>Ayin</td><td>70</td><td>Setenta nações, setenta anciãos, setenta faces da Torah</td></tr>
+<tr><td class="heb">פ</td><td>Pe</td><td>80</td><td>Oitenta anos de Moisés quando confrontou Faraó</td></tr>
+<tr><td class="heb">צ</td><td>Tzaddi</td><td>90</td><td>Noventa anos de Sara quando concebeu</td></tr>
+<tr><td class="heb">ק</td><td>Kuf</td><td>100</td><td>Cem anos de Abraão no nascimento de Isaac</td></tr>
+<tr><td class="heb">ר</td><td>Resh</td><td>200</td><td>Os dois aspectos de toda realidade (ver duplas)</td></tr>
+<tr><td class="heb">ש</td><td>Shin</td><td>300</td><td>Os 300 guerreiros de Gideão; o espírito anima</td></tr>
+<tr><td class="heb">ת</td><td>Tav</td><td>400</td><td>Quatrocentos anos de escravidão no Egito; completude</td></tr>
+</tbody></table></div>
+
+<p><strong>Exemplos Clássicos de Gematria:</strong> A palavra <span class="heb-inline">אהבה</span> (<em>ahavah</em>, "amor") tem valor 13. A palavra <span class="heb-inline">אחד</span> (<em>echad</em>, "um/unidade") também tem valor 13. Portanto: amor = unidade. O Nome Divino <span class="heb-inline">יהוה</span> (YHVH) tem valor 26, exatamente o dobro de 13 — a unidade duplicada, o amor divino. A palavra <span class="heb-inline">חיים</span> (<em>chayyim</em>, "vida") tem valor 68, idêntico a <span class="heb-inline">חכמה</span> (<em>Chokhmah</em>, "Sabedoria") — vida é sabedoria.</p>
+
+<h3 class="sub" id="notarikon">Notarikon e Temurah</h3>
+<p>Além da Gematria, a tradição cabalística desenvolveu dois outros instrumentos principais de interpretação linguística:</p>
+<p><mark class="g">Notarikon</mark> (do latim <em>notarius</em>) é o método de usar as iniciais ou finais de palavras para formar novas palavras ou frases, ou de expandir as letras de uma palavra em frases completas. Exemplo: <span class="heb-inline">אנכי</span> (<em>Anochi</em>, "Eu" — a primeira palavra dos Dez Mandamentos) é expandida como acrônimo de <span class="heb-inline">אנא נפשי כתבית יהבית</span> — "Eu escrevi e dei minha alma" — sugerindo que o próprio Deus inscreveu sua essência nas palavras da Torah.</p>
+<p><mark class="g">Temurah</mark> (do hebraico "troca/permutação") é o método de substituir letras por outras segundo padrões fixos. O mais famoso é o <em>Atbash</em> — onde Aleph (1ª letra) se substitui por Tav (22ª), Bet (2ª) por Shin (21ª), etc. O nome do inimigo babilônico "Babel" em Temurah Atbash se torna <em>Sheshakh</em> — palavra usada exatamente neste sentido em Jeremias 25:26 e 51:41, demonstrando que o profeta usava este código.</p>
+
+<h3 class="sub" id="meditacao">Meditação e Contemplação Cabalística</h3>
+<p>O Sefer Yetzirah não é apenas um texto para ler — é um texto para <em>praticar</em>. A tradição cabalística desenvolveu práticas meditativas específicas baseadas em seu sistema. Aryeh Kaplan, em seu comentário definitivo, recupera e sistematiza muitas destas práticas:</p>
+
+<div class="card-grid">
+<div class="card"><div class="card-icon">👁️</div><h4>Visualização das Letras</h4><p>Contemplar cada letra como uma forma luminosa, percebendo seu arquétipo e sua energia espiritual. As letras podem ser visualizadas em sequência ou em combinações específicas, gerando estados alterados de consciência.</p></div>
+<div class="card"><div class="card-icon">🌬️</div><h4>Respiração e Vibração</h4><p>Cada letra corresponde a um aspecto da respiração. Aleph é a glotal silenciosa — a pausa entre inspiração e expiração. Mem é o humming fechado. Shin é o sopro sibilante. Respirar conscientemente com as letras é meditar nos elementos.</p></div>
+<div class="card"><div class="card-icon">🔄</div><h4>Giro da Roda (Gilgul)</h4><p>A prática das permutações circulares de letras — iniciada com uma combinação, avançando sistematicamente por todas as 231 portas. O "giro" meditativo das letras produz estados contemplativos profundos segundo a tradição.</p></div>
+<div class="card"><div class="card-icon">📿</div><h4>Meditação nas Sefirot</h4><p>Contemplar cada uma das 10 Sefirot como uma "profundeza" — um abismo dimensional de experiência pura. A meditação começa pela 10ª (Malkuth) e sobe gradualmente até a 1ª (Ruach Elohim), e depois "retorna o Criador a Seu lugar".</p></div>
+</div>
+
+<h3 class="sub" id="iniciacao">Leitura Iniciática — Como o Iniciado Lê o Texto</h3>
+<p>Para um leitor ordinário, o Sefer Yetzirah pode parecer um texto obscuro sobre astronomia e linguística antigas. Para o iniciado, é um <mark class="g">mapa completo da consciência</mark> — um guia para compreender a estrutura da realidade a partir de dentro.</p>
+
+<p>O iniciado lê as 10 Sefirot não como entidades externas, mas como <strong>dimensões da própria consciência</strong>: o Espírito Divino como a fonte de consciência pura; o Ar como o espaço mental onde os pensamentos se formam; a Água como o inconsciente emocional; o Fogo como a energia vital e intuitiva; as seis direções como os seis aspectos do ego estruturado (antes/depois, direita/esquerda, acima/abaixo em sentido psicológico).</p>
+
+<p>O iniciado lê as 22 letras não como sons do alfabeto, mas como <strong>22 estados fundamentais de consciência</strong>: Aleph como o estado de unidade pré-linguística; Bet como a entrada na dualidade; Shin como o estado de puro ardor espiritual; Mem como a imersão nas profundezas emocionais; e assim por diante.</p>
+
+<div class="callout callout-gold">
+<p class="callout-title">🗝️ Perguntas Contemplativas para o Iniciado</p>
+<p>• Quais são as "10 Sefirot Belimah" na minha experiência interior? Quais as dez dimensões fundamentais da minha consciência?</p>
+<p>• Qual é a "letra-mãe" que governa meu temperamento dominante — Shin (fogo/cabeça), Mem (água/ventre) ou Aleph (ar/coração)?</p>
+<p>• Como me relaciono com as polaridades das letras duplas? Onde experimento sabedoria e loucura, riqueza e pobreza espiritual?</p>
+<p>• Qual é o meu "centro do cubo" — o ponto de equilíbrio a partir do qual experimento as seis direções da minha vida?</p>
+<p>• Como estou usando as três ferramentas da criação — Sefer (estrutura/número), Sippur (narrativa/comunicação), Sefar (escrita/formação)?</p>
+</div>
+</section>
+
+<!-- SEÇÃO VII: PARALELOS -->
+<section class="section" id="paralelos">
+<div class="section-hd"><div class="section-icon">⚖</div><div>
+<h2>VII. Comparações Filosóficas e Esotéricas</h2>
+<p>O Sefer Yetzirah em diálogo com as grandes tradições do pensamento humano</p>
+</div></div>
+
+<h3 class="sub" id="hermetismo">Hermetismo, Alquimia e Gnosticismo</h3>
+<div class="cmp-grid">
+<div class="cmp-col"><h4>🔺 Sefer Yetzirah</h4><ul>
+<li>Criação através de letras e números divinos</li>
+<li>10 Sefirot como dimensões ontológicas primordiais</li>
+<li>3 elementos (Ar, Água, Fogo) + Terra derivada</li>
+<li>Macrocosmo-microcosmo: Universo/Ano/Alma</li>
+<li>Linguagem como força cósmica constitutiva</li>
+<li>Iniciação através do domínio dos instrumentos divinos</li>
+<li>O Golem como expressão máxima da criatividade iniciática</li>
+</ul></div>
+<div class="cmp-col"><h4>🔺 Corpus Hermeticum</h4><ul>
+<li>Criação através do Nous (Intelecto Divino) e do Logos</li>
+<li>Ogdóade e Hebdomada como estruturas celestiais</li>
+<li>Quatro elementos aristotélicos mais Êter</li>
+<li>Macrocosmo-microcosmo: "Como em cima, assim embaixo"</li>
+<li>A linguagem como manifestação do Logos Divino</li>
+<li>Gnose como retorno ao Uno através do conhecimento</li>
+<li>A transmutação alquímica como analogia da transformação espiritual</li>
+</ul></div>
+</div>
+
+<p>A proximidade entre o Sefer Yetzirah e o Hermetismo é tão notável que vários acadêmicos têm argumentado por influência mútua direta ou por derivação de uma fonte comum. O ambiente intelectual do Egito e da Síria dos séculos II–IV d.C. — onde ambas as tradições floresceram — era suficientemente fluido para que conceitos se movessem livremente entre comunidades judaicas, pagãs, gnósticas e cristãs.</p>
+
+<div class="callout callout-teal">
+<p class="callout-title">🌊 Paralelos com o Taoísmo</p>
+<p>O Sefer Yetzirah e o Tao Te Ching compartilham uma intuição fundamental: <strong>a realidade é gerada por um princípio primordial que não pode ser nomeado</strong>. O Tao que pode ser nomeado não é o Tao eterno (Lao-Tzu, cap. 1) — o Ineffável do Sefer Yetzirah está "acima" das Sefirot. A geração do cosmos através de três (San-Cai: Céu, Terra, Humanidade) ecoa a tríade Universo/Ano/Alma. E a ideia de que os opostos são complementares (Yin-Yang) é exatamente o princípio das letras duplas com seus dois tons.</p>
+</div>
+
+<div class="callout callout-sapphire">
+<p class="callout-title">🔢 Paralelos com o Pitagorismo</p>
+<p>A sacralidade dos primeiros dez números no Pitagorismo — especialmente no Tetraktys (o triângulo formado por 1+2+3+4=10) — é o paralelo mais direto com as 10 Sefirot do Sefer Yetzirah. Para Pitágoras, o número 10 era a "década perfeita" — a expressão completa de toda a realidade numérica. Para o Sefer Yetzirah, as 10 Sefirot são precisamente "dez e não nove, dez e não onze". A ideia de que o cosmos é fundamentalmente numérico — que a realidade é, em sua essência, uma estrutura matemática — é partilhada por ambas as tradições.</p>
+</div>
+
+<h3 class="sub" id="ordens">A Golden Dawn, Aleister Crowley e as Ordens Ocultistas</h3>
+<p>O Sefer Yetzirah teve uma influência decisiva no esoterismo ocidental moderno — principalmente através de sua integração no sistema da <mark class="g">Hermetic Order of the Golden Dawn</mark>, fundada em Londres em 1888. MacGregor Mathers, um dos fundadores, publicou uma tradução do Sefer Yetzirah em 1887, e o sistema correspondencial do texto — letras hebraicas, Sefirot, planetas, signos zodiacais, Tarot — tornou-se a espinha dorsal do sistema iniciático da Golden Dawn.</p>
+
+<p>Na Golden Dawn, o sistema do Sefer Yetzirah foi combinado com outros elementos para criar a <strong>Tabela das Correspondências</strong>, que associa cada letra hebraica a um dos 22 Arcanos Maiores do Tarot, a um caminho na Árvore da Vida, a um planeta ou signo, a uma cor, a uma nota musical, a um perfume e a outros atributos. Esta síntese, codificada por Aleister Crowley em sua monumental obra <em>777</em>, tornou-se a referência definitiva para o ocultismo ocidental moderno.</p>
+
+<div class="tw"><table>
+<thead><tr><th>Letra Heb.</th><th>Arcano do Tarot</th><th>Caminho na Árvore</th><th>Correspondência</th></tr></thead>
+<tbody>
+<tr><td class="heb">א</td><td>O Louco (0)</td><td>11 (Kether-Chokmah)</td><td>Ar / Urano / Aquário (Golden Dawn)</td></tr>
+<tr><td class="heb">ב</td><td>O Mago (I)</td><td>12 (Kether-Binah)</td><td>Mercúrio / Vontade criativa</td></tr>
+<tr><td class="heb">ג</td><td>A Sacerdotisa (II)</td><td>13 (Kether-Tiferet)</td><td>Lua / O Caminho do Meio</td></tr>
+<tr><td class="heb">ד</td><td>A Imperatriz (III)</td><td>14 (Chokmah-Binah)</td><td>Vênus / Fertilidade criativa</td></tr>
+<tr><td class="heb">ה</td><td>O Imperador (IV)</td><td>15 (Chokmah-Tiferet)</td><td>Áries / Autoridade</td></tr>
+<tr><td class="heb">ו</td><td>O Hierofante (V)</td><td>16 (Chokmah-Chesed)</td><td>Touro / Tradição iniciática</td></tr>
+<tr><td class="heb">ז</td><td>Os Amantes (VI)</td><td>17 (Binah-Tiferet)</td><td>Gêmeos / A escolha fundamental</td></tr>
+<tr><td class="heb">ח</td><td>A Carruagem (VII)</td><td>18 (Binah-Gevurah)</td><td>Câncer / Triunfo através do controle</td></tr>
+<tr><td class="heb">ט</td><td>A Força (VIII/XI)</td><td>19 (Chesed-Gevurah)</td><td>Leão / A vontade domando os instintos</td></tr>
+<tr><td class="heb">י</td><td>O Eremita (IX)</td><td>20 (Chesed-Tiferet)</td><td>Virgem / A sabedoria na solidão</td></tr>
+<tr><td class="heb">כ</td><td>A Roda da Fortuna (X)</td><td>21 (Chesed-Netzach)</td><td>Júpiter / Os ciclos do destino</td></tr>
+<tr><td class="heb">ל</td><td>A Justiça (XI/VIII)</td><td>22 (Gevurah-Tiferet)</td><td>Libra / O equilíbrio perfeito</td></tr>
+<tr><td class="heb">מ</td><td>O Pendurado (XII)</td><td>23 (Gevurah-Hod)</td><td>Água / A suspensão e a rendição</td></tr>
+<tr><td class="heb">נ</td><td>A Morte (XIII)</td><td>24 (Tiferet-Netzach)</td><td>Escorpião / A transformação radical</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- SEÇÃO VIII: COMO ESTUDAR -->
+<section class="section" id="como-estudar">
+<div class="section-hd"><div class="section-icon">🧭</div><div>
+<h2>VIII. Como Estudar o Sefer Yetzirah</h2>
+<p>Dificuldades, armadilhas, métodos e caminhos de acesso ao texto</p>
+</div></div>
+
+<p>Abordar o Sefer Yetzirah sem preparação adequada pode resultar em frustrações significativas. O texto é <mark class="g">intencionalmente elíptico</mark> — ele fala em assertivas diretas que pressupõem um contexto interpretativo que não fornece. Esta elipticidade não é uma falha do texto; é sua característica fundamental. O Sefer Yetzirah foi concebido como um <em>aide-mémoire</em> — um auxílio à memória para iniciados que já possuíam a tradição oral complementar.</p>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ Dificuldade 1: A Ambiguidade Terminológica Intencional</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>O texto usa termos com múltiplos significados simultaneamente (como os três "Sefarim" na abertura) sem indicar qual sentido é o "correto". Esta é uma característica deliberada — o texto convida o leitor a sustentar múltiplos sentidos ao mesmo tempo, compreendendo que a realidade do que descreve é mais rica do que qualquer interpretação singular.</p>
+<p>O erro mais comum do estudante iniciante é buscar <em>a</em> interpretação definitiva de cada termo. O erro mais comum do estudante avançado é <em>ter</em> uma interpretação definitiva que descarta todas as outras. A postura mais produtiva é a da <em>polissemia deliberada</em>: permitir que múltiplos sentidos coexistam e se iluminem mutuamente.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ Dificuldade 2: A Multiplicidade de Versões</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>Como discutido na seção de História, existem pelo menos três versões principais do texto com diferenças significativas. Qualquer tradução que você leia reflete as escolhas editoriais de quem a produziu. Para um estudo sério, é necessário consultar pelo menos a tradução de Aryeh Kaplan (que inclui análise textual comparativa), além de um comentário clássico como o de Saadia Gaon ou o de Yehuda Barcelonês.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ Dificuldade 3: A Tentação do Literalismo vs. o Excesso de Simbolismo</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p>Dois erros opostos são comuns. O primeiro é o <em>literalismo</em> — tratar o texto como uma teoria física ou astronômica literal, tentando reconciliá-lo com a ciência moderna. O segundo é o <em>excesso de simbolismo</em> — ver em tudo apenas metáforas psicológicas, perdendo a dimensão ontológica real que o texto afirma.</p>
+<p>O Sefer Yetzirah opera em múltiplos níveis simultaneamente: literal (os elementos, os planetas, as letras têm existência real), psicológico (eles descrevem estados da consciência), iniciático (eles são instrumentos de transformação espiritual) e ontológico (eles constituem a estrutura real do cosmos). Nenhum desses níveis é "mais correto" — todos são necessários para a compreensão completa.</p>
+</div></div>
+
+<div class="expand" onclick="this.classList.toggle('open')">
+<div class="expand-hd"><h4>⬇ Sequência de Estudo Recomendada</h4><span class="expand-arrow">▼</span></div>
+<div class="expand-body">
+<p><strong>1ª Etapa:</strong> Leia uma boa introdução ao misticismo judaico — <em>Major Trends in Jewish Mysticism</em> de Gershom Scholem é o clássico. Familiarize-se com o contexto histórico.</p>
+<p><strong>2ª Etapa:</strong> Leia o texto do Sefer Yetzirah em tradução (preferencialmente Aryeh Kaplan, 1990, que inclui transliteração, tradução e comentários extensivos). Leia sem tentar entender tudo — deixe que o texto se assente.</p>
+<p><strong>3ª Etapa:</strong> Aprenda o alfabeto hebraico e os valores numéricos. Sem isto, você está lendo sobre música sem ouvir as notas.</p>
+<p><strong>4ª Etapa:</strong> Estude as correspondências — planetas, signos, Tarot, Sefirot. A <em>Tabela de Correspondências</em> de Aleister Crowley (777) é a síntese ocidental padrão, com todas as ressalvas críticas necessárias.</p>
+<p><strong>5ª Etapa:</strong> Comece a prática meditativa. Contemple as letras individualmente, depois em combinações. Observe como diferentes letras "vibram" diferentemente na consciência.</p>
+<p><strong>6ª Etapa:</strong> Retorne ao texto com olhos renovados. Ele terá mudado — porque você terá mudado.</p>
+</div></div>
+</section>
+
+<!-- GLOSSÁRIO -->
+<section class="section" id="glossario">
+<div class="section-hd"><div class="section-icon">📚</div><div>
+<h2>IX. Glossário dos Termos Fundamentais</h2>
+<p>Vocabulário técnico hebraico e cabalístico essencial para o estudo do Sefer Yetzirah</p>
+</div></div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:20px 0;">
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Sefer Yetzirah <span class="heb-inline">ספר יצירה</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Livro da Formação / Livro da Criação</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">O texto principal estudado nesta enciclopédia. "Yetzirah" vem de "yatzar" — moldar como o oleiro molda o barro. O mundo foi moldado, não apenas criado do nada.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Sefirot Belimah <span class="heb-inline">ספירות בלימה</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Sefirot de Nada / Sem Substância</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">As dez dimensões ontológicas primordiais descritas no SY. "Belimah" pode significar "sem o quê" — entidades sem substância determinada, puras dimensões do Ser.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Otiyot Yesod <span class="heb-inline">אותיות יסוד</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Letras Fundamentais</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">As 22 letras do alfabeto hebraico como forças cósmicas fundamentais. Não são símbolos de sons — são as estruturas constitutivas da realidade.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Imot <span class="heb-inline">אמות</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">As Mães (Letras-Mãe)</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">As três letras primordiais Aleph, Mem e Shin, correspondentes aos três elementos Ar, Água e Fogo. São as "mães" de todas as outras letras e de toda a criação manifesta.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Kfulot <span class="heb-inline">כפולות</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Letras Duplas</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">As sete letras com dois valores fonéticos (duro/suave): Bet, Guimel, Dalet, Kaf, Pe, Resh, Tav. Correspondem aos sete planetas clássicos e governam as polaridades da experiência.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Pshutot <span class="heb-inline">פשוטות</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Letras Simples</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">As doze letras restantes, correspondendo aos doze signos do zodíaco, doze meses e doze funções humanas fundamentais.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Gematria <span class="heb-inline">גמטריה</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Do grego: aritmética / geometria</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">O sistema de correspondência entre letras e números. Revela conexões ontológicas profundas entre conceitos que compartilham o mesmo valor numérico.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Golem <span class="heb-inline">גולם</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Forma informe / Embrião</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">O ser artificial criado através da manipulação ritual das letras sagradas. A tradição do Golem demonstra que o domínio da gramática da criação permite ao iniciado replicar o ato criativo divino.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Tziruf <span class="heb-inline">צירוף</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Permutação / Combinação</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">A prática meditativa e ritual de permutar as 22 letras em todas as combinações possíveis. Os 231 Portais (pares de letras) são os fundamentos desta prática.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Olam-Shanah-Nefesh <span class="heb-inline">עולם-שנה-נפש</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">Universo-Ano-Alma</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">A tríade cosmológica fundamental do SY: cada força cósmica (letra) se manifesta simultaneamente nos três domínios. O macrocosmo-microcosmo em sua expressão mais completa.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Ain Sof <span class="heb-inline">אין סוף</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">O Infinito / Sem Fim</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">O aspecto mais transcendente do Divino — antes de qualquer emanação ou manifestação. No SY, correlacionado com a impossibilidade de "fechar" a meditação nas Sefirot com linguagem ordinária.</div>
+</div>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px;">
+<div style="color:var(--gold-l);font-weight:700;margin-bottom:4px;">Merkavah <span class="heb-inline">מרכבה</span></div>
+<div style="font-size:0.7rem;color:var(--sapphire-l);font-style:italic;margin-bottom:8px;">A Carruagem</div>
+<div style="font-size:0.8rem;color:var(--parchment-d);">A tradição mística judaica baseada na visão de Ezequiel da Carruagem Celestial. O contexto histórico direto do SY, com o qual partilha a ênfase na estrutura celeste e na linguagem sagrada.</div>
+</div>
+</div>
+</section>
+
+<!-- BIBLIOGRAFIA -->
+<section class="section" id="biblio">
+<div class="section-hd"><div class="section-icon">📑</div><div>
+<h2>X. Bibliografia e Fontes</h2>
+<p>Textos primários, comentários clássicos e estudos modernos</p>
+</div></div>
+
+<h3 class="sub">Textos Primários e Comentários Clássicos</h3>
+<div class="tw"><table>
+<thead><tr><th>Título</th><th>Autor</th><th>Data</th><th>Observação</th></tr></thead>
+<tbody>
+<tr><td>Sefer Yetzirah (Edição Crítica + Comentário)</td><td>Aryeh Kaplan</td><td>1990</td><td>A referência definitiva em inglês; inclui análise textual comparativa de todas as versões</td></tr>
+<tr><td>Comentário ao Sefer Yetzirah (árabe)</td><td>Saadia Gaon</td><td>c. 931</td><td>Primeiro comentário completo; visão racionalista e filosófica</td></tr>
+<tr><td>Comentário ao Sefer Yetzirah</td><td>Donnolo Shabbetai</td><td>c. 946</td><td>Perspectiva médica e neoplatônica; influência árabe</td></tr>
+<tr><td>Comentário ao Sefer Yetzirah</td><td>Yehudah Barcelonês</td><td>c. 1100</td><td>Síntese das tradições anteriores; muito citado</td></tr>
+<tr><td>Sefer Yetzirah (tradução inglesa)</td><td>W. Wynn Westcott</td><td>1887</td><td>Tradução da Golden Dawn; influente no ocultismo</td></tr>
+</tbody></table></div>
+
+<h3 class="sub">Estudos Acadêmicos</h3>
+<div class="tw"><table>
+<thead><tr><th>Obra</th><th>Autor</th><th>Tema</th></tr></thead>
+<tbody>
+<tr><td><em>Major Trends in Jewish Mysticism</em></td><td>Gershom Scholem (1941)</td><td>A obra fundamental sobre o misticismo judaico; contextualiza o SY</td></tr>
+<tr><td><em>Jewish Gnosticism, Merkabah Mysticism, and Talmudic Tradition</em></td><td>Gershom Scholem (1960)</td><td>O contexto Merkavah do Sefer Yetzirah</td></tr>
+<tr><td><em>The Origins of the Kabbalah</em></td><td>Gershom Scholem (1962)</td><td>Como o SY influenciou a Cabala medieval</td></tr>
+<tr><td><em>Kabbalah and Its Symbolism</em></td><td>Gershom Scholem (1969)</td><td>O simbolismo do Golem e das letras sagradas</td></tr>
+<tr><td><em>Jewish Mysticism and Kabbalah</em></td><td>Moshe Idel (1988)</td><td>Revisão das teses de Scholem; novas perspectivas</td></tr>
+<tr><td><em>Golem: Jewish Magical and Mystical Traditions</em></td><td>Moshe Idel (1990)</td><td>A tradição do Golem desde o Sefer Yetzirah</td></tr>
+<tr><td><em>Meditation and Kabbalah</em></td><td>Aryeh Kaplan (1982)</td><td>As práticas meditativas derivadas do SY</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--bg2);border-top:1px solid var(--border);padding:48px 64px;text-align:center;">
+<div style="font-size:2.8rem;margin-bottom:14px;filter:drop-shadow(0 0 14px var(--gold))">✡</div>
+<p style="font-size:0.88rem;color:var(--parchment-dd);font-style:italic;max-width:600px;margin:0 auto 14px;">
+"Quando Abraão nosso Pai olhou, investigou, esquadrinhou, visualizou e entendeu, ele esculpiu com sucesso, foi sagrado e foi amado — e foi chamado de Amigo."</p>
+<p style="font-size:0.7rem;color:var(--gold);letter-spacing:0.2em;font-family:'Courier New',monospace;">— SEFER YETZIRAH, CAPÍTULO 6:7</p>
+<div style="height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:22px auto;max-width:400px;"></div>
+<p style="font-size:0.68rem;color:var(--parchment-dd);letter-spacing:0.12em;">ספר יצירה · SEFER YETZIRAH · ENCICLOPÉDIA INICIÁTICA · 32 VIAS DA SABEDORIA</p>
+</footer>
+</main>
+</div>
+<div id="stb" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<script>
+window.addEventListener('scroll',()=>{
+  const st=window.pageYOffset||document.documentElement.scrollTop;
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  const p=dh>0?(st/dh)*100:0;
+  document.getElementById('pbar').style.width=p+'%';
+  const btn=document.getElementById('stb');
+  if(st>500)btn.classList.add('vis');else btn.classList.remove('vis');
+  const sections=document.querySelectorAll('section[id]');
+  const links=document.querySelectorAll('.nav-link');
+  let cur='';
+  sections.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s.id;});
+  links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active');});
+});
+document.querySelectorAll('.nav-link').forEach(l=>{
+  l.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.getElementById(l.getAttribute('href').slice(1));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>

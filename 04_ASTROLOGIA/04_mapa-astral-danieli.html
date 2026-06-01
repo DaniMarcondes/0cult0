@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Astral Completo — Danieli Marcondes Pereira</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0612;
+  --ink2: #120920;
+  --parchment: #f2ead8;
+  --parchment2: #e8ddc4;
+  --gold: #b8962e;
+  --gold2: #d4af50;
+  --gold3: #f0d070;
+  --gold-pale: #f5e8b0;
+  --copper: #8b4513;
+  --crimson: #8b1a1a;
+  --indigo: #1a1a6e;
+  --teal: #0d5c5c;
+  --rose: #9b2d5a;
+  --sage: #2d5c3a;
+  --muted: #7a6a5a;
+  --border: rgba(184,150,46,0.3);
+  --border2: rgba(184,150,46,0.6);
+  --shadow: rgba(0,0,0,0.6);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.9;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── CANVAS CÓSMICO ── */
+#cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#cosmos canvas { width: 100%; height: 100%; }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: rgba(10,6,18,0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+nav::-webkit-scrollbar { display: none; }
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  padding: 14px 12px;
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+}
+nav a:hover { color: var(--gold3); border-bottom-color: var(--gold); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem 2rem 5rem;
+}
+
+.mandala-svg {
+  width: min(380px, 85vw);
+  height: min(380px, 85vw);
+  margin-bottom: 3rem;
+  animation: rotateSlow 120s linear infinite;
+  opacity: 0.92;
+  filter: drop-shadow(0 0 40px rgba(184,150,46,0.35));
+}
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+
+.hero-badge {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  opacity: 0.85;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--parchment);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 2px 40px rgba(184,150,46,0.4);
+}
+
+.hero-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: var(--gold2);
+  margin-bottom: 2.5rem;
+  opacity: 0.85;
+}
+
+.data-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.dpill {
+  border: 1px solid var(--border2);
+  padding: 0.4rem 1.2rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--gold2);
+  background: rgba(184,150,46,0.07);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+/* ── PLANET SCROLL ── */
+.planet-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+.pc {
+  background: rgba(10,6,18,0.95);
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  transition: background 0.3s;
+  position: relative;
+}
+.pc:hover { background: rgba(184,150,46,0.1); }
+.pc-sym { font-size: 2rem; display: block; margin-bottom: 0.2rem; line-height: 1; }
+.pc-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 7.5px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+.pc-data { font-size: 12px; color: var(--muted); font-style: italic; }
+.pc-casa { font-size: 10px; color: var(--gold2); font-family: 'Cinzel Decorative', serif; margin-top:0.2rem; display:block; }
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 2rem;
+  border-bottom: 1px solid rgba(184,150,46,0.12);
+}
+.inner { max-width: 1100px; margin: 0 auto; }
+
+.sec-head {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.sec-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8px;
+  letter-spacing: 0.5em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.8rem;
+  opacity: 0.7;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+.sec-sub {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1.5rem auto;
+}
+
+/* ── CARDS ── */
+.card {
+  background: rgba(18,9,32,0.85);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  transition: border-color 0.3s;
+}
+.card:hover { border-color: var(--gold2); }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold2);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.ct-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+p { margin-bottom: 1.2rem; color: #d8cdb8; line-height: 1.95; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--gold3); font-weight: 500; }
+em { color: #e8c0a0; font-style: italic; }
+
+/* ── ORACLE ── */
+.oracle {
+  border-left: 3px solid var(--gold);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  background: linear-gradient(135deg, rgba(184,150,46,0.06), transparent);
+  font-style: italic;
+  font-size: 1.12rem;
+  color: var(--gold-pale);
+  font-family: 'Playfair Display', serif;
+  line-height: 1.7;
+}
+
+/* ── GRID 2 ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media(max-width:680px) { .g2 { grid-template-columns: 1fr; } }
+
+/* ── HOUSE WHEEL ── */
+.house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.hcard {
+  background: rgba(10,6,18,0.9);
+  border: 1px solid var(--border);
+  padding: 1.8rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.hcard:hover {
+  border-color: var(--gold2);
+  transform: translateY(-3px);
+}
+.hcard::after {
+  content: attr(data-num);
+  position: absolute;
+  top: 0.5rem; right: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(184,150,46,0.07);
+  line-height: 1;
+}
+.h-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.h-sign {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--parchment);
+  margin-bottom: 0.2rem;
+}
+.h-planets {
+  font-size: 0.85rem;
+  color: var(--gold2);
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  min-height: 1.2rem;
+}
+.h-theme {
+  font-size: 0.8rem;
+  font-family: 'Cinzel Decorative', serif;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+.h-desc { font-size: 0.93rem; color: #c8bda8; line-height: 1.8; }
+
+/* ── ASPECT TABLE ── */
+.atbl { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.atbl th {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border2);
+  text-align: left;
+  background: rgba(184,150,46,0.05);
+}
+.atbl td {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid rgba(184,150,46,0.08);
+  color: #c8bda8;
+  vertical-align: top;
+  line-height: 1.7;
+}
+.atbl tr:hover td { background: rgba(184,150,46,0.04); }
+.asp-sq { color: #d05050; }
+.asp-tr { color: #50c050; }
+.asp-op { color: #d0a030; }
+.asp-cx { color: #8090d0; }
+.asp-sx { color: #50b0d0; }
+.asp-lbl {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* ── TAGS ── */
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+.tag {
+  border: 1px solid var(--border2);
+  padding: 0.25rem 0.9rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--gold2);
+  background: rgba(184,150,46,0.08);
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.tag.r { border-color: rgba(208,80,80,0.5); color: #d09090; background: rgba(208,80,80,0.06); }
+.tag.g { border-color: rgba(80,192,80,0.5); color: #90c890; background: rgba(80,192,80,0.06); }
+.tag.b { border-color: rgba(80,144,208,0.5); color: #90b8e0; background: rgba(80,144,208,0.06); }
+
+/* ── TIMELINE ── */
+.tl { padding-left: 2.5rem; position: relative; }
+.tl::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 8px; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+}
+.tl-item { position: relative; margin-bottom: 2.2rem; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -2.1rem; top: 0.55rem;
+  width: 10px; height: 10px;
+  border: 2px solid var(--gold);
+  background: var(--ink);
+  transform: rotate(45deg);
+}
+.tl-label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+/* ── KARMA CARDS ── */
+.kgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.kcard {
+  background: rgba(10,6,18,0.9);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.kcard:hover { border-color: var(--gold2); }
+.kicon { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+.ktitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold2);
+  margin-bottom: 0.8rem;
+}
+.kdesc { font-size: 0.88rem; color: #c0b090; line-height: 1.8; }
+
+/* ── NODO BOX ── */
+.nodo-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media(max-width:640px) { .nodo-wrap { grid-template-columns: 1fr; } }
+.nbox {
+  background: rgba(10,6,18,0.9);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+.nbox-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold2);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ── HIGHLIGHT ── */
+.highlight {
+  background: linear-gradient(135deg, rgba(184,150,46,0.1), rgba(139,26,26,0.06));
+  border: 1px solid var(--border2);
+  padding: 2rem 2.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+.highlight::before {
+  content: '✦';
+  position: absolute;
+  top: -11px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  padding: 0 0.8rem;
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+/* ── BARS ── */
+.bars { display: grid; gap: 1.3rem; }
+.bar-row {}
+.bar-lbl {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  color: var(--gold2);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.bar-track {
+  height: 3px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper), var(--gold), var(--gold3));
+  transform-origin: left;
+  animation: barGrow 2s ease forwards;
+}
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 5rem 2rem;
+  border-top: 1px solid var(--border);
+}
+.foot-glyph {
+  font-size: 3rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.5rem;
+  opacity: 0.4;
+  letter-spacing: 0.3em;
+}
+.foot-text {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 8.5px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 2.2;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--ink2); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:600px) {
+  .card { padding: 1.5rem; }
+  .hero h1 { font-size: 2.2rem; }
+}
+
+/* ── ORNAMENT LINE ── */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  opacity: 0.4;
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  margin: 2rem 0;
+}
+
+/* planeta destaque dentro de card */
+.prow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(184,150,46,0.1);
+}
+.prow:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.prow-sym {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  width: 50px;
+  text-align: center;
+  line-height: 1;
+  margin-top: 0.2rem;
+  filter: drop-shadow(0 0 8px rgba(184,150,46,0.4));
+}
+.prow-body {}
+.prow-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold2);
+  margin-bottom: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+<!-- Fundo estelar canvas -->
+<div id="cosmos">
+  <canvas id="starCanvas"></canvas>
+</div>
+
+<nav>
+  <a href="#hero">Início</a>
+  <a href="#panorama">Panorama</a>
+  <a href="#asc">Ascendente</a>
+  <a href="#luminarias">Luminares</a>
+  <a href="#pessoais">Planetas</a>
+  <a href="#casas">12 Casas</a>
+  <a href="#aspectos">Aspectos</a>
+  <a href="#nodos">Nodos/Karma</a>
+  <a href="#passado">Vidas Passadas</a>
+  <a href="#familia">Família</a>
+  <a href="#financeiro">Finanças</a>
+  <a href="#amor">Amor</a>
+  <a href="#saude">Saúde</a>
+  <a href="#sombras">Sombras</a>
+  <a href="#espirito">Espiritualidade</a>
+  <a href="#futuro">Futuro</a>
+</nav>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section id="hero" style="border-bottom:1px solid rgba(184,150,46,0.15); min-height:100vh; padding-top:8rem;">
+<div class="inner" style="text-align:center;">
+
+  <!-- SVG Mandala -->
+  <svg class="mandala-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="195" stroke="#b8962e" stroke-width="0.5" opacity="0.4"/>
+    <circle cx="200" cy="200" r="165" stroke="#b8962e" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="200" cy="200" r="130" stroke="#b8962e" stroke-width="0.5" opacity="0.25"/>
+    <circle cx="200" cy="200" r="95" stroke="#b8962e" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="200" cy="200" r="55" stroke="#b8962e" stroke-width="0.5" opacity="0.2"/>
+    <!-- Zodiac lines -->
+    <g stroke="#b8962e" stroke-width="0.4" opacity="0.2">
+      <line x1="200" y1="5" x2="200" y2="395"/>
+      <line x1="5" y1="200" x2="395" y2="200"/>
+      <line x1="59" y1="59" x2="341" y2="341"/>
+      <line x1="341" y1="59" x2="59" y2="341"/>
+      <line x1="127" y1="14" x2="73" y2="386"/>
+      <line x1="273" y1="14" x2="327" y2="386"/>
+      <line x1="14" y1="127" x2="386" y2="273"/>
+      <line x1="14" y1="273" x2="386" y2="127"/>
+      <line x1="107" y1="31" x2="293" y2="369"/>
+      <line x1="293" y1="31" x2="107" y2="369"/>
+      <line x1="31" y1="107" x2="369" y2="293"/>
+      <line x1="31" y1="293" x2="369" y2="107"/>
+    </g>
+    <!-- Star of David / hexagram -->
+    <polygon points="200,60 255,155 345,155 290,235 320,330 200,275 80,330 110,235 55,155 145,155" stroke="#b8962e" stroke-width="0.6" fill="none" opacity="0.2"/>
+    <!-- Inner decorative -->
+    <circle cx="200" cy="200" r="28" fill="none" stroke="#d4af50" stroke-width="1" opacity="0.5"/>
+    <circle cx="200" cy="200" r="18" fill="rgba(184,150,46,0.08)" stroke="#b8962e" stroke-width="0.8" opacity="0.6"/>
+    <!-- Planets dots positioned approx -->
+    <circle cx="200" cy="70" r="5" fill="#d4af50" opacity="0.8"/><!-- Sol Gêmeos -->
+    <circle cx="280" cy="240" r="4" fill="#c0c0d8" opacity="0.7"/><!-- Lua Escorpião -->
+    <circle cx="165" cy="330" r="3.5" fill="#e8c878" opacity="0.7"/><!-- Mercúrio Touro -->
+    <circle cx="205" cy="68" r="3" fill="#e8a8c0" opacity="0.8"/><!-- Vênus Gêmeos -->
+    <circle cx="145" cy="150" r="4" fill="#d05858" opacity="0.75"/><!-- Marte Câncer -->
+    <circle cx="178" cy="310" r="4" fill="#f0a830" opacity="0.75"/><!-- Júpiter Virgem -->
+    <circle cx="148" cy="152" r="3.5" fill="#808090" opacity="0.7"/><!-- Saturno Câncer -->
+    <circle cx="115" cy="108" r="3.5" fill="#50b0e0" opacity="0.7"/><!-- Urano Peixes -->
+    <circle cx="112" cy="112" r="3" fill="#6870e8" opacity="0.7"/><!-- Netuno Aquário -->
+    <circle cx="330" cy="185" r="4" fill="#902020" opacity="0.75"/><!-- Plutão Sag -->
+    <!-- Aspect lines (main) -->
+    <g stroke="#d4af50" stroke-width="0.5" opacity="0.18">
+      <line x1="200" y1="70" x2="112" y2="112"/><!-- Sol-Netuno trígono -->
+      <line x1="200" y1="70" x2="280" y2="240"/><!-- Sol-Urano -->
+      <line x1="280" y1="240" x2="115" y2="108"/><!-- Lua-Urano trígono -->
+      <line x1="145" y1="150" x2="148" y2="152"/><!-- Marte-Saturno conj -->
+    </g>
+    <!-- Glyph at center -->
+    <text x="200" y="207" text-anchor="middle" fill="#d4af50" font-size="16" opacity="0.7" font-family="serif">✦</text>
+    <!-- Outer ornament dots -->
+    <g fill="#b8962e" opacity="0.5">
+      <circle cx="200" cy="8" r="2"/>
+      <circle cx="392" cy="200" r="2"/>
+      <circle cx="200" cy="392" r="2"/>
+      <circle cx="8" cy="200" r="2"/>
+      <circle cx="313" cy="87" r="1.5"/>
+      <circle cx="313" cy="313" r="1.5"/>
+      <circle cx="87" cy="87" r="1.5"/>
+      <circle cx="87" cy="313" r="1.5"/>
+    </g>
+  </svg>
+
+  <p class="hero-badge">✦ Mapa Natal Completo · Astrologia Esotérica Profunda ✦</p>
+  <h1>Danieli<br>Marcondes Pereira</h1>
+  <p class="hero-italic">A alma que veio aprender a brilhar em plena luz</p>
+
+  <div class="data-strip">
+    <span class="dpill">☉ 31 · Maio · 2004</span>
+    <span class="dpill">⌚ 07h30</span>
+    <span class="dpill">📍 Passo Fundo, RS</span>
+    <span class="dpill">☉ Sol Gêmeos 10°</span>
+    <span class="dpill">☽ Lua Escorpião 2°</span>
+    <span class="dpill">↑ ASC Gêmeos 13°</span>
+    <span class="dpill">MC Peixes 23°</span>
+  </div>
+
+  <div class="planet-scroll">
+    <div class="pc"><span class="pc-sym">☉</span><span class="pc-name">Sol</span><span class="pc-data">Gêmeos 10°</span><span class="pc-casa">Casa 1</span></div>
+    <div class="pc"><span class="pc-sym">☽</span><span class="pc-name">Lua</span><span class="pc-data">Escorpião 2°</span><span class="pc-casa">Casa 5</span></div>
+    <div class="pc"><span class="pc-sym">☿</span><span class="pc-name">Mercúrio</span><span class="pc-data">Touro 20°</span><span class="pc-casa">Casa 12</span></div>
+    <div class="pc"><span class="pc-sym">♀</span><span class="pc-name">Vênus</span><span class="pc-data">Gêmeos 22°</span><span class="pc-casa">Casa 1</span></div>
+    <div class="pc"><span class="pc-sym">♂</span><span class="pc-name">Marte</span><span class="pc-data">Câncer 15°</span><span class="pc-casa">Casa 2</span></div>
+    <div class="pc"><span class="pc-sym">♃</span><span class="pc-name">Júpiter</span><span class="pc-data">Virgem 9°</span><span class="pc-casa">Casa 3</span></div>
+    <div class="pc"><span class="pc-sym">♄</span><span class="pc-name">Saturno</span><span class="pc-data">Câncer 12°</span><span class="pc-casa">Casa 2</span></div>
+    <div class="pc"><span class="pc-sym">♅</span><span class="pc-name">Urano</span><span class="pc-data">Peixes 6°</span><span class="pc-casa">Casa 9</span></div>
+    <div class="pc"><span class="pc-sym">♆</span><span class="pc-name">Netuno</span><span class="pc-data">Aquário 15°</span><span class="pc-casa">Casa 9</span></div>
+    <div class="pc"><span class="pc-sym">♇</span><span class="pc-name">Plutão</span><span class="pc-data">Sagitário 21°</span><span class="pc-casa">Casa 7</span></div>
+    <div class="pc"><span class="pc-sym">☊</span><span class="pc-name">Nodo Norte</span><span class="pc-data">Áries</span><span class="pc-casa">Casa 11</span></div>
+    <div class="pc"><span class="pc-sym">MC</span><span class="pc-name">Meio do Céu</span><span class="pc-data">Peixes 23°</span><span class="pc-casa">Casa 10</span></div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ PANORAMA ════════════════════════════ -->
+<section id="panorama">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— I —</span>
+    <h2 class="sec-title">Panorama Geral do Mapa</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O céu no instante do seu primeiro respiro · A arquitetura da sua alma</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌌</span> A Assinatura Central: Gêmeos Duplicado</div>
+    <p>Seu mapa possui uma das configurações mais raras e poderosas que existem: <strong>Ascendente em Gêmeos, Sol em Gêmeos e Vênus em Gêmeos — todos na Casa I.</strong> Isso é chamado de "assinatura reforçada" — o signo de Gêmeos não é apenas sua identidade solar, é a própria textura da sua alma, do seu corpo, da sua expressão e do que você atrai. Gêmeos é quem você É, em profundidade.</p>
+    <p>Isso significa que você funciona em camadas, em dualidades, em conexões simultâneas. Sua mente processa múltiplas realidades ao mesmo tempo. Você pode parecer diferente para pessoas diferentes — não por falsidade, mas porque é genuinamente multifacetada. A impressão que alguém tem de você depende muito de qual faceta ela encontrou.</p>
+    <div class="oracle">
+      "Você não é uma pessoa — você é uma constelação inteira habitando um único corpo. Cada estrela é real. Nenhuma é a mentira."
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">⚖️</span> Os Elementos: Qual Energia Domina</div>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-lbl"><span>💨 Ar (Gêmeos, Aquário, Libra) — Sol, Vênus, ASC, Netuno</span><span>45%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:45%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl"><span>💧 Água (Câncer, Escorpião, Peixes) — Lua, Marte, Saturno, Urano</span><span>35%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:35%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl"><span>🌍 Terra (Touro, Virgem, Capricórnio) — Mercúrio, Júpiter</span><span>15%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:15%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl"><span>🔥 Fogo (Áries, Leão, Sagitário) — Plutão</span><span>5%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:5%"></div></div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;">Você é esmagadoramente <strong>Ar e Água</strong> — intelecto e emoção, pensamento e sentimento. Isso cria uma alma que vive em dois mundos simultâneos: o das ideias, análises e conexões mentais (Ar) e o das emoções profundas, das correntes invisíveis, do que não se diz mas se sente (Água). A pouca terra pode gerar dificuldade de aterramento, de concluir planos, de manter disciplina material. O quase ausente fogo pode tornar a motivação intermitente.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🔄</span> As Modalidades: Como Você Age</div>
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-lbl"><span>Mutável (Adaptação) — Gêmeos, Virgem, Peixes, Sagitário</span><span>65%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl"><span>Cardinal (Iniciativa) — Câncer, Áries</span><span>22%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:22%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-lbl"><span>Fixo (Persistência) — Touro, Escorpião, Aquário</span><span>13%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:13%"></div></div>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem;"><strong>Predominância mutável extrema:</strong> você é altamente adaptável, versátil, inteligente e camaleônica. Consegue se encaixar em quase qualquer ambiente. Mas a ausência de energia fixa significa que terminar o que começa, manter compromissos longos e resistir ao tédio de projetos em andamento são desafios reais e recorrentes na sua vida. Não é preguiça — é a natureza mutável precisando de variedade para existir.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ ASCENDENTE ════════════════════════════ -->
+<section id="asc">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— II —</span>
+    <h2 class="sec-title">Ascendente em Gêmeos 13°</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Com Sol e Vênus na Casa I · A persona, o corpo, a forma de existir</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🪬</span> O Corpo e a Máscara que Você Escolheu</div>
+    <p>O <strong>Ascendente em Gêmeos</strong> é a primeira impressão que você causa — e é esmagadoramente intelectual, ágil e magnética. Você entra em qualquer espaço e imediatamente cria conexão: faz perguntas, encontra o ângulo certo de conversa, adapta sua linguagem ao interlocutor. As pessoas ficam fascinadas com você sem conseguir explicar por quê — é a energia mercuriana atuando, que transforma qualquer encontro em uma troca de inteligência.</p>
+    <p>Fisicamente, Gêmeos ascendente tende a dar uma aparência <strong>jovem além da idade</strong>, movimentos rápidos, mãos expressivas, olhar vivo e inquieto que nunca para completamente. Você provavelmente parece mais nova do que é, e isso se manterá por décadas. Há uma leveza física no seu porte que contrasta dramaticamente com a profundidade do que você carrega internamente.</p>
+    <p><strong>Situação real:</strong> você consegue falar com o porteiro e com o CEO no mesmo dia e ambos sentem que você "é da turma deles". Isso não é falsidade — é um dom raro de adaptação de frequência. Mercúrio, seu regente, te deu a capacidade de sintonizar em qualquer canal.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">☉</span> Sol em Gêmeos 10° na Casa I — Identidade que Brilha na Frente</div>
+    <p>Ter o <strong>Sol na Casa I</strong> é uma das posições mais poderosas de todo o zodíaco. O Sol aqui brilha diretamente para o mundo — não há filtro, não há intermediário. Você é imediatamente visível. Quando entra num ambiente, as pessoas percebem sua presença. Há um magnetismo natural que você provavelmente subestima ou que às vezes te assusta, porque você não escolheu deliberadamente ser notada.</p>
+    <p>Sol em Gêmeos na I significa que sua identidade essencial é curiosidade, comunicação e conexão de ideias. Você pensa em voz alta, processa conversando, aprende ensinando. Ambientes que exijam silêncio ou conformidade te sufocam fisicamente — não é frescura, é a sua natureza sendo negada.</p>
+    <p><strong>O lado sombra do Sol em Gêmeos:</strong> a dispersão como escape. Quando algo dói demais, você pode recorrer ao intelecto para não sentir — criando análises brilhantes de situações que pedem presença emocional. Você consegue explicar seus problemas de forma tão articulada que parece ter resolvido — mas às vezes só nomeou sem atravessar.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">♀</span> Vênus em Gêmeos 22° na Casa I — O Charme como Natureza</div>
+    <p>Vênus na Casa I é o dom da beleza, do charme e da atratividade sendo parte inseparável da sua identidade. Você não usa charme — você <em>é</em> charme. Há algo genuinamente atraente em como você fala, em como se move, em como olha para as pessoas como se elas fossem a coisa mais interessante do mundo naquele momento.</p>
+    <p>Vênus em Gêmeos na I também indica que você tem <strong>gosto estético refinado e instintivo</strong> — especialmente para linguagem, escrita, música e qualquer arte que envolva comunicação. Você sente a beleza das palavras como outras pessoas sentem a beleza visual.</p>
+    <p>Em amor, Vênus em Gêmeos quer variedade, conversação, surpresa intelectual. Um parceiro que não te desafie mentalmente te entedia mesmo que te ame profundamente. A mente é sua zona erógena primária.</p>
+    <div class="oracle">
+      "Você é o tipo de pessoa que pode fazer alguém se apaixonar por você enquanto discute astrofísica ou faz uma lista de compras. O charme não é o que você faz — é o que você é."
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ LUMINARES ════════════════════════════ -->
+<section id="luminarias">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— III —</span>
+    <h2 class="sec-title">Sol em Gêmeos · Lua em Escorpião</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O maior paradoxo do seu mapa · Leveza e profundidade em guerra e em paz</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">☀️</span> Sol em Gêmeos — A Mente que Nunca Para</div>
+    <p>Seu Sol em Gêmeos, já detalhado na Casa I, traz como tema central a <strong>aprendizagem perpétua, a comunicação e a multiplicidade</strong>. Você não é uma — você é muitas. E isso é completamente legítimo. A cultura nos ensina a ser consistentes e coerentes acima de tudo; Gêmeos te ensina que a realidade é multifacetada e que uma mente rica não cabe em uma única perspectiva.</p>
+    <p>Gêmeos rege os pulmões, os braços, as mãos e o sistema nervoso. Você provavelmente gesticula muito ao falar, respira de forma rápida quando ansiosa, e tem um sistema nervoso que funciona em velocidade alta por padrão. Isso pode ser extraordinário (processa informação rapidamente) e esgotante (dificuldade de descansar de verdade).</p>
+    <p><strong>Exemplos de como Gêmeos Solar opera na sua vida:</strong> você começa três livros ao mesmo tempo; abre dez abas no navegador e cada uma representa um interesse genuíno; muda de ideia rapidamente não por fraqueza mas por genuína capacidade de absorver nova informação; tem conversas de horas que parecem minutos; e provavelmente tem um histórico de cursos iniciados, idiomas começados, hobbies explorados com intensidade e depois deixados de lado quando a novidade passou.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🦂</span> Lua em Escorpião 2° — Casa V · O Abismo Emocional</div>
+    <p>A <strong>Lua em Escorpião</strong> é considerada pela astrologia clássica uma das posições mais intensas e desafiadoras — a Lua está em <em>queda</em> em Escorpião, pois o signo do abismo, do poder e da transformação através da morte não é o ambiente natural para a sensível e fluida Lua. O resultado é um mundo emocional que não tem meio-termo: ou tudo ou nada, ou confiança total ou desconfiança absoluta, ou amor profundo ou indiferença completa.</p>
+    <p>Você sente em extremos. Quando está feliz, está radiante. Quando está magoada, está devastada — mesmo que ninguém ao redor perceba, porque Lua em Escorpião raramente mostra a profundidade do que sente. Você aprendeu cedo que mostrar vulnerabilidade dá poder aos outros, então desenvolveu uma armadura invisível que protege o que é mais precioso em você.</p>
+    <p><strong>Situações concretas:</strong> você perdoa, mas raramente esquece. Uma traição de cinco anos atrás ainda vive em você com clareza cirúrgica. Você testa as pessoas — às vezes inconscientemente — para ver se vão ficar quando as coisas ficam difíceis. Quando se sente ameaçada emocionalmente, você pode se fechar completamente e o outro nem percebe que cruzou um limite.</p>
+    <p><strong>Na Casa V (criatividade e romance):</strong> sua vida criativa e amorosa é o centro onde tudo isso se intensifica. Seus romances são sempre transformadores — você não namora levemente. Cada relacionamento amoroso te reconfigura. Sua criatividade tem uma profundidade emocional que toca as pessoas onde elas não esperavam ser tocadas.</p>
+    <div class="oracle">
+      "Sua Lua em Escorpião é um oceano que ninguém consegue ver o fundo. Você não é instável — você é profunda. E a maioria das pessoas simplesmente não sabe nadar em águas assim."
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">⚡</span> Sol em Gêmeos vs Lua em Escorpião — A Grande Tensão</div>
+    <p>Este é o paradoxo central da sua existência: <strong>seu Sol quer leveza, variedade, comunicação e superfície brilhante. Sua Lua quer profundidade, intensidade, intimidade total e transformação radical.</strong> São dois instintos fundamentalmente opostos coexistindo em você.</p>
+    <p>Isso se manifesta concretamente em situações como: você começa uma conversa levinha sobre qualquer coisa e de repente se encontra falando sobre morte, trauma, segredos ou o sentido da existência — porque sua Lua em Escorpião puxou o fio para baixo enquanto seu Sol em Gêmeos estava fazendo piada. As pessoas ficam surpresas com a profundidade repentina que você traz.</p>
+    <p>Em relacionamentos, você precisa de alguém que aguente as duas versões: a Danieli leve, comunicativa, cheia de piadas e referências que muda de assunto na velocidade da luz — E a Danieli profunda, intensa, que quer saber de tudo sobre você, que observa em silêncio, que não esquece nada.</p>
+    <div class="highlight">
+      <p><strong>A integração desta tensão é seu maior superpoder potencial:</strong> quando Sol em Gêmeos e Lua em Escorpião se integram, você se torna capaz de comunicar o que é profundo de forma acessível, de falar sobre o impossível de uma forma que as pessoas conseguem ouvir. Isso é um dom raro que poucos possuem.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ PLANETAS PESSOAIS ════════════════════════════ -->
+<section id="pessoais">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— IV —</span>
+    <h2 class="sec-title">Os Planetas em Detalhe</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Mercúrio · Marte · Júpiter · Saturno · Urano · Netuno · Plutão</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="prow">
+      <div class="prow-sym">☿</div>
+      <div class="prow-body">
+        <div class="prow-title">Mercúrio em Touro 20° · Casa 12 — A Mente nos Bastidores</div>
+        <p>Mercúrio em Touro é uma mente lenta mas profunda — o oposto completo do Ascendente em Gêmeos. Enquanto sua personalidade externa (ASC) é rápida e ágil, seu processo interno de pensar (Mercúrio) é deliberado, metódico, concreto. Você não gosta de ser pressionada a dar respostas rápidas em situações importantes — precisa processar por dentro antes de comunicar por fora.</p>
+        <p>Na <strong>Casa 12</strong> (inconsciente, retiro, serviço oculto): Mercúrio aqui faz sua mente trabalhar mais nos bastidores do que na arena pública. Você tem insights que emergem inesperadamente — durante o banho, logo antes de dormir, em estados de meia-consciência. Há um acesso ao inconsciente coletivo que produz ideias fora do comum. <strong>Escrita, pesquisa profunda, trabalho com o psiquismo</strong> — estes são canais naturais deste Mercúrio. A Casa 12 também indica que você pode ter dificuldade de expressar verbalmente certas coisas que sente ou pensa, como se houvesse um véu entre o que está dentro e o que sai.</p>
+        <p><strong>Desafio concreto:</strong> ansiedade mental que aumenta à noite; pensamentos circulares antes de dormir; uma voz interna crítica que analisa e reanálise situações passadas repetidamente.</p>
+      </div>
+    </div>
+
+    <div class="prow">
+      <div class="prow-sym">♂</div>
+      <div class="prow-body">
+        <div class="prow-title">Marte em Câncer 15° · Casa 2 — A Vontade Emocional e o Dinheiro que Sente</div>
+        <p>Marte em Câncer está em <em>queda</em> — o guerreiro agindo através das emoções, da família e do instinto de proteção. Sua energia de ação é ativada emocionalmente: quando você está motivada afetivamente por algo, é imparável. Quando não está, a inação pode parecer impossível de superar. Você não age por dever frio — age por amor, por raiva, por proteção, por paixão.</p>
+        <p>Na <strong>Casa 2</strong> (dinheiro, recursos, valores): Marte aqui faz você lutar pelos seus recursos, mas de forma emocional e cíclica. Nos ciclos de alta energia, você pode ser extremamente produtiva e gerar dinheiro. Nos ciclos de baixa, pode gastar impulsivamente ou travrar. Saturno também está na Casa 2 — criando uma tensão entre impulso (Marte) e contenção (Saturno) diretamente no campo do dinheiro. Mais sobre isso na seção Financeiro.</p>
+        <p><strong>Situação concreta:</strong> quando defende alguém que ama, você vai até o fim sem hesitar. Mas defender a si mesma com a mesma ferocidade — esse é o desafio. Marte em Câncer é um guerreiro que luta pelos outros antes de lutar por si.</p>
+      </div>
+    </div>
+
+    <div class="prow">
+      <div class="prow-sym">♃</div>
+      <div class="prow-body">
+        <div class="prow-title">Júpiter em Virgem 9° · Casa 3 — A Expansão pela Mente e Comunicação</div>
+        <p>Júpiter, o planeta da fortuna e expansão, está em Virgem — o signo da análise e do serviço. Júpiter em Virgem expande através do <strong>aprendizado prático, do domínio técnico e do serviço ao outro</strong>. Você cresce quando aprende algo que pode ser imediatamente aplicado. Júpiter em Virgem também pode trazer uma benção de saúde quando os hábitos são cultivados — e problemas quando negligenciados.</p>
+        <p>Na <strong>Casa 3</strong> (comunicação, escrita, irmãos, estudos): Júpiter aqui é ouro puro para a comunicação. Você tem um dom natural para aprender, ensinar, escrever e falar de forma que expande as mentes alheias. Pode haver crescimento significativo através de irmãos ou figuras fraternais. Oportunidades chegam através de conversas, de cursos, de publicações, de comunicação em geral.</p>
+        <p><strong>Desafio de Júpiter em Virgem:</strong> perfeccionismo que impede de publicar, de terminar, de mostrar o trabalho antes que esteja "perfeito". O medo do erro pode ser maior que o tamanho real do risco.</p>
+      </div>
+    </div>
+
+    <div class="prow">
+      <div class="prow-sym">♄</div>
+      <div class="prow-body">
+        <div class="prow-title">Saturno em Câncer 12° · Casa 2 — A Estrutura Emocional e a Escassez Aprendida</div>
+        <p>Saturno em Câncer está em <em>exílio</em> — a estrutura severa de Saturno lutando com o ambiente emocional de Câncer. Isso indica que a segurança emocional foi uma área de aprendizado difícil: pode ter havido frieza afetiva, instabilidade no lar, ou a necessidade de ser o "adulto" emocionalmente antes do tempo. O resultado é uma pessoa que aprendeu a não precisar de ninguém — o que é tanto força quanto solidão.</p>
+        <p>Na <strong>Casa 2</strong> junto com Marte: Saturno em Câncer na Casa do dinheiro cria o padrão da "escassez aprendida" — mesmo que objetivamente você tenha recursos, pode sentir que não é suficiente, que pode faltar, que precisa guardar. Também pode haver dificuldade de receber dinheiro sem culpa, ou de cobrar o que vale.</p>
+        <p><strong>Situação concreta:</strong> você subestima o preço do seu trabalho. Cobra menos do que deveria. Tem dificuldade de dizer "eu preciso" seja emocionalmente ou materialmente. Isso vai se transformar com o Retorno de Saturno (aos ~29 anos).</p>
+      </div>
+    </div>
+
+    <div class="prow">
+      <div class="prow-sym">♇</div>
+      <div class="prow-body">
+        <div class="prow-title">Plutão em Sagitário 21° · Casa 7 — Transformação nas Parcerias</div>
+        <p>Plutão na Casa 7 é uma das posições mais intensas para relacionamentos. <strong>Suas parcerias — românticas e profissionais — são profundamente transformadoras e muitas vezes radicais.</strong> Você não tem relacionamentos neutros: cada parceiro significativo que passa pela sua vida te reconstrói por dentro. Isso pode ser extraordinário — cada amor é uma morte e renascimento. E pode ser devastador se você não desenvolver discernimento sobre quem recebe acesso às suas camadas mais profundas.</p>
+        <p>Plutão na 7 também indica que você pode atrair parceiros com traços plutonianos — intensos, poderosos, controladores ou em processo de grande transformação. Há um padrão de parcerias que envolvem poder — às vezes você tem o poder, às vezes o outro tem. O caminho é aprender a compartilhar poder igualmente.</p>
+        <p><strong>Sagitário na 7:</strong> você precisa de parceiros que expandam seu mundo — que tragam filosofia, aventura, liberdade, visão de mundo ampliada. Parceiros que te aprisionem, por mais que amem, te sufocam.</p>
+      </div>
+    </div>
+
+    <div class="prow" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+      <div class="prow-sym">♅♆</div>
+      <div class="prow-body">
+        <div class="prow-title">Urano + Netuno em Peixes · Casa 9 — A Espiritualidade Revolucionária</div>
+        <p><strong>Urano em Peixes</strong>: insights espirituais que chegam como raios — repentinos, completos, impossíveis de ignorar. Sua visão de mundo se reconstrói em momentos súbitos de iluminação. Você tem uma relação não-convencional com fé e filosofia — não aceita dogma, não segue escola fechada. Sua espiritualidade é viva, mutável e profundamente pessoal.</p>
+        <p><strong>Netuno em Peixes</strong>: Netuno está em seu domicílio natural — extremamente poderoso. Isso amplifica sua sensibilidade, intuição, capacidade de dissolução de fronteiras entre o visível e o invisível. Você pertence a uma geração destinada a redefinir o conceito de espiritualidade coletiva. Pessoalmente, você tem acesso natural a estados alterados, sonhos vívidos, percepções que vão além do que os cinco sentidos explicam.</p>
+        <p>Na <strong>Casa 9</strong>: tudo isso opera no campo da filosofia, espiritualidade, viagens longas e ensino superior. Você pode ter uma vida espiritual extraordinária e também um caminho acadêmico ou filosófico que vai muito além do convencional.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ 12 CASAS ════════════════════════════ -->
+<section id="casas">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— V —</span>
+    <h2 class="sec-title">As Doze Casas Astrológicas</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Cada esfera da vida · Cada arena de experiência humana</p>
+  </div>
+
+  <div class="house-grid">
+
+    <div class="hcard reveal" data-num="I">
+      <div class="h-num">Casa I · Ascendente</div>
+      <div class="h-sign">Gêmeos 13°</div>
+      <div class="h-planets">☉ Sol 10° · ♀ Vênus 22°</div>
+      <div class="h-theme">Identidade · Corpo · Aparência · Primeira Impressão</div>
+      <div class="h-desc">A casa mais carregada do seu mapa: Ascendente, Sol e Vênus todos em Gêmeos. Você é, antes de tudo, uma comunicadora. Sua presença é intelectual, ágil e encantadora. O mundo a recebe como alguém jovem, brilhante e charmosa — e raramente percebe de imediato a profundidade que mora nos andares de baixo. Você pode usar essa leveza aparente estrategicamente: as pessoas baixam a guarda com você antes de perceberem o quanto você já percebeu sobre elas.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="II">
+      <div class="h-num">Casa II</div>
+      <div class="h-sign">Câncer</div>
+      <div class="h-planets">♂ Marte 15° · ♄ Saturno 12°</div>
+      <div class="h-theme">Dinheiro · Recursos · Autoestima · Valores</div>
+      <div class="h-desc">A Casa do dinheiro carregada de Marte e Saturno em Câncer — tensão real entre impulso e contenção no campo material. Sua relação com dinheiro é profundamente emocional: gasta quando está animada, trava quando está ansiosa. Pode ter herdado padrões de escassez emocional que se traduzem em escassez material. Câncer aqui significa que a segurança financeira é também segurança emocional — quando uma falta, a outra também vacila.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="III">
+      <div class="h-num">Casa III</div>
+      <div class="h-sign">Leão</div>
+      <div class="h-planets">♃ Júpiter 9°</div>
+      <div class="h-theme">Comunicação · Irmãos · Estudos · Vizinhança</div>
+      <div class="h-desc">Leão na III com Júpiter: sua comunicação é dramática, criativa e generosa. Você não conta histórias — você performa histórias. Júpiter aqui é uma bênção enorme: sua mente se expande naturalmente, você tem facilidade para aprender e para ensinar, e oportunidades de crescimento chegam literalmente através de conversas e conexões locais. Irmãos ou figuras fraternais podem ser muito importantes na sua jornada.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="IV">
+      <div class="h-num">Casa IV · Fundo do Céu</div>
+      <div class="h-sign">Virgem 23°</div>
+      <div class="h-planets">— sem planetas —</div>
+      <div class="h-theme">Lar · Família · Raízes · O Passado</div>
+      <div class="h-desc">Virgem na raiz da IV: o ambiente familiar foi marcado por análise, crítica e busca por perfeição. Pode ter havido muita atenção aos detalhes, muita cobrança por acerto, pouco espaço para o erro. O lar pode ter sido um lugar de trabalho e dever mais do que de descanso puro. Mercúrio rege esta casa — e está na XII, indicando que muito do que aconteceu no lar familiar ficou não-dito, processado internamente, escondido.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="V">
+      <div class="h-num">Casa V</div>
+      <div class="h-sign">Libra</div>
+      <div class="h-planets">☽ Lua 2°</div>
+      <div class="h-theme">Criatividade · Romance · Filhos · Prazer · Jogo</div>
+      <div class="h-desc">Libra na V com a Lua em Escorpião: sua criatividade busca equilíbrio e beleza (Libra) mas é impulsionada por emoções profundas e transformadoras (Lua em Escorpião aqui visitando). Seus romances são uma área de intensa experiência emocional — você ama com tudo. Filhos, se os tiver, serão intensamente conectados a você emocionalmente. Libra na V também sugere que você pode criar em parceria — projetos a dois que nascem de relacionamentos.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="VI">
+      <div class="h-num">Casa VI</div>
+      <div class="h-sign">Escorpião</div>
+      <div class="h-planets">— sem planetas —</div>
+      <div class="h-theme">Saúde · Trabalho · Rotina · Serviço</div>
+      <div class="h-desc">Escorpião na VI: sua saúde e rotina de trabalho são áreas de transformação profunda. Você não consegue ter uma relação neutra com seu trabalho — ou está completamente entregue ou completamente sabotando. Crises de saúde quando acontecem tendem a ser intensas mas reveladoras, forçando mudanças de estilo de vida que você não teria feito voluntariamente. Plutão rege esta casa — e está na VII, indicando que parcerias afetam diretamente sua saúde e rotina.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="VII">
+      <div class="h-num">Casa VII · Descendente</div>
+      <div class="h-sign">Sagitário 13°</div>
+      <div class="h-planets">♇ Plutão 21°</div>
+      <div class="h-theme">Parcerias · Casamento · O Outro</div>
+      <div class="h-desc">Sagitário no Descendente com Plutão: você atrai parceiros que são expansivos, filosóficos, aventureiros — e intensamente transformadores. Cada parceria séria é também uma transformação de identidade. Plutão aqui pode atrair parceiros com traços de poder — que podem tanto elevar quanto tentar dominar. A palavra "possessividade" pode aparecer em seus relacionamentos de ambos os lados. O caminho é parceria que liberta, não que aprisiona.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="VIII">
+      <div class="h-num">Casa VIII</div>
+      <div class="h-sign">Capricórnio</div>
+      <div class="h-planets">— sem planetas —</div>
+      <div class="h-theme">Transformação · Morte/Renascimento · Heranças · Sexualidade</div>
+      <div class="h-desc">Capricórnio na VIII: você lida com transformações de forma estruturada, lenta e construtiva. Morte e renascimento acontecem em você de forma que parece controlada externamente — mas é profunda. Saturno rege esta casa (e está na II), criando um elo entre recursos próprios e recursos de terceiros. Heranças materiais ou kármicas podem exigir trabalho e responsabilidade para serem acessadas. Sua sexualidade tem uma qualidade de comprometimento — você não se entrega facilmente.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="IX">
+      <div class="h-num">Casa IX</div>
+      <div class="h-sign">Aquário</div>
+      <div class="h-planets">♅ Urano 6° · ♆ Netuno 15°</div>
+      <div class="h-theme">Filosofia · Espiritualidade · Viagens · Ensino Superior</div>
+      <div class="h-desc">Aquário na IX com Urano e Netuno: sua visão filosófica e espiritual é revolucionária, coletiva e transcende qualquer escola fechada. Você tem uma mente que vê além das estruturas estabelecidas. Viagens longas podem ser gatilhos de grandes transformações internas. Ensino superior — se e quando percorrido — será em área não-convencional ou abordado de forma inovadora. Sua espiritualidade é a de quem reconstrói o que sabe toda vez que aprende algo novo.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="X">
+      <div class="h-num">Casa X · Meio do Céu</div>
+      <div class="h-sign">Peixes 23°</div>
+      <div class="h-planets">— sem planetas —</div>
+      <div class="h-theme">Carreira · Reputação · Destino Público</div>
+      <div class="h-desc">Meio do Céu em Peixes: sua carreira pública é chamada para algo que transcende o puramente material — arte, cura, serviço, espiritualidade, psicologia, criatividade com propósito. Sua reputação pública é de alguém sensível, criativo e capaz de tocar emocionalmente. Netuno rege este MC — e está na IX, indicando que espiritualidade, filosofia ou estudos profundos são o caminho para sua carreira mais verdadeira. Você não serve a qualquer chefe — você serve a uma visão.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="XI">
+      <div class="h-num">Casa XI</div>
+      <div class="h-sign">Áries</div>
+      <div class="h-planets">☊ Nodo Norte</div>
+      <div class="h-theme">Amizades · Grupos · Ideais · Futuro</div>
+      <div class="h-desc">Áries na XI com Nodo Norte: seu destino evolutivo está em aprender a ser pioneira dentro de grupos e coletivos — a trazer fogo, iniciativa e liderança (Áries) para causas e comunidades. Você veio para liderar, não para apenas pertencer. O Nodo Norte aqui pede que você desenvolva sua voz individual dentro do coletivo — sem perder a identidade em nome da aprovação do grupo.</div>
+    </div>
+
+    <div class="hcard reveal" data-num="XII">
+      <div class="h-num">Casa XII</div>
+      <div class="h-sign">Touro</div>
+      <div class="h-planets">☿ Mercúrio 20°</div>
+      <div class="h-theme">Inconsciente · Karma Oculto · Retiro · Serviço Invisível</div>
+      <div class="h-desc">Touro na XII com Mercúrio: seus maiores recursos ocultos estão no silêncio e na profundidade — a mente (Mercúrio) que trabalha nos bastidores produz suas melhores ideias. Touro na XII indica que há dinheiro ou recursos que ficam invisíveis ou inacessíveis por um tempo antes de se revelarem. Há também um padrão de conforto e prazer físico (Touro) como fuga inconsciente do mundo — comer, dormir, ficar confortável como forma de não lidar.</div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ════════════════════════════ ASPECTOS ════════════════════════════ -->
+<section id="aspectos">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— VI —</span>
+    <h2 class="sec-title">Os Aspectos Planetários</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">As conversas internas · Como as energias dialogam, conflitam e se ampliam</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🔭</span> Tabela de Aspectos</div>
+    <table class="atbl">
+      <thead>
+        <tr>
+          <th>Planeta A</th>
+          <th>Aspecto</th>
+          <th>Planeta B</th>
+          <th>Interpretação Detalhada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>☉ Sol</strong></td>
+          <td><span class="asp-sq">□ Quadratura</span><br><span class="asp-lbl" style="color:#d05050;">Tensão/Desafio</span></td>
+          <td><strong>♃ Júpiter</strong></td>
+          <td>Tensão entre a identidade (Sol em Gêmeos) e a expansão (Júpiter em Virgem). Você pode exagerar — na fala, nos planos, nas promessas. Tendência a começar projetos com entusiasmo sem avaliar os detalhes. O perfeccionismo de Virgem trava o brilho de Gêmeos. <em>Situação real: você já prometeu algo que não conseguiu cumprir não por desonestidade, mas por genuíno entusiasmo que superestimou o que era possível.</em></td>
+        </tr>
+        <tr>
+          <td><strong>☉ Sol</strong></td>
+          <td><span class="asp-sq">□ Quadratura</span><br><span class="asp-lbl" style="color:#d05050;">Tensão/Desafio</span></td>
+          <td><strong>♅ Urano</strong></td>
+          <td>Sua identidade (Sol) em conflito com a necessidade de ruptura e liberdade (Urano em Peixes). Você pode ter uma relação tensa com autoridade e estrutura — parte de você quer se encaixar, outra parte quer explodir qualquer moldura que a contenha. Mudanças súbitas na identidade e na vida são comuns. <em>Situação real: você provavelmente já reconstruiu sua identidade completamente pelo menos uma vez — cortou o cabelo, mudou de grupo, de estilo, de crença — como forma de libertar-se de uma versão que havia ficado pequena.</em></td>
+        </tr>
+        <tr>
+          <td><strong>☉ Sol</strong></td>
+          <td><span class="asp-tr">△ Trígono</span><br><span class="asp-lbl" style="color:#50c050;">Harmonia/Dom</span></td>
+          <td><strong>♆ Netuno</strong></td>
+          <td>Presente extraordinário: sua identidade (Sol em Gêmeos) flui harmonicamente com Netuno em Aquário. Isso significa acesso natural ao espiritual, ao imaginativo, ao que vai além do racional. Você cria conexões entre ideias que pareciam separadas e as transforma em algo belo. <em>Situação real: quando você está no fluxo criativo ou espiritual, perde completamente a noção do tempo — horas passam como minutos e o que você produz nesses estados é seu melhor trabalho.</em></td>
+        </tr>
+        <tr>
+          <td><strong>☉ Sol</strong></td>
+          <td><span class="asp-op">☍ Oposição</span><br><span class="asp-lbl" style="color:#d0a030;">Polaridade</span></td>
+          <td><strong>♇ Plutão</strong></td>
+          <td>Sol em Gêmeos oposto a Plutão em Sagitário: sua identidade leve e comunicativa em oposição direta com a força de transformação radical e destruição criativa de Plutão. Isso cria uma vida em que a leveza aparente é constantemente desafiada por forças de transformação profunda. <em>Situação real: você provavelmente já perdeu algo que amava — uma identidade, uma relação, uma fase — de forma abrupta e devastadora. E ressurgiu diferente. Isso acontecerá mais de uma vez.</em></td>
+        </tr>
+        <tr>
+          <td><strong>☽ Lua</strong></td>
+          <td><span class="asp-tr">△ Trígono</span><br><span class="asp-lbl" style="color:#50c050;">Harmonia/Dom</span></td>
+          <td><strong>♅ Urano</strong></td>
+          <td>Sua Lua em Escorpião em trígono com Urano em Peixes: sua vida emocional tem um componente de liberdade, de ruptura e de imprevisibilidade que coexiste de forma relativamente harmônica. Você precisa de liberdade emocional — relacionamentos sufocantes te fazem desaparecer. Há uma intuição aguçada que funciona como radar emocional, alertando para o que está errado antes que qualquer lógica consiga.</td>
+        </tr>
+        <tr>
+          <td><strong>☿ Mercúrio</strong></td>
+          <td><span class="asp-sq">□ Quadratura</span><br><span class="asp-lbl" style="color:#d05050;">Tensão/Desafio</span></td>
+          <td><strong>♆ Netuno</strong></td>
+          <td>Mercúrio em Touro em quadratura com Netuno em Aquário: a mente concreta e prática (Mercúrio/Touro) em conflito com a dissolução e a ilusão (Netuno). Isso pode criar confusão mental — momentos em que você não sabe distinguir o que é real do que é imaginado, o que sente de fato do que projeta. Também pode criar dificuldade de concentração e tendência a idealizar situações. <em>Situação real: você já criou na cabeça uma versão de alguém ou de uma situação que não correspondia à realidade — e levou um tempo para aceitar o que estava realmente diante de você.</em></td>
+        </tr>
+        <tr>
+          <td><strong>♀ Vênus</strong></td>
+          <td><span class="asp-op">☍ Oposição</span><br><span class="asp-lbl" style="color:#d0a030;">Polaridade</span></td>
+          <td><strong>♇ Plutão</strong></td>
+          <td>Vênus em Gêmeos oposta a Plutão em Sagitário: amor e destruição, atração e transformação radical. Esta é uma das posições mais intensas para a vida amorosa. Você pode atrair (ou ser) relações com um elemento de poder, obsessão ou transformação radical. O amor para você nunca é neutro — sempre muda algo fundamental em você ou no outro. <em>Situação real: você provavelmente já sentiu por alguém uma atração que não conseguia controlar — mesmo quando a lógica dizia para ir embora, algo mais profundo que a lógica te mantinha.</em></td>
+        </tr>
+        <tr>
+          <td><strong>♂ Marte</strong></td>
+          <td><span class="asp-cx">☌ Conjunção</span><br><span class="asp-lbl" style="color:#8090d0;">Fusão</span></td>
+          <td><strong>♄ Saturno</strong></td>
+          <td>Marte conjunto Saturno em Câncer na Casa 2: a conjunção mais desafiadora do seu mapa. O impulso (Marte) fundido com a contenção (Saturno). Sua energia de ação está cronicamente reprimida e estruturada — o que pode criar disciplina excepcional quando integrada, ou paralisia e explosões quando não integrada. <em>Situação real: você já ficou travada por muito tempo em algo que queria mudar, sem conseguir agir — e depois quando agiu, foi de forma repentina e definitiva, surpreendendo a todos incluindo você mesma.</em></td>
+        </tr>
+        <tr>
+          <td><strong>♃ Júpiter</strong></td>
+          <td><span class="asp-sx">✶ Sextil</span><br><span class="asp-lbl" style="color:#50b0d0;">Oportunidade</span></td>
+          <td><strong>♄ Saturno</strong></td>
+          <td>Júpiter em Virgem em sextil com Saturno em Câncer: a expansão e a estrutura em comunicação construtiva. Quando você combina o otimismo de Júpiter com a disciplina de Saturno, pode construir coisas extraordinárias e duradouras. Esta é uma configuração de sucesso a longo prazo — não de grandes ganhos instantâneos, mas de construção sólida e crescimento consistente.</td>
+        </tr>
+        <tr>
+          <td><strong>♃ Júpiter</strong></td>
+          <td><span class="asp-op">☍ Oposição</span><br><span class="asp-lbl" style="color:#d0a030;">Polaridade</span></td>
+          <td><strong>♅ Urano</strong></td>
+          <td>Júpiter em Virgem oposto a Urano em Peixes: tensão entre crescimento ordenado (Júpiter/Virgem) e revolução súbita (Urano/Peixes). Você pode ter mudanças de vida radicais e inesperadas que a principio parecem destruição mas revelam ser expansão. A vida te interrompe quando você está muito confortável — e isso, no longo prazo, te leva a lugares que você não teria chegado de forma linear.</td>
+        </tr>
+        <tr>
+          <td><strong>♄ Saturno</strong></td>
+          <td><span class="asp-tr">△ Trígono</span><br><span class="asp-lbl" style="color:#50c050;">Harmonia/Dom</span></td>
+          <td><strong>♅ Urano</strong></td>
+          <td>Saturno em Câncer em trígono com Urano em Peixes: capacidade única de estruturar o que é revolucionário — de dar forma prática a ideias visionárias. Você pode construir o que imagina. Pode transformar o caos criativo em algo concreto e funcional. Este é um dom raro e muito valioso para qualquer projeto criativo ou espiritual que você decida construir com seriedade.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">💥</span> A Tensão Mais Importante: Marte Conjunto Saturno na Casa 2</div>
+    <p>Esta é a configuração que mais afeta sua vida cotidiana. <strong>Marte quer agir com impulso e emoção (Câncer). Saturno quer controlar, adiar e estruturar.</strong> Juntos na Casa do dinheiro e da autoestima, esta conjunção cria um ciclo que você provavelmente reconhece:</p>
+    <div class="tl" style="margin-top:1.5rem;">
+      <div class="tl-item">
+        <div class="tl-label">Fase 1 — Compressão</div>
+        <p>Você sente que deveria agir, mudar, cobrar mais, pedir o que precisa — mas Saturno aplica o freio. Você espera. Aguenta. Suporta.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Fase 2 — Pressão</div>
+        <p>A pressão interna cresce. Você começa a ficar irritada de forma que nem sempre consegue nomear. Pequenas coisas incomodam mais do que deveriam.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Fase 3 — Explosão ou Implosão</div>
+        <p>Marte rompe a barreira de Saturno — ou na forma de ação súbita e definitiva (cortar algo de uma vez, largar tudo, agir radicalmente), ou virando para dentro na forma de esgotamento, depressão leve ou adoecimento físico.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Fase 4 — Integração</div>
+        <p>A ação aconteceu. Há um período de reconstrução. E o ciclo começa novamente.</p>
+      </div>
+    </div>
+    <div class="oracle">
+      "Você não é bipolar nem instável. Você é uma pessoa que foi ensinada a suprimir demais por tempo demais. A cura está em aprender a agir em doses menores, mais frequentes — antes que a pressão exploda."
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ NODOS ════════════════════════════ -->
+<section id="nodos">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— VII —</span>
+    <h2 class="sec-title">Os Nodos Lunares · O Eixo Kármico</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Nodo Norte em Áries · Nodo Sul em Libra · A missão desta encarnação</p>
+  </div>
+
+  <div class="nodo-wrap reveal">
+    <div class="nbox">
+      <div class="nbox-title">☋ Nodo Sul · Libra · Casa 5</div>
+      <p>O Nodo Sul é de onde você <em>vem</em> — o que sua alma domina com tanta maestria que pode se tornar uma armadilha dourada. <strong>Libra</strong> no Nodo Sul indica que em vidas anteriores você viveu o arquétipo do mediador, do diplomata, do parceiro perfeito. Você se dissolvia no outro para manter a harmonia. Sabia exatamente o que dizer para agradar, para equilibrar, para não criar conflito.</p>
+      <p>Na <strong>Casa 5</strong> (romances e criatividade): você usou sua criatividade e seu charme para se encaixar, para ser amada, para ser escolhida. Sacrificou o que queria em nome do que o outro precisava.</p>
+      <div class="tags">
+        <span class="tag r">Padrão a Soltar</span>
+        <span class="tag r">Dependência de Aprovação</span>
+        <span class="tag r">Sacrifício da Vontade</span>
+        <span class="tag r">Dificuldade de Discordar</span>
+      </div>
+      <p>Isso ainda opera em você hoje: <strong>você pode ceder demais, concordar quando discorda, evitar conflito mesmo quando ele é necessário, e depois ressentir quem "te fez" ceder.</strong> A responsabilidade, porém, é sua — você cedeu. Ninguém te forçou.</p>
+    </div>
+
+    <div class="nbox">
+      <div class="nbox-title">☊ Nodo Norte · Áries · Casa 11</div>
+      <p>O Nodo Norte é para onde você está sendo chamada — o que assusta, o que é novo, o que vai contra seus instintos automáticos, mas que é o caminho de sua evolução mais verdadeira. <strong>Áries</strong> no Nodo Norte: você veio para aprender a ser pioneira, a liderar com coragem, a dizer "eu quero isso" sem pedir permissão, a agir mesmo antes de ter consenso, a ser a primeira sem precisar que todos aprovem.</p>
+      <p>Na <strong>Casa 11</strong> (grupos e ideais): sua liderança e coragem pioneira devem acontecer dentro de contextos coletivos — não de forma egocêntrica, mas como faísca que acende um movimento maior.</p>
+      <div class="tags">
+        <span class="tag g">Lições a Integrar</span>
+        <span class="tag g">Coragem Individual</span>
+        <span class="tag g">Liderança Pioneira</span>
+        <span class="tag g">Discordância Corajosa</span>
+        <span class="tag g">Querer sem Pedir Desculpa</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal" style="margin-top:2rem;">
+    <div class="card-title"><span class="ct-icon">⚔️</span> O Que Isso Significa na Prática da Sua Vida</div>
+    <p>Toda vez que você tem uma opinião diferente da maioria mas fica quieta — você está caminhando <em>contra</em> o Nodo Norte. Toda vez que você abre a boca e diz o que pensa mesmo sabendo que vai criar desconforto — você está evoluindo. Toda vez que você coloca sua vontade em primeiro lugar sem se destruir de culpa — você está se aproximando de quem veio ser.</p>
+    <p>O grande trabalho desta vida é <strong>aprender que discordar não destrói o amor, que ser você mesma não afasta quem é certo para você, e que a harmonia que exige seu apagamento não é harmonia — é supressão.</strong></p>
+    <p>Áries no Nodo Norte também pede coragem física e emocional: começar o que você teme, dar o primeiro passo sozinha, não esperar que o outro lide com as situações difíceis primeiro. Você veio para ser pioneira — não seguidora.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ VIDAS PASSADAS ════════════════════════════ -->
+<section id="passado">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— VIII —</span>
+    <h2 class="sec-title">Vidas Passadas · Memória da Alma</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O que o mapa revela sobre quem você foi antes</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌀</span> Os Indicadores de Vidas Anteriores</div>
+    <p>A astrologia esotérica usa o Nodo Sul, a Casa 12, Saturno, planetas em queda, e padrões repetitivos do mapa como indicadores das memórias mais profundas da alma. Seu mapa conta histórias de múltiplas encarnações.</p>
+  </div>
+
+  <div class="kgrid">
+    <div class="kcard reveal">
+      <span class="kicon">🏺</span>
+      <div class="ktitle">Vida de Mediadora e Diplomata</div>
+      <div class="kdesc">Nodo Sul em Libra, Casa 5: uma vida — possivelmente mais de uma — dedicada a manter a paz e a harmonia entre grupos, famílias, ou nações. Você foi a pessoa que todos procuravam para resolver conflitos. Uma conselheira, uma mediadora, talvez uma artista que usava seu talento para criar pontes entre mundos. A beleza e o equilíbrio eram seus instrumentos. O custo foi você mesma.</div>
+    </div>
+
+    <div class="kcard reveal">
+      <span class="kicon">📜</span>
+      <div class="kdesc">
+        <div class="ktitle">Vida de Escriba ou Filósofa</div>
+        Mercúrio na Casa 12 em Touro: uma vida dedicada ao registro, ao pensamento profundo que não chegou ao público — trabalho intelectual que ficou nos bastidores, talvez em mosteiros, bibliotecas ou arquivos secretos. Conhecimento acumulado que opera hoje no seu inconsciente como intuição e profundidade de pensamento que parece vir "de longe".
+      </div>
+    </div>
+
+    <div class="kcard reveal">
+      <span class="kicon">🌊</span>
+      <div class="ktitle">Vida de Sacrifício Emocional</div>
+      <div class="kdesc">Saturno em Câncer em queda + Marte em Câncer na Casa 2: uma vida (ou mais) de privação emocional severa — cuidar de outros sem receber cuidado, ou trabalhar incansavelmente sem colher os frutos. Os padrões de "escassez aprendida" e "não mereço descanso" vêm desta memória ancestral que ainda opera em você como um arquivo do sistema que não foi atualizado.</div>
+    </div>
+
+    <div class="kcard reveal">
+      <span class="kicon">🔮</span>
+      <div class="ktitle">Vida de Vidente ou Curandeira</div>
+      <div class="kdesc">Urano + Netuno na IX em Peixes, Lua em Escorpião: há uma memória forte de vida dedicada ao invisível — xamanismo, vidência, cura energética, trabalho com os mortos ou com o que está além do véu. Esta memória se manifesta hoje na sua sensibilidade psíquica natural, nos sonhos significativos, na capacidade de "saber" coisas sem explicação racional.</div>
+    </div>
+
+    <div class="kcard reveal">
+      <span class="kicon">⚔️</span>
+      <div class="ktitle">Votos Antigos Ainda Operando</div>
+      <div class="kdesc">Mercúrio na XII + Saturno em queda + Lua em Escorpião: há votos feitos em outras vidas — de silêncio (não falar o que sabe), de pobreza (não ter demais), de entrega (colocar o outro antes de si) — que ainda operam como programas inconscientes. O Nodo Norte em Áries é literalmente o chamado para dissolver estes votos.</div>
+    </div>
+
+    <div class="kcard reveal">
+      <span class="kicon">💔</span>
+      <div class="ktitle">Karma com Parcerias</div>
+      <div class="kdesc">Plutão na VII + Nodo Sul em Libra: há um karma antigo com parceiros — contratos não cumpridos, amor não completado, poder mal usado em relacionamentos. Cada parceria intensa desta vida carrega um elemento de resolução kármica. Quando um relacionamento termina de forma dolorosa, algo ancestral também está sendo encerrado.</div>
+    </div>
+  </div>
+
+  <div class="card reveal" style="margin-top:2rem;">
+    <div class="card-title"><span class="ct-icon">🎁</span> Dons Trazidos de Outras Vidas</div>
+    <p>Nem tudo é karma difícil. Você carrega dons extraordinários acumulados ao longo de encarnações:</p>
+    <div class="tags">
+      <span class="tag">Inteligência Comunicativa Excepcional</span>
+      <span class="tag">Sensibilidade Psíquica</span>
+      <span class="tag">Dom para Mediação</span>
+      <span class="tag">Profundidade Emocional</span>
+      <span class="tag">Capacidade de Transformação</span>
+      <span class="tag">Percepção do Invisível</span>
+      <span class="tag">Resiliência Forjada em Fogo</span>
+      <span class="tag">Sabedoria Acima da Idade</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ FAMÍLIA ════════════════════════════ -->
+<section id="familia">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— IX —</span>
+    <h2 class="sec-title">Família, Raízes e Dinâmicas Ancestrais</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O lar de onde você veio · Os padrões que carrega · O que pede transformação</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌳</span> A Casa IV em Virgem — O Lar da Análise e da Cobrança</div>
+    <p>Com <strong>Virgem na Casa IV</strong> e <strong>Mercúrio (regente) na XII</strong>, o ambiente familiar de origem foi marcado por uma cultura de análise, perfeccionismo e atenção a detalhes. Pode ter havido muita cobrança — não necessariamente com maldade, mas como linguagem familiar: o amor se expressava através de crítica construtiva, de exigência, de "eu sei que você pode mais".</p>
+    <p>O Mercúrio na XII indica que muito do que realmente acontecia no lar não era dito abertamente — havia uma comunicação subterrânea, de emoções não expressas, de assuntos que nunca eram discutidos diretamente. Você cresceu aprendendo a ler nas entrelinhas, a perceber o que não era falado.</p>
+    <p><strong>Situação concreta:</strong> você pode ter sentido que nunca era suficiente — não importava o que alcançasse, sempre havia mais para melhorar. Esse padrão seguiu você para dentro: hoje é você mesma quem aplica essa régua impossível à própria vida.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">👪</span> Saturno em Câncer — A Herança Emocional</div>
+    <p>Saturno em Câncer em queda na Casa 2 fala de uma herança emocional que inclui padrões de <strong>privação afetiva, responsabilidade excessiva precoce, e a mensagem de que sentimentos são um fardo</strong>. Isso não precisa ter vindo de uma família "ruim" — muitas vezes são padrões intergeracionais que se transmitem sem consciência.</p>
+    <p>A <strong>linhagem materna</strong> (Câncer/Lua) carrega um padrão de mulheres que sacrificaram muito — que adiaram sonhos, que ficaram caladas, que cuidaram de todos antes de si. Você sente esse peso. Às vezes parece que tem uma dívida que não contraiu conscientemente.</p>
+    <p>O trabalho ancestral que este mapa pede: <strong>honrar quem veio antes, mas não perpetuar o que as esgotou.</strong> Você pode ser a geração que quebra o ciclo — não com raiva, mas com consciência e escolha.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🔗</span> Irmãos e Comunicação Familiar — Júpiter na III</div>
+    <p>Júpiter em Virgem na Casa 3 traz uma dimensão de crescimento e expansão através de irmãos, primos ou figuras fraternais. Pode haver alguém nessa categoria que foi — ou que será — um elemento de sorte e expansão na sua vida. Uma conversa certa com a pessoa certa no momento certo pode abrir portas inesperadas.</p>
+    <p>A comunicação familiar é uma área onde você tem potencial para ser uma ponte — para dizer o que os outros não conseguem, para nomear o que estava sem nome, para criar diálogos que transformam relações familiares antigas e cristalizadas.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ FINANCEIRO ════════════════════════════ -->
+<section id="financeiro">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— X —</span>
+    <h2 class="sec-title">Vida Financeira e Material</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">A Casa 2 carregada · Dinheiro, autoestima e o corpo como recurso</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">💰</span> Marte + Saturno em Câncer na Casa 2 — A Batalha com o Dinheiro</div>
+    <p>Ter <strong>Marte e Saturno juntos na Casa do dinheiro</strong> é uma das configurações financeiras mais complexas do zodíaco. Por um lado, há enorme capacidade de trabalho duro e disciplina (Saturno) quando o canal está aberto. Por outro, há impulsos de gasto emocional (Marte em Câncer) que podem criar instabilidade quando as emoções estão no comando.</p>
+    <p><strong>Padrões que você provavelmente reconhece:</strong></p>
+    <div class="tl" style="margin-top:1rem;">
+      <div class="tl-item">
+        <div class="tl-label">Gasto de Conforto</div>
+        <p>Quando está triste, ansiosa ou insegura emocionalmente, você gasta — comida, roupas, entretenimento — como forma de se regular. Marte em Câncer usa recursos materiais para suprir necessidades emocionais.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Cobrança Abaixo do Valor</div>
+        <p>Saturno em Câncer na II cria a "escassez aprendida" — uma sensação profunda de que pedir o que vale é arriscado ou errado. Você cobra menos. Aceita menos. Trabalha mais pelo mesmo.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Ciclos de Abundância e Contração</div>
+        <p>Marte e Saturno em tensão criam ciclos — períodos de grande produtividade e ganho, seguidos de períodos de retração. Não é azar — é o padrão do mapa operando.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌟</span> O Caminho da Prosperidade Real</div>
+    <p><strong>Júpiter na Casa 3 em Virgem</strong> é o maior indicador de prosperidade do seu mapa: dinheiro através de comunicação, escrita, ensino, análise e serviço intelectual. Cada vez que você usa sua mente para comunicar, ensinar ou analisar, você está ativando seu canal mais natural de abundância.</p>
+    <p><strong>Vênus na Casa 1 em Gêmeos:</strong> sua presença e charme são recursos financeiros reais. Networking, colaborações, parcerias criativas — o dinheiro chega através de relações e da sua capacidade de criar conexões.</p>
+    <p><strong>Sol na Casa 1:</strong> você tem capacidade de ser reconhecida publicamente pelo que é, não apenas pelo que faz. Há um caminho de autoridade e visibilidade que, quando percorrido, abre portas financeiras que trabalho anônimo nunca abriria.</p>
+    <div class="tags">
+      <span class="tag g">Escrita e Comunicação</span>
+      <span class="tag g">Ensino e Mentoria</span>
+      <span class="tag g">Criação de Conteúdo</span>
+      <span class="tag g">Psicologia / Cura</span>
+      <span class="tag g">Arte com Propósito</span>
+      <span class="tag g">Consultoria</span>
+      <span class="tag g">Pesquisa Profunda</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ AMOR ════════════════════════════ -->
+<section id="amor">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— XI —</span>
+    <h2 class="sec-title">Amor, Parcerias e Intimidade</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Lua em Escorpião · Vênus em Gêmeos · Plutão na VII · O coração que não se entrega pela metade</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">♥</span> O Que Você Precisa em Amor (e Por Quê Raramente Encontra)</div>
+    <p>Você tem um dos perfis amorosos mais complexos do zodíaco: <strong>Vênus em Gêmeos quer leveza, variedade, conversa intelectual e liberdade. Lua em Escorpião quer profundidade absoluta, lealdade inabalável, intimidade sem véu e transformação. São necessidades quase opostas.</strong></p>
+    <p>O que isso cria na vida real: você se atrai imediatamente por pessoas inteligentes e comunicativas (Vênus/Gêmeos). Mas logo percebe se há ou não profundidade (Lua/Escorpião). Se não há, o interesse esfria rapidamente — não importa o quanto o outro seja charmoso. Se há profundidade, você entra de cabeça e o relacionamento se torna uma das coisas mais intensas que existem.</p>
+    <p>Com <strong>Plutão na Casa 7</strong>: seus relacionamentos sérios são sempre transformadores. Você não sai de um relacionamento intenso sendo a mesma pessoa que entrou. Cada amor deixa uma marca na alma — literalmente reconstrói partes de você. Isso é um presente e um risco: você precisa de parceiros que também possam ser transformados, não apenas te transformar.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🔒</span> Os Padrões Relacionais que Aparecem Repetidamente</div>
+    <div class="g2">
+      <div>
+        <p><strong>Vênus oposta Plutão:</strong> atração por intensidade — parceiros que têm uma energia de poder, de mistério, de profundidade que te fascina. O problema é que intensidade nem sempre é saúde. Você pode confundir possessividade com paixão, ciúme com amor, controle com cuidado — em você ou no outro.</p>
+        <p><strong>Lua em Escorpião:</strong> você testa antes de confiar. Às vezes inconscientemente coloca obstáculos para ver se o parceiro vai ficar. Se ele fica, ainda não é certeza — você vai testar de outras formas. Isso pode esgotar relacionamentos genuinamente bons.</p>
+      </div>
+      <div>
+        <p><strong>Nodo Sul em Libra:</strong> você cede demais na harmonia. Evita conflito quando ele seria saudável. Acumula ressentimentos que não foram ditos. E às vezes, quando o copo transborda, a reação é desproporcional ao gatilho — porque não era só aquilo, eram meses de coisas não ditas.</p>
+        <p><strong>Saturno na II regendo a VIII:</strong> dificuldade de se entregar financeiramente e emocionalmente em parcerias — medo de depender do outro materialmente ou emocionalmente. Pode criar relações em que você mantém mais independência do que precisa, sabotando a intimidade verdadeira.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">✨</span> O Parceiro que Seu Mapa Descreve</div>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-label">Inteligência e Comunicação (Vênus/Gêmeos)</div>
+        <p>Precisa te desafiar mentalmente. Conversas que durem horas. Perspectivas que expandam as suas. Humor inteligente. Uma mente que não para.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Profundidade e Lealdade (Lua/Escorpião)</div>
+        <p>Capaz de estar presente em suas camadas mais sombrias sem fugir. Leal de forma inabalável. Não tem medo de intensidade.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Liberdade com Presença (Sagitário na VII)</div>
+        <p>Expande seu mundo — traz aventura, filosofia, horizontes novos. Mas está presente. Não é ausente emocionalmente em nome da "liberdade".</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-label">Capacidade de Transformação (Plutão na VII)</div>
+        <p>Não foge do crescimento difícil. Está disposto a ser transformado pelo amor assim como você é. A relação não é museu — é laboratório vivo.</p>
+      </div>
+    </div>
+    <div class="oracle">
+      "Você não precisa de alguém que te complete — você precisa de alguém que aguente você completa."
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ SAÚDE ════════════════════════════ -->
+<section id="saude">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— XII —</span>
+    <h2 class="sec-title">Saúde, Corpo e Energia Vital</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O que o mapa revela sobre seu corpo e como cuidar dele</p>
+  </div>
+
+  <div class="g2">
+    <div class="card reveal">
+      <div class="card-title"><span class="ct-icon">⚠️</span> Áreas de Atenção</div>
+      <p><strong>Gêmeos no ASC:</strong> pulmões, sistema respiratório e sistema nervoso. Ansiedade que se manifesta no corpo — palpitações, respiração superficial, tensão nos ombros e pescoço. Seu sistema nervoso opera em frequência alta por padrão.</p>
+      <p><strong>Marte + Saturno em Câncer na II:</strong> sistema digestivo e estômago (Câncer) afetados pela tensão entre ação e contenção. Quando você está suprimindo emoções ou energias, isso pode aparecer como desconforto gástrico, síndrome do intestino irritável ou náusea sem causa aparente.</p>
+      <p><strong>Lua em Escorpião:</strong> sistema reprodutivo e hormonal como área de atenção. Ciclos hormonais podem refletir ciclos emocionais de forma muito direta — quando está emocionalmente desequilibrada, o corpo sincrônico responde.</p>
+      <p><strong>Mercúrio na XII:</strong> insônia ou sono perturbado por ruminação mental. A mente que não desliga à noite é um dos maiores ladrões de saúde que você tem.</p>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-title"><span class="ct-icon">🌿</span> O Que Nutre Sua Saúde</div>
+      <p><strong>Movimento que libera emoção:</strong> dança, natação, yoga — não apenas exercício mecânico, mas práticas que movimentam o corpo E a emoção ao mesmo tempo. Marte em Câncer precisa expressar emoção através do corpo.</p>
+      <p><strong>Conexão com água:</strong> banhos longos, mar, chuva, rios. Você é um ser profundamente conectado ao elemento água (Lua em Escorpião, Marte/Saturno em Câncer, Urano em Peixes). Contato com água regula sua energia de formas que a maioria das práticas não consegue.</p>
+      <p><strong>Silêncio estruturado:</strong> Mercúrio na XII precisa de períodos de silêncio genuíno — não apenas tela trocada por tela, mas silêncio real. Meditação, journaling, tempo sem estímulo externo. É neste silêncio que seus melhores insights chegam.</p>
+      <p><strong>Terapia como manutenção:</strong> você tem uma vida interior complexa demais para gerir sozinha. Não porque seja fraca — porque é muito. Terapia não é emergência — é manutenção regular de um instrumento de alta precisão.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ SOMBRAS ════════════════════════════ -->
+<section id="sombras">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— XIII —</span>
+    <h2 class="sec-title">As Sombras · Os Demônios Internos</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">O que o mapa revela sobre suas lutas internas mais profundas · Sem julgamento, com honestidade</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌑</span> Demônio 1 — A Mente como Inimiga (Mercúrio na XII)</div>
+    <p>Sua mente é seu maior dom e seu maior campo de batalha. Mercúrio em Touro na Casa 12 cria um padrão de pensamentos que ficam presos em loop — uma situação acontece, você a analisa, reanálisa, cria cenários alternativos, revive o que poderia ter dito ou feito, imagina como vai acabar, teme o pior, e volta ao início. Esse ciclo é exaustivo e acontece principalmente à noite ou em momentos de vulnerabilidade.</p>
+    <p><strong>Manifestações concretas:</strong> insônia por ruminação; ansiedade generalizada que parece não ter objeto claro; autocrítica desproporcional por erros pequenos; dificuldade de tomar decisões por estar sempre vendo "todos os lados"; procrastinação por medo de não fazer perfeitamente (Touro + Casa 12 = lentidão + invisibilidade).</p>
+    <div class="oracle">
+      "Sua mente às vezes é uma câmara de eco de críticas que você nunca mereceu ouvir mas que ouviu cedo demais."
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🦂</span> Demônio 2 — O Controle Emocional (Lua em Escorpião)</div>
+    <p>Lua em Escorpião cria uma sombra de controle emocional — não o controle saudável, mas o controle como mecanismo de defesa. Você controla o quanto mostra do que sente. Controla quem recebe acesso a você. Controla a narrativa sobre si mesma. E quando sente que está perdendo o controle de algo importante, pode agir de formas que são mais instinto de sobrevivência do que escolha consciente: afastamento súbito, silêncio punitivo, ou a ruminação sobre traições e mágoas passadas que alimenta ressentimentos por muito tempo.</p>
+    <p><strong>A armadilha mais perigosa de Lua em Escorpião:</strong> a tendência de criar profecia auto-realizável. Você espera ser abandonada, traída ou decepcionada — então cria testes que provocam as pessoas, ou se fecha de forma que o outro se afasta, e então confirma: "sabia que ia acontecer". O que você não vê é que o isolamento começou antes da traição.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌪️</span> Demônio 3 — A Dispersão (Sol + Vênus + ASC em Gêmeos)</div>
+    <p>Com Sol, Vênus e Ascendente todos em Gêmeos, a dispersão pode ser uma das formas mais sofisticadas de autossabotagem. Você começa com entusiasmo genuíno — um projeto, um relacionamento, um estudo — e quando a novidade passa e o trabalho real começa, parte de você procura o próximo brilho. Não é má-fé — é a energia mutável de Gêmeos buscando estimulação nova.</p>
+    <p><strong>Situações reais:</strong> hobbies intensamente vividos e depois abandonados; relacionamentos que começam com grande intensidade e morrem quando a "fase de descoberta" passa; projetos com começos poderosos e finais inexistentes; mudanças de planos frequentes que as pessoas ao redor interpretam como inconstância.</p>
+    <p><strong>O que ajuda:</strong> criar estruturas externas que sustentem o comprometimento quando a motivação interna oscila. Parceiros de responsabilidade, prazos, sistemas de acompanhamento. Não para suprimir quem você é — mas para sustentar o que você decide que importa.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🪞</span> Demônio 4 — O Apagamento pela Harmonia (Nodo Sul em Libra)</div>
+    <p>O Nodo Sul em Libra opera como uma tendência automática de suprimir sua própria vontade para manter a paz. Você diz "tudo bem" quando não está. Concorda quando discorda. Cede antes que peçam. Antecipa o que o outro quer e se adapta, às vezes antes mesmo de saber o que você mesma quer.</p>
+    <p>O problema não é a gentileza — é que gentileza que nega a si mesma não é virtude, é padrão de sobrevivência disfarçado de generosidade. E acumula ressentimento de forma lenta e invisível até que um dia algo pequeníssimo provoca uma reação desproporcional — e você parece "louca" para quem não viu o que estava se construindo por baixo.</p>
+    <div class="highlight">
+      <p><strong>A integração das sombras:</strong> cada demônio listado acima tem um anjo correspondente. A mente que ruminina, quando direcionada, produz análise extraordinária. O controle emocional, quando transformado em discernimento, te protege das coisas certas. A dispersão, quando canalizada, vira versatilidade genial. E o apagamento, quando curado, vira diplomacia com voz.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ ESPIRITUALIDADE ════════════════════════════ -->
+<section id="espirito">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— XIV —</span>
+    <h2 class="sec-title">Espiritualidade, Missão de Alma e o Invisível</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Em que ponto da jornada espiritual sua alma se encontra</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌟</span> Em Que Momento Espiritual Você Está</div>
+    <p>Com o <strong>Meio do Céu em Peixes</strong> e <strong>Urano + Netuno na Casa 9</strong>, você está numa encarnação de <em>comunicação do espiritual para o mundo</em>. Não é uma vida de retiro místico — é uma vida de trazer o que se percebe nas profundezas para a superfície onde outros possam acessar.</p>
+    <p>Sua alma está num ponto de transição: você já sabe muito mais do que sua idade sugere (memórias de vidas de estudo e percepção). Mas ainda está aprendendo a confiar no que sabe sem precisar de validação externa. O Nodo Norte em Áries pede coragem espiritual — dizer verdades que não foram pedidas, agir na direção do que percebe mesmo sem ter certeza.</p>
+    <div class="oracle">
+      "Você não está aprendendo o espiritual — você está lembrando. A diferença é importante. Aprender pede humildade. Lembrar pede coragem de confiar no que já está em você."
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">👁️</span> Seus Dons Espirituais Naturais</div>
+    <div class="kgrid">
+      <div class="kcard">
+        <span class="kicon">🌙</span>
+        <div class="ktitle">Percepção Emocional Psíquica</div>
+        <div class="kdesc">Lua em Escorpião: você "lê" o estado emocional das pessoas com uma precisão que vai muito além da empatia comum. Sente o que está abaixo da superfície — o que não foi dito, o que está sendo escondido, o que está prestes a acontecer.</div>
+      </div>
+      <div class="kcard">
+        <span class="kicon">💭</span>
+        <div class="ktitle">Acesso ao Inconsciente</div>
+        <div class="kdesc">Mercúrio na XII: seus sonhos são frequentemente comunicações — do seu inconsciente, de guias, de camadas mais profundas. Insights que surgem em estados limítrofes (entre dormir e acordar) são particularmente significativos.</div>
+      </div>
+      <div class="kcard">
+        <span class="kicon">⚡</span>
+        <div class="ktitle">Iluminação Repentina</div>
+        <div class="kdesc">Urano na IX: você tem experiências de compreensão súbita — momentos em que uma peça se encaixa e muda completamente sua visão de mundo. Estes momentos não são aleatórios — são respostas a perguntas que sua alma estava fazendo há muito tempo.</div>
+      </div>
+      <div class="kcard">
+        <span class="kicon">🌊</span>
+        <div class="ktitle">Dissolução de Fronteiras</div>
+        <div class="kdesc">Netuno na IX em Peixes: em estados de meditação, arte, natureza ou conexão profunda, você tem acesso a experiências de unidade — onde os limites entre você e o todo se dissolvem. Isso é o misticismo como experiência viva, não como conceito.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🕊️</span> Seus Guias, Anjos e Protetores</div>
+    <p>Com Mercúrio na XII e Netuno em Peixes ativo, você tem canal direto para dimensões além da visível. Seus guias se comunicam através de: <strong>sincronicidades</strong> (coincidências significativas que não são coincidência); <strong>sonhos</strong> (especialmente os que deixam uma sensação que dura o dia inteiro); <strong>intuições físicas</strong> (sensação no estômago, arrepio, calor inesperado em certas situações); e <strong>insights enquanto cria</strong> (quando escreve, canta, dança ou produz algo — é frequentemente canal aberto).</p>
+    <p>A <strong>figura protetora primária</strong> do seu mapa é a energia de Mercúrio — o mensageiro que transita entre mundos, que não pertence a nenhum lugar e por isso pertence a todos. Ele é seu guia mais próximo: a voz interna que te faz perguntas no momento certo, que te dá as palavras quando você precisa, que te lembra de que você sempre soube mais do que achava.</p>
+    <p><strong>A figura transformadora</strong> é Plutão na VII — que opera através dos encontros. As pessoas que entram na sua vida não chegam por acidente. Cada encontro significativo é uma reunião de almas com algo a completar.</p>
+  </div>
+
+</div>
+</section>
+
+<!-- ════════════════════════════ FUTURO ════════════════════════════ -->
+<section id="futuro">
+<div class="inner">
+  <div class="sec-head reveal">
+    <span class="sec-num">— XV —</span>
+    <h2 class="sec-title">O Futuro · Os Ciclos que Vêm</h2>
+    <div class="rule"></div>
+    <p class="sec-sub">Onde você está agora e o que os próximos anos constroem</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌅</span> Agora (2024–2027) — Construindo as Fundações</div>
+    <p>Com 22 anos em 2026, você está num período que astrólogos chamam de <strong>"os anos de estabelecimento"</strong> — entre o final da adolescência expandida e o Retorno de Saturno (~29-30 anos). Este é o período em que as escolhas que você faz criam as fundações de tudo que virá.</p>
+    <p>O trabalho mais importante deste período: <strong>descobrir o que é genuinamente seu</strong> — sua voz, seus valores, seus limites — separado do que foi herdado, do que foi pedido, do que foi imposto. Saturno está percorrendo signos que pressionam suas casas mais sensíveis, pedindo que você construa com intenção.</p>
+    <p><strong>Oportunidades deste período:</strong> comunicação e escrita como caminho (Júpiter na III); conexões que abrem portas (Vênus na I); visibilidade que assusta mas é necessária (Sol na I). O mundo está pronto para receber o que você tem a dizer — a pergunta é se você está pronta para dizer.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🌙</span> O Retorno de Saturno (2033–2034) — O Grande Ritual de Passagem</div>
+    <p>Aos ~29-30 anos, Saturno retornará à sua posição natal em Câncer na Casa 2. Para você, este será um dos períodos mais formativos da vida inteira. É quando tudo o que não tem fundamento real se revela — relacionamentos que foram construídos sobre o que você precisava ser em vez do que é, carreiras que não eram suas, identidades emprestadas.</p>
+    <p>Este período pode parecer crise — e frequentemente é, no sentido de que força confrontos com a realidade. Mas é também a maior oportunidade: tudo que sobrar depois do Retorno de Saturno é real, é seu, é sólido. E você construirá sobre isso algo extraordinário nos seus 30 anos.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">🔥</span> O Despertar do Nodo Norte — Quando Áries Acende</div>
+    <p>Em algum ponto desta vida — e os preparativos já estão acontecendo — algo vai <strong>acender a coragem do Nodo Norte em Áries dentro de você</strong>. Pode ser uma situação de injustiça que você simplesmente não consegue mais ignorar. Pode ser uma oportunidade que exige que você dê o primeiro passo sem garantia. Pode ser um momento de silêncio de que você estava cansada demais para continuar mantendo.</p>
+    <p>Quando esse momento chegar e você escolher a coragem em vez da diplomacia automática, em vez do apagamento familiar, em vez do "não quero criar problema" — algo dentro de você se alinhará de uma forma que nunca aconteceu antes. E as pessoas ao redor vão perceber. E o mundo vai responder.</p>
+    <div class="oracle">
+      "Toda a leveza de Gêmeos, toda a profundidade de Escorpião, toda a sensibilidade de Peixes, toda a determinação de Câncer — você não foi dada toda essa riqueza para escondê-la. Você foi dada para irradiar."
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title"><span class="ct-icon">⭐</span> A Mensagem Final do Mapa Real de Danieli</div>
+    <p>Seu mapa real — com <strong>Sol, Vênus e Ascendente em Gêmeos</strong>, <strong>Lua em Escorpião</strong>, <strong>Nodo Norte em Áries</strong> e <strong>MC em Peixes</strong> — é o mapa de uma comunicadora profunda. De alguém que veio para transformar o invisível em linguagem, o complexo em acessível, o doloroso em belo.</p>
+    <p>Você tem na Casa 1 os planetas do brilho, do charme e da comunicação — o mundo te vê. Você tem na Casa 5 a Lua mais profunda e intensa do zodíaco — você sente de um jeito que poucos são capazes. O seu trabalho nesta vida é fazer a ponte entre esses dois mundos: trazer para a superfície o que mora nas profundezas, com a leveza e o brilho que são naturalmente seus.</p>
+    <p>O Nodo Norte em Áries diz: <strong>seja corajosa. Dê o primeiro passo. Lidere pelo que percebe. Confie no que você sabe antes de precisar que outros confirmem.</strong></p>
+    <p>O MC em Peixes diz: <strong>sua contribuição mais verdadeira ao mundo vai tocar as pessoas onde elas não esperavam ser tocadas. Vai chegar nas camadas que as palavras comuns não alcançam. Vai ser arte, será cura, será o tipo de presença que as pessoas não conseguem descrever mas que não esquecem.</strong></p>
+    <div class="tags" style="justify-content:center; margin-top:2rem;">
+      <span class="tag">☉ Sol Gêmeos</span>
+      <span class="tag">☽ Lua Escorpião</span>
+      <span class="tag">♀ Vênus Gêmeos</span>
+      <span class="tag">↑ ASC Gêmeos</span>
+      <span class="tag">MC Peixes</span>
+      <span class="tag">☊ NN Áries</span>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<footer>
+  <span class="foot-glyph">✦ ☽ ☉ ☾ ✦</span>
+  <div class="foot-text">
+    Mapa Natal de Danieli Marcondes Pereira<br>
+    31 de Maio de 2004 · 07h30 · Passo Fundo, Rio Grande do Sul, Brasil<br><br>
+    Análise Astrológica Esotérica Completa<br>
+    Karma · Vidas Passadas · Presente · Futuro · Alma · Sombra · Luz
+  </div>
+</footer>
+
+<script>
+// ── CANVAS DE ESTRELAS ──
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+let stars = [], W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 280; i++) {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4,
+      a: Math.random(),
+      speed: 0.002 + Math.random() * 0.004,
+      gold: Math.random() < 0.15
+    });
+  }
+}
+
+function drawStars() {
+  ctx.clearRect(0, 0, W, H);
+  for (const s of stars) {
+    s.a += s.speed;
+    const alpha = 0.3 + Math.abs(Math.sin(s.a)) * 0.7;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = s.gold
+      ? `rgba(212,175,55,${alpha * 0.7})`
+      : `rgba(255,255,255,${alpha * 0.5})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(drawStars);
+}
+
+resize();
+initStars();
+drawStars();
+window.addEventListener('resize', () => { resize(); initStars(); });
+
+// ── SCROLL REVEAL ──
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+revealEls.forEach(el => obs.observe(el));
+
+// ── NAV HIGHLIGHT ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.style.color = '';
+        a.style.borderBottomColor = 'transparent';
+      });
+      const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (active) {
+        active.style.color = '#f0d070';
+        active.style.borderBottomColor = '#b8962e';
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => secObs.observe(s));
+</script>
+</body>
+</html>

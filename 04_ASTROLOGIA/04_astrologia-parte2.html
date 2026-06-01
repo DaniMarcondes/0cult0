@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrologia — Parte II · Os Planetas e Luminares</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04020E;--deep:#080418;
+  --gold:#FFD700;--gold-d:rgba(255,215,0,.12);
+  --sol:#FFB800;--sol-d:rgba(255,184,0,.12);
+  --luna:#C8D8FF;--luna-d:rgba(200,216,255,.12);
+  --merc:#80C0A0;--merc-d:rgba(128,192,160,.12);
+  --venus:#FF90C0;--venus-d:rgba(255,144,192,.12);
+  --mars:#FF4030;--mars-d:rgba(255,64,48,.12);
+  --jup:#FF9040;--jup-d:rgba(255,144,64,.12);
+  --sat:#808060;--sat-d:rgba(128,128,96,.12);
+  --uran:#40E0E0;--uran-d:rgba(64,224,224,.12);
+  --nep:#4060C0;--nep-d:rgba(64,96,192,.12);
+  --plut:#A020A0;--plut-d:rgba(160,32,160,.12);
+  --card:#0C0820;--text:#E8E0F8;--text-d:rgba(232,224,248,.65);--text-dd:rgba(232,224,248,.4);
+  --border:rgba(192,208,255,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--void);background-image:radial-gradient(ellipse 120% 60% at 50% 0%,rgba(48,16,96,.5) 0%,transparent 55%);
+font-family:'Cormorant Garamond',serif;color:var(--text);line-height:1.9;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(1px 1px at 5% 8%,rgba(255,255,255,.8) 0%,transparent 100%),
+  radial-gradient(1px 1px at 23% 22%,rgba(192,208,255,.6) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 47% 5%,rgba(255,215,0,.7) 0%,transparent 100%),
+  radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 89% 35%,rgba(192,208,255,.6) 0%,transparent 100%),
+  radial-gradient(1px 1px at 14% 62%,rgba(255,255,255,.4) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 58% 74%,rgba(255,215,0,.5) 0%,transparent 100%);
+pointer-events:none;z-index:0;animation:tw 8s ease-in-out infinite alternate}
+@keyframes tw{0%{opacity:.5}100%{opacity:1}}
+.wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 16px 100px}
+header{text-align:center;padding:70px 20px 50px}
+.orrery{font-size:4.5rem;display:block;margin-bottom:14px;filter:drop-shadow(0 0 24px var(--gold));animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}50%{filter:drop-shadow(0 0 50px var(--gold))}}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.3rem,4vw,2.8rem);color:var(--gold);letter-spacing:.1em;text-shadow:0 0 40px rgba(255,215,0,.4)}
+.h-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(.8rem,2vw,1rem);color:rgba(255,215,0,.5);letter-spacing:.22em;margin-top:10px}
+.h-rule{height:1px;margin:20px auto;width:600px;max-width:90%;background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),rgba(192,208,255,.6),rgba(255,215,0,.4),transparent)}
+.h-intro{max-width:780px;margin:0 auto;font-size:.93rem;line-height:2;color:var(--text-d);font-style:italic}
+.nav-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 40px}
+.pill{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.12em;padding:6px 14px;border-radius:20px;text-decoration:none;border:1px solid rgba(192,208,255,.25);background:rgba(192,208,255,.06);color:var(--luna);transition:all .25s}
+.pill:hover{background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.4);color:var(--gold)}
+.ch{text-align:center;margin:70px 0 28px}
+.ch::before,.ch::after{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+.ch h2{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.18em;color:var(--gold)}
+.ch p{font-style:italic;font-size:.85rem;color:var(--text-dd);margin-top:4px}
+
+/* PLANET CARD */
+.planet{border-radius:14px;margin-bottom:24px;overflow:hidden;border:1px solid;
+  background:linear-gradient(160deg,rgba(255,255,255,.03),rgba(0,0,0,.5));
+  transition:box-shadow .3s}
+.p-head{padding:22px 24px 0;display:flex;align-items:flex-start;gap:16px}
+.p-sym{font-size:3.2rem;flex-shrink:0;line-height:1}
+.p-meta{flex:1}
+.p-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.2rem,3vw,1.7rem);line-height:1.1}
+.p-epithet{font-family:'IM Fell English',serif;font-style:italic;font-size:.85rem;color:var(--text-dd);margin-top:3px}
+.p-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ptag{font-size:.63rem;padding:2px 8px;border-radius:20px;border:1px solid;font-style:italic}
+.p-body{padding:18px 24px 24px}
+.p-sec{margin-bottom:16px}
+.p-sec h4{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.18em;margin-bottom:7px}
+.p-sec p{font-size:.88rem;color:var(--text-d);line-height:1.95;margin-bottom:7px}
+.p-sec p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px;margin-top:8px}
+.p-cell{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:9px 11px;font-size:.75rem;color:var(--text-d);line-height:1.6}
+.p-cell-label{font-family:'Cinzel Decorative',serif;font-size:.48rem;letter-spacing:.12em;display:block;margin-bottom:2px;opacity:.6}
+.pdiv{height:1px;margin:12px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+
+/* PLANET COLOR THEMES */
+.pl-sol{border-color:rgba(255,184,0,.35)}
+.pl-sol .p-name{color:var(--sol)}
+.pl-sol h4{color:var(--sol)}
+.pl-sol .ptag{color:var(--sol);border-color:rgba(255,184,0,.3);background:var(--sol-d)}
+.pl-sol:hover{box-shadow:0 0 40px rgba(255,184,0,.12)}
+
+.pl-luna{border-color:rgba(200,216,255,.3)}
+.pl-luna .p-name{color:var(--luna)}
+.pl-luna h4{color:var(--luna)}
+.pl-luna .ptag{color:var(--luna);border-color:rgba(200,216,255,.3);background:var(--luna-d)}
+.pl-luna:hover{box-shadow:0 0 40px rgba(200,216,255,.1)}
+
+.pl-merc{border-color:rgba(128,192,160,.3)}
+.pl-merc .p-name{color:var(--merc)}
+.pl-merc h4{color:var(--merc)}
+.pl-merc .ptag{color:var(--merc);border-color:rgba(128,192,160,.3);background:var(--merc-d)}
+
+.pl-venus{border-color:rgba(255,144,192,.3)}
+.pl-venus .p-name{color:var(--venus)}
+.pl-venus h4{color:var(--venus)}
+.pl-venus .ptag{color:var(--venus);border-color:rgba(255,144,192,.3);background:var(--venus-d)}
+
+.pl-mars{border-color:rgba(255,64,48,.35)}
+.pl-mars .p-name{color:var(--mars)}
+.pl-mars h4{color:var(--mars)}
+.pl-mars .ptag{color:var(--mars);border-color:rgba(255,64,48,.3);background:var(--mars-d)}
+
+.pl-jup{border-color:rgba(255,144,64,.35)}
+.pl-jup .p-name{color:var(--jup)}
+.pl-jup h4{color:var(--jup)}
+.pl-jup .ptag{color:var(--jup);border-color:rgba(255,144,64,.3);background:var(--jup-d)}
+
+.pl-sat{border-color:rgba(128,128,96,.4)}
+.pl-sat .p-name{color:var(--sat)}
+.pl-sat h4{color:var(--sat)}
+.pl-sat .ptag{color:var(--sat);border-color:rgba(128,128,96,.3);background:var(--sat-d)}
+
+.pl-uran{border-color:rgba(64,224,224,.3)}
+.pl-uran .p-name{color:var(--uran)}
+.pl-uran h4{color:var(--uran)}
+.pl-uran .ptag{color:var(--uran);border-color:rgba(64,224,224,.3);background:var(--uran-d)}
+
+.pl-nep{border-color:rgba(64,96,192,.35)}
+.pl-nep .p-name{color:var(--nep)}
+.pl-nep h4{color:var(--nep)}
+.pl-nep .ptag{color:var(--nep);border-color:rgba(64,96,192,.3);background:var(--nep-d)}
+
+.pl-plut{border-color:rgba(160,32,160,.35)}
+.pl-plut .p-name{color:var(--plut)}
+.pl-plut h4{color:var(--plut)}
+.pl-plut .ptag{color:var(--plut);border-color:rgba(160,32,160,.3);background:var(--plut-d)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}
+.reveal.vis{opacity:1;transform:none}
+.planet{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.planet.vis{opacity:1;transform:none}
+
+.side-nav{position:fixed;top:50%;right:14px;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:100}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,215,0,.2);border:1px solid rgba(255,215,0,.35);display:block;text-decoration:none;transition:all .22s}
+.sn-dot:hover,.sn-dot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.side-nav{display:none}}
+@media(max-width:640px){.p-grid{grid-template-columns:1fr 1fr}}
+footer{text-align:center;padding:60px 20px 40px;border-top:1px solid var(--border)}
+.f-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:20px}
+.f-link{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,215,0,.3);border-radius:20px;background:rgba(255,215,0,.05);transition:all .2s}
+.f-link:hover{background:rgba(255,215,0,.12)}
+.f-text{font-family:'IM Fell English',serif;font-style:italic;font-size:.84rem;color:rgba(255,215,0,.3);letter-spacing:.08em;line-height:2.2}
+</style>
+</head>
+<body>
+<nav class="side-nav">
+  <a class="sn-dot" href="#luminares" title="Luminares"></a>
+  <a class="sn-dot" href="#sol" title="Sol"></a>
+  <a class="sn-dot" href="#lua" title="Lua"></a>
+  <a class="sn-dot" href="#pessoais" title="Planetas Pessoais"></a>
+  <a class="sn-dot" href="#mercurio" title="Mercúrio"></a>
+  <a class="sn-dot" href="#venus" title="Vênus"></a>
+  <a class="sn-dot" href="#marte" title="Marte"></a>
+  <a class="sn-dot" href="#sociais" title="Planetas Sociais"></a>
+  <a class="sn-dot" href="#jupiter" title="Júpiter"></a>
+  <a class="sn-dot" href="#saturno" title="Saturno"></a>
+  <a class="sn-dot" href="#transpessoais" title="Transpessoais"></a>
+  <a class="sn-dot" href="#urano" title="Urano"></a>
+  <a class="sn-dot" href="#netuno" title="Netuno"></a>
+  <a class="sn-dot" href="#plutao" title="Plutão"></a>
+  <a class="sn-dot" href="#asteroides" title="Asteroides"></a>
+  <a class="sn-dot" href="#retr" title="Retrógrados"></a>
+</nav>
+<div class="wrap">
+
+<header>
+  <span class="orrery">🪐</span>
+  <h1>Os Planetas e Luminares</h1>
+  <p class="h-sub">Enciclopédia Completa · Parte II · Os Atores do Cosmos</p>
+  <div class="h-rule"></div>
+  <p class="h-intro">Os planetas são os arquétipos em ação — cada um personifica uma função psicológica e cósmica universal. Os luminares (Sol e Lua) governam a consciência e o inconsciente. Os planetas pessoais (Mercúrio, Vênus, Marte) moldam a personalidade individual. Os sociais (Júpiter e Saturno) estruturam a relação com o mundo coletivo. Os transpessoais (Urano, Netuno, Plutão) operam em gerações inteiras, transformando o inconsciente coletivo.</p>
+</header>
+
+<div class="nav-pills reveal">
+  <a class="pill" href="astrologia-parte1.html">I · Fundamentos e Signos</a>
+  <a class="pill" href="astrologia-parte2.html">II · Planetas e Luminares</a>
+  <a class="pill" href="astrologia-parte3.html">III · Casas Astrológicas</a>
+  <a class="pill" href="astrologia-parte4.html">IV · Aspectos, Trânsitos e Avançado</a>
+</div>
+
+<!-- LUMINARES -->
+<div id="luminares" class="ch reveal">
+  <h2>✦ OS LUMINARES — Sol e Lua ✦</h2>
+  <p>Os dois grandes governantes da consciência e da alma</p>
+</div>
+
+<!-- SOL -->
+<div id="sol" class="planet pl-sol reveal">
+  <div class="p-head">
+    <span class="p-sym">☉</span>
+    <div class="p-meta">
+      <div class="p-name">O Sol · Helios · Ra</div>
+      <div class="p-epithet">O Luminar do Dia · A Consciência · O Eu Essencial · O Pai Interior</div>
+      <div class="p-tags">
+        <span class="ptag">♌ Regente de Leão</span>
+        <span class="ptag">☉ Exaltado em Áries</span>
+        <span class="ptag">Ciclo: 1 ano pelo zodíaco</span>
+        <span class="ptag">Alquimia: Ouro ☉</span>
+        <span class="ptag">Cabala: Tiferet · 6ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>O Sol não é um planeta astronomicamente — é nossa estrela. Mas na astrologia é o astro mais importante do mapa: representa o <strong>núcleo do ser</strong>, a identidade fundamental, o propósito de vida, o que se está aqui para se tornar. O signo solar não é quem você é agora — é quem você está aprendendo a ser ao longo de toda a vida.</p>
+      <p>Na psicologia junguiana, o Sol corresponde ao <strong>Self</strong> — o centro organizador da psique, o arquétipo da totalidade. Quando integrado, o Sol é a consciência plena; quando não integrado, é o ego inflado ou deflacionado. O trabalho solar é a individuação — tornar-se plenamente si mesmo.</p>
+      <p>O Sol corresponde a <strong>Tiferet</strong> na Cabala — o coração da Árvore da Vida, o ponto de equilíbrio entre todos os extremos, o sol que irradia luz para as demais sefirót. Tiferet é o Cristo, o Buda, o Atman — o centro divino no coração humano.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Identidade:</strong> O signo solar define o tema central da vida — Áries aprende a ser pioneiro, Câncer a nutrir, Capricórnio a construir legado. É uma jornada, não uma característica pronta.</p>
+      <p><strong>O Pai:</strong> O Sol representa a figura paterna no mapa — como o pai foi experienciado, que imagem de autoridade e masculinidade foi internalizada. Um Sol bem aspectado sugere relação saudável com o pai e com a própria autoridade interior.</p>
+      <p><strong>Saúde:</strong> O Sol governa o coração (literal e metaforicamente), a vitalidade geral, a força vital. Problemas solares podem indicar questões cardíacas, de autoestima ou de propósito.</p>
+      <p><strong>Profissão:</strong> O Sol indica a área onde se brilha — onde a presença é mais autêntica e impactante. Um Sol em Leão na Casa 10 pode indicar carreira artística e pública; Sol em Virgem na Casa 6, trabalho de cuidado ou análise.</p>
+      <p><strong>Alquimia:</strong> O Sol é o <strong>Ouro</strong> (☉) — o metal mais nobre, o resultado final da Grande Obra, o Enxofre Filosófico. A transmutação alquímica é a transformação do chumbo (Saturno/ego não integrado) em ouro (Sol/Self realizado).</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Ouro ☉ — o mais nobre dos metais</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Tiferet — o Coração da Árvore</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Sol (XIX) · A Força (VIII)</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Manipura · Anahata</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Ra, Apolo, Helios, Shamash</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Domingo</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Coração, coluna, olho direito</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~30 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- LUA -->
+<div id="lua" class="planet pl-luna reveal">
+  <div class="p-head">
+    <span class="p-sym">☽</span>
+    <div class="p-meta">
+      <div class="p-name">A Lua · Selene · Ísis</div>
+      <div class="p-epithet">O Luminar da Noite · O Inconsciente · A Mãe Interior · A Memória da Alma</div>
+      <div class="p-tags">
+        <span class="ptag">♋ Regente de Câncer</span>
+        <span class="ptag">♉ Exaltada em Touro</span>
+        <span class="ptag">Ciclo: ~28 dias pelo zodíaco</span>
+        <span class="ptag">Alquimia: Prata ☽</span>
+        <span class="ptag">Cabala: Yesod · 9ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>A Lua é o <strong>inconsciente, o passado, a memória emocional</strong> — tudo o que foi sentido e internalizado antes de poder ser articulado. O signo lunar revela como você <em>sente</em> por dentro, como reage instintivamente, o que precisa para se sentir seguro, e a relação com a mãe (ou figura materna primária).</p>
+      <p>Enquanto o Sol é quem você está se tornando (futuro, consciência), a Lua é quem você já foi (passado, infância, vidas anteriores na visão esotérica). A integração Sol-Lua é a integração entre o que se quer ser e o que profundamente se sente.</p>
+      <p>Corresponde a <strong>Yesod</strong> na Cabala — a 9ª Sefirá, o Fundamento. Yesod é o espelho que reflete a luz de Tiferet (Sol) para Malkuth (o mundo manifesto). É o inconsciente como mediador entre o espírito e a matéria — a Lua literalmente reflete a luz do Sol.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Emoções e Reações:</strong> A Lua governa as reações automáticas — o que se sente antes de pensar. Lua em Escorpião reage com intensidade e desconfiança; Lua em Sagitário reage com otimismo e busca de sentido; Lua em Capricórnio suprime a emoção em favor do controle.</p>
+      <p><strong>A Mãe:</strong> A Lua representa a figura materna experienciada — a forma como o cuidado foi ou não foi recebido na infância. Lua bem aspectada: mãe protetora e nutriente. Lua em tensão (quadratura com Saturno, por ex.): mãe fria, ausente ou sobrecarregada.</p>
+      <p><strong>Necessidades:</strong> O signo da Lua revela o que você precisa para se sentir emocionalmente seguro. Lua em Touro precisa de estabilidade material e sensorial. Lua em Gêmeos precisa de estimulação intelectual e comunicação. Lua em Peixes precisa de quietude, arte e conexão espiritual.</p>
+      <p><strong>Ciclos:</strong> A Lua governa todos os ciclos — menstrual, agrícola, emocional. As quatro fases da Lua (nova, crescente, cheia, minguante) correspondem a ciclos de intenção, construção, colheita e integração.</p>
+      <p><strong>Alquimia:</strong> A Lua é a <strong>Prata</strong> (☽) — o metal que reflete a luz, que é receptivo e feminino, o Mercúrio Filosófico. Na Grande Obra: a fase da Albedo (branqueamento, purificação lunar) que segue o Nigredo.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Prata ☽ — o espelho do Sol</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Yesod — o Fundamento</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>A Lua (XVIII) · A Sacerdotisa (II)</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Svadhisthana · Sahasrara</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Selene, Ísis, Artemis, Tsuki-yomi</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Segunda-feira</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Estômago, útero, seios, olho esquerdo</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~2,5 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLANETAS PESSOAIS -->
+<div id="pessoais" class="ch reveal">
+  <h2>✦ PLANETAS PESSOAIS ✦</h2>
+  <p>Mercúrio · Vênus · Marte · os que moldam a personalidade individual</p>
+</div>
+
+<!-- MERCÚRIO -->
+<div id="mercurio" class="planet pl-merc reveal">
+  <div class="p-head">
+    <span class="p-sym">☿</span>
+    <div class="p-meta">
+      <div class="p-name">Mercúrio · Hermes · Thoth</div>
+      <div class="p-epithet">O Mensageiro · A Mente · A Comunicação · O Guia Entre Mundos</div>
+      <div class="p-tags">
+        <span class="ptag">♊♍ Regente de Gêmeos e Virgem</span>
+        <span class="ptag">♍ Exaltado em Virgem</span>
+        <span class="ptag">Ciclo: ~88 dias</span>
+        <span class="ptag">Alquimia: Mercúrio ☿</span>
+        <span class="ptag">Cabala: Hod · 8ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Mercúrio governa a <strong>mente, a comunicação, o aprendizado e as conexões</strong>. Não é o que você pensa — é como você pensa. Mercúrio em Áries pensa rápido e impulsivo; em Capricórnio pensa lento e metódico; em Aquário pensa de forma não-linear e original.</p>
+      <p>Como Hermes/Thoth, Mercúrio é o intermediário — entre o consciente e inconsciente, entre os mundos, entre as pessoas. É o sistema nervoso do cosmos: transmite, conecta, nomeia. O <strong>Caduceu</strong> de Hermes (duas serpentes enlaçadas) é o símbolo perfeito: as forças opostas (Idá e Pingalá, consciente e inconsciente) equilibradas pelo canal central (Sushumna/Mercúrio).</p>
+      <p>Alquimicamente, Mercúrio é o <strong>Mercúrio Filosófico</strong> (não o metal líquido, mas o princípio mediador) — o que une Enxofre (Sol) e Sal (Lua), o que transforma o caos em logos. É o elemento que muda de fase livremente — como o metal mercúrio que é líquido à temperatura ambiente.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Comunicação:</strong> Revela o estilo de fala e escrita. Mercúrio em Gêmeos: comunicador nato, verboso, espirituoso. Em Escorpião: fala pouco mas com impacto, observa mais do que fala, palavras como bisturi. Em Libra: diplomático, pesa as palavras, busca equilíbrio na comunicação.</p>
+      <p><strong>Aprendizado:</strong> Como se processa informação. Mercúrio em signos de Terra aprende fazendo, na prática. Em signos de Ar: através de conceitos e debates. Em signos de Água: pela intuição e absorção emocional. Em signos de Fogo: pela visão global e entusiasmo.</p>
+      <p><strong>Retrogradação de Mercúrio:</strong> Mercúrio entra em retrogradação ~3 vezes por ano, por ~3 semanas. A percepção popular de caos comunicacional tem fundamento simbólico: é o momento de re-ver, re-pensar, re-fazer. Contratos assinados, decisões importantes tomadas e aparelhos eletrônicos comprados na retrogradação frequentemente precisam ser revistos. É momento de introversão mental.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Mercúrio (Hydrargyrum)</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Hod — Esplendor</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Mago (I)</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Quarta-feira</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Hermes, Thoth, Nabu, Odin</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Sistema nervoso, pulmões, mãos</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Vishuddha (garganta)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>14–30 dias</div>
+    </div>
+  </div>
+</div>
+
+<!-- VÊNUS -->
+<div id="venus" class="planet pl-venus reveal">
+  <div class="p-head">
+    <span class="p-sym">♀</span>
+    <div class="p-meta">
+      <div class="p-name">Vênus · Afrodite · Ishtar</div>
+      <div class="p-epithet">A Deusa do Amor · O Que Se Ama · O Prazer · A Beleza · Os Valores</div>
+      <div class="p-tags">
+        <span class="ptag">♉♎ Regente de Touro e Libra</span>
+        <span class="ptag">♓ Exaltada em Peixes</span>
+        <span class="ptag">Ciclo: ~225 dias</span>
+        <span class="ptag">Alquimia: Cobre ♀</span>
+        <span class="ptag">Cabala: Netzach · 7ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Vênus governa o <strong>que amamos, como amamos e o que valoramos</strong>. Não é apenas romance — é o princípio de atração e afinidade em toda forma: amor, arte, beleza, prazer, dinheiro (o que atraímos materialmente). O signo de Vênus revela o estilo amoroso e estético da pessoa.</p>
+      <p>Vênus traça um <strong>pentagrama perfeito no céu</strong> a cada 8 anos — ela cria uma rosa de cinco pétalas ao redor do Sol em seu ciclo completo. Isso não é coincidência: o pentagrama de Vênus é a base da proporção áurea (Φ = 1,618...), que permeia toda a beleza natural. Vênus literalmente gera beleza no cosmos.</p>
+      <p>Na alquimia: <strong>Cobre</strong> — o metal maleável, condutor, que transmite calor. O cobre é associado a Afrodite/Chipre (Kypros, de onde vem o nome "cobre" via latim cuprum). Netzach na Cabala = Vitória, o mundo das emoções, da natureza e da arte.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Amor:</strong> O signo de Vênus revela como se ama. Vênus em Áries: amor direto, apaixonado, que conquista ativamente. Em Touro: amor sensorial, lento, que constrói segurança. Em Gêmeos: amor intelectual, que precisa de conversação. Em Câncer: amor protetor e emocional profundo. Em Escorpião: amor intenso, ciumento e transformador.</p>
+      <p><strong>Atração:</strong> Vênus também indica quem você atrai e quem te atrai. A posição de Vênus no mapa descreve o tipo de parceiro que ressoa — e às vezes o que você idealizou no amor antes de conhecer o real.</p>
+      <p><strong>Dinheiro e Valores:</strong> Vênus governa os recursos (especialmente Vênus em Touro na Casa 2) — o que se ganha, o estilo de gastar, os valores pelos quais se vive. Vênus em Escorpião tende a ter relação intensa e transformadora com o dinheiro; em Sagitário, gasta com viagens e experiências; em Capricórnio, acumula pacientemente.</p>
+      <p><strong>Arte e Estética:</strong> O signo de Vênus revela o estilo estético — quais cores, formas, músicas e ambientes ressoam. Vênus em Virgem aprecia a beleza na precisão; em Peixes, na dissolução e no onírico.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Cobre ♀ — condutor de amor</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Netzach — Vitória</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>A Imperatriz (III)</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Sexta-feira</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Afrodite, Ishtar, Hathor, Freyja</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Rins, garganta, ovários</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Anahata (coração)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~23 dias–2 meses</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARTE -->
+<div id="marte" class="planet pl-mars reveal">
+  <div class="p-head">
+    <span class="p-sym">♂</span>
+    <div class="p-meta">
+      <div class="p-name">Marte · Ares · Nergal</div>
+      <div class="p-epithet">O Guerreiro · A Vontade · A Ação · O Desejo · A Força Vital</div>
+      <div class="p-tags">
+        <span class="ptag">♈♏ Regente de Áries (e Escorpião clás.)</span>
+        <span class="ptag">♑ Exaltado em Capricórnio</span>
+        <span class="ptag">Ciclo: ~687 dias / ~2 anos</span>
+        <span class="ptag">Alquimia: Ferro ♂</span>
+        <span class="ptag">Cabala: Geburah · 5ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Marte é a <strong>vontade em ação</strong> — a energia que se move para fora, que conquista, que defende, que deseja. É o arquétipo do Guerreiro: não necessariamente violento, mas determinado, assertivo, disposto ao confronto quando necessário. O signo de Marte revela como se age, como se defende e como se busca o que se quer.</p>
+      <p>Na psicologia junguiana, Marte é o <strong>animus</strong> — o princípio masculino ativo dentro de qualquer pessoa, independentemente do gênero. É a capacidade de tomar iniciativa, defender limites, enfrentar adversários.</p>
+      <p>Geburah na Cabala = Severidade, Rigor, Poder — a sefirá do julgamento rigoroso e da força necessária. Como o Sol (Tiferet) precisa do Julgamento (Geburah) para ser justo, a vitalidade precisa da vontade direcionada para não se dissipar.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Ação e Iniciativa:</strong> Como se age. Marte em Áries: ação imediata, impulsiva, direta. Em Câncer: ação motivada pelo cuidado emocional, defende a família ferozmente. Em Libra: ação ponderada e diplomática (posição debilitada — Marte prefere ir direto). Em Escorpião: ação estratégica, profunda, nunca esquece uma traição.</p>
+      <p><strong>Sexualidade:</strong> Marte governa o desejo e a expressão sexual direta. O signo de Marte revela o estilo erótico — como se inicia, o que desperta o desejo, o estilo de conquista. Marte em Touro: sensual, lento, pelo prazer físico. Em Sagitário: aventureiro, precisa de liberdade até na intimidade.</p>
+      <p><strong>Raiva e Assertividade:</strong> Como se expressa (ou reprime) a agressividade. Marte em Libra ou Peixes muitas vezes tem dificuldade de expressar raiva diretamente — ela sai lateralmente ou se volta para dentro. Marte forte (em Áries, Escorpião, Capricórnio) tende a confrontar abertamente.</p>
+      <p><strong>Alquimia:</strong> <strong>Ferro</strong> ♂ — o metal da guerra, das ferramentas, do magnetismo. O ferro é o que permite o trabalho — não é o mais nobre, mas é o mais funcional. A espada de ferro versus a coroa de ouro: Marte serve Tiferet.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Ferro ♂ — força e ação</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Geburah — Severidade</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>A Torre (XVI) · O Imperador (IV)</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Terça-feira</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Ares, Marte, Nergal, Tyr</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Músculos, cabeça, glândulas suprarrenais</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Manipura (plexo solar)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~6–7 semanas</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLANETAS SOCIAIS -->
+<div id="sociais" class="ch reveal">
+  <h2>✦ PLANETAS SOCIAIS ✦</h2>
+  <p>Júpiter · Saturno · onde o indivíduo encontra o coletivo</p>
+</div>
+
+<!-- JÚPITER -->
+<div id="jupiter" class="planet pl-jup reveal">
+  <div class="p-head">
+    <span class="p-sym">♃</span>
+    <div class="p-meta">
+      <div class="p-name">Júpiter · Zeus · Marduk</div>
+      <div class="p-epithet">O Grande Benéfico · A Expansão · A Abundância · A Fé · A Sabedoria Superior</div>
+      <div class="p-tags">
+        <span class="ptag">♐♓ Regente de Sagitário (e Peixes clás.)</span>
+        <span class="ptag">♋ Exaltado em Câncer</span>
+        <span class="ptag">Ciclo: ~12 anos</span>
+        <span class="ptag">Alquimia: Estanho ♃</span>
+        <span class="ptag">Cabala: Chesed · 4ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Júpiter é o <strong>Grande Benéfico</strong> — o planeta que expande, abençoa e multiplica. Onde Júpiter toca, cresce: oportunidades, conhecimento, recursos, fé, sabedoria. É o arquétipo do Rei generoso, do Professor que partilha o saber, do Filósofo que vê além do horizonte.</p>
+      <p>Chesed na Cabala = Misericórdia, Amor, Graça — a sefirá que irradia bondade pura. Como Geburah (Marte/Saturno) representa o julgamento necessário, Chesed representa a misericórdia que equilibra. A tensão Chesed-Geburah é a tensão Júpiter-Saturno: entre o expandir e o contrair, entre a abundância e a disciplina.</p>
+      <p>Júpiter completa o zodíaco em <strong>~12 anos</strong> — um ciclo perfeitamente alinhado com os 12 signos e os 12 anos do calendário chinês. Cada 12 anos, Júpiter retorna ao signo natal: é o "<em>Jupiter Return</em>" — geralmente um período de expansão e realinhamento ao propósito.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Abundância e Oportunidade:</strong> O signo e a casa de Júpiter indicam onde a vida tende a abençoar — onde as oportunidades chegam com mais naturalidade. Júpiter na Casa 2: abundância material. Na Casa 7: bons relacionamentos e parcerias. Na Casa 10: carreira que cresce e é reconhecida.</p>
+      <p><strong>Filosofia e Fé:</strong> Júpiter governa a visão de mundo — a crença que organiza a experiência. O signo indica o estilo filosófico. Júpiter em Aquário: fé na coletividade e na razão. Em Sagitário (casa própria): fé expansiva, às vezes dogmática. Em Escorpião: fé transformadora, que questiona profundamente antes de crer.</p>
+      <p><strong>Excessos:</strong> Júpiter em excesso é o "demais de uma coisa boa": otimismo que se torna ingenuidade, abundância que se torna desperdício, confiança que se torna arrogância. Júpiter em tensão (quadratura, oposição) pode indicar excesso em áreas específicas.</p>
+      <p><strong>Alquimia:</strong> <strong>Estanho</strong> ♃ — metal maleável, facilmente moldável, que age como amálgama (une outros metais). Estanho representa a facilidade com que Júpiter conecta e multiplica.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Estanho ♃ — amálgama</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Chesed — Misericórdia</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>A Roda da Fortuna (X)</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Quinta-feira</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Zeus, Marduk, Thor, Indra</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Fígado, quadris, coxas</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Sahasrara (coroa)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~1 ano</div>
+    </div>
+  </div>
+</div>
+
+<!-- SATURNO -->
+<div id="saturno" class="planet pl-sat reveal">
+  <div class="p-head">
+    <span class="p-sym">♄</span>
+    <div class="p-meta">
+      <div class="p-name">Saturno · Cronos · Ninib</div>
+      <div class="p-epithet">O Grande Maléfico · A Disciplina · O Tempo · Os Limites · O Mestre Severo</div>
+      <div class="p-tags">
+        <span class="ptag">♑♒ Regente de Capricórnio (e Aquário clás.)</span>
+        <span class="ptag">♎ Exaltado em Libra</span>
+        <span class="ptag">Ciclo: ~29,5 anos</span>
+        <span class="ptag">Alquimia: Chumbo ♄</span>
+        <span class="ptag">Cabala: Binah · 3ª Sefirá</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Saturno é o planeta mais mal compreendido — temido como "o Grande Maléfico" mas é, na verdade, o <strong>maior professor</strong>. Ele representa os limites, a disciplina, o tempo, a responsabilidade, a maturidade conquistada com esforço. Saturno não dá — ensina a ganhar.</p>
+      <p>Binah na Cabala = Compreensão, A Grande Mãe, o Oceano — a sefirá que recebe a luz de Chokmah (Sabedoria) e a transforma em forma. Saturno é o princípio formador: sem limite não há forma, sem forma não há manifestação. A matéria é Saturno.</p>
+      <p>O <strong>Retorno de Saturno</strong> (aos ~29-30 anos, 58-60 anos, 87-88 anos) é uma das observações mais precisas da astrologia: quando Saturno retorna ao seu lugar natal, vida passa por um grande teste e reestruturação. É o momento em que os andaimes são testados — o que foi construído com integridade sobrevive, o resto cai. Os 29 anos são o primeiro grande momento de maturidade.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>O Desafio Pessoal:</strong> O signo e a casa de Saturno revelam a <em>área de maior trabalho e crescimento</em> — não o que é fácil, mas o que mais exige. Saturno na Casa 7: relacionamentos como escola de vida. Na Casa 10: carreira que exige construção paciente. Na Casa 1: construção da identidade e autoestima que levou tempo.</p>
+      <p><strong>Karma e Responsabilidade:</strong> Na astrologia moderna, Saturno é o "karma pessoal" — o que foi trazido de vidas anteriores (ou simplesmente de padrões familiares) para ser trabalhado e integrado. É o local do maior crescimento possível, justamente por ser o maior desafio.</p>
+      <p><strong>Estrutura e Construção:</strong> Saturno bem integrado torna-se o maior trunfo: disciplina, confiabilidade, capacidade de construir para durar. Liz Greene: "Saturno é o guardião do limiar que só deixa passar quem provar que merece."</p>
+      <p><strong>Alquimia:</strong> <strong>Chumbo</strong> ♄ — o metal mais pesado, mais denso, mais próximo da terra. Na alquimia, o chumbo é a Prima Materia — a matéria bruta não refinada de onde a Grande Obra começa. A transmutação do chumbo em ouro (Saturno em Sol) é a metáfora da jornada espiritual.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">METAL ALQUÍMICO</span>Chumbo ♄ — a Prima Materia</div>
+      <div class="p-cell"><span class="p-cell-label">SEFIRÁ</span>Binah — Compreensão</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Mundo (XXI) · O Diabo (XV)</div>
+      <div class="p-cell"><span class="p-cell-label">DIA</span>Sábado</div>
+      <div class="p-cell"><span class="p-cell-label">DEUSES</span>Cronos, Saturno, Ninib, Kali</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Ossos, pele, joelhos, dentes</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Muladhara (base)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~2,5 anos</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLANETAS TRANSPESSOAIS -->
+<div id="transpessoais" class="ch reveal">
+  <h2>✦ PLANETAS TRANSPESSOAIS ✦</h2>
+  <p>Urano · Netuno · Plutão · os arquétipos que transformam gerações</p>
+</div>
+
+<!-- URANO -->
+<div id="urano" class="planet pl-uran reveal">
+  <div class="p-head">
+    <span class="p-sym">♅</span>
+    <div class="p-meta">
+      <div class="p-name">Urano · Ouranos · Prometheus</div>
+      <div class="p-epithet">O Revolucionário · A Genialidade · A Ruptura · A Liberdade Radical · O Inesperado</div>
+      <div class="p-tags">
+        <span class="ptag">♒ Regente Moderno de Aquário</span>
+        <span class="ptag">♏ Exaltado em Escorpião</span>
+        <span class="ptag">Ciclo: ~84 anos</span>
+        <span class="ptag">Cabala: Chokmah · 2ª Sefirá</span>
+        <span class="ptag">Transpessoal — age em gerações</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Urano é o <strong>arquétipo da ruptura e da genialidade</strong>. É o relâmpago do céu — súbito, imprevisível, que ilumina e destrói o que precisava mudar. Onde Saturno constrói paredes, Urano as derruba. Onde Júpiter expande o que existe, Urano inventa o que ainda não existia.</p>
+      <p>Chokmah na Cabala = Sabedoria, o Pai, o primeiro impulso de consciência — a faísca antes de ganhar forma. Urano é essa faísca aplicada ao mundo manifesto: a revelação súbita, a intuição que vem do nada, a descoberta científica que muda tudo.</p>
+      <p>Descoberto em 1781 (Herschel), no mesmo período da Revolução Americana (1776) e Francesa (1789) — as grandes revoluções que derrubaram monarquias e afirmaram direitos individuais. A descoberta de Urano coincidiu com a energia que ele representa.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Por Geração:</strong> Urano fica ~7 anos em cada signo, então define características geracionais. Urano em Escorpião (1974-1981): geração que revolucionou a sexualidade e o poder. Urano em Sagitário (1981-1988): geração que revolucionou a religião e a viagem. Urano em Capricórnio (1988-1995): geração que vai revolucionar as estruturas de governo e corporação.</p>
+      <p><strong>No Mapa Individual:</strong> A posição de Urano por casa e seus aspectos com planetas pessoais revelam onde a pessoa tende à originalidade radical, onde pode ser excêntrica ou erráticas, e onde pode trazer contribuição genuinamente nova. Um Urano conjunto ao Sol: identidade singular, não se encaixa em padrões.</p>
+      <p><strong>Trânsitos de Urano:</strong> Quando Urano transita sobre planetas natais, traz ruptura e libertação. Urano cruzando a Lua natal: transformação emocional súbita, mudança no lar ou nos padrões familiares. Urano cruzando o Ascendente: transformação radical da imagem e da vida externa.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">CORRESPONDÊNCIA</span>Chokmah — Sabedoria</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Louco (0) · O Torre (XVI)</div>
+      <div class="p-cell"><span class="p-cell-label">DESCOBERTA</span>1781 · Revolução Francesa</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Sistema elétrico, tornozelos</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Ajna (terceiro olho)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~7 anos</div>
+      <div class="p-cell"><span class="p-cell-label">CICLO COMPLETO</span>~84 anos</div>
+      <div class="p-cell"><span class="p-cell-label">PALAVRAS-CHAVE</span>Revolução, genialidade, ruptura</div>
+    </div>
+  </div>
+</div>
+
+<!-- NETUNO -->
+<div id="netuno" class="planet pl-nep reveal">
+  <div class="p-head">
+    <span class="p-sym">♆</span>
+    <div class="p-meta">
+      <div class="p-name">Netuno · Poseidon · Varuna</div>
+      <div class="p-epithet">O Místico · A Ilusão · A Dissolução · O Divino · O Oceano do Ser</div>
+      <div class="p-tags">
+        <span class="ptag">♓ Regente Moderno de Peixes</span>
+        <span class="ptag">♋ Exaltado em Câncer</span>
+        <span class="ptag">Ciclo: ~165 anos</span>
+        <span class="ptag">Cabala: Kether / Ain Soph</span>
+        <span class="ptag">Transpessoal — dissolve fronteiras</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Netuno é o <strong>princípio da dissolução e do transcendente</strong>. Enquanto Saturno cria limites, Netuno os dissolve. É o oceano que conecta tudo — a consciência coletiva, o inconsciente profundo, o divino que permeia tudo. Netuno governa a espiritualidade, a arte, a ilusão, os sonhos, a compaixão universal.</p>
+      <p>Descoberto em 1846, coincidiu com o surgimento do Espiritismo (Irmãs Fox, 1848), do Socialismo (Marx, 1848), do movimento Romântico tardio, e de avanços na anestesia — todas expansões da consciência coletiva ou dissoluções de fronteiras individuais.</p>
+      <p>O desafio de Netuno: a mesma energia que conecta ao divino pode criar ilusão, escapismo, vício. A diferença entre Netuno elevado (misticismo, arte transcendente) e Netuno baixo (dependência, autoenganação) é o grau de enraizamento com o qual se habita o transcendente.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Por Geração:</strong> Netuno ficou em Peixes de 2012 a 2026 — geração que experienicia a dissolução de fronteiras em escala global (internet, pandemia, crise de identidade coletiva, espiritualidade sem religião). Antes, em Capricórnio (1984-1998): dissolução das estruturas de poder (fim da Guerra Fria, globalização).</p>
+      <p><strong>Amor e Idealizações:</strong> Netuno em aspecto com Vênus ou na Casa 5/7 tende à idealização do parceiro — o amado é projetado como ser perfeito até que a realidade desfaz a ilusão. Esse padrão neptuniano pode criar relacionamentos baseados em projeção mais do que em percepção real.</p>
+      <p><strong>Arte e Espiritualidade:</strong> Um Netuno bem integrado (em harmonia com outros planetas) produz artistas, místicos, espirituais profundos. A arte neptuniana dissolve fronteiras — música que faz chorar sem saber por quê, filme que provoca catarse.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">CORRESPONDÊNCIA</span>Kether / Ain Soph Aur</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Pendurado (XII) · A Lua (XVIII)</div>
+      <div class="p-cell"><span class="p-cell-label">DESCOBERTA</span>1846 · Espiritismo</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Sistema linfático, pés, glândula pineal</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Sahasrara (coroa)</div>
+      <div class="p-cell"><span class="p-cell-label">PERÍODO NO SIGNO</span>~14 anos</div>
+      <div class="p-cell"><span class="p-cell-label">CICLO COMPLETO</span>~165 anos</div>
+      <div class="p-cell"><span class="p-cell-label">PALAVRAS-CHAVE</span>Dissolução, sonho, divino, ilusão</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLUTÃO -->
+<div id="plutao" class="planet pl-plut reveal">
+  <div class="p-head">
+    <span class="p-sym">♇</span>
+    <div class="p-meta">
+      <div class="p-name">Plutão · Hades · Pluto</div>
+      <div class="p-epithet">O Transformador · A Morte e Renascimento · O Poder Oculto · O Inconsciente Coletivo</div>
+      <div class="p-tags">
+        <span class="ptag">♏ Regente Moderno de Escorpião</span>
+        <span class="ptag">♌ Exaltado em Leão (debate)</span>
+        <span class="ptag">Ciclo: ~248 anos (irregular)</span>
+        <span class="ptag">Cabala: Da'at / Ain Soph</span>
+        <span class="ptag">Transpessoal — transforma civilizações</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4>A NATUREZA ESSENCIAL</h4>
+      <p>Plutão é o <strong>arquétipo da morte e da transformação radical</strong>. É o menor dos planetas conhecidos (agora classificado como planeta anão) mas o mais poderoso em impacto simbólico: representa o que está mais profundamente enterrado, o poder oculto, a transformação que não se escolhe mas não se evita.</p>
+      <p>Descoberto em 1930, coincidiu com: ascensão do nazismo e fascismo, Grande Depressão, descoberta da fissão nuclear, Freud na auge (inconsciente), Junguismo emergente. Plutão revelou os poderes ocultos da matéria e da psique simultaneamente.</p>
+      <p>Plutão percorre o zodíaco em ~248 anos — mais lento do que qualquer outro, passando por signos com velocidades muito diferentes: apenas 11-13 anos em Escorpião, mas 32 anos em Touro (por ser mais lento no apélio). Isso significa que gerações inteiras carregam seu Plutão no mesmo signo durante anos.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-sec">
+      <h4>EM TODAS AS DIMENSÕES</h4>
+      <p><strong>Por Geração:</strong> Plutão em Escorpião (1983-1995): geração da AIDS, da internet e dos temas de morte, sexualidade e poder. Plutão em Sagitário (1995-2008): geração do fundamentalismo e do fim das certezas filosóficas. Plutão em Capricórnio (2008-2024): geração que desfez estruturas de poder (2008 foi a crise financeira global; 2020, a pandemia).</p>
+      <p><strong>Plutão em Aquário (2024-2044):</strong> A transformação das estruturas coletivas — tecnologia, IA, democracia, identidade da espécie humana. Seja a libertação radical ou a vigilância totalitária — provavelmente ambas, em tensão.</p>
+      <p><strong>Trânsitos de Plutão:</strong> Quando Plutão toca planetas natais (levam anos), a transformação é profunda e inevitável. Plutão cruzando o Sol natal: morte e renascimento da identidade. Cruzando Vênus: transformação radical nos relacionamentos. Cruzando o Ascendente: morte da antiga persona.</p>
+      <p><strong>Plutão e o Poder:</strong> Plutão governa poder, controle, manipulação, obsessão — e a liberação de tudo isso. Um Plutão forte no mapa (em aspecto com Sol, Lua, ASC) indica alguém que trava batalhas de poder constantes, mas também tem capacidade de transformação e ressurreição notáveis.</p>
+    </div>
+    <div class="pdiv"></div>
+    <div class="p-grid">
+      <div class="p-cell"><span class="p-cell-label">CORRESPONDÊNCIA</span>Da'at — o Abismo</div>
+      <div class="p-cell"><span class="p-cell-label">TARÔ</span>O Julgamento (XX) · A Morte (XIII)</div>
+      <div class="p-cell"><span class="p-cell-label">DESCOBERTA</span>1930 · Freud, Nuclear, Fascismo</div>
+      <div class="p-cell"><span class="p-cell-label">CORPO</span>Órgãos reprodutivos, intestino grosso</div>
+      <div class="p-cell"><span class="p-cell-label">CHAKRA</span>Muladhara e Sahasrara</div>
+      <div class="p-cell"><span class="p-cell-label">EM CAPRICÓRNIO</span>2008–2024</div>
+      <div class="p-cell"><span class="p-cell-label">EM AQUÁRIO</span>2024–2044</div>
+      <div class="p-cell"><span class="p-cell-label">PALAVRAS-CHAVE</span>Poder, morte, renascimento, obsessão</div>
+    </div>
+  </div>
+</div>
+
+<!-- ASTEROIDES E PONTOS ESPECIAIS -->
+<div id="asteroides" class="ch reveal">
+  <h2>✦ Asteroides, Nodos Lunares e Pontos Especiais ✦</h2>
+  <p>Quíron · Nodos da Lua · Lilith · Ceres · Palas · Juno · Vesta</p>
+</div>
+
+<div class="planet pl-sol reveal" style="border-color:rgba(180,100,200,.3)">
+  <div class="p-head">
+    <span class="p-sym">⚷</span>
+    <div class="p-meta">
+      <div class="p-name" style="color:#C070D0">Quíron · O Curador Ferido</div>
+      <div class="p-epithet">Asteroide/Planetoide · Descoberto em 1977 · Entre Saturno e Urano</div>
+      <div class="p-tags">
+        <span class="ptag" style="color:#C070D0;border-color:rgba(180,100,200,.3)">♐♍ Afinidade com Sagitário e Virgem</span>
+        <span class="ptag" style="color:#C070D0;border-color:rgba(180,100,200,.3)">Ciclo: ~51 anos</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4 style="color:#C070D0">A FERIDA QUE SE TORNA DON</h4>
+      <p>Quíron representa a <strong>ferida mais profunda da alma</strong> — aquela que nunca cura completamente, mas que ao ser reconhecida e trabalhada, se torna a maior fonte de sabedoria e dom para curar outros. Como o centauro Quíron, que era o maior curador da Grécia mas tinha uma ferida incurável.</p>
+      <p>O signo e a casa de Quíron revelam: onde há a maior dor (frequentemente sentida como deficiência, vergonha ou inadequação), onde o trabalho mais importante acontece, e onde o maior dom espiritual aguarda ser destilado da ferida.</p>
+      <p>Quíron em Áries: ferida na identidade e na autoafirmação. Em Touro: ferida na autoestima material e no próprio valor. Em Gêmeos: ferida na comunicação e na capacidade de ser ouvido. Em Câncer: ferida no amor materno, na segurança emocional. Cada posição é uma área de trabalho profundo e de dom potencial equivalente.</p>
+    </div>
+  </div>
+</div>
+
+<div class="planet pl-luna reveal" style="border-color:rgba(120,60,180,.35)">
+  <div class="p-head">
+    <span class="p-sym">☊☋</span>
+    <div class="p-meta">
+      <div class="p-name" style="color:#A080E0">Nodos da Lua — Karma e Dharma</div>
+      <div class="p-epithet">Nodo Norte (Cabeça do Dragão) · Nodo Sul (Cauda do Dragão)</div>
+      <div class="p-tags">
+        <span class="ptag" style="color:#A080E0;border-color:rgba(120,60,180,.3)">Ciclo: ~18,6 anos</span>
+        <span class="ptag" style="color:#A080E0;border-color:rgba(120,60,180,.3)">Sempre em signos opostos</span>
+      </div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4 style="color:#A080E0">O EIXO DO DESTINO</h4>
+      <p>Os <strong>Nodos da Lua</strong> são os pontos onde a órbita lunar cruza a eclíptica (o plano da órbita terrestre ao redor do Sol). São sempre exatamente opostos um ao outro — formando o <em>Eixo Nodal</em>, que na tradição védica (Jyotish) é chamado de Rahu (Nodo Norte) e Ketu (Nodo Sul).</p>
+      <p><strong>☊ Nodo Norte</strong> = Dharma, destino, o que se veio para desenvolver nesta vida. A direção de crescimento, frequentemente desconfortável porque é novidade para a alma. O signo do Nodo Norte indica qualidades a serem cultivadas; a casa indica a área de vida onde o crescimento principal ocorre.</p>
+      <p><strong>☋ Nodo Sul</strong> = Karma, o passado (de vidas anteriores ou padrões familiares), o que é confortável mas limitante se não transcendido. É o talento já adquirido que pode se tornar zona de conforto paralisante. O crescimento exige mover-se do Nodo Sul em direção ao Nodo Norte — sem negar o Sul, mas integrando-o.</p>
+      <p><strong>O Eixo por Casa:</strong> Nodo Norte na Casa 1 / Sul na Casa 7: veio de vidas de dependência nos outros — destino de desenvolver identidade própria. Norte na Casa 2 / Sul na Casa 8: transcender dependência de recursos alheios para construir os próprios. Norte na Casa 10 / Sul na Casa 4: de privado para público, de familiar para vocacional.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RETRÓGRADOS -->
+<div id="retr" class="ch reveal">
+  <h2>✦ A Retrogradação dos Planetas ✦</h2>
+  <p>o que significa um planeta retrógrado no mapa natal e em trânsito</p>
+</div>
+
+<div class="planet pl-sat reveal" style="border-color:rgba(160,120,200,.3)">
+  <div class="p-head">
+    <span class="p-sym">℞</span>
+    <div class="p-meta">
+      <div class="p-name" style="color:#C0A0E0">Planetas Retrógrados · Interior e Retrospecção</div>
+      <div class="p-epithet">O que é retrógrado no mapa natal e em trânsito</div>
+    </div>
+  </div>
+  <div class="p-body">
+    <div class="p-sec">
+      <h4 style="color:#C0A0E0">O QUE É RETROGRADAÇÃO</h4>
+      <p>Nenhum planeta realmente vai para trás — a retrogradação é um fenômeno ótico: da perspectiva da Terra, o planeta parece mover-se ao contrário. Acontece porque a Terra "ultrapassa" planetas externos, ou é ultrapassada pelos internos (Mercúrio e Vênus).</p>
+      <p><strong>Natal Retrógrado:</strong> Um planeta retrógrado no mapa natal indica que sua energia opera de forma mais interna, introvertida, subjetiva. A pessoa pode demorar mais a expressar aquela qualidade externamente — mas quando o faz, é com profundidade e autenticidade únicos. Mercúrio retrógrado: pensamento não-linear que é na verdade originalidade. Vênus retrógrada: amor que precisa ser experienciado por dentro antes de ser expresso. Marte retrógrado: ação que se delibera muito antes de se executar.</p>
+      <p><strong>Retrógrados em Trânsito — Mercúrio (3×/ano):</strong> O período mais famoso. Mercúrio retrógrado é real como fenômeno psicológico coletivo — comunicações ficam mais propensas a mal-entendidos, tecnologia falha mais, decisões tomadas agora precisarão de revisão. A regra: use o "re" — rever, repensar, refazer, reorganizar, reconciliar.</p>
+      <p><strong>Vênus Retrógrada (cada 18 meses):</strong> Período de reavaliação dos relacionamentos e dos valores. Exs voltam (a questão é: deve-se reabrir ou apenas observar o que ainda está pendente?). Transformações no estilo estético. Não é bom para começar novos relacionamentos.</p>
+      <p><strong>Saturno, Júpiter, Urano, Netuno, Plutão</strong> ficam retrógrados por longos períodos (~4-6 meses/ano) — suas retrógradas indicam períodos de processamento interno coletivo das energias que representam.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-nav">
+    <a class="f-link" href="astrologia-parte1.html">I · Fundamentos</a>
+    <a class="f-link" href="astrologia-parte2.html">II · Planetas</a>
+    <a class="f-link" href="astrologia-parte3.html">III · Casas</a>
+    <a class="f-link" href="astrologia-parte4.html">IV · Aspectos e Avançado</a>
+  </div>
+  <p class="f-text">
+    "Não sou determinado pelas estrelas — sou feito do mesmo material que elas."<br>
+    — Carl Sagan (com adaptação astrológica)<br><br>
+    <em>Liz Greene · Robert Hand · Dane Rudhyar · Isabel Hickey · Stephen Arroyo · Howard Sasportas</em>
+  </p>
+</footer>
+</div>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.05})
+document.querySelectorAll('.reveal,.planet').forEach(el=>io.observe(el))
+const secs=[...document.querySelectorAll('[id]')];const dots=[...document.querySelectorAll('.sn-dot')]
+const io2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})}})},{threshold:.4})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

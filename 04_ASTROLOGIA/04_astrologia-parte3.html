@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrologia — Parte III · As 12 Casas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04020E;--gold:#FFD700;--silver:#C0D0FF;
+  --card:#0C0820;--text:#E8E0F8;--text-d:rgba(232,224,248,.65);--text-dd:rgba(232,224,248,.4);
+  --border:rgba(192,208,255,.14);
+  --q1:#C84030;--q2:#30A060;--q3:#3060C0;--q4:#A08020;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--void);background-image:radial-gradient(ellipse 100% 50% at 50% 0%,rgba(30,10,80,.5) 0%,transparent 55%);
+font-family:'Cormorant Garamond',serif;color:var(--text);line-height:1.9;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(1px 1px at 8% 12%,rgba(255,255,255,.7) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 27% 5%,rgba(255,215,0,.6) 0%,transparent 100%),
+  radial-gradient(1px 1px at 55% 9%,rgba(255,255,255,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 73% 15%,rgba(192,208,255,.6) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 91% 7%,rgba(255,255,255,.7) 0%,transparent 100%),
+  radial-gradient(1px 1px at 14% 65%,rgba(255,215,0,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 63% 72%,rgba(255,255,255,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 39% 88%,rgba(192,208,255,.4) 0%,transparent 100%);
+pointer-events:none;z-index:0;animation:tw 9s ease-in-out infinite alternate}
+@keyframes tw{0%{opacity:.5}100%{opacity:1}}
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 16px 100px}
+header{text-align:center;padding:70px 20px 50px}
+.orrery{font-size:4rem;display:block;margin-bottom:14px;filter:drop-shadow(0 0 24px var(--gold));animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}50%{filter:drop-shadow(0 0 50px var(--gold))}}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.3rem,4vw,2.8rem);color:var(--gold);letter-spacing:.1em;text-shadow:0 0 40px rgba(255,215,0,.4)}
+.h-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(.8rem,2vw,1rem);color:rgba(255,215,0,.5);letter-spacing:.22em;margin-top:10px}
+.h-rule{height:1px;margin:20px auto;width:600px;max-width:90%;background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),rgba(192,208,255,.6),rgba(255,215,0,.4),transparent)}
+.h-intro{max-width:780px;margin:0 auto;font-size:.93rem;line-height:2;color:var(--text-d);font-style:italic}
+.nav-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 40px}
+.pill{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.12em;padding:6px 14px;border-radius:20px;text-decoration:none;border:1px solid rgba(192,208,255,.25);background:rgba(192,208,255,.06);color:var(--silver);transition:all .25s}
+.pill:hover{background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.4);color:var(--gold)}
+.ch{text-align:center;margin:60px 0 24px}
+.ch::before,.ch::after{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+.ch h2{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,2.5vw,1.3rem);letter-spacing:.18em;color:var(--gold)}
+.ch p{font-style:italic;font-size:.85rem;color:var(--text-dd);margin-top:4px}
+
+/* QUADRANT HEADERS */
+.qh{border-radius:10px;padding:18px 22px;margin:32px 0 18px;border:1px solid}
+.qh h3{font-family:'Cinzel Decorative',serif;font-size:.75rem;letter-spacing:.15em;margin-bottom:8px}
+.qh p{font-size:.86rem;color:var(--text-d);line-height:1.88}
+.q1h{background:rgba(200,64,48,.07);border-color:rgba(200,64,48,.28)}.q1h h3{color:var(--q1)}
+.q2h{background:rgba(48,160,96,.07);border-color:rgba(48,160,96,.28)}.q2h h3{color:var(--q2)}
+.q3h{background:rgba(48,96,192,.07);border-color:rgba(48,96,192,.28)}.q3h h3{color:var(--q3)}
+.q4h{background:rgba(160,128,32,.07);border-color:rgba(160,128,32,.28)}.q4h h3{color:var(--q4)}
+
+/* HOUSE CARD */
+.casa{border-radius:14px;margin-bottom:18px;overflow:hidden;border:1px solid rgba(255,215,0,.18);
+  background:linear-gradient(155deg,rgba(255,255,255,.03),rgba(0,0,0,.5));position:relative}
+.casa::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.casa-head{padding:20px 22px 0;display:flex;gap:14px;align-items:flex-start}
+.casa-num{width:60px;height:60px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.2)}
+.casa-num span{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);line-height:1}
+.casa-num small{font-family:'Cinzel Decorative',serif;font-size:.44rem;color:var(--gold);opacity:.5;letter-spacing:.08em}
+.casa-meta{flex:1}
+.casa-nome{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.05rem,2.5vw,1.4rem);color:var(--gold);line-height:1.1}
+.casa-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:.78rem;color:var(--text-dd);margin-top:2px}
+.casa-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.ctag{font-size:.62rem;padding:2px 8px;border-radius:20px;border:1px solid rgba(255,215,0,.18);background:rgba(255,215,0,.05);color:rgba(255,215,0,.8);font-style:italic}
+.casa-body{padding:16px 22px 22px}
+.s{margin-bottom:14px}
+.s h4{font-family:'Cinzel Decorative',serif;font-size:.58rem;letter-spacing:.16em;color:rgba(255,215,0,.6);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.s h4::before{content:'◆';font-size:.5rem}
+.s p{font-size:.88rem;color:var(--text-d);line-height:1.94;margin-bottom:7px}
+.s p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+.hdiv{height:1px;margin:10px 0;background:linear-gradient(90deg,transparent,rgba(255,215,0,.1),transparent)}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:6px;margin-top:8px}
+.hcell{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px 11px;font-size:.74rem;color:var(--text-d);line-height:1.6}
+.hcell-l{font-family:'Cinzel Decorative',serif;font-size:.47rem;letter-spacing:.12em;display:block;margin-bottom:2px;color:var(--gold);opacity:.6}
+
+/* PLANET-IN-HOUSE TABLE */
+.pih{border-radius:10px;padding:18px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,215,0,.1);margin-top:10px}
+.pih-title{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.16em;color:var(--gold);opacity:.7;margin-bottom:10px}
+.pih-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.82rem}
+.pih-row:last-child{border-bottom:none}
+.pih-planet{flex-shrink:0;width:90px;color:var(--gold);font-weight:700;font-size:.8rem}
+.pih-meaning{color:var(--text-d);line-height:1.75}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}
+.reveal.vis{opacity:1;transform:none}
+.casa{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.casa.vis{opacity:1;transform:none}
+
+.side-nav{position:fixed;top:50%;right:14px;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:100}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,215,0,.2);border:1px solid rgba(255,215,0,.35);display:block;text-decoration:none;transition:all .22s}
+.sn-dot:hover,.sn-dot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.side-nav{display:none}}
+@media(max-width:600px){.hgrid{grid-template-columns:1fr 1fr}.pih-planet{width:72px}}
+footer{text-align:center;padding:60px 20px 40px;border-top:1px solid var(--border)}
+.f-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:20px}
+.f-link{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,215,0,.3);border-radius:20px;background:rgba(255,215,0,.05);transition:all .2s}
+.f-link:hover{background:rgba(255,215,0,.12)}
+.f-text{font-family:'IM Fell English',serif;font-style:italic;font-size:.84rem;color:rgba(255,215,0,.3);letter-spacing:.08em;line-height:2.2}
+</style>
+</head>
+<body>
+<nav class="side-nav">
+  <a class="sn-dot" href="#intro" title="Como Funcionam"></a>
+  <a class="sn-dot" href="#q1" title="1º Quadrante"></a>
+  <a class="sn-dot" href="#h1" title="Casa 1"></a>
+  <a class="sn-dot" href="#h2" title="Casa 2"></a>
+  <a class="sn-dot" href="#h3" title="Casa 3"></a>
+  <a class="sn-dot" href="#q2" title="2º Quadrante"></a>
+  <a class="sn-dot" href="#h4" title="Casa 4"></a>
+  <a class="sn-dot" href="#h5" title="Casa 5"></a>
+  <a class="sn-dot" href="#h6" title="Casa 6"></a>
+  <a class="sn-dot" href="#q3" title="3º Quadrante"></a>
+  <a class="sn-dot" href="#h7" title="Casa 7"></a>
+  <a class="sn-dot" href="#h8" title="Casa 8"></a>
+  <a class="sn-dot" href="#h9" title="Casa 9"></a>
+  <a class="sn-dot" href="#q4" title="4º Quadrante"></a>
+  <a class="sn-dot" href="#h10" title="Casa 10"></a>
+  <a class="sn-dot" href="#h11" title="Casa 11"></a>
+  <a class="sn-dot" href="#h12" title="Casa 12"></a>
+</nav>
+<div class="wrap">
+<header>
+  <span class="orrery">🏛</span>
+  <h1>As 12 Casas Astrológicas</h1>
+  <p class="h-sub">Enciclopédia Completa · Parte III · Os Cenários da Existência</p>
+  <div class="h-rule"></div>
+  <p class="h-intro">As casas são os doze territórios da experiência humana — o "onde" do mapa astral. Se os planetas são os atores e os signos são como eles atuam, as casas são o palco onde tudo acontece. Da identidade pessoal (Casa 1) ao mistério espiritual (Casa 12), cada casa governa um setor preciso da vida. Aqui cada uma é destrinchada: o que governa, todos os temas possíveis, o impacto de cada planeta ali, e as correlações herméticas e cabalísticas.</p>
+</header>
+
+<div class="nav-pills reveal">
+  <a class="pill" href="astrologia-parte1.html">I · Fundamentos e Signos</a>
+  <a class="pill" href="astrologia-parte2.html">II · Planetas e Luminares</a>
+  <a class="pill" href="astrologia-parte3.html">III · Casas Astrológicas</a>
+  <a class="pill" href="astrologia-parte4.html">IV · Aspectos, Trânsitos e Avançado</a>
+</div>
+
+<!-- INTRO -->
+<div id="intro" class="ch reveal">
+  <h2>✦ A Lógica das Casas ✦</h2>
+  <p>como o céu é dividido · os quatro quadrantes · angular, sucedente, cadente</p>
+</div>
+
+<div class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>⊕</span><small>BASES</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">O Sistema das 12 Casas</div>
+      <div class="casa-sub">Ascendente · MC · IC · Descendente — os quatro pontos-âncora</div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <p>As 12 casas são criadas dividindo o espaço ao redor do lugar de nascimento, usando o horizonte local como referência. O ponto onde o Sol nasce (leste) é o <strong>Ascendente</strong> — cúspide da Casa 1. O topo do céu é o <strong>Meio do Céu (MC)</strong> — cúspide da Casa 10. O oeste é o <strong>Descendente</strong> — cúspide da Casa 7. E o nadir é o <strong>IC</strong> — cúspide da Casa 4.</p>
+      <p><strong>Tipos de casas por força:</strong> As <em>Angulares</em> (1, 4, 7, 10) são as mais poderosas — planetas aqui têm impacto máximo. As <em>Sucedentes</em> (2, 5, 8, 11) consolidam o tema da angular anterior. As <em>Cadentes</em> (3, 6, 9, 12) preparam a próxima angular — são mais interiorizadas.</p>
+      <p><strong>Os 4 Quadrantes:</strong> <span style="color:var(--q1)">1º (Casas 1–3): o EU individual</span> · <span style="color:var(--q2)">2º (Casas 4–6): o EU íntimo e doméstico</span> · <span style="color:var(--q3)">3º (Casas 7–9): o EU relacional e expandido</span> · <span style="color:var(--q4)">4º (Casas 10–12): o EU social, coletivo e espiritual</span>.</p>
+      <p><strong>Casa sem planetas:</strong> Não significa uma área "vazia" — significa que funciona de modo mais automático, governada pelo regente da cúspide. A atenção é procurar o planeta regente do signo na cúspide e interpretá-lo pelo signo e casa onde está.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Q1 -->
+<div id="q1" class="qh q1h reveal">
+  <h3>🔴 1º QUADRANTE · Casas 1–3 · O EU INDIVIDUAL</h3>
+  <p>O primeiro quadrante é o mais pessoal — governa o ser antes de qualquer relação com o outro: a identidade e o corpo (Casa 1), os recursos e valores pessoais (Casa 2), e o pensamento e a comunicação cotidiana (Casa 3). Pessoas com muitos planetas aqui tendem a ser autocentradas (não no sentido pejorativo) — descobrem a si mesmas antes de descobrir o outro.</p>
+</div>
+
+<!-- CASA 1 -->
+<div id="h1" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>I</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 1 · Ascendente · Identidade e Corpo</div>
+      <div class="casa-sub">Signo Natural: Áries ♈ · Regente: Marte ♂ · ANGULAR</div>
+      <div class="casa-tags"><span class="ctag">Ascendente (ASC)</span><span class="ctag">Identidade</span><span class="ctag">Corpo e Aparência</span><span class="ctag">Primeira Impressão</span><span class="ctag">Reações Instintivas</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 1 é a <strong>embalagem da alma no mundo físico</strong> — o corpo, a aparência, a primeira impressão, as reações automáticas. O signo Ascendente descreve como a pessoa parece aos outros, como age instintivamente em situações novas, e qual é o "filtro" pelo qual o resto do mapa se expressa no mundo.</p>
+      <p>Enquanto o Sol (signo solar) é quem você está se tornando ao longo da vida, o Ascendente é quem você parece ser imediatamente. Com o tempo, a pessoa vai "Sol-izando" — expressando mais o Sol e menos a persona do Ascendente.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Aparência Física:</strong> Áries ASC: feições marcadas, porte atlético, olhar direto. Touro ASC: físico sólido, traços harmoniosos, voz rica. Gêmeos ASC: leveza física, gestos vivos, expressão móvel. Câncer ASC: rosto redondo e suave, expressão emotiva. Leão ASC: juba, cabelo abundante, postura real. Virgem ASC: traços finos, olhar analítico, apresentação impecável. Libra ASC: simetria facial natural, elegância. Escorpião ASC: olhar magnético e intenso que não se esquece. Sagitário ASC: porte expansivo, sorriso largo, movimento livre. Capricórnio ASC: aparência séria, matura antes do tempo. Aquário ASC: algo de incomum na aparência — detalhe único. Peixes ASC: olhos grandes e profundos, expressão sonhadora.</p>
+      <p><strong>Saúde e Vitalidade Geral:</strong> A constituição física herdada. O sistema mais vulnerável tende a corresponder ao signo ascendente: Áries ASC → cabeça; Touro → garganta; Gêmeos → pulmões/nervos; etc.</p>
+      <p><strong>Estilo de Começar Coisas:</strong> Como se inicia projetos, relacionamentos, conversas. A abordagem instintiva.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 1</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade muito visível, presença marcante, ego forte. Brilho natural que as pessoas notam. Propenso à autocentração mas também à autenticidade.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Aparência que muda com o humor. Muito sensível ao ambiente. A emoção está escrita no rosto. Necessidade de aprovação emocional visível.</div></div>
+      <div class="pih-row"><div class="pih-planet">☿ Mercúrio</div><div class="pih-meaning">Mente ágil expressa imediatamente. Fala antes de pensar (às vezes). Aparência jovial independente da idade. Comunicador nato.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Beleza natural e charme inato. Agradável ao convívio. Aparência harmoniosa. Amor pela beleza pessoal. Frequentemente muito atraente.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Energia e assertividade marcantes. Aparência dinâmica e forte. Pode parecer mais agressivo do que pretende. Ação antes de pensar.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Presença expansiva, otimismo contagiante. Tendência ao ganho de peso ao longo da vida. Boa sorte geral. Frequentemente alto ou de presença grande.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Aparência séria, matura antes do tempo. Pode ter baixa autoestima antes dos 30. Depois do Retorno de Saturno: autoridade e solidez genuínas.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Algo incomum ou disruptivo na aparência e personalidade. Imprevisível. Pode mudar radicalmente a cada fase. Gênio latente.</div></div>
+      <div class="pih-row"><div class="pih-planet">♆ Netuno</div><div class="pih-meaning">Aparência etérea, às vezes vaga. Dificuldade de estabelecer identidade clara. Muito sensível ao ambiente. Artístico e intuitivo.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Presença magnética que transforma o ambiente. Impossível ser ignorado. Vida de intensas transformações da identidade. Força oculta poderosa.</div></div>
+    </div>
+    <div class="hgrid">
+      <div class="hcell"><span class="hcell-l">CABALA</span>Kether — origem da manifestação individual</div>
+      <div class="hcell"><span class="hcell-l">ALQUIMIA</span>Fogo Primordial — o Enxofre individuado</div>
+      <div class="hcell"><span class="hcell-l">TARÔ</span>O Imperador (IV) como regência de Áries</div>
+      <div class="hcell"><span class="hcell-l">EIXO</span>Casa 1 (Eu) × Casa 7 (Outro)</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 2 -->
+<div id="h2" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>II</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 2 · Recursos, Dinheiro e Valores</div>
+      <div class="casa-sub">Signo Natural: Touro ♉ · Regente: Vênus ♀ · SUCEDENTE</div>
+      <div class="casa-tags"><span class="ctag">Dinheiro e Posses</span><span class="ctag">Valores Pessoais</span><span class="ctag">Talentos Inatos</span><span class="ctag">Autoestima Material</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 2 governa o que é genuinamente <strong>meu</strong>: dinheiro, posses, talentos pessoais e, crucialmente, os valores que orientam a vida. É também a casa da <strong>autoestima material</strong> — a crença (ou não) no próprio valor. Há uma relação direta: pessoas com baixa autoestima frequentemente têm dificuldades financeiras, e o trabalho da Casa 2 é frequentemente trabalho de autoestima.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Estilo Financeiro por Signo na Cúspide:</strong> Touro: acumula lentamente e com segurança. Escorpião: controla intensamente e investe estrategicamente. Sagitário: gasta livremente confiando que voltará. Capricórnio: disciplinado e frugal. Áries: ganha e gasta com impulso. Peixes: relação nebulosa, dificuldade de controle.</p>
+      <p><strong>Talentos como Recurso:</strong> O que você oferece naturalmente ao mundo que tem valor. Mercúrio na Casa 2: a inteligência comunicativa como recurso financeiro. Vênus: arte e estética. Marte: energia e liderança. Saturno: disciplina e estrutura.</p>
+      <p><strong>O Que Você Valoriza:</strong> Mais profundo que dinheiro — os princípios que guiam escolhas reais. Saturno na Casa 2: valores de disciplina e responsabilidade. Netuno: valores espirituais e artísticos acima dos materiais.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 2</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade ligada ao que possui. Precisa de estabilidade financeira para brilhar. Potencial de grande riqueza quando o propósito é claro.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Renda flutuante como as marés. Segurança emocional ligada ao financeiro. Instinto certeiro para negócios mas emocionalmente vulnerável a gastos.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Posição forte e favorável. Atrai dinheiro com aparente facilidade. Talento para arte e beleza como recurso financeiro. Gosta de gastar com prazer.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Ganha e gasta com impulsividade. Energia para construir riqueza mas dificuldade de retê-la. Pode haver disputas por dinheiro.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Posição muito favorável. Abundância natural, múltiplas fontes de renda. Risco de excessos e gastos além da conta.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Dificuldades financeiras na juventude que ensinam muito. Após os 30: disciplina e solidez que constroem riqueza duradoura. Frugalidade natural.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Dinheiro como poder. Extremos financeiros — ou muita riqueza ou muita escassez. Transformações radicais nas finanças ao longo da vida.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 3 -->
+<div id="h3" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>III</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 3 · Mente, Comunicação e Ambiente</div>
+      <div class="casa-sub">Signo Natural: Gêmeos ♊ · Regente: Mercúrio ☿ · CADENTE</div>
+      <div class="casa-tags"><span class="ctag">Comunicação</span><span class="ctag">Irmãos</span><span class="ctag">Pensamento Cotidiano</span><span class="ctag">Viagens Curtas</span><span class="ctag">Vizinhança</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 3 governa a <strong>mente em seu aspecto concreto e cotidiano</strong>: como se pensa, como se comunica, os irmãos e parentes próximos, viagens curtas, a vizinhança, e o aprendizado nas experiências do dia a dia. É a mente operacional — diferente da Casa 9 (filosofia e expansão), a Casa 3 é o pensamento imediato, a troca de informações, a conversa de todo dia.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Estilo de Comunicação:</strong> Mercúrio na Casa 3 (sua posição natural) torna comunicador nato, verbal e escrito. Saturno aqui: comunicação cuidadosa, às vezes com dificuldade de expressar opiniões — mas quando fala, pesa cada palavra. Júpiter: comunicação expansiva, filosófica, que vai do específico ao universal facilmente. Plutão: palavras com poder de transformar — escolhe-as com precisão cirúrgica.</p>
+      <p><strong>Irmãos e Parentes Próximos:</strong> Marte na Casa 3: dinâmica de competição com irmãos. Vênus: laços afetivos e harmoniosos com irmãos. Saturno: irmão mais velho que parece pai, ou distância emocional.</p>
+      <p><strong>Aprendizado Inicial:</strong> Escola fundamental, forma de aprender, relação com leitura e escrita. Urano na Casa 3: não-linear, dificuldade com sistema escolar convencional mas originalidade brilhante.</p>
+      <p><strong>Tecnologia e Transporte Cotidiano:</strong> Celular, internet local, carro próprio, transporte público, deslocamentos diários.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 3</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade construída através da comunicação. Brilha ao falar, escrever, ensinar. Irmão pode ser figura central na vida.</div></div>
+      <div class="pih-row"><div class="pih-planet">☿ Mercúrio</div><div class="pih-meaning">Posição muito forte. Mente ágil e comunicação fluente. Talento para escrita, oratória, jornalismo.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Pensamento genial e não-linear. Dificuldade com ensino convencional. Comunicação surpreendente, às vezes chocante. Internet como domínio natural.</div></div>
+      <div class="pih-row"><div class="pih-planet">♆ Netuno</div><div class="pih-meaning">Pensamento intuitivo e poético. Dificuldade de clareza lógica mas talento artístico na comunicação. Pode haver irmão com necessidades especiais.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div id="q2" class="qh q2h reveal">
+  <h3>🟢 2º QUADRANTE · Casas 4–6 · O EU ÍNTIMO E DOMÉSTICO</h3>
+  <p>O segundo quadrante governa a vida interior e íntima: as raízes e o lar (Casa 4), a criatividade, o prazer e os filhos (Casa 5), e as rotinas de saúde e trabalho cotidiano (Casa 6). Pessoas com ênfase aqui tendem a ser interiorizadas, com vida privada rica e trabalho profundo.</p>
+</div>
+
+<!-- CASA 4 -->
+<div id="h4" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>IV</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 4 · Fundo do Céu · Raízes, Lar e Infância</div>
+      <div class="casa-sub">Signo Natural: Câncer ♋ · Regente: Lua ☽ · ANGULAR · IC</div>
+      <div class="casa-tags"><span class="ctag">IC (Imum Coeli)</span><span class="ctag">Família de Origem</span><span class="ctag">Lar</span><span class="ctag">Infância</span><span class="ctag">Raízes Ancestrais</span><span class="ctag">Fim da Vida</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 4 (IC) é o ponto mais profundo e privado do mapa — diretamente oposto ao MC público. É <strong>onde se retira o mundo para ser genuinamente si mesmo</strong>. Governa o ambiente doméstico da infância, os padrões emocionais herdados da família, o lar físico, a conexão com os ancestrais, e — na astrologia clássica — o fim da vida. É o solo de onde tudo brota.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>A Família de Origem e a Infância:</strong> O signo na cúspide da Casa 4 descreve o ambiente doméstico da infância. Escorpião: intensa, marcada por segredos, poder e transformação. Libra: harmoniosa na aparência, mas com conflitos implícitos. Aquário: incomum, pais originais, muita liberdade ou muito caos. Capricórnio: estruturada, séria, com altas expectativas.</p>
+      <p><strong>O Lar Físico:</strong> A casa onde se vive, o tipo de lar que se cria. Saturno na Casa 4: pode demorar para ter casa própria; quando tem, é para sempre. Netuno: lar perto da água, ou atmosfera etérea e criativa em casa.</p>
+      <p><strong>Karma Ancestral:</strong> Na astrologia esotérica, a Casa 4 guarda padrões que vêm de gerações passadas — não só da infância mas de linhagens ancestrais. Plutão na Casa 4: herança de trauma geracional que a pessoa está aqui para transformar.</p>
+      <p><strong>Fim da Vida:</strong> Como e onde se morre. Júpiter na Casa 4: morte em paz, cercado da família, em condições confortáveis.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 4</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">O lar é o centro da identidade. Vida privada muito rica. Pode haver figura paterna dominante. Brilha na vida doméstica e privada.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Posição forte (Lua governa Câncer/Casa 4). Vida emocional profundamente enraizada na família. Necessidade de lar seguro para florescer. Ligação intensa com a mãe.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Infância com responsabilidades pesadas. Pai austero ou ausente. Depois dos 30: capacidade de construir lar sólido e duradouro como nunca teve.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Herança de padrões familiares intensos e transformadores. A vida privada passa por metamorfoses radicais. Poder oculto nas raízes familiares.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Infância atípica, frequentemente disruptiva. Muitas mudanças de lar. Necessidade de liberdade dentro do lar. Pai incomum ou ausente por originalidade.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 5 -->
+<div id="h5" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>V</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 5 · Criatividade, Amor Romântico e Filhos</div>
+      <div class="casa-sub">Signo Natural: Leão ♌ · Regente: Sol ☉ · SUCEDENTE</div>
+      <div class="casa-tags"><span class="ctag">Criatividade e Arte</span><span class="ctag">Namoro e Romance</span><span class="ctag">Filhos</span><span class="ctag">Prazer e Jogo</span><span class="ctag">Especulação</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 5 é a <strong>casa da expressão solar — onde se brilha e cria com alegria</strong>. Governa a criatividade artística, o romance (a paixão leve e o flerte, diferente do casamento sério da Casa 7), os filhos (biológicos e criativos), o prazer, os jogos, esportes e especulação financeira. É onde a vida se torna lúdica e expressiva.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Criatividade:</strong> O dom criativo principal. Mercúrio na Casa 5: escrita e comunicação criativa. Vênus: artes visuais, dança, moda. Marte: criatividade atlética e enérgica. Saturno: criatividade disciplinada que produz obras duradouras (frequentemente artistas "lentos" que fazem obras definitivas).</p>
+      <p><strong>Romance e Namoro:</strong> O estilo amoroso antes do compromisso sério. Escorpião na cúspide: romances intensos e transformadores. Sagitário: aventuras amorosas com pessoas de outras culturas. Leão: romances grandiosos e dramáticos. Virgem: namoros que começam pela amizade e análise mútua.</p>
+      <p><strong>Filhos:</strong> A relação com filhos. Júpiter na Casa 5: múltiplos filhos ou grande alegria com eles. Saturno: poucos filhos, paternidade/maternidade que leva tempo para acontecer, mas relação profunda quando acontece. Urano: filhos incomuns, relação atípica com maternidade/paternidade.</p>
+      <p><strong>Jogo e Especulação:</strong> Apostas, bolsa de valores, qualquer risco por prazer. Júpiter aqui: sorte no jogo mas cuidado com excesso.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 5</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Grande criatividade e necessidade de expressão. Relacionamentos intensos. Filhos como reflexo da identidade. Brilha naturalmente nas artes.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Amor romântico belo e harmonioso. Grande talento artístico. Filhos encantadores. Vida de prazeres refinados.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Paixão intensa nos romances. Criatividade atlética e competitiva. Pode haver disputas com filhos. Amor que começa com atração física irresistível.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Bloqueio criativo que precisa ser trabalhado. Dificuldade de "brincar". Filhos como responsabilidade pesada. Porém: quando a criatividade é desbloqueada, é extraordinariamente sólida.</div></div>
+      <div class="pih-row"><div class="pih-planet">♆ Netuno</div><div class="pih-meaning">Criatividade artística dissolvente e mística. Romances idealizados que frequentemente decepcionam. Arte que transcende o pessoal.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 6 -->
+<div id="h6" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>VI</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 6 · Saúde, Rotinas e Serviço Diário</div>
+      <div class="casa-sub">Signo Natural: Virgem ♍ · Regente: Mercúrio ☿ · CADENTE</div>
+      <div class="casa-tags"><span class="ctag">Saúde do Dia a Dia</span><span class="ctag">Trabalho Cotidiano</span><span class="ctag">Rotinas</span><span class="ctag">Serviço</span><span class="ctag">Animais de Estimação</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 6 governa a <strong>saúde física cotidiana, as rotinas de trabalho e a ética do serviço</strong>. Diferente da Casa 10 (carreira como vocação e reputação), a Casa 6 é o trabalho concreto — as tarefas diárias, o ritmo de trabalho, a relação com colegas subordinados. É também a saúde — não as crises (Casa 8) mas o cuidado preventivo e os hábitos diários.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Saúde e Corpo:</strong> O signo na Casa 6 indica áreas de atenção e o estilo de cuidado com a saúde. Escorpião na Casa 6: saúde que exige mergulhos profundos — medicina alternativa, transformações radicais de hábitos. Aquário: medicina incomum e inovadora funciona melhor. Virgem: dieta e higiene rigorosas como base da saúde.</p>
+      <p><strong>Ambiente e Rotina de Trabalho:</strong> A qualidade do ambiente de trabalho cotidiano. Mercúrio na Casa 6: trabalho intelectual detalhado. Saturno: trabalho disciplinado e exigente que constrói expertise lenta mas sólida. Netuno: trabalho criativo ou espiritual, dificuldade com rotinas rígidas.</p>
+      <p><strong>Animais:</strong> A relação com animais domésticos — frequentemente intensa e significativa para pessoas com Casa 6 ativa.</p>
+      <p><strong>O Serviço como Ética:</strong> A Casa 6 governa o que se faz para contribuir praticamente ao mundo — o artesão, o médico, o cuidador, o técnico dedicado.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 6</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade ligada ao trabalho e à saúde. Brilha no serviço. Pode trabalhar demais por necessidade de ser útil.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Saúde que exige disciplina constante. Trabalho que constrói mestria lentamente. Tende ao workaholism. Cuidados preventivos como prioridade.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Saúde geralmente boa mas tendência ao excesso. Trabalho abundante e bem-sucedido. Pode trabalhar em múltiplas áreas simultaneamente.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Saúde que exige transformações radicais. Trabalho de cura, medicina, pesquisa profunda. Possíveis crises de saúde que remodelam a vida.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div id="q3" class="qh q3h reveal">
+  <h3>🔵 3º QUADRANTE · Casas 7–9 · O EU RELACIONAL E EXPANDIDO</h3>
+  <p>O terceiro quadrante governa o encontro com o Outro e com o Mundo: as parcerias (Casa 7), os recursos e transformações compartilhados (Casa 8), e a expansão filosófica e espiritual (Casa 9). Pessoas com ênfase aqui florescem em relacionamentos e na busca pelo significado além do imediato.</p>
+</div>
+
+<!-- CASA 7 -->
+<div id="h7" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>VII</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 7 · Descendente · Parcerias e Contratos</div>
+      <div class="casa-sub">Signo Natural: Libra ♎ · Regente: Vênus ♀ · ANGULAR · DSC</div>
+      <div class="casa-tags"><span class="ctag">Descendente (DSC)</span><span class="ctag">Casamento</span><span class="ctag">Parcerias</span><span class="ctag">Contratos</span><span class="ctag">Adversários Declarados</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 7 (Descendente) é o espelho da Casa 1 — representa <strong>o Outro como complemento e desafio</strong>. Governa parcerias de longo prazo (casamento, sociedade comercial), contratos formais, e a qualidade dos relacionamentos que a pessoa atrai. O signo no Descendente descreve o tipo de parceiro ideal — mas também o que está projetado no outro e precisa ser integrado em si mesmo.</p>
+      <p>A regra fundamental: <strong>o que está no Descendente é o que o Ascendente ainda não integrou</strong>. Ascendente em Áries (direto e impulsivo), Descendente em Libra: busca parceiros diplomáticos e equilibrados — qualidades que o próprio Áries precisa desenvolver. É o espelho cósmico.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Parceiro Ideal por Signo no Descendente:</strong> Escorpião: atrai intensos, apaixonados, estratégicos. Aquário: atrai originais, que dão liberdade, intelectuais. Touro: atrai estáveis, sensuais, práticos. Gêmeos: atrai comunicativos, versáteis, espirituosos.</p>
+      <p><strong>Casamento:</strong> A qualidade da vida conjugal em longo prazo. Saturno na Casa 7: casamento tardio com pessoa mais velha, ou casamento que exige muito trabalho — mas é sólido quando acontece. Júpiter: parceiro generoso e filosófico, tendência a idealizar. Marte: parceria intensa com competição e paixão.</p>
+      <p><strong>Adversários Declarados:</strong> Inimigos abertos — não os velados (Casa 12). Processos judiciais, disputas declaradas. Plutão na Casa 7: oponentes transformadores que mudam quem você é.</p>
+      <p><strong>Relação com Público:</strong> Em algumas tradições, a Casa 7 governa o público em geral — a relação com o grande outro coletivo, especialmente relevante para artistas e políticos.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 7</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade se realiza através do parceiro. Parceiro brilhante e carismático. Pode perder a si mesmo em relacionamentos — ou encontrar a si mesmo através deles.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Casamento harmonioso e afetuoso. Grande capacidade de formar parcerias belas. Parceiro atraente e refinado.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Parcerias intensas e apaixonadas mas propensas ao conflito. Parceiro enérgico e assertivo. Casamento que exige muita negociação.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Casamento tardio ou com restrições. Parceiro mais velho ou mais sério. Relacionamento como escola de vida — exige comprometimento real.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Relacionamentos que transformam radicalmente. Parcerias intensas de poder. Pode atrair parceiros controladores ou ser o controlador. Grande potencial de transformação mútua.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Casamentos atípicos, relacionamentos que fogem do convencional. Parceiro original e imprevisível. Liberdade como condição sine qua non na parceria.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 8 -->
+<div id="h8" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>VIII</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 8 · Transformação, Morte, Sexo e Ocultismo</div>
+      <div class="casa-sub">Signo Natural: Escorpião ♏ · Regentes: Marte ♂ / Plutão ♇ · SUCEDENTE</div>
+      <div class="casa-tags"><span class="ctag">Morte e Renascimento</span><span class="ctag">Sexualidade Profunda</span><span class="ctag">Recursos Compartilhados</span><span class="ctag">Herança</span><span class="ctag">Ocultismo</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 8 é a mais profunda e temida — governa <strong>tudo que envolve transformação radical, poder compartilhado e o que está além do véu</strong>. Morte (literal e simbólica), sexualidade como encontro de almas, os recursos que vêm do parceiro ou de herança, impostos, dívidas, e o ocultismo em toda sua extensão. É a casa da alquimia — onde o ego morre para que algo mais autêntico nasça.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Morte e Transformação:</strong> As "pequenas mortes" ao longo da vida — fins de fases, crises que remodelam. A capacidade de se reinventar completamente. Pessoas com Casa 8 forte frequentemente têm vidas marcadas por múltiplas transformações radicais.</p>
+      <p><strong>Sexualidade Profunda:</strong> O sexo como fusão e poder — diferente da Casa 5 (prazer lúdico). A sexualidade que transforma quem você é. Plutão na Casa 8 (posição natural): magnetismo sexual intenso e potencial de usar o sexo como instrumento de transformação ou de poder.</p>
+      <p><strong>Recursos Compartilhados:</strong> Dinheiro do parceiro, herança, financiamentos, impostos, seguros. Júpiter na Casa 8: grandes heranças ou dinheiro inesperado do parceiro. Saturno: complicações com heranças e dívidas — mas lições financeiras profundas.</p>
+      <p><strong>Ocultismo e Psicologia Profunda:</strong> Interesse genuíno no mistério — astrologia, tarô, magia, alquimia, psicologia junguiana, morte e além. Casa 8 ativa tende a produzir investigadores do invisível.</p>
+      <p><strong>Psicologia e Traumas:</strong> Os padrões psicológicos mais profundos — o que foi enterrado na psique e precisa ser desenterrado e integrado. Terapia profunda frequentemente ativa a Casa 8.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 8</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade forjada pela transformação e pela crise. Grande magnetismo. Pode enfrentar mortes simbólicas repetidas que revelam camadas mais profundas do ser.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Vida emocional intensa e transformadora. Instinto poderoso para o oculto. Relação profunda com a morte e o ciclo. Pode ter experiências de quase-morte.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Amor como transformação profunda. Pode herdar riqueza do parceiro. Sexualidade intensa e refinada. Arte que explora o sombrio e o sagrado.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Grande riqueza herdada ou do parceiro. Expansão através da transformação. Interesse filosófico no além. Proteção nas crises.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Medo profundo da morte e da perda de controle. Dívidas como lição. Transformações lentas e dolorosas mas construtivas. Herança problemática ou negada.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Posição extremamente forte. Transformações radicais e inevitáveis ao longo da vida. Poder oculto imenso. Fascinação profunda com os mistérios da morte.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 9 -->
+<div id="h9" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>IX</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 9 · Filosofia, Expansão e Espiritualidade</div>
+      <div class="casa-sub">Signo Natural: Sagitário ♐ · Regente: Júpiter ♃ · CADENTE</div>
+      <div class="casa-tags"><span class="ctag">Filosofia e Fé</span><span class="ctag">Viagens Longas</span><span class="ctag">Educação Superior</span><span class="ctag">Espiritualidade</span><span class="ctag">Lei</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 9 é a casa da <strong>expansão além do horizonte familiar</strong> — em todas as dimensões. Governa viagens longas e internacionais, educação superior e acadêmica, filosofia, religião e espiritualidade organizada, direito e ética, e contato com culturas estrangeiras. É onde a mente encontra o sagrado e o desconhecido.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Filosofia e Crença:</strong> A visão de mundo que organiza a existência. Não apenas religião — mas qualquer sistema de crenças pelo qual se vive. Saturno na Casa 9: estrutura filosófica rígida, possivelmente religiosa ortodoxa. Netuno: espiritualidade fluida e mística difícil de articular. Urano: filosofia radicalmente original que rejeita todo dogma.</p>
+      <p><strong>Viagens Internacionais:</strong> O amor por países e culturas diferentes. Casa 9 ativa indica vidas marcadas por experiências internacionais — pode morar fora, viajar constantemente, casar com estrangeiro.</p>
+      <p><strong>Educação Superior:</strong> Faculdade, pós, doutorado, cursos de alto nível. A relação com o conhecimento formal avançado. Mercúrio na Casa 9: excelência acadêmica. Júpiter: múltiplos títulos ou aprendizado que nunca para.</p>
+      <p><strong>Publicação e Ensino:</strong> A Casa 9 governa o ensino (em oposição à Casa 3, que é o aprendizado cotidiano) e a publicação — livros, artigos, qualquer comunicação para audiência ampla.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 9</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade construída pela busca filosófica. Brilha como professor, filósofo, viajante. Vidas marcadas por culturas estrangeiras.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Posição forte (regente natural). Grande expansão filosófica e espiritual. Muitas viagens e experiências internacionais. Tendência ao excesso de otimismo.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Filosofia rígida e estruturada. Educação superior que exige muito esforço. Viagens com propósito sério. Visão de mundo que leva anos para se construir mas é sólida.</div></div>
+      <div class="pih-row"><div class="pih-planet">♆ Netuno</div><div class="pih-meaning">Espiritualidade profunda e mística. Viagens que transformam a visão de mundo. Pode se perder em filosofias ilusórias. Arte espiritual como veículo de expansão.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div id="q4" class="qh q4h reveal">
+  <h3>🟡 4º QUADRANTE · Casas 10–12 · O EU NO COSMOS</h3>
+  <p>O quarto quadrante governa a presença no mundo maior: a carreira e o legado público (Casa 10), as amizades e a comunidade (Casa 11), e a espiritualidade, o sacrifício e o invisível (Casa 12). Pessoas com ênfase aqui têm forte vocação para contribuir ao coletivo — seja visivelmente (Casa 10) ou silenciosamente (Casa 12).</p>
+</div>
+
+<!-- CASA 10 -->
+<div id="h10" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>X</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 10 · Meio do Céu · Carreira e Missão Pública</div>
+      <div class="casa-sub">Signo Natural: Capricórnio ♑ · Regente: Saturno ♄ · ANGULAR · MC</div>
+      <div class="casa-tags"><span class="ctag">Meio do Céu (MC)</span><span class="ctag">Carreira e Vocação</span><span class="ctag">Reputação</span><span class="ctag">Autoridade</span><span class="ctag">Legado</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 10 (MC) é o ponto mais alto e visível do mapa — o <strong>topo do céu, a carreira como missão, a reputação pública e o legado</strong>. É como o mundo conhece a pessoa quando fora da vida privada. Governa também a figura paterna (na maioria das tradições modernas — a figura que representava o mundo externo e as expectativas sociais) e a relação com a autoridade.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Carreira Ideal por Signo no MC:</strong> Áries: carreira de liderança e pioneirismo. Touro: carreira com estabilidade, arte, culinária, finanças. Gêmeos: comunicação, ensino, mídia, tecnologia. Câncer: cuidado, terapia, nutrição, trabalho de amparo. Leão: artes, liderança, entretenimento. Virgem: saúde, análise, serviço preciso. Libra: direito, diplomacia, design, relações humanas. Escorpião: investigação, psicologia, medicina, ocultismo. Sagitário: filosofia, educação, turismo, espiritualidade. Capricórnio: gestão, política, grandes corporações. Aquário: tecnologia, humanitarismo, inovação social. Peixes: arte, espiritualidade, cura holística.</p>
+      <p><strong>Legado e Reputação:</strong> O que ficará quando a pessoa partir. O que as pessoas dirão. Como será lembrada. Uma Casa 10 bem desenvolvida resulta em contribuição genuína ao mundo.</p>
+      <p><strong>Autoridade Paterna e Institucional:</strong> A relação com o pai como representante do mundo externo, e com qualquer figura de autoridade — chefes, governo, instituições. Saturno na Casa 10: relação intensa e formadora com a autoridade. Plutão: batalhas de poder com figuras de autoridade — frequentemente transformadoras.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 10</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Grande realização pública. Identidade ligada à carreira. Liderança natural. Pai influente ou ausente. Alto potencial de reconhecimento.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Carreira ligada ao cuidado e ao público. A vida pública oscila como as marés. Mãe influente na carreira. Popularidade natural mas instável.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Grande sucesso profissional e reconhecimento. Carreira que cresce naturalmente. Posição de prestígio. Liderança filosófica ou educacional.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Carreira que se constrói lentamente com muito trabalho. Sucesso tardio mas extraordinariamente sólido. Pai austero ou ausente. Depois dos 40: autoridade real e merecida.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Carreira marcada por transformações radicais e batalhas de poder. Grande ambição. Pode alcançar posição de enorme poder — ou perdê-la dramaticamente. Legado transformador.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Carreira incomum, inovadora, que muda de direção várias vezes. Não se encaixa em estruturas convencionais. Pioneirismo em novas áreas.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 11 -->
+<div id="h11" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>XI</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 11 · Amizades, Grupos e Sonhos Coletivos</div>
+      <div class="casa-sub">Signo Natural: Aquário ♒ · Regentes: Saturno ♄ / Urano ♅ · SUCEDENTE</div>
+      <div class="casa-tags"><span class="ctag">Amigos Escolhidos</span><span class="ctag">Grupos e Causas</span><span class="ctag">Sonhos e Esperanças</span><span class="ctag">Comunidade</span><span class="ctag">Redes</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 11 governa as <strong>amizades escolhidas por afinidade, os grupos com ideal compartilhado, e os sonhos maiores que a vida individual</strong>. É o círculo social além da família e do parceiro — as tribus de alma, as comunidades, os movimentos. Também governa os "frutos" da carreira (Casa 10) além do salário: reconhecimento, redes, conquistas coletivas.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>Amizades por Signo na Cúspide:</strong> Leão na cúspide: amigos leais mas que competem por atenção. Aquário: amigos originais e incomuns, círculo diverso e global. Câncer: amigos como família, vínculos muito protetores. Escorpião: poucos amigos mas de profundidade rara e lealdade intensa.</p>
+      <p><strong>Grupos, Causas e Movimentos Sociais:</strong> Organizações políticas, grupos espirituais, associações profissionais, coletivos de arte. Onde a pessoa se une a outros por um ideal. Urano na Casa 11: grupos progressistas e revolucionários. Saturno: poucos grupos mas selecionados com critério.</p>
+      <p><strong>Sonhos e Objetivos Futuros:</strong> O que se deseja para o futuro — não apenas pessoal, mas para o mundo. Júpiter na Casa 11: sonhos expansivos, otimistas e realizáveis. Netuno: sonhos nebulosos e espirituais que podem se perder sem ancoragem. Saturno: objetivos realistas e de longo prazo.</p>
+      <p><strong>Tecnologia e Redes Sociais:</strong> Na astrologia moderna, a Casa 11 governa internet, redes sociais e comunidades virtuais — o espaço aquariano por excelência.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 11</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade realizada através dos grupos. Líder natural em comunidades. Brilha no coletivo. Amigos importantes e influentes.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Amizades afetuosas e belas. Muitos amigos artistas. Sonhos estéticos e harmoniosos. Grupos de arte ou cultura.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Amizades ativas e competitivas. Luta pelos ideais do grupo. Pode haver conflitos nas comunidades. Energia para causas e movimentos.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Posição natural forte. Amigos originais e incomuns. Grupos revolucionários. Amizades que começam e terminam abruptamente. Comunidades globais e tecnológicas.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASA 12 -->
+<div id="h12" class="casa reveal">
+  <div class="casa-head">
+    <div class="casa-num"><span>XII</span><small>CASA</small></div>
+    <div class="casa-meta">
+      <div class="casa-nome">Casa 12 · O Véu · Karma, Espiritualidade e o Invisível</div>
+      <div class="casa-sub">Signo Natural: Peixes ♓ · Regentes: Júpiter ♃ / Netuno ♆ · CADENTE</div>
+      <div class="casa-tags"><span class="ctag">Karma e Padrões Ocultos</span><span class="ctag">Espiritualidade Profunda</span><span class="ctag">Reclusão</span><span class="ctag">Inimigos Velados</span><span class="ctag">Sacrifício</span><span class="ctag">O Inconsciente Profundo</span></div>
+    </div>
+  </div>
+  <div class="casa-body">
+    <div class="s">
+      <h4>O QUE GOVERNA</h4>
+      <p>A Casa 12 é a mais misteriosa — governa <strong>tudo o que está além do véu da consciência cotidiana</strong>: o inconsciente profundo, os padrões que operam sem que se perceba, a espiritualidade como experiência direta (não como crença organizada da Casa 9), os lugares de reclusão (hospitais, prisões, monastérios), os inimigos ocultos, e o sacrifício voluntário por algo maior.</p>
+      <p>Na astrologia esotérica, é a casa do karma acumulado — o peso das escolhas (desta e de outras encarnações) que precisa ser integrado. Mas é também onde o karma pode ser dissolvido pela consciência espiritual. A Casa 12 é simultaneamente o maior desafio e o maior tesouro espiritual do mapa.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TODOS OS TEMAS</h4>
+      <p><strong>O Inconsciente e os Padrões Ocultos:</strong> O que opera automaticamente "por baixo" da consciência — as crenças e medos que a mente racional não vê. Saturno na Casa 12: bloqueios de autoconfiança profundamente enterrados. Marte: raiva reprimida que sai lateralmente. Vênus: amor como sacrifício inconsciente.</p>
+      <p><strong>Espiritualidade e Meditação:</strong> A Casa 12 favorece práticas de silêncio e introversão — meditação, contemplação, oração, retiro espiritual. É onde o ego encontra algo maior que si mesmo. Uma Casa 12 ativa frequentemente indica vocação espiritual ou artística que opera no silêncio.</p>
+      <p><strong>Inimigos Velados e Autossabotagem:</strong> Os que agem nas sombras — inveja velada, fofoca destrutiva, traições não declaradas. Mas o maior inimigo da Casa 12 é frequentemente a própria pessoa — padrões de autossabotagem enraizados no inconsciente.</p>
+      <p><strong>Reclusão e Isolamento:</strong> Hospitais, prisões, monastérios, retiros — qualquer período de isolamento do mundo. Pode ser voluntário (meditação) ou forçado (hospitalização). Em ambos os casos, a Casa 12 oferece acesso ao que não é acessível no mundo cotidiano.</p>
+      <p><strong>Sacrifício e Serviço Espiritual:</strong> A Casa 12 bem integrada transforma-se em capacidade de servir sem ego — o cuidador que vai aos lugares onde outros não vão, o artista que canaliza o coletivo, o místico que sustenta o campo espiritual em silêncio.</p>
+      <p><strong>Arte e Criatividade Onírica:</strong> A arte que emerge da Casa 12 vem do inconsciente coletivo — música que faz chorar sem saber porquê, poesia que dissolve fronteiras, cinema que atinge o que as palavras não alcançam.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="pih">
+      <div class="pih-title">PLANETAS NA CASA 12 — PRESENÇA DO INVISÍVEL</div>
+      <div class="pih-row"><div class="pih-planet">☉ Sol</div><div class="pih-meaning">Identidade que opera nos bastidores. Talento que não é facilmente visto. Pode sentir dificuldade de "brilhar" publicamente. Frequente em curandeiros e artistas que criam em solidão. Vida espiritual muito profunda.</div></div>
+      <div class="pih-row"><div class="pih-planet">☽ Lua</div><div class="pih-meaning">Vida emocional muito interior e privada. Memórias dolorosas ou ocultas da infância. Intuição extraordinária que chega em sonhos e silêncio. Precisa de muita solidão para recarregar.</div></div>
+      <div class="pih-row"><div class="pih-planet">☿ Mercúrio</div><div class="pih-meaning">Pensamento que opera em níveis não conscientes. Pode ter dificuldade de articular o que sabe. Grande talento para escrita introspectiva. Segredos que a mente guarda.</div></div>
+      <div class="pih-row"><div class="pih-planet">♀ Vênus</div><div class="pih-meaning">Amores secretos ou que não se podem mostrar. Amor como forma de devoção espiritual. Arte que nasce do silêncio e da profundeza. Beleza que se esconde.</div></div>
+      <div class="pih-row"><div class="pih-planet">♂ Marte</div><div class="pih-meaning">Ação que opera subterraneamente. Dificuldade de assertividade direta — a energia vai para dentro ou sai lateralmente. Raiva reprimida que precisa de canal consciente. Eficaz em bastidores.</div></div>
+      <div class="pih-row"><div class="pih-planet">♃ Júpiter</div><div class="pih-meaning">Grande proteção espiritual invisível. Sorte que vem de formas inesperadas e ocultas. Interesse genuíno em tradições místicas. Generosidade anônima. Espiritualidade como abundância interior.</div></div>
+      <div class="pih-row"><div class="pih-planet">♄ Saturno</div><div class="pih-meaning">Karma pesado que precisa ser trabalhado. Medo profundo de dissolução. Restrições que vêm de padrões antigos. Depois de muito trabalho interior: autoridade espiritual real e conquistada.</div></div>
+      <div class="pih-row"><div class="pih-planet">♅ Urano</div><div class="pih-meaning">Intuição genial que surge do nada. Iluminações súbitas e inesperadas. Pode ter experiências místicas disruptivas. Originalidade que vem das profundezas do inconsciente.</div></div>
+      <div class="pih-row"><div class="pih-planet">♆ Netuno</div><div class="pih-meaning">Posição muito forte (regente natural). Espiritualidade profunda e inarticulável. Grande permeabilidade psíquica. Arte transcendente. Risco de escapismo e confusão de limites.</div></div>
+      <div class="pih-row"><div class="pih-planet">♇ Plutão</div><div class="pih-meaning">Poder oculto imensurável que a pessoa frequentemente desconhece ter. Karma profundo de transformação. Pode ter experiências de quase-morte ou morte-e-renascimento. Missão espiritual intensa e transformadora do coletivo.</div></div>
+    </div>
+    <div class="hgrid">
+      <div class="hcell"><span class="hcell-l">CABALA</span>Ain Soph — o infinito antes da forma</div>
+      <div class="hcell"><span class="hcell-l">ALQUIMIA</span>Nigredo — a dissolução necessária</div>
+      <div class="hcell"><span class="hcell-l">TARÔ</span>A Lua (XVIII) · O Pendurado (XII)</div>
+      <div class="hcell"><span class="hcell-l">EIXO</span>Casa 6 (Serviço) × Casa 12 (Sacrifício)</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-nav">
+    <a class="f-link" href="astrologia-parte1.html">I · Fundamentos</a>
+    <a class="f-link" href="astrologia-parte2.html">II · Planetas</a>
+    <a class="f-link" href="astrologia-parte3.html">III · Casas</a>
+    <a class="f-link" href="astrologia-parte4.html">IV · Aspectos e Avançado</a>
+  </div>
+  <p class="f-text">
+    "As casas são os palcos da alma — o zodíaco é o ator, os planetas são os papéis, e as casas determinam em que cena da vida esse drama se desenrola."<br><br>
+    — Paráfrase de Dane Rudhyar, <em>A Astrologia da Personalidade</em><br><br>
+    <em>Howard Sasportas · Liz Greene · Robert Hand · Isabel Hickey · Stephen Arroyo</em>
+  </p>
+</footer>
+</div>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.05})
+document.querySelectorAll('.reveal,.casa').forEach(el=>io.observe(el))
+const secs=[...document.querySelectorAll('[id]')];const dots=[...document.querySelectorAll('.sn-dot')]
+const io2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})}})},{threshold:.4})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARQUIVO CÓSMICO — VOL. III: UAPs e Documentos Governamentais</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap");
+:root{--void:#020408;--deep:#060d14;--gold:#c8973a;--gold-light:#e8b84b;--gold-pale:#f5d98a;--cyan:#00e5ff;--cyan-dim:#00b8cc;--teal:#00bfa5;--magenta:#cc44aa;--green:#00ff88;--green-dim:#00994d;--red:#ff4444;--purple:#8844ff;--orange:#ff8800;--silver:#b0c4c8;--silver-dim:#6a8890;--white-soft:#ddeef2;--text:#cce8ee;--text-dim:#7a9fa8;--border:rgba(0,229,255,0.12);--border-gold:rgba(200,151,58,0.25);--glow-gold:0 0 20px rgba(200,151,58,0.35);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--void);color:var(--text);font-family:"EB Garamond",Georgia,serif;font-size:17px;line-height:1.85;overflow-x:hidden;}
+#starfield{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+#starfield canvas{position:absolute;top:0;left:0;width:100%;height:100%;}
+#sidebar{position:fixed;left:0;top:0;width:280px;height:100vh;background:linear-gradient(180deg,#060d14 0%,#030810 100%);border-right:1px solid var(--border);overflow-y:auto;z-index:100;padding:0 0 40px;}
+#sidebar::-webkit-scrollbar{width:4px;}#sidebar::-webkit-scrollbar-thumb{background:var(--cyan-dim);}
+#main{margin-left:280px;position:relative;z-index:1;}
+.sidebar-header{padding:26px 20px 18px;border-bottom:1px solid var(--border);}
+.sidebar-vol{font-family:"Cinzel",serif;font-size:9px;letter-spacing:4px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:5px;}
+.sidebar-title{font-family:"Cinzel Decorative",serif;font-size:12px;color:var(--gold);line-height:1.4;margin-bottom:5px;}
+.sidebar-subtitle{font-size:10px;color:var(--text-dim);font-style:italic;}
+.nav-section{padding:14px 0 4px 20px;}
+.nav-section-label{font-family:"Cinzel",serif;font-size:8px;letter-spacing:3px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:6px;opacity:0.7;}
+.nav-item{display:block;padding:6px 20px 6px 0;color:var(--text-dim);text-decoration:none;font-size:12px;transition:all 0.2s;border-left:2px solid transparent;margin-left:-20px;padding-left:20px;}
+.nav-item:hover{color:var(--cyan);border-left-color:var(--cyan);background:rgba(0,229,255,0.04);padding-left:24px;}
+.nav-item.active{color:var(--gold);border-left-color:var(--gold);}
+.vol-links{padding:16px 20px;border-top:1px solid var(--border);}
+.vol-links a{display:block;padding:5px 8px;margin-bottom:3px;background:rgba(0,229,255,0.04);border:1px solid var(--border);color:var(--text-dim);text-decoration:none;font-family:"Cinzel",serif;font-size:9px;letter-spacing:2px;transition:all 0.2s;border-radius:2px;}
+.vol-links a:hover{color:var(--cyan);border-color:var(--cyan);}
+.vol-links a.current{color:var(--gold);border-color:var(--gold-light);background:rgba(200,151,58,0.06);}
+.content{max-width:860px;margin:0 auto;padding:60px 50px 100px;}
+.hero{text-align:center;padding:80px 40px 60px;background:linear-gradient(180deg,rgba(0,229,255,0.02) 0%,transparent 100%);border-bottom:1px solid var(--border);}
+.hero-kicker{font-family:"Cinzel",serif;font-size:10px;letter-spacing:6px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:18px;}
+.hero-title{font-family:"Cinzel Decorative",serif;font-size:clamp(26px,4.5vw,48px);color:var(--gold);line-height:1.15;margin-bottom:14px;text-shadow:var(--glow-gold);}
+.hero-subtitle{font-family:"Cinzel",serif;font-size:clamp(12px,1.8vw,16px);color:var(--silver);letter-spacing:2px;margin-bottom:24px;}
+.section-header{margin:70px 0 38px;padding-bottom:18px;border-bottom:1px solid var(--border-gold);position:relative;}
+.section-header::before{content:"";position:absolute;bottom:-1px;left:0;width:80px;height:1px;background:var(--gold);}
+.section-kicker{font-family:"Cinzel",serif;font-size:9px;letter-spacing:5px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-family:"Cinzel Decorative",serif;font-size:clamp(18px,2.8vw,30px);color:var(--gold-light);line-height:1.2;}
+.subsection{margin:45px 0;}
+.subsection-title{font-family:"Cinzel",serif;font-size:clamp(14px,2vw,19px);color:var(--cyan);margin-bottom:16px;padding-left:14px;border-left:3px solid var(--cyan);}
+h4{font-family:"Cinzel",serif;font-size:13px;color:var(--gold-pale);margin:26px 0 10px;letter-spacing:1px;}
+p{margin-bottom:16px;color:var(--text);}
+p.lead{font-size:18px;color:var(--white-soft);font-style:italic;margin-bottom:22px;}
+strong{color:var(--gold-pale);font-weight:600;}
+em{color:var(--silver);}
+.callout{margin:24px 0;padding:20px 24px;border-radius:2px;position:relative;font-size:14.5px;}
+.callout::before{content:attr(data-label);position:absolute;top:-11px;left:16px;font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;}
+.callout.esoteric{background:rgba(0,191,165,0.06);border:1px solid rgba(0,191,165,0.2);border-left:3px solid var(--teal);}
+.callout.esoteric::before{background:var(--void);color:var(--teal);border:1px solid rgba(0,191,165,0.3);}
+.callout.ufologic{background:rgba(0,229,255,0.05);border:1px solid rgba(0,229,255,0.15);border-left:3px solid var(--cyan);}
+.callout.ufologic::before{background:var(--void);color:var(--cyan);border:1px solid rgba(0,229,255,0.3);}
+.callout.warning{background:rgba(200,151,58,0.06);border:1px solid rgba(200,151,58,0.2);border-left:3px solid var(--gold);}
+.callout.warning::before{background:var(--void);color:var(--gold);border:1px solid rgba(200,151,58,0.3);}
+.callout.occult{background:rgba(204,68,170,0.05);border:1px solid rgba(204,68,170,0.18);border-left:3px solid var(--magenta);}
+.callout.occult::before{background:var(--void);color:var(--magenta);border:1px solid rgba(204,68,170,0.3);}
+.callout.danger{background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.18);border-left:3px solid var(--red);}
+.callout.danger::before{background:var(--void);color:var(--red);border:1px solid rgba(255,68,68,0.3);}
+.callout.confirmed{background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.18);border-left:3px solid var(--green);}
+.callout.confirmed::before{background:var(--void);color:var(--green);border:1px solid rgba(0,255,136,0.3);}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+thead tr{background:rgba(0,229,255,0.07);border-bottom:1px solid var(--border);}
+thead th{font-family:"Cinzel",serif;font-size:9px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;padding:11px 13px;text-align:left;}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;}
+tbody tr:hover{background:rgba(0,229,255,0.03);}
+tbody td{padding:10px 13px;color:var(--text);vertical-align:top;}
+tbody td:first-child{color:var(--gold-pale);font-family:"Cinzel",serif;font-size:12px;}
+blockquote{margin:22px 0;padding:16px 20px 16px 26px;background:rgba(200,151,58,0.04);border-left:3px solid var(--gold);font-style:italic;color:var(--silver);font-size:15px;position:relative;}
+blockquote::before{content:'"';position:absolute;left:8px;top:8px;font-size:34px;color:var(--gold);opacity:0.3;line-height:1;}
+blockquote cite{display:block;margin-top:8px;font-family:"Cinzel",serif;font-size:9px;color:var(--text-dim);font-style:normal;letter-spacing:2px;}
+.divider{margin:48px 0;display:flex;align-items:center;gap:16px;opacity:0.35;}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--cyan-dim),transparent);}
+.sigil-sep{text-align:center;margin:52px 0;font-size:22px;opacity:0.18;letter-spacing:8px;}
+.tag{display:inline-block;padding:2px 7px;margin:2px;font-family:"Cinzel",serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;border-radius:1px;}
+.tag-blue{background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);color:var(--cyan);}
+.tag-gold{background:rgba(200,151,58,0.1);border:1px solid rgba(200,151,58,0.25);color:var(--gold);}
+.tag-red{background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.25);color:var(--red);}
+.tag-green{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);color:var(--green);}
+.tag-purple{background:rgba(136,68,255,0.1);border:1px solid rgba(136,68,255,0.25);color:var(--purple);}
+.tag-mag{background:rgba(204,68,170,0.1);border:1px solid rgba(204,68,170,0.25);color:var(--magenta);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:26px 0;}
+.card{background:linear-gradient(135deg,rgba(6,13,20,1) 0%,rgba(10,21,32,1) 100%);border:1px solid var(--border);padding:20px;border-radius:2px;transition:all 0.3s;}
+.card:hover{border-color:rgba(0,229,255,0.3);transform:translateY(-2px);}
+.card-title{font-family:"Cinzel",serif;font-size:12.5px;color:var(--gold-pale);margin-bottom:8px;}
+.card-body{font-size:13px;color:var(--text-dim);line-height:1.7;}
+.tl-wrap{margin:30px 0;padding-left:28px;position:relative;}
+.tl-wrap::before{content:"";position:absolute;left:6px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--cyan) 0%,var(--gold) 50%,var(--magenta) 100%);}
+.tl-item{position:relative;margin-bottom:34px;}
+.tl-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--void);border:2px solid var(--cyan);box-shadow:0 0 8px rgba(0,229,255,0.4);}
+.tl-year{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--cyan-dim);margin-bottom:4px;}
+.tl-title{font-family:"Cinzel Decorative",serif;font-size:15px;color:var(--gold);margin-bottom:7px;}
+.tl-body{font-size:14.5px;color:var(--text-dim);line-height:1.8;}
+.person-block{margin:30px 0;padding:22px;border:1px solid var(--border);background:rgba(0,229,255,0.02);}
+.person-name{font-family:"Cinzel Decorative",serif;font-size:18px;color:var(--cyan);margin-bottom:5px;}
+.person-role{font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;color:var(--text-dim);text-transform:uppercase;margin-bottom:14px;}
+.badge{display:inline-block;padding:3px 9px;margin:2px;font-family:"Cinzel",serif;font-size:8px;letter-spacing:2px;border-radius:2px;text-transform:uppercase;}
+.badge-fact{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);color:var(--green);}
+.badge-claimed{background:rgba(200,151,58,0.1);border:1px solid rgba(200,151,58,0.3);color:var(--gold);}
+.badge-unverified{background:rgba(255,68,68,0.08);border:1px solid rgba(255,68,68,0.25);color:var(--red);}
+.badge-disputed{background:rgba(204,68,170,0.08);border:1px solid rgba(204,68,170,0.25);color:var(--magenta);}
+.video-card{margin:20px 0;padding:18px 22px;border:1px solid var(--border);background:rgba(0,229,255,0.03);display:flex;gap:16px;align-items:flex-start;}
+.video-icon{font-size:28px;flex-shrink:0;}
+.video-name{font-family:"Cinzel Decorative",serif;font-size:15px;color:var(--cyan);margin-bottom:6px;}
+.video-meta{font-family:"Cinzel",serif;font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px;}
+.video-desc{font-size:14px;color:var(--text-dim);line-height:1.75;}
+.section-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);font-family:"Cinzel",serif;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center;}
+@media(max-width:900px){#sidebar{transform:translateX(-100%);transition:transform 0.3s;}#sidebar.open{transform:translateX(0);}#main{margin-left:0;}.content{padding:40px 20px 80px;}.menu-toggle{display:flex!important;}}
+.menu-toggle{display:none;position:fixed;top:16px;left:16px;z-index:200;width:44px;height:44px;background:var(--deep);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:5px;}
+.menu-toggle span{width:22px;height:1px;background:var(--cyan);display:block;}
+</style>
+</head>
+<body>
+<div id="starfield"><canvas id="starsCanvas"></canvas></div>
+<button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-vol">&#9656; ARQUIVO CÓSMICO — VOLUME III</div>
+    <div class="sidebar-title">UAPs e Documentos Governamentais</div>
+    <div class="sidebar-subtitle">O Arquivo Secreto Aberto ao Mundo</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Introdução</div>
+    <a href="#intro" class="nav-item">&#9656; O Fim do Silêncio</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">História dos Programas</div>
+    <a href="#historico" class="nav-item">&#9656; Linha do Tempo UAP</a>
+    <a href="#proj-sign" class="nav-item">&#9656; Projetos Sign/Grudge/Blue Book</a>
+    <a href="#robertson" class="nav-item">&#9656; Painel Robertson e Debunking</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Era Moderna</div>
+    <a href="#aatip" class="nav-item">&#9656; AATIP e Luis Elizondo</a>
+    <a href="#videos" class="nav-item">&#9656; Vídeos Liberados (Tic-Tac etc.)</a>
+    <a href="#grusch" class="nav-item">&#9656; David Grusch — 2023</a>
+    <a href="#audiencias" class="nav-item">&#9656; Audiências no Congresso</a>
+    <a href="#aaro" class="nav-item">&#9656; AARO — Órgão Oficial UAP</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Whistleblowers Históricos</div>
+    <a href="#lazar" class="nav-item">&#9656; Bob Lazar — Área 51</a>
+    <a href="#corso" class="nav-item">&#9656; Philip Corso</a>
+    <a href="#outros-wb" class="nav-item">&#9656; Outros Depoimentos</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Casos Clássicos</div>
+    <a href="#roswell" class="nav-item">&#9656; Roswell 1947</a>
+    <a href="#casos-doc" class="nav-item">&#9656; Casos Documentados</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Interpretações</div>
+    <a href="#esoterismo-gov" class="nav-item">&#9656; Esotérico e as Divulgações</a>
+    <a href="#fato-vs-spec" class="nav-item">&#9656; Fato vs. Especulação</a>
+  </div>
+  <div class="vol-links">
+    <a href="ufo-esoterico-vol1.html">VOL. I — Eras e Civilizações</a>
+    <a href="ufo-esoterico-vol2.html">VOL. II — Raças Extraterrestres</a>
+    <a href="ufo-esoterico-vol3.html" class="current">VOL. III — UAPs e Documentos</a>
+    <a href="ufo-esoterico-vol4.html">VOL. IV — Guerras e Futuro</a>
+  </div>
+</nav>
+<main id="main">
+  <div class="hero" id="intro">
+    <div class="hero-kicker">&#10022; Arquivo Cósmico &#10022; Volume III &#10022; O Arquivo Secreto Aberto</div>
+    <h1 class="hero-title">UAPs e Documentos<br>Governamentais</h1>
+    <div class="hero-subtitle">Do Encobrimento à Divulgação — O Dossiê Completo</div>
+    <div style="font-size:44px;opacity:0.12;margin:18px 0;letter-spacing:10px;">&#128065; &#9632; &#9992; &#9632; &#128065;</div>
+    <p style="max-width:680px;margin:0 auto;color:var(--text-dim);font-style:italic;font-size:15px;line-height:1.9;">Este volume documenta a história oficial e extraoficial da relação dos governos com o fenômeno UAP/OVNI — dos primeiros programas secretos do pós-guerra até as audiências históricas no Congresso americano em 2023–2024. O que foi confirmado, o que foi alegado, o que permanece classificado, e como o esoterismo interpreta estas divulgações.</p>
+    <div style="margin-top:20px;">
+      <span class="tag tag-green">Fato Documentado</span>
+      <span class="tag tag-gold">Declaração Oficial</span>
+      <span class="tag tag-red">Não Verificado</span>
+      <span class="tag tag-blue">Hipótese Ufológica</span>
+    </div>
+  </div>
+  <div class="content">
+    <section id="historico">
+      <div class="section-header">
+        <div class="section-kicker">Linha do Tempo Completa</div>
+        <h2 class="section-title">A História dos Programas UAP — 1947 a 2024</h2>
+      </div>
+      <p class="lead">A relação dos governos com o fenômeno OVNI/UAP é uma história de sete décadas de negação oficial paralela a programas secretos reais, que culminou nas divulgações mais significativas da história moderna entre 2017 e 2024.</p>
+      <div class="tl-wrap">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">JUNHO 1947</div>
+          <div class="tl-title">Kenneth Arnold — O Início Moderno</div>
+          <div class="tl-body">O piloto Kenneth Arnold relata avistar nove objetos em forma de disco voando em formação próximo ao Monte Rainier, Washington, a velocidades estimadas em 2.700 km/h. A imprensa cunha o termo "disco voador". Em semanas, centenas de relatos similares emergem globalmente. <span class="badge badge-fact">Relato Documentado</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--red);box-shadow:0 0 8px rgba(255,68,68,0.4);"></div>
+          <div class="tl-year">JULHO 1947</div>
+          <div class="tl-title">Roswell — O Evento Fundador</div>
+          <div class="tl-body">Nos dias 4–5 de julho de 1947, algo cai no rancho de Mac Brazel próximo a Roswell, Novo México. O comunicado inicial do USAF afirma recuperação de "disco voador". Horas depois, a história é alterada para "balão meteorológico". A contradição inicial do Exército se tornará o maior símbolo do encobrimento governamental. <span class="badge badge-disputed">Narrativa Disputada</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--gold);"></div>
+          <div class="tl-year">1947–1948</div>
+          <div class="tl-title">Projeto Sign — A Primeira Investigação</div>
+          <div class="tl-body">A USAF cria o Projeto Sign para investigar os discos voadores. O relatório final (classificado, parcialmente desclassificado décadas depois) conclui que uma fração dos casos é inexplicável pelos meios convencionais. O relatório é rejeitado pela liderança e o projeto é dissolvido. <span class="badge badge-fact">Programa Real, Documentado</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--gold);"></div>
+          <div class="tl-year">1949–1951</div>
+          <div class="tl-title">Projeto Grudge — A Era do Debunking</div>
+          <div class="tl-body">O Projeto Grudge substituiu o Sign com mandato diferente: não investigar, mas desacreditar sistematicamente relatos civis. O "Relatório Grudge" de 1949 concluiu que todos os casos tinham explicação convencional — conclusão considerada comprometida por muitos pesquisadores. <span class="badge badge-fact">Programa Real</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--cyan);box-shadow:0 0 8px rgba(0,229,255,0.5);"></div>
+          <div class="tl-year">1952–1969</div>
+          <div class="tl-title">Projeto Blue Book — 22 Anos de Investigação</div>
+          <div class="tl-body">O maior programa oficial de investigação UAP da história americana. Analisou 12.618 relatos. 701 permanecem oficialmente "não identificados" nos arquivos — incluindo casos com testemunhos militares, radar e múltiplas testemunhas simultâneas. Encerrado em 1969 após o Relatório Condon recomendar o fim — relatório que foi ele mesmo acusado de ser uma farsa premeditada. <span class="badge badge-fact">Totalmente Documentado</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--silver-dim);"></div>
+          <div class="tl-year">1969–2007</div>
+          <div class="tl-title">O Grande Silêncio</div>
+          <div class="tl-body">Sem programa oficial público por quase quatro décadas. Mas documentos desclassificados posteriormente provaram que o interesse governamental nunca cessou — apenas saiu da vista do público. A CIA, DIA e outros órgãos continuaram coletando informações sobre OVNIs de forma compartimentada. <span class="badge badge-fact">Confirmado por Desclassificações</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--purple);box-shadow:0 0 8px rgba(136,68,255,0.5);"></div>
+          <div class="tl-year">2007–2012</div>
+          <div class="tl-title">AATIP — Advanced Aerospace Threat Identification Program</div>
+          <div class="tl-body">Programa secreto do Departamento de Defesa americano, conduzido com $22 milhões em financiamento aprovado pelos senadores Harry Reid (Nevada), Daniel Inouye e Ted Stevens. Parcialmente sediado na empresa de Robert Bigelow, BAASS. A existência foi confirmada pelo Pentágono em 2017, após revelação do New York Times. <span class="badge badge-fact">Existência Confirmada pelo DoD</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--cyan);box-shadow:0 0 10px rgba(0,229,255,0.6);"></div>
+          <div class="tl-year">DEZEMBRO 2017</div>
+          <div class="tl-title">O NYT Muda Tudo</div>
+          <div class="tl-body">O New York Times publica "Glowing Auras and Black Money" — revelando o AATIP, publicando os primeiros vídeos UAP (Tic-Tac) e apresentando Luis Elizondo ao mundo. Este artigo marca o início da era moderna da divulgação UAP — a mais significativa mudança no discurso público sobre o tema em décadas. <span class="badge badge-fact">Fato Jornalístico Verificado</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--gold);"></div>
+          <div class="tl-year">2019–2021</div>
+          <div class="tl-title">Desclassificação dos Vídeos e UAP Task Force</div>
+          <div class="tl-body">O Pentágono oficialmente libera e autentica três vídeos UAP (Tic-Tac, Gimbal, Go Fast). O Congresso exige relatório de 180 dias sobre UAPs. Em 2021, o relatório preliminar da UAP Task Force reconhece 144 incidentes sem explicação, a maioria envolvendo plataformas físicas reais. <span class="badge badge-fact">Fato Documentado</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--magenta);box-shadow:0 0 10px rgba(204,68,170,0.6);"></div>
+          <div class="tl-year">JUNHO 2023</div>
+          <div class="tl-title">David Grusch — A Bomba</div>
+          <div class="tl-body">David Grusch, ex-oficial de inteligência do Pentágono com clearance Top Secret, faz declaração formal ao Inspector General e depois ao Congresso: o governo americano possui programas de recuperação de materiais de origem não-humana e "pilotos biologicos não-humanos". Alega retaliaçao por whistleblowing. Câmara dos Representantes realiza audiência histórica em julho de 2023. <span class="badge badge-claimed">Alegação Formal ao Congresso</span><span class="badge badge-unverified">Não Verificado Independentemente</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--gold);box-shadow:0 0 10px rgba(200,151,58,0.6);"></div>
+          <div class="tl-year">2024</div>
+          <div class="tl-title">AARO, Audiências e o Estado Atual</div>
+          <div class="tl-body">O AARO (All-domain Anomaly Resolution Office) opera como órgão oficial UAP. Mais audiências no Congresso. Legislação proposta para forçar divulgação de programas SAP (Special Access Programs) relacionados a UAPs. O AARO publica relatórios mas não confirma alegações de Grusch. <span class="badge badge-fact">Status: Em Evolução</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proj-sign">
+      <div class="section-header">
+        <div class="section-kicker">Era Clássica — 1947 a 1969</div>
+        <h2 class="section-title">Projetos Sign, Grudge e Blue Book</h2>
+      </div>
+      <p class="lead">Os três primeiros programas oficiais de investigação OVNI americanos formam a base histórica de toda a discussão subsequente. Cada um revela não apenas o que foi investigado, mas os mecanismos de controle da informação.</p>
+      <h4>Projeto Blue Book — Os Casos Não-Identificados</h4>
+      <p>O Blue Book, operando de 1952 a 1969, é o mais extensivamente documentado dos primeiros programas. Seu legado mais importante não são os 11.917 casos "identificados" — são os <strong>701 que permanecem oficialmente não-identificados</strong> nos arquivos do National Archives. Entre estes, casos com:</p>
+      <div class="card-grid">
+        <div class="card"><div class="card-title">&#9632; Confirmação por Radar</div><div class="card-body">Múltiplos casos com objeto visual confirmado simultaneamente por radar terrestre e embarcado em aeronaves militares. Radar não alucina nem produz erros de interpretação similares ao visual.</div></div>
+        <div class="card"><div class="card-title">&#9632; Testemunhos Militares</div><div class="card-body">Pilotos militares, controladores de voo e pessoal de bases com treinamento e credibilidade profissional. A instituição militar investigou e não encontrou explicação convencional.</div></div>
+        <div class="card"><div class="card-title">&#9632; Múltiplas Testemunhas</div><div class="card-body">Casos com dezenas de testemunhas simultâneas e independentes descrevendo os mesmos fenômenos, eliminando alucinação individual como hipótese.</div></div>
+        <div class="card"><div class="card-title">&#9632; Efeitos Físicos</div><div class="card-body">Marcas de aterrissagem, interferência eletromagnética em veículos, falhas elétricas temporárias — evidências físicas que persistem após o evento.</div></div>
+      </div>
+      <div class="callout warning" data-label="Contexto Histórico">
+        <p><strong>O Relatório Condon (1968):</strong> O estudo da Universidade do Colorado, financiado pela USAF, foi encarregado de avaliar se o Blue Book deveria continuar. O relatório concluiu que não havia razão para investigação continuada. Porém, um memorando interno do Dr. Robert Low (co-diretor) foi descoberto anteriormente, revelando que o objetivo não era uma investigação honesta mas criar a impressão pública de rigor científico enquanto chegava a conclusões predeterminadas. O físico James McDonald chamou o Relatório Condon de "o maior fracasso da ciência aplicada no século XX".</p>
+      </div>
+    </section>
+
+    <section id="robertson">
+      <div class="section-header">
+        <div class="section-kicker">1953 — CIA e Encobrimento Sistemático</div>
+        <h2 class="section-title">O Painel Robertson — Debunking como Política</h2>
+      </div>
+      <p>Em janeiro de 1953, a CIA reuniu um painel de cientistas de alto nível — o <strong>Painel Robertson</strong> — para avaliar os OVNIs como ameaça à segurança nacional. Sua conclusão foi revolucionária em sua frieza: os OVNIs em si podem ou não existir, mas o <em>fenômeno social</em> de pessoas acreditando neles é a verdadeira ameaça — pois poderia sobrecarregar canais de comunicação militares em tempo de guerra.</p>
+      <p>As recomendações do painel foram formalmente sigilosas por décadas: <strong>campanha sistemática de debunking público</strong>, treinamento de meios de comunicação para ridicularizar relatos, monitoramento de grupos ufológicos civis. Esta política explica décadas de comportamento governamental subsequente — não necessariamente como encobrimento de uma verdade alienígena, mas como gestão de percepção social deliberada.</p>
+      <div class="callout esoteric" data-label="Interpretação Esotérica">
+        <p>O ocultismo tem longa tradição de distinguir entre <em>exotérico</em> (para as massas) e <em>esotérico</em> (para os iniciados). A política governamental UAP pode ser lida através desta lente: uma verdade guardada por círculos de iniciação progressiva — classificações de segurança como sistemas de iniciação modernos. O que está "acima do nível de conhecimento" não é espiritualidade mas acesso a dados. A estrutura é análoga; a natureza da verdade guardada é uma questão diferente.</p>
+      </div>
+    </section>
+
+    <section id="aatip">
+      <div class="section-header">
+        <div class="section-kicker">2007–2017 — O Programa Secreto</div>
+        <h2 class="section-title">AATIP e Luis Elizondo</h2>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Luis Elizondo</div>
+        <div class="person-role">Ex-Diretor do AATIP &#9656; Diretor de Programas Especiais do OSD &#9656; Whistleblower</div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-fact">Existência Confirmada pelo DoD</span>
+          <span class="badge badge-claimed">Afirmações sobre Recuperações Não Confirmadas</span>
+        </div>
+        <p style="font-size:15px;color:var(--text-dim);line-height:1.8;">Luis Elizondo serviu na inteligência militar americana por décadas, incluindo como diretor do AATIP — o programa de $22 milhões do Departamento de Defesa para investigar OVNIs entre 2007 e 2012. Após a extinção formal do programa (que ele afirma ter continuado informalmente), Elizondo pediu demissão do Pentágono em outubro de 2017 em protesto, afirmando que a liderança do DoD rejeitava informações que ele considerava críticas à segurança nacional. Juntou-se à empresa TTSA (To The Stars Academy) de Tom DeLonge, tornando-se o rosto público da nova ufologia credencial.</p>
+        <h4>As Cinco Observáveis — Os Critérios do AATIP</h4>
+        <p style="font-size:15px;color:var(--text-dim);">O AATIP identificou cinco capacidades físicas que, combinadas, nenhuma tecnologia humana conhecida possui simultaneamente:</p>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">1 &#9656; Anti-Gravidade</div><div class="card-body">Capacidade de voar sem superfícies de sustentação, sem asas, sem evidência de propulsão convencional — desafiando o princípio de ação-reação.</div></div>
+          <div class="card"><div class="card-title">2 &#9656; Instantâneo Hipersônico</div><div class="card-body">Aceleração de zero a velocidades hipersônicas sem nenhuma rampa observável — sem rastro de aquecimento aerodinâmico, sem efeitos de plasma.</div></div>
+          <div class="card"><div class="card-title">3 &#9656; Hyper-Awareness</div><div class="card-body">Capacidade aparente de detectar e reagir a aeronaves de rastreamento muito antes de qualquer aviso seria possível — consciência situacional além do conhecido.</div></div>
+          <div class="card"><div class="card-title">4 &#9656; Low Observability</div><div class="card-body">Capacidade de tornar-se invisível ao radar enquanto permanece visualmente presente, ou vice-versa — manipulação seletiva do espectro eletromagnético.</div></div>
+          <div class="card"><div class="card-title">5 &#9656; Trans-Medium Travel</div><div class="card-body">Capacidade de transitar entre ar, água e vácuo espacial sem mudança de forma ou velocidade observável — ignorando as propriedades físicas dos meios.</div></div>
+        </div>
+        <div class="callout confirmed" data-label="Fato Verificável">
+          <p>Elizondo afirma que estas cinco observáveis estão documentadas em dados coletados pelo AATIP. Os vídeos Tic-Tac, Gimbal e Go Fast — autenticados pelo Pentágono — mostram objetos com pelo menos algumas destas características. A questão não resolvida é a origem: tecnologia humana desconhecida, fenômeno natural incompreendido, ou tecnologia não-humana.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="section-header">
+        <div class="section-kicker">Evidências Visuais Autenticadas</div>
+        <h2 class="section-title">Os Vídeos UAP Liberados pelo Pentágono</h2>
+      </div>
+      <p class="lead">Em abril de 2020, o Departamento de Defesa americano autenticou formalmente três vídeos filmados por pilotos da Marinha dos EUA. Esta autenticação oficial é historicamente significativa — pela primeira vez, o governo reconhecia formalmente não saber o que eram estes objetos.</p>
+      <div class="video-card">
+        <div class="video-icon">&#127909;</div>
+        <div>
+          <div class="video-name">FLIR1 — "Tic-Tac"</div>
+          <div class="video-meta">NOVEMBRO 2004 &#9656; USS NIMITZ &#9656; AUTENTICADO PELO PENTÁGONO 2020</div>
+          <div class="video-desc">Filmado pelo Cmte. David Fravor e tenente Alex Dietrich usando câmera infravermelha do F/A-18. O objeto, descrito como "Tic-Tac" de 12–15 metros, moveu-se de altitude de 24.000 pés para quase zero em segundos, pousou sobre a superfície do oceano e depois disparou horizontalmente a velocidade estimada em Mach 50+. Fravor declarou ao Congresso e à imprensa: "É a coisa mais avançada que já vi. Não há explicação para isso." <span class="badge badge-fact">Autenticidade Confirmada pelo DoD</span></div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-icon">&#127909;</div>
+        <div>
+          <div class="video-name">GIMBAL</div>
+          <div class="video-meta">JANEIRO 2015 &#9656; USS THEODORE ROOSEVELT &#9656; AUTENTICADO 2020</div>
+          <div class="video-desc">Filmado por pilotos da Marinha na costa leste dos EUA. O objeto gira continuamente sem propulsão aparente, mantendo orientação fixa enquanto a câmera o rastreia. O piloto exclama: "Veja como aquela coisa gira." A análise aerodinâmica convencional não encontra mecanismo que permita a rotação observada. <span class="badge badge-fact">Autenticidade Confirmada pelo DoD</span></div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-icon">&#127909;</div>
+        <div>
+          <div class="video-name">GO FAST</div>
+          <div class="video-meta">FEVEREIRO 2015 &#9656; USS THEODORE ROOSEVELT &#9656; AUTENTICADO 2020</div>
+          <div class="video-desc">Objeto voando sobre a superfície do oceano a velocidade aparentemente elevada, sem signature de propulsão. Análises posteriores publicadas pelo ex-físico da Marinha estimam velocidade de superfície acima de 500 km/h a altíssima altitude com base nos dados de paralaxe visíveis na filmagem. <span class="badge badge-fact">Autenticidade Confirmada pelo DoD</span></div>
+        </div>
+      </div>
+      <div class="callout ufologic" data-label="Análise Técnica">
+        <p><strong>O que foi confirmado:</strong> O DoD confirmou autenticidade dos vídeos e que os objetos são reais e não identificados. <strong>O que NÃO foi confirmado:</strong> A origem dos objetos. Hipóteses vão de tecnologia adversária secreta (China/Rússia), a fenômenos físicos naturais desconhecidos, a tecnologia não-humana. A maioria dos especialistas militares descarta tecnologia adversária — se China ou Rússia tivessem estas capacidades, a geopolítica global seria completamente diferente.</p>
+      </div>
+    </section>
+
+    <section id="grusch">
+      <div class="section-header">
+        <div class="section-kicker">2023 — A Declaração que Mudou Tudo</div>
+        <h2 class="section-title">David Grusch — O Testemunho Histórico</h2>
+      </div>
+      <div class="person-block">
+        <div class="person-name">David Grusch</div>
+        <div class="person-role">Ex-Oficial de Inteligência &#9656; NRO / UAP Task Force &#9656; Whistleblower Formal</div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-fact">Clearance TS/SCI Confirmado</span>
+          <span class="badge badge-claimed">Alegações de Recuperação Não Independentemente Verificadas</span>
+          <span class="badge badge-fact">Depoimento Formal ao Congresso</span>
+        </div>
+        <p style="font-size:15px;color:var(--text-dim);line-height:1.8;">David Grusch serviu como representante da UAP Task Force e depois do National Reconnaissance Office (NRO), com clearance Top Secret/SCI. Em junho de 2023, a The Debrief publicou sua história: Grusch alegava ter passado anos investigando, através de entrevistas com 40+ funcionários com clearance alto, a existência de programas governamentais secretos de recuperação e engenharia reversa de veículos de origem não-humana ("não-humano" sendo o termo oficial que ele usa). Ele formalizou suas alegações junto ao Inspector General do Congresso — mecanismo legal de proteção a whistleblowers — e depois testemunhou publicamente perante o Subcomitê de Supervisão da Câmara em julho de 2023.</p>
+        <h4>As Alegações Centrais</h4>
+        <div class="card-grid">
+          <div class="card"><div class="card-title">&#9656; Veículos Recuperados</div><div class="card-body">O governo americano e empreiteiras privadas possuem, há décadas, veículos de origem "não-humana" (termo usado por Grusch) em programas de acesso especial (SAPs) não reportados ao Congresso conforme legalmente exigido.</div><div style="margin-top:8px;"><span class="badge badge-claimed">Alegação Formal</span></div></div>
+          <div class="card"><div class="card-title">&#9656; Restos Biológicos</div><div class="card-body">Grusch alega que restos biológicos de "pilotos não-humanos" foram recuperados junto com alguns veículos. Recusa-se a dar mais detalhes em sessão aberta, citando natureza classificada.</div><div style="margin-top:8px;"><span class="badge badge-claimed">Alegação — Não Verificada</span></div></div>
+          <div class="card"><div class="card-title">&#9656; Ocultamento ao Congresso</div><div class="card-body">Estes programas foram deliberadamente mantidos fora do conhecimento de membros do Congresso com direito legal a oversight — violação da lei de supervisão parlamentar, segundo Grusch.</div><div style="margin-top:8px;"><span class="badge badge-claimed">Alegação Formal ao IG</span></div></div>
+          <div class="card"><div class="card-title">&#9656; Represálias</div><div class="card-body">Grusch afirma ter sofrido represálias profissionais após iniciar a investigação, incluindo interferência em sua carreira. O IG classificou sua denúncia como "crível e urgente".</div><div style="margin-top:8px;"><span class="badge badge-fact">IG Classification Documentada</span></div></div>
+        </div>
+        <div class="callout danger" data-label="Nota Crítica Importante">
+          <p>As alegações de Grusch são sérias, feitas por um oficial com clearance verificado, sob penalidade legal por perjúrio, ao Congresso americano. Ao mesmo tempo: (1) Ele afirma ter obtido informações por hearsay — de outros funcionários, não por observação direta. (2) O AARO publicou relatório em 2024 não encontrando evidências para corroborar as alegações específicas. (3) Nenhuma verificação independente foi possível por jornalistas ou pesquisadores. Estas alegações devem ser levadas a sério — e investigadas com igual seriedade — sem serem tratadas como fato estabelecido.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="audiencias">
+      <div class="section-header">
+        <div class="section-kicker">2023–2024</div>
+        <h2 class="section-title">Audiências Históricas no Congresso Americano</h2>
+      </div>
+      <p class="lead">As audiências de 2023 marcaram o momento em que a questão UAP deixou de ser tema de conspiracionistas e passou a ser objeto formal de oversight parlamentar, com testemunhos juramentados e proteções legais a whistleblowers.</p>
+      <h4>Audiência de Julho de 2023 — Subcomitê de Supervisão da Câmara</h4>
+      <p>Em 26 de julho de 2023, o Subcomitê de Supervisão e Transparência da Câmara dos Representantes realizou a primeira audiência UAP com testemunhos juramentados de whistleblowers desde os anos 1960. Testemunharam:</p>
+      <div style="margin:20px 0;">
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--cyan);"></div>
+          <div class="tl-year">TESTEMUNHA 1</div>
+          <div class="tl-title">David Grusch — Ex-Oficial de Inteligência</div>
+          <div class="tl-body">Suas alegações sobre programas de recuperação. Quando pressionado por detalhes específicos em sessão aberta, frequentemente recusou citando classificação, oferecendo-se para sessão fechada. Declarou que o governo "definitivamente" não está sozinho no cosmos.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--gold);"></div>
+          <div class="tl-year">TESTEMUNHA 2</div>
+          <div class="tl-title">Cmte. David Fravor — Piloto do Tic-Tac</div>
+          <div class="tl-body">Fravor testemunhou sobre o encontro de 2004 com o Tic-Tac. Descreveu um objeto que executou manobras impossíveis para qualquer aeronave conhecida. Expressou confiança que o objeto era tecnologia além do humano. Afirmou que piloto profissional não arriscaria carreira e credibilidade sem ter visto algo extraordinário.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="border-color:var(--teal);"></div>
+          <div class="tl-year">TESTEMUNHA 3</div>
+          <div class="tl-title">Ryan Graves — Piloto da Marinha / Americans for Safe Aerospace</div>
+          <div class="tl-body">Graves descreveu avistar UAPs regularmente nas mesmas áreas de treinamento da Marinha por anos. Fundou organização para coletar relatos de pilotos que evitam relatar oficialmente por medo de consequências na carreira. Afirmou que UAPs em áreas restritas são "ameaça à aviação" independentemente de sua origem.</div>
+        </div>
+      </div>
+      <div class="callout confirmed" data-label="Fato Documentado">
+        <p>A audiência foi transmitida ao vivo e amplamente documentada. A classificação "crível e urgente" dada pelo Inspector General à denúncia de Grusch é um fato verificável nos registros do Congresso. Os membros de ambos os partidos expressaram frustração com a falta de transparência governamental — o que, por si só, é historicamente notável.</p>
+      </div>
+      <h4>Legislação de Divulgação UAP</h4>
+      <p>Em paralelo às audiências, senadores bipartidários incluíram o <strong>UAP Disclosure Act</strong> na lei de autorização de defesa (NDAA). A legislação propunha forçar declassificação de registros UAP e criar mecanismo para revisar programas SAP. A versão final aprovada em 2023 foi mais limitada do que a proposta original, após resistência do Executivo. Este processo legislativo continua em 2024.</p>
+    </section>
+
+    <section id="aaro">
+      <div class="section-header">
+        <div class="section-kicker">O Órgão Oficial</div>
+        <h2 class="section-title">AARO — All-domain Anomaly Resolution Office</h2>
+      </div>
+      <p>O AARO foi criado em julho de 2022 como a mais recente iteração do esforço oficial UAP, sucedendo a UAP Task Force e o AOIMSG. Mandato: detectar, identificar e atribuir objetos de interesse anômalo em múltiplos domínios (espaço aéreo, marítimo, espaço). Dirigido pelo Dr. Sean Kirkpatrick até dezembro de 2023.</p>
+      <h4>A Evolução dos Nomes — Uma Genealogia</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Órgão</th><th>Período</th><th>Mandato</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Projeto Sign</td><td>1947–1948</td><td>Investigar origem dos discos voadores</td><td>Dissolvido; relatório rejeitado</td></tr>
+            <tr><td>Projeto Grudge</td><td>1949–1951</td><td>Desacreditar relatos sistematicamente</td><td>Dissolvido</td></tr>
+            <tr><td>Projeto Blue Book</td><td>1952–1969</td><td>Investigação oficial pública</td><td>Encerrado pelo Rel. Condon</td></tr>
+            <tr><td>AATIP</td><td>2007–2012</td><td>Ameaças aeroespaciais avançadas (secreto)</td><td>Orçamento cortado (programa informal continuou)</td></tr>
+            <tr><td>UAP Task Force</td><td>2020–2022</td><td>Relatório ao Congresso sobre UAPs</td><td>Substituída pelo AOIMSG</td></tr>
+            <tr><td>AOIMSG</td><td>2021–2022</td><td>Coordenação interagências</td><td>Substituída pelo AARO</td></tr>
+            <tr><td>AARO</td><td>2022–atual</td><td>All-domain anomaly resolution</td><td>Operacional</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warning" data-label="Tensão Institucional">
+        <p>O AARO publicou relatório em 2024 afirmando não ter encontrado evidências para corroborar alegações de programas de recuperação extraterrestre ou "material não-humano" em posse do governo. Ao mesmo tempo, admitiu dificuldades em obter acesso a alguns programas SAP para investigação. Esta tensão entre o órgão oficial que não encontra evidências e whistleblowers com credenciais afirmando o contrário define o estado atual do debate.</p>
+      </div>
+    </section>
+
+    <div class="sigil-sep">&#128065; &#9632; &#9992; &#9632; &#128065;</div>
+
+    <section id="lazar">
+      <div class="section-header">
+        <div class="section-kicker">Whistleblower Histórico</div>
+        <h2 class="section-title">Bob Lazar — A Área 51 e o Setor S-4</h2>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Robert Scott Lazar</div>
+        <div class="person-role">Alegado Ex-Físico da Área 51 / S-4 &#9656; Whistleblower desde 1989</div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-claimed">Credenciais Disputadas</span>
+          <span class="badge badge-fact">Algumas Alegações Parcialmente Corroboradas</span>
+          <span class="badge badge-unverified">Narrativa Central Não Verificada</span>
+        </div>
+        <p style="font-size:15px;color:var(--text-dim);line-height:1.8;">Em novembro de 1989, Bob Lazar apareceu nas telas da KLAS-TV de Las Vegas, entrevistado pelo jornalista George Knapp, afirmando ter trabalhado em uma instalação ultrassecreta chamada S-4, localizada a sul da Área 51, onde engenheiros realizavam engenharia reversa de naves alienígenas — especificamente nine crafts de discos de propulsão gravitacional. Disse ter trabalhado no sistema de propulsão baseado em um elemento então desconhecido que ele chamou de "Elemento 115". Sua história trouxe a Área 51 para o vocabulário popular e moldou toda a ufologia subsequente.</p>
+        <h4>O Elemento 115 — Moscovium</h4>
+        <p style="font-size:15px;color:var(--text-dim);">Lazar afirmou em 1989 que o sistema de propulsão usava um elemento sintético de número atômico 115, então não existente na tabela periódica. Em 2003, pesquisadores russos sintetizaram o elemento 115 — batizado Moscovium (Mc) em 2016. Lazar afirma que isto corrobora suas alegações. Críticos observam que a existência de um elemento sintético de número 115 era prevista pela tabela periódica muito antes de 1989, não sendo conhecimento "alienígena". O debate continua.</p>
+        <div class="callout warning" data-label="Contexto — Credenciais">
+          <p>Lazar afirma ter obtido mestrado no MIT e em Caltech. Jornalistas investigativos não encontraram registros universitários confirmando isto. Lazar alega que o governo apagou seus registros. Esta impossibilidade de verificação — "o governo apagou as evidências" — é o padrão de argumento que torna qualquer narrativa imune à falsificação. O documentário <em>Bob Lazar: Area 51 and Flying Saucers</em> (2018) apresenta perspectivas de ambos os lados.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="corso">
+      <div class="section-header">
+        <div class="section-kicker">Whistleblower Histórico II</div>
+        <h2 class="section-title">Philip Corso — O Dia Depois de Roswell</h2>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Philip J. Corso</div>
+        <div class="person-role">Coronel do Exército Americano (reformado) &#9656; Ex-NSC &#9656; Autor</div>
+        <div style="margin-bottom:14px;">
+          <span class="badge badge-fact">Carreira Militar Verificada</span>
+          <span class="badge badge-claimed">Alegações sobre Roswell Não Verificadas</span>
+        </div>
+        <p style="font-size:15px;color:var(--text-dim);line-height:1.8;">O Coronel Philip Corso, que realmente serviu no NSC sob o presidente Eisenhower, publicou em 1997 <em>The Day After Roswell</em>. Afirmou ter sido responsável por um programa secreto do Exército nos anos 1960 de distribuir tecnologia recuperada de Roswell para laboratórios corporativos americanos para engenharia reversa: o circuito integrado teria origem no debris de Roswell; a fibra ótica, similares; os lasers, Kevlar e outros materiais. O livro tornou-se bestseller. Corso faleceu em 1998. Suas alegações específicas não foram corroboradas por nenhum outro funcionário.</p>
+      </div>
+    </section>
+
+    <section id="outros-wb">
+      <div class="section-header">
+        <div class="section-kicker">Outros Testemunhos</div>
+        <h2 class="section-title">O Projeto de Divulgação de Greer e Outros Whistleblowers</h2>
+      </div>
+      <h4>O Projeto de Divulgação de Steven Greer (2001)</h4>
+      <p>Em maio de 2001, o Dr. Steven Greer organizou uma coletiva de imprensa no National Press Club em Washington DC com mais de <strong>20 ex-funcionários militares e de inteligência</strong> — muitos com credenciais verificadas — que testemunharam sobre encontros com UAPs, programas secretos de recuperação e encobrimento sistemático. O projeto, chamado <em>Disclosure Project</em>, gerou horas de depoimentos e tornou-se um marco na ufologia moderna. As credenciais dos testemunhos foram verificadas em vários casos. As alegações específicas permanecem não-verificáveis.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Testemunha</th><th>Credenciais</th><th>Alegação Central</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Clifford Stone</td><td>Sargento do Exército, 22 anos</td><td>Participação em recuperações de UAPs, 57 tipos de ETs catalogados</td><td>Não verificada</td></tr>
+            <tr><td>Edgar Mitchell</td><td>Astronauta Apollo 14</td><td>Confirmou existência de ETs — "a coisa real"</td><td>Declaração verificada, fonte de base não verificada</td></tr>
+            <tr><td>Gordon Cooper</td><td>Astronauta Mercury/Gemini</td><td>Avistou e filmou disco OVNI em teste militar, filme entregue ao Pentágono</td><td>Declaração verificada, filme não localizado</td></tr>
+            <tr><td>Lt. Cmdr. Willard Miller</td><td>US Navy Commander</td><td>Reuniões com ETs mediadas pelo governo americano</td><td>Não verificada</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="roswell">
+      <div class="section-header">
+        <div class="section-kicker">1947 — O Caso Fundador</div>
+        <h2 class="section-title">Roswell — Análise Completa</h2>
+      </div>
+      <p class="lead">Roswell é ao mesmo tempo o evento mais documentado e o mais controverso da ufologia. Sua importância transcende o que quer que tenha caído no Novo México em julho de 1947 — Roswell é o símbolo arquetípico do encobrimento governamental.</p>
+      <h4>O que Sabemos com Certeza</h4>
+      <div class="callout confirmed" data-label="Fatos Verificados">
+        <p><strong>1.</strong> Algo caiu no rancho de Mac Brazel entre 4–5 de julho de 1947.<br><strong>2.</strong> O USAF 509th Bomb Group emitiu comunicado anunciando a recuperação de um "disco voador" — que depois foi retirado e substituído por "balão meteorológico".<br><strong>3.</strong> A área foi cercada e limpa pelo Exército americano, com ordens de silêncio aos envolvidos.<br><strong>4.</strong> O sheriff George Wilcox e o oficial Jesse Marcel relataram materiais com propriedades incomuns (memória de forma, resistência extrema).<br><strong>5.</strong> Em 1994, o governo americano admitiu que a história do "balão meteorológico" era encobrimento de um programa secreto — <strong>mas identificou este programa como Project Mogul</strong>, um programa de balões de alta altitude para espionagem nuclear, não como UFO.</p>
+      </div>
+      <h4>O que Permanece Disputado</h4>
+      <div class="callout danger" data-label="Disputado / Não Verificado">
+        <p>A explicação oficial do Projeto Mogul satisfaz alguns pesquisadores mas não outros. Testemunhos de corpos recuperados, incluindo os relatos do médico forense Glenn Dennis e outros, não foram independentemente corroborados. A confissão de um suposto participante — o "testemunho do leito de morte" de Walter Haut — foi considerada não-confiável por investigadores sérios. Roswell permanece genuinamente aberto como questão histórica — o encobrimento é fato; o que foi encoberto é incerto.</p>
+      </div>
+      <div class="callout esoteric" data-label="Interpretação Esotérica">
+        <p>No esoterismo, Roswell tem dimensão mítica que transcende seus fatos verificáveis. É o momento em que a humanidade — simbolicamente — encontrou a evidência física de não estar sozinha no cosmos, e o momento em que essa evidência foi ocultada por poderes que julgaram a humanidade não estar pronta para esta revelação. A narrativa de Roswell é estruturalmente idêntica à de revelações iniciáticas suprimidas: a verdade existe, foi vista por poucos, e permanece guardada até o momento do Grande Despertar.</p>
+      </div>
+    </section>
+
+    <section id="casos-doc">
+      <div class="section-header">
+        <div class="section-kicker">Casos Mais Documentados</div>
+        <h2 class="section-title">UAPs — Os Casos de Referência</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Caso</th><th>Data</th><th>País</th><th>Testemunhos</th><th>Evidências Físicas</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Nimitz/Tic-Tac</td><td>Nov 2004</td><td>EUA</td><td>Pilotos militares, radar</td><td>Vídeo FLIR autenticado</td><td>Oficialmente não identificado</td></tr>
+            <tr><td>RAF Bentwaters/Rendlesham</td><td>Dez 1980</td><td>UK/EUA</td><td>Dúzias de militares britânicos e americanos</td><td>Marcas no solo, radiação residual</td><td>Investigado; inexplicado</td></tr>
+            <tr><td>Iran Air 1976</td><td>Set 1976</td><td>Irã</td><td>Pilotos militares, controladores</td><td>Falha de sistemas de armas ao aproximar</td><td>Documentado em arquivo DIA</td></tr>
+            <tr><td>Teheran 1976</td><td>Set 1976</td><td>Irã</td><td>General Parviz Jafari e tripulação</td><td>Falhas elétricas ao apontar sistemas</td><td>Desclassificado, não explicado</td></tr>
+            <tr><td>Colares, PA</td><td>1977</td><td>Brasil</td><td>Centenas de civis, investigação militar</td><td>Queimaduras físicas em vítimas</td><td>Op. Prato documentada, parcialmente aberta</td></tr>
+            <tr><td>JAL 1628</td><td>Nov 1986</td><td>Japão/EUA</td><td>Comandante e tripulação</td><td>Confirmação parcial por radar ARTCC</td><td>FAA investigou; inexplicado</td></tr>
+            <tr><td>O'Hare 2006</td><td>Nov 2006</td><td>EUA</td><td>Dúzias de funcionários United Airlines</td><td>Nenhuma (nenhum radar)</td><td>Investigado; inexplicado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>Operação Prato — Brasil 1977</h4>
+      <p>O caso brasileiro merece destaque especial. Entre outubro e novembro de 1977, a ilha de Colares no Pará viveu um fenômeno de avistamentos massivos com consequências físicas documentadas: moradores reportavam ser atingidos por feixes de luz provenientes de objetos não-identificados, resultando em queimaduras, anemia e outros sintomas. A Força Aérea Brasileira enviou uma equipe de investigação secreta — a <strong>Operação Prato</strong> — que coletou fotografias, filmagens e exames médicos. O relatório foi classificado por décadas. Em 2004, o comandante da operação, Uyrangê Hollanda, concedeu entrevista detalhada antes de falecer. Parte dos materiais foi eventualmente disponibilizada ao pesquisador UFOlogista A.J. Gevaerd. Este é um dos casos mais documentados de potencial efeito físico de fenômenos UAP.</p>
+    </section>
+
+    <section id="esoterismo-gov">
+      <div class="section-header">
+        <div class="section-kicker">A Interpretação Esotérica</div>
+        <h2 class="section-title">Como o Esoterismo Lê as Divulgações Governamentais</h2>
+      </div>
+      <p class="lead">Para o estudante do esoterismo, as divulgações governamentais UAP não são simplesmente eventos políticos — são manifestações de um processo cósmico maior que se desdobra segundo uma temporalidade própria.</p>
+      <h4>A Divulgação como Ritual de Iniciação Coletiva</h4>
+      <p>O esoterismo propõe que a humanidade como coletivo passa por processos análogos aos do indivíduo no caminho iniciático. A <em>Grande Revelação</em> — o momento em que a existência de inteligência não-humana se torna conhecimento público incontestável — seria o equivalente planetário da experiência iniciática do neófito: o mundo que ele conhecia não é o mundo real; há uma camada mais profunda de realidade que sempre existiu mas que lhe foi ocultada.</p>
+      <div class="card-grid">
+        <div class="card"><div class="card-title">&#9656; O Princípio Hermético da Correspondência</div><div class="card-body">"Como em cima, assim embaixo" — a estrutura hierárquica dos governos guardando verdades de populações menores é correspondência direta da estrutura de Mistérios guardando verdades de neófitos. A mesma lógica opera em escalas diferentes.</div></div>
+        <div class="card"><div class="card-title">&#9656; O Velamento Gnóstico</div><div class="card-body">O gnosticismo propõe que os Archons mantêm a humanidade em ignorância deliberada sobre sua natureza real. O encobrimento governamental UAP, para o ocultista, é uma manifestação física desta dinâmica metafísica.</div></div>
+        <div class="card"><div class="card-title">&#9656; A Profecia da Revelação</div><div class="card-body">Múltiplas tradições proféticas — Hopi, asteca, esotérica ocidental, canalizações modernas — preveem um "momento de revelação" onde a humanidade conhecerá sua herança cósmica. Para o esoterista, as divulgações UAP são o início deste processo profetizado.</div></div>
+        <div class="card"><div class="card-title">&#9656; O Ritmo das Divulgações</div><div class="card-body">A progressão gradual — vídeos, depois audiências, depois whistleblowers, depois legislação — corresponde ao processo de revelação gradual dos Mistérios: verdades reveladas em etapas que a consciência pode absorver sem ruptura traumática.</div></div>
+      </div>
+      <h4>O Paradoxo da Divulgação Gradual</h4>
+      <p>O estudioso esotérico Steven Greer e outros pesquisadores levantaram um paradoxo intrigante: se os governos têm conhecimento definitivo sobre tecnologia e inteligência não-humana, por que divulgar gradualmente em vez de anunciar de uma vez? As hipóteses vão do pragmático (evitar colapso social) ao conspirativo (controlar a narrativa) ao esotérico (respeitar o tempo kármico do despertar da humanidade). Cada hipótese implica uma compreensão diferente de quem realmente está no controle do processo de divulgação — e se o interesse dessa entidade controladora se alinha com o da humanidade.</p>
+      <div class="callout occult" data-label="Tradição Ocultista">
+        <p>A tradição Rosa-Cruz e a Maçonaria especulativa possuem conceitos de "tempestividade" — cada verdade tem seu tempo certo de revelação. O estudante que recebe uma revelação prematura para seu grau de maturidade espiritual pode ser destruído por ela. A lentidão das divulgações governamentais UAP, nesta leitura, não seria falha mas sabedoria — seja ela intencional ou estrutural.</p>
+      </div>
+    </section>
+
+    <section id="fato-vs-spec">
+      <div class="section-header">
+        <div class="section-kicker">Mapa Epistêmico</div>
+        <h2 class="section-title">Fato Verificado vs. Declaração Oficial vs. Alegação vs. Especulação</h2>
+      </div>
+      <p class="lead">O estudante maduro de ufologia mantém distinções epistêmicas rígidas. Confundir as categorias abaixo é a principal fonte de engano neste campo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Categoria</th><th>Definição</th><th>Exemplos</th><th>Peso Epistêmico</th></tr></thead>
+          <tbody>
+            <tr><td>&#9632; Fato Documentado</td><td>Verificável independentemente, múltiplas fontes</td><td>Vídeos UAP autenticados pelo DoD; existência do AATIP; 701 casos Blue Book não-identificados</td><td>Alto — base firme</td></tr>
+            <tr><td>&#9632; Declaração Oficial</td><td>Afirmação formal de autoridade governamental</td><td>Relatório UAP Task Force 2021; depoimento de Grusch ao Congresso</td><td>Médio-Alto — verificável mas pode ser incompleto</td></tr>
+            <tr><td>&#9632; Alegação Credencial</td><td>Afirmação de alguém com posição verificada mas conteúdo não-verificável</td><td>Alegações de Grusch sobre recuperações; depoimentos do Projeto Disclosure</td><td>Médio — leva a sério mas suspende julgamento</td></tr>
+            <tr><td>&#9632; Testemunho Anônimo</td><td>Afirmação sem identificação verificável</td><td>Informantes anônimos de Grusch; denunciantes sem nome</td><td>Baixo — base para investigação, não para conclusão</td></tr>
+            <tr><td>&#9632; Especulação Ufológica</td><td>Teoria construída sobre as categorias acima</td><td>Localização de bases subterrâneas; identidade dos "not-humans"; Roswell-Anunnaki</td><td>Variável — leitura possível, não provável</td></tr>
+            <tr><td>&#9632; Interpretação Esotérica</td><td>Leitura simbólica ou espiritual dos fenômenos</td><td>UAPs como anjos modernos; divulgação como iniciação coletiva</td><td>Distinto — verdade em outro nível</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout esoteric" data-label="A Perspectiva Iniciática Final">
+        <p>O estudante que percorre este volume com atenção perceberá que a questão UAP é, em seu nível mais profundo, uma questão sobre a natureza da realidade e do que a consciência humana é capaz de sustentar como verdade. Os governos guardam segredos. Fenômenos genuinamente inexplicados ocorrem. Seres com inteligência podem ou não existir além da Terra. O esoterismo acrescenta: a resposta mais importante não está no Pentágono, nos vídeos ou nos whistleblowers — está na expansão da sua própria percepção, que tornará qualquer revelação externa desnecessária porque você já saberá, por experiência direta, que o cosmos é vasto, habitado e profundamente interessante em você.</p>
+      </div>
+    </section>
+
+    <div class="section-footer">
+      <span>&#8592; VOL. II</span>
+      <span>&#10022; ARQUIVO CÓSMICO — VOLUME III &#10022; UAPs E DOCUMENTOS &#10022;</span>
+      <span>VOL. IV &#8594;</span>
+    </div>
+  </div>
+</main>
+<script>
+(function(){var c=document.getElementById("starsCanvas"),ctx=c.getContext("2d"),stars=[];function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}function init(){stars=[];for(var i=0;i<200;i++)stars.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2+0.2,a:Math.random(),da:(Math.random()-0.5)*0.005,col:Math.random()>0.7?"#00e5ff":Math.random()>0.5?"#c8973a":"#ffffff"});}function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(function(s){s.a+=s.da;if(s.a<=0||s.a>=1)s.da*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.col;ctx.globalAlpha=s.a*0.7;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}resize();init();draw();window.addEventListener("resize",function(){resize();init();});})();
+document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("sidebar").classList.toggle("open");});
+var secs=document.querySelectorAll("section[id]"),navs=document.querySelectorAll(".nav-item");
+window.addEventListener("scroll",function(){var cur="";secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});navs.forEach(function(n){n.classList.remove("active");if(n.getAttribute("href")==="#"+cur)n.classList.add("active");});});
+</script>
+</body>
+</html>

@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hinduísmo — Do Zero ao Absoluto</title>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #e8651a;
+  --saffron2: #f5a623;
+  --saffron3: #ffc654;
+  --deep-red: #8b1a1a;
+  --red: #c0392b;
+  --magenta: #8b0060;
+  --magenta2: #c2185b;
+  --lotus: #e91e8c;
+  --gold: #d4a017;
+  --gold2: #f0c040;
+  --teal: #00695c;
+  --teal2: #26a69a;
+  --indigo: #1a237e;
+  --indigo2: #3949ab;
+  --violet: #4a148c;
+  --violet2: #7b1fa2;
+  --cream: #fff8f0;
+  --cream2: #fff3e0;
+  --warm: #fbe9c8;
+  --ink: #1a0e00;
+  --ink2: #2d1c00;
+  --ink3: #3d2800;
+  --muted: #7a5c30;
+  --muted2: #a07840;
+  --border: rgba(232,101,26,0.2);
+  --border2: rgba(212,160,23,0.15);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+#prog {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+  background: linear-gradient(90deg, var(--saffron), var(--gold2), var(--lotus));
+  width: 0%; transition: width 0.1s;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 252px;
+  background: var(--ink);
+  border-right: 1px solid rgba(232,101,26,0.2);
+  z-index: 100; overflow-y: auto;
+  padding: 0 0 60px;
+}
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: rgba(232,101,26,0.4); border-radius: 2px; }
+
+.sb-brand {
+  padding: 28px 20px 22px;
+  background: linear-gradient(135deg, #1a0e00 0%, #2d1800 100%);
+  border-bottom: 1px solid rgba(232,101,26,0.15);
+  margin-bottom: 8px;
+}
+.sb-om {
+  font-size: 2.6rem; text-align: center; display: block;
+  color: var(--saffron2); margin-bottom: 6px;
+  text-shadow: 0 0 20px rgba(232,101,26,0.5);
+}
+.sb-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(232,101,26,0.7); text-align: center; display: block;
+}
+
+.sb-sec-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.52rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(232,101,26,0.35); padding: 14px 20px 4px; display: block;
+}
+.sb-link {
+  display: block; font-family: 'Lora', serif; font-size: 0.85rem;
+  color: rgba(255,240,220,0.5); padding: 5px 20px 5px 22px;
+  text-decoration: none; transition: all 0.2s;
+  border-left: 2px solid transparent; line-height: 1.4;
+}
+.sb-link:hover, .sb-link.active {
+  color: var(--saffron2); border-left-color: var(--saffron);
+  background: rgba(232,101,26,0.08); padding-left: 28px;
+}
+
+#mob-toggle {
+  display: none; position: fixed; top: 12px; left: 12px; z-index: 200;
+  background: var(--ink); border: 1px solid var(--border);
+  color: var(--saffron2); font-size: 1.2rem; width: 42px; height: 42px;
+  border-radius: 3px; cursor: pointer; align-items: center; justify-content: center;
+}
+
+/* ── MAIN ── */
+#main { margin-left: 252px; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 100px 48px 80px;
+}
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(232,101,26,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 70%, rgba(139,0,96,0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 20%, rgba(212,160,23,0.12) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Mandala decorativa no hero */
+.hero-mandala {
+  position: absolute; opacity: 0.07;
+  width: 700px; height: 700px;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  animation: spinSlow 80s linear infinite;
+}
+@keyframes spinSlow { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.hero-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.72rem; letter-spacing: 0.55em; text-transform: uppercase;
+  color: rgba(232,101,26,0.7); margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+#hero h1 {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  color: var(--saffron3); line-height: 1.05;
+  text-shadow: 0 2px 50px rgba(232,101,26,0.4);
+  margin-bottom: 10px; position: relative; z-index: 1;
+}
+#hero h1 span { color: var(--gold2); display: block; font-size: 0.55em; margin-bottom: 4px; }
+.hero-sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(212,160,23,0.6); margin-bottom: 36px; position: relative; z-index: 1;
+}
+.hero-body {
+  max-width: 620px; font-style: italic; font-size: 1.1rem;
+  color: rgba(255,240,210,0.7); line-height: 2;
+  position: relative; z-index: 1;
+}
+.hero-stats {
+  display: flex; gap: 44px; margin-top: 52px;
+  position: relative; z-index: 1;
+}
+.stat-n {
+  font-family: 'Yeseva One', serif; font-size: 2.4rem;
+  color: var(--saffron2); line-height: 1; display: block;
+  text-shadow: 0 0 20px rgba(232,101,26,0.4);
+}
+.stat-l {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(212,160,23,0.5); display: block; margin-top: 4px;
+}
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(232,101,26,0.4); animation: bobble 2.2s ease infinite;
+}
+@keyframes bobble { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+/* ── PAGE WRAP ── */
+.page { max-width: 800px; margin: 0 auto; padding: 0 52px 100px; }
+
+/* ── CHAPTERS ── */
+.chapter { padding: 90px 0 50px; border-top: 1px solid var(--border2); }
+.chapter:first-child { border-top: none; }
+
+.ch-eye {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--muted2); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ch-eye::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--border),transparent); }
+
+.chapter h2 {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(1.9rem, 3.2vw, 3rem);
+  color: var(--ink); line-height: 1.1; margin-bottom: 26px;
+}
+.chapter h2 em { color: var(--saffron); font-style: normal; }
+
+.ch-intro {
+  font-size: 1.12rem; font-style: italic; color: var(--ink3);
+  line-height: 1.9; border-left: 4px solid var(--saffron);
+  padding-left: 22px; margin-bottom: 44px;
+}
+
+/* ── HEADINGS ── */
+h3.sec {
+  font-family: 'Yeseva One', serif; font-size: 1.5rem;
+  color: var(--indigo); margin: 52px 0 18px;
+  padding-bottom: 10px; border-bottom: 2px solid rgba(26,35,126,0.12);
+}
+h4.sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--saffron); margin: 34px 0 12px; font-weight: 600;
+}
+
+/* ── BODY ── */
+p { color: var(--ink3); margin-bottom: 1.5em; }
+p strong { color: var(--ink); font-weight: 600; }
+p em { color: var(--indigo2); font-style: italic; }
+
+/* ── PULL QUOTE ── */
+.pq {
+  margin: 46px -8px; padding: 32px 44px;
+  background: linear-gradient(135deg, var(--ink) 0%, #2d1400 100%);
+  border-radius: 3px; position: relative;
+}
+.pq::before {
+  content: '"'; position: absolute; top: -12px; left: 32px;
+  font-family: 'Yeseva One', serif; font-size: 5.5rem; line-height: 1;
+  color: var(--saffron); opacity: 0.35;
+}
+.pq-text {
+  font-family: 'Lora', serif; font-size: 1.35rem; font-style: italic;
+  color: var(--warm); line-height: 1.7; margin: 0 0 14px;
+}
+.pq-cite {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--saffron2); opacity: 0.8;
+}
+
+/* ── INFO BOXES ── */
+.box {
+  margin: 32px 0; padding: 22px 28px; border-radius: 3px; border-left: 4px solid;
+}
+.box-saffron { background: rgba(232,101,26,0.07); border-color: var(--saffron); }
+.box-indigo { background: rgba(26,35,126,0.07); border-color: var(--indigo2); }
+.box-teal { background: rgba(0,105,92,0.07); border-color: var(--teal2); }
+.box-violet { background: rgba(74,20,140,0.07); border-color: var(--violet2); }
+.box-gold { background: rgba(212,160,23,0.08); border-color: var(--gold); }
+.box-magenta { background: rgba(194,24,91,0.07); border-color: var(--magenta2); }
+
+.box-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  margin-bottom: 10px; display: block;
+}
+.box-saffron .box-label { color: var(--saffron); }
+.box-indigo .box-label { color: var(--indigo2); }
+.box-teal .box-label { color: var(--teal2); }
+.box-violet .box-label { color: var(--violet2); }
+.box-gold .box-label { color: var(--gold); }
+.box-magenta .box-label { color: var(--magenta2); }
+.box p { font-size: 0.95rem; color: var(--ink3); margin: 0; line-height: 1.75; }
+
+/* ── DIVIDER ── */
+.div-om {
+  text-align: center; padding: 44px 0;
+  font-size: 1.8rem; letter-spacing: 1em; color: rgba(232,101,26,0.25);
+  user-select: none;
+}
+
+/* ── GOD CARDS ── */
+.god-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 2px; margin: 36px 0; border: 1px solid var(--border); }
+.god-card {
+  background: var(--cream); padding: 26px 22px;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  transition: background 0.25s;
+}
+.god-card:hover { background: var(--warm); }
+.gc-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.gc-icon {
+  width: 52px; height: 52px; border-radius: 3px;
+  background: linear-gradient(135deg, var(--ink) 0%, #2d1400 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; flex-shrink: 0;
+}
+.gc-name {
+  font-family: 'Yeseva One', serif; font-size: 1.2rem;
+  color: var(--ink); line-height: 1.2;
+}
+.gc-alt { font-size: 0.8rem; font-style: italic; color: var(--muted2); margin-top: 2px; }
+.gc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.tag {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 2px; border: 1px solid;
+}
+.t-s { color: var(--saffron); border-color: rgba(232,101,26,0.4); background: rgba(232,101,26,0.07); }
+.t-i { color: var(--indigo2); border-color: rgba(57,73,171,0.35); background: rgba(57,73,171,0.07); }
+.t-v { color: var(--violet2); border-color: rgba(123,31,162,0.35); background: rgba(123,31,162,0.07); }
+.t-t { color: var(--teal); border-color: rgba(38,166,154,0.35); background: rgba(38,166,154,0.07); }
+.t-g { color: var(--gold); border-color: rgba(212,160,23,0.4); background: rgba(212,160,23,0.07); }
+.t-m { color: var(--magenta2); border-color: rgba(194,24,91,0.35); background: rgba(194,24,91,0.07); }
+.god-card p { font-size: 0.9rem; margin: 0; line-height: 1.7; color: var(--ink3); }
+
+/* ── CORRELATION PANEL ── */
+.corr-panel {
+  background: linear-gradient(135deg, #0a0800 0%, #1a0e00 60%, #0d0025 100%);
+  border: 1px solid rgba(212,160,23,0.2); border-radius: 3px;
+  padding: 36px 40px; margin: 40px 0;
+}
+.corr-title {
+  font-family: 'Yeseva One', serif; font-size: 1.3rem;
+  color: var(--saffron2); margin-bottom: 6px;
+}
+.corr-sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(212,160,23,0.4); margin-bottom: 28px; display: block;
+}
+.corr-row {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 20px; align-items: start; padding: 14px 0;
+  border-bottom: 1px solid rgba(212,160,23,0.08);
+}
+.corr-row:last-child { border-bottom: none; }
+.corr-side {
+  padding: 12px 16px; border-radius: 3px;
+}
+.corr-hindu { background: rgba(232,101,26,0.12); border: 1px solid rgba(232,101,26,0.25); }
+.corr-kab { background: rgba(57,73,171,0.12); border: 1px solid rgba(57,73,171,0.25); }
+.corr-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  margin-bottom: 6px; display: block;
+}
+.corr-hindu .corr-label { color: rgba(232,101,26,0.7); }
+.corr-kab .corr-label { color: rgba(100,130,255,0.7); }
+.corr-side h4 { font-family: 'Yeseva One', serif; font-size: 1rem; margin-bottom: 4px; }
+.corr-hindu h4 { color: var(--saffron2); }
+.corr-kab h4 { color: #8cb4ff; }
+.corr-side p { font-size: 0.85rem; margin: 0; line-height: 1.6; color: rgba(255,240,210,0.65); }
+.corr-arrow {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold2); font-size: 1.2rem; padding-top: 16px; opacity: 0.5;
+}
+
+/* ── TABLE ── */
+.tbl { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+.tbl thead tr { background: var(--ink); }
+.tbl th {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--saffron2); padding: 11px 14px; text-align: left; font-weight: 400;
+}
+.tbl td {
+  padding: 10px 14px; border-bottom: 1px solid var(--border2);
+  vertical-align: top; color: var(--ink3); line-height: 1.6;
+}
+.tbl td:first-child { color: var(--ink); font-weight: 500; }
+.tbl tr:nth-child(even) td { background: rgba(232,101,26,0.04); }
+.tbl tr:hover td { background: rgba(232,101,26,0.08); }
+
+/* ── CHAKRA CARDS ── */
+.chakra-list { margin: 32px 0; display: flex; flex-direction: column; gap: 2px; }
+.chakra-item {
+  display: grid; grid-template-columns: 56px 1fr;
+  background: var(--cream2); border: 1px solid var(--border2);
+  border-radius: 3px; overflow: hidden; transition: all 0.2s;
+}
+.chakra-item:hover { border-color: var(--border); }
+.chakra-color {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.chakra-body { padding: 16px 20px; }
+.chakra-body h4 {
+  font-family: 'Yeseva One', serif; font-size: 1rem;
+  color: var(--ink); margin-bottom: 3px;
+}
+.chakra-meta {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  margin-bottom: 8px; opacity: 0.7;
+}
+.chakra-body p { font-size: 0.88rem; margin: 0; line-height: 1.65; color: var(--ink3); }
+
+/* ── SEPHIROTH TREE ── */
+.tree-wrap {
+  background: linear-gradient(135deg, #0a0800 0%, #1a0e00 100%);
+  border: 1px solid rgba(212,160,23,0.15); border-radius: 3px;
+  padding: 36px; margin: 36px 0; text-align: center;
+}
+.tree-title {
+  font-family: 'Yeseva One', serif; font-size: 1.3rem;
+  color: var(--gold2); margin-bottom: 6px;
+}
+.tree-sub {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(212,160,23,0.4); margin-bottom: 28px; display: block;
+}
+
+/* ── YUGA TIMELINE ── */
+.yuga-wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin: 32px 0; }
+.yuga-card {
+  background: var(--cream2); border: 1px solid var(--border2);
+  padding: 20px 16px; border-radius: 3px; text-align: center;
+  border-top: 4px solid; transition: all 0.25s;
+}
+.yuga-card:hover { background: var(--warm); }
+.yuga-card h4 {
+  font-family: 'Yeseva One', serif; font-size: 1rem;
+  margin-bottom: 6px;
+}
+.yuga-card .yuga-dur {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  opacity: 0.6; margin-bottom: 10px; display: block;
+}
+.yuga-card p { font-size: 0.82rem; color: var(--ink3); margin: 0; line-height: 1.6; }
+
+.y1 { border-top-color: var(--gold); } .y1 h4 { color: var(--gold); }
+.y2 { border-top-color: var(--saffron); } .y2 h4 { color: var(--saffron); }
+.y3 { border-top-color: var(--magenta2); } .y3 h4 { color: var(--magenta2); }
+.y4 { border-top-color: var(--indigo2); } .y4 h4 { color: var(--indigo2); }
+
+/* ── PHILOSOPHY CARDS ── */
+.phil-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 18px; margin: 30px 0; }
+.phil-card {
+  background: var(--cream2); border: 1px solid var(--border2);
+  padding: 24px; border-radius: 3px;
+  border-top: 3px solid;
+  transition: all 0.2s;
+}
+.phil-card:hover { background: var(--warm); }
+.phil-card h4 { font-family: 'Yeseva One', serif; font-size: 1.05rem; margin-bottom: 8px; }
+.phil-card .ph-sub { font-family: 'Josefin Sans', sans-serif; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; display: block; opacity: 0.7; }
+.phil-card p { font-size: 0.88rem; margin: 0; line-height: 1.7; color: var(--ink3); }
+
+/* ── STEP LIST ── */
+.step-list { list-style: none; margin: 20px 0; }
+.step-list li {
+  padding: 11px 0 11px 44px; position: relative;
+  border-bottom: 1px solid var(--border2);
+  font-size: 0.95rem; color: var(--ink3); line-height: 1.7;
+}
+.step-list li:last-child { border-bottom: none; }
+.step-list li::before {
+  content: attr(data-n); position: absolute; left: 0; top: 11px;
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.7rem;
+  color: var(--saffron2); width: 28px; height: 28px;
+  border: 1px solid rgba(232,101,26,0.4);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+
+/* ── MANTRA BOX ── */
+.mantra-box {
+  background: var(--ink); border-radius: 3px;
+  padding: 32px; margin: 32px 0; text-align: center;
+}
+.mantra-text {
+  font-family: 'Yeseva One', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--saffron2); margin-bottom: 8px;
+  text-shadow: 0 0 30px rgba(232,101,26,0.3);
+  letter-spacing: 0.05em;
+}
+.mantra-trans {
+  font-family: 'Lora', serif; font-style: italic;
+  font-size: 1rem; color: rgba(255,240,210,0.6); margin-bottom: 14px;
+}
+.mantra-exp { font-size: 0.9rem; color: rgba(255,240,210,0.5); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); }
+  #main { margin-left: 0; }
+  .page { padding: 0 24px 80px; }
+  #mob-toggle { display: flex; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; justify-content: center; }
+  .corr-row { grid-template-columns: 1fr; }
+  .corr-arrow { transform: rotate(90deg); padding: 0; }
+  .yuga-wrap { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.chapter > * { animation: fadeUp 0.6s ease both; }
+
+footer {
+  background: var(--ink); padding: 48px; text-align: center;
+  border-top: 1px solid rgba(232,101,26,0.1);
+}
+footer p { font-family: 'Josefin Sans', sans-serif; font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(232,101,26,0.3); margin: 0; }
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<button id="mob-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<!-- ════════════ SIDEBAR ════════════ -->
+<nav id="sidebar">
+  <div class="sb-brand">
+    <span class="sb-om">ॐ</span>
+    <span class="sb-title">Hinduísmo · Do Zero ao Absoluto</span>
+  </div>
+
+  <span class="sb-sec-label">Fundamentos</span>
+  <a class="sb-link" href="#intro">O que é o Hinduísmo?</a>
+  <a class="sb-link" href="#historia">Linha do Tempo</a>
+  <a class="sb-link" href="#conceitos">Conceitos-Chave</a>
+
+  <span class="sb-sec-label">Cosmologia</span>
+  <a class="sb-link" href="#brahman">Brahman — O Absoluto</a>
+  <a class="sb-link" href="#trimurti">A Trimurti</a>
+  <a class="sb-link" href="#criacao">A Criação</a>
+  <a class="sb-link" href="#yugas">As Eras do Mundo</a>
+
+  <span class="sb-sec-label">Os Deuses</span>
+  <a class="sb-link" href="#brahma">Brahma — O Criador</a>
+  <a class="sb-link" href="#vishnu">Vishnu e os Avatares</a>
+  <a class="sb-link" href="#shiva">Shiva — O Transformador</a>
+  <a class="sb-link" href="#devi">Devi — O Princípio Feminino</a>
+  <a class="sb-link" href="#outros-deuses">Outros Deuses</a>
+
+  <span class="sb-sec-label">Mitos Centrais</span>
+  <a class="sb-link" href="#samudra">A Agitação do Oceano</a>
+  <a class="sb-link" href="#ramayana">O Ramayana</a>
+  <a class="sb-link" href="#mahabharata">O Mahabharata</a>
+  <a class="sb-link" href="#gita">O Bhagavad Gita</a>
+
+  <span class="sb-sec-label">Filosofia Espiritual</span>
+  <a class="sb-link" href="#alma">Atman, Karma e Dharma</a>
+  <a class="sb-link" href="#samsara">Samsara e Moksha</a>
+  <a class="sb-link" href="#darshanas">As 6 Filosofias</a>
+  <a class="sb-link" href="#yoga">Os Caminhos do Yoga</a>
+
+  <span class="sb-sec-label">Corpo e Energia</span>
+  <a class="sb-link" href="#chakras">Os 7 Chakras</a>
+  <a class="sb-link" href="#kundalini">Kundalini</a>
+  <a class="sb-link" href="#mantras">Mantras Sagrados</a>
+
+  <span class="sb-sec-label">Correlações</span>
+  <a class="sb-link" href="#cabala">Hindu × Cabala</a>
+  <a class="sb-link" href="#universo">Hindu × Física Moderna</a>
+  <a class="sb-link" href="#textos">Textos Sagrados</a>
+</nav>
+
+<!-- ════════════ MAIN ════════════ -->
+<main id="main">
+
+<!-- HERO -->
+<section id="hero">
+  <svg class="hero-mandala" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="190" stroke="#e8651a" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="160" stroke="#f5a623" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="130" stroke="#e8651a" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="100" stroke="#f5a623" stroke-width="1"/>
+    <polygon points="200,40 346,130 346,270 200,360 54,270 54,130" stroke="#e8651a" stroke-width="0.8" fill="none"/>
+    <polygon points="200,70 320,145 320,255 200,330 80,255 80,145" stroke="#f5a623" stroke-width="0.6" fill="none"/>
+    <polygon points="200,10 390,115 390,285 200,390 10,285 10,115" stroke="#d4a017" stroke-width="0.4" fill="none"/>
+    <line x1="200" y1="10" x2="200" y2="390" stroke="#e8651a" stroke-width="0.3"/>
+    <line x1="10" y1="200" x2="390" y2="200" stroke="#e8651a" stroke-width="0.3"/>
+    <line x1="54" y1="54" x2="346" y2="346" stroke="#f5a623" stroke-width="0.3"/>
+    <line x1="346" y1="54" x2="54" y2="346" stroke="#f5a623" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="12" stroke="#f5a623" stroke-width="1.5" fill="none"/>
+    <circle cx="200" cy="200" r="4" fill="#f5a623"/>
+  </svg>
+  <p class="hero-eyebrow">Hinduísmo · Do Zero ao Absoluto</p>
+  <h1><span>ॐ तत् सत्</span>Hinduísmo<br>Completo</h1>
+  <p class="hero-sub">Da criação ao Moksha · Com correlações Cabalísticas</p>
+  <p class="hero-body">Uma das mais antigas e complexas tradições espirituais da humanidade — com mais de 5 mil anos, mais de 330 milhões de divindades e uma filosofia que antecipa a física moderna. Aqui você aprende do zero, sem pré-requisitos.</p>
+  <div class="hero-stats">
+    <div><span class="stat-n">5000+</span><span class="stat-l">Anos de tradição</span></div>
+    <div><span class="stat-n">330M</span><span class="stat-l">Divindades</span></div>
+    <div><span class="stat-n">18</span><span class="stat-l">Puranas</span></div>
+    <div><span class="stat-n">108</span><span class="stat-l">Upanishads</span></div>
+  </div>
+  <div class="scroll-cue">▾ &nbsp; role para ler &nbsp; ▾</div>
+</section>
+
+<div class="page">
+
+<!-- ═══════════ CAP 1: FUNDAMENTOS ═══════════ -->
+<section id="intro" class="chapter">
+  <div class="ch-eye">Capítulo I &nbsp;·&nbsp; Fundamentos</div>
+  <h2>O que é o <em>Hinduísmo</em> — e Por Que É Diferente de Tudo</h2>
+  <p class="ch-intro">Antes de entender qualquer deus, mito ou ritual, é essencial entender uma coisa: o hinduísmo não é uma religião no sentido ocidental da palavra. Não tem fundador, não tem data de criação, não tem um único livro sagrado e não tem um único conjunto de crenças obrigatórias. É, antes, uma família de tradições filosóficas, espirituais e culturais que se desenvolveram ao longo de 5 mil anos no subcontinente indiano.</p>
+
+  <p>Os próprios hindus chamam sua tradição de <strong>Sanatana Dharma</strong> — "a lei eterna" ou "o caminho eterno". Não é uma religião revelada por um profeta num momento específico da história. É uma tradição viva, acumulativa, que absorveu e integrou perspectivas radicalmente diferentes ao longo de milênios.</p>
+
+  <p>Isso significa que no hinduísmo você pode encontrar, lado a lado e sem contradição:</p>
+  <ul class="step-list">
+    <li data-n="1"><strong>Monoteísmo estrito</strong> — quem acredita em um único Deus supremo (como os Vaishnavas dedicados a Vishnu)</li>
+    <li data-n="2"><strong>Politeísmo rico</strong> — adoração de 330 milhões de manifestações divinas como divindades independentes</li>
+    <li data-n="3"><strong>Monismo absoluto</strong> — a escola Advaita Vedanta que afirma que só existe Uma Coisa e que você já é essa coisa</li>
+    <li data-n="4"><strong>Ateísmo filosófico</strong> — a escola Samkhya, uma das seis filosofias ortodoxas, é explicitamente ateísta</li>
+    <li data-n="5"><strong>Dualismo místico</strong> — escolas que mantêm uma distinção permanente entre a alma individual e o divino</li>
+  </ul>
+
+  <p>Nenhuma dessas posições é "errada" dentro do hinduísmo. Cada uma captura um aspecto diferente de uma realidade que, por definição, supera qualquer perspectiva única. Este é o princípio central do hinduísmo: <strong>a verdade é una, mas os sábios a chamam de muitos nomes</strong> — <em>ekam sat viprā bahudhā vadanti</em> (Rigveda 1.164.46).</p>
+
+  <div class="box box-saffron">
+    <span class="box-label">Por Que 330 Milhões de Deuses?</span>
+    <p>A palavra sânscrita comumente traduzida como "deus" é <em>deva</em> — que significa literalmente "ser de luz" ou "ser luminoso". Os 330 milhões de devas não são 330 milhões de seres separados e independentes. São 330 milhões de <em>formas e aspectos</em> da única realidade última — o Brahman. É como a luz branca que se difrata em infinitas cores. Cada cor é real. Mas todas as cores são a mesma luz. Os deuses hindus são as infinitas facetas do Infinito.</p>
+  </div>
+
+  <h3 class="sec">O Hinduísmo É a Tradição Viva Mais Antiga do Mundo</h3>
+  <p>O judaísmo tem aproximadamente 3.500 anos. O budismo, 2.600 anos. O cristianismo, 2.000 anos. O islamismo, 1.400 anos. O hinduísmo tem, em suas raízes mais profundas, pelo menos 5.000 anos — e alguns aspectos do culto à Deusa Mãe e de rituais de fertilidade encontrados nas escavações de Mohenjo-Daro (civilização do Vale do Indo, c. 3300–1300 a.C.) sugerem raízes de 7.000 anos.</p>
+
+  <p>Mas o hinduísmo também é a única das grandes tradições religiosas antigas que não está morta — é praticada vivamente hoje por mais de <strong>1,2 bilhão de pessoas</strong>. Os gregos não adoram mais Zeus. Os egípcios não adoram mais Osíris. Mas os hindus adoram Shiva, Vishnu, Devi e Ganesha com a mesma devoção de milênios atrás. Essa continuidade é extraordinária.</p>
+
+</section>
+
+<!-- LINHA DO TEMPO -->
+<section id="historia" class="chapter">
+  <div class="ch-eye">Capítulo I &nbsp;·&nbsp; História</div>
+  <h2>5 Mil Anos em <em>Seis Períodos</em></h2>
+  <p class="ch-intro">Para entender por que o hinduísmo parece "confuso" a olhos externos, é preciso entender que ele se desenvolveu em camadas históricas — cada período adicionando novas divindades, novas práticas e novas filosofias sobre as anteriores, sem jamais descartar o que veio antes.</p>
+
+  <div class="box box-gold">
+    <span class="box-label">Período 1 — Civilização do Indo (3300–1300 a.C.)</span>
+    <p>A mais antiga fase. As escavações de Mohenjo-Daro e Harappa revelaram banhos rituais (precursores dos rituais de purificação hindus), figuras de deusa-mãe com seios proeminentes, e uma figura em meditação em postura de ioga rodeada de animais — possivelmente o proto-Shiva ou Pashupati ("Senhor dos Animais"). Sem textos escritos decifrados. Conexão com o hinduísmo posterior é especulativa mas plausível.</p>
+  </div>
+
+  <div class="box box-saffron">
+    <span class="box-label">Período 2 — Védico Inicial (1500–900 a.C.)</span>
+    <p>O período dos quatro Vedas — Rigveda, Samaveda, Yajurveda, Atharvaveda. Os povos arios trouxeram uma religião de sacrifício ritual (<em>yajna</em>) presidida por sacerdotes (<em>brahmanas</em>). Os deuses desta fase são principalmente divindades naturais: Indra (trovão), Agni (fogo), Varuna (ordem cósmica), Surya (sol), Soma (a planta sagrada). A cosmologia é menos elaborada — o foco é o ritual.</p>
+  </div>
+
+  <div class="box box-teal">
+    <span class="box-label">Período 3 — Upanishádico e Filosófico (800–200 a.C.)</span>
+    <p>A grande revolução filosófica. Os 108 Upanishads questionam o ritualismo védico e introduzem os conceitos mais profundos do hinduísmo: Brahman (a realidade última), Atman (o eu verdadeiro), a equação <em>Tat tvam asi</em> ("Tu és aquilo"), Karma, Samsara, Moksha. É também o período do Budismo e Jainismo — reações ao ritualismo brâmane. As Upanishads são o pico intelectual do hinduísmo.</p>
+  </div>
+
+  <div class="box box-indigo">
+    <span class="box-label">Período 4 — Épico e Purânico (500 a.C.–500 d.C.)</span>
+    <p>O período dos grandes épicos: Ramayana (Valmiki) e Mahabharata (Vyasa, que inclui o Bhagavad Gita). Vishnu e Shiva emergem como divindades supremas. Os 18 Puranas descrevem cosmologias elaboradas, genealogias divinas e histórias dos deuses. A devoção pessoal (<em>bhakti</em>) surge como caminho espiritual alternativo ao ritual e à filosofia.</p>
+  </div>
+
+  <div class="box box-violet">
+    <span class="box-label">Período 5 — Medieval e Bhakti (500–1700 d.C.)</span>
+    <p>O movimento Bhakti (devoção) varre o subcontinente com poetas-santos (Mirabai, Kabir, Tukaram, Andal) que cantam o amor pessoal a Deus em línguas vernáculas. O hinduísmo tântrico se desenvolve — integrando o corpo, a sexualidade e as energias femininas como caminhos espirituais. Grandes filósofos como Shankaracharya (Advaita), Ramanuja (Vishishtadvaita) e Madhva (Dvaita) sistematizam as filosofias védicas.</p>
+  </div>
+
+  <div class="box box-magenta">
+    <span class="box-label">Período 6 — Moderno e Global (1800–presente)</span>
+    <p>O hinduísmo encontra o mundo moderno. Ramakrishna e Swami Vivekananda (Parlamento das Religiões, Chicago, 1893) apresentam o Vedanta ao Ocidente. Gandhi integra dharma hindú à política. Aurobindo desenvolve o Yoga Integral. O movimento Hare Krishna, o Maharishi Mahesh Yogi (Meditação Transcendental) e inúmeros gurus levam o hinduísmo ao mundo. Hoje, o yoga e a meditação são praticados por centenas de milhões de não-hindus globalmente.</p>
+  </div>
+
+</section>
+
+<!-- CONCEITOS-CHAVE -->
+<section id="conceitos" class="chapter">
+  <div class="ch-eye">Capítulo I &nbsp;·&nbsp; Vocabulário Essencial</div>
+  <h2>Os 12 Conceitos que Você <em>Precisa Entender</em></h2>
+  <p class="ch-intro">Antes de avançar, você precisa ter na cabeça esses conceitos fundamentais. São as "palavras" da gramática hindu. Sem elas, tudo parece confuso. Com elas, tudo começa a fazer sentido.</p>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>Conceito</th><th>Sânscrito</th><th>O que significa, em termos simples</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Brahman</td><td>ब्रह्मन्</td><td>A realidade última, absoluta e infinita que está por trás de tudo. Não é um deus — é o que torna possível a existência de deuses e de tudo mais. Equivale ao Ain Soph da Cabala.</td></tr>
+      <tr><td>Atman</td><td>आत्मन्</td><td>O eu verdadeiro, a alma individual. A Advaita Vedanta afirma que Atman e Brahman são idênticos — você já é o Absoluto, apenas não sabe disso. "Aham Brahmasmi" — Eu sou Brahman.</td></tr>
+      <tr><td>Dharma</td><td>धर्म</td><td>Ordem cósmica, dever, retidão. É simultaneamente a lei do cosmos, o dever de cada ser e o caminho ético correto. Equivale ao Ma'at egípcio e ao Logos grego. Cada pessoa tem seu dharma único.</td></tr>
+      <tr><td>Karma</td><td>कर्म</td><td>Ação e consequência. Não é destino cego — é a lei de causa e efeito aplicada às ações conscientes. Cada ação (karma) gera consequências que precisam ser vivenciadas. Não é punição — é física moral.</td></tr>
+      <tr><td>Samsara</td><td>संसार</td><td>O ciclo de nascimento, morte e renascimento. A alma (Atman) reencarna repetidamente até atingir o Moksha. O Samsara é sustentado pelo Karma. Equivale ao ciclo das almas na Cabala (Gilgul Neshamot).</td></tr>
+      <tr><td>Moksha</td><td>मोक्ष</td><td>Liberação — o fim do ciclo do Samsara. Quando a alma compreende sua identidade com o Brahman, não precisa mais reencarnar. O objetivo último da existência humana. Equivale ao Tikkun (reparação final) cabalístico.</td></tr>
+      <tr><td>Maya</td><td>माया</td><td>Ilusão cósmica — a força que faz o mundo parecer real e separado quando na verdade é uma expressão temporária do Brahman. Não significa que o mundo não existe, mas que não é o que parece ser. Equivale ao "véu" cabalístico.</td></tr>
+      <tr><td>Prana</td><td>प्राण</td><td>Força vital, energia da vida. É o que os chineses chamam de Chi/Qi, os japoneses de Ki, os cabalistas de energia vital. Flui pelo corpo em canais chamados Nadis. Os chakras são centros de Prana.</td></tr>
+      <tr><td>Ahimsa</td><td>अहिंसा</td><td>Não-violência — princípio ético fundamental que se estende a todos os seres vivos. Base do vegetarianismo hindu e da filosofia política de Gandhi.</td></tr>
+      <tr><td>Shakti</td><td>शक्ति</td><td>Energia/poder divino feminino — a força ativa que manifesta o cosmos. Brahman sem Shakti é potência pura sem expressão; Shakti é Brahman em ação. Equivale ao princípio feminino Binah na Cabala.</td></tr>
+      <tr><td>Mantra</td><td>मन्त्र</td><td>"Instrumento da mente". Sons sagrados com poder de transformação quando repetidos com concentração. O OM é o mantra primordial — o som do cosmos em repouso.</td></tr>
+      <tr><td>Lila</td><td>लीला</td><td>"Jogo divino". A criação do cosmos como um jogo livre e amoroso de Brahman/Deus consigo mesmo. O universo não foi criado por necessidade ou por trabalho — foi criado pela alegria espontânea do Absoluto. Muda completamente como você vê o sofrimento.</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<div class="div-om">ॐ · ॐ · ॐ</div>
+
+<!-- ═══════════ CAP 2: COSMOLOGIA ═══════════ -->
+<section id="brahman" class="chapter">
+  <div class="ch-eye">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>Brahman — <em>O Absoluto</em> Que Não Pode Ser Nomeado</h2>
+  <p class="ch-intro">Brahman é o conceito mais importante e mais difícil do hinduísmo. É o que torna o hinduísmo único entre as grandes tradições religiosas: antes de falar em deuses, o hinduísmo fala em algo que está antes e além de qualquer deus — uma realidade última que não tem forma, nome, atributo ou limite.</p>
+
+  <p>A frase mais usada para descrever Brahman nas Upanishads é: <strong>Neti, neti</strong> — "não isso, não isso". Brahman não é o céu. Não é o cosmos. Não é a consciência. Não é Deus. Não é o silêncio. Não é o ser. Qualquer coisa que você possa dizer sobre Brahman, a resposta é: "não isso". Por quê? Porque Brahman é aquilo que <em>possibilita</em> todas estas coisas — e portanto não pode ser reduzido a nenhuma delas.</p>
+
+  <div class="mantra-box">
+    <p class="mantra-text">सर्वं खल्विदं ब्रह्म</p>
+    <p class="mantra-trans">"Sarvam khalvidam Brahma"</p>
+    <p class="mantra-exp">— "Tudo isso, de fato, é Brahman." (Chandogya Upanishad 3.14.1) — O cosmos inteiro é uma expressão de Brahman. Não há nada fora do Absoluto.</p>
+  </div>
+
+  <p>Brahman tem duas formas de ser entendido:</p>
+  <p><strong>Nirguna Brahman</strong> — Brahman sem atributos. Pura consciência, pura existência, pura beatitude (Sat-Chit-Ananda: Ser-Consciência-Bem-aventurança). Sem forma, sem personalidade, sem qualidade. O Absoluto impessoal.</p>
+  <p><strong>Saguna Brahman</strong> — Brahman com atributos. Quando o Absoluto se expressa em formas concretas, torna-se Ishvara — o Deus pessoal, que pode ser Vishnu, Shiva ou Devi dependendo da tradição. Os deuses são Brahman com "rosto".</p>
+
+  <div class="corr-panel">
+    <p class="corr-title">Brahman na Cabala</p>
+    <span class="corr-sub">A Correspondência Mais Profunda</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Nirguna Brahman</h4>
+        <p>O Absoluto sem atributos — pura potência, anterior a qualquer manifestação. "Não isso, não isso." Nenhuma qualidade pode ser afirmada. Anterior à criação, ao tempo, ao espaço. Sat-Chit-Ananda: Ser puro, Consciência pura, Bem-aventurança pura.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Ain Soph Aur</h4>
+        <p>O Infinito Sem Limite — antes da primeira Sephirah. "Ain" = nada, "Soph" = fim, "Aur" = luz. A realidade anterior a qualquer atributo. Nenhum nome pode capturá-la. Tudo que existe emana do Ain Soph Aur mas o Ain Soph Aur não é afetado por nada.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Saguna Brahman / Ishvara</h4>
+        <p>Brahman com atributos — o Deus pessoal que pode ser relacionado, invocado, amado. A primeira "condensação" do Absoluto em forma pessoal. Manifesta-se como Vishnu, Shiva ou Devi.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Keter — A Coroa</h4>
+        <p>A primeira Sephirah — o primeiro momento em que o Ain Soph Aur se "contrai" (Tzimtzum) para permitir a criação. A vontade primordial de criar. Deus que pode ser relacionado e com quem a criação é possível.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Maya — O Véu da Ilusão</h4>
+        <p>A força que faz o Uno parecer múltiplo — que faz Brahman parecer o cosmos separado. Maya não é falsa, mas é temporária. É o jogo (Lila) do Absoluto consigo mesmo.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Tzimtzum e os Véus</h4>
+        <p>A "contração" de Deus para criar espaço para o mundo. Os quatro mundos (Atziluth, Beriah, Yetzirah, Assiah) são véus progressivos que obscurecem a luz do Ain Soph. Cada mundo é mais "denso" que o anterior.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec">Atman = Brahman — A Equação que Muda Tudo</h3>
+  <p>A descoberta mais radical das Upanishads é esta: o Atman (seu eu mais profundo, a consciência pura que está por trás de todos os seus pensamentos, emoções e percepções) é idêntico ao Brahman (a realidade última do cosmos).</p>
+
+  <p>As Quatro Grandes Afirmações (<em>Mahavakyas</em>) das Upanishads expressam esta identidade:</p>
+
+  <div class="tbl" style="overflow-x:auto">
+  <table class="tbl">
+    <thead><tr><th>Mahavakya</th><th>Upanishad</th><th>Tradução</th><th>Significado</th></tr></thead>
+    <tbody>
+      <tr><td>Prajnanam Brahma</td><td>Aitareya</td><td>"Consciência é Brahman"</td><td>A consciência pura não é um produto do cérebro — é a substância do cosmos</td></tr>
+      <tr><td>Aham Brahmasmi</td><td>Brihadaranyaka</td><td>"Eu sou Brahman"</td><td>No nível mais profundo, seu "eu" e o Absoluto são a mesma coisa</td></tr>
+      <tr><td>Tat tvam asi</td><td>Chandogya</td><td>"Tu és aquilo"</td><td>O que você procura lá fora já é o que você é — o buscador é o buscado</td></tr>
+      <tr><td>Ayam Atma Brahma</td><td>Mandukya</td><td>"Este Atman é Brahman"</td><td>A alma individual e o cosmos são expressões da mesma realidade</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box box-indigo">
+    <span class="box-label">Analogia para Entender Atman = Brahman</span>
+    <p>Imagine o oceano (Brahman) e uma onda (Atman/você). A onda <em>parece</em> separada do oceano — tem sua própria forma, tamanho, velocidade. Mas é feita de oceano, sustentada pelo oceano, e retorna ao oceano. Nunca deixou de ser oceano. O yoga (união) é o processo de uma onda reconhecer que é oceano — não de se tornar oceano (já é), mas de <em>saber</em> que é.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════ TRIMURTI ═══════════ -->
+<section id="trimurti" class="chapter">
+  <div class="ch-eye">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>A <em>Trimurti</em> — O Cosmos em Três Funções</h2>
+  <p class="ch-intro">Para os hindus, o cosmos não é estático — está em constante processo de criação, manutenção e dissolução. A Trimurti (literalmente "três formas") é a personificação destas três forças cósmicas como três divindades complementares e inseparáveis.</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="gc-top">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#1a3a6e,#2a5298)">🌸</div>
+        <div>
+          <div class="gc-name">Brahma</div>
+          <div class="gc-alt">O Criador · O Quatro-Rostos</div>
+        </div>
+      </div>
+      <div class="gc-tags"><span class="tag t-i">Criação</span><span class="tag t-g">Conhecimento</span><span class="tag t-i">Vedas</span></div>
+      <p>A função da criação — a força que manifesta o cosmos a partir do Brahman informe. Tem quatro cabeças (olhando nas quatro direções — omnisciência) e quatro braços. Sua consorte é Saraswati (sabedoria). É o menos adorado da Trimurti — segundo o mito, foi amaldiçoado por Shiva por arrogância. Corresponde à Sephirah Chokhmah (sabedoria-criativa) na Cabala.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#1a5c52,#2e8b7a)">🪷</div>
+        <div>
+          <div class="gc-name">Vishnu</div>
+          <div class="gc-alt">O Preservador · O Onipresente</div>
+        </div>
+      </div>
+      <div class="gc-tags"><span class="tag t-t">Preservação</span><span class="tag t-t">Amor</span><span class="tag t-g">Dharma</span></div>
+      <p>A função da manutenção e preservação — a força que sustenta o cosmos em equilíbrio. Sua pele é azul (a cor do infinito e do céu). Deita sobre a serpente Ananta no oceano cósmico em repouso meditativo. Quando o Dharma é ameaçado, desce ao mundo em avatares. Seu amor pelo cosmos é o que o mantém existindo. Corresponde a Tiferet (beleza, coração) na Cabala.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#4a148c,#7b1fa2)">🌀</div>
+        <div>
+          <div class="gc-name">Shiva</div>
+          <div class="gc-alt">O Destruidor · O Transformador</div>
+        </div>
+      </div>
+      <div class="gc-tags"><span class="tag t-v">Destruição</span><span class="tag t-v">Transformação</span><span class="tag t-s">Meditação</span></div>
+      <p>A função da dissolução — a força que retorna tudo ao Brahman indiferenciado. Mas "destruição" é mal-entendido: Shiva não destrói para acabar, mas para renovar. Ele dissolvendo o cosmos é como o sono que dissolve o estado de vigília — necessário para que um novo sonho possa começar. É também o grande meditador e o dançarino cósmico. Corresponde a Binah (entendimento, limitação que torna possível a forma) na Cabala.</p>
+    </div>
+  </div>
+
+  <div class="corr-panel">
+    <p class="corr-title">A Trimurti e as Sephiroth Superiores</p>
+    <span class="corr-sub">O triângulo supremo da Árvore da Vida</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Brahma — Criação</h4>
+        <p>A função criativa — o movimento do indiferenciado para o diferenciado. A primeira explosão de forma a partir do informe. Associado aos Vedas (o conhecimento que sustenta a criação).</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Chokhmah — Sabedoria</h4>
+        <p>A segunda Sephirah — o primeiro flash de inspiração criativa, a "ideia" antes de ser elaborada. Princípio masculino ativo. O momento em que o Keter "explode" em criação. A semente de toda a criação.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Vishnu — Preservação</h4>
+        <p>A função sustentadora — o amor que mantém o cosmos coeso. O princípio de harmonia, beleza e equilíbrio que faz com que o cosmos não colapse. Desce ao mundo para restaurar o equilíbrio quando ameaçado.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Tiferet — Beleza</h4>
+        <p>A sexta Sephirah e o centro da Árvore da Vida — o ponto de equilíbrio entre todas as forças. Associada ao coração, ao sacrifício, à beleza, ao Sol. O Filho divino. O ponto onde o divino e o humano se encontram.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Shiva — Dissolução</h4>
+        <p>A função dissolutora — o retorno de tudo ao Absoluto. A força que limita e encerra as formas para que novas formas possam surgir. A meditação que retorna ao Brahman. O Grande Silêncio.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Binah — Entendimento</h4>
+        <p>A terceira Sephirah — o útero cósmico que recebe a semente criativa e lhe dá forma e limite. Princípio feminino passivo. O "não" que define e limita. Associada ao Shabat, ao tempo, à morte como transformação.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ CRIAÇÃO ═══════════ -->
+<section id="criacao" class="chapter">
+  <div class="ch-eye">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>A Criação do Cosmos — <em>Lila Divina</em></h2>
+  <p class="ch-intro">O hinduísmo não tem uma única história da criação — tem dezenas. Cada uma captura um aspecto diferente do mistério. A mais filosoficamente sofisticada está nas Upanishads; a mais narrativa está nos Puranas. Juntas, elas revelam algo extraordinário sobre como os hindus entendem a existência.</p>
+
+  <h4 class="sub">A Versão das Upanishads — A Autodesdobramento do Ser</h4>
+  <p>O Brahman, em seu estado original, é Sat-Chit-Ananda: Ser puro, Consciência pura, Bem-aventurança pura. Não há outro ser que "crie" o cosmos — o próprio Brahman desdobra-se a partir de si mesmo, como o sonho emerge do sonhador sem sair do sonhador.</p>
+  <p>O Taittiriya Upanishad descreve: do Brahman surgiu o espaço (akasha), do espaço o ar, do ar o fogo, do fogo a água, da água a terra — os cinco elementos (Pancha Mahabhutas) que compõem toda a matéria. Cada elemento contém o anterior, tornando tudo interconectado. A criação não é ex nihilo (do nada) — é ex Deo (de Deus, do Absoluto). O mundo é o Absoluto em forma temporária.</p>
+
+  <h4 class="sub">A Versão dos Puranas — O Sonho de Vishnu</h4>
+  <p>Antes da criação, Vishnu repousa sobre a serpente cósmica Ananta Shesha no oceano eterno do leite. Vishnu está em meditação profunda — e o cosmos é o seu sonho. Quando Vishnu desperta, um lótus brota de seu umbigo, e no lótus, Brahma aparece. Brahma abre seus quatro olhos, olha nas quatro direções, e começa a criar — povos, animais, céus, estrelas, mundos. Quando o ciclo termina (após um "dia de Brahma" = 4,32 bilhões de anos), Vishnu reabsorve tudo em si e adormece novamente. O ciclo é eterno.</p>
+
+  <div class="box box-saffron">
+    <span class="box-label">A Criação como Lila — O Jogo Divino</span>
+    <p>A palavra hindú para a criação é frequentemente <em>Lila</em> — jogo, esporte, brincadeira. Não "trabalho", não "missão", não "plano". O Absoluto cria o cosmos como uma criança brinca — por pura alegria, sem necessidade exterior. Isso tem uma consequência filosófica radical: o sofrimento e a alegria do cosmos não são testes ou punições — são momentos de um jogo que o próprio Absoluto joga consigo mesmo para se experienciar em multiplicidade. Você é Brahman fingindo não ser Brahman, para poder redescobrir que é Brahman. Esta é a Lila.</p>
+  </div>
+
+  <h4 class="sub">Os Cinco Elementos e a Criação</h4>
+  <p>Os hinduísmo descreve a matéria como composta de cinco elementos fundamentais — os <em>Pancha Mahabhutas</em>:</p>
+  <table class="tbl">
+    <thead><tr><th>Elemento</th><th>Sânscrito</th><th>Qualidade</th><th>Sentido associado</th><th>Chakra</th></tr></thead>
+    <tbody>
+      <tr><td>Éter / Espaço</td><td>Akasha</td><td>Expansão, vazio, potência</td><td>Audição</td><td>Vishuddha (garganta)</td></tr>
+      <tr><td>Ar</td><td>Vayu</td><td>Movimento, leveza, toque</td><td>Toque</td><td>Anahata (coração)</td></tr>
+      <tr><td>Fogo</td><td>Agni / Tejas</td><td>Transformação, calor, visão</td><td>Visão</td><td>Manipura (plexo)</td></tr>
+      <tr><td>Água</td><td>Apas / Jala</td><td>Coesão, fluidez, paladar</td><td>Paladar</td><td>Svadhisthana (sacro)</td></tr>
+      <tr><td>Terra</td><td>Prithvi</td><td>Solidez, estabilidade, olfato</td><td>Olfato</td><td>Muladhara (raiz)</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- ═══════════ YUGAS ═══════════ -->
+<section id="yugas" class="chapter">
+  <div class="ch-eye">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>As Quatro Eras do Mundo — <em>Os Yugas</em></h2>
+  <p class="ch-intro">O hinduísmo tem a cosmologia temporal mais grandiosa de qualquer tradição religiosa — ciclos de tempo que fazem a nossa noção de "era histórica" parecer insignificante. Os quatro Yugas descrevem a degradação progressiva do cosmos ao longo de 4,32 milhões de anos — e então o ciclo recomeça.</p>
+
+  <div class="yuga-wrap">
+    <div class="yuga-card y1">
+      <h4>Satya Yuga</h4>
+      <span class="yuga-dur">1.728.000 anos · "Era da Verdade"</span>
+      <p>A era dourada — a humanidade vive em perfeita harmonia com o cosmos. Seres humanos têm vida longa (100.000 anos), saúde perfeita e contato direto com o divino. A virtude é completa — nenhuma mentira, nenhuma violência. O Dharma descansa em quatro "pés" (como uma vaca estável). Equivale à Idade de Ouro de Hesíodo e ao Jardim do Éden.</p>
+    </div>
+    <div class="yuga-card y2">
+      <h4>Treta Yuga</h4>
+      <span class="yuga-dur">1.296.000 anos · "Era do Três"</span>
+      <p>Declínio começa. Um "pé" do Dharma se perde — a virtude decai 25%. O sacrifício ritual se torna necessário pois os humanos não têm mais acesso direto ao divino. Vida se encurta. Esta é a era do Ramayana — o Rei Rama é o avatar de Vishnu que restaura o Dharma neste período.</p>
+    </div>
+    <div class="yuga-card y3">
+      <h4>Dvapara Yuga</h4>
+      <span class="yuga-dur">864.000 anos · "Era do Dois"</span>
+      <p>Dois pés do Dharma perdidos — metade da virtude. As escrituras se fragmentam. Doenças surgem. Os humanos começam a questionar verdades espirituais. Esta é a era do Mahabharata — Krishna, avatar de Vishnu, intervém na grande guerra do Bharata para restaurar o equilíbrio.</p>
+    </div>
+    <div class="yuga-card y4">
+      <h4>Kali Yuga</h4>
+      <span class="yuga-dur">432.000 anos · "Era do Conflito"</span>
+      <p>Nossa era atual (iniciada c. 3102 a.C.). Três quartos do Dharma perdidos. Conflito, mentira, ganância e ignorância dominam. A vida é curta, o espiritua fica obscurecido pelo material. Mas paradoxalmente, é a era em que é mais <em>fácil</em> atingir o Moksha — pois a intensidade do sofrimento gera o desejo de transcendência. Kalki virá no fim.</p>
+    </div>
+  </div>
+
+  <div class="box box-teal">
+    <span class="box-label">A Escala do Tempo Hindu</span>
+    <p>Um ciclo completo dos quatro Yugas (Mahayuga) = 4,32 milhões de anos. 1.000 Mahayugas = 1 Kalpa = 1 "dia de Brahma" = 4,32 bilhões de anos. Após 1 Kalpa, o cosmos é dissolvido (Pralaya) por um "noite de Brahma" igualmente longa. 360 dias e noites de Brahma = 1 ano de Brahma. Brahma vive 100 anos (= 311 trilhões de anos terrestres). Após sua morte, outro Brahma surge. A física moderna estima a idade do universo em 13,8 bilhões de anos — dentro de um Kalpa hindu.</p>
+  </div>
+
+</section>
+
+<div class="div-om">ॐ · ॐ · ॐ</div>
+
+<!-- ═══════════ CAP 3: VISHNU E AVATARES ═══════════ -->
+<section id="vishnu" class="chapter">
+  <div class="ch-eye">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Vishnu e os <em>Dez Avatares</em> — Deus que Desce</h2>
+  <p class="ch-intro">O conceito de avatar é uma das ideias mais extraordinárias e mais influentes de toda a história das religiões. Quando o Dharma (ordem cósmica) é ameaçado, Vishnu — o Preservador — desce ao mundo encarnado num corpo físico para restaurar o equilíbrio. Esta descida chama-se Avatar ("descida" em sânscrito).</p>
+
+  <p>Os dez avatares principais de Vishnu (Dashavatara) não são aleatórios — eles seguem uma sequência que os biólogos modernos reconhecerão com espanto: da vida aquática ao terrestre, do animal ao semi-humano, do humano primitivo ao civilizado. É uma narrativa da evolução da consciência ao longo das eras — ou, para alguns, uma antecipação da teoria evolucionária de Darwin, 3.000 anos antes.</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🐟</div><div><div class="gc-name">Matsya</div><div class="gc-alt">O Peixe · Satya Yuga</div></div></div>
+      <div class="gc-tags"><span class="tag t-t">Oceano</span><span class="tag t-g">Dilúvio</span></div>
+      <p>Vishnu encarna como um enorme peixe para avisar o sábio Manu de um grande dilúvio iminente, e guia seu barco até a segurança. O paralelo com Noé, Utnapishtim e Manu é direto. O peixe também recuperou os Vedas roubados por um demônio (Shankhasura) do fundo do oceano. <em>Filo: Peixe.</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🐢</div><div><div class="gc-name">Kurma</div><div class="gc-alt">A Tartaruga · Base do Cosmos</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Sustentação</span><span class="tag t-g">Criação</span></div>
+      <p>Durante a Agitação do Oceano Cósmico (Samudra Manthan), Vishnu se torna a tartaruga gigante que serve de base para o Monte Mandara usado como batedor. O casco sustenta o mundo — a tartaruga como eixo cósmico. <em>Filo: Réptil aquático.</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🐗</div><div><div class="gc-name">Varaha</div><div class="gc-alt">O Javali · Salvador da Terra</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Terra</span><span class="tag t-s">Salvação</span></div>
+      <p>O demônio Hiranyaksha mergulhou a Terra nas profundezas do oceano cósmico. Vishnu se tornou um javali cósmico, desceu às profundezas, derrubou o demônio numa batalha de mil anos e resgatou a Terra em suas presas. <em>Mamífero terrestre.</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🦁</div><div><div class="gc-name">Narasimha</div><div class="gc-alt">O Homem-Leão · A Exceção</div></div></div>
+      <div class="gc-tags"><span class="tag t-v">Proteção</span><span class="tag t-s">Devoção</span></div>
+      <p>O demônio Hiranyakashipu tinha uma graça que o tornava invulnerável — não podia ser morto por humano nem animal, dentro nem fora, de dia nem à noite, no chão nem no ar. Vishnu se tornou Narasimha — metade leão, metade humano — e no limiar da porta, ao entardecer, segurou o demônio em seu colo e o destruiu. A devoção de seu filho Prahlada foi o catalisador. <em>Ser híbrido animal-humano.</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">👣</div><div><div class="gc-name">Vamana</div><div class="gc-alt">O Anão · Os Três Passos</div></div></div>
+      <div class="gc-tags"><span class="tag t-g">Cosmos</span><span class="tag t-i">Humildade</span></div>
+      <p>O rei-demônio Bali havia conquistado os três mundos através de devoção genuína. Vishnu se tornou um brâmane anão e pediu a Bali três passos de terra. Bali concordou. Vamana cresceu até cobrir o cosmos: com um passo cobriu a Terra, com o segundo o céu, com o terceiro pisou na cabeça de Bali, enviando-o ao submundo. <em>Ser humano primitivo (anão).</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🪓</div><div><div class="gc-name">Parashurama</div><div class="gc-alt">Rama com o Machado</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Guerreiro</span><span class="tag t-s">Justiça</span></div>
+      <p>Um brâmane guerreiro que destruiu a classe Kshatriya (guerreiros) vinte e uma vezes consecutivas quando ela se tornou corrupta e opressora. Representa o conflito entre sacerdotes e guerreiros na sociedade védica, e a necessidade de purificação violenta. <em>Humano civilizado, fase de conflito de castas.</em></p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🏹</div><div><div class="gc-name">Rama</div><div class="gc-alt">O Rei Ideal · O Dharma Encarnado</div></div></div>
+      <div class="gc-tags"><span class="tag t-g">Dharma</span><span class="tag t-i">Realeza</span><span class="tag t-t">Amor</span></div>
+      <p>O sétimo avatar é o protagonista do Ramayana — o príncipe exilado que resgata sua esposa Sita das garras do demônio Ravana com a ajuda do deus-macaco Hanuman. Rama é o modelo perfeito de dharma: filho ideal, esposo fiel, rei justo. Seu reinado (Rama Rajya) é o modelo de governo perfeito.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🪈</div><div><div class="gc-name">Krishna</div><div class="gc-alt">O Divino Amado · O Flautista</div></div></div>
+      <div class="gc-tags"><span class="tag t-m">Amor</span><span class="tag t-g">Sabedoria</span><span class="tag t-s">Bhakti</span></div>
+      <p>O avatar mais amado e mais complexo — adolescente brincalhão, amante da flautista Radha, guerreiro estrategista, filósofo supremo. No Mahabharata, é o cocheiro de Arjuna e lhe revela o Bhagavad Gita. Krishna representa o Amor Divino que é simultaneamente pessoal e cósmico — o amor que sustenta o cosmos. É azul porque azul é a cor do infinito.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🌸</div><div><div class="gc-name">Buda</div><div class="gc-alt">O Iluminado</div></div></div>
+      <div class="gc-tags"><span class="tag t-i">Compaixão</span><span class="tag t-i">Ilusão</span></div>
+      <p>Na tradição hindu, o Buda histórico (Siddhartha Gautama) é considerado o nono avatar de Vishnu — encarnado para ensinar ahimsa (não-violência) e desviar pessoas dos sacrifícios animais. É uma forma de assimilação hinduísta do budismo. Alguns textos dizem que Buda veio enganar os demônios com ensinamentos falsos — interpretação polémica.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">⚔️</div><div><div class="gc-name">Kalki</div><div class="gc-alt">O Avatar Vindouro</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Futuro</span><span class="tag t-s">Renovação</span></div>
+      <p>O décimo avatar que ainda não veio — o apocalipse hindu. No fim do Kali Yuga, quando a decadência atingir seu ponto máximo, Vishnu encarnará como Kalki — um guerreiro em cavalo branco com espada flamejante. Destruirá os ímpios, encerrará o Kali Yuga e dará início a um novo Satya Yuga. Paralelo direto com o Messias judaico e o Cristo do Apocalipse.</p>
+    </div>
+  </div>
+
+  <div class="corr-panel">
+    <p class="corr-title">Os Avatares e os Conceitos Cabalísticos</p>
+    <span class="corr-sub">A descida do divino ao humano</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Avatar — A Descida</h4>
+        <p>Vishnu desce (ava = abaixo, tar = atravessar) dos planos superiores ao plano material para restaurar o Dharma. O Absoluto se veste de forma limitada sem perder sua natureza. A carne é temporária, o divino é permanente.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Tzimtzum e os Quatro Mundos</h4>
+        <p>Deus se "contrai" (Tzimtzum) para criar espaço para a criação. A luz divina desce pelos quatro mundos (Atziluth → Beriah → Yetzirah → Assiah), cada vez mais "condensada". A criação é o Infinito se tornando finito — assim como o Avatar é o divino se tornando humano.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Kalki — O Salvador Vindouro</h4>
+        <p>No fim do Kali Yuga, Kalki vem em cavalo branco para destruir o mal, encerrar o ciclo decadente e inaugurar uma nova era dourada. A destruição é renovação.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Mashiach — O Messias</h4>
+        <p>O Messias judaico (Mashiach ben David) vem ao fim dos tempos para reunir os exilados, destruir as forças do mal (Kelipot) e estabelecer o Tikkun Olam — a reparação completa do mundo. A era messiânica é o equivalente ao Satya Yuga.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ SHIVA ═══════════ -->
+<section id="shiva" class="chapter">
+  <div class="ch-eye">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Shiva — <em>O Transformador</em>, O Mais Paradoxal</h2>
+  <p class="ch-intro">Shiva é o deus mais fascinante, mais paradoxal e mais difícil de entender de todo o panteão hindu — e ao mesmo tempo, para muitos, o mais profundo. Ele é simultaneamente o destruidor e o protetor, o asceta e o amante apaixonado, o dançarino cósmico e o eterno meditador imóvel.</p>
+
+  <p>Shiva mora no Monte Kailash, no Himalaia — o topo do mundo. Veste-se de cinzas de cadáveres (Vibhuti), usa serpentes como ornamentos, tem cabelos emaranhados pelos quais o Rio Ganges flui, e carrega o tridente (Trishula). No meio de sua testa, o terceiro olho — que, quando aberto, incendeia tudo em sua direção, incluindo o deus do amor (Kama), que foi reduzido a cinzas ao tentar distrair Shiva de sua meditação.</p>
+
+  <div class="god-card" style="margin:28px 0;">
+    <div class="gc-top">
+      <div class="gc-icon" style="background:linear-gradient(135deg,#4a148c,#880e4f)">🌀</div>
+      <div>
+        <div class="gc-name">Shiva</div>
+        <div class="gc-alt">Mahadeva · Nataraja · Mahakala · Pashupati · Ardhanarishvara</div>
+      </div>
+    </div>
+    <div class="gc-tags">
+      <span class="tag t-v">Destruição</span><span class="tag t-v">Transformação</span>
+      <span class="tag t-s">Meditação</span><span class="tag t-g">Yoga</span>
+      <span class="tag t-m">Tântrico</span><span class="tag t-i">Cosmos</span>
+    </div>
+    <p>Shiva é o senhor do fim de ciclos — não para destruir, mas para liberar. Assim como o sono "destrói" o estado de vigília para que a consciência possa descansar e renascer, Shiva dissolve o cosmos para que um cosmos novo e mais perfeito possa surgir. Ele é também Nataraja — "Rei da Dança" — dançando o Tandava, a dança cósmica que mantém o universo em movimento. Em sua forma Ardhanarishvara, é metade Shiva (masculino) e metade Parvati (feminino) — representando a unidade fundamental de opostos.</p>
+  </div>
+
+  <h4 class="sub">O Tandava — A Dança do Cosmos</h4>
+  <p>A imagem mais famosa de Shiva é como Nataraja — o Rei da Dança. Num anel de fogo, Shiva dança sobre o anão Apasmara (a ignorância). Em seus quatro braços: uma mão segura o <em>damaru</em> (tambor primordial cujo ritmo é o Big Bang), outra mão porta fogo (a dissolução), uma terceira mão gesticula "não tema" (<em>abhaya mudra</em>), e a quarta aponta para o pé levantado (a salvação). A dança de Shiva gera, sustenta e dissolve o cosmos simultaneamente.</p>
+
+  <p>O físico Fritjof Capra, em "O Tao da Física" (1975), comparou a dança de Shiva ao fluxo de energia na física de partículas: as partículas subatômicas "dançam" — surgem, interagem e desaparecem em um processo eterno, exatamente como o cosmos dança com Shiva. O CERN, em Genebra, tem uma estátua de Nataraja em seu campus, presenteada pela Índia — em reconhecimento desta correspondência.</p>
+
+  <h4 class="sub">O Lingam — O Símbolo Mais Incompreendido</h4>
+  <p>O símbolo mais adorado de Shiva é o Lingam — um pilar cilíndrico que a maioria dos ocidentais reconhece imediatamente como um falo. E é, de fato — mas não apenas isso. O Lingam (<em>linga</em> = símbolo, marca, sinal) é o símbolo do poder criativo de Shiva: a força que gera e sustenta o cosmos. Descansa sobre a Yoni (o princípio feminino de Parvati/Shakti) — a união de Lingam e Yoni é a união de Shiva e Shakti, do princípio masculino e feminino, da consciência e da energia que gera o cosmos.</p>
+
+</section>
+
+<!-- ═══════════ DEVI ═══════════ -->
+<section id="devi" class="chapter">
+  <div class="ch-eye">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Devi — O <em>Princípio Feminino</em> que Cria o Cosmos</h2>
+  <p class="ch-intro">No hinduísmo, Deus não é apenas masculino. O princípio feminino — Devi, Shakti, a Deusa — não é uma divindade subordinada ao deus masculino. É a própria força ativa do cosmos. Sem Shakti, Shiva é apenas um cadáver. É Devi que dança, cria, sustenta e dissolve. Esta é uma das teologias femininas mais desenvolvidas de qualquer tradição.</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#880e4f,#c2185b)">🌸</div><div><div class="gc-name">Parvati / Shakti</div><div class="gc-alt">A Esposa de Shiva · A Grande Deusa</div></div></div>
+      <div class="gc-tags"><span class="tag t-m">Amor</span><span class="tag t-m">Maternidade</span><span class="tag t-t">Natureza</span></div>
+      <p>Parvati é a manifestação gentil e amorosa da Grande Deusa — a esposa de Shiva, a mãe de Ganesha e Kartikeya. É a força do amor que persuadiu o asceta Shiva a voltar ao mundo e engajar-se com a criação. Mas Parvati é também a base de todas as formas mais intensas da Deusa — Durga e Kali são suas manifestações quando a situação exige.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#b71c1c,#e53935)">🔱</div><div><div class="gc-name">Durga</div><div class="gc-alt">A Invencível · A Deusa Guerreira</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Guerra</span><span class="tag t-s">Proteção</span><span class="tag t-m">Shakti</span></div>
+      <p>Quando os deuses foram derrotados pelo demônio búfalo Mahishasura — que só podia ser morto por uma mulher — cada deus emitiu sua energia divina, e da síntese de todas as energias surgiu Durga: montada num leão, com dezoito braços carregando as armas de todos os deuses. Após uma batalha de dez dias, ela decapitou Mahishasura. É celebrada no festival de Navratri (nove noites).</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#1a0000,#3d0000)">💀</div><div><div class="gc-name">Kali</div><div class="gc-alt">A Escura · A Devoradora do Tempo</div></div></div>
+      <div class="gc-tags"><span class="tag t-v">Destruição</span><span class="tag t-v">Tempo</span><span class="tag t-m">Shakti</span></div>
+      <p>A forma mais intensa da Deusa — pele negra, língua vermelha para fora, colar de cabeças cortadas, quatro braços segurando uma cabeça decapitada e uma espada ensanguentada (e fazendo gestos de proteção e bênção). Kali não é a deusa do mal — é a força que corta a ilusão (Maya) e destrói o ego para que o ser puro possa emergir. Seu nome deriva de <em>Kala</em> (tempo) — ela é aquela que devora o próprio tempo.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#f9a825,#f57f17)">🪷</div><div><div class="gc-name">Lakshmi</div><div class="gc-alt">A Auspiciosa · Deusa da Prosperidade</div></div></div>
+      <div class="gc-tags"><span class="tag t-g">Prosperidade</span><span class="tag t-g">Beleza</span><span class="tag t-t">Sorte</span></div>
+      <p>Esposa de Vishnu, Lakshmi é a deusa da prosperidade, beleza, sorte e abundância. Emergiu da Agitação do Oceano Cósmico numa flor de lótus. Quando Vishnu encarna como Rama, ela encarna como Sita; quando encarna como Krishna, ela encarna como Rukmini. É adorada no Diwali (festival das luzes). Suas quatro mãos representam dharma, artha (prosperidade), kama (desejo) e moksha.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#1a237e,#283593)">📚</div><div><div class="gc-name">Saraswati</div><div class="gc-alt">A Fluente · Deusa do Conhecimento</div></div></div>
+      <div class="gc-tags"><span class="tag t-i">Sabedoria</span><span class="tag t-i">Arte</span><span class="tag t-i">Música</span></div>
+      <p>Esposa de Brahma, Saraswati é a deusa da sabedoria, artes, música, literatura e aprendizagem. Vestida de branco (pureza do conhecimento), segura o veena (instrumento de cordas), o livro sagrado, um colar de pérolas (meditação) e um vaso de água (purificação. O Rio Saraswati (que secou mas ainda existe no subterrâneo segundo os hindus) leva seu nome. Adorada por estudantes antes de exames.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon" style="background:linear-gradient(135deg,#004d40,#00695c)">🌿</div><div><div class="gc-name">Radha</div><div class="gc-alt">O Amor Eterno · A Amada de Krishna</div></div></div>
+      <div class="gc-tags"><span class="tag t-m">Amor</span><span class="tag t-m">Devoção</span><span class="tag t-t">Bhakti</span></div>
+      <p>Radha não aparece no Mahabharata nem nos primeiros Puranas — ela emerge no Bhagavata Purana e atinge seu ápice no Gita Govinda de Jayadeva (séc. XII). É a amante suprema de Krishna — mas seu amor não é carnal: é a alma individual (Radha) em êxtase de amor com o Divino (Krishna). A tradição Gaudiya Vaishnava considera Radha a forma suprema de Shakti — a devoção perfeita encarnada.</p>
+    </div>
+  </div>
+
+  <div class="corr-panel">
+    <p class="corr-title">Shakti e a Cabala — O Princípio Feminino Divino</p>
+    <span class="corr-sub">A divina Shekinah e a Grande Deusa</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Shakti — Energia Divina Feminina</h4>
+        <p>A força ativa do cosmos — sem Shakti, Shiva é inerte. Shakti é Brahman em ação. Todas as deusas são manifestações de Shakti: Parvati (amor), Durga (proteção), Kali (transformação). A energia que permeia tudo.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Shekinah — A Presença Divina</h4>
+        <p>A "presença" ou "habitação" de Deus no mundo — o aspecto feminino da divindade, identificada com Malkhut (a décima Sephirah). A Shekinah foi ao exílio junto com Israel. Reencontrá-la é o objetivo espiritual do Shabat. Também associada ao Espírito Santo em tradições cristãs cabalísticas.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Kali — Devoradora do Tempo/Ego</h4>
+        <p>A força que corta Maya — a ilusão do ego separado. O lado "terrível" do amor divino: aquele que destrói o falso para revelar o verdadeiro. Devoção a Kali é rendição total do ego ao Divino.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Geburah — Severidade</h4>
+        <p>A quinta Sephirah — a força do julgamento, da limitação, da destruição do que não serve ao bem. O "lado esquerdo" da Árvore da Vida. Em excesso é o Mal; equilibrado com Chesed (amor) é o que torna a vida possível. A "mão esquerda" de Deus.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ OUTROS DEUSES ═══════════ -->
+<section id="outros-deuses" class="chapter">
+  <div class="ch-eye">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Os Outros Grandes Deuses</h2>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🐘</div><div><div class="gc-name">Ganesha</div><div class="gc-alt">O Filho de Shiva · Removedor de Obstáculos</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Início</span><span class="tag t-g">Sabedoria</span><span class="tag t-t">Prosperidade</span></div>
+      <p>Cabeça de elefante, barriga grande, quatro braços, uma presa quebrada — Ganesha é provavelmente o deus hindu mais amado globalmente. É adorado no início de qualquer empreendimento, viagem ou rito — sua bênção abre caminhos. A história de sua cabeça de elefante: Shiva o decapitou sem saber que era seu filho; para consertá-lo, colocou a cabeça do primeiro animal que encontrou (um elefante). Carrega um doce (prasad) que come com sua própria tromba — símbolo da auto-sustentação espiritual. Sua barriga grande contém o cosmos.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🐒</div><div><div class="gc-name">Hanuman</div><div class="gc-alt">O Deus-Macaco · Servo de Rama</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Devoção</span><span class="tag t-s">Força</span><span class="tag t-g">Bhakti</span></div>
+      <p>O símbolo supremo de bhakti (devoção) — o macaco divino que dedicou sua vida inteira ao serviço de Rama. Filho de Vayu (o vento) e de uma divindade apsara. Pode voar, crescer até o tamanho de uma montanha, encolher ao tamanho de um átomo. Voou até Lanka (Sri Lanka) em busca de Sita, carregou uma montanha inteira para curar Lakshmana. Quando abriu seu peito, dentro estava a imagem de Rama e Sita — "Rama está no meu coração." A devoção como o maior dos poderes.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">☀️</div><div><div class="gc-name">Surya</div><div class="gc-alt">O Deus Sol</div></div></div>
+      <div class="gc-tags"><span class="tag t-g">Sol</span><span class="tag t-g">Saúde</span><span class="tag t-s">Dharma</span></div>
+      <p>Um dos deuses védicos mais antigos — o Sol personificado. Pai de Yama (o deus da morte), Manu (o primeiro homem) e Sugriva (rei dos macacos no Ramayana). A saudação ao sol (Surya Namaskar) do yoga é dedicada a ele — doze posturas representando os doze meses do ano. A maçonaria utiliza simbolismo solar que ecoa tradições como a de Surya.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">⚡</div><div><div class="gc-name">Indra</div><div class="gc-alt">O Rei dos Devas · O Deus do Trovão</div></div></div>
+      <div class="gc-tags"><span class="tag t-i">Trovão</span><span class="tag t-i">Chuva</span><span class="tag t-s">Realeza</span></div>
+      <p>O deus mais importante dos Vedas (com mais hinos no Rigveda que qualquer outro), mas progressivamente secundarizado nos Puranas — uma queda da graça que reflete a mudança da religião sacrificial védica para a devoção pessoal dos Puranas. Nos Puranas, Indra é retratado como arrogante, ciumento e frequentemente humilhado por Krishna e outros. "O rei dos deuses" que perdeu o trono para deuses maiores.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🔥</div><div><div class="gc-name">Agni</div><div class="gc-alt">O Fogo Sagrado</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Fogo</span><span class="tag t-g">Ritual</span><span class="tag t-s">Purificação</span></div>
+      <p>O deus do fogo sagrado — o intermediário entre humanos e deuses no ritual védico. Quando se queimam oferendas no fogo ritual (yajna), Agni as carrega ao céu. É o mensageiro divino — equivalente ao Hermes grego e ao Prometeu que trouxe o fogo aos humanos. Presente em todos os rituais hindus — do casamento à cremação.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">💀</div><div><div class="gc-name">Yama</div><div class="gc-alt">O Senhor da Morte · O Juiz</div></div></div>
+      <div class="gc-tags"><span class="tag t-v">Morte</span><span class="tag t-i">Julgamento</span><span class="tag t-i">Karma</span></div>
+      <p>O deus da morte e o juiz supremo dos mortos. No Rigveda, é o primeiro mortal — o primeiro a morrer e portanto o primeiro a habitar o mundo dos mortos. Seu assistente Chitragupta mantém o registro de cada ação de cada ser humano — o "livro de contabilidade do karma". Após a morte, a alma é levada perante Yama, que consulta o registro e determina o próximo nascimento.</p>
+    </div>
+  </div>
+</section>
+
+<div class="div-om">ॐ · ॐ · ॐ</div>
+
+<!-- ═══════════ CAP 4: MITOS ═══════════ -->
+<section id="samudra" class="chapter">
+  <div class="ch-eye">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>A Agitação do Oceano Cósmico — <em>Samudra Manthan</em></h2>
+  <p class="ch-intro">Um dos mitos mais ricos e mais simbolicamente densos de toda a mitologia indiana — a história em que deuses e demônios cooperam para extrair do oceano primordial todos os tesouros do cosmos.</p>
+
+  <p>Os Devas (deuses) tinham sido amaldiçoados pelo sábio Durvasa e perdido sua força e imortalidade. Vishnu aconselhou que só o Amrita (o néctar da imortalidade) poderia restaurá-los — mas estava escondido nas profundezas do Oceano de Leite. Para agitá-lo, seriam necessários tanto os deuses quanto os demônios (Asuras) — a cooperação de opostos.</p>
+
+  <p>Usaram o Monte Mandara como batedor e a serpente Vasuki como corda. Vishnu se transformou em Kurma (tartaruga gigante) para servir de base. Os deuses puxavam pela cauda, os demônios pela cabeça — por isso a cabeça de Vasuki cospe veneno em direção aos demônios. A agitação foi tão violenta que o próprio veneno Halahala emergiu do oceano, ameaçando destruir tudo. Shiva o bebeu (por isso seu pescoço é azul — Nilakantha, o pescoço azul), salvando o cosmos.</p>
+
+  <p>Da agitação emergiram: a deusa Lakshmi (prosperidade), Dhanvantari (o deus da medicina), o elefante Airavata (montaria de Indra), o cavalo Ucchaishravas, Kamadhenu (a vaca dos desejos), a Apsaras (ninfas celestes), a lua (que Shiva colocou em seus cabelos), e finalmente o Amrita — o néctar da imortalidade. Vishnu assumiu a forma de Mohini (a encantadora) para distrair os demônios e dar o Amrita apenas aos deuses.</p>
+
+  <div class="box box-indigo">
+    <span class="box-label">O Simbolismo do Samudra Manthan</span>
+    <p>O Oceano de Leite é a consciência pura — o Brahman. A agitação é o processo espiritual: quando você agita sua consciência com prática (meditação, yoga, devoção), os tesouros emergem — mas também os venenos (os conteúdos difíceis do inconsciente). Shiva beber o veneno é o guru que transmuta o karma negativo de seus discípulos. O Amrita é a experiência de Moksha. Deuses e demônios cooperando é a integração dos aspectos "luz" e "sombra" da psique — a individuação junguiana.</p>
+  </div>
+
+</section>
+
+<!-- BHAGAVAD GITA -->
+<section id="gita" class="chapter">
+  <div class="ch-eye">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>O Bhagavad Gita — <em>O Diálogo de Deus</em></h2>
+  <p class="ch-intro">O Bhagavad Gita ("O Cântico do Senhor") é provavelmente o texto espiritual mais influente da Índia — e um dos mais lidos do mundo. São 700 versos de um diálogo entre o guerreiro Arjuna e seu cocheiro Krishna (que é Vishnu encarnado) na véspera da maior batalha da história. É filosofia, teologia, psicologia e manual de vida em versos de extraordinária beleza.</p>
+
+  <p>O contexto: a grande guerra de Kurukshetra está prestes a começar. Os Pandavas (os heróis, que incluem Arjuna) enfrentam os Kauravas (seus primos usurpadores). Arjuna, no meio dos dois exércitos, vê avós, tios, mestres e amigos do lado inimigo. Ele deixa cair seu arco e diz a Krishna: "Não posso lutar. Prefiro ser morto sem resistência."</p>
+
+  <p>O diálogo de Krishna com Arjuna ao longo de 18 capítulos é o Gita. Krishna apresenta três grandes caminhos:</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🧠</div><div><div class="gc-name">Jnana Yoga</div><div class="gc-alt">O Caminho do Conhecimento</div></div></div>
+      <div class="gc-tags"><span class="tag t-i">Intelecto</span><span class="tag t-i">Discriminação</span></div>
+      <p>O caminho da sabedoria — discriminar o eterno do temporário, o Atman do ego, o real do ilusório. Para temperamentos intelectuais. Requer rigor filosófico extremo. Shankaracharya é seu maior expoente.</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">🤲</div><div><div class="gc-name">Karma Yoga</div><div class="gc-alt">O Caminho da Ação</div></div></div>
+      <div class="gc-tags"><span class="tag t-s">Ação</span><span class="tag t-s">Desapego</span></div>
+      <p>A grande contribuição original do Gita: aja sem apego ao fruto da ação. Faça seu dharma com perfeição, sem se importar com sucesso ou fracasso. A ação dedicada a Deus não gera karma. "Você tem direito à ação, não ao fruto dela."</p>
+    </div>
+    <div class="god-card">
+      <div class="gc-top"><div class="gc-icon">💗</div><div><div class="gc-name">Bhakti Yoga</div><div class="gc-alt">O Caminho da Devoção</div></div></div>
+      <div class="gc-tags"><span class="tag t-m">Amor</span><span class="tag t-m">Entrega</span></div>
+      <p>O caminho do amor devocional — rendição total ao amor de Deus. Para temperamentos emocionais. Krishna diz no Gita 18.65: "Pense sempre em mim, ame-me, adore-me, renda-se a mim, e você virá a mim. Eu prometo: você é precioso para mim."</p>
+    </div>
+  </div>
+
+  <div class="pq">
+    <p class="pq-text">Nunca houve um tempo em que eu não existia, nem você, nem todos estes reis; nem no futuro nenhum de nós deixará de ser. Assim como a alma corpórea se move desta infância à juventude à velhice, ela se move após a morte para outro corpo. O homem sábio não se confunde com esta mudança.</p>
+    <span class="pq-cite">— Bhagavad Gita 2.12-13 · Krishna a Arjuna</span>
+  </div>
+
+  <h3 class="sec">As Lições do Gita em 7 Pontos</h3>
+  <ul class="step-list">
+    <li data-n="1"><strong>A alma é imortal</strong> — O Atman não nasce nem morre. "Armas não a cortam, fogo não a queima, água não a molha, vento não a seca." (2.23)</li>
+    <li data-n="2"><strong>Faça seu dharma</strong> — É melhor fazer imperfeita mente seu próprio dharma do que fazer perfeitamente o dharma de outro.</li>
+    <li data-n="3"><strong>Aja sem apego</strong> — Karma Yoga: ação perfeita sem apego ao resultado. O desapego não é indiferença, é liberdade.</li>
+    <li data-n="4"><strong>Equanimidade</strong> — Trate sucesso e fracasso, prazer e dor, o agradável e o desagradável com equanimidade. Esta é a definição de Yoga.</li>
+    <li data-n="5"><strong>A rendição é o caminho supremo</strong> — No capítulo 18, Krishna revela o ensinamento final: abandone todo dharma e renda-se apenas a Mim. Eu te libertarei de todo karma.</li>
+    <li data-n="6"><strong>O campo e o conhecedor do campo</strong> — O corpo é o "campo" (Kshetra), a alma é o "conhecedor do campo" (Kshetrajna). Krishna diz que é o conhecedor de todos os campos — a consciência universal.</li>
+    <li data-n="7"><strong>Três Gunas</strong> — Toda a natureza é composta de três qualidades: Sattva (pureza, clareza), Rajas (paixão, movimento) e Tamas (inércia, obscuridade). O caminho espiritual é de Tamas para Rajas para Sattva e além de todos os três.</li>
+  </ul>
+
+</section>
+
+<div class="div-om">ॐ · ॐ · ॐ</div>
+
+<!-- ═══════════ CAP 5: ALMA E FILOSOFIA ═══════════ -->
+<section id="alma" class="chapter">
+  <div class="ch-eye">Capítulo V &nbsp;·&nbsp; Filosofia Espiritual</div>
+  <h2>Atman, Karma e Dharma — <em>Os Três Pilares</em></h2>
+  <p class="ch-intro">Estes três conceitos são o coração da espiritualidade hindu. Entendê-los realmente — não superficialmente — é entender por que o hinduísmo funciona da forma que funciona e por que continua relevante 5.000 anos depois.</p>
+
+  <h4 class="sub">Karma — A Física Moral do Universo</h4>
+  <p>Karma é frequentemente mal-traduzido no Ocidente como "destino" ou "o que vai, volta". Na sua formulação original, Karma (de <em>kri</em> = agir) é simplesmente <strong>ação consciente e seus efeitos</strong>. Cada ação intencional (não apenas física — pensamento e intenção também geram karma) produz um efeito que precisará ser vivenciado pelo agente em algum momento.</p>
+
+  <p>Karma não é julgamento moral externo — é uma lei impessoal, como a gravidade. Não há um Deus "distribuindo karma" como punição ou recompensa. Karma é simplesmente o registro de pendências da consciência. Uma consciência que feriu sem necessidade possui essa experiência em seu registro; em algum momento, ela precisará vivenciar o que causou — não como punição, mas como compreensão.</p>
+
+  <p>Os três tipos de karma:</p>
+  <ul class="step-list">
+    <li data-n="1"><strong>Sanchita Karma</strong> — O karma acumulado de todas as vidas passadas, ainda não maduro. O "estoque" total.</li>
+    <li data-n="2"><strong>Prarabdha Karma</strong> — A porção do Sanchita karma que está sendo vivenciada nesta vida — o que determinou seu nascimento, família, saúde básica. Este não pode ser evitado.</li>
+    <li data-n="3"><strong>Agami Karma</strong> — O karma que você está criando agora com suas ações presentes. É o único sobre o qual você tem controle. O Karma Yoga (ação sem apego) não cria Agami Karma.</li>
+  </ul>
+
+  <div class="corr-panel">
+    <p class="corr-title">Karma e a Cabala — Causa e Efeito Espiritual</p>
+    <span class="corr-sub">A lei da consequência em ambas as tradições</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Karma e Samsara</h4>
+        <p>O karma acumula-se ao longo de múltiplas encarnações. A alma continua reencarnando até quitar todo karma e alcançar o Moksha. A memória das vidas passadas está no karma — mas a identidade consciente muda a cada vida.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Gilgul Neshamot</h4>
+        <p>"Ciclo das almas" — a reencarnação na tradição cabalística. Almas retornam para completar Tikkun (reparação). O Arizal (Rav Isaac Luria, séc. XVI) desenvolveu a teoria cabalística da reencarnação em detalhe extraordinário no Sha'ar HaGilgulim.</p>
+      </div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Hinduísmo</span>
+        <h4>Moksha — Liberação Final</h4>
+        <p>Quando todo karma está quitado e a alma reconhece sua identidade com Brahman, o ciclo cessa. A alma não precisa mais reencarnar. Ela retorna ao Oceano — continua existindo, mas como o oceano, não como onda separada.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Cabala</span>
+        <h4>Tikkun Olam — Reparação do Mundo</h4>
+        <p>O objetivo espiritual último — a reparação completa de todas as almas e do mundo. Quando todas as centelhas divinas (Nitzotzot) são resgatadas das "cascas" do mal (Kelipot), o Tikkun está completo e a realidade retorna ao seu estado de plena unidade divina.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ AS SEIS FILOSOFIAS ═══════════ -->
+<section id="darshanas" class="chapter">
+  <div class="ch-eye">Capítulo V &nbsp;·&nbsp; Filosofia</div>
+  <h2>As Seis Filosofias Ortodoxas — <em>Seis Respostas</em> à Mesma Pergunta</h2>
+  <p class="ch-intro">O hinduísmo produziu seis grandes sistemas filosóficos (Darshanas — "visões") que abordam as questões fundamentais da existência de perspectivas radicalmente diferentes, mas todas reconhecendo a autoridade dos Vedas. São os pilares intelectuais da tradição.</p>
+
+  <div class="phil-grid">
+    <div class="phil-card" style="border-top-color:var(--saffron);">
+      <h4 style="color:var(--saffron)">Advaita Vedanta</h4>
+      <span class="ph-sub" style="color:var(--saffron)">Shankaracharya · Não-Dualismo</span>
+      <p>Só existe Brahman. O cosmos e as almas individuais são Brahman aparecendo como múltiplo por causa de Maya. Atman = Brahman. O objetivo: reconhecer esta identidade. A mais influente escola do hinduísmo moderno — Vivekananda, Ramana Maharshi, Nisargadatta Maharaj.</p>
+    </div>
+    <div class="phil-card" style="border-top-color:var(--teal2);">
+      <h4 style="color:var(--teal2)">Vishishtadvaita</h4>
+      <span class="ph-sub" style="color:var(--teal2)">Ramanuja · Não-Dualismo Qualificado</span>
+      <p>Brahman existe como um todo, mas com partes distinguíveis. Deus (Vishnu/Brahman) é real e pessoal; as almas e o mundo são seus "atributos" — reais mas não independentes. O objetivo: amor eterno a Deus (Bhakti), não dissolução nele.</p>
+    </div>
+    <div class="phil-card" style="border-top-color:var(--indigo2);">
+      <h4 style="color:var(--indigo2)">Dvaita</h4>
+      <span class="ph-sub" style="color:var(--indigo2)">Madhvacharya · Dualismo</span>
+      <p>Deus, almas e mundo são permanentemente distintos. A relação alma-Deus é de serva-senhor eterno, nunca de identidade. A devoção a Vishnu é o único caminho. Influenciou o movimento Hare Krishna (ISKCON).</p>
+    </div>
+    <div class="phil-card" style="border-top-color:var(--violet2);">
+      <h4 style="color:var(--violet2)">Samkhya</h4>
+      <span class="ph-sub" style="color:var(--violet2)">Kapila · Dualismo Ateísta</span>
+      <p>O mais antigo dos sistemas filosóficos. Dois princípios eternos: Purusha (consciência pura, passiva, masculina) e Prakriti (matéria/natureza, ativa, feminina). O cosmos surge da dança entre os dois. Não há necessidade de um Deus criador. Base teórica do Yoga.</p>
+    </div>
+    <div class="phil-card" style="border-top-color:var(--gold);">
+      <h4 style="color:var(--gold)">Yoga (Filosofia)</h4>
+      <span class="ph-sub" style="color:var(--gold)">Patanjali · Discriminação Prática</span>
+      <p>A contrapartida prática do Samkhya — com a adição de Ishvara (um Deus especial, que nunca foi enredado na matéria) como objeto de meditação. Os Yoga Sutras de Patanjali definem o yoga como "a cessação das modificações da mente" e apresentam o caminho de oito membros.</p>
+    </div>
+    <div class="phil-card" style="border-top-color:var(--magenta2);">
+      <h4 style="color:var(--magenta2)">Mimamsa</h4>
+      <span class="ph-sub" style="color:var(--magenta2)">Jaimini · O Ritual como Caminho</span>
+      <p>Defende que os Vedas são eternos e auto-suficientes — a prática ritual descrita nos Vedas é o caminho supremo. Não há necessidade de especular sobre a natureza de Deus; basta executar os rituais corretamente. Base da tradição brâmane ortodoxa.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ CAP 6: CHAKRAS ═══════════ -->
+<section id="chakras" class="chapter">
+  <div class="ch-eye">Capítulo VI &nbsp;·&nbsp; Corpo e Energia</div>
+  <h2>Os 7 Chakras — <em>As Rodas de Energia</em></h2>
+  <p class="ch-intro">Chakra (सक्र) significa "roda" em sânscrito. Os chakras são centros de energia sutil (Prana) no corpo — pontos onde os nadis (canais de energia) se cruzam e concentram. Não são estruturas físicas detectáveis por instrumentos, mas centros de experiência consciente. Cada chakra corresponde a uma dimensão da experiência humana.</p>
+
+  <div class="chakra-list">
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#7b1fa2,#4a148c)">🟣</div>
+      <div class="chakra-body">
+        <h4>Sahasrara — Chakra da Coroa</h4>
+        <div class="chakra-meta" style="color:var(--violet2)">Topo da cabeça · 1.000 pétalas · Cor: violeta/branco · Elemento: Pensamento puro</div>
+        <p>O chakra mais elevado — o ponto de conexão com o Brahman/Divino. Quando a Kundalini chega aqui, ocorre o Samadhi — a experiência de unidade com o Absoluto. Sephirah correspondente na Cabala: <strong>Keter</strong> (a Coroa). Na neurofisiologia, corresponde ao córtex cerebral e à glândula pineal.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#283593,#1a237e)">🔵</div>
+      <div class="chakra-body">
+        <h4>Ajna — Terceiro Olho</h4>
+        <div class="chakra-meta" style="color:var(--indigo2)">Testa entre os olhos · 2 pétalas · Cor: índigo · Elemento: Luz</div>
+        <p>O centro da intuição, visão interior, sabedoria e percepção extra-sensorial. "Ajna" = comando — é daqui que a consciência comanda o corpo. Seu mantra é OM. Sephirah: <strong>Chokhmah-Binah</strong> (sabedoria e entendimento — os dois olhos). Corresponde à hipófise.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#0097a7,#006064)">🔵</div>
+      <div class="chakra-body">
+        <h4>Vishuddha — Chakra da Garganta</h4>
+        <div class="chakra-meta" style="color:var(--teal2)">Garganta · 16 pétalas · Cor: azul turquesa · Elemento: Éter (Akasha)</div>
+        <p>O centro da comunicação, expressão criativa, voz e verdade. Quando ativo, a pessoa expressa sua verdade com clareza e ouve com profundidade. Sephirah: <strong>Da'at</strong> (conhecimento — a Sephirah "oculta" que une sabedoria e entendimento através da expressão). Corresponde à tireoide.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#2e7d32,#1b5e20)">🟢</div>
+      <div class="chakra-body">
+        <h4>Anahata — Chakra do Coração</h4>
+        <div class="chakra-meta" style="color:#66bb6a">Centro do peito · 12 pétalas · Cor: verde/rosa · Elemento: Ar</div>
+        <p>O centro do amor incondicional, compaixão e conexão. "Anahata" = o som que não foi produzido por colisão — o som primordial. A ponte entre os chakras inferiores (instinto/emoção) e superiores (mente/espírito). Seu símbolo é o hexagrama — dois triângulos sobrepostos (igual à Estrela de Davi). Sephirah: <strong>Tiferet</strong> (Beleza, coração). Corresponde ao coração e timo.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#e65100,#bf360c)">🟠</div>
+      <div class="chakra-body">
+        <h4>Manipura — Chakra do Plexo Solar</h4>
+        <div class="chakra-meta" style="color:var(--saffron)">Plexo solar / abdômen · 10 pétalas · Cor: amarelo · Elemento: Fogo</div>
+        <p>O centro do poder pessoal, vontade, autoestima e identidade do ego. "Manipura" = cidade das joias. É aqui que reside o poder de agir no mundo. Desequilíbrio gera dominância ou submissão. Sephirah: <strong>Geburah-Netzach</strong> (poder e vitória). Corresponde ao pâncreas e glândulas suprarrenais.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#ad1457,#880e4f)">🟤</div>
+      <div class="chakra-body">
+        <h4>Svadhisthana — Chakra Sacral</h4>
+        <div class="chakra-meta" style="color:var(--magenta2)">Sacro / abaixo do umbigo · 6 pétalas · Cor: laranja · Elemento: Água</div>
+        <p>O centro da sexualidade, criatividade, emoções e relações interpessoais. "Svadhisthana" = a própria morada. A energia criativa que pode ser expressa sexualmente ou sublimada em arte, música, yoga. Sephirah: <strong>Yesod</strong> (fundação — associada à lua, ciclos e ao aspecto reprodutivo). Corresponde aos órgãos reprodutivos e rins.</p>
+      </div>
+    </div>
+    <div class="chakra-item">
+      <div class="chakra-color" style="background:linear-gradient(135deg,#b71c1c,#7f0000)">🔴</div>
+      <div class="chakra-body">
+        <h4>Muladhara — Chakra Raiz</h4>
+        <div class="chakra-meta" style="color:#ef5350">Base da coluna · 4 pétalas · Cor: vermelho · Elemento: Terra</div>
+        <p>O chakra mais denso e mais fundamental — o centro da sobrevivência, segurança, instinto, conexão com a terra e o corpo físico. "Muladhara" = suporte da raiz. Aqui dorme enrolada a Kundalini Shakti — a serpente de poder espiritual. Sephirah: <strong>Malkhut</strong> (o Reino — a Sephirah da manifestação física, a Shekinah, a presença divina na matéria). Corresponde às glândulas suprarrenais.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="corr-panel">
+    <p class="corr-title">Os Chakras e a Árvore da Vida</p>
+    <span class="corr-sub">Duas mapas do mesmo território interior</span>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu">
+        <span class="corr-label">Chakras</span>
+        <h4>Sete Centros Verticais</h4>
+        <p>7 chakras distribuídos verticalmente ao longo da coluna vertebral — do mais denso/material (raiz) ao mais sutil/espiritual (coroa). A Kundalini sobe do Muladhara ao Sahasrara como um processo de despertar espiritual progressivo.</p>
+      </div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab">
+        <span class="corr-label">Árvore da Vida</span>
+        <h4>Dez Sephiroth em Três Pilares</h4>
+        <p>10 Sephiroth organizadas em três pilares verticais — da mais densa (Malkhut) à mais elevada (Keter). A Luz divina desce de Keter a Malkhut (criação). O místico sobe de Malkhut a Keter (retorno ao Absoluto) — exatamente como a Kundalini sobe pelo Sushumna.</p>
+      </div>
+    </div>
+    <table class="tbl" style="margin-top:20px">
+      <thead><tr><th>Chakra</th><th>Sephirah</th><th>Princípio Comum</th></tr></thead>
+      <tbody>
+        <tr><td>Sahasrara (coroa)</td><td>Keter</td><td>União com o Absoluto / Consciência Pura</td></tr>
+        <tr><td>Ajna (3º olho)</td><td>Chokhmah + Binah</td><td>Sabedoria intuitiva / Entendimento profundo</td></tr>
+        <tr><td>Vishuddha (garganta)</td><td>Da'at</td><td>Expressão do conhecimento / Comunicação divina</td></tr>
+        <tr><td>Anahata (coração)</td><td>Tiferet</td><td>Amor incondicional / Centro do ser</td></tr>
+        <tr><td>Manipura (plexo)</td><td>Geburah + Netzach</td><td>Poder / Vontade e emoção</td></tr>
+        <tr><td>Svadhisthana (sacro)</td><td>Yesod</td><td>Criatividade / Ciclos / Fundação</td></tr>
+        <tr><td>Muladhara (raiz)</td><td>Malkhut</td><td>Manifestação material / Presença divina na matéria</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- ═══════════ KUNDALINI ═══════════ -->
+<section id="kundalini" class="chapter">
+  <div class="ch-eye">Capítulo VI &nbsp;·&nbsp; Energia</div>
+  <h2>Kundalini — <em>A Serpente do Despertar</em></h2>
+  <p class="ch-intro">Kundalini é a força espiritual latente que reside no Muladhara Chakra, enrolada três vezes e meia ao redor do linga de Shiva, como uma serpente adormecida. Quando desperta (através de yoga, meditação, devoção ou graça do guru), ela sobe pelo canal central da coluna vertebral (Sushumna Nadi), passando pelos chakras, até atingir o Sahasrara — onde ocorre o Samadhi.</p>
+
+  <p>Os três canais principais de energia no corpo (Nadis) são:</p>
+  <ul class="step-list">
+    <li data-n="1"><strong>Sushumna</strong> — O canal central — a coluna vertebral etérica. A serpente Kundalini sobe por aqui. Ativo apenas durante estados meditativos profundos.</li>
+    <li data-n="2"><strong>Ida</strong> — O canal esquerdo — energia lunar, feminina, receptiva, fria. Termina na narina esquerda. Associado ao hemisfério direito do cérebro.</li>
+    <li data-n="3"><strong>Pingala</strong> — O canal direito — energia solar, masculina, ativa, quente. Termina na narina direita. Associado ao hemisfério esquerdo do cérebro.</li>
+  </ul>
+
+  <div class="box box-violet">
+    <span class="box-label">Kundalini e o Caduceu de Hermes</span>
+    <p>O caduceu de Hermes/Mercúrio — duas serpentes enroladas em torno de um bastão central com asas no topo — é estruturalmente idêntico ao sistema Kundalini: as duas serpentes são Ida (lunar/esquerda) e Pingala (solar/direita) enrolando-se ao redor do Sushumna central. As asas no topo representam a consciência liberada quando a Kundalini atinge o Sahasrara. O mesmo símbolo que hoje é o emblema da medicina ocidental é um mapa do sistema de energia espiritual hindu/egípcio. A correspondência é tão precisa que muitos estudiosos acreditam em transmissão cultural direta, provavelmente via Alexandria.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════ MANTRAS ═══════════ -->
+<section id="mantras" class="chapter">
+  <div class="ch-eye">Capítulo VI &nbsp;·&nbsp; Prática</div>
+  <h2>Mantras — <em>O Som do Cosmos</em></h2>
+  <p class="ch-intro">Mantra (<em>man</em> = mente, <em>tra</em> = instrumento/proteção) é um som sagrado com poder de transformar a mente quando repetido com concentração e intenção. Não é apenas palavra — é vibração. O cosmos foi criado pelo som (OM), e os mantras são reverberações dessa criação primordial.</p>
+
+  <div class="mantra-box">
+    <p class="mantra-text">ॐ</p>
+    <p class="mantra-trans">AUM — O Mantra Primordial</p>
+    <p class="mantra-exp">A vogal "A" = o estado de vigília e a criação (Brahma). A vogal "U" = o estado de sonho e a preservação (Vishnu). A consoante nasal "M" = o estado de sono profundo e a dissolução (Shiva). O silêncio após o "M" = Turiya, o quarto estado — pura consciência, Brahman. OM é o som do cosmos em sua totalidade: do mais denso ao mais sutil ao Absoluto.</p>
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>Mantra</th><th>Divindade</th><th>Significado / Propósito</th></tr></thead>
+    <tbody>
+      <tr><td>Om Namah Shivaya</td><td>Shiva</td><td>"Reverência ao Shiva" — o mantra das cinco sílabas (Panchakshara), cada sílaba correspondendo a um dos cinco elementos. Purifica karma e dissolve o ego.</td></tr>
+      <tr><td>Om Namo Narayanaya</td><td>Vishnu</td><td>"Reverência ao Narayana" — o mantra de oito sílabas de Vishnu. Gera proteção, devoção e a graça de Vishnu.</td></tr>
+      <tr><td>Hare Krishna Hare Krishna / Krishna Krishna Hare Hare / Hare Rama Hare Rama / Rama Rama Hare Hare</td><td>Vishnu (Krishna/Rama)</td><td>O Mahamantra ("grande mantra") — especialmente eficaz no Kali Yuga segundo o Kali-Santarana Upanishad. Gera amor divino e purificação.</td></tr>
+      <tr><td>Om Shri Gam Ganapataye Namaha</td><td>Ganesha</td><td>Invoca Ganesha para remover obstáculos antes de qualquer empreendimento. Recitado no início de rituais, viagens e projetos.</td></tr>
+      <tr><td>Gayatri Mantra</td><td>Surya / Savitri</td><td>O mantra mais sagrado dos Vedas (Rigveda 3.62.10) — uma oração ao sol divino pedindo iluminação da mente. Recitado por brâmanes ao amanhecer.</td></tr>
+      <tr><td>Om Mani Padme Hum</td><td>Avalokiteshvara (Budismo)</td><td>"A joia no lótus" — o mantra budista mais famoso, mas com raízes no tantrismo hindu. Cada sílaba purifica um dos seis reinos de existência.</td></tr>
+      <tr><td>So'ham</td><td>Atman</td><td>"Eu sou Aquilo" — o mantra da identidade. O som da respiração: "So" na inspiração, "Ham" na expiração. Cada respiração confirma a identidade Atman-Brahman.</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<div class="div-om">ॐ · ॐ · ॐ</div>
+
+<!-- ═══════════ CAP 7: CORRELAÇÕES ═══════════ -->
+<section id="cabala" class="chapter">
+  <div class="ch-eye">Capítulo VII &nbsp;·&nbsp; Correlações</div>
+  <h2>Hindu × Cabala — <em>Dois Mapas</em> do Mesmo Território</h2>
+  <p class="ch-intro">As correlações entre o hinduísmo e a Cabala judaica são tão profundas e tão sistemáticas que não podem ser coincidência. Algumas refletem transmissão cultural real (especialmente via Alexandria helenística e as rotas comerciais da Pérsia); outras parecem convergências independentes para as mesmas verdades espirituais universais.</p>
+
+  <div class="corr-panel">
+    <p class="corr-title">Grande Tabela de Correlações</p>
+    <span class="corr-sub">Hinduísmo e Cabala — correspondências sistemáticas</span>
+
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Nirguna Brahman</h4><p>O Absoluto sem atributos. "Neti, neti." Anterior a toda manifestação. Sat-Chit-Ananda.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Ain Soph Aur</h4><p>O Infinito Sem Limite. Antes de Keter. Nenhum atributo pode ser afirmado. A luz sem fim.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Maya — Ilusão Cósmica</h4><p>A força que faz o Uno parecer múltiplo. O véu que obscurece Brahman. Não falsa, mas temporária.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Tzimtzum + Kelipot</h4><p>A contração de Deus que cria espaço para o mundo; as "cascas" que obscurecem a luz. O véu progressivo dos quatro mundos.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Trimurti — Brahma / Vishnu / Shiva</h4><p>Criação / Preservação / Dissolução — três funções do Absoluto.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Triângulo Superior — Keter / Chokhmah / Binah</h4><p>Vontade / Sabedoria criativa / Entendimento limitador — o triângulo supremo da Árvore da Vida.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Shakti — Energia Feminina Divina</h4><p>A força ativa do cosmos. Sem Shakti, Shiva é inerte. Parvati, Durga, Kali, Lakshmi, Saraswati.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Shekinah — Presença Divina</h4><p>O aspecto feminino de Deus. A presença que habita o mundo. Malkhut. Foi ao exílio com Israel. O Shabat é sua presença renovada.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Chakras — 7 Centros de Energia</h4><p>Do Muladhara (raiz/terra) ao Sahasrara (coroa/espírito). A Kundalini sobe como serpente.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Sephiroth — 10 Centros de Emanação</h4><p>De Malkhut (reino/terra) a Keter (coroa/espírito). A Luz divina desce; a consciência sobe.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Atman = Brahman</h4><p>"Tat tvam asi" — Tu és Aquilo. O eu individual é idêntico ao Absoluto. Reconhecer isso é Moksha.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Nitzotz — A Centelha Divina</h4><p>Cada alma é uma centelha do Divino exilada na matéria. O retorno ao Divino (Teshuvah, Tikkun) é reconhecer e reintegrar esta centelha à fonte.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Karma e Samsara</h4><p>Ciclo de ação-consequência-reencarnação. Purificação progressiva ao longo de múltiplas vidas.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Gilgul Neshamot</h4><p>Ciclo das almas — reencarnação para completar o Tikkun (reparação). O Arizal mapeou em detalhe as relações entre almas e vidas passadas.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Ida / Pingala / Sushumna</h4><p>Três nadis (canais de energia): lunar (esquerdo), solar (direito), central (espiritual). O caduceu.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Três Pilares da Árvore da Vida</h4><p>Pilar Esquerdo (Rigor, feminino, Binah), Pilar Direito (Misericórdia, masculino, Chokhmah), Pilar Central (Equilíbrio, Keter-Tiferet-Malkhut).</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>Dashavatara — Os 10 Avatares</h4><p>Dez descidas de Vishnu para restaurar o Dharma. Do peixe ao Kalki — uma narrativa de evolução e salvação.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Dez Sephiroth — Dez Emanações</h4><p>Dez "descidas" da Luz divina do Ain Soph até Malkhut — uma cascata de criação que resulta no mundo material. O inverso da subida mística de Malkhut a Keter.</p></div>
+    </div>
+    <div class="corr-row">
+      <div class="corr-side corr-hindu"><span class="corr-label">Hindu</span><h4>OM — O Som Primordial</h4><p>O mantra do cosmos — contém todos os sons, todos os estados de consciência, toda a realidade. O Big Bang como evento sonoro.</p></div>
+      <div class="corr-arrow">⟷</div>
+      <div class="corr-side corr-kab"><span class="corr-label">Cabala</span><h4>Aleph — A Letra Silenciosa</h4><p>A primeira letra do alfabeto hebraico — sem som, contendo todos os sons. O Deus que fala com voz silenciosa. O Ein Soph manifestando-se como linguagem criadora.</p></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════ TEXTOS SAGRADOS ═══════════ -->
+<section id="textos" class="chapter">
+  <div class="ch-eye">Capítulo VII &nbsp;·&nbsp; Fontes</div>
+  <h2>Os Textos Sagrados — <em>A Biblioteca do Cosmos</em></h2>
+  <p class="ch-intro">O corpus literário sagrado do hinduísmo é o maior de qualquer tradição religiosa — incluindo os quatro Vedas, 108 Upanishads, 18 Puranas principais, dois grandes épicos e dezenas de textos tântricos e filosóficos.</p>
+
+  <table class="tbl">
+    <thead><tr><th>Texto</th><th>Período</th><th>O que contém</th><th>Por que importa</th></tr></thead>
+    <tbody>
+      <tr><td>Rigveda</td><td>c. 1500–1200 a.C.</td><td>1028 hinos ao deuses védicos (Indra, Agni, Varuna, Soma)</td><td>O texto religioso mais antigo em uso contínuo no mundo</td></tr>
+      <tr><td>Upanishads (108)</td><td>c. 800–200 a.C.</td><td>Filosofia — Brahman, Atman, Karma, Moksha, Samsara</td><td>A base filosófica de todo o hinduísmo posterior</td></tr>
+      <tr><td>Bhagavad Gita</td><td>c. 400 a.C.–200 d.C.</td><td>700 versos do diálogo Krishna-Arjuna sobre dharma, karma, yoga</td><td>O texto filosófico-espiritual mais lido da Índia</td></tr>
+      <tr><td>Ramayana (Valmiki)</td><td>c. 700–400 a.C.</td><td>24.000 versos sobre Rama, Sita, Lakshmana, Hanuman, Ravana</td><td>O modelo do dharma pessoal, familiar e social</td></tr>
+      <tr><td>Mahabharata (Vyasa)</td><td>c. 400 a.C.–400 d.C.</td><td>200.000 versos — o maior poema épico do mundo</td><td>Inclui o Gita; enciclopédia da cultura indiana</td></tr>
+      <tr><td>Bhagavata Purana</td><td>c. séc. IX–X d.C.</td><td>18.000 versos sobre os avatares de Vishnu, especialmente Krishna</td><td>A base da tradição Bhakti e do movimento Vaishnava</td></tr>
+      <tr><td>Shiva Purana</td><td>c. sécs. VII–X d.C.</td><td>Mitos de Shiva, Parvati, Ganesha, Kartikeya</td><td>A fonte principal da mitologia Shaiva</td></tr>
+      <tr><td>Devi Mahatmya</td><td>c. séc. V–VI d.C.</td><td>700 versos sobre a Deusa Durga derrotando demônios</td><td>O texto central do Shaktismo — o culto da Deusa</td></tr>
+      <tr><td>Yoga Sutras (Patanjali)</td><td>c. 400 a.C.–400 d.C.</td><td>196 aforismos definindo o yoga e o caminho de oito membros</td><td>A base teórica de todo yoga filosófico</td></tr>
+      <tr><td>Tantras</td><td>c. sécs. V–XII d.C.</td><td>Textos sobre energia (Shakti), rituais, yoga tântrico, mantras</td><td>O fundamento das práticas energéticas e do Kashmiri Shaivismo</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+</div><!-- .page -->
+
+<footer>
+  <p>ॐ तत् सत् &nbsp;·&nbsp; Hinduísmo — Do Zero ao Absoluto &nbsp;·&nbsp; Sanatana Dharma &nbsp;·&nbsp; ॐ तत् सत्</p>
+</footer>
+</main>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  document.getElementById('prog').style.width =
+    (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+});
+
+// Active nav
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.sb-link[href="#' + e.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+document.querySelectorAll('[id]').forEach(s => observer.observe(s));
+
+// Mobile
+document.getElementById('main').addEventListener('click', () =>
+  document.getElementById('sidebar').classList.remove('open'));
+</script>
+</body>
+</html>

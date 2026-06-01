@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARQUIVO CÓSMICO — VOL. II: Atlas das Raças Extraterrestres</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap");
+:root{--void:#020408;--deep:#060d14;--gold:#c8973a;--gold-light:#e8b84b;--gold-pale:#f5d98a;--cyan:#00e5ff;--cyan-dim:#00b8cc;--teal:#00bfa5;--magenta:#cc44aa;--green:#00ff88;--green-dim:#00994d;--red:#ff4444;--purple:#8844ff;--orange:#ff8800;--silver:#b0c4c8;--silver-dim:#6a8890;--white-soft:#ddeef2;--text:#cce8ee;--text-dim:#7a9fa8;--border:rgba(0,229,255,0.12);--border-gold:rgba(200,151,58,0.25);--glow-gold:0 0 20px rgba(200,151,58,0.35);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--void);color:var(--text);font-family:"EB Garamond",Georgia,serif;font-size:17px;line-height:1.85;overflow-x:hidden;}
+#starfield{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+#starfield canvas{position:absolute;top:0;left:0;width:100%;height:100%;}
+#sidebar{position:fixed;left:0;top:0;width:280px;height:100vh;background:linear-gradient(180deg,#060d14 0%,#030810 100%);border-right:1px solid var(--border);overflow-y:auto;z-index:100;padding:0 0 40px;}
+#sidebar::-webkit-scrollbar{width:4px;}#sidebar::-webkit-scrollbar-thumb{background:var(--cyan-dim);}
+#main{margin-left:280px;position:relative;z-index:1;}
+.sidebar-header{padding:26px 20px 18px;border-bottom:1px solid var(--border);}
+.sidebar-vol{font-family:"Cinzel",serif;font-size:9px;letter-spacing:4px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:5px;}
+.sidebar-title{font-family:"Cinzel Decorative",serif;font-size:12px;color:var(--gold);line-height:1.4;margin-bottom:5px;}
+.sidebar-subtitle{font-size:10px;color:var(--text-dim);font-style:italic;}
+.nav-section{padding:14px 0 4px 20px;}
+.nav-section-label{font-family:"Cinzel",serif;font-size:8px;letter-spacing:3px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:6px;opacity:0.7;}
+.nav-item{display:block;padding:6px 20px 6px 0;color:var(--text-dim);text-decoration:none;font-size:12px;transition:all 0.2s;border-left:2px solid transparent;margin-left:-20px;padding-left:20px;}
+.nav-item:hover{color:var(--cyan);border-left-color:var(--cyan);background:rgba(0,229,255,0.04);padding-left:24px;}
+.nav-item.active{color:var(--gold);border-left-color:var(--gold);}
+.vol-links{padding:16px 20px;border-top:1px solid var(--border);}
+.vol-links a{display:block;padding:5px 8px;margin-bottom:3px;background:rgba(0,229,255,0.04);border:1px solid var(--border);color:var(--text-dim);text-decoration:none;font-family:"Cinzel",serif;font-size:9px;letter-spacing:2px;transition:all 0.2s;border-radius:2px;}
+.vol-links a:hover{color:var(--cyan);border-color:var(--cyan);}
+.vol-links a.current{color:var(--gold);border-color:var(--gold-light);background:rgba(200,151,58,0.06);}
+.content{max-width:860px;margin:0 auto;padding:60px 50px 100px;}
+.hero{text-align:center;padding:80px 40px 60px;background:linear-gradient(180deg,rgba(0,255,136,0.02) 0%,transparent 100%);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero-kicker{font-family:"Cinzel",serif;font-size:10px;letter-spacing:6px;color:var(--teal);text-transform:uppercase;margin-bottom:18px;}
+.hero-title{font-family:"Cinzel Decorative",serif;font-size:clamp(26px,4.5vw,48px);color:var(--gold);line-height:1.15;margin-bottom:14px;text-shadow:var(--glow-gold);}
+.hero-subtitle{font-family:"Cinzel",serif;font-size:clamp(12px,1.8vw,16px);color:var(--silver);letter-spacing:2px;margin-bottom:24px;}
+.section-header{margin:70px 0 38px;padding-bottom:18px;border-bottom:1px solid var(--border-gold);position:relative;}
+.section-header::before{content:"";position:absolute;bottom:-1px;left:0;width:80px;height:1px;background:var(--gold);}
+.section-kicker{font-family:"Cinzel",serif;font-size:9px;letter-spacing:5px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-family:"Cinzel Decorative",serif;font-size:clamp(18px,2.8vw,30px);color:var(--gold-light);line-height:1.2;}
+.subsection{margin:45px 0;}
+.subsection-title{font-family:"Cinzel",serif;font-size:clamp(14px,2vw,19px);color:var(--cyan);margin-bottom:16px;padding-left:14px;border-left:3px solid var(--cyan);}
+h4{font-family:"Cinzel",serif;font-size:13px;color:var(--gold-pale);margin:26px 0 10px;letter-spacing:1px;}
+p{margin-bottom:16px;color:var(--text);}
+p.lead{font-size:18px;color:var(--white-soft);font-style:italic;margin-bottom:22px;}
+strong{color:var(--gold-pale);font-weight:600;}
+em{color:var(--silver);}
+.race-card{margin:36px 0;border:1px solid var(--border);background:linear-gradient(135deg,rgba(6,13,20,0.98) 0%,rgba(8,18,28,0.98) 100%);position:relative;overflow:hidden;}
+.race-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+.race-card.reptilian::before{background:linear-gradient(90deg,#ff4444,#ff8800);}
+.race-card.gray::before{background:linear-gradient(90deg,#6a8890,#00b8cc);}
+.race-card.nordic::before{background:linear-gradient(90deg,#00e5ff,#c8973a);}
+.race-card.pleiadian::before{background:linear-gradient(90deg,#8844ff,#00e5ff);}
+.race-card.arcturian::before{background:linear-gradient(90deg,#00bfa5,#00ff88);}
+.race-card.sirian::before{background:linear-gradient(90deg,#00e5ff,#e8b84b);}
+.race-card.anunnaki::before{background:linear-gradient(90deg,#c8973a,#ff8800);}
+.race-card.draconian::before{background:linear-gradient(90deg,#ff4444,#cc44aa);}
+.race-card.mantis::before{background:linear-gradient(90deg,#00994d,#00bfa5);}
+.race-card.hybrid::before{background:linear-gradient(90deg,#cc44aa,#8844ff);}
+.race-card.interdim::before{background:linear-gradient(90deg,#8844ff,#00e5ff);}
+.race-card.watcher::before{background:linear-gradient(90deg,#c8973a,#cc44aa);}
+.race-header{display:grid;grid-template-columns:80px 1fr;gap:0;border-bottom:1px solid var(--border);}
+.race-sigil{display:flex;align-items:center;justify-content:center;font-size:40px;padding:20px 10px;border-right:1px solid var(--border);background:rgba(0,0,0,0.3);}
+.race-header-text{padding:18px 22px;}
+.race-designation{font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;color:var(--text-dim);text-transform:uppercase;margin-bottom:4px;}
+.race-name{font-family:"Cinzel Decorative",serif;font-size:clamp(16px,2.2vw,24px);margin-bottom:6px;}
+.race-card.reptilian .race-name,.race-card.draconian .race-name{color:#ff4444;}
+.race-card.gray .race-name{color:var(--silver);}
+.race-card.nordic .race-name{color:var(--cyan);}
+.race-card.pleiadian .race-name{color:var(--purple);}
+.race-card.arcturian .race-name{color:var(--teal);}
+.race-card.sirian .race-name{color:var(--cyan-dim);}
+.race-card.anunnaki .race-name,.race-card.watcher .race-name{color:var(--gold);}
+.race-card.mantis .race-name{color:var(--green);}
+.race-card.hybrid .race-name{color:var(--magenta);}
+.race-card.interdim .race-name{color:var(--purple);}
+.race-alias{font-style:italic;color:var(--text-dim);font-size:13px;}
+.race-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+.race-stat{padding:11px 15px;background:var(--deep);}
+.race-stat-label{font-family:"Cinzel",serif;font-size:8px;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:3px;}
+.race-stat-value{font-size:13px;color:var(--text);}
+.race-body{padding:22px;}
+.race-section{margin-bottom:20px;}
+.race-section-title{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--cyan-dim);text-transform:uppercase;margin-bottom:7px;padding-bottom:3px;border-bottom:1px solid rgba(0,229,255,0.07);}
+.race-text{font-size:15px;color:var(--text-dim);line-height:1.8;}
+.callout{margin:24px 0;padding:18px 22px;border-radius:2px;position:relative;font-size:14.5px;}
+.callout::before{content:attr(data-label);position:absolute;top:-11px;left:16px;font-family:"Cinzel",serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;}
+.callout.esoteric{background:rgba(0,191,165,0.06);border:1px solid rgba(0,191,165,0.2);border-left:3px solid var(--teal);}
+.callout.esoteric::before{background:var(--void);color:var(--teal);border:1px solid rgba(0,191,165,0.3);}
+.callout.ufologic{background:rgba(0,229,255,0.05);border:1px solid rgba(0,229,255,0.15);border-left:3px solid var(--cyan);}
+.callout.ufologic::before{background:var(--void);color:var(--cyan);border:1px solid rgba(0,229,255,0.3);}
+.callout.warning{background:rgba(200,151,58,0.06);border:1px solid rgba(200,151,58,0.2);border-left:3px solid var(--gold);}
+.callout.warning::before{background:var(--void);color:var(--gold);border:1px solid rgba(200,151,58,0.3);}
+.callout.occult{background:rgba(204,68,170,0.05);border:1px solid rgba(204,68,170,0.18);border-left:3px solid var(--magenta);}
+.callout.occult::before{background:var(--void);color:var(--magenta);border:1px solid rgba(204,68,170,0.3);}
+.callout.danger{background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.18);border-left:3px solid var(--red);}
+.callout.danger::before{background:var(--void);color:var(--red);border:1px solid rgba(255,68,68,0.3);}
+.table-wrap{overflow-x:auto;margin:24px 0;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+thead tr{background:rgba(0,229,255,0.07);border-bottom:1px solid var(--border);}
+thead th{font-family:"Cinzel",serif;font-size:9px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;padding:11px 13px;text-align:left;}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;}
+tbody tr:hover{background:rgba(0,229,255,0.03);}
+tbody td{padding:10px 13px;color:var(--text);vertical-align:top;}
+tbody td:first-child{color:var(--gold-pale);font-family:"Cinzel",serif;font-size:12px;}
+.expand-item{border:1px solid var(--border);margin:8px 0;border-radius:2px;overflow:hidden;}
+.expand-header{padding:12px 18px;cursor:pointer;background:rgba(0,229,255,0.03);display:flex;justify-content:space-between;align-items:center;font-family:"Cinzel",serif;font-size:12px;color:var(--silver);user-select:none;transition:all 0.2s;}
+.expand-header:hover{background:rgba(0,229,255,0.07);color:var(--cyan);}
+.expand-header.open .arrow{transform:rotate(180deg);}
+.arrow{transition:transform 0.3s;font-size:10px;color:var(--cyan-dim);}
+.expand-body{padding:0 18px;max-height:0;overflow:hidden;transition:max-height 0.5s ease,padding 0.3s;font-size:14.5px;color:var(--text-dim);}
+.expand-body.open{max-height:3000px;padding:18px;}
+blockquote{margin:22px 0;padding:16px 20px 16px 26px;background:rgba(200,151,58,0.04);border-left:3px solid var(--gold);font-style:italic;color:var(--silver);font-size:15px;position:relative;}
+blockquote::before{content:'"';position:absolute;left:8px;top:8px;font-size:34px;color:var(--gold);opacity:0.3;line-height:1;}
+blockquote cite{display:block;margin-top:8px;font-family:"Cinzel",serif;font-size:9px;color:var(--text-dim);font-style:normal;letter-spacing:2px;}
+.divider{margin:48px 0;display:flex;align-items:center;gap:16px;opacity:0.35;}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--cyan-dim),transparent);}
+.sigil-sep{text-align:center;margin:52px 0;font-size:22px;opacity:0.18;letter-spacing:8px;}
+.tag{display:inline-block;padding:2px 7px;margin:2px;font-family:"Cinzel",serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;border-radius:1px;}
+.tag-blue{background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.25);color:var(--cyan);}
+.tag-gold{background:rgba(200,151,58,0.1);border:1px solid rgba(200,151,58,0.25);color:var(--gold);}
+.tag-red{background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.25);color:var(--red);}
+.tag-green{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.25);color:var(--green);}
+.tag-purple{background:rgba(136,68,255,0.1);border:1px solid rgba(136,68,255,0.25);color:var(--purple);}
+.tag-mag{background:rgba(204,68,170,0.1);border:1px solid rgba(204,68,170,0.25);color:var(--magenta);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:26px 0;}
+.card{background:linear-gradient(135deg,rgba(6,13,20,1) 0%,rgba(10,21,32,1) 100%);border:1px solid var(--border);padding:20px;border-radius:2px;transition:all 0.3s;}
+.card:hover{border-color:rgba(0,229,255,0.3);transform:translateY(-2px);}
+.card-title{font-family:"Cinzel",serif;font-size:12.5px;color:var(--gold-pale);margin-bottom:8px;}
+.card-body{font-size:13px;color:var(--text-dim);line-height:1.7;}
+.section-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);font-family:"Cinzel",serif;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center;}
+.tl-item{position:relative;margin-bottom:30px;padding-left:30px;}
+.tl-item::before{content:"";position:absolute;left:5px;top:0;bottom:-30px;width:1px;background:rgba(0,229,255,0.2);}
+.tl-item:last-child::before{display:none;}
+.tl-dot{position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;background:var(--void);border:2px solid var(--cyan);}
+.tl-era{font-family:"Cinzel",serif;font-size:10px;letter-spacing:2px;color:var(--cyan-dim);margin-bottom:3px;}
+.tl-title{font-family:"Cinzel Decorative",serif;font-size:15px;color:var(--gold);margin-bottom:6px;}
+.tl-body{font-size:14.5px;color:var(--text-dim);}
+@media(max-width:900px){#sidebar{transform:translateX(-100%);transition:transform 0.3s;}#sidebar.open{transform:translateX(0);}#main{margin-left:0;}.content{padding:40px 20px 80px;}.menu-toggle{display:flex!important;}}
+.menu-toggle{display:none;position:fixed;top:16px;left:16px;z-index:200;width:44px;height:44px;background:var(--deep);border:1px solid var(--border);align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:5px;}
+.menu-toggle span{width:22px;height:1px;background:var(--cyan);display:block;}
+</style>
+</head>
+<body>
+<div id="starfield"><canvas id="starsCanvas"></canvas></div>
+<button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-vol">▸ ARQUIVO CÓSMICO — VOLUME II</div>
+    <div class="sidebar-title">Atlas das Raças Extraterrestres</div>
+    <div class="sidebar-subtitle">Enciclopédia das Inteligências Não-Humanas</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Introdução</div>
+    <a href="#intro" class="nav-item">▸ Hierarquias Cósmicas</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Raças Densas</div>
+    <a href="#reptilianos" class="nav-item">▸ Reptilianos</a>
+    <a href="#controle" class="nav-item">▸ Reptilianos e Controle</a>
+    <a href="#draconianos" class="nav-item">▸ Draconianos</a>
+    <a href="#grays" class="nav-item">▸ Grays / Zetas</a>
+    <a href="#hibridos-gen" class="nav-item">▸ Grays, Híbridos e Genética</a>
+    <a href="#anunnaki" class="nav-item">▸ Anunnaki</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Raças Elevadas</div>
+    <a href="#nordicos" class="nav-item">▸ Nórdicos</a>
+    <a href="#pleiadianos" class="nav-item">▸ Pleiadianos</a>
+    <a href="#arcturianos" class="nav-item">▸ Arcturianos</a>
+    <a href="#siriusianos" class="nav-item">▸ Siriusianos</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Especiais</div>
+    <a href="#mantis" class="nav-item">▸ Mantis / Insectoides</a>
+    <a href="#hibridos" class="nav-item">▸ Híbridos</a>
+    <a href="#interdim" class="nav-item">▸ Interdimensionais e DMT</a>
+    <a href="#watchers" class="nav-item">▸ Watchers / Vigias</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Sínteses</div>
+    <a href="#comp-total" class="nav-item">▸ Tabela Comparativa Total</a>
+    <a href="#leitura-esoterica" class="nav-item">▸ Leitura Esotérica das Raças</a>
+    <a href="#jung-et" class="nav-item">▸ Jung, Gnose e ETs</a>
+    <a href="#como-estudar" class="nav-item">▸ Estudar Sem Fanatismo</a>
+  </div>
+  <div class="vol-links">
+    <a href="ufo-esoterico-vol1.html">VOL. I — Eras e Civilizações</a>
+    <a href="ufo-esoterico-vol2.html" class="current">VOL. II — Raças Extraterrestres</a>
+    <a href="ufo-esoterico-vol3.html">VOL. III — UAPs e Documentos</a>
+    <a href="ufo-esoterico-vol4.html">VOL. IV — Guerras e Futuro</a>
+  </div>
+</nav>
+<main id="main">
+  <div class="hero" id="intro">
+    <div class="hero-kicker">✦ Arquivo Cósmico ✦ Volume II ✦ Atlas das Inteligências Não-Humanas</div>
+    <h1 class="hero-title">Atlas das Raças<br>Extraterrestres</h1>
+    <div class="hero-subtitle">Da Ufologia ao Esoterismo — Compêndio Total</div>
+    <div style="font-size:44px;opacity:0.12;margin:18px 0;letter-spacing:10px;">&#128065; &#9672; &#127756; &#9672; &#128065;</div>
+    <p style="max-width:680px;margin:0 auto;color:var(--text-dim);font-style:italic;font-size:15px;line-height:1.9;">Este volume cataloga as principais raças e entidades não-humanas registradas na ufologia, tradições esotéricas, canalizações espirituais e relatos de experienciadores. Cada perfil apresenta aparência, origem alegada, papel cósmico, relação com a humanidade, tecnologias atribuídas e leituras esotéricas. Este é um atlas de inteligências, não um manual de certezas.</p>
+    <div style="margin-top:20px;">
+      <span class="tag tag-blue">Hipótese Ufológica</span>
+      <span class="tag tag-gold">Tradição Ocultista</span>
+      <span class="tag tag-purple">Canalização</span>
+      <span class="tag tag-green">Interpretação Simbólica</span>
+    </div>
+  </div>
+  <div class="content">
+    <section class="subsection">
+      <div class="section-header">
+        <div class="section-kicker">Taxonomia Cósmica</div>
+        <h2 class="section-title">Hierarquias e Panorama das Raças</h2>
+      </div>
+      <p class="lead">O esoterismo ufológico apresenta uma hierarquia estruturada de consciência — com raças operando em diferentes densidades vibracionais, desde o físico-denso até o quase-espiritual, com agendas que vão da dominação total à libertação universal.</p>
+      <div class="callout warning" data-label="Nota Epistêmica">
+        <p>Toda a taxonomia apresentada neste volume é uma <strong>síntese de correntes ufológicas e esotéricas</strong>. Não existe consenso único. A divisão positivo/negativo/neutro é especialmente controversa — muitas tradições esotéricas avançadas a consideram uma simplificação. Cada raça opera dentro de sua perspectiva evolucionária própria. O estudante maduro mantém múltiplas interpretações simultaneamente.</p>
+      </div>
+    </section>
+    <div class="sigil-sep">&#128013; &#9672; &#128125; &#9672; &#11088;</div>
+
+    <!-- REPTILIANOS -->
+    <section id="reptilianos">
+      <div class="section-header">
+        <div class="section-kicker">Raça I — Densidades Inferiores</div>
+        <h2 class="section-title">Os Reptilianos</h2>
+      </div>
+      <div class="race-card reptilian">
+        <div class="race-header">
+          <div class="race-sigil">&#128013;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Reptilianos</div>
+            <div class="race-alias">Lacertanos · Dinoides · Sauroides · Serpentes Cósmicas</div>
+            <div style="margin-top:8px;"><span class="tag tag-red">NEGATIVO/MISTO</span><span class="tag tag-gold">FÍSICO/HÍBRIDO</span><span class="tag tag-blue">HIPÓTESE UFOLÓGICA</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem Alegada</div><div class="race-stat-value">Constelação de Draco</div></div>
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">1,8m — 4,5m (elites)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Dimensão</div><div class="race-stat-value">3D físico / 4D astral</div></div>
+          <div class="race-stat"><div class="race-stat-label">Tecnologia</div><div class="race-stat-value">Milênios à frente</div></div>
+          <div class="race-stat"><div class="race-stat-label">Alimentação Alegada</div><div class="race-stat-value">Energia emocional / física</div></div>
+          <div class="race-stat"><div class="race-stat-label">Presença na Terra</div><div class="race-stat-value">300.000+ anos (hipótese)</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Aparência e Morfologia</div>
+            <div class="race-text">Humanoides bípedes com características répteis pronunciadas: pele escamosa em tons de verde-oliva, marrom escuro ou cinza-esverdeado; olhos com pupila vertical; cristas ao longo do crânio; quatro dedos com garras retrácteis. Nas formas elite — Draconianos — atingem 2 a 4,5 metros, frequentemente com asas vestigiais. Capacidade de projeção holográfica de aparência humana ou de alteração vibracional multidimensional segundo certos relatos. O olhar é descrito como frio, calculista, sem as modulações emocionais presentes nos humanos.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Origem e História Cósmica</div>
+            <div class="race-text">A hipótese ufológica situa a origem em Alpha Draconis (Thuban), polo norte estelar há ~4.000 anos. Após exaurirem seu sistema natal, tornaram-se colonizadores galácticos com presença na Terra há centenas de milhares de anos. Na versão teosófica-esotérica, são expressões do princípio Saturnino — limite, forma, sobrevivência sem espiritualidade. Na versão gnóstica, são os Archons — criadores do mundo material que aprisionam centelhas divinas na matéria densa.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Relação com a Humanidade</div>
+            <div class="race-text">A teoria reptiliana afirma que manipularam geneticamente hominídeos para criar o Homo sapiens como raça servil. Os humanos foram projetados para manter frequência emocional baixa — medo, raiva, divisão tribal — porque esta energia, chamada "loosh" em certas canalizações, é o principal alimento energético reptiliano. Linhagens de elite humana seriam literalmente híbridas, portadoras de DNA reptiliano. Esta é a versão mais radical, defendida por David Icke, e deve ser entendida como hipótese não comprovada.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Tecnologias Atribuídas</div>
+            <div class="race-text">Arsenal descrito: naves de guerra colossais; manipulação gravitacional; camuflagem holográfica; controle mental eletrônico e psiônico; bases subterrâneas em múltiplos pontos terrestres (Dulce segundo alegações não documentadas); e tecnologia de frequência — sistemas que mantêm populações em estados específicos de consciência através de ondas eletromagnéticas ambientais.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Leitura Esotérica Simbólica</div>
+            <div class="race-text">O hermetismo e a psicologia junguiana oferecem leitura alternativa: os Reptilianos como símbolo do <strong>complexo de sobrevivência</strong> — o "cérebro reptiliano" da espécie, orientado para controle, território, hierarquia e medo. A "agenda reptiliana" seria metáfora poderosa para padrões de consciência que mantêm a humanidade em baixa vibração. Entidades astrais negativas que se alimentam de medo e Reptilianos físicos podem ser a mesma fenomenologia interpretada em diferentes camadas de realidade.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="controle" class="subsection">
+      <h3 class="subsection-title">&#9649; Reptilianos e o Controle da Humanidade</h3>
+      <p class="lead">A teoria do controle reptiliano merece análise em suas múltiplas camadas — do simbólico-esotérico ao conspirativo-literal.</p>
+      <h4>David Icke e a Grande Conspiração</h4>
+      <p><strong>David Icke</strong> (nascido em 1952), em <em>The Biggest Secret</em> (1998) e obras subsequentes, propõe que a humanidade está sob controle de "Reptiloides Sangue Azul" — entidades que se casaram entre si por milênios para manter DNA reptiliano ativo, controlando nações, sistemas financeiros e corporações. Esta é uma <strong>hipótese não comprovada</strong> que deve ser examinada com discernimento rigoroso.</p>
+      <div class="callout danger" data-label="Nota Crítica Importante">
+        <p>As teorias de Icke foram criticadas por apresentar estruturas que ecoam conspirações históricas de perseguição mesmo sem mencionar grupos étnicos explicitamente. Esta crítica é séria. O estudante maduro examina os elementos arquetípicos dessas teorias sem adotar aplicações que apontem grupos humanos como responsáveis por males planetários.</p>
+      </div>
+      <h4>Mecanismos de Controle por Frequência</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Mecanismo</th><th>Versão Reptiliana</th><th>Paralelo Psicológico/Social</th><th>Paralelo Esotérico</th></tr></thead>
+          <tbody>
+            <tr><td>Medo constante</td><td>Alimento energético primário</td><td>Sistema nervoso simpático hiperativado</td><td>Aprisionamento no chakra base</td></tr>
+            <tr><td>Divisão tribal</td><td>Identidades conflitantes para impedir unidade</td><td>Tribalismo político</td><td>Ilusão de Maya; separatividade</td></tr>
+            <tr><td>Supressão da intuição</td><td>Pineal calcificada por fluoreto</td><td>Educação que privilegia racional</td><td>Bloqueio do terceiro olho</td></tr>
+            <tr><td>Consumismo</td><td>Energia desperdiçada em desejos materiais</td><td>Economia da atenção</td><td>Apego material como obstáculo</td></tr>
+            <tr><td>Religião controlada</td><td>Religiões criadas como sistemas de controle</td><td>Institucionalização do sagrado como poder</td><td>Exotérico vs. esotérico</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="divider"><span>&#128009;</span></div>
+
+    <section id="draconianos">
+      <div class="section-header">
+        <div class="section-kicker">Raça II — Elite Reptiliana</div>
+        <h2 class="section-title">Os Draconianos</h2>
+      </div>
+      <div class="race-card draconian">
+        <div class="race-header">
+          <div class="race-sigil">&#128009;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Draconianos</div>
+            <div class="race-alias">Draco Reptilianos · Dragões Cósmicos · Imperadores Galácticos</div>
+            <div style="margin-top:8px;"><span class="tag tag-red">NEGATIVO EXTREMO</span><span class="tag tag-gold">ELITE REPTILIANA</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem</div><div class="race-stat-value">Alpha Draconis / Thuban</div></div>
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">2,5m — 4,5m</div></div>
+          <div class="race-stat"><div class="race-stat-label">Características</div><div class="race-stat-value">Asas, cristas, escamas claras</div></div>
+          <div class="race-stat"><div class="race-stat-label">Hierarquia</div><div class="race-stat-value">Topo do Império Reptiliano</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Perfil e Papel Cósmico</div>
+            <div class="race-text">Os Draconianos representam a "corte branca" da hierarquia reptiliana — mais antigos, poderosos e temidos. Distinguem-se por escamas de cor clara, asas funcionais, maior estatura e antiguidade civilizacional. Inteligência extraordinária combinada com total ausência de empatia. São os comandantes supremos nas hierarquias galácticas negativas. O esoterismo hermético vê nos Draconianos a expressão mais densa do arquétipo do Dragão — poder primordial antes de ser integrado pela consciência. A mitologia do herói matando o dragão — São Jorge, Perseu, Sigfrido — é interpretada como a jornada da consciência humana derrotando seu aspecto sombra de poder bruto. A ufologia literaliza esta narrativa: os mitos do dragão seriam memórias reais de encontros com Draconianos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="sigil-sep">&#128125; &#9672; &#129516; &#9672; &#128125;</div>
+
+    <section id="grays">
+      <div class="section-header">
+        <div class="section-kicker">Raça III — Os Mais Conhecidos</div>
+        <h2 class="section-title">Os Grays — Zeta Reticulianos</h2>
+      </div>
+      <div class="race-card gray">
+        <div class="race-header">
+          <div class="race-sigil">&#128125;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Grays / Zeta Reticulianos</div>
+            <div class="race-alias">Pequenos Cinzas · EBEs · Zetas · Insectoids (var.)</div>
+            <div style="margin-top:8px;"><span class="tag tag-blue">NEUTRO/NEGATIVO</span><span class="tag tag-purple">MENTE COLMEIA</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem</div><div class="race-stat-value">Zeta Reticuli (hipótese)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">0,9m — 1,4m</div></div>
+          <div class="race-stat"><div class="race-stat-label">Pele</div><div class="race-stat-value">Cinza/Bege-pálido, fria</div></div>
+          <div class="race-stat"><div class="race-stat-label">Olhos</div><div class="race-stat-value">Grandes, negros, amendoados</div></div>
+          <div class="race-stat"><div class="race-stat-label">Comunicação</div><div class="race-stat-value">Exclusivamente telepática</div></div>
+          <div class="race-stat"><div class="race-stat-label">Consciência</div><div class="race-stat-value">Coletiva / Colmeia</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Aparência Detalhada</div>
+            <div class="race-text">A raça extraterrestre mais amplamente descrita em relatos de abdução. Cabeça desproporcional dominada por olhos enormes, completamente negros, sem pupila visível. Ausência de orelhas externas, nariz vestigial, boca finíssima. Pescoço fino, corpo magro, membros longos. Quatro dedos por mão. Pele fria ao toque, sem pelos. Alguns relatos descrevem odor acre associado à sua presença. Realizam procedimentos em estado de paralisia consciente nos abduzidos, com foco especial nos sistemas reprodutivos.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">A Mente Colmeia</div>
+            <div class="race-text">Cada indivíduo não é um ser autônomo, mas um nó em uma rede de consciência distribuída — o que explica a uniformidade comportamental e a ausência de expressão emocional individual. Para o esoterismo, esta mente coletiva representa um estágio evolutivo diferente do humano. A humanidade, com seu grau extremo de individuação e riqueza emocional, seria algo extraordinário no cosmos — e provavelmente o que os Grays mais anseiam recuperar via hibridização.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">A Crise Genética e o Programa de Abdução</div>
+            <div class="race-text">A hipótese mais aceita na ufologia é que os Grays enfrentam extinção por degradação genética acumulada. O programa de abdução seria um programa de salvação de espécie — coleta de material genético humano para criar híbridos. Esta hipótese originou-se nos relatos de Betty e Barney Hill (1961), foi amplificada por Whitley Strieber em <em>Communion</em> (1987) e investigada pelo Dr. John Mack, psiquiatra de Harvard que conduziu mais de 200 sessões com abduzidos, publicando <em>Abduction</em> (1994) — afirmando que os relatos eram fenomenologicamente reais para os experienciadores.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hibridos-gen" class="subsection">
+      <h3 class="subsection-title">&#9649; Grays, Híbridos e Engenharia Genética Cósmica</h3>
+      <p class="lead">O programa de hibridização é uma das narrativas mais perturbadoras e fascinantes da ufologia. Não é apenas sobre coleta de DNA — é sobre a criação deliberada de uma nova espécie.</p>
+      <h4>As Fases do Programa</h4>
+      <div style="margin:24px 0;">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-era">FASE 1 — COLETA</div><div class="tl-title">Extração de Material Genético</div><div class="tl-body">Abduzidos descrevem coleta de óvulos ou esperma, procedimentos em estado de paralisia consciente, marcas físicas e implantes metálicos detectáveis por raio-X. Budd Hopkins documentou centenas de casos com padrões consistentes.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="border-color:var(--magenta);"></div><div class="tl-era">FASE 2 — GESTAÇÃO PARCIAL</div><div class="tl-title">O Útero como Incubadora</div><div class="tl-body">Mulheres relatam descobrir-se grávidas após abdução e, semanas depois, não mais estarem. Hipótese: o embrião híbrido usa o ambiente hormonal humano para seu primeiro desenvolvimento, sendo depois transferido para incubadoras artificiais.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="border-color:var(--cyan);"></div><div class="tl-era">FASE 3 — APRESENTAÇÃO</div><div class="tl-title">As Crianças Híbridas</div><div class="tl-body">Em abduções posteriores, abduzidos relatam ser apresentados a crianças com características tanto humanas quanto Grays. São encorajados a interagir afetivamente com elas — uma "preparação para integração" segundo David Jacobs.</div></div>
+        <div class="tl-item"><div class="tl-dot" style="border-color:var(--gold);"></div><div class="tl-era">FASE 4 — INTEGRAÇÃO (HIPOTÉTICA)</div><div class="tl-title">Híbridos Entre Nós?</div><div class="tl-body">Abduzidos avançados relatam ser informados que híbridos de gerações avançadas já vivem entre humanos. David Jacobs é pessimista (vê como invasão); outros propõem que representam a próxima etapa evolutiva da humanidade.</div></div>
+      </div>
+      <div class="callout ufologic" data-label="Hipótese Ufológica">
+        <p><strong>Implantes:</strong> O Dr. Roger Leir realizou cirurgias para remover objetos metálicos de mais de 17 pacientes que relatavam abduções. Análises no New Mexico Tech revelaram, em alguns casos, composições isotópicas que diferem do padrão terrestre. Estes resultados permanecem controversos — não há consenso científico sobre seu significado.</p>
+      </div>
+      <h4>A Leitura Iniciática: Abdução como Iniciação</h4>
+      <p>O Dr. John Mack chegou a uma posição fascinante: as abduções não são simplesmente extração genética, mas processos de <strong>transformação de consciência</strong>. Abduzidos de longo prazo frequentemente reportam expansão de empatia, perda do medo da morte, preocupação ecológica intensa, e desenvolvimento de capacidades psíquicas. Para o esoterismo, estes efeitos são idênticos aos dos grandes ritos iniciáticos — os Mistérios de Elêusis, as iniciações xamânicas. A abdução Gray seria uma iniciação não-consensual — violenta em sua forma, potencialmente transformadora em seu efeito.</p>
+    </section>
+    <div class="divider"><span>&#11088;</span></div>
+
+    <section id="anunnaki">
+      <div class="section-header">
+        <div class="section-kicker">Raça IV — Os Antigos Criadores</div>
+        <h2 class="section-title">Os Anunnaki</h2>
+      </div>
+      <div class="race-card anunnaki">
+        <div class="race-header">
+          <div class="race-sigil">&#9884;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Ufológica / Mítica / Textual</div>
+            <div class="race-name">Anunnaki</div>
+            <div class="race-alias">Os Que do Céu Desceram · Nefilim · Filhos dos Deuses · Elohim (var.)</div>
+            <div style="margin-top:8px;"><span class="tag tag-gold">NEUTRO/MISTO</span><span class="tag tag-red">MANIPULADORES GENÉTICOS</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem</div><div class="race-stat-value">Nibiru / Sistema Binário</div></div>
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">2,4m — 5m (elite)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Fontes</div><div class="race-stat-value">Sitchin / Textos sumérios</div></div>
+          <div class="race-stat"><div class="race-stat-label">Motivação</div><div class="race-stat-value">Mineração / Poder / Civilização</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Zecharia Sitchin e a Teoria</div>
+            <div class="race-text"><strong>Zecharia Sitchin</strong> (1920–2010) propôs em sua série <em>Earth Chronicles</em> que os deuses da Suméria eram seres físicos de outro planeta chegados à Terra há ~450.000 anos em busca de ouro. A teoria é considerada pseudocientífica pela academia. Mas gerou impacto cultural imenso — é a base de grande parte da ufologia antiga contemporânea.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Criação do Homo Sapiens — Lulu Amelu</div>
+            <div class="race-text">Os Anunnaki criaram o Homo sapiens através de manipulação genética de hominídeos — misturando DNA próprio com primatas para criar <em>Lulu Amelu</em> ("homem misturado"), raça trabalhadora para mineração. Para o esoterismo ufológico, isto sintetiza criacionismo e evolucionismo: fomos criados por manipulação genética, não do nada.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">Enki vs. Enlil — A Grande Divisão</div>
+            <div class="race-text"><strong>Enki</strong> (sabedoria, defensor dos humanos, associado à serpente) vs. <strong>Enlil</strong> (autoritário, quer humanos na ignorância). Esta divisão ecoa em Prometeu vs. Zeus, Lúcifer vs. Deus, Set vs. Osíris. Para a gnose moderna, Enlil corresponde ao Demiurgo — criador imperfeito que aprisiona almas — enquanto Enki/Serpente é a força libertadora do conhecimento verdadeiro.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="sigil-sep">&#9889; &#9672; &#10022; &#9672; &#11088;</div>
+
+    <section id="nordicos">
+      <div class="section-header">
+        <div class="section-kicker">Raça V — Os Protetores</div>
+        <h2 class="section-title">Os Nórdicos</h2>
+      </div>
+      <div class="race-card nordic">
+        <div class="race-header">
+          <div class="race-sigil">&#9889;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Nórdicos</div>
+            <div class="race-alias">Tall Whites · Irmãos Maiores · ETs de Aparência Nórdica</div>
+            <div style="margin-top:8px;"><span class="tag tag-green">POSITIVO</span><span class="tag tag-gold">NÃO-INTERVENÇÃO</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem</div><div class="race-stat-value">Plêiades / Sírius / Lyra</div></div>
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">1,8m — 2,4m</div></div>
+          <div class="race-stat"><div class="race-stat-label">Aparência</div><div class="race-stat-value">Humanos de beleza extrema</div></div>
+          <div class="race-stat"><div class="race-stat-label">Orientação</div><div class="race-stat-value">Serviço ao Outro</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Aparência e Missão</div>
+            <div class="race-text">Praticamente indistinguíveis de humanos de fenótipo nórdico, mas com beleza sobre-humana e presença irradiante de serenidade e amor. George Adamski (1953) foi o primeiro a popularizar relatos de contato. Billy Meier na Suíça (1975) afirma contato continuado com Plejarianos, gerando fotografias de naves muito debatidas. Na ufologia esotérica são os "irmãos maiores" — uma raça que evoluiu de origem similar à humana e atingiu níveis de desenvolvimento espiritual que os humanos alcançarão no futuro. Respeitam o princípio da não-intervenção, análogo à Diretriz Principal de Star Trek.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pleiadianos">
+      <div class="section-header">
+        <div class="section-kicker">Raça VI — Os Mensageiros</div>
+        <h2 class="section-title">Os Pleiadianos</h2>
+      </div>
+      <div class="race-card pleiadian">
+        <div class="race-header">
+          <div class="race-sigil">&#10022;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Canalização / Ufológica</div>
+            <div class="race-name">Pleiadianos</div>
+            <div class="race-alias">Plejarianos · P'Tah · Emissários da Luz · Viajantes do Tempo do Futuro</div>
+            <div style="margin-top:8px;"><span class="tag tag-green">POSITIVO</span><span class="tag tag-purple">5D — 7D</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Origem</div><div class="race-stat-value">Aglomerado Plêiades (Touro)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Distância</div><div class="race-stat-value">444 anos-luz</div></div>
+          <div class="race-stat"><div class="race-stat-label">Dimensão</div><div class="race-stat-value">5D — 7D (alegado)</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Barbara Marciniak e a Mensagem</div>
+            <div class="race-text"><strong>Barbara Marciniak</strong> começou a canalizar entidades que se identificam como Pleiadianos em 1988, resultando nos livros <em>Bringers of the Dawn</em> (1992) e <em>Earth: Pleiadian Keys to the Living Library</em> (1994). Os Pleiadianos de Marciniak apresentam-se como viajantes do tempo — versões futuras dos próprios humanos que retornaram para garantir que a humanidade evolua em direção à luz. A Terra é uma "Biblioteca Viva" — repositório genético de incontáveis civilizações cósmicas. O despertar humano é a ativação deste arquivo biológico.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="arcturianos">
+      <div class="section-header">
+        <div class="section-kicker">Raça VII — Guardiões da Galáxia</div>
+        <h2 class="section-title">Os Arcturianos</h2>
+      </div>
+      <div class="race-card arcturian">
+        <div class="race-header">
+          <div class="race-sigil">&#127775;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Canalização / Esotérico</div>
+            <div class="race-name">Arcturianos</div>
+            <div class="race-alias">Guardiões da Galáxia · Sanadores Cósmicos · Arquitetos da Forma</div>
+            <div style="margin-top:8px;"><span class="tag tag-green">ALTAMENTE POSITIVO</span><span class="tag tag-purple">5D — 9D</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Estrela</div><div class="race-stat-value">Arcturus (Boötes)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Distância</div><div class="race-stat-value">36,7 anos-luz</div></div>
+          <div class="race-stat"><div class="race-stat-label">Aparência</div><div class="race-stat-value">Pequenos, azul-violeta</div></div>
+          <div class="race-stat"><div class="race-stat-label">Especialidade</div><div class="race-stat-value">Cura / Geometria Sagrada</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Perfil e Capacidades</div>
+            <div class="race-text">Os mais evoluídos em contato com a Terra, operando em densidades muito superiores aos Pleiadianos. Mais técnicos e arquitetônicos — mestres em geometria sagrada e campos energéticos. Edgar Cayce afirmou que Arcturus é a "porta de entrada para este universo". Canalizações modernas descrevem naves Arcturianas como hospitais cósmicos orbitais que tratam humanos durante o sono, ajustando campos áuricos e implantando matrizes de luz que facilitam o despertar espiritual.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="siriusianos">
+      <div class="section-header">
+        <div class="section-kicker">Raça VIII — Os Mestres Construtores</div>
+        <h2 class="section-title">Os Siriusianos</h2>
+      </div>
+      <div class="race-card sirian">
+        <div class="race-header">
+          <div class="race-sigil">&#11088;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Ocultismo / Ufológica</div>
+            <div class="race-name">Siriusianos</div>
+            <div class="race-alias">Nommo (Dogon) · Cães do Céu · Construtores da Consciência</div>
+            <div style="margin-top:8px;"><span class="tag tag-blue">POSITIVO/NEUTRO</span><span class="tag tag-gold">CIVILIZADORES</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Estrela</div><div class="race-stat-value">Sírius A e B (Canis Major)</div></div>
+          <div class="race-stat"><div class="race-stat-label">Distância</div><div class="race-stat-value">8,6 anos-luz</div></div>
+          <div class="race-stat"><div class="race-stat-label">Tipos</div><div class="race-stat-value">Humanoides, aquáticos, caninos</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">A Conexão Dogon e o Ocultismo</div>
+            <div class="race-text">O povo <strong>Dogon</strong> do Mali, documentado por Marcel Griaule nos anos 1930–40, possuía conhecimentos sobre Sírius B (anã branca invisível), seu período orbital de ~50 anos e possível Sírius C — informações confirmadas pela ciência décadas depois. Os Dogon atribuem este conhecimento a seres anfíbios chamados <em>Nommo</em> que desceram de Sírius. Para os Egípcios, Sírius era a estrela de Ísis. A Maçonaria a eleva ao status de "Estrela Flamejante". Crowley associava seu <em>Liber AL</em> a influências sírias. Blavatsky a chamava de "Grande Estrela" supervisora. Alice Bailey: "o Sol espiritual por detrás do Sol físico".</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mantis">
+      <div class="section-header">
+        <div class="section-kicker">Raça IX — Os Anciãos</div>
+        <h2 class="section-title">Mantis / Insectoides</h2>
+      </div>
+      <div class="race-card mantis">
+        <div class="race-header">
+          <div class="race-sigil">&#129416;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Mantis / Insectoides</div>
+            <div class="race-alias">Tall Mantis · Entomoides Cósmicos · Supervisores Antigos</div>
+            <div style="margin-top:8px;"><span class="tag tag-green">NEUTRO/POSITIVO</span><span class="tag tag-purple">ALTA ANTIGUIDADE</span></div>
+          </div>
+        </div>
+        <div class="race-stats">
+          <div class="race-stat"><div class="race-stat-label">Estatura</div><div class="race-stat-value">1,8m — 3m</div></div>
+          <div class="race-stat"><div class="race-stat-label">Aparência</div><div class="race-stat-value">Louva-a-deus bípede</div></div>
+          <div class="race-stat"><div class="race-stat-label">Papel</div><div class="race-stat-value">Supervisão dos Grays</div></div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Perfil Completo</div>
+            <div class="race-text">Aparecem em relatos avançados em posição hierárquica superior aos Grays. Aparência de louva-a-deus bípede: cabeça triangular, olhos compostos, corpo articulado. Irradiam sabedoria antiga — uma inteligência de profundidade quase incompreensível. Paradoxalmente, muitos abduzidos relatam que o encontro com os Mantis foi o mais significativo espiritualmente. No esoterismo, são guardiões de padrões arquetípicos — os Anciãos do Cosmos. A forma de inseto: contemplação pura, imobilidade meditativa, percepção sem pontos cegos. O xamanismo conecta o espírito inseto às frequências mais antigas do planeta.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hibridos">
+      <div class="section-header">
+        <div class="section-kicker">Raça X</div>
+        <h2 class="section-title">Híbridos</h2>
+      </div>
+      <div class="race-card hybrid">
+        <div class="race-header">
+          <div class="race-sigil">&#129516;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Designação Ufológica</div>
+            <div class="race-name">Híbridos</div>
+            <div class="race-alias">Human-Alien Hybrids · Novas Crianças · Starchildren</div>
+            <div style="margin-top:8px;"><span class="tag tag-mag">NEUTRO</span><span class="tag tag-purple">EM INTEGRAÇÃO</span></div>
+          </div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Gerações e Perspectivas</div>
+            <div class="race-text">A ufologia descreve múltiplas gerações, progredindo de aspectos claramente alienígenas a aparência quase indistinguível dos humanos. Primeiras gerações: pele cinzenta, olhos grandes, corpo frágil. Gerações avançadas (F4, F5): praticamente indistinguíveis de humanos. David Jacobs propõe que híbridos avançados já vivem entre nós — o que ele interpreta pessimistamente como invasão encoberta. John Mack via o hibridismo como possível evolução positiva — a ponte biológica entre a humanidade atual e uma forma mais consciente. Esta tensão interpretativa é a mais importante da ufologia moderna.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="interdim">
+      <div class="section-header">
+        <div class="section-kicker">Raça XI — Além do Físico</div>
+        <h2 class="section-title">Seres Interdimensionais e Entidades do DMT</h2>
+      </div>
+      <div class="race-card interdim">
+        <div class="race-header">
+          <div class="race-sigil">&#127744;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Esotérico / Ufológico / Científico</div>
+            <div class="race-name">Seres Interdimensionais</div>
+            <div class="race-alias">Entidades Astrais · Ultra-Terrestres · Fadas Cósmicas · Djinns · Archons</div>
+            <div style="margin-top:8px;"><span class="tag tag-purple">VARIADO</span><span class="tag tag-blue">HIPÓTESE VALLÉE/KEEL</span></div>
+          </div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">Vallée, Keel e a Hipótese Interdimensional</div>
+            <div class="race-text"><strong>Jacques Vallée</strong> e <strong>John Keel</strong> chegaram independentemente à conclusão de que OVNIs e seus ocupantes são de uma <strong>realidade paralela</strong> adjacente ao nosso espaço-tempo. Esta hipótese resolve paradoxos ufológicos: OVNIs que mudam de forma, desaparecem instantaneamente, produzem efeitos psicológicos mais do que físicos. A perspectiva esotérica afirma há milênios a existência de planos paralelos habitados por consciências diversas — antecipando a hipótese interdimensional.</div>
+          </div>
+          <div class="race-section">
+            <div class="race-section-title">DMT e as Entidades</div>
+            <div class="race-text">O Dr. <strong>Rick Strassman</strong> documentou encontros consistentes com entidades durante a administração de DMT — elfos de máquina, insectoides, seres serpentinos, guardiões que realizam procedimentos no corpo energético. Diferentes sujeitos descreviam entidades similares de forma consistente. Hipótese de Strassman: o estado DMT pode abrir percepção para uma dimensão de seres que existem paralelamente à realidade ordinária — o mesmo espaço que o esoterismo chama de plano astral. As descrições de entidades do DMT e de seres de abdução apresentam sobreposições notáveis.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="watchers">
+      <div class="section-header">
+        <div class="section-kicker">Raça XII — Os Observadores</div>
+        <h2 class="section-title">Watchers — Os Vigias / Anjos Caídos</h2>
+      </div>
+      <div class="race-card watcher">
+        <div class="race-header">
+          <div class="race-sigil">&#128065;</div>
+          <div class="race-header-text">
+            <div class="race-designation">Religioso / Esotérico / Ufológico</div>
+            <div class="race-name">Watchers / Vigias</div>
+            <div class="race-alias">Anjos Caídos · Grigori · Nefilim (descendentes) · Filhos de Deus do Gênesis</div>
+            <div style="margin-top:8px;"><span class="tag tag-gold">MISTO/TRÁGICO</span></div>
+          </div>
+        </div>
+        <div class="race-body">
+          <div class="race-section">
+            <div class="race-section-title">O Livro de Enoque — Fonte Principal</div>
+            <div class="race-text">O <strong>Livro de Enoque I</strong> (texto apócrifo do séc. III a.C., encontrado entre os Manuscritos do Mar Morto) descreve 200 Vigias que desceram ao Monte Hermon e se uniram com mulheres humanas, produzindo os Nefilim — gigantes de poder extraordinário. Ensinaram forja de armas, ervas, cosmética, astrologia e encantamentos. Por esta transgressão, foram aprisionados. A ufologia moderna os interpreta como membros de uma raça ET que violaram um protocolo de não-intervenção galáctica. Os conhecimentos transmitidos seriam tecnologia prematura para o estágio humano. Os Nefilim, o produto de hibridização direta.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span>&#9672;</span></div>
+
+    <section id="comp-total">
+      <div class="section-header">
+        <div class="section-kicker">Síntese</div>
+        <h2 class="section-title">Tabela Comparativa Total das Raças</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Raça</th><th>Origem</th><th>Aparência</th><th>Orientação</th><th>Rel. c/ Humanos</th><th>Tecnologia Chave</th><th>Fonte</th></tr></thead>
+          <tbody>
+            <tr><td>Reptilianos</td><td>Draco</td><td>Réptil bípede escamoso</td><td>Controle/Domínio</td><td>Criadores, controladores</td><td>Holografia, freq. controle</td><td>Hipótese ufológica</td></tr>
+            <tr><td>Draconianos</td><td>Alpha Draconis</td><td>Réptil alado, grande</td><td>Domínio Imperial</td><td>Elite sobre reptilianos</td><td>Nave-planeta</td><td>Hipótese ufológica</td></tr>
+            <tr><td>Grays</td><td>Zeta Reticuli</td><td>Humanoide cinza</td><td>Sobrevivência/Coleta</td><td>Abdução, hibridização</td><td>Biotecnologia avançada</td><td>Relatos de abdução</td></tr>
+            <tr><td>Anunnaki</td><td>Nibiru</td><td>Humanoide majestoso 2–5m</td><td>Exploração/Civilização</td><td>Criadores genéticos</td><td>Alta tecnologia física</td><td>Sitchin / textos sumérios</td></tr>
+            <tr><td>Nórdicos</td><td>Plêiades/Lyra</td><td>Humanos belos, altos</td><td>Serviço ao Outro</td><td>Proteção, guia</td><td>Frequência harmônica</td><td>Contatos diretos</td></tr>
+            <tr><td>Pleiadianos</td><td>Plêiades</td><td>Humanos luminosos</td><td>Amor / Libertação</td><td>Mensageiros, catalisadores</td><td>Luz / Vibração</td><td>Canalizações</td></tr>
+            <tr><td>Arcturianos</td><td>Arcturus</td><td>Pequenos, azul-violeta</td><td>Cura cósmica</td><td>Hospitais orbitais</td><td>Geometria sagrada viva</td><td>Canalizações / Cayce</td></tr>
+            <tr><td>Siriusianos</td><td>Sírius A/B</td><td>Variável (humanoides, aquáticos)</td><td>Civilização/Construção</td><td>Civilizadores</td><td>Construtiva sagrada</td><td>Dogon, ocultismo</td></tr>
+            <tr><td>Mantis</td><td>Desconhecida</td><td>Inseto bípede 1,8–3m</td><td>Supervisão/Sabedoria</td><td>Supervisam abduções</td><td>Consciência como tecnologia</td><td>Relatos avançados</td></tr>
+            <tr><td>Híbridos</td><td>Gray + Humano</td><td>Variável, semi-humano</td><td>Sobrevivência/Integração</td><td>Potenciais novos humanos</td><td>Biológica + telepática</td><td>Relatos abdução</td></tr>
+            <tr><td>Interdimensionais</td><td>Dimensões paralelas</td><td>Variável / luz</td><td>Variada</td><td>Fenômeno psíquico/físico</td><td>Manipulação dimensional</td><td>Vallée, Keel, DMT</td></tr>
+            <tr><td>Watchers</td><td>Origem ET/divina</td><td>Anjos / Gigantes</td><td>Transgressão / Ensino</td><td>Criadores dos Nefilim</td><td>Conhecimentos proibidos</td><td>Enoque / apócrifos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="leitura-esoterica" class="subsection">
+      <h3 class="subsection-title">&#9649; Leitura Esotérica das Raças Extraterrestres</h3>
+      <p class="lead">O ocultismo hermético e a psicologia profunda oferecem uma perspectiva única: os extraterrestres não são apenas seres físicos de outros planetas — são também expressões de arquétipos da consciência cósmica.</p>
+      <div class="card-grid">
+        <div class="card"><div class="card-title">&#9656; Reptilianos como Sombra</div><div class="card-body">Na psicologia junguiana, a Sombra é o aspecto não-integrado da psique — impulsos de controle, poder bruto, sobrevivência sem empatia. Os Reptilianos como arquétipo da Sombra coletiva da humanidade.</div></div>
+        <div class="card"><div class="card-title">&#9656; Grays como Animus</div><div class="card-body">Os Grays — andróginos, frios, intelectuais sem empatia — representam o princípio do Animus desconectado do calor emocional. A mente sem coração. O programa híbrido como busca de reintegração.</div></div>
+        <div class="card"><div class="card-title">&#9656; Nórdicos como Self</div><div class="card-body">Os Nórdicos — belos, sábios, equilibrados, irradiando amor — correspondem ao Self junguiano: a versão mais elevada e integrada do ser, o potencial divino humano já realizado.</div></div>
+        <div class="card"><div class="card-title">&#9656; Mantis como Sábio Ancião</div><div class="card-body">O arquétipo do Velho Sábio — portador de conhecimento que transcende a compreensão ordinária. Os Mantis como este arquétipo em forma cósmica: a inteligência mais antiga que observa sem julgar.</div></div>
+        <div class="card"><div class="card-title">&#9656; Anunnaki como Demiurgo</div><div class="card-body">O arquétipo do Criador imperfeito — poderoso mas não onisciente, moldando a matéria segundo seus próprios propósitos. Nem benigno nem maligno em termos absolutos.</div></div>
+        <div class="card"><div class="card-title">&#9656; Interdimensionais como Numinoso</div><div class="card-body">O Numinoso de Rudolf Otto — o mysterium tremendum et fascinans. As entidades do DMT como a manifestação mais direta desta categoria de experiência do sagrado que aterra e fascina simultaneamente.</div></div>
+      </div>
+    </section>
+
+    <section id="jung-et" class="subsection">
+      <h3 class="subsection-title">&#9649; Jung, Hermetismo, Gnose e a Questão ET</h3>
+      <h4>O Gnosticismo e os Archons</h4>
+      <p>O <strong>Gnosticismo</strong> oferece talvez a correspondência mais direta com a ufologia moderna sobre raças negativas. Para os gnósticos, o mundo material foi criado por um ser imperfeito — o <strong>Demiurgo</strong> — assistido por <strong>Archons</strong> ("governantes") que aprisionam centelhas divinas em corpos materiais.</p>
+      <blockquote>"Os Archons não criaram o homem. Tentaram criar um homem, mas sua criação foi rastejante. Então sopraram sobre o rosto do homem o Espírito que viria de si mesmos — não sabendo que iriam ser humilhados, porque o homem se tornaria mais sábio do que eles."<cite>— Sobre a Origem do Mundo, Textos Gnósticos de Nag Hammadi</cite></blockquote>
+      <p>Esta passagem ecoa diretamente nas teorias sobre Anunnaki (que criaram seres mais espirituais do que esperavam), Reptilianos (que controlam mas não compreendem plenamente a centelha humana) e Grays (que buscam o que perderam através dos híbridos). O Gnosticismo pode ser visto como a mais antiga "ufologia esotérica" — descrevendo criadores imperfeitos controlando a humanidade, com uma faísca divina interna esperando ser reconhecida.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tradição</th><th>Seres de Alta Vibração</th><th>Seres de Baixa Vibração</th><th>Humanidade</th></tr></thead>
+          <tbody>
+            <tr><td>Hermetismo</td><td>Deuses, Aeons, Inteligências Planetárias</td><td>Daemons Inferiores, Archons</td><td>Microcosmo — espelho do macrocosmo</td></tr>
+            <tr><td>Gnosticismo</td><td>Pleroma, Aeons de Luz</td><td>Demiurgo, Archons</td><td>Centelha divina aprisionada</td></tr>
+            <tr><td>Teosofia</td><td>Mestres Ocultos, Hierarquia Espiritual</td><td>Entidades Elementárias</td><td>5ª Raça em evolução</td></tr>
+            <tr><td>Ufologia Esotérica</td><td>Pleiadianos, Arcturianos, Nórdicos</td><td>Reptilianos, Draconianos</td><td>Campo de batalha cósmico pela alma</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="como-estudar" class="subsection">
+      <h3 class="subsection-title">&#9649; Como Estudar Ufologia Esotérica Sem Cair em Fanatismo</h3>
+      <p class="lead">O estudo da ufologia esotérica apresenta riscos psicológicos reais que precisam ser reconhecidos por qualquer estudante sério.</p>
+      <div class="callout warning" data-label="Sabedoria do Estudante">
+        <p><strong>O Mapa Não É o Território:</strong> Cada sistema de raças, cada hierarquia galáctica, cada narrativa de controle é um mapa — uma tentativa de descrever uma realidade que pode ser incompreensível em sua totalidade. Confundir o mapa com o território é o primeiro passo em direção ao fanatismo.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card"><div class="card-title">&#9888; Paranoia de Perseguição</div><div class="card-body">A teoria do controle reptiliano, mal processada, pode induzir estados paranóicos reais. Este é um padrão de psicose induzida por framework interpretativo — um risco documentado em comunidades esotéricas e ufológicas.</div></div>
+        <div class="card"><div class="card-title">&#9888; Grandiosidade Espiritual</div><div class="card-body">O ego frequentemente usa o conhecimento esotérico para se inflar: "Eu sou um Starseed de missão especial." Esta auto-narrativa de eleição espiritual é um obstáculo clássico — o que o budismo chama de "inflação do ego espiritual".</div></div>
+        <div class="card"><div class="card-title">&#9888; Fuga da Realidade</div><div class="card-body">O fascínio com guerras galácticas pode tornar-se fuga da responsabilidade presente. O esoterismo maduro: o trabalho espiritual acontece aqui, agora, nas relações e escolhas cotidianas, não nas fantasias cósmicas.</div></div>
+        <div class="card"><div class="card-title">&#9888; Manipulação de Comunidades</div><div class="card-body">Comunidades ufológicas são terreno fértil para líderes carismáticos que usam narrativas de "verdades cósmicas" para criar dependência psicológica. Discernimento sobre autoridade é essencial.</div></div>
+      </div>
+      <div class="callout esoteric" data-label="Perspectiva Iniciática">
+        <p>O objetivo final do estudo ufológico esotérico não é acumular um catálogo de raças e conspirações. É expandir a consciência sobre a vastidão do cosmos habitado, sobre a profundidade do que somos como humanos, e sobre a natureza da escolha que fazemos a cada momento: contrair em medo e separação, ou expandir em amor e conexão. As raças cósmicas — sejam literais ou simbólicas — são espelhos de princípios que operam dentro de nós. O verdadeiro campo de batalha galáctico é a sua própria consciência.</p>
+      </div>
+    </section>
+
+    <div class="section-footer">
+      <span>&#8592; VOL. I</span>
+      <span>&#10022; ARQUIVO CÓSMICO — VOLUME II &#10022; ATLAS DAS RACAS &#10022;</span>
+      <span>VOL. III &#8594;</span>
+    </div>
+  </div>
+</main>
+<script>
+(function(){var c=document.getElementById("starsCanvas"),ctx=c.getContext("2d"),stars=[];function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}function init(){stars=[];for(var i=0;i<200;i++)stars.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2+0.2,a:Math.random(),da:(Math.random()-0.5)*0.005,col:Math.random()>0.7?"#00e5ff":Math.random()>0.5?"#c8973a":"#ffffff"});}function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(function(s){s.a+=s.da;if(s.a<=0||s.a>=1)s.da*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.col;ctx.globalAlpha=s.a*0.7;ctx.fill();});ctx.globalAlpha=1;requestAnimationFrame(draw);}resize();init();draw();window.addEventListener("resize",function(){resize();init();});})();
+function toggleExpand(h){h.classList.toggle("open");h.nextElementSibling.classList.toggle("open");}
+document.getElementById("menuToggle").addEventListener("click",function(){document.getElementById("sidebar").classList.toggle("open");});
+var secs=document.querySelectorAll("section[id]"),navs=document.querySelectorAll(".nav-item");
+window.addEventListener("scroll",function(){var cur="";secs.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});navs.forEach(function(n){n.classList.remove("active");if(n.getAttribute("href")==="#"+cur)n.classList.add("active");});});
+</script>
+</body>
+</html>

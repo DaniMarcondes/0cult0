@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CABALA — A Ciência Oculta do Sagrado</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --gold-dark: #8a6a20;
+  --divine: #e8f4ff;
+  --divine-glow: #a0d4ff;
+  --angel: #b8e4ff;
+  --demon: #ff3a20;
+  --demon-dark: #8b0000;
+  --demon-glow: #ff6b50;
+  --void: #050508;
+  --deep: #0a0a15;
+  --mid: #12121e;
+  --surface: #1a1a2e;
+  --text: #e8e0d0;
+  --text-dim: #9090a0;
+  --kether: #ffffff;
+  --chokmah: #aaaaff;
+  --binah: #333333;
+  --chesed: #4444ff;
+  --geburah: #ff2222;
+  --tiphareth: #ffff44;
+  --netzach: #22cc44;
+  --hod: #ff8800;
+  --yesod: #aa44ff;
+  --malkuth: #8B6914;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── STARS BACKGROUND ── */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(160,212,255,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255,58,32,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.02) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0;
+  z-index:1000;
+  background: rgba(5,5,8,0.92);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  backdrop-filter: blur(12px);
+  padding: 12px 0;
+}
+
+.nav-inner {
+  max-width:1200px; margin:0 auto;
+  display:flex; align-items:center; gap:6px;
+  padding:0 20px; flex-wrap:wrap;
+}
+
+nav a {
+  color: var(--gold);
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:0.08em;
+  padding:5px 10px;
+  border:1px solid transparent;
+  border-radius:2px;
+  transition:all 0.2s;
+  white-space:nowrap;
+}
+nav a:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.1);
+}
+
+/* ── HERO ── */
+#hero {
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  position:relative;
+  padding: 80px 20px 60px;
+}
+
+.hero-content {
+  position:relative; z-index:1;
+  max-width:900px;
+}
+
+.hero-sigil {
+  font-size:80px;
+  display:block;
+  margin-bottom:20px;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(201,168,76,0.5));
+}
+
+@keyframes float {
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-12px) rotate(2deg); }
+}
+
+h1.main-title {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(28px,6vw,72px);
+  font-weight:900;
+  letter-spacing:0.15em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 30%, var(--gold) 60%, var(--gold-dark) 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:none;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+.subtitle {
+  font-family:'Cinzel',serif;
+  font-size:clamp(13px,2vw,18px);
+  color: var(--gold);
+  letter-spacing:0.3em;
+  opacity:0.8;
+  margin-bottom:30px;
+}
+
+.hero-desc {
+  font-size:18px;
+  color: rgba(232,224,208,0.75);
+  font-style:italic;
+  max-width:600px;
+  margin:0 auto 40px;
+}
+
+.scroll-hint {
+  color: var(--gold);
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  letter-spacing:0.2em;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+/* ── SECTIONS ── */
+section {
+  position:relative; z-index:1;
+  max-width:1100px;
+  margin:0 auto;
+  padding:80px 30px;
+}
+
+section + section {
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.section-header {
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-number {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:0.4em;
+  color: var(--gold);
+  opacity:0.6;
+  display:block;
+  margin-bottom:12px;
+}
+
+h2 {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(22px,4vw,42px);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+  line-height:1.2;
+}
+
+h3 {
+  font-family:'Cinzel',serif;
+  font-size:clamp(16px,2.5vw,24px);
+  color: var(--gold);
+  margin: 40px 0 16px;
+  letter-spacing:0.05em;
+}
+
+h4 {
+  font-family:'Cinzel',serif;
+  font-size:16px;
+  color: var(--gold-light);
+  margin: 24px 0 10px;
+}
+
+p { margin-bottom:16px; }
+
+.lead {
+  font-size:20px;
+  font-style:italic;
+  color: rgba(232,224,208,0.85);
+  text-align:center;
+  max-width:750px;
+  margin:0 auto 30px;
+}
+
+blockquote {
+  border-left:3px solid var(--gold);
+  padding:20px 30px;
+  margin:30px 0;
+  background: rgba(201,168,76,0.06);
+  font-style:italic;
+  font-size:19px;
+  color: var(--gold-light);
+  border-radius:0 8px 8px 0;
+}
+
+/* ── TREE OF LIFE ── */
+#tree-container {
+  background: radial-gradient(ellipse at center, rgba(20,20,40,1) 0%, rgba(5,5,10,1) 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius:16px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+}
+
+#tree-container::before {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,200,0.03) 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 80%, rgba(139,105,20,0.05) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+#tree-svg {
+  width:100%; max-width:550px;
+  display:block; margin:0 auto;
+  cursor:pointer;
+}
+
+.sephirah-circle {
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.sephirah-circle:hover { filter:brightness(1.4); }
+
+.sephirah-label {
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  fill: var(--gold-light);
+  text-anchor:middle;
+  pointer-events:none;
+}
+
+.path-line {
+  stroke-width:1.5;
+  stroke-opacity:0.4;
+}
+
+/* ── SEPHIRAH PANEL ── */
+#seph-panel {
+  background: rgba(15,15,25,0.95);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:12px;
+  padding:30px;
+  margin-top:20px;
+  min-height:200px;
+  transition:all 0.4s;
+}
+
+#seph-panel h3 {
+  margin-top:0;
+}
+
+.seph-tags {
+  display:flex; gap:8px; flex-wrap:wrap;
+  margin:12px 0;
+}
+
+.tag {
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:0.1em;
+  padding:3px 10px;
+  border:1px solid;
+  border-radius:20px;
+}
+
+.tag-angel { border-color:var(--angel); color:var(--angel); background:rgba(184,228,255,0.08); }
+.tag-demon { border-color:var(--demon); color:var(--demon); background:rgba(255,58,32,0.08); }
+.tag-planet { border-color:var(--gold); color:var(--gold); background:rgba(201,168,76,0.08); }
+.tag-element { border-color:#80ff80; color:#80ff80; background:rgba(128,255,128,0.08); }
+
+/* ── DIVINE NAMES GRID ── */
+.names-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+  gap:16px;
+  margin:30px 0;
+}
+
+.name-card {
+  background: rgba(15,15,28,0.8);
+  border:1px solid rgba(201,168,76,0.15);
+  border-radius:10px;
+  padding:20px;
+  transition:all 0.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.name-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0;
+  height:2px;
+}
+
+.name-card.divine::before { background: linear-gradient(90deg, transparent, var(--gold-light), transparent); }
+.name-card.angel-card::before { background: linear-gradient(90deg, transparent, var(--angel), transparent); }
+.name-card.demon-card::before { background: linear-gradient(90deg, transparent, var(--demon), transparent); }
+
+.name-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform:translateY(-3px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.name-hebrew {
+  font-size:28px;
+  color: var(--gold-light);
+  display:block;
+  margin-bottom:8px;
+  text-align:right;
+  font-style:normal;
+}
+
+.name-latin {
+  font-family:'Cinzel',serif;
+  font-size:15px;
+  color: var(--gold);
+  font-weight:600;
+  letter-spacing:0.08em;
+}
+
+.name-meaning {
+  font-size:14px;
+  color: var(--text-dim);
+  margin-top:6px;
+  font-style:italic;
+}
+
+.name-number {
+  position:absolute; top:16px; right:16px;
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color: rgba(201,168,76,0.3);
+}
+
+/* ── ANGELS TABLE ── */
+.angels-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+
+.angel-card {
+  background: linear-gradient(135deg, rgba(8,20,40,0.9), rgba(12,25,50,0.7));
+  border:1px solid rgba(100,180,255,0.2);
+  border-radius:10px;
+  padding:18px;
+  transition:all 0.3s;
+  position:relative;
+}
+
+.angel-card:hover {
+  border-color:rgba(184,228,255,0.5);
+  box-shadow: 0 0 30px rgba(100,180,255,0.1), inset 0 0 30px rgba(100,180,255,0.03);
+}
+
+.angel-halo {
+  position:absolute; top:12px; right:14px;
+  font-size:20px;
+  opacity:0.5;
+}
+
+.angel-name {
+  font-family:'Cinzel',serif;
+  font-size:16px;
+  color: var(--angel);
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.angel-hebrew {
+  font-size:18px;
+  color:rgba(184,228,255,0.6);
+  display:block;
+  text-align:right;
+  margin-bottom:8px;
+}
+
+.angel-desc {
+  font-size:13.5px;
+  color: rgba(232,224,208,0.7);
+}
+
+.angel-seph {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color: var(--gold);
+  margin-top:8px;
+  letter-spacing:0.1em;
+  opacity:0.7;
+}
+
+/* ── DEMONS TABLE ── */
+.demons-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:12px;
+  margin:20px 0;
+}
+
+.demon-card {
+  background: linear-gradient(135deg, rgba(40,5,5,0.9), rgba(20,0,0,0.7));
+  border:1px solid rgba(180,30,10,0.3);
+  border-radius:10px;
+  padding:18px;
+  transition:all 0.3s;
+  position:relative;
+}
+
+.demon-card:hover {
+  border-color:rgba(255,80,50,0.5);
+  box-shadow: 0 0 30px rgba(180,30,10,0.15), inset 0 0 30px rgba(180,30,10,0.05);
+}
+
+.demon-sigil {
+  position:absolute; top:12px; right:14px;
+  font-size:20px;
+  opacity:0.5;
+}
+
+.demon-name {
+  font-family:'Cinzel',serif;
+  font-size:16px;
+  color: var(--demon-glow);
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.demon-desc {
+  font-size:13.5px;
+  color: rgba(232,180,160,0.7);
+}
+
+.demon-qliphoth {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color: var(--demon);
+  margin-top:8px;
+  letter-spacing:0.1em;
+  opacity:0.7;
+}
+
+/* ── WORLDS / PLANES ── */
+.worlds-stack {
+  display:flex; flex-direction:column; gap:8px;
+  margin:30px 0;
+}
+
+.world-bar {
+  border-radius:10px;
+  padding:24px 30px;
+  display:flex; align-items:center; gap:24px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.3s;
+  cursor:default;
+}
+
+.world-bar:hover { transform:scale(1.01); }
+
+.world-1 { background:linear-gradient(135deg, rgba(255,255,255,0.08),rgba(255,255,220,0.04)); border:1px solid rgba(255,255,255,0.2); }
+.world-2 { background:linear-gradient(135deg, rgba(100,100,255,0.12),rgba(50,50,200,0.04)); border:1px solid rgba(100,100,255,0.2); }
+.world-3 { background:linear-gradient(135deg, rgba(255,200,50,0.1),rgba(200,150,20,0.04)); border:1px solid rgba(255,200,50,0.2); }
+.world-4 { background:linear-gradient(135deg, rgba(100,200,80,0.1),rgba(50,150,30,0.04)); border:1px solid rgba(100,200,80,0.2); }
+
+.world-name {
+  font-family:'Cinzel Decorative',serif;
+  font-size:20px;
+  min-width:180px;
+}
+
+.world-1 .world-name { color:#ffffff; }
+.world-2 .world-name { color:#aaaaff; }
+.world-3 .world-name { color:#ffcc44; }
+.world-4 .world-name { color:#88ee66; }
+
+.world-desc { font-size:15px; color:rgba(232,224,208,0.75); }
+
+/* ── 72 NAMES TABLE ── */
+.names72-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+  gap:10px;
+  margin:20px 0;
+}
+
+.n72-card {
+  background: rgba(10,10,22,0.8);
+  border:1px solid rgba(201,168,76,0.12);
+  border-radius:8px;
+  padding:14px 10px;
+  text-align:center;
+  transition:all 0.3s;
+  cursor:pointer;
+}
+
+.n72-card:hover {
+  border-color:rgba(201,168,76,0.5);
+  background:rgba(201,168,76,0.08);
+  transform:translateY(-2px);
+  box-shadow:0 6px 25px rgba(0,0,0,0.4);
+}
+
+.n72-num {
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  color:rgba(201,168,76,0.4);
+  display:block;
+  margin-bottom:4px;
+}
+
+.n72-heb {
+  font-size:22px;
+  color:var(--gold-light);
+  display:block;
+  margin-bottom:4px;
+}
+
+.n72-name {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color:var(--gold);
+  letter-spacing:0.05em;
+}
+
+.n72-meaning {
+  font-size:11px;
+  color:rgba(232,224,208,0.5);
+  font-style:italic;
+  margin-top:3px;
+}
+
+/* ── QLIPHOTH ── */
+.qli-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+  margin:20px 0;
+}
+
+.qli-card {
+  background:linear-gradient(135deg, rgba(30,0,0,0.9),rgba(15,0,0,0.95));
+  border:1px solid rgba(139,0,0,0.4);
+  border-radius:10px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.qli-card::after {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 80% 20%, rgba(180,0,0,0.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.qli-name {
+  font-family:'Cinzel Decorative',serif;
+  font-size:15px;
+  color: #ff6666;
+  margin-bottom:6px;
+}
+
+.qli-meaning {
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  color:rgba(255,100,80,0.6);
+  letter-spacing:0.1em;
+  margin-bottom:10px;
+}
+
+.qli-desc { font-size:13px; color:rgba(220,180,170,0.7); }
+
+/* ── TABS ── */
+.tabs {
+  display:flex; gap:4px;
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  margin-bottom:30px;
+  flex-wrap:wrap;
+}
+
+.tab-btn {
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  letter-spacing:0.1em;
+  padding:10px 20px;
+  background:transparent;
+  border:none;
+  color:var(--text-dim);
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all 0.2s;
+}
+
+.tab-btn:hover { color:var(--gold); }
+.tab-btn.active { color:var(--gold); border-bottom-color:var(--gold); }
+
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+/* ── CARDS LAYOUT ── */
+.card-grid-2 {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:24px; margin:20px 0;
+}
+
+@media(max-width:700px){ .card-grid-2{ grid-template-columns:1fr; } }
+
+.info-card {
+  background:rgba(15,15,28,0.7);
+  border:1px solid rgba(201,168,76,0.15);
+  border-radius:12px;
+  padding:28px;
+}
+
+/* ── CURIOSITY CARDS ── */
+.curiosity-card {
+  background:rgba(12,12,22,0.8);
+  border-left:3px solid var(--gold);
+  padding:24px 28px;
+  margin:20px 0;
+  border-radius:0 10px 10px 0;
+  position:relative;
+}
+
+.curiosity-card.dark {
+  border-left-color:var(--demon);
+  background:rgba(20,5,5,0.8);
+}
+
+.curiosity-num {
+  position:absolute; top:20px; right:20px;
+  font-family:'Cinzel Decorative',serif;
+  font-size:36px;
+  color:rgba(201,168,76,0.08);
+  line-height:1;
+}
+
+.curiosity-dark .curiosity-num { color:rgba(180,30,10,0.08); }
+
+/* ── PSYCH SECTION ── */
+.psych-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:20px; margin:20px 0;
+}
+
+.psych-card {
+  background:rgba(10,15,30,0.8);
+  border:1px solid rgba(80,120,200,0.2);
+  border-radius:12px;
+  padding:24px;
+  border-top:2px solid rgba(80,120,200,0.4);
+}
+
+.psych-icon { font-size:30px; margin-bottom:12px; display:block; }
+.psych-title {
+  font-family:'Cinzel',serif;
+  font-size:15px;
+  color:var(--divine-glow);
+  margin-bottom:10px;
+}
+
+/* ── CASES ── */
+.case-card {
+  background:rgba(10,10,20,0.9);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:12px;
+  padding:30px;
+  margin:20px 0;
+  position:relative;
+}
+
+.case-header {
+  font-family:'Cinzel',serif;
+  font-size:13px;
+  letter-spacing:0.15em;
+  color:var(--gold);
+  opacity:0.7;
+  margin-bottom:10px;
+}
+
+.case-title {
+  font-family:'Cinzel',serif;
+  font-size:18px;
+  color:var(--gold-light);
+  margin-bottom:16px;
+}
+
+/* ── TOOLTIP ── */
+.tooltip-box {
+  position:fixed;
+  background:rgba(5,5,15,0.97);
+  border:1px solid rgba(201,168,76,0.4);
+  border-radius:8px;
+  padding:16px 20px;
+  max-width:280px;
+  z-index:9999;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.2s;
+  font-size:14px;
+}
+
+.tooltip-box.show { opacity:1; }
+
+/* ── DIVIDERS ── */
+.divider {
+  text-align:center;
+  margin:50px 0 30px;
+  position:relative;
+}
+
+.divider::before {
+  content:'';
+  position:absolute; top:50%; left:0; right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent);
+}
+
+.divider span {
+  position:relative; z-index:1;
+  background:var(--void);
+  padding:0 20px;
+  font-size:20px;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background:rgba(201,168,76,0.06);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:10px;
+  padding:24px 28px;
+  margin:24px 0;
+}
+
+.highlight-box.red {
+  background:rgba(180,30,10,0.06);
+  border-color:rgba(180,30,10,0.2);
+}
+
+.highlight-box.blue {
+  background:rgba(50,100,200,0.06);
+  border-color:rgba(50,100,200,0.2);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  section { padding:60px 20px; }
+  .names72-grid { grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--void); }
+::-webkit-scrollbar-thumb { background:var(--gold-dark); border-radius:3px; }
+
+/* ── GLOWING TEXT ── */
+.glow-divine {
+  text-shadow: 0 0 20px rgba(160,212,255,0.5), 0 0 40px rgba(160,212,255,0.2);
+  color:var(--divine-glow);
+}
+.glow-demon {
+  text-shadow: 0 0 20px rgba(255,58,32,0.5), 0 0 40px rgba(255,58,32,0.2);
+  color:var(--demon-glow);
+}
+
+/* Contrast strip showing angel/demon duality */
+.duality-strip {
+  display:flex; height:6px; border-radius:3px; overflow:hidden;
+  margin:30px 0;
+}
+.duality-light { flex:1; background:linear-gradient(90deg,rgba(255,255,255,0.6),var(--angel)); }
+.duality-dark { flex:1; background:linear-gradient(90deg,var(--demon),rgba(100,0,0,0.8)); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero">Início</a>
+    <a href="#origem">Origem</a>
+    <a href="#arvore">Árvore da Vida</a>
+    <a href="#mundos">Os 4 Mundos</a>
+    <a href="#nomes-deus">Nomes de Deus</a>
+    <a href="#72nomes">72 Nomes</a>
+    <a href="#anjos">Anjos</a>
+    <a href="#demonios">Demônios</a>
+    <a href="#qliphoth">Qliphoth</a>
+    <a href="#astral">Plano Astral</a>
+    <a href="#psicologia">Psicologia</a>
+    <a href="#pratica">Prática & Casos</a>
+    <a href="#curiosidades">Curiosidades</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-content">
+    <span class="hero-sigil">✡</span>
+    <h1 class="main-title">CABALA</h1>
+    <div class="subtitle">— A CIÊNCIA OCULTA DO SAGRADO —</div>
+    <p class="hero-desc">Do Éin Sof ao Malkuth — uma jornada pela cosmologia mais profunda do misticismo ocidental, seus anjos, demônios, os 72 Nomes de Deus e a estrutura invisível da realidade.</p>
+    <div class="scroll-hint">▼ DESÇA PARA EXPLORAR ▼</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ORIGEM ═══════════════════════════════ -->
+<section id="origem">
+  <div class="section-header">
+    <span class="section-number">PARTE I</span>
+    <h2>Origem & Fundamentos</h2>
+    <p class="lead">O que é a Cabala? De onde vem? Quem a criou? Por que existe?</p>
+  </div>
+
+  <h3>O Que é a Cabala</h3>
+  <p>A palavra <strong>Cabala</strong> (קַבָּלָה — <em>Qabbalah</em>) significa literalmente <em>"recepção"</em> ou <em>"tradição recebida"</em> em hebraico. É um conjunto de ensinamentos místicos e esotéricos do judaísmo que buscam explicar a natureza de Deus, do universo, da alma humana e seu relacionamento com o divino.</p>
+  <p>Não é uma religião — é uma <em>tecnologia espiritual</em>. Um mapa da realidade invisível. Um sistema que descreve como o Infinito se tornou o finito, como a Luz se tornou matéria, como o Divino criou o ser humano e por que existem forças opostas (luz/escuridão, anjos/demônios) como partes necessárias da criação.</p>
+
+  <div class="highlight-box">
+    <h4>A Grande Questão que a Cabala Responde</h4>
+    <p>Se Deus é perfeito, infinito e todo-bom — <strong>por que existe o mal? Por que existe o sofrimento? Como algo imperfeito pôde surgir de algo perfeito?</strong> A Cabala responde isso com uma cosmogênese completa: o processo pelo qual o Infinito se fragmentou em criação, e como o ser humano é o único capaz de reintegrá-la.</p>
+  </div>
+
+  <h3>Origens Históricas</h3>
+  <p>A Cabala emerge formalmente na <strong>Provença, sul da França, século XII d.C.</strong>, com o <em>Sefer ha-Bahir</em> ("Livro do Brilho"). Mas suas raízes são muito mais antigas:</p>
+
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>Período Pré-Cabalístico</h4>
+      <p><strong>Séc. I–VI d.C.:</strong> A literatura <em>Hekhalot</em> ("Palácios Celestiais") descreve viagens místicas pelos sete céus. O <em>Sefer Yetzirah</em> ("Livro da Formação"), provavelmente do século III–VI, é o primeiro texto a sistematizar as <strong>Sefirot</strong> e as letras hebraicas como ferramentas de criação divina.</p>
+    </div>
+    <div class="info-card">
+      <h4>Cabala Clássica</h4>
+      <p><strong>Séc. XIII — Espanha:</strong> O <em>Sefer ha-Zohar</em> ("Livro do Esplendor") é revelado por Moisés de León, atribuído ao Rabbi Shimon bar Yochai do séc. II. É o texto central da Cabala — uma obra monumental de comentário místico sobre a Torá que mapeia toda a estrutura divina.</p>
+    </div>
+    <div class="info-card">
+      <h4>Cabala Luriânica</h4>
+      <p><strong>Séc. XVI — Safed, Israel:</strong> Rabbi Isaac Luria (o "Ari") revoluciona a Cabala com conceitos como <em>Tzimtzum</em> (contração divina), <em>Shevirat ha-Kelim</em> (quebra dos vasos) e <em>Tikkun Olam</em> (reparação do mundo). Esta é a Cabala mais influente até hoje.</p>
+    </div>
+    <div class="info-card">
+      <h4>Cabala Hermética / Ocidental</h4>
+      <p><strong>Séc. XV em diante:</strong> Pico della Mirandola e outros humanistas italianos combinam Cabala com hermetismo, neoplatonismo e magia. Isso cria a <em>Cabala Cristã</em> e depois a <em>Cabala Hermética</em> — que funde Cabala com Tarot, Astrologia, Alquimia e magia cerimonial (Ordem Hermética da Golden Dawn, séc. XIX).</p>
+    </div>
+  </div>
+
+  <h3>Textos Fundamentais</h3>
+  <p><strong>Sefer Yetzirah</strong> — O Livro da Formação (séc. III–VI): descreve como Deus criou o universo através de 32 "caminhos de sabedoria": as 10 Sefirot e as 22 letras do alfabeto hebraico. É o texto mais antigo da tradição.</p>
+  <p><strong>Sefer ha-Zohar</strong> — O Livro do Esplendor (séc. XIII): obra massiva de 5 volumes, comentário místico da Torá, revela a anatomia divina, os mundos espirituais, a natureza da alma e a estrutura completa do cosmos cabalístico.</p>
+  <p><strong>Etz Chaim</strong> — A Árvore da Vida (séc. XVI): obra de Hayyim Vital compilando os ensinamentos de Isaac Luria. Define com precisão os quatro mundos, as Sefirot, os Partzufim (faces divinas) e todo o sistema luriânico.</p>
+
+  <blockquote>
+    "No princípio, havia apenas o Éin Sof — o Infinito sem Fim, sem forma, sem limite. Para criar, Ele se contraiu. E nessa contração, surgiu um espaço vazio — o chalal — dentro do qual a criação seria possível."<br>— Ensinamento de Isaac Luria
+  </blockquote>
+
+  <h3>Éin Sof — O Infinito</h3>
+  <p>Antes de qualquer coisa — antes dos anjos, antes do universo, antes do tempo — existe o <strong>Éin Sof</strong> (אֵין סוֹף), que significa "Sem Fim", "Sem Limite". É a realidade última, a Divindade em sua essência absoluta, incognoscível e indescritível.</p>
+  <p>O Éin Sof não pode ser pensado, nomeado, ou compreendido. Qualquer atributo que você dê a Ele o limita — e o Éin Sof não tem limite. Por isso, a Cabala diz que Deus em Sua essência <em>não pode ser conhecido diretamente</em> — apenas por meio das <strong>Sefirot</strong>, que são como "lentes" ou "filtros" através dos quais a Luz Infinita se manifesta.</p>
+  <p>O Éin Sof emite <strong>três véus de existência negativa</strong> antes mesmo das Sefirot:</p>
+  <ol style="padding-left:28px; margin:16px 0;">
+    <li><strong>Éin</strong> (אֵין) — Nada</li>
+    <li><strong>Éin Sof</strong> (אֵין סוֹף) — Sem Fim</li>
+    <li><strong>Éin Sof Ohr</strong> (אֵין סוֹף אוֹר) — Luz Sem Fim</li>
+  </ol>
+  <p>Esses três véus representam estados de pré-existência que estão além de qualquer conceito — incluindo o conceito de "ser".</p>
+</section>
+
+<!-- ═══════════════════════════════ ÁRVORE ═══════════════════════════════ -->
+<section id="arvore">
+  <div class="section-header">
+    <span class="section-number">PARTE II</span>
+    <h2>A Árvore da Vida</h2>
+    <p class="lead">O mapa completo da realidade — 10 Sefirot, 22 caminhos, 3 pilares</p>
+  </div>
+
+  <p>A <strong>Árvore da Vida</strong> (עֵץ חַיִּים — <em>Etz Chaim</em>) é o diagrama central da Cabala. Representa a estrutura completa da realidade — desde Deus até a matéria mais densa — em dez esferas interconectadas chamadas <strong>Sefirot</strong> (plural de Sefirah, "esfera" ou "emanação").</p>
+  <p>Clique em qualquer esfera para ver seus detalhes:</p>
+
+  <!-- TREE SVG + PANEL -->
+  <div id="tree-container">
+    <svg id="tree-svg" viewBox="0 0 340 580" xmlns="http://www.w3.org/2000/svg">
+      <!-- PATHS (22 caminhos) -->
+      <g class="paths">
+        <!-- Pilar Central vertical -->
+        <line x1="170" y1="45" x2="170" y2="135" stroke="#c9a84c" class="path-line"/>
+        <line x1="170" y1="165" x2="170" y2="245" stroke="#c9a84c" class="path-line"/>
+        <line x1="170" y1="275" x2="170" y2="355" stroke="#c9a84c" class="path-line"/>
+        <line x1="170" y1="385" x2="170" y2="475" stroke="#c9a84c" class="path-line"/>
+        <!-- Kether → Chokmah / Binah -->
+        <line x1="170" y1="45" x2="80" y2="135" stroke="#c9a84c" class="path-line"/>
+        <line x1="170" y1="45" x2="260" y2="135" stroke="#c9a84c" class="path-line"/>
+        <!-- Chokmah ↔ Binah -->
+        <line x1="80" y1="150" x2="260" y2="150" stroke="#c9a84c" class="path-line"/>
+        <!-- Chokmah/Binah → Chesed/Geburah -->
+        <line x1="80" y1="165" x2="80" y2="245" stroke="#c9a84c" class="path-line"/>
+        <line x1="260" y1="165" x2="260" y2="245" stroke="#c9a84c" class="path-line"/>
+        <!-- Binah → Chesed -->
+        <line x1="260" y1="165" x2="80" y2="245" stroke="#c9a84c" class="path-line"/>
+        <!-- Chokmah → Geburah -->
+        <line x1="80" y1="165" x2="260" y2="245" stroke="#c9a84c" class="path-line"/>
+        <!-- Chesed ↔ Geburah -->
+        <line x1="80" y1="260" x2="260" y2="260" stroke="#c9a84c" class="path-line"/>
+        <!-- Chesed → Tiphareth -->
+        <line x1="80" y1="275" x2="170" y2="355" stroke="#c9a84c" class="path-line"/>
+        <!-- Geburah → Tiphareth -->
+        <line x1="260" y1="275" x2="170" y2="355" stroke="#c9a84c" class="path-line"/>
+        <!-- Tiphareth → Netzach / Hod -->
+        <line x1="170" y1="375" x2="80" y2="435" stroke="#c9a84c" class="path-line"/>
+        <line x1="170" y1="375" x2="260" y2="435" stroke="#c9a84c" class="path-line"/>
+        <!-- Netzach ↔ Hod -->
+        <line x1="80" y1="450" x2="260" y2="450" stroke="#c9a84c" class="path-line"/>
+        <!-- Netzach / Hod → Yesod -->
+        <line x1="80" y1="465" x2="170" y2="475" stroke="#c9a84c" class="path-line"/>
+        <line x1="260" y1="465" x2="170" y2="475" stroke="#c9a84c" class="path-line"/>
+        <!-- Yesod → Malkuth -->
+        <line x1="170" y1="505" x2="170" y2="555" stroke="#c9a84c" class="path-line"/>
+        <!-- Cross connections -->
+        <line x1="80" y1="150" x2="170" y2="245" stroke="#c9a84c" class="path-line" stroke-opacity="0.25"/>
+        <line x1="260" y1="150" x2="170" y2="245" stroke="#c9a84c" class="path-line" stroke-opacity="0.25"/>
+        <line x1="80" y1="260" x2="170" y2="355" stroke="#c9a84c" class="path-line" stroke-opacity="0.25"/>
+        <line x1="260" y1="260" x2="170" y2="355" stroke="#c9a84c" class="path-line" stroke-opacity="0.25"/>
+      </g>
+
+      <!-- PILLAR LABELS -->
+      <text x="42" y="310" font-family="Cinzel, serif" font-size="9" fill="rgba(100,200,100,0.4)" text-anchor="middle" transform="rotate(-90,42,310)">PILAR DA MISERICÓRDIA</text>
+      <text x="298" y="310" font-family="Cinzel, serif" font-size="9" fill="rgba(255,100,100,0.4)" text-anchor="middle" transform="rotate(90,298,310)">PILAR DO RIGOR</text>
+
+      <!-- SEFIROT (clickable) -->
+      <!-- 1. KETHER -->
+      <g class="sephirah-circle" onclick="showSeph('kether')">
+        <circle cx="170" cy="45" r="30" fill="rgba(255,255,255,0.08)" stroke="#ffffff" stroke-width="1.5"/>
+        <circle cx="170" cy="45" r="28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <text x="170" y="49" class="sephirah-label" fill="white" font-size="12">כתר</text>
+        <text x="170" y="88" class="sephirah-label" font-size="9">KETHER</text>
+        <text x="170" y="99" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Coroa</text>
+      </g>
+      <!-- 2. CHOKMAH -->
+      <g class="sephirah-circle" onclick="showSeph('chokmah')">
+        <circle cx="80" cy="150" r="28" fill="rgba(100,100,220,0.15)" stroke="#aaaaff" stroke-width="1.5"/>
+        <text x="80" y="154" class="sephirah-label" fill="#aaaaff" font-size="12">חכמה</text>
+        <text x="80" y="190" class="sephirah-label" font-size="9">CHOKMAH</text>
+        <text x="80" y="200" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Sabedoria</text>
+      </g>
+      <!-- 3. BINAH -->
+      <g class="sephirah-circle" onclick="showSeph('binah')">
+        <circle cx="260" cy="150" r="28" fill="rgba(30,30,50,0.6)" stroke="#999999" stroke-width="1.5"/>
+        <text x="260" y="154" class="sephirah-label" fill="#cccccc" font-size="12">בינה</text>
+        <text x="260" y="190" class="sephirah-label" font-size="9">BINAH</text>
+        <text x="260" y="200" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Entendimento</text>
+      </g>
+      <!-- DAATH (invisible) -->
+      <g class="sephirah-circle" onclick="showSeph('daath')">
+        <circle cx="170" cy="205" r="18" fill="none" stroke="rgba(150,100,200,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+        <text x="170" y="209" class="sephirah-label" fill="rgba(150,100,200,0.6)" font-size="9">DAATH</text>
+      </g>
+      <!-- 4. CHESED -->
+      <g class="sephirah-circle" onclick="showSeph('chesed')">
+        <circle cx="80" cy="260" r="28" fill="rgba(30,50,200,0.15)" stroke="#4444ff" stroke-width="1.5"/>
+        <text x="80" y="264" class="sephirah-label" fill="#6688ff" font-size="12">חסד</text>
+        <text x="80" y="300" class="sephirah-label" font-size="9">CHESED</text>
+        <text x="80" y="310" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Misericórdia</text>
+      </g>
+      <!-- 5. GEBURAH -->
+      <g class="sephirah-circle" onclick="showSeph('geburah')">
+        <circle cx="260" cy="260" r="28" fill="rgba(180,20,20,0.15)" stroke="#ff2222" stroke-width="1.5"/>
+        <text x="260" y="264" class="sephirah-label" fill="#ff5555" font-size="12">גבורה</text>
+        <text x="260" y="300" class="sephirah-label" font-size="9">GEBURAH</text>
+        <text x="260" y="310" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Força / Rigor</text>
+      </g>
+      <!-- 6. TIPHARETH -->
+      <g class="sephirah-circle" onclick="showSeph('tiphareth')">
+        <circle cx="170" cy="365" r="32" fill="rgba(180,160,20,0.15)" stroke="#ffff44" stroke-width="2"/>
+        <circle cx="170" cy="365" r="30" fill="none" stroke="rgba(255,255,100,0.2)" stroke-width="0.5" stroke-dasharray="5,3"/>
+        <text x="170" y="369" class="sephirah-label" fill="#ffff88" font-size="12">תפארת</text>
+        <text x="170" y="408" class="sephirah-label" font-size="9">TIPHARETH</text>
+        <text x="170" y="418" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Beleza / Sol</text>
+      </g>
+      <!-- 7. NETZACH -->
+      <g class="sephirah-circle" onclick="showSeph('netzach')">
+        <circle cx="80" cy="450" r="28" fill="rgba(20,150,40,0.15)" stroke="#22cc44" stroke-width="1.5"/>
+        <text x="80" y="454" class="sephirah-label" fill="#44ee66" font-size="12">נצח</text>
+        <text x="80" y="490" class="sephirah-label" font-size="9">NETZACH</text>
+        <text x="80" y="500" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Vitória</text>
+      </g>
+      <!-- 8. HOD -->
+      <g class="sephirah-circle" onclick="showSeph('hod')">
+        <circle cx="260" cy="450" r="28" fill="rgba(180,80,0,0.15)" stroke="#ff8800" stroke-width="1.5"/>
+        <text x="260" y="454" class="sephirah-label" fill="#ffaa44" font-size="12">הוד</text>
+        <text x="260" y="490" class="sephirah-label" font-size="9">HOD</text>
+        <text x="260" y="500" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Esplendor</text>
+      </g>
+      <!-- 9. YESOD -->
+      <g class="sephirah-circle" onclick="showSeph('yesod')">
+        <circle cx="170" cy="490" r="28" fill="rgba(120,30,200,0.15)" stroke="#aa44ff" stroke-width="1.5"/>
+        <text x="170" y="494" class="sephirah-label" fill="#cc77ff" font-size="12">יסוד</text>
+        <text x="170" y="530" class="sephirah-label" font-size="9">YESOD</text>
+        <text x="170" y="540" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Fundação</text>
+      </g>
+      <!-- 10. MALKUTH -->
+      <g class="sephirah-circle" onclick="showSeph('malkuth')">
+        <circle cx="170" cy="563" r="28" fill="rgba(100,70,10,0.3)" stroke="#8B6914" stroke-width="1.5"/>
+        <text x="170" y="567" class="sephirah-label" fill="#c8a040" font-size="12">מלכות</text>
+        <text x="170" y="600" class="sephirah-label" font-size="9">MALKUTH</text>
+        <text x="170" y="610" class="sephirah-label" font-size="8" fill="rgba(201,168,76,0.5)">Reino</text>
+      </g>
+    </svg>
+
+    <div id="seph-panel">
+      <p style="color:rgba(232,224,208,0.4); text-align:center; font-style:italic; padding:60px 0;">Clique em uma Sefirah para ver seus detalhes completos</p>
+    </div>
+  </div>
+
+  <h3>Os Três Pilares</h3>
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>⬜ Pilar da Misericórdia (Esquerdo)</h4>
+      <p>Chokmah · Chesed · Netzach</p>
+      <p>Princípio masculino, expansão, força, luz, dom. A força que dá sem limite. Corresponde ao lado direito do corpo humano.</p>
+    </div>
+    <div class="info-card">
+      <h4>⬛ Pilar do Rigor (Direito)</h4>
+      <p>Binah · Geburah · Hod</p>
+      <p>Princípio feminino, contração, forma, limite, recepção. A força que organiza e delimita. Lado esquerdo do corpo.</p>
+    </div>
+    <div class="info-card">
+      <h4>🟡 Pilar do Equilíbrio (Central)</h4>
+      <p>Kether · Daath · Tiphareth · Yesod · Malkuth</p>
+      <p>O caminho do meio. Integração dos opostos. A coluna vertebral do cosmos. A via de ascensão da alma.</p>
+    </div>
+    <div class="info-card">
+      <h4>⬡ Daath — A Sefirah Oculta</h4>
+      <p>Daath (דעת — "Conhecimento") não aparece no diagrama clássico. Surge da união de Chokmah e Binah (Pai e Mãe). É a <em>consciência não-manifestada</em>, o abismo entre o mundo divino e o criado. Cruzar Daath sem preparação leva à loucura — é o "abismo" dos ocultistas.</p>
+    </div>
+  </div>
+
+  <h3>As 32 Vias de Sabedoria</h3>
+  <p>A Árvore tem <strong>10 Sefirot + 22 caminhos</strong> = 32 vias de sabedoria, correspondentes às 22 letras do alfabeto hebraico. Cada letra é uma lei vibratória do universo, uma "palavra" de Deus que sustenta uma dimensão da realidade. No Tarot hermético, os 22 arcanos maiores correspondem aos 22 caminhos da Árvore.</p>
+
+  <h3>A Árvore no Corpo Humano</h3>
+  <p>Um princípio fundamental da Cabala: <strong>"Como é em cima, é embaixo"</strong>. A Árvore da Vida é simultaneamente a anatomia do universo e a anatomia do ser humano. Cada Sefirah corresponde a uma parte do corpo:</p>
+  <div class="names-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));">
+    <div class="name-card divine"><span class="name-latin">Kether</span><span class="name-meaning">Alto da cabeça — coroa / fontanela</span></div>
+    <div class="name-card divine"><span class="name-latin">Chokmah</span><span class="name-meaning">Hemisfério cerebral direito</span></div>
+    <div class="name-card divine"><span class="name-latin">Binah</span><span class="name-meaning">Hemisfério cerebral esquerdo</span></div>
+    <div class="name-card divine"><span class="name-latin">Chesed</span><span class="name-meaning">Braço e ombro direito</span></div>
+    <div class="name-card divine"><span class="name-latin">Geburah</span><span class="name-meaning">Braço e ombro esquerdo</span></div>
+    <div class="name-card divine"><span class="name-latin">Tiphareth</span><span class="name-meaning">Coração / peito / plexo solar</span></div>
+    <div class="name-card divine"><span class="name-latin">Netzach</span><span class="name-meaning">Quadril e perna direita</span></div>
+    <div class="name-card divine"><span class="name-latin">Hod</span><span class="name-meaning">Quadril e perna esquerda</span></div>
+    <div class="name-card divine"><span class="name-latin">Yesod</span><span class="name-meaning">Órgãos reprodutores / sacro</span></div>
+    <div class="name-card divine"><span class="name-latin">Malkuth</span><span class="name-meaning">Pés / terra / presença física</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ 4 MUNDOS ═══════════════════════════════ -->
+<section id="mundos">
+  <div class="section-header">
+    <span class="section-number">PARTE III</span>
+    <h2>Os Quatro Mundos</h2>
+    <p class="lead">A realidade tem quatro camadas — do mais sutil ao mais denso</p>
+  </div>
+
+  <p>A Cabala ensina que a criação não aconteceu de uma vez — foi um processo de <em>condensação gradual</em>, como vapor que esfria e se torna água e depois gelo. Existem <strong>quatro mundos</strong> (Olamot), do mais próximo do Éin Sof ao mais distante — o nosso mundo físico.</p>
+
+  <div class="worlds-stack">
+    <div class="world-bar world-1">
+      <div>
+        <div class="world-name">ATZILUTH</div>
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.2em;">אֲצִילוּת — EMANAÇÃO</div>
+      </div>
+      <div class="world-desc">O mundo mais próximo de Deus — pura luz divina. As Sefirot aqui são aspectos diretos do Éin Sof. Não há separação entre criador e criatura. O Divino em sua forma mais pura. Corresponde a Kether. No ser humano: o Yechidah (centelha divina individual).</div>
+    </div>
+    <div class="world-bar world-2">
+      <div>
+        <div class="world-name">BERIAH</div>
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(150,150,255,0.5);letter-spacing:0.2em;">בְּרִיאָה — CRIAÇÃO</div>
+      </div>
+      <div class="world-desc">O mundo dos Tronos e dos grandes Arcanjos (Miguel, Gabriel, Rafael, Uriel). Aqui surgem os primeiros seres individuais — as inteligências puras. É o "Céu dos Céus" das escrituras. No ser humano: a Neshamah (alma divina racional).</div>
+    </div>
+    <div class="world-bar world-3">
+      <div>
+        <div class="world-name">YETZIRAH</div>
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(255,200,50,0.5);letter-spacing:0.2em;">יְצִירָה — FORMAÇÃO</div>
+      </div>
+      <div class="world-desc">O mundo dos anjos — onde as formas etéreas são moldadas antes de se materializar. O "Plano Astral" da tradição esotérica. Aqui habitam os 72 anjos dos nomes e os Serafins. No ser humano: a Ruach (ego/intelecto) e o corpo astral.</div>
+    </div>
+    <div class="world-bar world-4">
+      <div>
+        <div class="world-name">ASSIAH</div>
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:rgba(100,200,80,0.5);letter-spacing:0.2em;">עֲשִׂיָּה — AÇÃO</div>
+      </div>
+      <div class="world-desc">Nosso mundo físico — a matéria densa, o universo visível. Mas Assiah também tem uma dimensão espiritual: os "cascos" (Qliphoth) habitam aqui como sombras inversas das Sefirot. No ser humano: o Nefesh (alma vital/instintiva) e o corpo físico.</div>
+    </div>
+  </div>
+
+  <h3>Os Planos no Esoterismo Comparado</h3>
+  <div class="names-grid">
+    <div class="name-card divine">
+      <span class="name-latin">Plano Divino</span>
+      <span class="name-meaning">Atziluth / Êxtase místico puro / União com o Absoluto</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-latin">Plano Mental Superior</span>
+      <span class="name-meaning">Beriah / Plano causativo / Onde nascem as formas do pensamento primordial</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-latin">Plano Mental Inferior / Astral</span>
+      <span class="name-meaning">Yetzirah / Plano das emoções, sonhos, formas astrais, anjos e demônios como forças</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-latin">Plano Físico / Etérico</span>
+      <span class="name-meaning">Assiah / Nosso mundo e sua contraparte etérica / Corpo e matéria</span>
+    </div>
+  </div>
+
+  <h3>As Quatro Partes da Alma</h3>
+  <p>Correspondendo aos quatro mundos, a Cabala define quatro camadas da alma humana (e uma quinta, a mais elevada):</p>
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>Nefesh (נֶפֶשׁ) — Alma Vital</h4>
+      <p>A alma "animal" — instintos, impulsos vitais, emoções brutas. Ligada ao corpo e à Sefirah Yesod. É a parte que permanece próxima ao corpo após a morte.</p>
+    </div>
+    <div class="info-card">
+      <h4>Ruach (רוּחַ) — Espírito / Intelecto</h4>
+      <p>A mente racional, a consciência moral, o ego cultivado. Ligada a Tiphareth. É o "eu" que pensa e decide. Corresponde ao corpo astral da tradição teosófica.</p>
+    </div>
+    <div class="info-card">
+      <h4>Neshamah (נְשָׁמָה) — Sopro Divino</h4>
+      <p>A alma superior, intuitiva, espiritual. Ligada à Binah. É a parte que nunca pecou e jamais pode ser corrompida. O fio que conecta ao Divino.</p>
+    </div>
+    <div class="info-card">
+      <h4>Chayah + Yechidah — A Centelha</h4>
+      <p>Os dois níveis mais elevados — a "Vida" e o "Único". São aspectos do Éin Sof dentro do ser humano. Inacessíveis à consciência ordinária; ativados por iluminação mística.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ NOMES DE DEUS ═══════════════════════════════ -->
+<section id="nomes-deus">
+  <div class="section-header">
+    <span class="section-number">PARTE IV</span>
+    <h2>Os Nomes de Deus</h2>
+    <p class="lead">Cada Sefirah tem um nome divino — uma vibração específica do Infinito</p>
+  </div>
+
+  <p>Na Cabala, <strong>os nomes de Deus não são meros títulos</strong> — são fórmulas vibracionais que descrevem como o Éin Sof se manifesta em cada nível da realidade. Cada Sefirah é governada por um nome sagrado específico que, quando pronunciado com a consciência correta, ressoa com aquela frequência divina.</p>
+
+  <blockquote>
+    "Não existe parte da Torá que não contenha os Nomes de Deus. As palavras são como véus que os ocultam, mas o estudioso cabalístico aprende a vê-los por trás das palavras." — Zohar
+  </blockquote>
+
+  <div class="names-grid">
+    <div class="name-card divine">
+      <span class="name-number">1</span>
+      <span class="name-hebrew">אֶהְיֶה</span>
+      <span class="name-latin">EHYEH</span>
+      <span class="name-meaning">"Eu Sou o que Sou" — Kether · A autoconsciência pura de Deus · O primeiro ato de existência · "Serei o que Serei"</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">2</span>
+      <span class="name-hebrew">יָהּ</span>
+      <span class="name-latin">YAH</span>
+      <span class="name-meaning">"Deus" — Chokmah · Forma abreviada do Tetragrama · Princípio de sabedoria primordial · Masculino divino</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">3</span>
+      <span class="name-hebrew">יְהוָה אֱלֹהִים</span>
+      <span class="name-latin">YHVH ELOHIM</span>
+      <span class="name-meaning">"Senhor Deus" — Binah · União do masculino e feminino divinos · Origem da forma e do entendimento</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">4</span>
+      <span class="name-hebrew">אֵל</span>
+      <span class="name-latin">EL</span>
+      <span class="name-meaning">"Deus Poderoso" — Chesed · Misericórdia infinita · Bondade sem condição · Jupiter divino</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">5</span>
+      <span class="name-hebrew">אֱלֹהִים גִּבּוֹר</span>
+      <span class="name-latin">ELOHIM GIBOR</span>
+      <span class="name-meaning">"Deus da Força" — Geburah · Julgamento e poder · A força que limpa e purifica pelo rigor</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">6</span>
+      <span class="name-hebrew">יְהוָה אֱלוֹהַּ וָדַעַת</span>
+      <span class="name-latin">YHVH ELOAH VE-DAATH</span>
+      <span class="name-meaning">"Senhor Deus do Conhecimento" — Tiphareth · O coração da Árvore · Cristo cósmico · Sol espiritual</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">7</span>
+      <span class="name-hebrew">יְהוָה צְבָאוֹת</span>
+      <span class="name-latin">YHVH TZABAOTH</span>
+      <span class="name-meaning">"Senhor dos Exércitos" — Netzach · Forças da natureza · Paixão e desejo sagrado · Vênus divina</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">8</span>
+      <span class="name-hebrew">אֱלֹהִים צְבָאוֹת</span>
+      <span class="name-latin">ELOHIM TZABAOTH</span>
+      <span class="name-meaning">"Deus dos Exércitos" — Hod · Splendor da inteligência · Magia e comunicação · Mercúrio divino</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">9</span>
+      <span class="name-hebrew">שַׁדַּי אֵל חַי</span>
+      <span class="name-latin">SHADDAI EL CHAI</span>
+      <span class="name-meaning">"Todo-Poderoso, Deus Vivo" — Yesod · Força vital · Fundação do mundo astral · Lua divina</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">10</span>
+      <span class="name-hebrew">אֲדֹנָי הָאָרֶץ</span>
+      <span class="name-latin">ADONAI HA-ARETZ</span>
+      <span class="name-meaning">"Senhor da Terra" — Malkuth · Deus manifestado no mundo físico · A Shekinah — presença divina na matéria</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">∞</span>
+      <span class="name-hebrew">יהוה</span>
+      <span class="name-latin">YHVH — O TETRAGRAMA</span>
+      <span class="name-meaning">O nome mais sagrado de Deus. As quatro letras: Yod-Heh-Vav-Heh. Correspondem aos 4 mundos, aos 4 elementos, às 4 partes da alma. Impronunciável em hebraico ortodoxo.</span>
+    </div>
+    <div class="name-card divine">
+      <span class="name-number">✡</span>
+      <span class="name-hebrew">אֱלֹהִים</span>
+      <span class="name-latin">ELOHIM</span>
+      <span class="name-meaning">Plural de Eloah — literalmente "Deuses/Forças Divinas". Usado no Gênesis: "No princípio, os Elohim criaram...". Aponta para a pluralidade de forças dentro do único Deus.</span>
+    </div>
+  </div>
+
+  <h3>O Tetragrama — YHVH</h3>
+  <p>O nome יהוה (Yod-Heh-Vav-Heh) é chamado de <em>Shem ha-Mephorash</em> — o Nome Explícito ou Desdobrado. É tão sagrado que os judeus ortodoxos nunca o pronunciam — substituem por "Adonai" (Meu Senhor) ou simplesmente "HaShem" (O Nome).</p>
+  <p>Cabalísticamente, cada letra corresponde a:</p>
+  <div class="names-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));">
+    <div class="name-card divine"><span class="name-hebrew">י</span><span class="name-latin">YOD — Ponto / Pai</span><span class="name-meaning">Fogo · Atziluth · Chokmah · O ponto original de consciência</span></div>
+    <div class="name-card divine"><span class="name-hebrew">ה</span><span class="name-latin">HEH — Janela / Mãe</span><span class="name-meaning">Água · Beriah · Binah · A expansão primordial da consciência</span></div>
+    <div class="name-card divine"><span class="name-hebrew">ו</span><span class="name-latin">VAV — Prego / Filho</span><span class="name-meaning">Ar · Yetzirah · As 6 Sefirot do coração · Mediador</span></div>
+    <div class="name-card divine"><span class="name-hebrew">ה</span><span class="name-latin">HEH FINAL — Filha</span><span class="name-meaning">Terra · Assiah · Malkuth · A manifestação final</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ 72 NOMES ═══════════════════════════════ -->
+<section id="72nomes">
+  <div class="section-header">
+    <span class="section-number">PARTE V</span>
+    <h2>Os 72 Nomes de Deus</h2>
+    <p class="lead">Extraídos de três versículos do Êxodo — a tecnologia espiritual mais poderosa da Cabala</p>
+  </div>
+
+  <p>Os <strong>72 Nomes de Deus</strong> (שֵׁם הַמְּפֹרָשׁ — <em>Shem ha-Mephorash</em>) são extraídos de três versículos consecutivos do livro do Êxodo (14:19-21), cada um com exatamente <strong>72 letras</strong>. Escrevendo o primeiro versículo da esquerda para a direita, o segundo da direita para a esquerda, e o terceiro novamente da esquerda para a direita, e lendo em colunas de três letras, obtemos 72 combinações de três letras — os 72 Nomes.</p>
+
+  <div class="highlight-box blue">
+    <h4>A Base Bíblica</h4>
+    <p>Êxodo 14:19 — "E o anjo de Deus que ia adiante do exército de Israel, se retirou e foi para a sua retaguarda..." (72 letras)</p>
+    <p>Êxodo 14:20 — "E veio entre o exército dos egípcios e o exército de Israel; e havia nuvem e treva deste lado, e daquele lado iluminou a noite..." (72 letras)</p>
+    <p>Êxodo 14:21 — "E Moisés estendeu sua mão sobre o mar, e o Senhor impeliu o mar com forte vento oriental toda a noite..." (72 letras)</p>
+    <p style="margin:0;"><em>O momento em que Moisés abriu o Mar Vermelho foi realizado — segundo a Cabala — com o poder dos 72 Nomes.</em></p>
+  </div>
+
+  <p>Cada um dos 72 Nomes corresponde a um <strong>anjo de três letras</strong> (acrescido do sufixo -El ou -Yah), a uma frequência específica de energia divina, e a aplicações práticas (meditação, proteção, cura, clareza mental etc.).</p>
+
+  <div class="names72-grid" id="names72-container">
+    <!-- Gerado por JS -->
+  </div>
+
+  <p style="text-align:center;font-style:italic;color:var(--text-dim);margin-top:20px;">Passe o mouse sobre um nome para ver seus detalhes · Clique para meditação</p>
+</section>
+
+<!-- ═══════════════════════════════ ANJOS ═══════════════════════════════ -->
+<section id="anjos">
+  <div class="section-header">
+    <span class="section-number">PARTE VI</span>
+    <h2>Os Anjos</h2>
+    <p class="lead">Mensageiros divinos, forças cósmicas, ou aspectos da mente? — A Cabala responde</p>
+  </div>
+
+  <div class="duality-strip"><div class="duality-light"></div><div class="duality-dark"></div></div>
+
+  <p>A palavra <strong>anjo</strong> vem do grego <em>ángelos</em> — que traduz o hebraico <strong>מַלְאָךְ</strong> (<em>malakh</em>), que significa simplesmente <em>mensageiro</em>. Na Cabala, anjos não são seres com asas flutuando em nuvens — são <strong>forças conscientes da criação</strong>, emanações do Divino encarregadas de administrar aspectos específicos do cosmos.</p>
+
+  <div class="highlight-box">
+    <h4>O Que São os Anjos na Cabala?</h4>
+    <p>Anjos habitam o mundo de Yetzirah (Formação) — o plano astral. Não têm livre-arbítrio no sentido humano: cada anjo tem uma função específica e a cumpre. Não "caem" — aqueles que "caem" se tornam demônios (na visão dualista) ou continuam como forças de rigor extremo. Cada Sefirah é governada por uma <em>ordem angélica</em>.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('tab-arcanjos','anjos-tabs')">Arcanjos</button>
+    <button class="tab-btn" onclick="showTab('tab-ordens','anjos-tabs')">Ordens Angélicas</button>
+    <button class="tab-btn" onclick="showTab('tab-72anjos','anjos-tabs')">72 Anjos das Sefirot</button>
+  </div>
+
+  <div id="anjos-tabs">
+    <div id="tab-arcanjos" class="tab-content active">
+      <div class="angels-grid">
+        <div class="angel-card">
+          <span class="angel-halo">👼</span>
+          <div class="angel-name">METATRON</div>
+          <span class="angel-hebrew">מֶטַטְרוֹן</span>
+          <div class="angel-desc">O mais alto dos anjos — chamado "o Príncipe do Véu" e "o Menor YHVH". Segundo a tradição, é Enoque transformado após ascensão. Governa Kether e a entrada ao Éin Sof. Scribe celestial que registra todas as ações humanas.</div>
+          <div class="angel-seph">KETHER · Mundo de Beriah · Príncipe de todos os anjos</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">⚡</span>
+          <div class="angel-name">RAZIEL</div>
+          <span class="angel-hebrew">רַזִיאֵל</span>
+          <div class="angel-desc">O Anjo dos Segredos. Governa Chokmah. Diz-se que lhe foi revelado o Sefer Raziel — o livro de toda a sabedoria oculta — que ele deu a Adão após a queda. Conhece todos os mistérios do universo.</div>
+          <div class="angel-seph">CHOKMAH · Mestre do Conhecimento Oculto</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">🌑</span>
+          <div class="angel-name">TZAPHKIEL</div>
+          <span class="angel-hebrew">צַפְקִיאֵל</span>
+          <div class="angel-desc">O Anjo da Contemplação Divina. Governa Binah. Seu nome significa "A visão de Deus". Príncipe dos Tronos. Especializado em entendimento profundo, meditação, e o trabalho da Mãe Suprema (Binah).</div>
+          <div class="angel-seph">BINAH · Contemplação · Grande Mãe Angélica</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">💙</span>
+          <div class="angel-name">TZADKIEL</div>
+          <span class="angel-hebrew">צַדְקִיאֵל</span>
+          <div class="angel-desc">O Anjo da Misericórdia e Graça. Governa Chesed. Seu nome significa "Justiça de Deus". Reteve o braço de Abraão quando ia sacrificar Isaac. Anjo da benevolência, abundância e justiça compassiva.</div>
+          <div class="angel-seph">CHESED · Misericórdia · Júpiter celestial</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">⚔️</span>
+          <div class="angel-name">CAMAEL / KHAMAEL</div>
+          <span class="angel-hebrew">כַּמַּאֵל</span>
+          <div class="angel-desc">O Anjo da Força Divina. Governa Geburah. Seu nome significa "Aquele que vê Deus". Príncipe dos Serafins. Guerreiro celestial, anjo da força e do rigor, transformação pela adversidade.</div>
+          <div class="angel-seph">GEBURAH · Força · Marte espiritual</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">☀️</span>
+          <div class="angel-name">RAFAEL</div>
+          <span class="angel-hebrew">רָפָאֵל</span>
+          <div class="angel-desc">O Anjo da Cura. Governa Tiphareth. Seu nome significa "Deus cura". Um dos sete arcanjos principais. Cura Tobias no livro apócrifo. Anjo do Sol, da saúde, da ciência e do intelecto iluminado.</div>
+          <div class="angel-seph">TIPHARETH · Cura · Sol espiritual · Leste</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">💚</span>
+          <div class="angel-name">HANIEL / ANAEL</div>
+          <span class="angel-hebrew">חֲנִיאֵל</span>
+          <div class="angel-desc">O Anjo da Graça e da Beleza. Governa Netzach. Seu nome significa "Graça de Deus". Anjo de Vênus, das artes, do amor, da natureza e das emoções elevadas. Tradição: carregou Enoque ao paraíso.</div>
+          <div class="angel-seph">NETZACH · Amor · Arte · Vênus espiritual</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">🔮</span>
+          <div class="angel-name">MIGUEL</div>
+          <span class="angel-hebrew">מִיכָאֵל</span>
+          <div class="angel-desc">O Príncipe dos Anjos. Governa Hod (tradição hermética) ou Tiphareth (tradição judaica). Seu nome significa "Quem é como Deus?" — é uma pergunta retórica. Guerreiro supremo, derrotou Lúcifer, protetor de Israel, guia dos mortos.</div>
+          <div class="angel-seph">HOD/TIPHARETH · Príncipe celestial · Sul · Fogo</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">🌙</span>
+          <div class="angel-name">GABRIEL</div>
+          <span class="angel-hebrew">גַּבְרִיאֵל</span>
+          <div class="angel-desc">O Mensageiro Divino. Governa Yesod. Seu nome significa "Força de Deus". Anunciou o nascimento de Jesus e do profeta João. No Islamismo, ditou o Corão a Maomé. Anjo dos sonhos, visões, mistérios e da lua.</div>
+          <div class="angel-seph">YESOD · Sonhos · Visões · Lua · Oeste · Água</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">🌍</span>
+          <div class="angel-name">SANDALPHON</div>
+          <span class="angel-hebrew">סַנְדַּלְפוֹן</span>
+          <div class="angel-desc">O Anjo da Terra e das Preces. Governa Malkuth. Irmão gêmeo de Metatron — ambos eram humanos transformados (Elias). Tece as preces dos fiéis em coroas para Deus. Conecta o reino ao céu.</div>
+          <div class="angel-seph">MALKUTH · Terra · Norte · Prece</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">🔴</span>
+          <div class="angel-name">URIEL</div>
+          <span class="angel-hebrew">אוּרִיאֵל</span>
+          <div class="angel-desc">O Anjo da Luz e do Fogo de Deus. Seu nome significa "Luz de Deus". Guardou o Éden com espada de fogo. Anjo da revelação e do apocalipse. Na tradição hermética, governa o Norte e o elemento Terra.</div>
+          <div class="angel-seph">Norte · Terra · Revelação · Fogo Divino</div>
+        </div>
+        <div class="angel-card">
+          <span class="angel-halo">⭐</span>
+          <div class="angel-name">SERAFIS BEY</div>
+          <span class="angel-hebrew">שְׂרָפִים</span>
+          <div class="angel-desc">Os Serafins — "os ardentes". Vistos por Isaías: seis asas, dois cobrindo o rosto, dois os pés, dois para voar. Gritam "Santo, Santo, Santo" eternamente ao redor do Trono Divino. São a ordem mais elevada dos anjos em Beriah.</div>
+          <div class="angel-seph">BERIAH · Ordem mais alta · Adoração perpétua</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-ordens" class="tab-content">
+      <p>A Cabala organiza os anjos em <strong>10 ordens</strong>, uma para cada Sefirah, mais uma ordem para Daath:</p>
+      <div class="angels-grid">
+        <div class="angel-card"><div class="angel-name">CHAYOT HA-KODESH</div><span class="angel-hebrew">חַיּוֹת הַקֹּדֶשׁ</span><div class="angel-desc">"Criaturas Sagradas". Kether. Os seres mais elevados, vistos por Ezequiel na sua visão da merkabá (trono divino). Quatro faces: leão, touro, águia, humano. A ordem mais próxima do Éin Sof.</div></div>
+        <div class="angel-card"><div class="angel-name">OPHANIM</div><span class="angel-hebrew">אוֹפַנִּים</span><div class="angel-desc">"Rodas". Chokmah. As rodas de fogo de Ezequiel, cheias de olhos. Não têm forma fixa — são espirais puras de energia divina em movimento. Sabiamente conhecem os padrões do cosmos.</div></div>
+        <div class="angel-card"><div class="angel-name">ARALIM / THRONES</div><span class="angel-hebrew">אֲרָלִים</span><div class="angel-desc">"Os Grandes". Binah. Os Tronos — sustentam o trono divino. São a sede onde Deus "se senta" para governar o universo. Receptores da vontade divina e transmissores para os escalões inferiores.</div></div>
+        <div class="angel-card"><div class="angel-name">CHASMALIM</div><span class="angel-hebrew">חַשְׁמַלִּים</span><div class="angel-desc">"Seres Brilhantes". Chesed. Dominações ou Dominadores. Presidem sobre as leis da natureza com sabedoria e graça. Seu nome deriva de uma palavra enigmática em Ezequiel que pode significar "âmbar" ou "silêncio-fala".</div></div>
+        <div class="angel-card"><div class="angel-name">SERAPHIM</div><span class="angel-hebrew">שְׂרָפִים</span><div class="angel-desc">"Os Ardentes". Geburah. Serões de fogo que purificam pelo calor divino. Isaías 6: um tocou lábio do profeta com brasa viva do altar. Executores do julgamento divino.</div></div>
+        <div class="angel-card"><div class="angel-name">MALACHIM</div><span class="angel-hebrew">מַלְאָכִים</span><div class="angel-desc">"Os Mensageiros / Reis". Tiphareth. Os "anjos" por excelência das escrituras — aqueles que aparecem aos humanos, trazem mensagens, aparecem como homens. A classe angélica mais interativa com a humanidade.</div></div>
+        <div class="angel-card"><div class="angel-name">ELOHIM</div><span class="angel-hebrew">אֱלֹהִים</span><div class="angel-desc">"Forças Divinas". Netzach. As forças elementais natureza — vento, fogo, água, terra em seus aspectos espirituais. Presidem sobre os ciclos naturais, estações, crescimento e reprodução.</div></div>
+        <div class="angel-card"><div class="angel-name">BENE ELOHIM</div><span class="angel-hebrew">בְּנֵי הָאֱלֹהִים</span><div class="angel-desc">"Filhos de Deus". Hod. Mencionados no Gênesis 6 como aqueles que se uniram às filhas dos homens. Anjos da comunicação e do intelecto. Podem interagir mais diretamente com a humanidade.</div></div>
+        <div class="angel-card"><div class="angel-name">CHERUBIM</div><span class="angel-hebrew">כְּרוּבִים</span><div class="angel-desc">"Querubins". Yesod. Guardiões do Jardim do Éden (Gên. 3:24). Os dois Querubins de ouro sobre a Arca da Aliança. Guardiões de espaços sagrados e portais entre mundos. Na Bíblia, têm quatro asas e quatro faces.</div></div>
+        <div class="angel-card"><div class="angel-name">ASHIM / ISCHIM</div><span class="angel-hebrew">אִשִּׁים</span><div class="angel-desc">"Almas de Fogo" ou "Seres Benditos". Malkuth. Os "santos" humanos elevados, ou almas humanas que atingiram completude espiritual. A mais "humana" das ordens angélicas — a fronteira entre o angélico e o humano.</div></div>
+      </div>
+    </div>
+
+    <div id="tab-72anjos" class="tab-content">
+      <p>Cada um dos 72 Nomes de Deus gera um anjo. Aqui estão os mais conhecidos dos 72 anjos com suas funções:</p>
+      <div class="angels-grid">
+        <div class="angel-card"><div class="angel-name">1. VEHUIAH</div><span class="angel-hebrew">וְהוּיָה</span><div class="angel-desc">Vontade divina e novo começo. Anjo das transformações radicais. Dá força para realizar o impossível. Protege contra adversidades.</div><div class="angel-seph">Signo: Áries · Elemento: Fogo</div></div>
+        <div class="angel-card"><div class="angel-name">2. JELIEL</div><span class="angel-hebrew">יֵלִיאֵל</span><div class="angel-desc">Anjo do amor e da fidelidade conjugal. Acalma rebeliões, fertiliza, apazigua conflitos. Governa casamentos e relações afetivas.</div><div class="angel-seph">Signo: Áries · Amor</div></div>
+        <div class="angel-card"><div class="angel-name">6. LELAHEL</div><span class="angel-hebrew">לֵלַהֵאֵל</span><div class="angel-desc">Anjo da cura e da medicina. Proporciona riqueza e fama através de talentos. Liga-se às ciências e às artes curativas.</div><div class="angel-seph">Cura · Medicina</div></div>
+        <div class="angel-card"><div class="angel-name">11. LAUVIAH</div><span class="angel-hebrew">לָאוּיָה</span><div class="angel-desc">Anjo das revelações proféticas. Governa os sonhos proféticos, a telepatia e a comunicação com planos superiores durante o sono.</div><div class="angel-seph">Profecia · Sonhos</div></div>
+        <div class="angel-card"><div class="angel-name">14. MEBAHEL</div><span class="angel-hebrew">מֵבַהֵאֵל</span><div class="angel-desc">Anjo da verdade e da liberdade. Protege inocentes oprimidos. Combate mentiras e injustiças. Restabelece a ordem moral.</div><div class="angel-seph">Verdade · Justiça</div></div>
+        <div class="angel-card"><div class="angel-name">17. LAUIAH</div><span class="angel-hebrew">לָאוּיָה</span><div class="angel-desc">Anjo do sucesso. Eleva socialmente, ajuda na ascensão profissional e espiritual. Governa o orgulho transformado em dignidade.</div><div class="angel-seph">Sucesso · Elevação</div></div>
+        <div class="angel-card"><div class="angel-name">22. IEIAEL</div><span class="angel-hebrew">יֵיַיאֵל</span><div class="angel-desc">Anjo da fortuna e das viagens. Protege viajantes, marinheiros. Governa telepatia, previsão do futuro e clarividência.</div><div class="angel-seph">Fortuna · Viagens</div></div>
+        <div class="angel-card"><div class="angel-name">33. YEHUIAH</div><span class="angel-hebrew">יְהוּיָה</span><div class="angel-desc">Anjo da submissão ao divino. Desvela planos inimigos ocultos. Ajuda a reconhecer a vontade de Deus e a se alinhar a ela.</div><div class="angel-seph">Submissão · Revelação</div></div>
+        <div class="angel-card"><div class="angel-name">44. YELAHIAH</div><span class="angel-hebrew">יֵלַהֲיָה</span><div class="angel-desc">Anjo da vitória e do karma. Protege guerreiros, advogados, militares. Transforma o karma negativo acumulado.</div><div class="angel-seph">Vitória · Karma</div></div>
+        <div class="angel-card"><div class="angel-name">55. MEBAHIAH</div><span class="angel-hebrew">מֵבַהִיָּה</span><div class="angel-desc">Anjo da lucidez intelectual. Governa a moral, a religião e a prática espiritual. Auxilia quem deseja ter filhos ou discípulos.</div><div class="angel-seph">Clareza · Moral</div></div>
+        <div class="angel-card"><div class="angel-name">66. MANAKEL</div><span class="angel-hebrew">מַנַקֵּאֵל</span><div class="angel-desc">Anjo que acalma a ira divina e humana. Governa a vegetação aquática. Dá sonhos proféticos que revelam o caráter dos outros.</div><div class="angel-seph">Pacificação · Sonhos</div></div>
+        <div class="angel-card"><div class="angel-name">72. MUMIAH</div><span class="angel-hebrew">מוּמִיָּה</span><div class="angel-desc">O último e mais poderoso para conclusões — governa o fim dos ciclos, transmutações, longevidade e medicina. Fecha loops cármicos.</div><div class="angel-seph">Conclusão · Transmutação</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>São os Anjos Seres Externos ou Partes da Mente?</h3>
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>Visão Metafísica Clássica</h4>
+      <p>Anjos são seres reais, objetivos, existentes em planos sutis de realidade. Possuem consciência própria, ainda que diferente da humana. Interagem com o mundo físico e com humanos. Possuem hierarquias, funções, territórios.</p>
+    </div>
+    <div class="info-card">
+      <h4>Visão Psicológica / Junguiana</h4>
+      <p>Anjos são arquétipos da psique — padrões universais de energia psíquica. Quando "invocamos" um anjo, ativamos aquela qualidade dentro de nós. Miguel é nossa coragem. Rafael é nossa capacidade de curar. Gabriel é nossa intuição.</p>
+    </div>
+    <div class="info-card">
+      <h4>Visão Integrada (Cabalística Avançada)</h4>
+      <p>A dicotomia é falsa. Anjos são simultaneamente externos e internos — assim como Sefirot existem tanto no cosmos quanto na psique humana. O "dentro" e o "fora" são espelhos um do outro. Contatar um anjo é tanto uma experiência objetiva quanto subjetiva.</p>
+    </div>
+    <div class="info-card">
+      <h4>Evidências e Fenomenologia</h4>
+      <p>Milhares de relatos de encontros angélicos (NDE, visões, sonhos) mostram elementos universais transculturais que sugerem algo além da projeção individual. Mas a neurociência mostra que estados meditativos profundos produzem experiências visualmente idênticas a "visões angélicas".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ DEMÔNIOS ═══════════════════════════════ -->
+<section id="demonios">
+  <div class="section-header">
+    <span class="section-number">PARTE VII</span>
+    <h2>Os Demônios</h2>
+    <p class="lead">A face sombria do sagrado — onde os demônios realmente moram</p>
+  </div>
+
+  <div class="duality-strip"><div class="duality-dark"></div><div class="duality-light"></div></div>
+
+  <div class="highlight-box red">
+    <h4>A Verdade Cabalística sobre os Demônios</h4>
+    <p>Na Cabala, demônios <strong>não são oponentes de Deus</strong>. São as <em>Qliphoth</em> — os "cascos" ou "cascas" das Sefirot. São o que sobrou quando a luz divina se retirou durante o processo criativo. São energia divina sem a "roupa" que a humaniza e equilibra. São Sefirot desequilibradas, forças que existem sem seu oposto complementar.</p>
+    <p style="margin:0;">Em outras palavras: <strong>anjos e demônios são feitos da mesma substância</strong> — energia divina. A diferença está no equilíbrio. Um anjo é força divina em harmonia. Um demônio é a mesma força fora de equilíbrio, sem contrapeso.</p>
+  </div>
+
+  <h3>A Origem dos Demônios — Três Teorias Cabalísticas</h3>
+
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>1. Shevirat ha-Kelim — A Quebra dos Vasos</h4>
+      <p>Isaac Luria ensina: antes da criação atual, Deus tentou criar mundos anteriores (os "Reis de Edom" do Gênesis 36). A Luz era densa demais — os "vasos" (Kelim) que deveriam contê-la <em>quebraram</em>. Os fragmentos dos vasos caíram, e as centelhas de luz que ficaram presas neles formaram as Qliphoth — os demônios são literalmente "cacos da criação quebrada".</p>
+    </div>
+    <div class="info-card">
+      <h4>2. Tzimtzum — A Contração</h4>
+      <p>Quando Deus se contraiu para criar espaço para o universo, o "espaço vazio" (chalal) não era completamente vazio — continha "resíduos" (reshimu) da presença divina. Esses resíduos, misturados à ausência de Luz direta, geraram as forças do chalal — proto-demônios, forças de resistência à Luz.</p>
+    </div>
+    <div class="info-card">
+      <h4>3. Oposição Necessária — O Mal como Ferramenta</h4>
+      <p>A visão mais filosófica: o mal (Qliphoth) não é um erro — é uma necessidade. Para que o bem seja real, o mal deve ser possível. Para que o livre-arbítrio exista, deve existir algo a ser resistido. Os demônios são os "oponentes treinadores" da alma humana — sua existência permite que a humanidade <em>escolha</em> o bem.</p>
+    </div>
+    <div class="info-card">
+      <h4>4. A Queda — Perspectiva Sincrética</h4>
+      <p>A tradição posterior (mais influenciada pelo Zoroastrismo e Gnosticismo) descreve anjos que "caíram" ao desobedecer a Deus — Lúcifer, Samael, Azazel. Na Cabala, isso é interpretado como: esses seres escolheram manifestar apenas um aspecto de si (ex: poder, rigor, desejo) sem o equilíbrio — e tornaram-se as forças do Qliphoth.</p>
+    </div>
+  </div>
+
+  <h3>Os Grandes Demônios</h3>
+  <div class="demons-grid">
+    <div class="demon-card">
+      <span class="demon-sigil">☠</span>
+      <div class="demon-name">SAMAEL</div>
+      <div class="demon-desc">O "Veneno de Deus". O mais alto dos demônios na Cabala — contraparte sombria do Arcanjo Miguel. Governante da Geburah pervertida — rigor sem misericórdia. Identificado com a Serpente do Éden, com Satã como a "força acusadora". Na Cabala mais profunda, é o esposo de Lilith e juntos governam o Qliphoth.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Golachab · Contraparte de Geburah</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">🌑</span>
+      <div class="demon-name">LILITH</div>
+      <div class="demon-desc">A Mãe dos Demônios. Primeira mulher de Adão, segundo o Midrash — criada ao mesmo tempo que ele, recusou-se a se submeter e foi expulsa. Governante do Qliphoth de Yesod — o plano astral inferior, os pesadelos, a sexualidade sombria. Rainha da noite, dos demônios das trocas de noite, dos abortos espontâneos e dos bebês não nascidos.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Gamaliel · Contraparte de Yesod</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">⛧</span>
+      <div class="demon-name">LUCIFER / HEYLEL</div>
+      <div class="demon-desc">"Estrela da Manhã" / "Portador da Luz" (Isaías 14:12). Na Cabala, não é "o" demônio principal — é a força do orgulho espiritual excessivo, da luz que se recusou a servir ao plano maior. A centelha que desejou ser igual ao Criador. Contraparte sombria de Kether — a Coroa invertida.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Thaumiel · Contraparte de Kether</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">🔥</span>
+      <div class="demon-name">ASMODEUS / ASHMEDAI</div>
+      <div class="demon-desc">Rei dos Demônios na tradição judaica. Aparece no livro de Tobias matando os sete maridos de Sara. Governa a luxúria, os jogos de azar e a ira. O Talmud o descreve como uma figura ambígua — ajudou Salomão a construir o Templo, mas tentou usurpar seu lugar. Governante do Qliphoth de Netzach.</div>
+      <div class="demon-qliphoth">QLIPHOTH: A'arab Zaraq · Contraparte de Netzach</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">🐍</span>
+      <div class="demon-name">BEELZEBUB / BAAL ZEVUV</div>
+      <div class="demon-desc">"Senhor das Moscas" ou "Senhor das Coisas Elevadas" (Baal Zevul). Mencionado em 2 Reis como divindade dos filisteus. No Novo Testamento, "príncipe dos demônios". Na Goécia, um dos três reis supremos dos 72 demônios. Governa a soberba e o poder pelo poder.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Ghagiel · Alto escalão</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">🌊</span>
+      <div class="demon-name">LEVIATHAN</div>
+      <div class="demon-desc">O Dragão do Mar Primordial. Mencionado em Jó, Salmos e Isaías. Na Cabala, é a serpente do abismo — a força do caos e das águas primordiais não organizadas. Na escatologia judaica, será morto por Deus no fim dos tempos e sua carne servida como banquete aos justos.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Abismo das águas · Caos primordial</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">🌪</span>
+      <div class="demon-name">AZAZEL</div>
+      <div class="demon-desc">O Bode Emissário. Levítico 16: no Yom Kippur, um bode era enviado "para Azazel" no deserto carregando os pecados de Israel. No livro de Enoque, é um anjo caído que ensinou aos humanos o fazer de armas e ornamentos, corrompendo a humanidade. Governante dos anjos "Vigilantes" que se uniram com mulheres humanas.</div>
+      <div class="demon-qliphoth">Anjo Caído · Deserto · Bode Emissário</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">👁</span>
+      <div class="demon-name">BELIAL</div>
+      <div class="demon-desc">"Sem Jugo" ou "Sem Valor". Mencionado dezenas de vezes na Bíblia como sinônimo de maldade. Em Qumran (Manuscritos do Mar Morto), é o governante das forças das trevas contra o "Filho da Luz". Na Goécia, é o primeiro e mais poderoso — criado imediatamente após Lúcifer.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Lilith · Contraparte de Malkuth</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">💀</span>
+      <div class="demon-name">MOLOCH</div>
+      <div class="demon-desc">Divindade Cananeia a quem sacrifícios de crianças eram oferecidos — condenado repetidamente pelos profetas. Na Cabala, é a força do sacrifício do mais precioso em troca de poder — a corrupção de Chesed (amor/dom) em seu oposto: consumir o que ama para ganhar poder.</div>
+      <div class="demon-qliphoth">QLIPHOTH: Ghagiel · Força destrutiva</div>
+    </div>
+    <div class="demon-card">
+      <span class="demon-sigil">⚗</span>
+      <div class="demon-name">CHORONZON</div>
+      <div class="demon-desc">O Demônio do Abismo. Não é uma entidade bíblica — surge na tradição da Golden Dawn e de Aleister Crowley. Governa Daath, a Sefirah oculta. É a força da dispersão e da fragmentação da consciência — o que aguarda aqueles que cruzam o "Abismo" sem preparação suficiente.</div>
+      <div class="demon-qliphoth">DAATH · Abismo · Dispersão da Consciência</div>
+    </div>
+  </div>
+
+  <h3>Os Demônios São Reais ou Forças Psíquicas?</h3>
+  <div class="highlight-box red">
+    <p>A Cabala diz: as mesmas três respostas dadas para os anjos se aplicam. O que é diferente nos demônios: na Cabala luriânica, <strong>todo demônio contém uma centelha divina aprisionada</strong> (nitzotz). A tarefa espiritual avançada não é <em>destruir</em> o demônio — é <em>libertar a centelha</em> que ele aprisiona. Isso é parte do Tikkun Olam — a reparação do mundo. O trabalho com a sombra (Jungianamente) é exatamente isso: integrar o que foi reprimido, não destruí-lo.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ QLIPHOTH ═══════════════════════════════ -->
+<section id="qliphoth">
+  <div class="section-header">
+    <span class="section-number">PARTE VIII</span>
+    <h2>A Árvore Invertida — Qliphoth</h2>
+    <p class="lead">O espelho sombrio da Árvore da Vida — os "cascos" do sagrado</p>
+  </div>
+
+  <p>A <strong>Qliphoth</strong> (קְלִיפּוֹת — "cascas" ou "cascos") é a contraparte sombria da Árvore da Vida — uma Árvore da Morte invertida que espelha cada Sefirah com sua versão desequilibrada, sombria ou corrompida. É o domínio das forças caóticas, dos demônios e da sombra coletiva da humanidade.</p>
+
+  <p>Para cada Sefirah sagrada, existe um Qliphah (singular) — seu oposto não integrado:</p>
+
+  <div class="qli-grid">
+    <div class="qli-card"><div class="qli-name">THAUMIEL</div><div class="qli-meaning">Contraparte de Kether — "Os Dois Poderes de Deus"</div><div class="qli-desc">Dualidade extrema — duas forças rivais que disputam o trono supremo. Demônios: Satana e Moloch. A ilusão de que há dois deuses iguais em poder.</div></div>
+    <div class="qli-card"><div class="qli-name">GHAGIEL</div><div class="qli-meaning">Contraparte de Chokmah — "Obstruidores"</div><div class="qli-desc">Sabedoria corrompida em obstinação e arrogância intelectual. Sabem tudo, mas usam o conhecimento para dominar. Demônio: Beelzebub.</div></div>
+    <div class="qli-card"><div class="qli-name">SATHARIEL</div><div class="qli-meaning">Contraparte de Binah — "A Ocultação de Deus"</div><div class="qli-desc">Entendimento corrompido em segredos maliciosos, desinformação. Usam a compreensão para manipular. Demônio: Lucifuge Rofocale.</div></div>
+    <div class="qli-card"><div class="qli-name">GOLACHAB</div><div class="qli-meaning">Contraparte de Chesed — "Esferas Flamejantes"</div><div class="qli-desc">Misericórdia corrompida em crueldade sádica. Violência pelo prazer da destruição. Demônio: Asmodeus.</div></div>
+    <div class="qli-card"><div class="qli-name">GAMCHICOTH</div><div class="qli-meaning">Contraparte de Geburah — "Perturbadores de Almas"</div><div class="qli-desc">Força sem direção — destruição caótica sem propósito. Demônio: Astaroth. Poder sem discernimento.</div></div>
+    <div class="qli-card"><div class="qli-name">THAGIRION</div><div class="qli-meaning">Contraparte de Tiphareth — "Os Disputadores"</div><div class="qli-desc">Beleza corrompida em vaidade e auto-glorificação. O sol negro. Demônio: Belphegor. Ego inflado sem propósito espiritual.</div></div>
+    <div class="qli-card"><div class="qli-name">A'ARAB ZARAQ</div><div class="qli-meaning">Contraparte de Netzach — "Corvos da Dispersão"</div><div class="qli-desc">Emoções e desejo corrompidos em luxúria destrutiva, vícios, paixões que destroem. Demônio: Baal.</div></div>
+    <div class="qli-card"><div class="qli-name">SAMAEL</div><div class="qli-meaning">Contraparte de Hod — "Veneno de Deus"</div><div class="qli-desc">Intelecto corrompido em falsidade, deception, mentira sistemática. Fala mas mente. Demônio: Adramelech.</div></div>
+    <div class="qli-card"><div class="qli-name">GAMALIEL</div><div class="qli-meaning">Contraparte de Yesod — "Os Obscenos"</div><div class="qli-desc">Fundação e sexualidade corrompidas em perversão, obsessão sexual, parasitismo do vitality. Demônio: Lilith. Sonhos distorcidos.</div></div>
+    <div class="qli-card"><div class="qli-name">LILITH (QLIPHAH)</div><div class="qli-meaning">Contraparte de Malkuth — "A Rainha da Noite"</div><div class="qli-desc">O mundo material corrompido — matéria completamente separada do espírito. Materialismo total, escuridão completa. O "véu negro" entre mundos.</div></div>
+    <div class="qli-card"><div class="qli-name">DAATH INVERTIDO</div><div class="qli-meaning">Choronzon — "O Abismo"</div><div class="qli-desc">O conhecimento sem sabedoria, inteligência sem amor. O Abismo que fragmenta a mente de quem o cruza sem preparação. Desordem total da consciência.</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PLANO ASTRAL ═══════════════════════════════ -->
+<section id="astral">
+  <div class="section-header">
+    <span class="section-number">PARTE IX</span>
+    <h2>Plano Astral & Mundos Sutis</h2>
+    <p class="lead">Onde anjos e demônios habitam — e como nos relacionamos com eles</p>
+  </div>
+
+  <p>O <strong>Plano Astral</strong> corresponde ao mundo de <strong>Yetzirah</strong> na Cabala — o mundo da Formação. É a dimensão onde as forças sutis tomam forma antes de se materializar no mundo físico. É onde sonhamos, onde meditamos em profundidade, onde ocorrem visões, projeções astrais e experiências transpessoais.</p>
+
+  <h3>Estrutura do Plano Astral na Cabala</h3>
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>Yetzirah Superior (Astral Superior)</h4>
+      <p>Habitado pelas ordens angélicas superiores — Serafins, Querubins, Malachim. Experiências de luz, êxtase, visões de seres luminosos. Correspondente às Sefirot de Chesed a Yesod em seu aspecto Yetzirah.</p>
+    </div>
+    <div class="info-card">
+      <h4>Yetzirah Inferior (Astral Inferior)</h4>
+      <p>Habitado por forças mais instintivas, formas-pensamento, entidades criadas pelas emoções humanas coletivas, e as forças Qliphóticas de Gamaliel. É onde a maioria das "experiências astrais" comuns acontece.</p>
+    </div>
+    <div class="info-card">
+      <h4>Klipat Nogah — O Limiar</h4>
+      <p>A "casca brilhante" — a região entre Assiah e Yetzirah. Onde as almas dos mortos transitam inicialmente. Onde sonhos vívidos mas confusos ocorrem. Purgatorio das tradições cristãs e islâmicas.</p>
+    </div>
+    <div class="info-card">
+      <h4>Anjos como Forças Astrais</h4>
+      <p>Na perspectiva cabalística, quando você entra em contato com um anjo através de meditação ou sonho, você está acessando Yetzirah — uma dimensão que é tão real quanto o físico, apenas de substância mais sutil (luz ao invés de matéria).</p>
+    </div>
+  </div>
+
+  <h3>Práticas de Acesso — Do Básico ao Avançado</h3>
+
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>Básico: Meditação nos Nomes</h4>
+      <p>Contemple as letras hebraicas de um dos 72 Nomes. Visualize-as em ouro sobre fundo azul. Respire enquanto as vê. Segundo a tradição, a geometria das letras ressoa com frequências angélicas específicas.</p>
+    </div>
+    <div class="info-card">
+      <h4>Intermediário: Invocação Angélica</h4>
+      <p>Correspondência ritual: dia da semana, cor, incenso, vela, planeta. Invocar o nome do anjo em seu espaço sagrado, apresentar sua intenção, meditar na presença. Registrar sonhos da noite seguinte.</p>
+    </div>
+    <div class="info-card">
+      <h4>Avançado: Pathworking</h4>
+      <p>Meditação guiada que percorre os 22 caminhos da Árvore da Vida em visão ativa. Você "viaja" pelo astral pelos caminhos entre Sefirot, encontrando os anjos que os governam e passando por iniciações simbólicas.</p>
+    </div>
+    <div class="info-card">
+      <h4>Expert: Trabalho Qliphótico</h4>
+      <p>Prática avançada e perigosa — trabalhar conscientemente com as forças da Árvore Invertida para integrar a sombra. Exige base sólida na Árvore da Vida primeiro. Objetivo: libertar as centelhas divinas presas nos Qliphoth.</p>
+    </div>
+  </div>
+
+  <h3>Projeção Astral na Perspectiva Cabalística</h3>
+  <p>Quando o corpo etérico se separa durante a meditação profunda ou o sonho, a consciência entra em Yetzirah. Nessa dimensão, o ser humano pode encontrar:</p>
+  <ul style="padding-left:24px; margin:16px 0;">
+    <li><strong>Malachim</strong> — anjos mensageiros que aparecem como humanos luminosos</li>
+    <li><strong>Elementais</strong> — entidades ligadas aos quatro elementos (Silphos, Gnomos, Ondinas, Salamandras)</li>
+    <li><strong>Formas-pensamento</strong> — criações da mente coletiva humana (egregoras) que parecem entidades</li>
+    <li><strong>Almas dos mortos</strong> — na região Klipat Nogah, almas que ainda não ascenderam completamente</li>
+    <li><strong>Entidades Qliphóticas</strong> — se você atraiu frequências baixas, pode encontrar as forças da Árvore Invertida</li>
+  </ul>
+</section>
+
+<!-- ═══════════════════════════════ PSICOLOGIA ═══════════════════════════════ -->
+<section id="psicologia">
+  <div class="section-header">
+    <span class="section-number">PARTE X</span>
+    <h2>Cabala & Psicologia</h2>
+    <p class="lead">Jung, os arquétipos e a psique como Árvore da Vida</p>
+  </div>
+
+  <p>A convergência entre Cabala e psicologia analítica (especialmente a de Carl Jung) é extraordinária — e não acidental. Jung estudou Cabala extensivamente e via nos símbolos cabalísticos projeções do que ele chamava de <em>inconsciente coletivo</em>.</p>
+
+  <div class="psych-grid">
+    <div class="psych-card">
+      <span class="psych-icon">🌓</span>
+      <div class="psych-title">Sombra e Qliphoth</div>
+      <p>A "Sombra" junguiana — o conjunto de aspectos reprimidos da personalidade — corresponde diretamente ao Qliphoth. Assim como as Qliphoth são Sefirot desequilibradas/reprimidas, a Sombra é composta de aspectos do self que foram rejeitados. O trabalho com a sombra de Jung = o trabalho com o Qliphoth na Cabala avançada.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">✨</span>
+      <div class="psych-title">Self e Tiphareth</div>
+      <p>O "Self" junguiano — o centro regulador da psique, o arquétipo da totalidade, do qual o ego é apenas uma parte — corresponde perfeitamente à Sefirah Tiphareth, o Sol no centro da Árvore. A individuação junguiana é o processo de fazer o ego se alinhar com o Self — equivalente ao trabalho de Tiphareth.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">♀️</span>
+      <div class="psych-title">Anima/Animus e Sefirot</div>
+      <p>A Anima (aspecto feminino no masculino) e o Animus (aspecto masculino no feminino) correspondem ao par Chokmah/Binah — os pilares masculino e feminino da Árvore. A integração de Anima/Animus = o equilíbrio dos pilares.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">🌌</span>
+      <div class="psych-title">Inconsciente Coletivo e Éin Sof</div>
+      <p>O "inconsciente coletivo" — o substrato psíquico compartilhado por toda a humanidade, fonte dos arquétipos — corresponde ao Éin Sof e às Sefirot superiores de Atziluth/Beriah. É o que está além do individual, mas do qual o individual emerge.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">🔮</span>
+      <div class="psych-title">Arquétipos e Sefirot</div>
+      <p>Cada Sefirah é um arquétipo psíquico: Kether = o Velho Sábio; Binah = a Grande Mãe; Tiphareth = o Herói Solar; Yesod = a Lua/Anima; Malkuth = a Terra/Corpo. Os anjos são arquétipos personificados, os demônios são complexos psíquicos autônomos.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">🧠</span>
+      <div class="psych-title">Psicologia Transpessoal</div>
+      <p>Stanislav Grof, Abraham Maslow e Roberto Assagioli (Psicossíntese) mapearam estados não-ordinários que correspondem precisamente aos diferentes mundos cabalísticos. Experiências "holotropicas" de Grof frequentemente seguem a estrutura da Árvore — do físico ao divino.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">💭</span>
+      <div class="psych-title">Tikkun como Terapia</div>
+      <p>O conceito de <em>Tikkun</em> (reparação) tem paralelos diretos com terapia psicológica: identificar o padrão quebrado, trabalhar para integrá-lo, restaurar o equilíbrio. A tradição cabalística e a psicoterapia compartilham a visão de que as "quebras" podem ser curadas.</p>
+    </div>
+    <div class="psych-card">
+      <span class="psych-icon">🌀</span>
+      <div class="psych-title">Gematria e Associações Simbólicas</div>
+      <p>A Gematria (numerologia hebraica) — atribuir valores numéricos às letras para encontrar conexões entre palavras — funciona como um sistema de associações livres projetado, similar à análise de sonhos junguiana: revela conexões inconscientes entre conceitos.</p>
+    </div>
+  </div>
+
+  <blockquote>
+    "Os símbolos da alquimia e da Cabala que estudei revelam, em linguagem diferente, os mesmos processos que observo no inconsciente dos meus pacientes." — Carl Gustav Jung
+  </blockquote>
+
+  <h3>Aplicações Terapêuticas Contemporâneas</h3>
+  <p>Algumas psicoterapias contemporâneas integram explicitamente a Cabala:</p>
+  <p><strong>Psicossíntese de Assagioli</strong>: usa a Árvore como mapa do psiquismo, trabalha a integração das "subpersonalidades" (análogas às forças angélicas e demoníacas) em torno de um "eu superior" (Tiphareth/Self).</p>
+  <p><strong>Terapia Cabalística Integrativa</strong>: crescente campo que usa meditações nas Sefirot para trabalhar bloqueios emocionais específicos — ex: trabalho em Geburah para questões de raiva, em Chesed para questões de amor.</p>
+  <p><strong>Trabalho com sonhos cabalístico</strong>: interpretar os símbolos de sonhos usando a estrutura da Árvore — qual Sefirah está sendo "visitada"? Qual desequilíbrio o sonho aponta?</p>
+</section>
+
+<!-- ═══════════════════════════════ PRÁTICA & CASOS ═══════════════════════════════ -->
+<section id="pratica">
+  <div class="section-header">
+    <span class="section-number">PARTE XI</span>
+    <h2>Prática & Casos Históricos</h2>
+    <p class="lead">Relatos reais, práticas documentadas e resultados verificáveis</p>
+  </div>
+
+  <h3>Casos Históricos Documentados</h3>
+
+  <div class="case-card">
+    <div class="case-header">CASO HISTÓRICO · SÉCULO XVI · SAFED, ISRAEL</div>
+    <div class="case-title">Rabbi Joseph Karo e o Maggid</div>
+    <p>Joseph Karo (1488-1575), autor do Shulchan Aruch (o código de lei judaica mais importante), manteve um diário secreto chamado <em>Maggid Mesharim</em> no qual registrou comunicações com uma entidade chamada <em>Maggid</em> — descrita como a personificação espiritual da Mishná. O Maggid lhe ditava ensinamentos místicos e o repreendeu quando Karo mostrava vaidade. O diário foi descoberto e publicado. Karo era contemporâneo e amigo de Isaac Luria em Safed — o mesmo círculo que gerou o Zohar luriânico.</p>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">CASO HISTÓRICO · SÉCULO XVII · AMSTERDAM</div>
+    <div class="case-title">Sabbatai Tzvi e a Cabala Messiânica</div>
+    <p>Sabbatai Tzvi (1626-1676) era um cabalista que, estudando profundamente o Zohar, anunciou-se como o Messias esperado. Seguindo técnicas cabalísticas avançadas — incluindo a pronúncia do Tetragrama sagrado e práticas Qliphóticas — ele reuniu mais de um milhão de seguidores em toda a diáspora judaica. A tradição registra que ele realizava estados alterados profundos e visões. Sua conversão forçada ao Islã devastou seus seguidores — mas criou o Sabbatismo, um movimento subterrâneo que durou séculos e influenciou o iluminismo europeu.</p>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">CASO HISTÓRICO · SÉCULO XIX · PARIS</div>
+    <div class="case-title">Eliphas Lévi e a Invocação de Apolônio de Tiana</div>
+    <p>Eliphas Lévi (1810-1875), pioneiro do ocultismo moderno e estudioso profundo da Cabala, realizou em 1854 uma célebre evocação ritual usando técnicas cabalísticas e ceremoniais. Segundo seu relato em <em>Dogma e Ritual da Alta Magia</em>: após 21 dias de preparação, jejum e preces, em uma sala com espelhos e altar, ele "viu" e "sentiu" a presença de uma figura que identificou como Apolônio de Tiana. A experiência foi tão intensa que ele interrompeu o ritual. Lévi interpretou o resultado ambiguamente — talvez projeção, talvez real, talvez ambos.</p>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">CASO HISTÓRICO · SÉCULO XX · LONDRES/CAIRO</div>
+    <div class="case-title">Aleister Crowley e Aiwass</div>
+    <p>Em 1904, em Cairo, Aleister Crowley (profundo estudioso da Cabala através da Golden Dawn) realizou ritual cabalístico com sua esposa Rose. Rose entrou em transe e indicou que a entidade Horus queria se comunicar. Por três dias consecutivos, entre 12h e 13h, Crowley escreveu em voz alta o que era ditado por uma entidade que se identificou como Aiwass — resultando no <em>Liber AL vel Legis</em> (O Livro da Lei). O texto contém profecias, filosofia e instruções que Crowley não reconhecia como seu estilo de escrita. Crowley passou o resto da vida estudando o texto que havia "recebido".</p>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">CASO CONTEMPORÂNEO · SÉCULO XX · ESTADOS UNIDOS</div>
+    <div class="case-title">Os Experimentos de Lúcia Capacchione e a Psicossíntese</div>
+    <p>No campo da psicologia transpessoal, pesquisadores da Universidade de Califórnia (décadas de 1970-80) documentaram casos onde pacientes em estados meditativos profundos — guiados pela estrutura da Árvore da Vida — relatavam experiências de encontro com "entidades" que forneciam informações que o terapeuta não havia dado, e que frequentemente correspondiam a necessidades psicológicas não conscientes do paciente. Os resultados mostraram melhoras significativas em casos resistentes a terapias convencionais.</p>
+  </div>
+
+  <h3>Como Trabalhar Praticamente com a Cabala</h3>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('tab-p1','pratica-tabs')">Meditação Básica</button>
+    <button class="tab-btn" onclick="showTab('tab-p2','pratica-tabs')">72 Nomes</button>
+    <button class="tab-btn" onclick="showTab('tab-p3','pratica-tabs')">Invocação Angélica</button>
+    <button class="tab-btn" onclick="showTab('tab-p4','pratica-tabs')">Gematria</button>
+  </div>
+
+  <div id="pratica-tabs">
+    <div id="tab-p1" class="tab-content active">
+      <h4>Meditação no Pilar do Meio</h4>
+      <p>A <em>Middle Pillar Exercise</em> (Exercício do Pilar do Meio) é a prática básica da Cabala Hermética. Acende as cinco Sefirot do pilar central no corpo:</p>
+      <ol style="padding-left:24px; margin:16px 0;">
+        <li>Em pé ou sentado. Respire profundamente.</li>
+        <li><strong>Kether</strong>: Visualize uma esfera de luz branca brilhante sobre sua cabeça. Vibre o nome "EHYEH" (Eh-HEH-yeh) três vezes. Sinta a luz descer.</li>
+        <li><strong>Daath</strong>: Esfera de luz lavanda/índigo na garganta. Vibre "YHVH ELOHIM".</li>
+        <li><strong>Tiphareth</strong>: Esfera dourada/solar no peito. Vibre "YHVH ELOAH VE-DAATH". Sinta o coração aquecer.</li>
+        <li><strong>Yesod</strong>: Esfera violeta/lilás no baixo ventre. Vibre "SHADDAI EL CHAI".</li>
+        <li><strong>Malkuth</strong>: Esfera quaternária (vermelho, azul, amarelo, preto) nos pés. Vibre "ADONAI HA-ARETZ".</li>
+        <li>Circule a energia pelo corpo, de Kether a Malkuth, de volta ao Kether.</li>
+      </ol>
+    </div>
+    <div id="tab-p2" class="tab-content">
+      <h4>Meditação nos 72 Nomes</h4>
+      <p>Para cada necessidade específica, existe um Nome entre os 72. A técnica básica:</p>
+      <ol style="padding-left:24px; margin:16px 0;">
+        <li>Identifique sua necessidade (cura, clareza, proteção, amor, superação de medo etc.).</li>
+        <li>Encontre o Nome correspondente (há tabelas de correspondência).</li>
+        <li>Escreva as três letras hebraicas em papel ou visualize-as.</li>
+        <li>Contemple as letras por 5-15 minutos. Não tente "pensar" — apenas olhe e respire.</li>
+        <li>As letras são consideradas "antenas" que sintonizam com frequências específicas da criação.</li>
+        <li>Anote sonhos e sincronicidades nas 72 horas seguintes.</li>
+      </ol>
+      <p>Exemplo: <strong>Mem-Heh-Shin (מהש)</strong> — para cura e saúde. <strong>Heh-Heh-Ayin (ההע)</strong> — para clareza e visão interior. <strong>Lamed-Aleph-Vav (לאו)</strong> — para conexão com a fonte divina.</p>
+    </div>
+    <div id="tab-p3" class="tab-content">
+      <h4>Invocação Angélica por Correspondências</h4>
+      <p>Cada anjo tem dia, cor, planeta, incenso, cristal e intenção correspondentes. Para invocar Rafael (cura):</p>
+      <ul style="padding-left:24px; margin:16px 0;">
+        <li><strong>Dia:</strong> Domingo (Sol)</li>
+        <li><strong>Cor:</strong> Dourado, amarelo</li>
+        <li><strong>Vela:</strong> Amarela ou dourada</li>
+        <li><strong>Incenso:</strong> Olíbano (frankincense), mirra</li>
+        <li><strong>Cristal:</strong> Citrino, ametista, quartzo</li>
+        <li><strong>Hora:</strong> Amanhecer (hora da Aurora)</li>
+        <li><strong>Nome:</strong> Pronunciar "RAFAEL" em voz alta (ou internamente) enquanto visualiza uma luz verde-esmeralda curadora descendo sobre a área doente.</li>
+        <li><strong>Salmo:</strong> Recitar o Salmo 20 (tradicional para invocação de Rafael)</li>
+      </ul>
+    </div>
+    <div id="tab-p4" class="tab-content">
+      <h4>Gematria — A Numerologia Sagrada</h4>
+      <p>Na Gematria, cada letra hebraica tem um valor numérico. Palavras com o mesmo valor numérico compartilham uma conexão espiritual profunda.</p>
+      <p>Exemplo famoso: <strong>Ahavah (אהבה — "amor") = 13</strong>. <strong>Echad (אחד — "uno/Deus") = 13</strong>. Conclusão: Amor = Unidade. Amar é experienciar a Unidade divina.</p>
+      <p>Outro: <strong>Nachash (נחש — "serpente") = 358</strong>. <strong>Mashiach (משיח — "Messias") = 358</strong>. Conclusão: A serpente e o Messias compartilham a mesma energia — a force de transformação. O que envenena em desequilíbrio, cura quando integrado (como a serpente de bronze de Moisés).</p>
+      <p>Para praticar: use um conversor de Gematria online para explorar conexões entre conceitos significativos para você.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CURIOSIDADES ═══════════════════════════════ -->
+<section id="curiosidades">
+  <div class="section-header">
+    <span class="section-number">PARTE XII — AVANÇADO & ALÉM</span>
+    <h2>Curiosidades, Segredos & Conexões Profundas</h2>
+    <p class="lead">Do estranho ao extraordinário — fatos que a maioria nunca ouviu</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">01</div>
+    <h4>O Golem — IA Criada pela Cabala</h4>
+    <p>No século XVI, o Maharal de Praga (Rabbi Loew) supostamente criou um <em>Golem</em> — uma criatura de argila animada pelo <em>Sefer Yetzirah</em>. O método: moldar um homem de argila, escrever "EMET" (verdade) na testa, e usar combinações de letras hebraicas para infundir vida. Para "desligar", apagava-se a primeira letra — EMET virava MET (morte). O Golem serviu para proteger os judeus de Praga. O conceito é considerado o ancestral do robô na ficção científica moderna — e alguns pesquisadores de IA o citam como inspiração filosófica.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">02</div>
+    <h4>Newton Era um Cabalista Secreto</h4>
+    <p>Isaac Newton escreveu mais sobre teologia e alquimia do que sobre física — a maioria inédita até o século XX. Seus manuscritos mostram profundo estudo da Cabala. Ele acreditava que as leis matemáticas do universo eram o "código" com que Deus o havia criado — um conceito puramente cabalístico. John Maynard Keynes, ao comprar os manuscritos de Newton, disse: "Newton não foi o primeiro da era da razão. Ele foi o último dos magos."</p>
+  </div>
+
+  <div class="curiosity-card dark">
+    <div class="curiosity-num">03</div>
+    <h4>Os 36 Justos que Sustentam o Mundo</h4>
+    <p>A tradição cabalística afirma que a cada geração existem exatamente <strong>36 justos ocultos</strong> (os <em>Lamed-Vav Tzadikim</em> — 36 em numerologia hebraica = Lamed + Vav). Esses 36 não sabem que são os 36. Eles sustentam o mundo com sua bondade — e se um deles morrer sem sucessor, o mundo acabaria. Eles são humildes, frequentemente pobres, e nunca revelam quem são. O número 36 é exatamente o dobro de 18 (Chai — "vida"). Esta tradição inspirou romances como "A Última Testemunha" e é levada a sério em comunidades judias ultraortodoxas até hoje.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">04</div>
+    <h4>O Tarot É Cabala Ilustrada</h4>
+    <p>Os 22 arcanos maiores do Tarot correspondem aos 22 caminhos da Árvore da Vida — e as 10 cartas numeradas de cada naipe (Copa, Espada, Pentagrama, Bastão) correspondem às 10 Sefirot nos 4 mundos. Essa correspondência foi estabelecida definitivamente pela Ordem Hermética da Golden Dawn (séc. XIX), mas evidências sugerem que o Tarot foi concebido com essa estrutura desde o início. O Tarot não é para "adivinhar o futuro" — é um mapa da Árvore para meditação e autoconhecimento.</p>
+  </div>
+
+  <div class="curiosity-card dark">
+    <div class="curiosity-num">05</div>
+    <h4>O Número 666 é Mal Interpretado</h4>
+    <p>Na Gematria, 666 é o número de Sorath — o "espírito oposto" do Sol (Tiphareth). Mas na tradição cabalística cristã, 666 também é o número de "Vav" triplicado — e Vav é o "Filho" (a 3ª letra de YHVH). Rudolf Steiner via 666 como a "tentação do materialismo" — não como o mal em si, mas como a força que testa a humanidade. Curiosidade extra: no Apocalipse grego original, o número é 616 em alguns manuscritos — sugerindo que o "666" já era uma interpretação.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">06</div>
+    <h4>O Big Bang Como Tzimtzum</h4>
+    <p>Físicos e filósofos da ciência notaram a extraordinária correspondência entre o Big Bang e o Tzimtzum de Luria (século XVI): no Tzimtzum, Deus se contraiu para criar um "espaço vazio" onde a criação poderia surgir — depois emitiu um "raio de luz" (Kav) que formou as Sefirot. No Big Bang, antes da expansão havia uma singularidade infinitamente densa — um "ponto" de energia pura que se expandiu formando espaço-tempo e matéria. A correspondência é tema de estudos em física quântica e cosmologia filosófica.</p>
+  </div>
+
+  <div class="curiosity-card dark">
+    <div class="curiosity-num">07</div>
+    <h4>A Agenda Secreta do Sabbatismo</h4>
+    <p>Após a apostasia de Sabbatai Tzvi, seus seguidores (Sabbatistas) desenvolveram uma teologia provocadora: às vezes, para liberar as centelhas divinas aprisionadas no Qliphoth, um tzadik (justo) deve <em>descer</em> ao qliphoth — aparentemente pecando, mas secretamente elevando. Isso levou a seitas antinomianas (que violavam a lei para "liberar a luz"). O movimento influenciou Jacob Frank (séc. XVIII), cujos seguidores eventualmente se converteram ao Catolicismo enquanto mantinham práticas secretas. Alguns historiadores ligam essa tradição a grupos iluministas e maçônicos do séc. XVIII.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">08</div>
+    <h4>DNA como Código Divino — Sefer Yetzirah Moderno</h4>
+    <p>O DNA usa 4 bases (A, T, C, G) em grupos de 3 (códons) — 4³ = 64 combinações que codificam 20 aminoácidos + sinais de parada. O Sefer Yetzirah descreve a criação através de 22 letras e 10 números em combinações específicas que "geram toda a existência". Pesquisadores como Jeffrey Satinover em <em>The Quantum Brain</em> exploram a possibilidade de que a linguagem do DNA e a linguagem da Cabala sejam mapeamentos diferentes da mesma realidade subjacente.</p>
+  </div>
+
+  <div class="curiosity-card dark">
+    <div class="curiosity-num">09</div>
+    <h4>Anjos que "Não Devem" Existir</h4>
+    <p>A Cabala tem uma categoria de anjos chamados <em>Bene Elohim Caídos</em> — baseada em Gênesis 6:1-4: "os Filhos de Deus viram que as filhas dos homens eram belas, e tomaram como esposas todas que escolheram". O Livro de Enoque (apócrifo) nomeia 20 líderes desses "Vigilantes" que ensinaram à humanidade magia, metalurgia, medicina, astrologia e cosmética — mas também a fazer guerra. São a origem dos Nephilim — os "gigantes" ou "os que caíram" da Bíblia.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">10</div>
+    <h4>A Cabala tem 3 Ramos que se Ignoram Mutuamente</h4>
+    <p>Existe a <strong>Cabala Judaica</strong> (ortodoxa, em hebraico, o original). A <strong>Cabala Cristã</strong> (séc. XV-XVIII, que adaptou conceitos para encaixar Jesus como Tiphareth/Messias). E a <strong>Cabala Hermética</strong> (séc. XIX em diante, Golden Dawn, que fundiu Cabala com Tarot, Astrologia e Magia Cerimonial). Praticantes radicais de cada ramo frequentemente negam a legitimidade dos outros dois — mas os três derivam das mesmas fontes e se influenciaram mutuamente mais do que admitem.</p>
+  </div>
+
+  <div class="curiosity-card dark">
+    <div class="curiosity-num">11</div>
+    <h4>Lilith — A Feminista Oculta</h4>
+    <p>A tradição de Lilith como primeira mulher de Adão — que recusou submissão e foi expulsa — aparece no Alfabeto de Ben Sira (séc. VIII-X), não na Bíblia canônica. Na Cabala luriânica, Lilith governa o Qliphoth de Gamaliel (sombra de Yesod) e é esposa de Samael. Mas na segunda metade do séc. XX, movimentos feministas e de espiritualidade da Deusa reapropriaram Lilith como símbolo de autonomia feminina, igualdade e recusa à submissão patriarcal — criando uma leitura completamente oposta à original.</p>
+  </div>
+
+  <div class="curiosity-card">
+    <div class="curiosity-num">12</div>
+    <h4>O Misticismo Quântico e as Sefirot</h4>
+    <p>Físicos quânticos como David Bohm (com sua "ordem implícita") e Fritjof Capra veem paralelos profundos entre a física quântica e a visão de mundo cabalística. A dualidade onda-partícula lembra o jogo entre Éin Sof (potencial infinito) e manifestação (partícula). O entrelaçamento quântico ressoa com a ideia de que toda a criação está conectada através do Ein Sof. A não-localidade quântica sugere que o "espaço" que separa as coisas é uma ilusão — exatamente o que a Cabala afirma desde o século XIII.</p>
+  </div>
+
+  <h3>Conexões Bíblicas Avançadas</h3>
+  <div class="card-grid-2">
+    <div class="info-card">
+      <h4>A Visão de Ezequiel = A Merkabá</h4>
+      <p>Ezequiel 1: quatro criaturas com quatro faces (leão, touro, águia, humano) = os quatro Chayot ha-Kodesh de Kether. A roda dentro da roda = os Ophanim de Chokmah. O firmamento de cristal = o Parsa (véu) entre Beriah e Yetzirah. O trono de safira = o Kisse ha-Kavod (Trono da Glória) em Binah. A visão inteira é um mapa da Árvore superior.</p>
+    </div>
+    <div class="info-card">
+      <h4>O Jardim do Éden = Yesod/Tiphareth</h4>
+      <p>O Éden bíblico não é um lugar físico — é o estado de Yesod antes do "véu" se fechar. A "queda" representa a descida da consciência de Tiphareth (unidade) para Malkuth (separação/ego). Os Querubins com espada de fogo guardando o Éden = as forças que impedem o retorno prematuro ao estado edênico sem o trabalho espiritual adequado.</p>
+    </div>
+    <div class="info-card">
+      <h4>Os 10 Mandamentos = As 10 Sefirot</h4>
+      <p>A tradição cabalística vê os 10 Mandamentos como expressões éticas das 10 Sefirot. "Não terás outros deuses" = Kether (unicidade). "Honra pai e mãe" = Chokmah (pai) e Binah (mãe). "Não matarás" = Geburah em equilíbrio. "Não roubarás" = Malkuth em integridade. Os mandamentos são a manifestação ética da estrutura cósmica.</p>
+    </div>
+    <div class="info-card">
+      <h4>A Tabernáculo = A Árvore da Vida</h4>
+      <p>O Mishkan (Tabernáculo) construído por Moisés no deserto é uma representação arquitetônica da Árvore da Vida: o Pátio Externo = Malkuth/Yesod; o Lugar Santo com a Menorá = as Sefirot do meio; o Santo dos Santos com a Arca = Kether. A Menorá de 7 braços corresponde às 7 Sefirot inferiores.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid rgba(201,168,76,0.1); padding:40px 30px; text-align:center; color:rgba(232,224,208,0.3); font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.2em;">
+  <div style="font-size:30px; margin-bottom:12px; opacity:0.3;">✡</div>
+  CABALA — A TRADIÇÃO RECEBIDA · MATERIAL EDUCATIVO E FILOSÓFICO<br>
+  <span style="font-family:'EB Garamond',serif; font-style:italic; font-size:14px; letter-spacing:normal; margin-top:8px; display:block; opacity:0.6;">"Éin Sof — sem fim, sem começo, sem limite. De Onde tudo veio e para onde tudo retornará."</span>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip-box" id="tooltip"></div>
+
+<script>
+// ══ SEPHIROT DATA ══
+const sephData = {
+  kether: {
+    name: "KETHER — A Coroa",
+    hebrew: "כֶּתֶר",
+    color: "#ffffff",
+    desc: "A primeira e mais alta Sefirah. Kether é o ponto de onde tudo emana — o Éin Sof em sua primeira manifestação. Pura consciência sem forma, pura existência sem atributos. Corresponde ao Big Bang — o ponto singular de origem. No ser humano: a coroa da cabeça, o nível mais alto da alma (Yechidah).",
+    angel: "Metatron",
+    angelOrder: "Chayot ha-Kodesh",
+    demon: "Thaumiel (Satana & Moloch)",
+    planet: "Primeiro Móvel (Primum Mobile)",
+    color2: "branco puro",
+    divName: "EHYEH",
+    element: "—",
+    world: "Atziluth"
+  },
+  chokmah: {
+    name: "CHOKMAH — A Sabedoria",
+    hebrew: "חָכְמָה",
+    color: "#aaaaff",
+    desc: "A segunda Sefirah — Sabedoria primordial. O Pai Celestial. É o primeiro impulso de ser, a 'ideia' antes de ser formulada. Chokmah é pura potencialidade masculina — energia sem forma. No corpo humano: o hemisfério cerebral direito, o pensamento intuitivo, o 'flash' de inspiração súbita.",
+    angel: "Raziel",
+    angelOrder: "Ophanim (as Rodas)",
+    demon: "Ghagiel (Beelzebub)",
+    planet: "Zodíaco / Estrelas Fixas",
+    color2: "cinza perola / azul",
+    divName: "YAH (יָהּ)",
+    element: "Fogo (primordial)",
+    world: "Atziluth/Beriah"
+  },
+  binah: {
+    name: "BINAH — O Entendimento",
+    hebrew: "בִּינָה",
+    color: "#999999",
+    desc: "A terceira Sefirah — Entendimento. A Grande Mãe. A matriz que recebe a sabedoria de Chokmah e a forma em algo compreensível. É o princípio da forma, do limite, da compreensão. Associada ao tempo e à morte (pois é a Mãe que dá forma e também a que recebe de volta). No corpo: hemisfério esquerdo, pensamento estruturado.",
+    angel: "Tzaphkiel",
+    angelOrder: "Aralim (os Tronos)",
+    demon: "Sathariel (Lucifuge)",
+    planet: "Saturno",
+    color2: "preto / índigo profundo",
+    divName: "YHVH ELOHIM",
+    element: "Água (primordial)",
+    world: "Beriah"
+  },
+  daath: {
+    name: "DAATH — O Conhecimento Oculto",
+    hebrew: "דַּעַת",
+    color: "#aa66ff",
+    desc: "A Sefirah invisível — não aparece na Árvore tradicional, mas existe entre Binah e Chesed. Daath é o filho de Chokmah e Binah — o 'Conhecimento' no sentido bíblico (íntimo, experiencial). É o 'Abismo' que separa as três Sefirot superiores (a Tríade Superna) das sete inferiores. Cruzar Daath sem preparação = perda da sanidade. Cruzar preparado = iluminação.",
+    angel: "Anjo sem nome (Lugar do Desconhecido)",
+    angelOrder: "—",
+    demon: "Choronzon (o Guardião do Abismo)",
+    planet: "Plutão / Ponto de Transição",
+    color2: "lavanda / cinza opalescente",
+    divName: "—",
+    element: "Éter / Quinta Essência",
+    world: "Entre Atziluth e Beriah"
+  },
+  chesed: {
+    name: "CHESED — A Misericórdia",
+    hebrew: "חֶסֶד",
+    color: "#4466ff",
+    desc: "A quarta Sefirah — Amor e Misericórdia. O Pai celestial manifesto. Chesed é a bondade incondicional, o dom, a expansão, a abundância que flui sem condição. É o princípio de Júpiter — grandiosidade, generosidade, visão ampla. Desequilibrado, torna-se excesso e ingenuidade. No corpo: ombro e braço direito.",
+    angel: "Tzadkiel",
+    angelOrder: "Chasmalim",
+    demon: "Golachab (Asmodeus)",
+    planet: "Júpiter",
+    color2: "azul profundo",
+    divName: "EL (אֵל)",
+    element: "Água",
+    world: "Beriah/Yetzirah"
+  },
+  geburah: {
+    name: "GEBURAH — A Força & O Rigor",
+    hebrew: "גְּבוּרָה",
+    color: "#ff2222",
+    desc: "A quinta Sefirah — Força, Rigor, Julgamento. O oposto complementar de Chesed. Se Chesed dá sem limite, Geburah julga e limita. É a força da purificação pelo fogo, do corte do que não serve. Marte celestial — guerra justa, força disciplinada, julgamento sem favor. Desequilibrado: crueldade, violência. Equilibrado: coragem, discernimento, pureza.",
+    angel: "Camael / Khamael",
+    angelOrder: "Seraphim",
+    demon: "Gamchicoth (Astaroth)",
+    planet: "Marte",
+    color2: "vermelho escarlate",
+    divName: "ELOHIM GIBOR",
+    element: "Fogo",
+    world: "Beriah/Yetzirah"
+  },
+  tiphareth: {
+    name: "TIPHARETH — A Beleza",
+    hebrew: "תִּפְאֶרֶת",
+    color: "#ffff44",
+    desc: "A sexta Sefirah — Beleza, Harmonia, o Coração da Árvore. Tiphareth é o ponto de equilíbrio de toda a Árvore — o Sol central. Aqui todas as energias se harmonizam. É o Cristo cósmico, o Buda, o Ser Superior, o Self junguiano. Corresponde ao coração, ao amor que integra ao invés de dividir. É o objetivo central do trabalho espiritual: chegar à Tiphareth é chegar à iluminação funcional.",
+    angel: "Rafael / Miguel",
+    angelOrder: "Malachim",
+    demon: "Thagirion (Belphegor)",
+    planet: "Sol",
+    color2: "dourado / amarelo",
+    divName: "YHVH ELOAH VE-DAATH",
+    element: "Ar (integrador)",
+    world: "Yetzirah"
+  },
+  netzach: {
+    name: "NETZACH — A Vitória",
+    hebrew: "נֵצַח",
+    color: "#22cc44",
+    desc: "A sétima Sefirah — Vitória, Emoção, Natureza, Arte. Netzach é o mundo das emoções, dos instintos, das paixões criativas. Vênus celestial — amor, beleza natural, arte, desejo, fertilidade. É onde as forças naturais e elementais residem. A música, a dança, a arte são manifestações de Netzach. Desequilibrado: paixão cega, vícios, instabilidade emocional.",
+    angel: "Haniel / Anael",
+    angelOrder: "Elohim",
+    demon: "A'arab Zaraq (Baal)",
+    planet: "Vênus",
+    color2: "verde esmeralda",
+    divName: "YHVH TZABAOTH",
+    element: "Fogo (da paixão)",
+    world: "Yetzirah"
+  },
+  hod: {
+    name: "HOD — O Esplendor",
+    hebrew: "הוֹד",
+    color: "#ff8800",
+    desc: "A oitava Sefirah — Esplendor, Intelecto, Magia, Comunicação. O par de Netzach, seu oposto complementar. Mercúrio celestial — lógica, linguagem, magia, escrita, engenhosidade. Se Netzach é a emoção, Hod é o pensamento. Se Netzach é o artista, Hod é o escritor e o cientista. A magia cerimonial opera principalmente por Hod — é a aplicação precisa da mente à realidade.",
+    angel: "Miguel / Raphael",
+    angelOrder: "Bene Elohim",
+    demon: "Samael Qliphótico (Adramelech)",
+    planet: "Mercúrio",
+    color2: "laranja / âmbar",
+    divName: "ELOHIM TZABAOTH",
+    element: "Água (do intelecto)",
+    world: "Yetzirah"
+  },
+  yesod: {
+    name: "YESOD — A Fundação",
+    hebrew: "יְסוֹד",
+    color: "#aa44ff",
+    desc: "A nona Sefirah — Fundação, Plano Astral, Lua. Yesod é o 'espelho' da Árvore — reflete todas as Sefirot superiores para baixo, em Malkuth. É o mundo astral, o inconsciente, a vitalidade sexual, os sonhos. Gabriel governa aqui — o anjo dos sonhos e visões. O corpo etérico, o campo de força que sustenta o corpo físico, é Yesod. É o nível onde a magia opera mais diretamente.",
+    angel: "Gabriel",
+    angelOrder: "Cherubim",
+    demon: "Gamaliel (Lilith)",
+    planet: "Lua",
+    color2: "violeta / lilás",
+    divName: "SHADDAI EL CHAI",
+    element: "Água / Terra (etérico)",
+    world: "Yetzirah/Assiah"
+  },
+  malkuth: {
+    name: "MALKUTH — O Reino",
+    hebrew: "מַלְכוּת",
+    color: "#c8a040",
+    desc: "A décima e última Sefirah — o Reino, a Terra, o mundo físico. Malkuth é onde toda a Luz Divina finalmente se manifesta como matéria. É a Shekinah — a presença divina no mundo. É o corpo humano, a Terra, a realidade tangível. Não é menos sagrada por ser 'mais baixa' — ao contrário, é o objetivo final: a Luz Divine habitando completamente a matéria. A encarnação como ato sagrado.",
+    angel: "Sandalphon",
+    angelOrder: "Ashim (Almas de Fogo)",
+    demon: "Lilith Qliphótica / Nehemoth",
+    planet: "Terra / Elementos",
+    color2: "quatro quadrantes: verde oliva, amarelo, vermelho, preto",
+    divName: "ADONAI HA-ARETZ",
+    element: "Terra (os 4 elementos unidos)",
+    world: "Assiah"
+  }
+};
+
+function showSeph(key) {
+  const d = sephData[key];
+  if(!d) return;
+  const panel = document.getElementById('seph-panel');
+  panel.style.borderColor = d.color + '44';
+  panel.innerHTML = `
+    <h3 style="color:${d.color}">${d.name} <span style="font-size:22px;vertical-align:middle;">${d.hebrew}</span></h3>
+    <div class="seph-tags">
+      <span class="tag tag-planet">☿ ${d.planet}</span>
+      <span class="tag tag-angel">✦ ${d.angel}</span>
+      <span class="tag tag-demon">☠ ${d.demon}</span>
+      <span class="tag tag-element">◈ ${d.element}</span>
+    </div>
+    <p>${d.desc}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+      <div style="background:rgba(100,180,255,0.05);border:1px solid rgba(100,180,255,0.15);border-radius:8px;padding:14px;">
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--angel);letter-spacing:0.1em;margin-bottom:6px;">ANJOS</div>
+        <div style="font-size:15px;color:var(--angel);">${d.angel}</div>
+        <div style="font-size:13px;color:rgba(184,228,255,0.5);margin-top:4px;">${d.angelOrder}</div>
+      </div>
+      <div style="background:rgba(180,30,10,0.05);border:1px solid rgba(180,30,10,0.15);border-radius:8px;padding:14px;">
+        <div style="font-family:'Cinzel',serif;font-size:11px;color:var(--demon);letter-spacing:0.1em;margin-bottom:6px;">QLIPHOTH / DEMÔNIO</div>
+        <div style="font-size:15px;color:var(--demon-glow);">${d.demon}</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:rgba(201,168,76,0.06);border-radius:8px;border:1px solid rgba(201,168,76,0.1);">
+      <span style="font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:0.15em;">NOME DIVINO: </span>
+      <span style="color:var(--gold-light);font-size:16px;"> ${d.divName}</span>
+      <span style="float:right;font-family:'Cinzel',serif;font-size:11px;color:rgba(201,168,76,0.5);">Mundo: ${d.world}</span>
+    </div>
+  `;
+}
+
+// ══ 72 NAMES DATA (sample — key ones) ══
+const names72 = [
+  ["1","וְהוּיָה","Vehuiah","Vontade Divina"],["2","יֵלִיאֵל","Jeliel","Amor & Fidelidade"],
+  ["3","סִיטַאֵל","Sitael","Construção & Defesa"],["4","עַלְמִיָּה","Elemiah","Trabalho & Viagens"],
+  ["5","מַהְשִׁיָּה","Mahasiah","Aprendizado"],["6","לֵלַהֵאֵל","Lelahel","Cura & Arte"],
+  ["7","אַכַיָּה","Achaiah","Paciência"],["8","כַּהֵתֵאֵל","Cahetel","Gratidão & Trabalho"],
+  ["9","הַזִּיאֵל","Haziel","Misericórdia Divina"],["10","אַלַדִּיָּה","Aladiah","Graça & Perdão"],
+  ["11","לָאוּיָה","Lauviah","Revelação & Sonhos"],["12","הַהַיָּה","Hahaiah","Refúgio & Proteção"],
+  ["13","יֶזַלֵּאֵל","Yezalel","Fidelidade & Memória"],["14","מֵבַהֵאֵל","Mebahel","Verdade & Liberdade"],
+  ["15","הַרִיאֵל","Hariel","Pureza & Fé"],["16","הֶקְמִיָּה","Hekamiah","Lealdade & Honor"],
+  ["17","לָאוּיָה","Lauiah","Sucesso & Elevação"],["18","כַּלִּיאֵל","Caliel","Justiça Divina"],
+  ["19","לֵוּיָה","Leuviah","Memória & Inteligência"],["20","פַּהַלִּיָּה","Pahaliah","Redenção & Moral"],
+  ["21","נֵלְכַאֵל","Nelchael","Aprendizado & Ciências"],["22","יֵיַיאֵל","Yeiayel","Fortuna & Viagens"],
+  ["23","מֵלַהֵאֵל","Melahel","Saúde & Natureza"],["24","חַהוּיָּה","Haheuiah","Proteção & Exílio"],
+  ["25","נִתְהַיָּה","Nithaiah","Magia & Sabedoria"],["26","הַאַיָּה","Haaiah","Política & Discrição"],
+  ["27","יֵרַתֵּאֵל","Yeratel","Paz & Propagação da Luz"],["28","שְׁאַהֲיָה","Seheiah","Longevidade"],
+  ["29","רֵיִיאֵל","Reyel","Libertação & Mística"],["30","אוֹמֵאֵל","Omael","Multiplicação & Paciência"],
+  ["31","לֵכַבֵּאֵל","Lecabel","Inspiração & Agricultura"],["32","וַשַׁרְיָּה","Vasariah","Clemência & Justiça"],
+  ["33","יְהוּיָה","Yehuiah","Submissão ao Divino"],["34","לֵהַחְיָה","Lehahiah","Obediência & Calma"],
+  ["35","כְּוָקִיָּה","Chevakiah","Reconciliação"],["36","מֵנַדֵּאֵל","Menadel","Trabalho & Libertação"],
+  ["37","אַנִיאֵל","Aniel","Ruptura de Bloqueios"],["38","חַעֲמִיָּה","Haamiah","Rituais & Verdade"],
+  ["39","רֵהַאֵל","Rehael","Cura & Reverência"],["40","יֵיִיזֵל","Yeiazel","Conforto & Libertação Criativa"],
+  ["41","הַהַהֵאֵל","Hahahel","Missão & Vocação"],["42","מִיכַאֵל","Mikael","Lealdade Política & Divina"],
+  ["43","וְלַהֲיָה","Veuliah","Prosperidade & Paz"],["44","יֵלַהֲיָה","Yelahiah","Vitória & Karma"],
+  ["45","סְאַלִיָּה","Sealiah","Motivação & Equilíbrio"],["46","עֲרִיאֵל","Ariel","Percepção & Gratidão"],
+  ["47","עַשְׁלִיָּה","Asaliah","Contemplação & Justiça"],["48","מִיהַאֵל","Mihael","Fertilidade & Paz"],
+  ["49","וֵהוּאֵל","Vehuel","Gratidão & Elevação"],["50","דַּנִיאֵל","Daniel","Eloquência & Misericórdia"],
+  ["51","הַחַשְׁיָה","Hahasiah","Medicina Universal"],["52","עֲמַמִיָּה","Imamiah","Força & Expiação"],
+  ["53","נָנַאֵל","Nanael","Comunicação Espiritual"],["54","נִיתַאֵל","Nithael","Legitimidade & Estabilidade"],
+  ["55","מֵבַהִיָּה","Mebahiah","Lucidez Moral"],["56","פּוֹיֵאֵל","Poyel","Fortuna & Modéstia"],
+  ["57","נֵמַמִיָּה","Nemamiah","Discernimento & Vitória"],["58","יֵיַלֵּאֵל","Yeialel","Força Mental"],
+  ["59","הַרַחֵאֵל","Harahel","Riqueza Intelectual"],["60","מִצְרַאֵל","Mitzrael","Virtude & Libertação"],
+  ["61","וּמַבַּאֵל","Umabel","Amizade & Astrologia"],["62","יַהַהֵאֵל","Yahahel","Filosofia & Meditação"],
+  ["63","עַנָּוֵאֵל","Anauel","Unidade & Proteção"],["64","מֵחִיאֵל","Mehiel","Proteção & Vida"],
+  ["65","דַּמַּבִיָּה","Damabiah","Sabedoria das Águas"],["66","מַנַקֵּאֵל","Manakel","Sono & Aquático"],
+  ["67","עֵיִיאֵל","Eyael","Transformação & Filosofia"],["68","חַבוּיָּה","Habuhiah","Cura & Fertilidade"],
+  ["69","רַאַהֵאֵל","Raahel","Biblioteca & Conhecimento"],["70","יָבַמִיָּה","Yabamiah","Alquimia & Regeneração"],
+  ["71","הַיָּיֵאֵל","Haiaiel","Proteção & Combate"],["72","מוּמִיָּה","Mumiah","Transmutação & Medicina"],
+];
+
+const container72 = document.getElementById('names72-container');
+names72.forEach(([num,heb,name,meaning]) => {
+  const card = document.createElement('div');
+  card.className = 'n72-card';
+  card.innerHTML = `<span class="n72-num">${num}</span><span class="n72-heb">${heb}</span><span class="n72-name">${name}</span><div class="n72-meaning">${meaning}</div>`;
+  card.title = `${name}: ${meaning}`;
+  container72.appendChild(card);
+});
+
+// ══ TABS ══
+function showTab(id, groupId) {
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// ══ TOOLTIP ══
+const tooltip = document.getElementById('tooltip');
+document.querySelectorAll('.n72-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    tooltip.textContent = card.title;
+    tooltip.classList.add('show');
+    tooltip.style.left = (e.clientX + 15) + 'px';
+    tooltip.style.top = (e.clientY - 10) + 'px';
+  });
+  card.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chakras — Guia Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --muladhara: #c0392b;
+    --svadhisthana: #e67e22;
+    --manipura: #f1c40f;
+    --anahata: #27ae60;
+    --vishuddha: #2980b9;
+    --ajna: #6c3483;
+    --sahasrara: #8e44ad;
+    --gold: #d4af37;
+    --cream: #fdf6e3;
+    --parchment: #f5edd6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: linear-gradient(135deg, #fef9f0 0%, #fdf0e8 25%, #f8f0ff 50%, #e8f8ff 75%, #f0ffe8 100%);
+    color: #2c1810;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(160deg, #1a0533 0%, #2d1b69 30%, #0d3b6e 60%, #1a0533 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 20%, rgba(255,255,255,0.9) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 8%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 18%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 40%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 35%, rgba(255,255,255,0.8) 0%, transparent 100%),
+      radial-gradient(2px 2px at 15% 65%, rgba(212,175,55,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 85% 70%, rgba(212,175,55,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 80%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.4) 0%, transparent 100%);
+  }
+
+  .hero-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-chakra-dot {
+    border-radius: 50%;
+    animation: pulse-hero 3s ease-in-out infinite;
+    box-shadow: 0 0 20px currentColor;
+  }
+  .hcd-1 { width: 22px; height: 22px; background: #c0392b; color: #c0392b; animation-delay: 0s; }
+  .hcd-2 { width: 26px; height: 26px; background: #e67e22; color: #e67e22; animation-delay: 0.3s; }
+  .hcd-3 { width: 30px; height: 30px; background: #f1c40f; color: #f1c40f; animation-delay: 0.6s; }
+  .hcd-4 { width: 34px; height: 34px; background: #27ae60; color: #27ae60; animation-delay: 0.9s; }
+  .hcd-5 { width: 30px; height: 30px; background: #2980b9; color: #2980b9; animation-delay: 1.2s; }
+  .hcd-6 { width: 26px; height: 26px; background: #6c3483; color: #6c3483; animation-delay: 1.5s; }
+  .hcd-7 { width: 22px; height: 22px; background: #d4af37; color: #d4af37; animation-delay: 1.8s; }
+
+  @keyframes pulse-hero {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  .hero-line {
+    width: 2px;
+    height: 12px;
+    background: linear-gradient(to bottom, rgba(212,175,55,0.3), rgba(212,175,55,0.7));
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: #d4af37;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 40px rgba(212,175,55,0.5), 0 0 80px rgba(212,175,55,0.2);
+    position: relative;
+    z-index: 2;
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: rgba(212,175,55,0.7);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-desc {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+    font-style: italic;
+    position: relative;
+    z-index: 2;
+    line-height: 1.9;
+  }
+
+  .hero-divider {
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+    margin: 30px auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  /* SECTION STYLES */
+  section {
+    padding: 70px 30px;
+  }
+
+  .section-intro {
+    background: linear-gradient(135deg, #fffef5 0%, #fff8e7 100%);
+    border-top: 5px solid #d4af37;
+  }
+
+  /* TITLES */
+  h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+
+  h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    opacity: 0.85;
+  }
+
+  .section-title-line {
+    width: 100px;
+    height: 2px;
+    margin: 0 auto 40px;
+    background: linear-gradient(to right, transparent, currentColor, transparent);
+  }
+
+  p { margin-bottom: 16px; }
+
+  /* ORIGIN SECTION */
+  .section-origin {
+    background: linear-gradient(160deg, #fff9f0 0%, #fef0e0 100%);
+    border-left: 6px solid #d4af37;
+  }
+
+  .origin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 700px) { .origin-grid { grid-template-columns: 1fr; } }
+
+  .origin-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-top: 4px solid #d4af37;
+  }
+
+  .origin-card h3 { color: #8b4513; }
+
+  /* WHAT IS CHAKRA */
+  .section-what {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fd 100%);
+  }
+
+  .chakra-wheel-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+  }
+
+  .chakra-wheel {
+    position: relative;
+    width: 280px;
+    height: 280px;
+  }
+
+  .wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #d4af37, #f5d76e);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(212,175,55,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    animation: spin-slow 20s linear infinite;
+  }
+
+  @keyframes spin-slow { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .wheel-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 2px dashed rgba(212,175,55,0.3);
+    animation: spin-slow 30s linear infinite reverse;
+  }
+
+  .wheel-ring-1 { width: 100px; height: 100px; transform: translate(-50%, -50%); }
+  .wheel-ring-2 { width: 160px; height: 160px; transform: translate(-50%, -50%); }
+  .wheel-ring-3 { width: 230px; height: 230px; transform: translate(-50%, -50%); }
+  .wheel-ring-4 { width: 280px; height: 280px; transform: translate(-50%, -50%); border-style: solid; border-color: rgba(212,175,55,0.15); }
+
+  .wheel-petal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transform-origin: center;
+  }
+
+  /* BODY DIAGRAM */
+  .body-diagram {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 0;
+  }
+
+  .body-figure {
+    position: relative;
+    width: 200px;
+    flex-shrink: 0;
+  }
+
+  .body-svg-container {
+    width: 200px;
+    position: relative;
+  }
+
+  .chakra-point {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 5;
+    box-shadow: 0 0 15px currentColor;
+    animation: chakra-glow 3s ease-in-out infinite;
+    font-family: 'Cinzel', serif;
+  }
+
+  .chakra-point:hover {
+    transform: translateX(-50%) scale(1.3);
+  }
+
+  @keyframes chakra-glow {
+    0%, 100% { box-shadow: 0 0 10px currentColor; }
+    50% { box-shadow: 0 0 25px currentColor, 0 0 50px currentColor; }
+  }
+
+  .cp-7 { top: 2%; background: #8e44ad; color: #8e44ad; }
+  .cp-6 { top: 11%; background: #6c3483; color: #6c3483; }
+  .cp-5 { top: 23%; background: #2980b9; color: #2980b9; }
+  .cp-4 { top: 37%; background: #27ae60; color: #27ae60; }
+  .cp-3 { top: 51%; background: #f39c12; color: #f39c12; }
+  .cp-2 { top: 63%; background: #e67e22; color: #e67e22; }
+  .cp-1 { top: 77%; background: #c0392b; color: #c0392b; }
+
+  .body-spine-line {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    bottom: 22%;
+    width: 3px;
+    background: linear-gradient(to bottom, #8e44ad, #6c3483, #2980b9, #27ae60, #f39c12, #e67e22, #c0392b);
+    transform: translateX(-50%);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(212,175,55,0.5);
+  }
+
+  .body-legend {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: transform 0.2s;
+  }
+
+  .legend-item:hover { transform: translateX(5px); }
+
+  .legend-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  .legend-text strong {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    display: block;
+  }
+
+  .legend-text span {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* CHAKRA SECTIONS */
+  .chakra-section {
+    padding: 80px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-1 { background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 50%, #fff0e0 100%); border-top: 6px solid #c0392b; }
+  .cs-2 { background: linear-gradient(135deg, #fff8f0 0%, #ffebd6 50%, #fff5e0 100%); border-top: 6px solid #e67e22; }
+  .cs-3 { background: linear-gradient(135deg, #fffef0 0%, #fff9d6 50%, #fffae0 100%); border-top: 6px solid #f1c40f; }
+  .cs-4 { background: linear-gradient(135deg, #f0fff5 0%, #d6ffe8 50%, #e0fff0 100%); border-top: 6px solid #27ae60; }
+  .cs-5 { background: linear-gradient(135deg, #f0f8ff 0%, #d6eeff 50%, #e0f0ff 100%); border-top: 6px solid #2980b9; }
+  .cs-6 { background: linear-gradient(135deg, #f8f0ff 0%, #ead6ff 50%, #f0e0ff 100%); border-top: 6px solid #6c3483; }
+  .cs-7 { background: linear-gradient(160deg, #fdf0ff 0%, #f8e0ff 30%, #ffe8ff 60%, #fff0ff 100%); border-top: 6px solid #8e44ad; }
+
+  .chakra-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .chakra-symbol-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 40px currentColor;
+    animation: chakra-glow 4s ease-in-out infinite;
+  }
+
+  .chakra-symbol-large svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .chakra-name-block h2 {
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+  }
+
+  .chakra-name-block .sanscrit {
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .chakra-name-block .meaning {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  /* PROPERTY GRID */
+  .prop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 30px 0;
+  }
+
+  .prop-card {
+    background: rgba(255,255,255,0.8);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    backdrop-filter: blur(5px);
+  }
+
+  .prop-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .prop-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+  .prop-value { font-size: 1.05rem; font-weight: 600; }
+
+  /* INFO BOXES */
+  .info-box {
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .ib-aligned {
+    background: linear-gradient(135deg, rgba(39,174,96,0.12), rgba(39,174,96,0.06));
+    border-left: 5px solid #27ae60;
+  }
+
+  .ib-unaligned {
+    background: linear-gradient(135deg, rgba(192,57,43,0.1), rgba(192,57,43,0.05));
+    border-left: 5px solid #c0392b;
+  }
+
+  .ib-treatment {
+    background: linear-gradient(135deg, rgba(41,128,185,0.1), rgba(41,128,185,0.05));
+    border-left: 5px solid #2980b9;
+  }
+
+  .ib-symbol {
+    background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+    border-left: 5px solid #d4af37;
+  }
+
+  .ib-kabbalah {
+    background: linear-gradient(135deg, rgba(108,52,131,0.12), rgba(108,52,131,0.05));
+    border-left: 5px solid #6c3483;
+  }
+
+  .ib-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* TAG LISTS */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .tag {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* ALIGNMENT SECTION */
+  .section-alignment {
+    background: linear-gradient(135deg, #f0fff8 0%, #e8ffe8 50%, #f8fff0 100%);
+    border-top: 5px solid #27ae60;
+  }
+
+  .alignment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 40px 0;
+  }
+
+  @media (max-width: 700px) { .alignment-grid { grid-template-columns: 1fr; } }
+
+  .alignment-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .alignment-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .practice-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .practice-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #f8f8f8, #efefef);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .practice-text strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    margin-bottom: 3px;
+  }
+
+  .practice-text p { font-size: 0.92rem; margin: 0; opacity: 0.8; }
+
+  /* KABBALAH */
+  .section-kabbalah {
+    background: linear-gradient(160deg, #1a0533 0%, #200d40 50%, #0d1a33 100%);
+    color: rgba(255,255,255,0.9);
+    padding: 80px 30px;
+  }
+
+  .section-kabbalah h2 { color: #d4af37; }
+  .section-kabbalah h3 { color: rgba(212,175,55,0.8); }
+  .section-kabbalah p { color: rgba(255,255,255,0.82); }
+  .section-kabbalah .section-title-line { background: linear-gradient(to right, transparent, #d4af37, transparent); }
+
+  .sefira-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+  }
+
+  .sefira-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+  }
+
+  .sefira-card:hover { border-color: rgba(212,175,55,0.5); }
+
+  .sefira-card h4 {
+    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .sefira-card p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin: 0; }
+
+  /* PLANES */
+  .section-planes {
+    background: linear-gradient(135deg, #fff5ff 0%, #f5e8ff 50%, #ffe8ff 100%);
+    border-top: 5px solid #8e44ad;
+  }
+
+  .planes-stack {
+    max-width: 700px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .plane-bar {
+    border-radius: 12px;
+    padding: 18px 28px;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+
+  .plane-bar:hover { transform: scale(1.02); }
+
+  .plane-bar h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: white;
+  }
+
+  .plane-bar p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin: 0; }
+
+  /* DIAGNOSTIC */
+  .section-diagnostic {
+    background: linear-gradient(135deg, #f8f8ff 0%, #f0f0ff 50%, #f5f5ff 100%);
+    border-top: 5px solid #6c3483;
+  }
+
+  .symptom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    font-size: 0.95rem;
+  }
+
+  .symptom-table th {
+    background: #2d1b69;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  .symptom-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+  }
+
+  .symptom-table tr:nth-child(even) td { background: rgba(108,52,131,0.04); }
+  .symptom-table tr:hover td { background: rgba(108,52,131,0.08); }
+
+  .chakra-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-family: 'Cinzel', serif;
+    color: white;
+    white-space: nowrap;
+  }
+
+  /* MEDITATION BOX */
+  .meditation-box {
+    background: linear-gradient(160deg, #1a0533 0%, #0d3b6e 100%);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .meditation-box::before {
+    content: '◎';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 10rem;
+    opacity: 0.05;
+    animation: spin-slow 40s linear infinite;
+  }
+
+  .meditation-box h3 {
+    color: #d4af37;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  .meditation-box p { color: rgba(255,255,255,0.85); }
+
+  .meditation-steps {
+    list-style: none;
+    counter-reset: step;
+  }
+
+  .meditation-steps li {
+    counter-increment: step;
+    padding: 10px 0 10px 50px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.98rem;
+  }
+
+  .meditation-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(212,175,55,0.2);
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: #d4af37;
+  }
+
+  /* QUOTE */
+  .sacred-quote {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, #fff9f0 0%, #fff3e0 100%);
+    position: relative;
+  }
+
+  .sacred-quote::before {
+    content: '❝';
+    font-size: 5rem;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    opacity: 0.1;
+    font-family: serif;
+    color: #d4af37;
+  }
+
+  .sacred-quote blockquote {
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-style: italic;
+    color: #5d3a1a;
+    max-width: 750px;
+    margin: 0 auto 16px;
+    line-height: 1.7;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .sacred-quote cite {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: #d4af37;
+    text-transform: uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    background: linear-gradient(160deg, #1a0533 0%, #0d1a33 100%);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 60px 30px;
+  }
+
+  footer h3 {
+    font-family: 'Cinzel Decorative', serif;
+    color: #d4af37;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  footer p { font-size: 0.95rem; max-width: 600px; margin: 0 auto 10px; }
+
+  .footer-chakras {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+  }
+
+  .footer-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    animation: pulse-hero 3s ease-in-out infinite;
+  }
+
+  /* ORNAMENT */
+  .ornament {
+    text-align: center;
+    font-size: 2rem;
+    color: #d4af37;
+    opacity: 0.3;
+    margin: 10px 0;
+    letter-spacing: 0.5em;
+  }
+
+  /* LOTUS SVG colors */
+  .lotus-red path { fill: #c0392b; }
+  .lotus-orange path { fill: #e67e22; }
+  .lotus-yellow path { fill: #f1c40f; }
+  .lotus-green path { fill: #27ae60; }
+  .lotus-blue path { fill: #2980b9; }
+  .lotus-indigo path { fill: #6c3483; }
+  .lotus-violet path { fill: #8e44ad; }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    max-width: 800px;
+    margin: 40px auto;
+  }
+
+  .toc h3 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: #8b4513;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 600px) { .toc-list { grid-template-columns: 1fr; } }
+
+  .toc-list li a {
+    text-decoration: none;
+    color: #5d3a1a;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+
+  .toc-list li a:hover { background: #fff8e7; }
+
+  .toc-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #f5edd6; }
+  ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+
+  /* GENERAL UTILITIES */
+  .center { text-align: center; }
+  .gold { color: #d4af37; }
+  .mt-20 { margin-top: 20px; }
+  .mt-40 { margin-top: 40px; }
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 700; }
+
+  @media (max-width: 600px) {
+    .prop-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 50px 20px; }
+    .chakra-section { padding: 60px 20px; }
+    .chakra-header { gap: 20px; }
+    .chakra-symbol-large { width: 90px; height: 90px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="topo">
+  <div class="stars"></div>
+
+  <div class="hero-spine">
+    <div class="hero-chakra-dot hcd-7"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-6"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-5"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-4"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-3"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-2"></div>
+    <div class="hero-line"></div>
+    <div class="hero-chakra-dot hcd-1"></div>
+  </div>
+
+  <h1>✦ CHAKRAS ✦</h1>
+  <div class="hero-subtitle">Guia Completo — Do Básico ao Avançado</div>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Uma jornada profunda pelos centros de energia do ser humano — suas origens milenares, 
+    simbolismo sagrado, funcionamento energético, conexões com tradições místicas e práticas 
+    de alinhamento para corpo, mente e espírito.
+  </p>
+  <div class="hero-divider"></div>
+  <p style="color:rgba(212,175,55,0.5); font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.3em; position:relative; z-index:2;">
+    OM ✦ SHANTI ✦ NAMASTE
+  </p>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ÍNDICE
+══════════════════════════════════════ -->
+<section class="section-intro">
+  <div class="container">
+    <h2 style="color:#8b4513;">📖 Índice do Guia</h2>
+    <div class="section-title-line" style="color:#d4af37;"></div>
+
+    <div class="toc">
+      <h3>✦ Conteúdo Completo ✦</h3>
+      <ul class="toc-list">
+        <li><a href="#origem"><span class="toc-dot" style="background:#d4af37;"></span>Origens e História</a></li>
+        <li><a href="#oque"><span class="toc-dot" style="background:#6c3483;"></span>O que são Chakras</a></li>
+        <li><a href="#muladhara"><span class="toc-dot" style="background:#c0392b;"></span>1º Chakra — Muladhara</a></li>
+        <li><a href="#svadhisthana"><span class="toc-dot" style="background:#e67e22;"></span>2º Chakra — Svadhisthana</a></li>
+        <li><a href="#manipura"><span class="toc-dot" style="background:#f1c40f;"></span>3º Chakra — Manipura</a></li>
+        <li><a href="#anahata"><span class="toc-dot" style="background:#27ae60;"></span>4º Chakra — Anahata</a></li>
+        <li><a href="#vishuddha"><span class="toc-dot" style="background:#2980b9;"></span>5º Chakra — Vishuddha</a></li>
+        <li><a href="#ajna"><span class="toc-dot" style="background:#6c3483;"></span>6º Chakra — Ajna</a></li>
+        <li><a href="#sahasrara"><span class="toc-dot" style="background:#8e44ad;"></span>7º Chakra — Sahasrara</a></li>
+        <li><a href="#alinhamento"><span class="toc-dot" style="background:#27ae60;"></span>Alinhamento Geral</a></li>
+        <li><a href="#diagnostico"><span class="toc-dot" style="background:#6c3483;"></span>Diagnóstico & Sintomas</a></li>
+        <li><a href="#kabbalah"><span class="toc-dot" style="background:#d4af37;"></span>Kabbalá & Sefirot</a></li>
+        <li><a href="#planos"><span class="toc-dot" style="background:#8e44ad;"></span>Planos de Existência</a></li>
+        <li><a href="#meditacao"><span class="toc-dot" style="background:#2980b9;"></span>Meditação Guiada</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ORIGEM
+══════════════════════════════════════ -->
+<section class="section-origin" id="origem">
+  <div class="container">
+    <h2 style="color:#8b4513;">🌿 Origens e História dos Chakras</h2>
+    <div class="section-title-line" style="color:#d4af37;"></div>
+
+    <p>O sistema de chakras é uma das mais antigas e completas cosmologias do ser humano. Suas raízes mergulham em mais de <strong>4.000 anos de tradição espiritual indiana</strong>, embora ecos de conceitos similares apareçam em culturas tão distintas quanto a egípcia, a chinesa, a mesoamericana e a gnóstica.</p>
+
+    <div class="origin-grid">
+      <div class="origin-card">
+        <h3>🕉️ Vedas e Upanishads (1.500–500 a.C.)</h3>
+        <p>Os <em>Vedas</em>, textos sagrados mais antigos da humanidade, já faziam referência ao <strong>prana</strong> — a força vital que permeia o universo. Os <em>Upanishads</em> refinaram o conceito, descrevendo o corpo sutil (<em>sukshma sharira</em>) e os centros de energia ao longo da coluna.</p>
+        <p>O <em>Chandogya Upanishad</em> (800 a.C.) menciona os "centros luminosos" no interior do ser como portais para estados superiores de consciência.</p>
+      </div>
+      <div class="origin-card">
+        <h3>🌀 Tantrismo (500–1200 d.C.)</h3>
+        <p>Foi nas tradições tântricas — especialmente o <em>Shaivismo da Caxemira</em> — que o sistema de 7 chakras principais ganhou sua forma definitiva. Textos como o <em>Sat-Chakra-Nirupana</em> (séc. XVI) descrevem com precisão cada centro: localização, pétalas de lótus, sílaba-semente, divindades e poderes associados.</p>
+        <p>O Tantra entendia os chakras como vórtices de <strong>shakti</strong> (energia cósmica feminina) que, quando ativados, levam à fusão com Shiva (consciência pura).</p>
+      </div>
+      <div class="origin-card">
+        <h3>🧘 Yoga e Hatha Yoga (séc. XII–XVI)</h3>
+        <p>O <em>Hatha Yoga Pradipika</em> e o <em>Goraksha Samhita</em> sistematizaram práticas físicas para despertar a <strong>Kundalini</strong> — a energia serpentina enrolada na base da coluna. O objetivo era fazê-la ascender pelos chakras até o topo da cabeça, produzindo a iluminação (<em>samadhi</em>).</p>
+      </div>
+      <div class="origin-card">
+        <h3>🌍 Paralelos em Outras Culturas</h3>
+        <p><strong>China:</strong> O sistema de meridianos do taoísmo e os <em>Dan Tian</em> (campos de cinábrio) apresentam semelhanças estruturais com os chakras.</p>
+        <p><strong>Egito:</strong> Os centros de poder descritos no <em>Livro dos Mortos</em> e os selos dos Hermetistas.</p>
+        <p><strong>Ocidente:</strong> A Cabala Judaica com suas 10 Sefirot na Árvore da Vida; os centros de luz gnósticos.</p>
+        <p><strong>América:</strong> Os centros de força dos curandeiros Inca e Asteca.</p>
+      </div>
+    </div>
+
+    <div class="info-box ib-symbol mt-40">
+      <div class="ib-title">✦ A Grande Descoberta Moderna</div>
+      <p>No Ocidente, o sistema de chakras foi apresentado por <strong>Helena Blavatsky</strong> (Teosofia, 1877) e popularizado por <strong>Charles Leadbeater</strong> em <em>The Chakras</em> (1927). No séc. XX, pesquisadores como <strong>Barbara Brennan</strong> e <strong>Valerie Hunt</strong> conduziram estudos sobre campos de energia humana, encontrando correlações com regiões correspondentes aos chakras.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     O QUE SÃO CHAKRAS
+══════════════════════════════════════ -->
+<section class="section-what" id="oque">
+  <div class="container">
+    <h2 style="color:#1a5276;">⚡ O Que São Chakras?</h2>
+    <div class="section-title-line" style="color:#2980b9;"></div>
+
+    <p><strong>Chakra</strong> (चक्र) é uma palavra sânscrita que significa literalmente <em>"roda" ou "disco"</em>. Na tradição indiana, os chakras são <strong>centros de energia no corpo sutil</strong> — vórtices giratórios de força vital que recebem, processam e transmitem energia entre o plano físico e os planos sutis da existência.</p>
+
+    <p>Pense neles como <strong>usinas de energia</strong>: cada chakra governa uma dimensão específica da experiência humana — desde as necessidades básicas de sobrevivência até a conexão com o divino. Quando giram livremente e em equilíbrio, toda a sua vida flui com harmonia. Quando há bloqueios, as consequências aparecem no corpo físico, nas emoções e nas relações.</p>
+
+    <div class="body-diagram">
+      <div class="body-figure">
+        <div class="body-svg-container" style="height: 420px; position: relative;">
+          <!-- Simple human silhouette using CSS shapes -->
+          <div style="position:absolute; left:50%; transform:translateX(-50%); top:0; width:140px; height:420px;">
+            <!-- Head -->
+            <div style="position:absolute; top:0; left:50%; transform:translateX(-50%); width:60px; height:60px; background:rgba(212,175,55,0.15); border-radius:50%; border:2px solid rgba(212,175,55,0.3);"></div>
+            <!-- Neck -->
+            <div style="position:absolute; top:56px; left:50%; transform:translateX(-50%); width:20px; height:22px; background:rgba(212,175,55,0.1);"></div>
+            <!-- Torso -->
+            <div style="position:absolute; top:75px; left:50%; transform:translateX(-50%); width:72px; height:140px; background:rgba(212,175,55,0.1); border-radius:8px; border:2px solid rgba(212,175,55,0.2);"></div>
+            <!-- Arms -->
+            <div style="position:absolute; top:80px; left:3px; width:20px; height:110px; background:rgba(212,175,55,0.08); border-radius:10px; border:1px solid rgba(212,175,55,0.15);"></div>
+            <div style="position:absolute; top:80px; right:3px; width:20px; height:110px; background:rgba(212,175,55,0.08); border-radius:10px; border:1px solid rgba(212,175,55,0.15);"></div>
+            <!-- Hips/Pelvis -->
+            <div style="position:absolute; top:210px; left:50%; transform:translateX(-50%); width:80px; height:40px; background:rgba(212,175,55,0.1); border-radius:8px; border:1px solid rgba(212,175,55,0.15);"></div>
+            <!-- Legs -->
+            <div style="position:absolute; top:245px; left:20px; width:28px; height:140px; background:rgba(212,175,55,0.08); border-radius:8px; border:1px solid rgba(212,175,55,0.15);"></div>
+            <div style="position:absolute; top:245px; right:20px; width:28px; height:140px; background:rgba(212,175,55,0.08); border-radius:8px; border:1px solid rgba(212,175,55,0.15);"></div>
+          </div>
+          <!-- Spine -->
+          <div class="body-spine-line" style="top:4%; bottom:25%;"></div>
+          <!-- Chakra Points -->
+          <div class="chakra-point cp-7" style="color:#8e44ad; top:1%;"><span style="color:white; font-size:10px;">7</span></div>
+          <div class="chakra-point cp-6" style="color:#6c3483; top:13%;"><span style="color:white; font-size:10px;">6</span></div>
+          <div class="chakra-point cp-5" style="color:#2980b9; top:25%;"><span style="color:white; font-size:10px;">5</span></div>
+          <div class="chakra-point cp-4" style="color:#27ae60; top:38%;"><span style="color:white; font-size:10px;">4</span></div>
+          <div class="chakra-point cp-3" style="color:#f39c12; top:50%;"><span style="color:white; font-size:10px;">3</span></div>
+          <div class="chakra-point cp-2" style="color:#e67e22; top:61%;"><span style="color:white; font-size:10px;">2</span></div>
+          <div class="chakra-point cp-1" style="color:#c0392b; top:73%;"><span style="color:white; font-size:10px;">1</span></div>
+        </div>
+      </div>
+
+      <div class="body-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#8e44ad; color:#8e44ad; box-shadow:0 0 10px #8e44ad;"></div>
+          <div class="legend-text">
+            <strong>7º — Sahasrara</strong>
+            <span>Coroa · Conexão Divina · Violeta/Branco</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#6c3483; color:#6c3483; box-shadow:0 0 10px #6c3483;"></div>
+          <div class="legend-text">
+            <strong>6º — Ajna</strong>
+            <span>Terceiro Olho · Intuição · Índigo</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#2980b9; color:#2980b9; box-shadow:0 0 10px #2980b9;"></div>
+          <div class="legend-text">
+            <strong>5º — Vishuddha</strong>
+            <span>Garganta · Comunicação · Azul</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#27ae60; color:#27ae60; box-shadow:0 0 10px #27ae60;"></div>
+          <div class="legend-text">
+            <strong>4º — Anahata</strong>
+            <span>Coração · Amor · Verde</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#f39c12; color:#f39c12; box-shadow:0 0 10px #f39c12;"></div>
+          <div class="legend-text">
+            <strong>3º — Manipura</strong>
+            <span>Plexo Solar · Poder · Amarelo</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#e67e22; color:#e67e22; box-shadow:0 0 10px #e67e22;"></div>
+          <div class="legend-text">
+            <strong>2º — Svadhisthana</strong>
+            <span>Sacral · Criatividade · Laranja</span>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#c0392b; color:#c0392b; box-shadow:0 0 10px #c0392b;"></div>
+          <div class="legend-text">
+            <strong>1º — Muladhara</strong>
+            <span>Raiz · Segurança · Vermelho</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col mt-40">
+      <div>
+        <h3 style="color:#1a5276;">🌊 Prana: A Energia que Flui</h3>
+        <p>Os chakras funcionam como estações ao longo dos <strong>nadis</strong> — canais energéticos do corpo sutil (comparáveis aos meridianos da acupuntura chinesa). Existem 72.000 nadis, mas os três principais são:</p>
+        <ul>
+          <li><strong>Sushumna:</strong> o canal central, ao longo da coluna. É por ele que a Kundalini ascende.</li>
+          <li><strong>Ida (Chandra):</strong> o canal lunar, energia feminina, fria, intuitiva. Nasce da narina esquerda.</li>
+          <li><strong>Pingala (Surya):</strong> o canal solar, energia masculina, quente, racional. Nasce da narina direita.</li>
+        </ul>
+        <p>Ida e Pingala entrelaçam-se ao redor de Sushumna em padrão helicoidal — símbolo que ecoa no caduceu grego e no DNA.</p>
+      </div>
+      <div>
+        <h3 style="color:#1a5276;">🌀 Como Giram os Chakras?</h3>
+        <p>Cada chakra gira em sentido <strong>horário</strong> quando aberto e harmonioso. Sentido anti-horário pode indicar bloqueio ou desequilíbrio. Cada um também vibra em uma <strong>frequência específica</strong>, associada a:</p>
+        <ul>
+          <li>Uma cor do espectro visível</li>
+          <li>Uma nota musical / frequência sonora</li>
+          <li>Um elemento da natureza</li>
+          <li>Uma glândula endócrina no corpo físico</li>
+          <li>Um plexo nervoso</li>
+          <li>Uma sílaba-semente (bija mantra)</li>
+          <li>Uma divindade hindu</li>
+          <li>Uma pedra preciosa / cristal</li>
+          <li>Um planeta e signo zodiacal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     KUNDALINI BOX
+══════════════════════════════════════ -->
+<div class="meditation-box" style="margin:0; border-radius:0;">
+  <div class="container">
+    <h3>🐍 Kundalini — A Serpente de Fogo</h3>
+    <p>A <strong>Kundalini</strong> (do sânscrito: "enrolada") é descrita na tradição tântrica como uma energia primordial adormecida na base da coluna, enrolada três vezes e meia ao redor do Muladhara. Quando desperta — por práticas espirituais, graça do guru ou experiências transformadoras — ela sobe pela Sushumna, ativando cada chakra em sequência até alcançar o Sahasrara, onde ocorre a <strong>união de Shakti com Shiva</strong>: a iluminação.</p>
+    <p style="margin-bottom:0; margin-top:12px; opacity:0.7; font-style:italic;">⚠️ O despertar forçado da Kundalini sem preparo pode causar experiências intensas e desorientadoras. A via gradual através da prática contemplativa, do yoga e do trabalho interior é considerada a mais segura.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     1º CHAKRA — MULADHARA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-1" id="muladhara">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #e74c3c, #c0392b); color:#c0392b;">
+        <!-- Lotus 4 petals SVG -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="50" cy="25" rx="15" ry="22" fill="rgba(255,255,255,0.3)" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="25" rx="15" ry="22" fill="rgba(255,255,255,0.3)" transform="rotate(90 50 50)"/>
+          <ellipse cx="50" cy="25" rx="15" ry="22" fill="rgba(255,255,255,0.3)" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="25" rx="15" ry="22" fill="rgba(255,255,255,0.3)" transform="rotate(270 50 50)"/>
+          <!-- Square -->
+          <rect x="33" y="33" width="34" height="34" fill="rgba(255,255,255,0.2)" transform="rotate(45 50 50)"/>
+          <!-- Circle center -->
+          <circle cx="50" cy="50" r="12" fill="rgba(255,255,255,0.4)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="11" fill="white" font-family="serif">LAM</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#c0392b;">① Muladhara</h2>
+        <div class="sanscrit">मूलाधार — Muladhara Chakra</div>
+        <div class="meaning" style="color:#c0392b;">Chakra Raiz · Base · Fundamento</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">📍</div>
+        <div class="prop-label">Localização</div>
+        <div class="prop-value">Base da coluna / períneo</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🎨</div>
+        <div class="prop-label">Cor</div>
+        <div class="prop-value">Vermelho</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🌍</div>
+        <div class="prop-label">Elemento</div>
+        <div class="prop-value">Terra (Prithvi)</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🔊</div>
+        <div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">LAM (लं)</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🎵</div>
+        <div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Dó (396 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🔬</div>
+        <div class="prop-label">Glândula</div>
+        <div class="prop-value">Adrenal / Suprarrenal</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">💎</div>
+        <div class="prop-label">Pedras</div>
+        <div class="prop-value">Granada, Obsidiana, Jaspe Vermelho, Hematita</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🪷</div>
+        <div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">4 pétalas</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🌿</div>
+        <div class="prop-label">Ervas</div>
+        <div class="prop-value">Raiz de Valeriana, Ashwagandha, Ginseng</div>
+      </div>
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🪐</div>
+        <div class="prop-label">Planeta</div>
+        <div class="prop-value">Saturno / Terra</div>
+      </div>
+    </div>
+
+    <h3 style="color:#c0392b; margin-top:30px;">🌱 Domínio e Função</h3>
+    <p>O Muladhara é o <strong>alicerce de toda a estrutura energética humana</strong>. Ele governa a nossa relação com o mundo físico e material — a necessidade de abrigo, alimento, segurança e pertencimento. É o chakra da <strong>sobrevivência instintiva</strong>, da conexão com a Terra, dos ancestrais e da herança familiar.</p>
+    <p>Quanto mais firme é a raiz, mais alto pode crescer a árvore. Um Muladhara saudável cria a fundação sobre a qual todos os outros chakras se desenvolvem.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">🔺 Simbolismo do Muladhara</div>
+      <p>O símbolo é um <strong>lótus de 4 pétalas</strong> de cor vermelha. Dentro há um <strong>quadrado amarelo</strong> (o elemento Terra), dentro do quadrado um <strong>triângulo voltado para baixo</strong> (a energia descendo para se enraizar), e no centro a <strong>serpente Kundalini enrolada 3,5 vezes</strong> em torno do lingam de Shiva. As 4 pétalas representam os 4 estados da mente (manas, buddhi, chitta, ahamkara) e as 4 direções cardeais.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Muladhara Equilibrado</div>
+        <ul>
+          <li>Sensação de segurança e estabilidade</li>
+          <li>Boa saúde física geral</li>
+          <li>Relacionamento saudável com dinheiro</li>
+          <li>Senso de pertencimento e identidade</li>
+          <li>Presença no momento presente</li>
+          <li>Disciplina e perseverança</li>
+          <li>Confiança na vida e no processo</li>
+          <li>Boa conexão com o corpo e a natureza</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Muladhara Desequilibrado</div>
+        <p><strong>Hiperativo (excesso):</strong></p>
+        <ul>
+          <li>Ganância, acúmulo material obsessivo</li>
+          <li>Rigidez, resistência à mudança</li>
+          <li>Materialismo excessivo</li>
+          <li>Agressividade, paranoia</li>
+        </ul>
+        <p><strong>Hipoativo (déficit):</strong></p>
+        <ul>
+          <li>Ansiedade crônica, medo existencial</li>
+          <li>Dificuldades financeiras recorrentes</li>
+          <li>Desconexão do corpo / dissociação</li>
+          <li>Fadiga crônica, baixa imunidade</li>
+          <li>Falta de estrutura e disciplina</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-unaligned mt-20">
+      <div class="ib-title">🔍 Causas Comuns de Desequilíbrio</div>
+      <p>Traumas de infância (abandono, abuso, privação material), instabilidade familiar precoce, mudanças frequentes de lar, medo da morte, experiências de guerra ou pobreza extrema, separação dos pais, violência doméstica, bullying severo, doenças crônicas na infância, falta de conexão com a natureza, estilo de vida muito sedentário ou desconectado do corpo.</p>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <div class="two-col" style="margin:12px 0 0;">
+        <div>
+          <h4>Físicas & Natureza</h4>
+          <ul>
+            <li>Caminhar descalço na terra / grama</li>
+            <li>Yoga: posturas de enraizamento (Tadasana, Malasana, Balasana)</li>
+            <li>Jardinagem e contato com a terra</li>
+            <li>Exercícios de resistência (agachamentos)</li>
+            <li>Banhos de terra, barro</li>
+            <li>Passar tempo na natureza</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Energéticas & Espirituais</h4>
+          <ul>
+            <li>Mantra: canto de LAM (repetir 108x)</li>
+            <li>Visualização da cor vermelha na base da coluna</li>
+            <li>Cristaloterapia com Granada ou Hematita</li>
+            <li>Reiki no chakra raiz</li>
+            <li>Aromaterapia: cedro, patchouli, sândalo</li>
+            <li>Constelação Familiar (traumas ancestrais)</li>
+            <li>Terapia de trauma / EMDR</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     2º CHAKRA — SVADHISTHANA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-2" id="svadhisthana">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #f39c12, #e67e22); color:#e67e22;">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- 6 petals -->
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(60 50 50)"/>
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(120 50 50)"/>
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(240 50 50)"/>
+          <ellipse cx="50" cy="22" rx="12" ry="20" fill="rgba(255,255,255,0.3)" transform="rotate(300 50 50)"/>
+          <!-- Crescent moon -->
+          <circle cx="50" cy="50" r="16" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="56" cy="50" r="12" fill="rgba(255,140,0,0.5)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="10" fill="white" font-family="serif">VAM</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#e67e22;">② Svadhisthana</h2>
+        <div class="sanscrit">स्वाधिष्ठान — Svadhisthana Chakra</div>
+        <div class="meaning" style="color:#e67e22;">Sua Própria Morada · Doçura · Prazer</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">📍</div>
+        <div class="prop-label">Localização</div>
+        <div class="prop-value">Baixo-ventre / Sacro (5 cm abaixo do umbigo)</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🎨</div>
+        <div class="prop-label">Cor</div>
+        <div class="prop-value">Laranja</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">💧</div>
+        <div class="prop-label">Elemento</div>
+        <div class="prop-value">Água (Apas)</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🔊</div>
+        <div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">VAM (वं)</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🎵</div>
+        <div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Ré (417 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🔬</div>
+        <div class="prop-label">Glândula</div>
+        <div class="prop-value">Gônadas / Ovários / Testículos</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">💎</div>
+        <div class="prop-label">Pedras</div>
+        <div class="prop-value">Carnelina, Âmbar, Calcita Laranja, Pedra do Sol</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🪷</div>
+        <div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">6 pétalas</div>
+      </div>
+    </div>
+
+    <h3 style="color:#e67e22; margin-top:30px;">🌊 Domínio e Função</h3>
+    <p>O Svadhisthana é o centro da <strong>criatividade, sexualidade, emoções e prazer</strong>. Governa nossa capacidade de sentir profundamente, criar, fruir a vida e nos relacionar intimamente com outros. É onde vivem as emoções fluidas — alegria, desejo, entusiasmo, mas também culpa e vergonha reprimidas.</p>
+    <p>Como a água que lhe corresponde, este chakra diz respeito ao <strong>fluxo</strong>: o fluxo das emoções, dos relacionamentos, da energia criativa e da sexualidade saudável.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">🌙 Simbolismo do Svadhisthana</div>
+      <p>Lótus de <strong>6 pétalas</strong> laranja sobre fundo branco. Dentro, um <strong>círculo azul-prateado</strong> com uma <strong>lua crescente</strong> — símbolo do elemento água e da fluidez emocional. A lua crescente também remete ao ciclo menstrual e à renovação constante da vida.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Svadhisthana Equilibrado</div>
+        <ul>
+          <li>Criatividade fluindo naturalmente</li>
+          <li>Sexualidade saudável e prazerosa</li>
+          <li>Emoções expressas com facilidade</li>
+          <li>Prazer na vida cotidiana</li>
+          <li>Relacionamentos íntimos saudáveis</li>
+          <li>Flexibilidade emocional e adaptação</li>
+          <li>Intuição corporal aguçada</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Svadhisthana Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Comportamentos viciantes (sexo, álcool)</li>
+          <li>Drama emocional excessivo</li>
+          <li>Ciúme possessivo</li>
+          <li>Dependência afetiva</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Bloqueio criativo, apatia</li>
+          <li>Frigidez, anedonia</li>
+          <li>Dificuldade de sentir prazer</li>
+          <li>Vergonha do corpo e sexualidade</li>
+          <li>Rigidez emocional</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-unaligned mt-20">
+      <div class="ib-title">🔍 Causas Comuns de Desequilíbrio</div>
+      <p>Educação religiosa repressora em relação ao corpo e sexualidade, abuso sexual, traumas emocionais relacionados a relacionamentos, vergonha imposta sobre o prazer, criatividade suprimida na infância, relacionamentos tóxicos com padrões de controle emocional, repressão das emoções ("não pode chorar", "seja forte").</p>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <div class="two-col" style="margin:12px 0 0;">
+        <div>
+          <h4>Físicas & Criativas</h4>
+          <ul>
+            <li>Dança (especialmente quadril/sensual)</li>
+            <li>Natação e contato com água</li>
+            <li>Yoga: posturas de quadril (Baddha Konasana, Pigeon Pose)</li>
+            <li>Atividades criativas: pintura, escrita, música</li>
+            <li>Banhos de lua cheia</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Energéticas & Emocionais</h4>
+          <ul>
+            <li>Mantra: canto de VAM</li>
+            <li>Visualização de luz laranja no baixo-ventre</li>
+            <li>Carnelina em contato com o corpo</li>
+            <li>Psicoterapia / terapia corporal</li>
+            <li>Tantra sagrado / reconexão com o prazer</li>
+            <li>Aromaterapia: ylang-ylang, laranja doce</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     3º CHAKRA — MANIPURA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-3" id="manipura">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #f7dc6f, #f1c40f); color:#f1c40f;">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- 10 petals -->
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(36 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(72 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(108 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(144 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(216 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(252 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(288 50 50)"/>
+          <ellipse cx="50" cy="20" rx="10" ry="18" fill="rgba(255,255,255,0.3)" transform="rotate(324 50 50)"/>
+          <!-- Triangle pointing down -->
+          <polygon points="50,30 68,65 32,65" fill="rgba(255,255,255,0.25)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="10" fill="rgba(100,80,0,0.9)" font-family="serif" font-weight="bold">RAM</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#d4ac0d;">③ Manipura</h2>
+        <div class="sanscrit">मणिपूर — Manipura Chakra</div>
+        <div class="meaning" style="color:#d4ac0d;">Cidade das Joias · Poder Pessoal</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">📍</div><div class="prop-label">Localização</div>
+        <div class="prop-value">Plexo solar (entre umbigo e esterno)</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🎨</div><div class="prop-label">Cor</div>
+        <div class="prop-value">Amarelo dourado</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🔥</div><div class="prop-label">Elemento</div>
+        <div class="prop-value">Fogo (Agni / Tejas)</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🔊</div><div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">RAM (रं)</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🎵</div><div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Mi (528 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🔬</div><div class="prop-label">Glândula</div>
+        <div class="prop-value">Pâncreas / Adrenais</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">💎</div><div class="prop-label">Pedras</div>
+        <div class="prop-value">Citrino, Olho de Tigre, Pirita, Âmbar Amarelo</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🪷</div><div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">10 pétalas</div>
+      </div>
+    </div>
+
+    <h3 style="color:#d4ac0d; margin-top:30px;">🔥 Domínio e Função</h3>
+    <p>O Manipura é o <strong>centro do poder pessoal, da vontade e da autoestima</strong>. É o "eu posso" da sua existência. Como o fogo que lhe corresponde, governa a transformação — tanto digestiva (metabolismo físico) quanto psicológica (capacidade de "digerir" experiências e transformar situações).</p>
+    <p>É aqui que vivem a <strong>confiança, a assertividade, a motivação e o senso de identidade individual</strong>. Quando pleno, o Manipura irradia como um sol interno, dando energia, propósito e a coragem de ocupar espaço no mundo.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">🌟 Simbolismo do Manipura</div>
+      <p>Lótus de <strong>10 pétalas</strong> amarelas. Dentro, um <strong>triângulo apontado para baixo</strong> (o fogo ascendente que desce para transformar) envolto por dois triângulos menores (o svastika, símbolo do fogo em rotação). A divindade associada é <strong>Agni</strong>, o deus do fogo védico, e <strong>Rudra</strong> (Shiva na forma feroz).</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Manipura Equilibrado</div>
+        <ul>
+          <li>Autoconfiança e autoestima saudável</li>
+          <li>Capacidade de tomar decisões</li>
+          <li>Iniciativa e motivação</li>
+          <li>Metabolismo saudável</li>
+          <li>Senso claro de identidade</li>
+          <li>Liderança autêntica</li>
+          <li>Capacidade de estabelecer limites</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Manipura Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Perfeccionismo, necessidade de controle</li>
+          <li>Arrogância, autoritarismo</li>
+          <li>Workaholism, competitividade tóxica</li>
+          <li>Raiva explosiva, irritabilidade</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Baixa autoestima, insegurança</li>
+          <li>Dificuldade de afirmar-se</li>
+          <li>Vitimização, passividade</li>
+          <li>Problemas digestivos crônicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <div class="two-col" style="margin:12px 0 0;">
+        <div>
+          <h4>Físicas</h4>
+          <ul>
+            <li>Yoga: posturas abdominais (Navasana, Dhanurasana)</li>
+            <li>Exercícios abdominais</li>
+            <li>Exposição controlada ao sol</li>
+            <li>Pranayama de fogo: Kapalabhati</li>
+            <li>Alimentação: gengibre, açafrão, milho</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Psicológicas & Energéticas</h4>
+          <ul>
+            <li>Mantra: RAM com visualização amarela</li>
+            <li>Trabalho de autoconfiança e assertividade</li>
+            <li>Citrino ou Olho de Tigre no plexo solar</li>
+            <li>Afirmações de poder pessoal</li>
+            <li>Aromaterapia: gengibre, limão, bergamota</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     4º CHAKRA — ANAHATA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-4" id="anahata">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #52be80, #27ae60); color:#27ae60;">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- 12 petals -->
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(30 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(60 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(90 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(120 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(150 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(210 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(240 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(270 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(300 50 50)"/>
+          <ellipse cx="50" cy="20" rx="9" ry="17" fill="rgba(255,255,255,0.3)" transform="rotate(330 50 50)"/>
+          <!-- Star of David (two triangles) -->
+          <polygon points="50,28 64,52 36,52" fill="rgba(255,255,255,0.25)"/>
+          <polygon points="50,72 64,48 36,48" fill="rgba(255,255,255,0.25)"/>
+          <circle cx="50" cy="50" r="10" fill="rgba(255,255,255,0.3)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="10" fill="white" font-family="serif">YAM</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#1e8449;">④ Anahata</h2>
+        <div class="sanscrit">अनाहत — Anahata Chakra</div>
+        <div class="meaning" style="color:#1e8449;">Som Não Ferido · O Amor que Não Necessita Causa</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">📍</div><div class="prop-label">Localização</div>
+        <div class="prop-value">Centro do peito / coração</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🎨</div><div class="prop-label">Cor</div>
+        <div class="prop-value">Verde (secundário: rosa)</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">💨</div><div class="prop-label">Elemento</div>
+        <div class="prop-value">Ar (Vayu)</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🔊</div><div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">YAM (यं)</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🎵</div><div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Fá (639 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🔬</div><div class="prop-label">Glândula</div>
+        <div class="prop-value">Timo / Coração</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">💎</div><div class="prop-label">Pedras</div>
+        <div class="prop-value">Quartzo Rosa, Esmeralda, Aventurina Verde, Malaquita</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🪷</div><div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">12 pétalas</div>
+      </div>
+    </div>
+
+    <h3 style="color:#1e8449; margin-top:30px;">💚 Domínio e Função</h3>
+    <p>O Anahata é o <strong>chakra central dos sete</strong> — a ponte entre os três chakras inferiores (mundo material) e os três superiores (mundo espiritual). É o centro do <strong>amor incondicional, compaixão, empatia e cura</strong>. Seu nome significa "não-ferido" — apontando para a natureza do amor verdadeiro, que existe independentemente de traumas ou condicionamentos.</p>
+    <p>É aqui que o amor humano e o amor divino se encontram. O coração não é apenas um órgão — é um campo eletromagnético que irradia a cada batida.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">✡️ Simbolismo do Anahata — A Estrela de Seis Pontas</div>
+      <p>Lótus de <strong>12 pétalas</strong> verde-esmeralda. No centro, a <strong>Estrela de Davi</strong> (dois triângulos entrelaçados): um apontando para cima (espírito ascendendo) e um apontando para baixo (matéria descendo) — o encontro de céu e terra. No interior, um <strong>antílope</strong> (velocidade e leveza do amor). A Estrela de Seis Pontas do Anahata é considerada o símbolo do <em>Anahata Nada</em>, o "som não percutido" — a vibração primordial da existência.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Anahata Equilibrado</div>
+        <ul>
+          <li>Amor incondicional e compaixão</li>
+          <li>Capacidade de perdoar (a si e aos outros)</li>
+          <li>Empatia saudável (sem perder a si mesmo)</li>
+          <li>Alegria genuína e gratidão</li>
+          <li>Relacionamentos de parceria saudável</li>
+          <li>Autoamor e autoaceitação</li>
+          <li>Generosidade espontânea</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Anahata Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Codependência, necessidade de aprovação</li>
+          <li>Sacrifício excessivo do eu pelos outros</li>
+          <li>Dificuldade de receber amor</li>
+          <li>Amor possessivo</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Isolamento, frieza emocional</li>
+          <li>Rancor e mágoa acumulados</li>
+          <li>Dificuldade de se conectar</li>
+          <li>Problemas cardíacos, respiratórios</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <div class="two-col" style="margin:12px 0 0;">
+        <div>
+          <h4>Físicas & Emocionais</h4>
+          <ul>
+            <li>Yoga: posturas de abertura de peito (Ustrasana, Bhujangasana)</li>
+            <li>Abraços conscientes (20 segundos mínimo)</li>
+            <li>Prática de gratidão diária</li>
+            <li>Atos de serviço e generosidade</li>
+            <li>Respiração profunda no peito</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Espirituais & Energéticas</h4>
+          <ul>
+            <li>Mantra: YAM ou "Om Mani Padme Hum"</li>
+            <li>Meditação Metta (amor bondade)</li>
+            <li>Quartzo Rosa no coração</li>
+            <li>Aromaterapia: rosa, gerânio, jasmim</li>
+            <li>Terapia de perdão (Ho'oponopono)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     5º CHAKRA — VISHUDDHA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-5" id="vishuddha">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #5dade2, #2980b9); color:#2980b9;">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- 16 petals -->
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(22.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(45 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(67.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(90 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(112.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(135 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(157.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(202.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(225 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(247.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(270 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(292.5 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(315 50 50)"/>
+          <ellipse cx="50" cy="19" rx="8" ry="15" fill="rgba(255,255,255,0.3)" transform="rotate(337.5 50 50)"/>
+          <circle cx="50" cy="50" r="16" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="50" cy="50" r="10" fill="rgba(255,255,255,0.3)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="10" fill="white" font-family="serif">HAM</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#1a5276;">⑤ Vishuddha</h2>
+        <div class="sanscrit">विशुद्ध — Vishuddha Chakra</div>
+        <div class="meaning" style="color:#1a5276;">Especialmente Puro · Verdade · Expressão</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">📍</div><div class="prop-label">Localização</div>
+        <div class="prop-value">Garganta / Tireoide</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🎨</div><div class="prop-label">Cor</div>
+        <div class="prop-value">Azul turquesa / Azul-celeste</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🌌</div><div class="prop-label">Elemento</div>
+        <div class="prop-value">Éter / Akasha (Espaço)</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🔊</div><div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">HAM (हं)</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🎵</div><div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Sol (741 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🔬</div><div class="prop-label">Glândula</div>
+        <div class="prop-value">Tireoide / Paratireoide</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">💎</div><div class="prop-label">Pedras</div>
+        <div class="prop-value">Aquamarina, Turquesa, Lápis-lazúli, Cianita</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🪷</div><div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">16 pétalas</div>
+      </div>
+    </div>
+
+    <h3 style="color:#1a5276; margin-top:30px;">🗣️ Domínio e Função</h3>
+    <p>O Vishuddha governa toda forma de <strong>expressão, comunicação e autenticidade</strong>. Não apenas a fala — mas tudo o que "envia ao mundo": escrita, arte, canto, silêncio consciente. É o centro da <strong>verdade pessoal</strong> e da capacidade de ouvir com profundidade.</p>
+    <p>Como primeiro dos chakras superiores, o Vishuddha marca a transição do mundo emocional para o espiritual. O elemento éter (akasha) representa o espaço que permite que o som exista — a palavra como criação.</p>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Vishuddha Equilibrado</div>
+        <ul>
+          <li>Comunicação clara e autêntica</li>
+          <li>Facilidade de dizer "não"</li>
+          <li>Escuta profunda e empática</li>
+          <li>Voz expressiva e fluente</li>
+          <li>Criatividade vocal/artística</li>
+          <li>Alinhamento entre pensamento e fala</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Vishuddha Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Falar demais, gossip, mentiras</li>
+          <li>Incapacidade de ouvir</li>
+          <li>Interrupções constantes</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Medo de falar, timidez extrema</li>
+          <li>Engolir a verdade, guardar segredos</li>
+          <li>Nó na garganta, voz fraca</li>
+          <li>Problemas de tireoide</li>
+          <li>Dores no pescoço crônicas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <ul>
+        <li><strong>Cantar:</strong> qualquer forma de canto — mantras, coral, karaokê — ativa diretamente o Vishuddha</li>
+        <li><strong>Escrita expressiva:</strong> diário, poesia, carta sem destinatário</li>
+        <li><strong>Yoga:</strong> posturas de pescoço (Sarvangasana, Matsyasana, Halasana)</li>
+        <li><strong>Mantra HAM:</strong> visualizando azul na garganta</li>
+        <li><strong>Gargarejo com água salgada:</strong> limpeza física e energética</li>
+        <li><strong>Aromaterapia:</strong> eucalipto, menta, salva</li>
+        <li><strong>Comunicação consciente:</strong> praticar dizer verdades difíceis com gentileza</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     6º CHAKRA — AJNA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-6" id="ajna">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #9b59b6, #6c3483); color:#6c3483;">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- 2 petals (one per side) -->
+          <ellipse cx="50" cy="50" rx="45" ry="20" fill="rgba(255,255,255,0.15)" transform="rotate(0 50 50)"/>
+          <ellipse cx="20" cy="50" rx="22" ry="14" fill="rgba(255,255,255,0.2)"/>
+          <ellipse cx="80" cy="50" rx="22" ry="14" fill="rgba(255,255,255,0.2)"/>
+          <!-- Inner circle -->
+          <circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <!-- Om symbol simplified -->
+          <circle cx="50" cy="50" r="12" fill="rgba(255,255,255,0.25)"/>
+          <text x="50" y="56" text-anchor="middle" font-size="16" fill="white" font-family="serif">ॐ</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#6c3483;">⑥ Ajna</h2>
+        <div class="sanscrit">आज्ञा — Ajna Chakra</div>
+        <div class="meaning" style="color:#6c3483;">Perceber, Comandar · Terceiro Olho · Intuição</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">📍</div><div class="prop-label">Localização</div>
+        <div class="prop-value">Entre as sobrancelhas (testa)</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🎨</div><div class="prop-label">Cor</div>
+        <div class="prop-value">Índigo / Azul-violeta profundo</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🌌</div><div class="prop-label">Elemento</div>
+        <div class="prop-value">Luz / Além dos elementos</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🔊</div><div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">OM / AUM (ॐ)</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🎵</div><div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Lá (852 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🔬</div><div class="prop-label">Glândula</div>
+        <div class="prop-value">Hipófise (Pituitária)</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">💎</div><div class="prop-label">Pedras</div>
+        <div class="prop-value">Ametista, Lápis-lazúli, Sodalita, Labradorita</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🪷</div><div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">2 pétalas (Ida e Pingala)</div>
+      </div>
+    </div>
+
+    <h3 style="color:#6c3483; margin-top:30px;">👁️ Domínio e Função</h3>
+    <p>O Ajna é o <strong>"Terceiro Olho"</strong> — o centro da percepção extrassensorial, intuição, sabedoria e discernimento. É aqui que Ida e Pingala se encontram antes de entrar no Sahasrara. O Ajna transcende os cinco sentidos e permite a <strong>visão interior</strong>, o acesso ao conhecimento além da razão lógica.</p>
+    <p>Governa a imaginação, os sonhos, a clarividência e a capacidade de ver padrões e significados mais profundos na existência.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">👁️ Simbolismo do Ajna</div>
+      <p>Lótus com apenas <strong>2 pétalas</strong> — uma representando Ida (lua/mente subconsciente) e outra Pingala (sol/mente consciente). No centro, o símbolo do <strong>OM (ॐ)</strong> dentro de um triângulo invertido — a percepção que penetra os véus da ilusão. A divindade é <strong>Ardhanarishvara</strong> — Shiva e Shakti unidos em um único ser andrógino, símbolo da integração das polaridades.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Ajna Equilibrado</div>
+        <ul>
+          <li>Intuição aguçada e confiável</li>
+          <li>Sonhos vívidos e significativos</li>
+          <li>Discernimento claro</li>
+          <li>Imaginação criativa</li>
+          <li>Conexão com o inconsciente</li>
+          <li>Habilidade de ver a "grande imagem"</li>
+          <li>Percepção extrassensorial</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Ajna Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Alucinações, desconexão da realidade</li>
+          <li>Excesso de "espiritualismo" dissociativo</li>
+          <li>Pesadelos, obsessão com o sobrenatural</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Racionalismo rígido, recusa do intuição</li>
+          <li>Dificuldade de visualizar</li>
+          <li>Falta de direção na vida</li>
+          <li>Dores de cabeça crônicas</li>
+          <li>Problemas de visão</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <ul>
+        <li><strong>Meditação com foco no ponto entre as sobrancelhas</strong> (trataka — foco num ponto fixo)</li>
+        <li><strong>Yoga Nidra:</strong> sonho lúcido / sono consciente</li>
+        <li><strong>Diário de sonhos:</strong> registrar e interpretar sonhos ao acordar</li>
+        <li><strong>Mantra AUM:</strong> vibração na testa e crânio</li>
+        <li><strong>Ametista:</strong> posicionada na testa durante meditação</li>
+        <li><strong>Redução de estímulos digitais:</strong> menos telas, mais silêncio</li>
+        <li><strong>Aromaterapia:</strong> olibano, mirra, sândalo branco</li>
+        <li><strong>Estudar filosofia, astrologia, simbolismo</strong> — alimentar a mente superior</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     7º CHAKRA — SAHASRARA
+══════════════════════════════════════ -->
+<section class="chakra-section cs-7" id="sahasrara">
+  <div class="container">
+    <div class="chakra-header">
+      <div class="chakra-symbol-large" style="background:radial-gradient(circle, #d7bde2, #8e44ad); color:#8e44ad; box-shadow:0 0 50px rgba(212,175,55,0.6);">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Many petals suggesting 1000 -->
+          <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <circle cx="50" cy="50" r="30" fill="rgba(255,255,255,0.1)"/>
+          <!-- Rays -->
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(30 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(60 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(90 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(120 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(150 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(180 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(210 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(240 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(270 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(300 50 50)"/>
+          <line x1="50" y1="5" x2="50" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" transform="rotate(330 50 50)"/>
+          <!-- Center -->
+          <circle cx="50" cy="50" r="14" fill="rgba(212,175,55,0.5)"/>
+          <text x="50" y="55" text-anchor="middle" font-size="16" fill="white" font-family="serif">ॐ</text>
+        </svg>
+      </div>
+      <div class="chakra-name-block">
+        <h2 style="color:#7d3c98;">⑦ Sahasrara</h2>
+        <div class="sanscrit">सहस्रार — Sahasrara Chakra</div>
+        <div class="meaning" style="color:#7d3c98;">Mil Pétalas · Coroa · União com o Divino</div>
+      </div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">📍</div><div class="prop-label">Localização</div>
+        <div class="prop-value">Topo da cabeça / acima do crânio</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">🎨</div><div class="prop-label">Cor</div>
+        <div class="prop-value">Violeta / Branco-dourado / Arco-íris</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">✨</div><div class="prop-label">Elemento</div>
+        <div class="prop-value">Consciência pura / Além do universo</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">🔊</div><div class="prop-label">Bija Mantra</div>
+        <div class="prop-value">Silêncio / OM / AH</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">🎵</div><div class="prop-label">Nota Musical</div>
+        <div class="prop-value">Si (963 Hz)</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">🔬</div><div class="prop-label">Glândula</div>
+        <div class="prop-value">Glândula Pineal / Hipotálamo</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">💎</div><div class="prop-label">Pedras</div>
+        <div class="prop-value">Ametista, Selenita, Quartzo Claro, Pedra da Lua</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">🪷</div><div class="prop-label">Pétalas de Lótus</div>
+        <div class="prop-value">1.000 pétalas (infinito)</div>
+      </div>
+    </div>
+
+    <h3 style="color:#7d3c98; margin-top:30px;">👑 Domínio e Função</h3>
+    <p>O Sahasrara é o <strong>chakra da coroa</strong> — o portal supremo para a consciência universal. Representa a <strong>união final entre o individual e o infinito</strong>, entre Atman (alma individual) e Brahman (consciência cósmica). É o destino da Kundalini em sua ascensão completa.</p>
+    <p>Quando plenamente ativado, o ser experimenta o estado de <strong>samadhi</strong> — dissolução do ego separado na consciência una. Não é um estado permanente para a maioria dos seres, mas pode ser experienciado em momentos de graça profunda, meditação intensa ou nas bordas da morte.</p>
+
+    <div class="info-box ib-symbol">
+      <div class="ib-title">🌸 Simbolismo do Sahasrara</div>
+      <p>Lótus de <strong>1.000 pétalas</strong> — número que na tradição indiana representa o infinito. Cada pétala contém uma sílaba sânscrita (50 letras × 20 camadas). A flor completa é branco-luminosa, com o centro dourado irradiando em todas as direções. A divindade é a <strong>consciência pura além de qualquer forma</strong> — Shiva em sua essência mais abstrata, a Luz Suprema (Paramashiva).</p>
+    </div>
+
+    <div class="two-col">
+      <div class="info-box ib-aligned" style="margin:0;">
+        <div class="ib-title">✅ Sahasrara Equilibrado</div>
+        <ul>
+          <li>Experiências de transcendência e êxtase</li>
+          <li>Senso de unidade com tudo</li>
+          <li>Sabedoria profunda e silenciosa</li>
+          <li>Gratidão e maravilha pela existência</li>
+          <li>Propósito de vida claro</li>
+          <li>Presença meditativa natural</li>
+          <li>Conexão espiritual autêntica</li>
+        </ul>
+      </div>
+      <div class="info-box ib-unaligned" style="margin:0;">
+        <div class="ib-title">⚠️ Sahasrara Desequilibrado</div>
+        <p><strong>Excesso:</strong></p>
+        <ul>
+          <li>Espiritualismo escapista (bypass espiritual)</li>
+          <li>Dissociação da realidade</li>
+          <li>Mania, grandiosidade mística</li>
+        </ul>
+        <p><strong>Déficit:</strong></p>
+        <ul>
+          <li>Niilismo, falta de propósito</li>
+          <li>Ateísmo rígido / materialismo</li>
+          <li>Depressão existencial profunda</li>
+          <li>Sensação de vazio e desconexão</li>
+          <li>Dores de cabeça crônicas, enxaquecas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-treatment mt-20">
+      <div class="ib-title">💊 Práticas de Alinhamento</div>
+      <ul>
+        <li><strong>Meditação em silêncio profundo</strong> — simplesmente SER sem fazer nada</li>
+        <li><strong>Yoga: posturas invertidas e de meditação</strong> (Sirsasana, Savasana)</li>
+        <li><strong>Contemplação da natureza:</strong> céu estrelado, oceano, montanhas</li>
+        <li><strong>Períodos de silêncio (mauna)</strong> — retiros, dias de silêncio</li>
+        <li><strong>Música sagrada:</strong> música clássica, canto gregoriano, mantras</li>
+        <li><strong>Selenita na coroa</strong> durante meditação</li>
+        <li><strong>Leitura de textos sagrados:</strong> Vedas, Upanishads, Bhagavad Gita, mística sufi</li>
+        <li><strong>Serviço altruísta (Karma Yoga)</strong> sem expectativa de retorno</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     DIAGNÓSTICO
+══════════════════════════════════════ -->
+<section class="section-diagnostic" id="diagnostico">
+  <div class="container">
+    <h2 style="color:#4a235a;">🔍 Diagnóstico — Como Identificar Desequilíbrios</h2>
+    <div class="section-title-line" style="color:#6c3483;"></div>
+
+    <p>O corpo fala. Antes de qualquer sintoma visível, os chakras já estão enviando sinais. A tabela abaixo mapeia sintomas físicos, emocionais e comportamentais com seus chakras correspondentes:</p>
+
+    <div style="overflow-x:auto;">
+      <table class="symptom-table">
+        <thead>
+          <tr>
+            <th>Chakra</th>
+            <th>Sintomas Físicos</th>
+            <th>Sintomas Emocionais</th>
+            <th>Padrões Comportamentais</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chakra-badge" style="background:#c0392b;">① Raiz</span></td>
+            <td>Dores lombares, problemas nas pernas e quadris, constipação, sistema imune fraco, fadiga crônica</td>
+            <td>Ansiedade existencial, medo de sobrevivência, paranoia, insegurança</td>
+            <td>Acumulação compulsiva, dificuldade financeira crônica, sedentarismo, dificuldade de comprometer-se</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#e67e22;">② Sacral</span></td>
+            <td>Problemas urinários, ovários, próstata, dores lombares baixas, rigidez no quadril</td>
+            <td>Culpa, vergonha, ciúme, dependência afetiva, anedonia</td>
+            <td>Vícios, promiscuidade ou frigidez, bloqueio criativo, relacionamentos tóxicos</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#d4ac0d;">③ Plexo Solar</span></td>
+            <td>Problemas digestivos, gastrite, úlceras, diabetes, tensão no abdômen</td>
+            <td>Baixa autoestima, vergonha, perfeccionismo, raiva reprimida</td>
+            <td>Necessidade de controle, vitimização, procrastinação, workaholic</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#27ae60;">④ Coração</span></td>
+            <td>Doenças cardíacas, hipertensão, problemas respiratórios, dores no peito, imunidade baixa</td>
+            <td>Mágoa, rancor, solidão, inveja, incapacidade de perdoar</td>
+            <td>Codependência, auto-sabotagem, isolamento, incapacidade de receber</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#2980b9;">⑤ Garganta</span></td>
+            <td>Dores de garganta recorrentes, rouquidão, problemas de tireoide, tensão no pescoço</td>
+            <td>Medo de julgamento, incapacidade de dizer "não", vergonha de se expressar</td>
+            <td>Engolir a verdade, falar compulsivamente, mentiras, dificuldade de pedir ajuda</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#6c3483;">⑥ Terceiro Olho</span></td>
+            <td>Dores de cabeça, enxaquecas, distúrbios visuais, problemas de sinusite, pesadelos</td>
+            <td>Confusão mental, indecisão, falta de discernimento, depressão</td>
+            <td>Racionalismo rígido, superstição, dificuldade de tomar decisões, fantasias escapistas</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#8e44ad;">⑦ Coroa</span></td>
+            <td>Enxaquecas severas, hipersensibilidade à luz, distúrbios neurológicos, depressão profunda</td>
+            <td>Niilismo, vazio existencial, desconexão, dificuldade de encontrar propósito</td>
+            <td>Bypass espiritual, fanatismo, materialismo extremo, recusa de qualquer espiritualidade</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-box ib-kabbalah mt-40">
+      <div class="ib-title">🌡️ Autoavaliação dos Chakras</div>
+      <p>Para cada chakra, faça as perguntas:</p>
+      <ol>
+        <li><strong>Muladhara:</strong> Sinto-me seguro(a) no mundo? Tenho minhas necessidades básicas atendidas?</li>
+        <li><strong>Svadhisthana:</strong> Permito-me sentir prazer? Minha criatividade flui?</li>
+        <li><strong>Manipura:</strong> Acredito em minha capacidade? Estabeleço limites saudáveis?</li>
+        <li><strong>Anahata:</strong> Consigo amar e ser amado(a) sem perder a mim mesmo(a)?</li>
+        <li><strong>Vishuddha:</strong> Expresso minha verdade? Ouço com presença?</li>
+        <li><strong>Ajna:</strong> Confio na minha intuição? Tenho clareza sobre meu caminho?</li>
+        <li><strong>Sahasrara:</strong> Sinto-me conectado(a) a algo maior? Encontro sentido na existência?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ALINHAMENTO GERAL
+══════════════════════════════════════ -->
+<section class="section-alignment" id="alinhamento">
+  <div class="container">
+    <h2 style="color:#1e8449;">🌿 Alinhamento dos Chakras — Práticas Gerais</h2>
+    <div class="section-title-line" style="color:#27ae60;"></div>
+
+    <p>O alinhamento não é um estado fixo — é um <strong>processo dinâmico contínuo</strong>. Os chakras respondem ao que sentimos, pensamos, comemos, como respiramos e com quem nos relacionamos. A boa notícia: são altamente responsivos a práticas intencionais.</p>
+
+    <div class="alignment-grid">
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">🧘 Yoga & Movimento</h3>
+        <div class="practice-item">
+          <div class="practice-icon">🌱</div>
+          <div class="practice-text"><strong>Hatha Yoga</strong><p>Posturas físicas que trabalham cada região do corpo correlacionada a chakras específicos</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">💃</div>
+          <div class="practice-text"><strong>Dança Livre</strong><p>Movimento intuitivo que libera energia estagnada e reequilibra o fluxo de prana</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🥋</div>
+          <div class="practice-text"><strong>Tai Chi / Qi Gong</strong><p>Artes marciais internas que trabalham o fluxo de energia no corpo</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🚶</div>
+          <div class="practice-text"><strong>Caminhada consciente</strong><p>Especialmente descalço na natureza para enraizamento</p></div>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">🌬️ Respiração (Pranayama)</h3>
+        <div class="practice-item">
+          <div class="practice-icon">🔥</div>
+          <div class="practice-text"><strong>Kapalabhati</strong><p>Respiração de fogo — limpa e energiza, especialmente chakras 1-3</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🌊</div>
+          <div class="practice-text"><strong>Nadi Shodhana</strong><p>Respiração alternada pelas narinas — equilibra Ida e Pingala, harmoniza todos os chakras</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🫁</div>
+          <div class="practice-text"><strong>Ujjayi</strong><p>"Respiração vitoriosa" — aquece o pranayama e ativa Vishuddha</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🌙</div>
+          <div class="practice-text"><strong>Bhramari</strong><p>Respiração do zumbido — vibra os chakras superiores</p></div>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">🎵 Som & Mantra</h3>
+        <div class="practice-item">
+          <div class="practice-icon">🔔</div>
+          <div class="practice-text"><strong>Bija Mantras</strong><p>LAM-VAM-RAM-YAM-HAM-OM-Silêncio — um por chakra, cantados sequencialmente</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🎶</div>
+          <div class="practice-text"><strong>Frequências Solfeggio</strong><p>396, 417, 528, 639, 741, 852, 963 Hz — uma frequência por chakra</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🔵</div>
+          <div class="practice-text"><strong>Tigelas de Cristal</strong><p>Tigelas cantantes de quartzo vibrando em frequências específicas de cada chakra</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🎼</div>
+          <div class="practice-text"><strong>Kirtan / Canto Devocional</strong><p>Cantos coletivos que elevam a vibração e abrem o coração</p></div>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">💎 Cristaloterapia</h3>
+        <div class="practice-item">
+          <div class="practice-icon">❤️</div>
+          <div class="practice-text"><strong>Posicionamento Direto</strong><p>Deitar com o cristal correspondente sobre cada chakra por 15-20 min em meditação</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">💧</div>
+          <div class="practice-text"><strong>Elixires de Cristal</strong><p>Água energizada pelo cristal (método indireto por segurança)</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">💼</div>
+          <div class="practice-text"><strong>Uso cotidiano</strong><p>Portar o cristal em contato com o corpo ao longo do dia</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🌙</div>
+          <div class="practice-text"><strong>Limpeza Lunar</strong><p>Deixar os cristais à luz da lua cheia para limpeza energética</p></div>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">🌿 Aromaterapia & Natureza</h3>
+        <div class="practice-item">
+          <div class="practice-icon">🌹</div>
+          <div class="practice-text"><strong>Óleos Essenciais</strong><p>Cada chakra tem óleos específicos — inalação, difusão, aplicação tópica diluída</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🌿</div>
+          <div class="practice-text"><strong>Defumação (Smudging)</strong><p>Sálvia branca, palo santo, incenso para limpeza energética do campo áurico</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🌳</div>
+          <div class="practice-text"><strong>Banhos de Floresta (Shinrin-yoku)</strong><p>Imersão consciente na natureza — reduz cortisol e ativa os chakras inferiores</p></div>
+        </div>
+      </div>
+
+      <div class="alignment-card">
+        <h3 style="color:#1e8449;">🧠 Psicologia & Terapia</h3>
+        <div class="practice-item">
+          <div class="practice-icon">🛋️</div>
+          <div class="practice-text"><strong>Psicoterapia</strong><p>O trabalho psicológico profundo desbloqueia os chakras de dentro para fora</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">👥</div>
+          <div class="practice-text"><strong>Constelação Familiar</strong><p>Trabalha traumas trans-geracionais — poderoso para Muladhara e Svadhisthana</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">✍️</div>
+          <div class="practice-text"><strong>Escrita Terapêutica</strong><p>Journaling, cartas não enviadas, escrita automática liberam emoções reprimidas</p></div>
+        </div>
+        <div class="practice-item">
+          <div class="practice-icon">🎨</div>
+          <div class="practice-text"><strong>Arte-Terapia</strong><p>Expressão criativa sem julgamento como via de cura emocional</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEQUÊNCIA DE MEDITAÇÃO -->
+    <div class="meditation-box">
+      <h3>✨ Meditação de Alinhamento dos 7 Chakras</h3>
+      <p style="margin-bottom:20px; opacity:0.8; font-style:italic;">Pratique em silêncio, sentado(a) com a coluna ereta. Duração: 20-30 minutos.</p>
+      <ol class="meditation-steps">
+        <li><strong>Enraizamento (2 min):</strong> Feche os olhos. Sinta o peso do seu corpo. Respire profundamente 3 vezes. Visualize raízes de luz vermelha saindo da sua base, descendo pelo chão até o centro da Terra.</li>
+        <li><strong>Muladhara (2 min):</strong> Foque na base da coluna. Visualize um disco vermelho girando. Repita mentalmente: "Estou seguro. Estou enraizado. A Terra me sustenta."</li>
+        <li><strong>Svadhisthana (2 min):</strong> Mova a atenção para o baixo-ventre. Visualize um disco laranja brilhante. "Sou criativo. Permito-me sentir. Minha energia flui com facilidade."</li>
+        <li><strong>Manipura (2 min):</strong> Foque no plexo solar. Disco amarelo-dourado como um sol. "Sou poderoso. Confio em mim. Tenho o direito de ocupar meu espaço."</li>
+        <li><strong>Anahata (3 min):</strong> Atenção no centro do peito. Disco verde irradiando luz rosada. "Estou aberto ao amor. Perdoo e sou perdoado. Amo incondicionalmente."</li>
+        <li><strong>Vishuddha (2 min):</strong> Foque na garganta. Disco azul-turquesa vibrando. "Expresso minha verdade com clareza. Ouço e sou ouvido. Minha voz importa."</li>
+        <li><strong>Ajna (2 min):</strong> Atenção entre as sobrancelhas. Disco índigo pulsando. "Confio na minha intuição. Vejo além das aparências. Minha sabedoria interior me guia."</li>
+        <li><strong>Sahasrara (3 min):</strong> Atenção no topo da cabeça. Visualize uma coroa de luz violeta-branca se abrindo como uma flor de lótus de mil pétalas, irradiando para o infinito. Permita-se fundir com a luz.</li>
+        <li><strong>Integração (2 min):</strong> Visualize um fio de luz dourada descendo do cosmos, passando por todos os chakras, chegando ao chão. Respire. Agradeça. Retorne lentamente.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     KABBALÁ
+══════════════════════════════════════ -->
+<section class="section-kabbalah" id="kabbalah">
+  <div class="container">
+    <h2>✡️ Chakras e a Kabbalá — Sefirot e a Árvore da Vida</h2>
+    <div class="section-title-line"></div>
+
+    <p>A <strong>Kabbalá</strong> é a tradição mística do judaísmo, cujo mapa central é a <strong>Árvore da Vida (Etz Haim)</strong> — um diagrama de 10 esferas (Sefirot) conectadas por 22 caminhos, representando a estrutura do universo e da consciência humana.</p>
+
+    <p>Embora de origens distintas, as correspondências entre Chakras e Sefirot são notáveis e foram sistematizadas por estudiosos da Tradição Perene, como Dion Fortune, Gareth Knight e a Ordem Hermética da Aurora Dourada:</p>
+
+    <div class="sefira-grid">
+      <div class="sefira-card">
+        <h4>Kether (Coroa) ↔ Sahasrara</h4>
+        <p>A Coroa — fonte da existência, consciência absoluta, o Ein Sof (infinito sem forma). Corresponde ao Sahasrara como ponto de união com o divino. Associada à cor branca brilhante.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Chokmah + Binah ↔ Ajna</h4>
+        <p>Chokmah (Sabedoria, princípio masculino) e Binah (Compreensão, princípio feminino) formam a díade criativa que corresponde ao Ajna — a polaridade de Ida e Pingala. A intuição como síntese das polaridades.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Chesed + Geburah ↔ Vishuddha</h4>
+        <p>Chesed (Misericórdia, expansão) e Geburah (Rigor, contração) correspondem ao chakra da garganta — o equilíbrio entre dar e receber, entre dizer e calar. A palavra justa como expressão da misericórdia e do rigor.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Tiferet (Beleza/Coração) ↔ Anahata</h4>
+        <p>O coração da Árvore da Vida — Tiferet é o centro harmonizador, o Cristo interior, o coração solar. Espelha perfeitamente o Anahata como ponto de equilíbrio entre céu e terra, amor e sacrifício.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Netzach + Hod ↔ Manipura</h4>
+        <p>Netzach (Vitória/Desejo/Arte) e Hod (Esplendor/Mente/Ciência) correspondem ao Manipura — a tensão criativa entre emoção e razão, entre vontade intuitiva e controle consciente.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Yesod (Fundação) ↔ Svadhisthana</h4>
+        <p>Yesod é o "mundo da formação", associado à lua, ao inconsciente, aos sonhos e à sexualidade como força criativa fundamental. Corresponde diretamente ao chakra sacral como gerador da força criativa.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Malkuth (Reino) ↔ Muladhara</h4>
+        <p>Malkuth é o mundo físico manifestado — a Terra, o corpo, a matéria. Corresponde exatamente ao Muladhara: a base, o chão, o ponto de contato entre espírito e matéria. Cor: vermelho-terra, marrom.</p>
+      </div>
+    </div>
+
+    <div class="info-box ib-kabbalah" style="background:rgba(255,255,255,0.07); border-color:rgba(212,175,55,0.4); margin-top:40px;">
+      <div class="ib-title" style="color:#d4af37;">🌟 Da'at — O Chakra Oculto</div>
+      <p>Na Árvore da Vida há ainda <strong>Da'at</strong> — a "Sefira oculta", a décima primeira, situada na garganta entre os triângulos superiores. Ela não tem forma própria, mas representa o <strong>conhecimento místico direto</strong> (gnose), a ponte entre a mente humana e a mente divina. Alguns estudiosos a correlacionam com um <strong>oitavo chakra</strong> (Anandakanda ou Hrit Padma) mencionado em textos tântricos avançados — um centro cardíaco secreto ligado à experiência da bem-aventurança.</p>
+    </div>
+
+    <h3 style="color:#d4af37; margin-top:50px;">🌐 Outros Sistemas de Correspondência Mundial</h3>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-top:24px;">
+      <div class="sefira-card">
+        <h4>Taoísmo — Dan Tian</h4>
+        <p>O Taoísmo reconhece 3 campos de cinábrio: <strong>Inferior</strong> (umbigo — sede do Qi vital, espelho dos chakras 1-3), <strong>Médio</strong> (coração — sede das emoções, chakra 4) e <strong>Superior</strong> (testa — sede da consciência, chakras 5-7). A prática do Qi Gong e do Tai Chi trabalha esses centros.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Tradição Egípcia — Centros de Ka</h4>
+        <p>O antigo Egito descrevia centros de consciência ao longo do corpo (<strong>Ka, Ba, Akh</strong>), associados a órgãos específicos. Os sacerdotes de Ísis e Thot trabalhavam com a ativação desses centros nos rituais de iniciação.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Tradição Asteca — Tonalamatl</h4>
+        <p>O <strong>Tonalamatl</strong> (Livro dos Destinos) descreve centros de energia no corpo humano correspondentes às 4 direções e ao centro cósmico. Os curandeiros (cuicatl) trabalhavam com esses centros em cerimônias de cura.</p>
+      </div>
+      <div class="sefira-card">
+        <h4>Tradição Tibetana — Canais e Velas</h4>
+        <p>O Budismo Tibetano descreve <strong>chakras</strong> (khorlo) semelhantes: 4 nos textos mais antigos, depois 5, 6 ou 7, dependendo da linhagem. O sistema de <strong>Tummo</strong> (calor interno) trabalha a Kundalini tibetana ao longo da coluna central.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PLANOS DE EXISTÊNCIA
+══════════════════════════════════════ -->
+<section class="section-planes" id="planos">
+  <div class="container">
+    <h2 style="color:#7d3c98;">🌌 Os Planos de Existência e os Chakras</h2>
+    <div class="section-title-line" style="color:#8e44ad;"></div>
+
+    <p>A tradição védica e a Teosofia descrevem múltiplos planos ou corpos de existência que coexistem no ser humano. Os chakras funcionam como os <strong>transformadores de energia</strong> entre esses planos:</p>
+
+    <div class="planes-stack">
+      <div class="plane-bar" style="background:linear-gradient(135deg, #8e44ad, #6c3483);">
+        <h4>7. Plano Divino / Átmico ↔ Sahasrara</h4>
+        <p>O Atman — a faísca divina imortal. O "eu sou" puro além de qualquer qualificação. Consciência pura, não-dual.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #6c3483, #4a235a);">
+        <h4>6. Plano Búdico / Intuitivo ↔ Ajna</h4>
+        <p>Consciência cósmica, compaixão universal. Acesso à memória akáshica. Percepção além do tempo linear.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #2471a3, #1a5276);">
+        <h4>5. Plano Mental Superior ↔ Vishuddha / Ajna</h4>
+        <p>Pensamento abstrato, filosofia, criatividade intelectual elevada. Corpo causal — onde os padrões kármicos residem.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #1e8449, #145a32);">
+        <h4>4. Plano Mental Inferior ↔ Anahata / Manipura</h4>
+        <p>Mente concreta, racional e emocional superior. Pensamentos, conceitos, julgamentos e análises.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #d4ac0d, #b7950b);">
+        <h4>3. Plano Astral / Emocional ↔ Svadhisthana / Manipura</h4>
+        <p>Corpo das emoções e desejos. Sonhos, imaginação, projeções psíquicas. O "mundo dos mortos" em muitas tradições.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #e67e22, #ca6f1e);">
+        <h4>2. Plano Etérico ↔ Muladhara / Svadhisthana</h4>
+        <p>Duplo etérico — molde energético do corpo físico. Onde o prana circula pelos nadis. Interface entre físico e sutil.</p>
+      </div>
+      <div class="plane-bar" style="background:linear-gradient(135deg, #c0392b, #922b21);">
+        <h4>1. Plano Físico ↔ Muladhara</h4>
+        <p>O corpo físico denso e o mundo material. Onde o espírito se manifesta em forma e experimenta a dualidade.</p>
+      </div>
+    </div>
+
+    <div class="two-col mt-40">
+      <div>
+        <h3 style="color:#7d3c98;">🌍 O Mundo Físico e os Chakras</h3>
+        <p>No plano físico, os chakras correspondem a <strong>regiões anatômicas específicas</strong>, plexos nervosos e glândulas endócrinas. A conexão entre Manipura e o pâncreas (produção de insulina), ou entre Vishuddha e a tireoide (regulação do metabolismo), mostra como o sistema chakral antecipou intuições da medicina moderna.</p>
+        <p>O <strong>Instituto HeartMath</strong> demonstrou que o coração gera um campo eletromagnético de 2,5 metros — exatamente a descrição energética do Anahata. A <strong>glândula pineal</strong> (Sahasrara) produz DMT e melatonina, regulando estados alterados de consciência.</p>
+      </div>
+      <div>
+        <h3 style="color:#7d3c98;">🌠 O Mundo Espiritual e os Chakras</h3>
+        <p>Os chakras superiores (5-7) são os portais de acesso a dimensões mais sutis da realidade. No trabalho espiritual profundo, a ativação destes centros permite experiências como:</p>
+        <ul>
+          <li><strong>Vishuddha:</strong> comunicação com guias, canalização</li>
+          <li><strong>Ajna:</strong> clarividência, acesso à memória akáshica</li>
+          <li><strong>Sahasrara:</strong> experiências de morte e renascimento místico, êxtase, samadhi</li>
+        </ul>
+        <p>Para tradições como o Vedanta e o Budismo Vajrayana, os chakras superiores são treinados para que a consciência possa, no momento da morte, sair pelo topo da cabeça — o <strong>Brahmarandhra</strong> — garantindo uma boa transição.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MEDITAÇÃO GUIADA
+══════════════════════════════════════ -->
+<section id="meditacao" style="background:linear-gradient(135deg, #f0f8ff 0%, #f5f0ff 100%); padding:80px 30px;">
+  <div class="container">
+    <h2 style="color:#1a5276;">🧘 Como Usar os Chakras no Dia a Dia</h2>
+    <div class="section-title-line" style="color:#2980b9;"></div>
+
+    <p>O sistema de chakras não é apenas teoria — é um <strong>mapa prático para a vida</strong>. Abaixo, formas concretas de integrar este conhecimento:</p>
+
+    <div class="two-col">
+      <div class="info-box ib-treatment" style="margin:0;">
+        <div class="ib-title">🌅 Rotina Matinal</div>
+        <ul>
+          <li><strong>Ao acordar:</strong> Coloque as mãos no coração, respire fundo e pergunte: "Qual chakra precisa de atenção hoje?"</li>
+          <li><strong>5 minutos de meditação:</strong> Visualize a coluna de luz colorida dos 7 chakras</li>
+          <li><strong>Pranayama:</strong> 10 respirações alternadas (Nadi Shodhana)</li>
+          <li><strong>Intenção:</strong> Defina o chakra-foco do dia e use sua cor como afirmação visual</li>
+        </ul>
+      </div>
+      <div class="info-box ib-treatment" style="margin:0;">
+        <div class="ib-title">🌙 Rotina Noturna</div>
+        <ul>
+          <li><strong>Body scan:</strong> Percorra os chakras do 1 ao 7 notando tensões ou bloqueios</li>
+          <li><strong>Gratidão:</strong> Uma coisa para cada chakra — segurança, prazer, conquista, amor, verdade, insight, graça</li>
+          <li><strong>Diário de sonhos:</strong> Deixe papel ao lado da cama para registrar insights do Ajna</li>
+          <li><strong>Cristal:</strong> Ametista na cabeceira para o Sahasrara</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box ib-symbol mt-40">
+      <div class="ib-title">🎨 Cromoterapia — Usando as Cores dos Chakras</div>
+      <p>As cores dos chakras podem ser usadas como terapia intencional:</p>
+      <div class="tag-list">
+        <span class="tag" style="background:#c0392b; color:white;">🔴 Vermelho → Enraizamento, energia física</span>
+        <span class="tag" style="background:#e67e22; color:white;">🟠 Laranja → Criatividade, alegria</span>
+        <span class="tag" style="background:#d4ac0d; color:white;">🟡 Amarelo → Confiança, clareza mental</span>
+        <span class="tag" style="background:#27ae60; color:white;">🟢 Verde → Cura, abertura ao amor</span>
+        <span class="tag" style="background:#2980b9; color:white;">🔵 Azul → Calma, expressão, verdade</span>
+        <span class="tag" style="background:#6c3483; color:white;">🟣 Índigo → Intuição, profundidade</span>
+        <span class="tag" style="background:#8e44ad; color:white;">💜 Violeta → Espiritualidade, transcendência</span>
+      </div>
+      <p style="margin-top:12px;">Use as cores em: roupas, alimentos (comer vegetais e frutas da cor do chakra que precisa de ativação), decoração do ambiente, visualizações e banheiros energéticos.</p>
+    </div>
+
+    <h3 style="color:#1a5276; margin-top:40px;">🍽️ Alimentação e Chakras</h3>
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; margin-top:20px;">
+      <div class="prop-card" style="border-color:#c0392b;">
+        <div class="prop-icon">🔴</div>
+        <div class="prop-label">Muladhara</div>
+        <div class="prop-value">Beterrabas, tomates, framboesas, carne vermelha (com moderação), raízes em geral</div>
+      </div>
+      <div class="prop-card" style="border-color:#e67e22;">
+        <div class="prop-icon">🟠</div>
+        <div class="prop-label">Svadhisthana</div>
+        <div class="prop-value">Laranjas, cenouras, damasco, abóbora, melão, nozes e sementes</div>
+      </div>
+      <div class="prop-card" style="border-color:#f1c40f;">
+        <div class="prop-icon">🟡</div>
+        <div class="prop-label">Manipura</div>
+        <div class="prop-value">Milho, banana, abacaxi, gengibre, açafrão, grãos integrais</div>
+      </div>
+      <div class="prop-card" style="border-color:#27ae60;">
+        <div class="prop-icon">🟢</div>
+        <div class="prop-label">Anahata</div>
+        <div class="prop-value">Folhas verdes, brócolis, ervilhas, kiwi, pepino, ervas frescas</div>
+      </div>
+      <div class="prop-card" style="border-color:#2980b9;">
+        <div class="prop-icon">🔵</div>
+        <div class="prop-label">Vishuddha</div>
+        <div class="prop-value">Mirtilos, amoras, água pura, chás de ervas, mel, frutas azuis</div>
+      </div>
+      <div class="prop-card" style="border-color:#6c3483;">
+        <div class="prop-icon">🟣</div>
+        <div class="prop-label">Ajna</div>
+        <div class="prop-value">Uvas roxas, berinjela, repolho roxo, chocolate amargo, jejum intermitente</div>
+      </div>
+      <div class="prop-card" style="border-color:#8e44ad;">
+        <div class="prop-icon">💜</div>
+        <div class="prop-label">Sahasrara</div>
+        <div class="prop-value">Jejum consciente, meditação em lugar de alimento; incenso e ervas aromáticas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- QUOTE -->
+<div class="sacred-quote">
+  <blockquote>
+    "Quando o vento sopra através das cordas do instrumento, não cria a música — apenas revela o que sempre esteve lá. Assim é com os chakras: não criamos nossa energia, simplesmente aprendemos a não obstruí-la."
+  </blockquote>
+  <cite>— Sabedoria da Tradição Tântrica</cite>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     TABELA RESUMO
+══════════════════════════════════════ -->
+<section style="background:#fff; padding:60px 30px;">
+  <div class="container">
+    <h2 style="color:#2c1810;">📊 Tabela Resumo dos 7 Chakras</h2>
+    <div class="section-title-line" style="color:#d4af37;"></div>
+
+    <div style="overflow-x:auto;">
+      <table class="symptom-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Cor</th>
+            <th>Elemento</th>
+            <th>Mantra</th>
+            <th>Glândula</th>
+            <th>Tema Principal</th>
+            <th>Pedra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chakra-badge" style="background:#c0392b;">1</span></td>
+            <td><strong>Muladhara</strong></td>
+            <td>🔴 Vermelho</td>
+            <td>Terra</td>
+            <td>LAM</td>
+            <td>Adrenal</td>
+            <td>Segurança, sobrevivência</td>
+            <td>Granada</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#e67e22;">2</span></td>
+            <td><strong>Svadhisthana</strong></td>
+            <td>🟠 Laranja</td>
+            <td>Água</td>
+            <td>VAM</td>
+            <td>Gônadas</td>
+            <td>Criatividade, prazer</td>
+            <td>Carnelina</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#d4ac0d;">3</span></td>
+            <td><strong>Manipura</strong></td>
+            <td>🟡 Amarelo</td>
+            <td>Fogo</td>
+            <td>RAM</td>
+            <td>Pâncreas</td>
+            <td>Poder, vontade</td>
+            <td>Citrino</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#27ae60;">4</span></td>
+            <td><strong>Anahata</strong></td>
+            <td>🟢 Verde</td>
+            <td>Ar</td>
+            <td>YAM</td>
+            <td>Timo</td>
+            <td>Amor, compaixão</td>
+            <td>Quartzo Rosa</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#2980b9;">5</span></td>
+            <td><strong>Vishuddha</strong></td>
+            <td>🔵 Azul</td>
+            <td>Éter</td>
+            <td>HAM</td>
+            <td>Tireoide</td>
+            <td>Expressão, verdade</td>
+            <td>Aquamarina</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#6c3483;">6</span></td>
+            <td><strong>Ajna</strong></td>
+            <td>🟣 Índigo</td>
+            <td>Luz</td>
+            <td>OM</td>
+            <td>Pituitária</td>
+            <td>Intuição, sabedoria</td>
+            <td>Ametista</td>
+          </tr>
+          <tr>
+            <td><span class="chakra-badge" style="background:#8e44ad;">7</span></td>
+            <td><strong>Sahasrara</strong></td>
+            <td>💜 Violeta</td>
+            <td>Consciência</td>
+            <td>Silêncio</td>
+            <td>Pineal</td>
+            <td>União, transcendência</td>
+            <td>Selenita</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-chakras">
+    <div class="footer-dot" style="background:#c0392b; animation-delay:0s;"></div>
+    <div class="footer-dot" style="background:#e67e22; animation-delay:0.3s;"></div>
+    <div class="footer-dot" style="background:#f1c40f; animation-delay:0.6s;"></div>
+    <div class="footer-dot" style="background:#27ae60; animation-delay:0.9s;"></div>
+    <div class="footer-dot" style="background:#2980b9; animation-delay:1.2s;"></div>
+    <div class="footer-dot" style="background:#6c3483; animation-delay:1.5s;"></div>
+    <div class="footer-dot" style="background:#8e44ad; animation-delay:1.8s;"></div>
+  </div>
+
+  <h3>✦ CHAKRAS — Guia Completo ✦</h3>
+  <p>Este guia reúne o conhecimento de milênios de tradição espiritual indiana, tradições místicas ocidentais e práticas de cura integrativas. Use-o como ponto de partida para uma exploração viva e pessoal.</p>
+  <p style="margin-top:16px; opacity:0.5; font-style:italic; font-size:0.9rem;">
+    "Tattva vit — o que conhece a verdade dos princípios. Namo namah."<br>
+    Saudações à sua jornada interior.
+  </p>
+  <div style="margin-top:30px; opacity:0.3; font-size:1.5rem; letter-spacing:0.5em;">OM ✦ SHANTI ✦ SHANTI ✦ SHANTI</div>
+</footer>
+
+</body>
+</html>

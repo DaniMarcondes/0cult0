@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astrologia — Parte IV · Aspectos, Trânsitos e Avançado</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04020E; --gold:#FFD700; --gold-d:rgba(255,215,0,.12);
+  --silver:#C0D0FF; --silver-d:rgba(192,208,255,.1);
+  --trine:#40D080; --trine-d:rgba(64,208,128,.12);
+  --sext:#4090FF; --sext-d:rgba(64,144,255,.12);
+  --conj:#FFD700; --conj-d:rgba(255,215,0,.12);
+  --opp:#FF6040; --opp-d:rgba(255,96,64,.12);
+  --sq:#FF3060; --sq-d:rgba(255,48,96,.12);
+  --quin:#D060FF; --quin-d:rgba(208,96,255,.12);
+  --text:#E8E0F8; --text-d:rgba(232,224,248,.65); --text-dd:rgba(232,224,248,.4);
+  --border:rgba(192,208,255,.14); --card:#0C0820;
+}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--void);
+  background-image:radial-gradient(ellipse 120% 60% at 50% 0%,rgba(48,16,96,.5) 0%,transparent 55%),
+  radial-gradient(ellipse 60% 40% at 0% 70%,rgba(0,20,60,.3) 0%,transparent 50%),
+  radial-gradient(ellipse 60% 40% at 100% 30%,rgba(60,0,40,.25) 0%,transparent 50%);
+  font-family:'Cormorant Garamond',serif;color:var(--text);line-height:1.9;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 5% 8%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 18% 22%,rgba(192,208,255,.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 33% 5%,rgba(255,215,0,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 47% 18%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 61% 9%,rgba(192,208,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 14%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 26%,rgba(255,215,0,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 9% 55%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 44% 68%,rgba(192,208,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 67% 79%,rgba(255,215,0,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 85% 62%,rgba(255,255,255,.5) 0%,transparent 100%);
+  pointer-events:none;z-index:0;animation:tw 9s ease-in-out infinite alternate}
+@keyframes tw{0%{opacity:.5}100%{opacity:1}}
+.wrap{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 16px 100px}
+header{text-align:center;padding:70px 20px 50px}
+.orrery{font-size:4rem;display:block;margin-bottom:14px;filter:drop-shadow(0 0 24px var(--gold));animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 20px var(--gold))}50%{filter:drop-shadow(0 0 50px var(--gold))}}
+h1{font-family:'Cinzel Decorative',serif;font-size:clamp(1.2rem,4vw,2.7rem);color:var(--gold);letter-spacing:.1em;text-shadow:0 0 40px rgba(255,215,0,.4)}
+.h-sub{font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(.8rem,2vw,1rem);color:rgba(255,215,0,.5);letter-spacing:.22em;margin-top:10px}
+.h-rule{height:1px;margin:20px auto;width:600px;max-width:90%;background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),rgba(192,208,255,.6),rgba(255,215,0,.4),transparent)}
+.h-intro{max-width:780px;margin:0 auto;font-size:.93rem;line-height:2;color:var(--text-d);font-style:italic}
+.nav-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 40px}
+.pill{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.12em;padding:6px 14px;border-radius:20px;text-decoration:none;border:1px solid rgba(192,208,255,.25);background:rgba(192,208,255,.06);color:var(--silver);transition:all .25s}
+.pill:hover{background:rgba(255,215,0,.12);border-color:rgba(255,215,0,.4);color:var(--gold)}
+.ch{text-align:center;margin:60px 0 24px}
+.ch::before,.ch::after{content:'';display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px 0}
+.ch h2{font-family:'Cinzel Decorative',serif;font-size:clamp(.9rem,2.5vw,1.3rem);letter-spacing:.18em;color:var(--gold)}
+.ch p{font-style:italic;font-size:.85rem;color:var(--text-dd);margin-top:4px}
+
+/* ASPECT CARDS */
+.asp{border-radius:14px;margin-bottom:16px;overflow:hidden;border:1px solid;
+  background:linear-gradient(155deg,rgba(255,255,255,.03),rgba(0,0,0,.5));position:relative}
+.asp::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.a-conj{border-color:rgba(255,215,0,.35)}.a-conj::before{background:linear-gradient(90deg,transparent,var(--conj),transparent)}
+.a-opp{border-color:rgba(255,96,64,.35)}.a-opp::before{background:linear-gradient(90deg,transparent,var(--opp),transparent)}
+.a-sq{border-color:rgba(255,48,96,.35)}.a-sq::before{background:linear-gradient(90deg,transparent,var(--sq),transparent)}
+.a-tri{border-color:rgba(64,208,128,.35)}.a-tri::before{background:linear-gradient(90deg,transparent,var(--trine),transparent)}
+.a-sex{border-color:rgba(64,144,255,.35)}.a-sex::before{background:linear-gradient(90deg,transparent,var(--sext),transparent)}
+.a-quin{border-color:rgba(208,96,255,.35)}.a-quin::before{background:linear-gradient(90deg,transparent,var(--quin),transparent)}
+.a-neu{border-color:rgba(192,208,255,.2)}.a-neu::before{background:linear-gradient(90deg,transparent,var(--silver),transparent)}
+
+.asp-head{padding:18px 22px 0;display:flex;gap:14px;align-items:flex-start}
+.asp-sym{font-size:2.8rem;flex-shrink:0;line-height:1}
+.asp-meta{flex:1}
+.asp-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:1.1}
+.a-conj .asp-name{color:var(--conj)}.a-opp .asp-name{color:var(--opp)}.a-sq .asp-name{color:var(--sq)}
+.a-tri .asp-name{color:var(--trine)}.a-sex .asp-name{color:var(--sext)}.a-quin .asp-name{color:var(--quin)}
+.a-neu .asp-name{color:var(--silver)}
+.asp-info{font-family:'IM Fell English',serif;font-style:italic;font-size:.8rem;color:var(--text-dd);margin-top:2px}
+.asp-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.atag{font-size:.62rem;padding:2px 8px;border-radius:20px;border:1px solid;font-style:italic}
+.asp-body{padding:14px 22px 22px}
+.s{margin-bottom:13px}
+.s h4{font-family:'Cinzel Decorative',serif;font-size:.58rem;letter-spacing:.16em;color:rgba(255,215,0,.65);margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.s h4::before{content:'◆';font-size:.5rem}
+.s p{font-size:.88rem;color:var(--text-d);line-height:1.94;margin-bottom:7px}
+.s p:last-child{margin-bottom:0}
+strong{color:var(--text);font-weight:700}
+.hdiv{height:1px;margin:10px 0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+
+/* COMBO TABLE */
+.combo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;margin-top:8px}
+.combo{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 12px;font-size:.8rem;color:var(--text-d);line-height:1.75}
+.combo-head{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold);margin-bottom:4px;display:block}
+
+/* INFO CARD */
+.icard{border-radius:12px;padding:22px 24px;margin-bottom:16px;border:1px solid var(--border);background:rgba(255,255,255,.025)}
+.icard h3{font-family:'Cinzel Decorative',serif;font-size:.78rem;letter-spacing:.15em;color:var(--gold);margin-bottom:12px}
+.icard p{font-size:.88rem;color:var(--text-d);line-height:1.94;margin-bottom:8px}
+.icard p:last-child{margin-bottom:0}
+
+/* TRANSIT GRID */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:14px 0}
+.tcard{border-radius:12px;padding:18px 20px;border:1px solid rgba(255,215,0,.18);background:linear-gradient(155deg,rgba(255,255,255,.03),rgba(0,0,0,.4))}
+.tcard h4{font-family:'Cinzel Decorative',serif;font-size:.68rem;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
+.tcard p{font-size:.84rem;color:var(--text-d);line-height:1.88;margin-bottom:6px}
+.tcard p:last-child{margin-bottom:0}
+
+/* ADVANCED SECTION */
+.adv{border-radius:14px;padding:24px 26px;margin-bottom:16px;border:1px solid;position:relative;overflow:hidden}
+.adv::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.adv-kab{border-color:rgba(192,208,255,.25);background:linear-gradient(155deg,rgba(0,16,60,.35),rgba(0,0,0,.5))}.adv-kab::before{background:linear-gradient(90deg,transparent,var(--silver),transparent)}
+.adv-alq{border-color:rgba(200,100,30,.3);background:linear-gradient(155deg,rgba(40,20,0,.35),rgba(0,0,0,.5))}.adv-alq::before{background:linear-gradient(90deg,transparent,#D08030,transparent)}
+.adv-helm{border-color:rgba(160,200,100,.25);background:linear-gradient(155deg,rgba(20,40,0,.35),rgba(0,0,0,.5))}.adv-helm::before{background:linear-gradient(90deg,transparent,#90C050,transparent)}
+.adv-sind{border-color:rgba(200,100,200,.25);background:linear-gradient(155deg,rgba(40,0,40,.35),rgba(0,0,0,.5))}.adv-sind::before{background:linear-gradient(90deg,transparent,#C060C0,transparent)}
+.adv-prog{border-color:rgba(64,200,200,.25);background:linear-gradient(155deg,rgba(0,30,30,.35),rgba(0,0,0,.5))}.adv-prog::before{background:linear-gradient(90deg,transparent,#40C0C0,transparent)}
+.adv h3{font-family:'Cinzel Decorative',serif;font-size:.82rem;letter-spacing:.15em;margin-bottom:14px}
+.adv-kab h3{color:#A0C0FF}.adv-alq h3{color:#D08030}.adv-helm h3{color:#90C050}.adv-sind h3{color:#C060C0}.adv-prog h3{color:#40C0C0}
+.adv p{font-size:.88rem;color:var(--text-d);line-height:1.94;margin-bottom:9px}
+.adv p:last-child{margin-bottom:0}
+
+/* SEPHIRA TABLE */
+.sep-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.8rem}
+.sep-table th{font-family:'Cinzel Decorative',serif;font-size:.55rem;letter-spacing:.14em;color:var(--gold);padding:8px 10px;background:rgba(255,215,0,.05);border-bottom:1px solid rgba(255,215,0,.15);text-align:left}
+.sep-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--text-d);vertical-align:top}
+.sep-table tr:hover td{background:rgba(255,255,255,.02)}
+.sep-table td:first-child{color:var(--gold);font-weight:700;white-space:nowrap}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .65s,transform .65s}
+.reveal.vis{opacity:1;transform:none}
+.asp{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.asp.vis{opacity:1;transform:none}
+
+/* NAV */
+.side-nav{position:fixed;top:50%;right:14px;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:100}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,215,0,.2);border:1px solid rgba(255,215,0,.35);display:block;text-decoration:none;transition:all .22s}
+.sn-dot:hover,.sn-dot.act{background:var(--gold);transform:scale(1.4)}
+@media(max-width:860px){.side-nav{display:none}}
+@media(max-width:620px){.combo-grid{grid-template-columns:1fr}.tgrid{grid-template-columns:1fr}}
+footer{text-align:center;padding:60px 20px 40px;border-top:1px solid var(--border)}
+.f-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:20px}
+.f-link{font-family:'Cinzel Decorative',serif;font-size:.6rem;letter-spacing:.1em;color:var(--gold);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,215,0,.3);border-radius:20px;background:rgba(255,215,0,.05);transition:all .2s}
+.f-link:hover{background:rgba(255,215,0,.12)}
+.f-text{font-family:'IM Fell English',serif;font-style:italic;font-size:.84rem;color:rgba(255,215,0,.3);letter-spacing:.08em;line-height:2.2}
+</style>
+</head>
+<body>
+<nav class="side-nav">
+  <a class="sn-dot" href="#aspectos" title="Aspectos"></a>
+  <a class="sn-dot" href="#conj" title="Conjunção"></a>
+  <a class="sn-dot" href="#opos" title="Oposição"></a>
+  <a class="sn-dot" href="#quad" title="Quadratura"></a>
+  <a class="sn-dot" href="#trig" title="Trígono"></a>
+  <a class="sn-dot" href="#sext" title="Sextil"></a>
+  <a class="sn-dot" href="#menores" title="Aspectos Menores"></a>
+  <a class="sn-dot" href="#combos" title="Combinações"></a>
+  <a class="sn-dot" href="#transitos" title="Trânsitos"></a>
+  <a class="sn-dot" href="#progressoes" title="Progressões"></a>
+  <a class="sn-dot" href="#sinastria" title="Sinastria"></a>
+  <a class="sn-dot" href="#avancado" title="Avançado"></a>
+  <a class="sn-dot" href="#cabala" title="Cabala"></a>
+  <a class="sn-dot" href="#alquimia" title="Alquimia"></a>
+  <a class="sn-dot" href="#hermetica" title="Hermética"></a>
+  <a class="sn-dot" href="#sindese" title="Grande Síntese"></a>
+</nav>
+<div class="wrap">
+<header>
+  <span class="orrery">⚡</span>
+  <h1>Aspectos, Trânsitos e Astrologia Avançada</h1>
+  <p class="h-sub">Enciclopédia Completa · Parte IV · O Mais Alto Nível</p>
+  <div class="h-rule"></div>
+  <p class="h-intro">Os aspectos são as conversas entre os planetas — o que acontece quando duas energias se olham no mapa. Os trânsitos são o céu vivo em movimento sobre o mapa natal. E a astrologia avançada integra tudo: progressões, retornos solares, sinastria, grande tableau, e as correspondências herméticas profundas com a Cabala, a Alquimia e a Tradição Perene. Esta é a parte onde a astrologia se torna arte e iniciação.</p>
+</header>
+
+<div class="nav-pills reveal">
+  <a class="pill" href="astrologia-parte1.html">I · Fundamentos e Signos</a>
+  <a class="pill" href="astrologia-parte2.html">II · Planetas e Luminares</a>
+  <a class="pill" href="astrologia-parte3.html">III · Casas Astrológicas</a>
+  <a class="pill" href="astrologia-parte4.html">IV · Aspectos e Avançado</a>
+</div>
+
+<!-- ════ ASPECTOS ════ -->
+<div id="aspectos" class="ch reveal">
+  <h2>✦ Os Aspectos — As Conversas entre os Planetas ✦</h2>
+  <p>ângulos sagrados · harmônicos · tensionais · a linguagem das relações cósmicas</p>
+</div>
+
+<div class="icard reveal">
+  <h3>🔭 O Que são Aspectos</h3>
+  <p>Aspectos são os <strong>ângulos formados entre dois planetas</strong> no mapa natal, medidos em graus ao longo do zodíaco. Quando dois planetas estão a 0°, 60°, 90°, 120° ou 180° um do outro (com certa tolerância de <em>orbe</em>), eles formam um aspecto — uma relação específica, com qualidade própria.</p>
+  <p>Na geometria sagrada e na música pitagórica, esses ângulos correspondem a divisões harmônicas do círculo: 360°/2 = oposição, 360°/3 = trígono, 360°/4 = quadratura, 360°/6 = sextil. Os aspectos "falam" em termos de harmonia (facilidade, fluxo) ou tensão (desafio, atrito criativo).</p>
+  <p><strong>Orbe:</strong> A tolerância em graus para que o aspecto seja considerado ativo. Sol e Lua têm orbes maiores (8–10°). Planetas rápidos têm orbes menores. A regra geral: quanto mais próximo do aspecto exato, mais intenso seu efeito.</p>
+  <p><strong>Aspectos Aplicativos vs. Separativos:</strong> Um aspecto aplicativo (os planetas se aproximando do ângulo exato) está se formando — seu efeito está chegando. Um aspecto separativo (os planetas se afastando do ângulo exato) já ocorreu — seu efeito foi ou está se integrando.</p>
+</div>
+
+<!-- CONJUNÇÃO -->
+<div id="conj" class="asp a-conj reveal">
+  <div class="asp-head">
+    <span class="asp-sym">☌</span>
+    <div class="asp-meta">
+      <div class="asp-name">Conjunção — 0°</div>
+      <div class="asp-info">Orbe: 8–10° · Aspecto de fusão e intensificação · Nem harmonioso nem tenso — é potência pura</div>
+      <div class="asp-tags">
+        <span class="atag" style="color:var(--conj);border-color:rgba(255,215,0,.3);background:var(--gold-d)">Neutro — depende dos planetas</span>
+        <span class="atag" style="color:var(--conj);border-color:rgba(255,215,0,.3);background:var(--gold-d)">Fusão de energias</span>
+        <span class="atag" style="color:var(--conj);border-color:rgba(255,215,0,.3);background:var(--gold-d)">Concentração · Intensidade</span>
+      </div>
+    </div>
+  </div>
+  <div class="asp-body">
+    <div class="s">
+      <h4>A NATUREZA DA CONJUNÇÃO</h4>
+      <p>Na conjunção, dois planetas estão no mesmo ponto do zodíaco — suas energias se <strong>fundem em um único foco</strong>. Não há tensão nem facilidade per se: é pura concentração de energia. A qualidade depende inteiramente dos planetas envolvidos. Sol conjunto a Júpiter: expansão luminosa, generosidade radiante. Sol conjunto a Saturno: identidade forjada na disciplina, peso que pode tanto esmagar quanto fortalecer. Sol conjunto a Plutão: intensidade de propósito que transforma tudo ao redor.</p>
+      <p>A conjunção não separa as energias — elas se tornam uma única expressão, frequentemente tão fundidas que a pessoa não percebe facilmente onde uma termina e a outra começa.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>CONJUNÇÕES MAIS PODEROSAS</h4>
+      <div class="combo-grid">
+        <div class="combo"><span class="combo-head">☉ Sol ☌ ☽ Lua</span>Lua Nova natal — intensidade emocional e solar fundidas. Impulso e emoção operam na mesma direção. Pode ter dificuldade de separar o que sente do que é.</div>
+        <div class="combo"><span class="combo-head">☉ Sol ☌ ♃ Júpiter</span>O "toque de Midas" — facilidade natural de expansão e otimismo. Tendência ao excesso mas potencial de grande sucesso. Generosidade genuína.</div>
+        <div class="combo"><span class="combo-head">☉ Sol ☌ ♄ Saturno</span>O Mestre Severo incarnado — disciplina na identidade, possível baixa autoestima que se transforma em solidez real. Realização tardia mas duradoura.</div>
+        <div class="combo"><span class="combo-head">☉ Sol ☌ ♇ Plutão</span>Presença avassaladora que transforma o ambiente. Vida de intensidade extrema. O ego morre e renasce repetidamente até encontrar o propósito real.</div>
+        <div class="combo"><span class="combo-head">☽ Lua ☌ ♆ Netuno</span>Fronteiras emocionais dissolvidas. Empatia quase dolorosa. Intuição mística. Arte que nasce do inconsciente coletivo. Cuidado com fusão emocional patológica.</div>
+        <div class="combo"><span class="combo-head">♀ Vênus ☌ ♂ Marte</span>Desejo e amor fundidos — magnetismo sexual e romântico intenso. Paixão que ama e luta ao mesmo tempo. Relacionamentos apaixonados e às vezes tempestuosos.</div>
+        <div class="combo"><span class="combo-head">☿ Merc. ☌ ♇ Plutão</span>Mente que penetra o que está oculto. Palavras com poder de transformar ou ferir. Pesquisador nato. Pensamento obsessivo mas profundamente revelador.</div>
+        <div class="combo"><span class="combo-head">♃ Júpiter ☌ ♄ Saturno</span>A Grande Conjunção — ciclo de 20 anos. Expansão encontra limite. Ambição que encontra disciplina. Geração que constrói estruturas para o futuro coletivo.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OPOSIÇÃO -->
+<div id="opos" class="asp a-opp reveal">
+  <div class="asp-head">
+    <span class="asp-sym">☍</span>
+    <div class="asp-meta">
+      <div class="asp-name">Oposição — 180°</div>
+      <div class="asp-info">Orbe: 8–10° · Aspecto de polaridade · Tensão através do encontro com o oposto</div>
+      <div class="asp-tags">
+        <span class="atag" style="color:var(--opp);border-color:rgba(255,96,64,.3);background:var(--opp-d)">Tenso / Desafiador</span>
+        <span class="atag" style="color:var(--opp);border-color:rgba(255,96,64,.3);background:var(--opp-d)">Polaridade · Projeção</span>
+        <span class="atag" style="color:var(--opp);border-color:rgba(255,96,64,.3);background:var(--opp-d)">O Outro como Espelho</span>
+      </div>
+    </div>
+  </div>
+  <div class="asp-body">
+    <div class="s">
+      <h4>A NATUREZA DA OPOSIÇÃO</h4>
+      <p>Na oposição, dois planetas estão em lados opostos do zodíaco — suas energias <strong>se confrontam através do eixo</strong>. A tensão fundamental é de polaridade: duas forças legítimas que puxam em direções opostas. A saída não é escolher uma — é encontrar o ponto de equilíbrio dinâmico entre as duas.</p>
+      <p>A oposição frequentemente se manifesta como <strong>projeção</strong>: quando não se consegue integrar um planeta (especialmente se ele está numa casa abaixo do horizonte enquanto o outro está acima), tende-se a ver sua energia "no outro" — no parceiro, no inimigo, nas pessoas ao redor. O trabalho da oposição é trazer de volta para si o que foi projetado.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>OPOSIÇÕES MAIS SIGNIFICATIVAS</h4>
+      <div class="combo-grid">
+        <div class="combo"><span class="combo-head">☉ Sol ☍ ☽ Lua</span>Lua Cheia natal — tensão entre o que se quer ser (Sol) e o que se sente ser (Lua). Conflito entre mente e emoção, entre o individual e o familiar. Integração traz completude extraordinária.</div>
+        <div class="combo"><span class="combo-head">☉ Sol ☍ ♄ Saturno</span>Identidade desafiada pela autoridade, pelo tempo e pela limitação. Pode haver figura paterna opressora. Superado: sabedoria nascida da tensão entre brilho e estrutura.</div>
+        <div class="combo"><span class="combo-head">♀ Vênus ☍ ♂ Marte</span>Amor e desejo em polos opostos. Relacionamentos com tensão ativa entre entrega e conquista. Pode atrair parceiros que são espelhos das próprias sombras.</div>
+        <div class="combo"><span class="combo-head">☿ Merc. ☍ ♃ Júpiter</span>Detalhe vs. visão ampla. Pensamento que oscila entre o minucioso e o panorâmico. Pode ser brilhante comunicador de grandes ideias ou se perder nos extremos.</div>
+        <div class="combo"><span class="combo-head">♃ Júpiter ☍ ♆ Netuno</span>Fé vs. ilusão — ou fé que dissolve o limite do real. Espiritualidade expansiva que pode se tornar fanatismo ou perder o chão. Artistas de grande alcance.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUADRATURA -->
+<div id="quad" class="asp a-sq reveal">
+  <div class="asp-head">
+    <span class="asp-sym">□</span>
+    <div class="asp-meta">
+      <div class="asp-name">Quadratura — 90°</div>
+      <div class="asp-info">Orbe: 8–10° · O aspecto de maior tensão · Forças que bloqueiam e energizam simultaneamente</div>
+      <div class="asp-tags">
+        <span class="atag" style="color:var(--sq);border-color:rgba(255,48,96,.3);background:var(--sq-d)">Muito Tenso</span>
+        <span class="atag" style="color:var(--sq);border-color:rgba(255,48,96,.3);background:var(--sq-d)">Atrito Criativo</span>
+        <span class="atag" style="color:var(--sq);border-color:rgba(255,48,96,.3);background:var(--sq-d)">Bloqueio que Mobiliza</span>
+      </div>
+    </div>
+  </div>
+  <div class="asp-body">
+    <div class="s">
+      <h4>A NATUREZA DA QUADRATURA</h4>
+      <p>A quadratura é o <strong>atrito que não se resolve facilmente</strong> — é considerado o aspecto de maior tensão. Os dois planetas estão em signos de mesmo modo (ambos Cardinais, ambos Fixos ou ambos Mutáveis) mas de elementos incompatíveis, criando uma tensão que exige resolução ativa. Não há equilíbrio natural — a pessoa precisa trabalhar ativamente para integrar as duas energias.</p>
+      <p>A quadratura, porém, é também a <strong>fonte de maior motivação e realização</strong>. Muitas pessoas com grandes quadraturas no mapa são as mais produtivas e bem-sucedidas — porque a tensão interna as impulsiona constantemente a agir. "A quadratura constrói caracteres." — Dane Rudhyar.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>QUADRATURAS MAIS DESAFIADORAS E PRODUTIVAS</h4>
+      <div class="combo-grid">
+        <div class="combo"><span class="combo-head">☉ Sol □ ♄ Saturno</span>A quadratura do autoboicote — identidade que bate na parede do medo e da limitação. Mas quem integra: produz obras extraordinárias pela força da perseverança contra a resistência interna.</div>
+        <div class="combo"><span class="combo-head">☽ Lua □ ♂ Marte</span>Emoção e ação em conflito. Reações impulsivas e agressivas que depois causam arrependimento. Integrado: capacidade de agir a partir das emoções com coragem.</div>
+        <div class="combo"><span class="combo-head">☉ Sol □ ♇ Plutão</span>A luta de poder como tema central da vida. Ego que precisa morrer e renascer. Transformações dolorosas mas profundamente transformadoras da identidade.</div>
+        <div class="combo"><span class="combo-head">♀ Vênus □ ♄ Saturno</span>Amor bloqueado pelo medo ou pela estrutura. Dificuldade de se permitir ser amado. Integrado: capacidade de construir amor duradouro e maduro com base real.</div>
+        <div class="combo"><span class="combo-head">♃ Júpiter □ ♆ Netuno</span>Fé que se torna ilusão ou ilusão que precisa de fé. Projetos grandiosos que se perdem no sonho sem ancoragem. Artistas visionários que precisam de disciplina prática.</div>
+        <div class="combo"><span class="combo-head">☿ Merc. □ ♇ Plutão</span>Mente que pensa obsessivamente em temas de poder e mistério. Comunicação que pode ser manipuladora ou profundamente reveladora. Pesquisador ou detetive nato.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRÍGONO -->
+<div id="trig" class="asp a-tri reveal">
+  <div class="asp-head">
+    <span class="asp-sym">△</span>
+    <div class="asp-meta">
+      <div class="asp-name">Trígono — 120°</div>
+      <div class="asp-info">Orbe: 8–10° · O aspecto de maior harmonia · Fluxo natural entre planetas do mesmo elemento</div>
+      <div class="asp-tags">
+        <span class="atag" style="color:var(--trine);border-color:rgba(64,208,128,.3);background:var(--trine-d)">Harmonioso</span>
+        <span class="atag" style="color:var(--trine);border-color:rgba(64,208,128,.3);background:var(--trine-d)">Dons Naturais</span>
+        <span class="atag" style="color:var(--trine);border-color:rgba(64,208,128,.3);background:var(--trine-d)">Fluxo Sem Esforço</span>
+      </div>
+    </div>
+  </div>
+  <div class="asp-body">
+    <div class="s">
+      <h4>A NATUREZA DO TRÍGONO</h4>
+      <p>O trígono conecta planetas no <strong>mesmo elemento</strong> (dois em Fogo, dois em Terra, dois em Ar, dois em Água) — eles "falam a mesma língua" e cooperam naturalmente. É o aspecto de talentos naturais, de fluxo sem esforço, de energias que se amplificam harmoniosamente.</p>
+      <p>O desafio do trígono é justamente sua facilidade: o que vem naturalmente raramente é valorizado. Pessoas com muitos trígonos frequentemente não desenvolvem seus talentos porque não precisam lutar por eles. Liz Greene: "O trígono é o preguiçoso feliz." A consciência do trígono como dom precisa ser combinada com a vontade de Marte para ser plenamente realizada.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>TRÍGONOS MAIS PODEROSOS</h4>
+      <div class="combo-grid">
+        <div class="combo"><span class="combo-head">☉ Sol △ ♃ Júpiter</span>O mais abençoado dos aspectos — felicidade e otimismo naturais, oportunidades que chegam sem esforço aparente. O risco: complacência. O dom: generosidade luminosa.</div>
+        <div class="combo"><span class="combo-head">☽ Lua △ ♆ Netuno</span>Intuição poética extraordinária. Arte que flui das profundezas do inconsciente. Empatia mística. Sonhos proféticos. Dom espiritual natural.</div>
+        <div class="combo"><span class="combo-head">☿ Merc. △ ♅ Urano</span>Genialidade intelectual que parece inspiração. Insights que chegam prontos. Comunicação brilhante e original. Inventor de ideias que surgem do nada.</div>
+        <div class="combo"><span class="combo-head">♀ Vênus △ ♃ Júpiter</span>O aspecto do amor abundante e do talento artístico natural. Beleza, generosidade e alegria de viver. Relacionamentos que fluem e prosperam.</div>
+        <div class="combo"><span class="combo-head">♂ Marte △ ♃ Júpiter</span>Energia que encontra expansão. Ação que produz resultados. Atleta nato, empreendedor bem-sucedido. Otimismo que mobiliza e conquista.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEXTIL -->
+<div id="sext" class="asp a-sex reveal">
+  <div class="asp-head">
+    <span class="asp-sym">✶</span>
+    <div class="asp-meta">
+      <div class="asp-name">Sextil — 60°</div>
+      <div class="asp-info">Orbe: 4–6° · Aspecto de oportunidade e cooperação · Requer esforço mínimo para se ativar</div>
+      <div class="asp-tags">
+        <span class="atag" style="color:var(--sext);border-color:rgba(64,144,255,.3);background:var(--sext-d)">Harmonioso</span>
+        <span class="atag" style="color:var(--sext);border-color:rgba(64,144,255,.3);background:var(--sext-d)">Oportunidade</span>
+        <span class="atag" style="color:var(--sext);border-color:rgba(64,144,255,.3);background:var(--sext-d)">Cooperação Ativa</span>
+      </div>
+    </div>
+  </div>
+  <div class="asp-body">
+    <div class="s">
+      <h4>A NATUREZA DO SEXTIL</h4>
+      <p>O sextil conecta planetas em elementos compatíveis mas distintos (Fogo-Ar, Terra-Água) — há harmonia mas também estímulo mútuo. Diferente do trígono (que flui sozinho), o sextil <strong>requer uma ação iniciadora</strong> para se ativar — é a oportunidade que bate na porta, mas você precisa abrir. Quando aproveitado, é extremamente produtivo: os dois planetas se apoiam e amplificam mutuamente.</p>
+    </div>
+    <div class="hdiv"></div>
+    <div class="s">
+      <h4>SEXTIS IMPORTANTES</h4>
+      <div class="combo-grid">
+        <div class="combo"><span class="combo-head">☉ Sol ✶ ☽ Lua</span>Sol e Lua em cooperação suave — mente e emoção se apoiam. Equilíbrio natural entre razão e intuição. Facilidade de integrar o consciente e o inconsciente.</div>
+        <div class="combo"><span class="combo-head">♀ Vênus ✶ ♂ Marte</span>Amor e desejo em cooperação — romantismo que inclui paixão sem conflito. Relações que têm tanto afeto quanto atração. Criatividade ativa.</div>
+        <div class="combo"><span class="combo-head">☿ Merc. ✶ ♃ Júpiter</span>Mente que expande além do óbvio. Comunicação filosófica e acessível. Talento para ensinar ideias complexas de forma simples.</div>
+        <div class="combo"><span class="combo-head">☉ Sol ✶ ♄ Saturno</span>Disciplina que apoia a identidade — em vez de esmagá-la. Capacidade de construir com paciência e método o que o Sol quer expressar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ASPECTOS MENORES -->
+<div id="menores" class="ch reveal">
+  <h2>✦ Aspectos Menores e Especiais ✦</h2>
+  <p>Quincúncio · Semissextil · Quintil · Biquintil · Semiquadratura · e outros</p>
+</div>
+
+<div class="tgrid reveal">
+  <div class="tcard" style="border-color:rgba(208,96,255,.25)">
+    <h4 style="color:var(--quin)">⚷ QUINTIL (72°) e BIQUINTIL (144°)</h4>
+    <p><strong>Quintil:</strong> 360°/5 = 72°. Orbe: 1–2°. Aspecto de <em>talento criativo único e kármico</em>. Associado ao número 5, à proporção áurea, ao pentagrama de Vênus. Um quintil indica um dom que carrega responsabilidade — foi trazido de vidas anteriores e precisa ser desenvolvido conscientemente.</p>
+    <p><strong>Biquintil:</strong> 144°. Mesmo qualidade mas com energia mais expressiva externamente. Robert Hand os chama de "aspectos do artista e do inventor".</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(255,200,40,.2)">
+    <h4 style="color:#FFD060">⊼ QUINCÚNCIO (150°)</h4>
+    <p>O aspecto mais difícil de integrar — dois planetas que não têm elemento nem modalidade em comum. É como duas pessoas que não falam a mesma língua sendo obrigadas a trabalhar juntas. Exige ajustes constantes. Frequentemente ligado a questões de saúde (Casa 6/12) e a ajustes de vida inesperados. Liz Greene: "O quincúncio exige que você aprenda a ajustar sem entender completamente o porquê."</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(160,200,240,.2)">
+    <h4 style="color:#A0C0F0">✡ SEMISSEXTIL (30°)</h4>
+    <p>Planetas em signos adjacentes — relacionados mas com qualidades radicalmente diferentes. O impacto é leve mas persistente: uma leve tensão entre áreas da vida que não se comunicam facilmente. Pode indicar situações em que um dom aparece adjacente a um desafio, ou dois talentos que precisam de esforço consciente para cooperar.</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(255,140,80,.2)">
+    <h4 style="color:#FFA060">☌ SEMIQUADRATURA (45°) e SESQUIQUADRATURA (135°)</h4>
+    <p>Aspectos de tensão leve a moderada. A semiquadratura (45°) é uma quadratura menor — irritação, atrito que incomoda mas não paralisa. A sesquiquadratura (135°) = 90° + 45°: tensão mais madura que exige integração gradual. Frequentemente surgem em trânsitos como ativadores de situações que precisam de ajuste.</p>
+  </div>
+</div>
+
+<!-- COMBOS DE ASPECTOS -->
+<div id="combos" class="ch reveal">
+  <h2>✦ Padrões de Aspectos — Configurações Especiais ✦</h2>
+  <p>T-Quadrado · Grand Croix · Grand Trine · Yod · Stellium · Kite</p>
+</div>
+
+<div class="icard reveal">
+  <h3>🔯 Configurações de Múltiplos Aspectos</h3>
+  <p><strong>T-Quadrado:</strong> Dois planetas em oposição (180°) com um terceiro em quadratura com ambos (90°). O planeta no ápice da quadratura é o ponto de maior tensão e também de maior potencial de resolução. Frequente em mapas de pessoas de grande realização — a tensão é combustível.</p>
+  <p><strong>Grand Croix (Cruz Grande):</strong> Quatro planetas em quadratura mútua formando uma cruz. Extremamente tenso — quatro energias em atrito constante. Mas quando integrado: força de vontade e capacidade de realização excepcionais. Existe em Cardinais, Fixos ou Mutáveis.</p>
+  <p><strong>Grand Trine (Grande Trígono):</strong> Três planetas em trígono mútuo, formando um triângulo equilátero. Enorme talento natural em um elemento específico. O risco: sistema fechado que não recebe estímulo externo e pode se tornar estagnado. Um quarto planeta em sextil com um dos vértices "abre" o sistema.</p>
+  <p><strong>Yod (O Dedo de Deus):</strong> Dois planetas em sextil (60°) entre si, ambos em quincúncio (150°) com um terceiro planeta no ápice. O planeta do ápice é um ponto de "missão especial" — a vida parece conspirara para levar a pessoa a uma função específica. Frequentemente acompanha uma sensação de destino ou chamado que não se entende completamente.</p>
+  <p><strong>Stellium:</strong> Três ou mais planetas no mesmo signo ou casa. Enorme concentração de energia nessa área — pode ser dom extraordinário mas também compulsão ou desequilíbrio se não há planetas distribuídos pelo resto do mapa.</p>
+  <p><strong>Kite (Pipa):</strong> Grand Trine com um planeta em oposição a um dos vértices e em sextil com os outros dois. A oposição "ancora" o fluxo do trígono no mundo real — o talento do trígono encontra direção e propósito.</p>
+</div>
+
+<!-- ════ TRÂNSITOS ════ -->
+<div id="transitos" class="ch reveal">
+  <h2>✦ Os Trânsitos — O Céu Vivo sobre o Mapa Natal ✦</h2>
+  <p>como os planetas em movimento ativam o mapa natal · os grandes ciclos da vida</p>
+</div>
+
+<div class="icard reveal">
+  <h3>⏳ O Que são Trânsitos</h3>
+  <p>Enquanto o mapa natal é fixo (o céu no momento do nascimento), os planetas continuam se movendo — e quando transitam sobre pontos do mapa natal, <strong>ativam aquelas energias e trazem eventos ou transformações internas</strong>. Um trânsito de Saturno sobre o Sol natal não "causa" eventos — cria um período em que os temas saturnianos (disciplina, limite, estrutura, responsabilidade) entram em diálogo com a identidade solar da pessoa.</p>
+  <p>A interpretação de trânsitos combina: qual planeta está transitando (sua natureza), qual ponto natal ele está atingindo (o que está sendo ativado), e qual aspecto está formando (como a conversa acontece — facilidade ou tensão).</p>
+</div>
+
+<div class="tgrid reveal">
+  <div class="tcard">
+    <h4 style="color:#FFB800">☉ TRÂNSITOS DO SOL (anual)</h4>
+    <p><strong>Duração no ponto:</strong> ~2 dias. Ativa brevemente mas com clareza. Bom para lançamentos, tomadas de decisão, momentos de visibilidade. O Sol transitando sobre um planeta natal "ilumina" aquela energia por 2 dias.</p>
+    <p>Sol conjunto ao ASC: pico de vitalidade e visibilidade. Sol na Casa 10: período de ação pública e carreira.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#C0D0FF">☽ TRÂNSITOS DA LUA (mensal)</h4>
+    <p><strong>Duração no ponto:</strong> ~6–8 horas. Micro-ciclos emocionais. A Lua transitando sobre Marte natal pode ativar irritabilidade por algumas horas. Útil para planejar atividades: Luna sobre Vênus = bom para encontros sociais.</p>
+    <p>Lua Nova sobre ponto natal: início de ciclo de 28 dias naquele tema. Lua Cheia: colheita ou culminação.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#80C0A0">☿ TRÂNSITOS DE MERCÚRIO</h4>
+    <p><strong>Duração no ponto:</strong> 1–5 dias (mais quando retrógrado). Afeta comunicação, contratos, viagens curtas. Mercúrio sobre Saturno natal: comunicação cuidadosa e séria, bom para trâmites burocráticos. Sobre Netuno: confusão ou inspiração artística.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#FF90C0">♀ TRÂNSITOS DE VÊNUS</h4>
+    <p><strong>Duração no ponto:</strong> 2–30 dias. Ativa amor, beleza, relacionamentos. Vênus sobre o DSC: novos encontros amorosos ou harmonia com o parceiro. Vênus sobre Marte: magnetismo e atração intensificados. Boa época para eventos sociais e negociações.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#FF4030">♂ TRÂNSITOS DE MARTE</h4>
+    <p><strong>Duração no ponto:</strong> 3–7 dias. Ativa ação, conflito, energia. Marte sobre o Sol natal: pico de energia e assertividade — ótimo para iniciar projetos. Marte sobre Saturno: frustração, bloqueios que provocam raiva. Marte sobre Júpiter: expansão de energia, bom momento para aventuras.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#FF9040">♃ TRÂNSITOS DE JÚPITER (1 ano/signo)</h4>
+    <p><strong>Duração no ponto:</strong> 2–4 semanas. Um dos trânsitos mais aguardados. Júpiter sobre o Sol: ano de expansão, otimismo e oportunidades. Sobre a Lua: riqueza emocional, família que cresce. Sobre a Casa 2: abundância financeira. Sobre a Casa 7: bons relacionamentos e parcerias.</p>
+    <p>Cuidado: Júpiter também expande o negativo — sobre Saturno, pode exagerar restrições; sobre Netuno, aumenta ilusões.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#808060">♄ TRÂNSITOS DE SATURNO (2,5 anos/signo)</h4>
+    <p><strong>Duração no ponto:</strong> 2–6 meses (com retrogradações). Os mais transformadores depois dos transpessoais. Saturno sobre o Sol: o maior teste da vida, da identidade e do propósito — aquilo que foi construído sobre bases sólidas sobrevive; o resto cai. Sobre a Lua: período de seriedade emocional e crescimento. Sobre a Casa 7: relacionamentos como escola de vida.</p>
+    <p><strong>Retorno de Saturno (~29-30 anos):</strong> O maior rito de passagem — Saturno retorna ao seu lugar natal. Estruturas que foram construídas com integridade sobrevivem; o que foi erguido sobre ilusão, comodismo ou medo não. É o convite ao nascimento como adulto verdadeiro.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#40E0E0">♅ TRÂNSITOS DE URANO (7 anos/signo)</h4>
+    <p><strong>Duração no ponto:</strong> 1–3 anos. Transformações súbitas e libertadoras. Urano sobre o Sol: mudança radical da identidade e da vida externa — não se escolhe, acontece. Sobre a Casa 1: nova aparência, nova persona. Sobre Vênus: relacionamentos que chegam e partem subitamente; libertação de padrões amorosos antigos.</p>
+    <p><strong>Oposição de Urano (42–44 anos):</strong> A famosa "crise da meia-idade" — Urano no oposto de Urano natal. Impulso de liberdade, ruptura com estruturas que sufocan. Bem navegado: renovação profunda. Mal navegado: destruição do que se construiu sem nova fundação.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#4060C0">♆ TRÂNSITOS DE NETUNO (14 anos/signo)</h4>
+    <p><strong>Duração no ponto:</strong> 2–4 anos. Dissolução suave mas profunda. Netuno sobre o Sol: período de ideais, confusão de identidade, espiritualidade intensa e risco de ilusões. Sobre Marte: energia que se dissipa — menos eficiência, mais inspiração artística. Sobre a Casa 7: idealização do parceiro, risco de decepcão ou amor transcendente genuíno.</p>
+  </div>
+  <div class="tcard">
+    <h4 style="color:#A020A0">♇ TRÂNSITOS DE PLUTÃO (12–32 anos/signo)</h4>
+    <p><strong>Duração no ponto:</strong> 2–5 anos. Os mais profundos e inevitáveis. Plutão sobre o Sol: morte e renascimento da identidade — literalmente, quem você era antes não existe mais depois. Sobre a Lua: transformação radical dos padrões emocionais e familiares. Sobre a Casa 10: carreira que passa por poder e transformação — pode ser o auge ou a queda.</p>
+    <p>A regra do Plutão em trânsito: o que pode ser transformado, será. O que precisa acabar, acaba. O que resiste sem fundamento real, é destruído. O que tem raízes verdadeiras, sobrevive e emerge mais forte.</p>
+  </div>
+</div>
+
+<!-- PROGRESSÕES -->
+<div id="progressoes" class="ch reveal">
+  <h2>✦ Progressões Secundárias ✦</h2>
+  <p>um dia = um ano · o mapa que evolui junto com a alma</p>
+</div>
+
+<div class="adv adv-prog reveal">
+  <h3>📅 Progressões Secundárias — O Mapa que Cresce</h3>
+  <p>As progressões secundárias são baseadas na equivalência simbólica: <strong>1 dia depois do nascimento = 1 ano de vida</strong>. Assim, para ver como o mapa "progrediu" aos 30 anos, olha-se para a efemérides 30 dias após o nascimento. Os planetas progridem de formas diferentes:</p>
+  <p><strong>Sol Progressivo:</strong> Move ~1° por ano (1 dia = 1 grau = 1 ano). Representa a evolução da identidade ao longo da vida. Quando o Sol progressivo muda de signo, há uma virada significativa na identidade — frequentemente sentida como "eu não sou mais quem era". Isso acontece a cada ~30 anos nos signos cardinais, menos nos outros.</p>
+  <p><strong>Lua Progressiva:</strong> Move ~1° por mês (13° por ano). Completa o zodíaco em ~27–29 anos. É o ciclo emocional mais importante das progressões — quando a Lua progressiva transita por signos e casas, o foco emocional e a área de vida em desenvolvimento mudam. A Lua Nova progressiva (Sol e Lua progressivos em conjunção): início de novo ciclo de 28 anos de desenvolvimento.</p>
+  <p><strong>Ascendente e MC Progressivos:</strong> O Ascendente progressivo avança lentamente pelo zodíaco e, quando muda de signo, pode corresponder a mudanças significativas na aparência, personalidade expressada e abordagem de vida.</p>
+  <p><strong>Planetas Lentos:</strong> Netuno, Urano e Plutão progressam tão pouco ao longo de uma vida humana que sua influência progressiva é mínima — sua importância é principalmente pelos ângulos que formam com planetas rápidos.</p>
+</div>
+
+<!-- RETORNO SOLAR -->
+<div class="adv adv-prog reveal" style="border-color:rgba(255,215,0,.25);background:linear-gradient(155deg,rgba(40,30,0,.35),rgba(0,0,0,.5))">
+  <h3 style="color:var(--gold)">🎂 Retorno Solar — O Horóscopo do Aniversário</h3>
+  <p>O <strong>Retorno Solar</strong> é o mapa do momento exato em que o Sol retorna à sua posição natal — geralmente no dia do aniversário (mas pode ser 1 dia antes ou depois). Cria-se um novo mapa para esse instante, calculado para o lugar onde a pessoa está naquele momento.</p>
+  <p>O Retorno Solar é um "mapa do ano" — descreve as tendências, oportunidades e desafios do ano seguinte, do aniversário ao próximo. O Ascendente do Retorno Solar revela o "tema" do ano; a Casa onde está o Sol do Retorno indica a área de maior foco; planetas em aspecto com o Sol do Retorno descrevem as energias principais do período.</p>
+  <p>Prática esotérica: viajando para um lugar específico no dia do aniversário, o Ascendente do Retorno Solar muda — e com ele, o tema do ano. Muitos astrólogos avançados escolhem seu local de aniversário conscientemente para criar o Retorno Solar mais favorável para seus objetivos.</p>
+</div>
+
+<!-- SINASTRIA -->
+<div id="sinastria" class="ch reveal">
+  <h2>✦ Sinastria e Mapa Composto — Astrologia de Relacionamentos ✦</h2>
+  <p>como dois mapas se relacionam · a alquimia de duas almas</p>
+</div>
+
+<div class="adv adv-sind reveal">
+  <h3>💑 Sinastria — Comparação de Mapas</h3>
+  <p>A <strong>sinastria</strong> é a técnica de sobrepor dois mapas natais para ver como os planetas de uma pessoa afetam a outra. Os aspectos entre planetas dos dois mapas revelam a dinâmica do relacionamento:</p>
+  <p><strong>Sol de A conjunto à Lua de B:</strong> Conexão profunda e complementar — a identidade de um nutre a vida emocional do outro. Frequente em relacionamentos de longa duração. <strong>Sol de A conjunto ao Sol de B:</strong> Parceiros muito similares — pode ser fusão maravilhosa ou competição por protagonismo. <strong>Saturno de A sobre pontos de B:</strong> Saturno é o "educador" do relacionamento — pode ser restritivo mas também estabilizador. Casamentos com Saturno forte geralmente duram mais.</p>
+  <p><strong>Vênus-Marte inter-aspectos:</strong> Os aspectos entre Vênus de um e Marte do outro são os mais ligados à atração física e ao desejo mútuo. Conjunção ou trígono: magnetismo natural. Quadratura: tensão sexual que pode ser estimulante ou exaustiva.</p>
+  <p><strong>A Lua de um sobre o Sol do outro:</strong> A relação mãe-filho/pai simbólica — um cuida, o outro brilha. Pode ser amoroso mas também dependente se não consciente.</p>
+  <p><strong>Nodos Lunares em aspectos:</strong> Quando o Nodo Norte de uma pessoa está próximo a um planeta da outra, há sensação de destino ou missão compartilhada. Quando o Nodo Sul de um está sobre planetas do outro: conexão kármica profunda, sensação de "já conheço você há muito tempo".</p>
+</div>
+
+<div class="adv adv-sind reveal">
+  <h3>⊕ Mapa Composto — O Relacionamento como Entidade</h3>
+  <p>O <strong>Mapa Composto</strong> é criado calculando o ponto médio entre os planetas correspondentes dos dois mapas natais — o ponto médio entre os dois Sóis, entre as duas Luas, etc. O resultado é um terceiro mapa que representa <em>o relacionamento em si como entidade viva</em>, com sua própria identidade, missão e desafios.</p>
+  <p>O Sol do Composto indica o propósito central do relacionamento — o que ele "é". Leão: relacionamento de expressão criativa mútua. Capricórnio: parceria com missão de construção e legado. A Casa do Sol revela em que área da vida o relacionamento floresce mais.</p>
+  <p>Saturno no Composto em aspecto duro com Vênus ou Sol: o relacionamento tem uma estrutura restritiva mas duradoura — o tipo que "cresce com o tempo, não apesar dele". Netuno em aspecto com Vênus no Composto: amor transcendente mas risco de ilusão mútua.</p>
+</div>
+
+<!-- AVANÇADO -->
+<div id="avancado" class="ch reveal">
+  <h2>✦ Técnicas Avançadas ✦</h2>
+  <p>Helênica · Védica (Jyotish) · Horária · Eleitoral · Era de Aquário</p>
+</div>
+
+<div class="tgrid reveal">
+  <div class="tcard" style="border-color:rgba(255,215,0,.25)">
+    <h4 style="color:var(--gold)">🏛 ASTROLOGIA HELÊNICA CLÁSSICA</h4>
+    <p>A tradição de Ptolomeu, Valens e Dorotheus. Usa <strong>dignidades essenciais</strong> (domicílio, exaltação, triplidade, termo, face), a distinção entre planetas <em>matutinos</em> e <em>vespertinos</em>, os <strong>Lots</strong> (Sorte, Espírito, Amor, Vitória), e o sistema de <strong>Profecções</strong> (cada ano de vida corresponde a uma casa, começando da Casa 1).</p>
+    <p>O <strong>Senhor do Ano</strong> (o planeta que governa a casa ativa pela profecção) é o mais importante em trânsito durante aquele ano. Sistema profundamente revelador para previsão de eventos.</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(200,140,60,.25)">
+    <h4 style="color:#D09040">🕉 JYOTISH — ASTROLOGIA VÉDICA</h4>
+    <p>O sistema astrológico da Índia, datando de pelo menos 1.500 a.C. Diferenças principais: usa o <strong>Zodíaco Sideral</strong> (baseado nas constelações reais, com ~23° de diferença do Zodíaco Tropical ocidental), os 27/28 <strong>Nakshatras</strong> (estações lunares), e os <strong>Dashas</strong> (períodos planetários que governam a vida em sequência, de 6 a 20 anos cada).</p>
+    <p>O Dasha de Saturno (Shani), por exemplo, dura 19 anos e é período de grande trabalho e colheita de karma. O Dasha de Vênus dura 20 anos — período de amor, arte e abundância potencial.</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(160,200,100,.25)">
+    <h4 style="color:#90C050">🎯 ASTROLOGIA HORÁRIA</h4>
+    <p>A arte de responder perguntas específicas calculando o mapa do momento em que a pergunta é feita — não do nascimento. O Ascendente do mapa horário representa o consulente; a Casa relevante representa o assunto da pergunta. Planetas em aspecto revelam se e quando a questão se resolverá.</p>
+    <p>"Vai ele me contatar?" — Mercúrio (o consultante, Gêmeos no ASC) fazendo trígono com Vênus (a pessoa buscada, na Casa 7) = sim, dentro de 3 dias. Sistema de precisão surpreendente quando bem aplicado.</p>
+  </div>
+  <div class="tcard" style="border-color:rgba(100,160,255,.25)">
+    <h4 style="color:#60A0FF">📅 ASTROLOGIA ELEITORAL</h4>
+    <p>Escolha do momento mais favorável para iniciar uma ação importante — abrir empresa, casar, assinar contrato, fazer cirurgia. O astrólogo calcula quando os planetas estarão na posição mais favorável para aquela atividade específica e escolhe a hora e local do início.</p>
+    <p>Regras básicas: Lua crescente para projetos que devem crescer. Lua minguante para encerrar, curar, subtrair. Mercúrio direto para contratos. Vênus em boa posição para casamentos. Saturno não na cúspide da Casa 1 para negócios (exceto se se quer duração).</p>
+  </div>
+</div>
+
+<div class="icard reveal">
+  <h3>♒ A ERA DE AQUÁRIO — O Grande Ciclo das Eras</h3>
+  <p>Os <strong>Anos Platônicos ou Idades do Mundo</strong> são ciclos de ~2.160 anos cada, correspondentes à precessão dos equinócios — o lentíssimo "giro para trás" do ponto vernal pelos signos do zodíaco. Atualmente estamos na transição da Era de Peixes para a <strong>Era de Aquário</strong>.</p>
+  <p><strong>Era de Peixes (~0 d.C. a ~2150 d.C.):</strong> Marcada pela espiritualidade mediada por institucições (igrejas, religiões organizadas), pelo ideal de sacrifício e salvação, pela arte transcendente, pela dissolução de fronteiras (Netuno). O peixe como símbolo do Cristianismo e de outras tradições místicas.</p>
+  <p><strong>Era de Aquário (~2000–2150 em diante):</strong> Transição para a era do conhecimento direto (sem intermediário), das redes, da tecnologia, da consciência coletiva, da fraternidade universal, da dissolução de hierarquias verticais. O "derramamento da água" (de conhecimento) para todos. Mas também: risco de vigilância totalitária tecnológica (Aquário/Urano em seu aspecto sombrio).</p>
+  <p>O início exato é debatido — alguns colocam em 1962 (conjunção de 7 planetas em Aquário com eclipse solar), outros em 2012 (fim do calendário Maia), outros em 2160 (a entrada do ponto vernal matematicamente precisa na constelação de Aquário).</p>
+</div>
+
+<!-- CABALA AVANÇADA -->
+<div id="cabala" class="ch reveal">
+  <h2>✦ Astrologia e Cabala — A Árvore da Vida Planetária ✦</h2>
+  <p>as 10 Sefirót · os 22 caminhos · planetas e letras hebraicas</p>
+</div>
+
+<div class="adv adv-kab reveal">
+  <h3>🌳 Os Planetas nas Sefirót da Árvore da Vida</h3>
+  <p>A correspondência entre planetas e Sefirót não é decorativa — é estrutural. Cada sefirá é uma qualidade do Ser Divino, e cada planeta é a expressão dessa qualidade no mundo manifesto. O mapa natal, visto pela Cabala, é um mapa de como as energias divinas estão distribuídas na alma de um indivíduo.</p>
+
+  <table class="sep-table">
+    <thead><tr><th>Sefirá</th><th>Número</th><th>Nome/Título</th><th>Planeta</th><th>Qualidade Essencial</th><th>Arcano do Tarot</th></tr></thead>
+    <tbody>
+      <tr><td>Kether</td><td>1</td><td>A Coroa · O Ponto Primordial</td><td>Plutão / Neptuno / Primeiro Motor</td><td>Vontade pura de ser · O Eu Absoluto antes de qualquer forma</td><td>O Louco (0)</td></tr>
+      <tr><td>Chokmah</td><td>2</td><td>Sabedoria · O Pai</td><td>Urano / Zodiaco</td><td>Faísca do insight puro · Sabedoria antes da compreensão</td><td>O Mago (I)</td></tr>
+      <tr><td>Binah</td><td>3</td><td>Compreensão · A Grande Mãe</td><td>Saturno ♄</td><td>A forma que recebe e limita a faísca · Compreensão profunda</td><td>A Sacerdotisa (II)</td></tr>
+      <tr><td>Chesed</td><td>4</td><td>Misericórdia · A Graça</td><td>Júpiter ♃</td><td>Expansão, bondade, abundância que flui sem medir</td><td>O Imperador (IV)</td></tr>
+      <tr><td>Geburah</td><td>5</td><td>Severidade · O Julgamento</td><td>Marte ♂</td><td>A força que corta, que julga, que remove o que não serve</td><td>A Força (VIII)</td></tr>
+      <tr><td>Tiferet</td><td>6</td><td>Beleza · O Coração</td><td>Sol ☉</td><td>O centro de tudo · Equilíbrio entre todas as forças · O Self</td><td>O Sol (XIX)</td></tr>
+      <tr><td>Netzach</td><td>7</td><td>Vitória · A Natureza</td><td>Vênus ♀</td><td>Amor, arte, emoção, natureza, o que move pelo desejo</td><td>A Imperatriz (III)</td></tr>
+      <tr><td>Hod</td><td>8</td><td>Esplendor · O Intelecto</td><td>Mercúrio ☿</td><td>Linguagem, forma intelectual, comunicação, lógica</td><td>O Mago (I) / O Eremita (IX)</td></tr>
+      <tr><td>Yesod</td><td>9</td><td>Fundamento · O Inconsciente</td><td>Lua ☽</td><td>O espelho que reflete Tiferet para Malkuth · O sonho</td><td>A Sacerdotisa / A Lua (XVIII)</td></tr>
+      <tr><td>Malkuth</td><td>10</td><td>O Reino · A Terra</td><td>Terra (todos os planetas manifestos)</td><td>O mundo físico onde tudo se manifesta · A síntese</td><td>O Mundo (XXI)</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:14px;font-size:.85rem;color:var(--text-d);line-height:1.9">Os <strong>22 caminhos</strong> da Árvore da Vida correspondem às 22 letras do alefato hebraico e às 22 cartas dos Arcanos Maiores do Tarot. As 3 letras-mãe (Aleph, Mem, Shin) = 3 elementos (Ar, Água, Fogo). As 7 letras duplas (Beth, Gimel, Daleth, Caf, Peh, Resh, Tav) = 7 planetas clássicos. As 12 letras simples = 12 signos. A estrutura hermética é uma: Astrologia, Cabala, Tarot e Alquimia são dialetos da mesma língua sagrada.</p>
+</div>
+
+<!-- ALQUIMIA -->
+<div id="alquimia" class="ch reveal">
+  <h2>✦ Astrologia e Alquimia — Os Metais, as Operações e a Grande Obra ✦</h2>
+  <p>a transmutação como jornada pelo zodíaco · Nigredo · Albedo · Citrinitas · Rubedo</p>
+</div>
+
+<div class="adv adv-alq reveal">
+  <h3>⚗ A Grande Obra Astrológica</h3>
+  <p>Na alquimia hermética, a <strong>Opus Magnum</strong> (Grande Obra) é o processo de transmutação da alma — da matéria bruta (chumbo/Saturno) ao ouro espiritual (Sol/Tiferet). As quatro fases alquímicas correspondem precisamente às quatro estações e aos quatro elementos:</p>
+  <p><strong>🖤 NIGREDO (Enegrecimento) · Água · Outono/Escorpião:</strong> A dissolução da matéria prima — o Caos que precede toda criação. Psicologicamente: a crise, o colapso do ego, a descida ao inconsciente. Saturno e Plutão são os planetas do Nigredo. "Solve" — dissolver o que está fixo.</p>
+  <p><strong>🤍 ALBEDO (Embranquecimento) · Ar · Inverno/Aquário:</strong> A purificação após a dissolução — a prata que emerge do chumbo purificado. A Lua é o planeta da Albedo — o espelho que reflete sem distorção após ser polido. Psicologicamente: o insight, a visão clara após a crise. "Coagula" — fixar o que foi purificado.</p>
+  <p><strong>💛 CITRINITAS (Amarelamento) · Fogo · Primavera/Áries:</strong> A fase intermediária, raramente mencionada em textos tardios — o alvorecer do ouro antes de ser completamente dourado. O Sol emergindo. Psicologicamente: a integração gradual do que foi purificado. Marte e o Sol jovem.</p>
+  <p><strong>❤ RUBEDO (Avermelhamento) · Terra · Verão/Leão:</strong> A completude da Grande Obra — a pedra filosofal, o ouro puro, o Self realizado. O Sol em seu pleno poder. Psicologicamente: a individuação de Jung — tornar-se plenamente si mesmo, com todo o ouro e toda a sombra integrados. Tiferet.</p>
+  <p>O zodíaco percorrido ao longo de um ano (ou de uma vida) é a Grande Obra em forma cíclica: cada signo é uma operação alquímica, cada planeta é um agente transformador, e o mapa natal é o diagrama da Grande Obra pessoal.</p>
+</div>
+
+<!-- HERMETICA -->
+<div id="hermetica" class="ch reveal">
+  <h2>✦ Hermetismo e Astrologia — "Como em Cima, Assim em Baixo" ✦</h2>
+  <p>o princípio da correspondência · Hermes Trismegisto · a Tábua de Esmeralda</p>
+</div>
+
+<div class="adv adv-helm reveal">
+  <h3>📜 O Princípio de Correspondência</h3>
+  <p>O fundamento de toda astrologia é hermético: <em>"O que está em cima é como o que está em baixo, e o que está em baixo é como o que está em cima, para realizar o milagre de uma única coisa."</em> — Tábua de Esmeralda, atribuída a Hermes Trismegisto.</p>
+  <p>Isso não é causalidade mecânica (os planetas não "causam" eventos) — é <strong>correspondência simbólica</strong>: o padrão no macrocosmo reflete o padrão no microcosmo. Como o DNA contém em miniatura o projeto completo do organismo, o mapa natal contém em miniatura o projeto da alma.</p>
+  <p>Os sete planetas clássicos não são apenas corpos astronômicos — são <strong>princípios cósmicos</strong> que se manifestam em múltiplos planos simultaneamente:</p>
+  <p>☉ <strong>Sol:</strong> No cosmos = a estrela que ilumina. No corpo = o coração e a força vital. Na psique = o Self, o ego iluminado. Na natureza = o ouro e o leão. No tempo = o domingo. Na música = a nota RE (sistema pitagórico).</p>
+  <p>☽ <strong>Lua:</strong> No cosmos = o satélite que reflete. No corpo = os fluidos e o útero. Na psique = o inconsciente e a memória. Na natureza = a prata e a pérola. No tempo = segunda-feira.</p>
+  <p>Esta estrutura de correspondências — que liga planetas a metais, animais, plantas medicinais, órgãos do corpo, dias da semana, notas musicais e sefirót cabalísticas — é o sistema hermético completo: uma chave universal que abre todas as tradições simultane­amente.</p>
+</div>
+
+<!-- GRANDE SÍNTESE -->
+<div id="sindese" class="ch reveal">
+  <h2>✦ A Grande Síntese — Lendo o Mapa Completo ✦</h2>
+  <p>como integrar tudo em uma leitura coerente e profunda</p>
+</div>
+
+<div class="adv adv-prog reveal">
+  <h3>🗺 O Método de Leitura Integrada</h3>
+  <p>Uma leitura astrológica madura não interpreta elementos isolados — integra tudo em uma narrativa coerente. O método sugerido para leitura profunda do mapa natal:</p>
+  <p><strong>1. Os Três Primeiros:</strong> Comece sempre pelo Sol (quem está se tornando), pela Lua (como sente) e pelo Ascendente (como se apresenta). Esses três juntos descrevem a estrutura fundamental da personalidade.</p>
+  <p><strong>2. O Regente do Ascendente:</strong> O planeta que rege o signo Ascendente é o "condutor da orquestra" — seu signo, casa e aspectos descrevem a dinâmica central da vida.</p>
+  <p><strong>3. Os Stelliums e Ênfases:</strong> Onde estão concentrados os planetas? Muitos planetas numa casa ou signo? Essa área é o foco principal de desenvolvimento e expressão.</p>
+  <p><strong>4. Saturno e Quíron:</strong> O maior desafio (Saturno) e a ferida-dom (Quíron) — esses dois pontos revelam onde está o trabalho central da vida e onde está o tesouro escondido.</p>
+  <p><strong>5. Os Aspectos Dominantes:</strong> Quais são os aspectos mais exatos (menor orbe)? Esses são os mais poderosos. Uma quadratura Sol-Saturno com 0,5° de orbe domina sobre um trígono Sol-Júpiter com 8° de orbe.</p>
+  <p><strong>6. Os Nodos Lunares:</strong> O eixo Nodo Norte/Sul revela o fio vermelho da vida — de onde veio (Nodo Sul) e para onde vai (Nodo Norte). É o roteiro da jornada da alma nesta encarnação.</p>
+  <p><strong>7. Os Trânsitos Atuais:</strong> Finalmente, onde estão os planetas hoje em relação ao mapa natal? Que conversas estão acontecendo agora? Qual é o contexto de vida presente?</p>
+  <p><strong>A síntese final:</strong> Uma leitura profunda conta uma história — não uma lista de características. "Você tem Sol em Virgem (precisa de perfeição e análise) na Casa 12 (que opera no oculto), em quadratura com Saturno em Gêmeos na Casa 3 (tensão entre a crítica interna e a comunicação) — mas com Júpiter em trígono ao Sol a partir da Casa 4 (proteção espiritual que vem das raízes). O trabalho desta vida é trazer para fora (Casa 3, comunicação) o que você cria no silêncio (Casa 12), vencendo o medo de ser criticado (Saturno) com a confiança nas suas raízes (Júpiter na Casa 4)."</p>
+</div>
+
+<div class="icard reveal">
+  <h3>✨ A Astrologia como Caminho de Individuação</h3>
+  <p>Jung dizia que a astrologia "reivindica um lugar de honra entre os sistemas de autoconhecimento da humanidade." O mapa natal, visto psicologicamente, é o mapa da individuação — o processo de tornar-se plenamente quem se é, com todo o ouro (potenciais realizados) e toda a sombra (o que foi reprimido) integrados em uma totalidade consciente.</p>
+  <p>A diferença entre astrologia como fatalismo e astrologia como caminho de autoconhecimento é a consciência: o determinista diz "Saturno na Casa 10 significa que minha carreira sempre sofrerá". O autoconhecedor diz "Saturno na Casa 10 significa que minha carreira é meu maior campo de aprendizado e que, ao trabalhar com disciplina e integridade, posso construir um legado extraordinário — depois dos 40."</p>
+  <p>O mapa natal não diz o que vai acontecer. Diz quem você é, quais são seus presentes e desafios, e que campos de experiência são os seus. O que você faz com isso — isso é sua liberdade.</p>
+</div>
+
+<footer>
+  <div class="f-nav">
+    <a class="f-link" href="astrologia-parte1.html">I · Fundamentos</a>
+    <a class="f-link" href="astrologia-parte2.html">II · Planetas</a>
+    <a class="f-link" href="astrologia-parte3.html">III · Casas</a>
+    <a class="f-link" href="astrologia-parte4.html">IV · Aspectos e Avançado</a>
+  </div>
+  <p class="f-text">
+    "A astrologia representa a soma de todo o conhecimento psicológico da antiguidade."<br>
+    — Carl Gustav Jung<br><br>
+    "Conhece-te a ti mesmo e conhecerás o universo e os deuses."<br>
+    — Inscrição no Templo de Delfos (Apolo / Sol)<br><br>
+    <em>Ptolomeu · Valens · Ficino · Kepler · Rudhyar · Liz Greene · Robert Hand<br>
+    Howard Sasportas · Isabel Hickey · Stephen Arroyo · Robert Zoller · Bernadette Brady</em>
+  </p>
+</footer>
+</div>
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.05})
+document.querySelectorAll('.reveal,.asp').forEach(el=>io.observe(el))
+const secs=[...document.querySelectorAll('[id]')];const dots=[...document.querySelectorAll('.sn-dot')]
+const io2=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;dots.forEach(d=>{d.classList.toggle('act',d.getAttribute('href')==='#'+id)})}})},{threshold:.4})
+secs.forEach(s=>io2.observe(s))
+</script>
+</body>
+</html>

@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitologia Egípcia — O Cosmos dos Faraós</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#f5e6c8;
+  --sand2:#ede0b5;
+  --sand3:#d4c49a;
+  --papyrus:#faf3e0;
+  --ink:#1a1208;
+  --ink2:#2d2010;
+  --ink3:#3d2e18;
+  --gold:#b8860b;
+  --gold2:#d4a017;
+  --gold3:#8b6508;
+  --lapis:#1a3a6e;
+  --lapis2:#2a5298;
+  --red:#8b1a1a;
+  --red2:#c0392b;
+  --teal:#1a5c52;
+  --teal2:#2e8b7a;
+  --muted:#7a6840;
+  --muted2:#9a8660;
+  --border:rgba(184,134,11,0.25);
+  --border2:rgba(184,134,11,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:#1a1208;
+  color:var(--ink);
+  font-family:'Crimson Pro',serif;
+  font-size:19px;
+  line-height:1.85;
+  overflow-x:hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  opacity:0.4;
+}
+
+/* ── SCROLL PROGRESS ── */
+#prog{
+  position:fixed;top:0;left:0;height:3px;z-index:1000;
+  background:linear-gradient(90deg,var(--gold3),var(--gold2),var(--gold));
+  width:0%;transition:width 0.1s;
+}
+
+/* ── SIDEBAR NAV ── */
+#sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:240px;
+  background:var(--ink);
+  border-right:1px solid rgba(184,134,11,0.2);
+  z-index:100;
+  overflow-y:auto;
+  padding:24px 0 40px;
+  transform:translateX(0);
+  transition:transform 0.3s;
+}
+#sidebar::-webkit-scrollbar{width:4px;}
+#sidebar::-webkit-scrollbar-track{background:transparent;}
+#sidebar::-webkit-scrollbar-thumb{background:rgba(184,134,11,0.3);border-radius:2px;}
+
+.sidebar-logo{
+  padding:0 20px 24px;
+  border-bottom:1px solid rgba(184,134,11,0.15);
+  margin-bottom:20px;
+}
+.sidebar-logo-glyph{
+  font-size:2rem;
+  display:block;
+  text-align:center;
+  margin-bottom:6px;
+}
+.sidebar-logo-text{
+  font-family:'Cinzel',serif;
+  font-size:0.65rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  text-align:center;
+  display:block;
+}
+
+.nav-section{
+  padding:4px 20px;
+  margin-bottom:2px;
+}
+.nav-section-label{
+  font-family:'Cinzel',serif;
+  font-size:0.55rem;
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:rgba(184,134,11,0.4);
+  display:block;
+  padding:10px 0 4px;
+}
+.nav-link{
+  display:block;
+  font-family:'Crimson Pro',serif;
+  font-size:0.88rem;
+  color:rgba(245,230,200,0.55);
+  padding:5px 8px;
+  border-radius:2px;
+  text-decoration:none;
+  transition:all 0.2s;
+  border-left:2px solid transparent;
+  line-height:1.4;
+}
+.nav-link:hover,.nav-link.active{
+  color:var(--gold2);
+  border-left-color:var(--gold);
+  background:rgba(184,134,11,0.08);
+  padding-left:12px;
+}
+
+#menu-toggle{
+  display:none;
+  position:fixed;top:12px;left:12px;z-index:200;
+  background:var(--ink);border:1px solid var(--border);
+  color:var(--gold);font-size:1.2rem;
+  width:40px;height:40px;border-radius:4px;
+  cursor:pointer;align-items:center;justify-content:center;
+}
+
+/* ── MAIN CONTENT ── */
+#main{
+  margin-left:240px;
+  background:var(--papyrus);
+  min-height:100vh;
+  position:relative;z-index:1;
+}
+
+/* ── HERO ── */
+#hero{
+  background:var(--ink);
+  min-height:92vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:80px 48px 60px;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 30%,rgba(184,134,11,0.12) 0%,transparent 60%),
+    radial-gradient(ellipse at 20% 80%,rgba(26,58,110,0.15) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 70%,rgba(139,26,26,0.1) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+/* decorative hieroglyph strip */
+.hero-glyphs{
+  font-size:1.4rem;
+  letter-spacing:0.6em;
+  color:rgba(184,134,11,0.3);
+  margin-bottom:40px;
+  animation:fadeIn 2s ease both;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+#hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5.5vw,5rem);
+  font-weight:900;
+  color:var(--sand);
+  line-height:1.0;
+  text-shadow:0 2px 40px rgba(184,134,11,0.3);
+  margin-bottom:8px;
+  animation:fadeIn 1.2s 0.3s ease both;
+}
+#hero h1 em{
+  color:var(--gold2);
+  font-style:italic;
+  display:block;
+  font-size:0.75em;
+  font-weight:400;
+}
+.hero-subtitle{
+  font-family:'Cinzel',serif;
+  font-size:0.75rem;
+  letter-spacing:0.45em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  margin-bottom:36px;
+  animation:fadeIn 1.2s 0.5s ease both;
+}
+.hero-desc{
+  max-width:620px;
+  font-size:1.15rem;
+  color:rgba(245,230,200,0.7);
+  font-style:italic;
+  line-height:2;
+  animation:fadeIn 1.2s 0.7s ease both;
+}
+.hero-meta{
+  display:flex;gap:40px;margin-top:50px;
+  animation:fadeIn 1.2s 0.9s ease both;
+}
+.hero-meta-item{
+  text-align:center;
+}
+.hero-meta-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:700;
+  color:var(--gold2);
+  line-height:1;display:block;
+}
+.hero-meta-label{
+  font-family:'Cinzel',serif;
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(184,134,11,0.6);
+  display:block;margin-top:4px;
+}
+.scroll-cue{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.4em;text-transform:uppercase;
+  color:rgba(184,134,11,0.5);
+  animation:bounce 2s ease infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── PAGE WRAPPER ── */
+.page{max-width:780px;margin:0 auto;padding:0 48px 100px;}
+
+/* ── CHAPTER ── */
+.chapter{padding:80px 0 40px;border-top:1px solid var(--border2);}
+.chapter:first-child{border-top:none;}
+
+.chapter-eyebrow{
+  font-family:'Cinzel',serif;
+  font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.chapter-eyebrow::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+}
+
+.chapter h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3vw,2.8rem);
+  font-weight:700;color:var(--ink);
+  line-height:1.12;margin-bottom:28px;
+}
+.chapter-intro{
+  font-size:1.15rem;color:var(--ink3);
+  font-style:italic;line-height:1.9;
+  border-left:3px solid var(--gold);
+  padding-left:22px;
+  margin-bottom:44px;
+}
+
+/* ── SECTION HEADINGS ── */
+h3.sec{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;font-weight:600;
+  color:var(--lapis);
+  margin:52px 0 18px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(26,58,110,0.15);
+}
+h4.sub{
+  font-family:'Cinzel',serif;
+  font-size:0.85rem;letter-spacing:0.1em;
+  color:var(--red);
+  margin:32px 0 12px;
+  text-transform:uppercase;
+}
+
+/* ── BODY TEXT ── */
+p{color:var(--ink3);margin-bottom:1.5em;font-size:1.02rem;}
+p strong{color:var(--ink);font-weight:600;}
+p em{color:var(--lapis);}
+
+/* ── PULL QUOTE ── */
+.pullquote{
+  margin:44px -20px;
+  padding:32px 40px;
+  background:var(--ink);
+  color:var(--sand);
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  font-style:italic;
+  line-height:1.65;
+  border-radius:2px;
+  position:relative;
+}
+.pullquote::before{
+  content:'"';
+  position:absolute;top:-10px;left:30px;
+  font-size:5rem;line-height:1;
+  color:var(--gold);opacity:0.4;
+  font-family:'Playfair Display',serif;
+}
+.pullquote cite{
+  display:block;margin-top:14px;
+  font-family:'Cinzel',serif;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold3);font-style:normal;
+}
+
+/* ── INFO BOX ── */
+.box{
+  margin:36px 0;
+  padding:24px 28px;
+  border-radius:2px;
+  border-left:4px solid;
+}
+.box-gold{background:rgba(212,160,23,0.08);border-color:var(--gold);}
+.box-lapis{background:rgba(26,58,110,0.07);border-color:var(--lapis);}
+.box-red{background:rgba(139,26,26,0.06);border-color:var(--red);}
+.box-teal{background:rgba(26,92,82,0.07);border-color:var(--teal);}
+.box-title{
+  font-family:'Cinzel',serif;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.box-gold .box-title{color:var(--gold3);}
+.box-lapis .box-title{color:var(--lapis);}
+.box-red .box-title{color:var(--red);}
+.box-teal .box-title{color:var(--teal);}
+.box p{font-size:0.95rem;color:var(--ink3);margin:0;line-height:1.75;}
+
+/* ── GOD CARDS ── */
+.god-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:2px;
+  margin:36px 0;
+  border:1px solid var(--border);
+}
+.god-card{
+  padding:28px 24px;
+  background:var(--papyrus);
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  transition:background 0.25s;
+  position:relative;
+}
+.god-card:hover{background:var(--sand2);}
+.god-card-head{
+  display:flex;align-items:flex-start;gap:16px;
+  margin-bottom:14px;
+}
+.god-glyph{
+  width:52px;height:52px;
+  background:var(--ink);
+  border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;
+  flex-shrink:0;
+}
+.god-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:700;
+  color:var(--ink);line-height:1.2;
+}
+.god-epithet{
+  font-family:'Crimson Pro',serif;
+  font-size:0.85rem;font-style:italic;
+  color:var(--muted);margin-top:2px;
+}
+.god-domain{
+  display:flex;flex-wrap:wrap;gap:5px;
+  margin-bottom:12px;
+}
+.tag{
+  font-family:'Cinzel',serif;
+  font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;
+  padding:3px 9px;
+  border-radius:2px;border:1px solid;
+}
+.tag-gold{color:var(--gold3);border-color:rgba(184,134,11,0.4);background:rgba(184,134,11,0.08);}
+.tag-lapis{color:var(--lapis);border-color:rgba(26,58,110,0.3);background:rgba(26,58,110,0.07);}
+.tag-red{color:var(--red);border-color:rgba(139,26,26,0.3);background:rgba(139,26,26,0.06);}
+.tag-teal{color:var(--teal);border-color:rgba(26,92,82,0.3);background:rgba(26,92,82,0.07);}
+.god-card p{font-size:0.9rem;color:var(--ink3);margin:0;line-height:1.7;}
+
+/* ── MYTH NARRATIVE ── */
+.myth-block{
+  margin:44px 0;
+  background:var(--sand2);
+  border:1px solid var(--border);
+  border-radius:2px;
+  overflow:hidden;
+}
+.myth-header{
+  background:var(--ink);
+  padding:20px 28px;
+  display:flex;align-items:center;gap:14px;
+}
+.myth-icon{font-size:1.6rem;}
+.myth-header h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:600;
+  color:var(--sand);margin:0;
+}
+.myth-header span{
+  font-family:'Cinzel',serif;
+  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--gold3);
+}
+.myth-body{padding:28px;}
+.myth-body p{font-size:0.97rem;color:var(--ink3);margin-bottom:1.2em;line-height:1.8;}
+.myth-body p:last-child{margin:0;}
+
+/* ── TIMELINE ── */
+.timeline{margin:36px 0;position:relative;}
+.timeline::before{
+  content:'';
+  position:absolute;left:18px;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+}
+.tl-item{
+  padding:0 0 32px 56px;
+  position:relative;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;left:12px;top:4px;
+  width:14px;height:14px;
+  background:var(--papyrus);
+  border:2px solid var(--gold);
+  transform:rotate(45deg);
+}
+.tl-date{
+  font-family:'Cinzel',serif;
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold3);margin-bottom:4px;
+}
+.tl-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem;font-weight:600;
+  color:var(--ink);margin-bottom:6px;
+}
+.tl-text{font-size:0.92rem;color:var(--ink3);line-height:1.7;margin:0;}
+
+/* ── COMPARISON TABLE ── */
+.comp-table{
+  width:100%;border-collapse:collapse;
+  margin:28px 0;font-size:0.92rem;
+}
+.comp-table th{
+  font-family:'Cinzel',serif;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold3);
+  padding:10px 14px;
+  background:var(--ink);
+  color:var(--sand2);
+  text-align:left;
+  font-weight:400;
+}
+.comp-table td{
+  padding:11px 14px;
+  border-bottom:1px solid var(--border2);
+  vertical-align:top;
+  color:var(--ink3);
+  line-height:1.6;
+}
+.comp-table tr:nth-child(even) td{background:rgba(212,196,154,0.25);}
+.comp-table tr:hover td{background:rgba(184,134,11,0.08);}
+.comp-table td:first-child{
+  font-family:'Cinzel',serif;
+  font-size:0.78rem;color:var(--lapis);
+  white-space:nowrap;font-weight:500;
+}
+
+/* ── ENNEADS ── */
+.ennead-diagram{
+  background:var(--ink);
+  padding:40px;
+  margin:36px 0;
+  border-radius:2px;
+  text-align:center;
+}
+
+/* ── HIEROGLYPH DIVIDER ── */
+.hdivider{
+  text-align:center;
+  font-size:1rem;
+  letter-spacing:0.8em;
+  color:var(--border);
+  padding:36px 0;
+  user-select:none;
+}
+
+/* ── AFTERLIFE DIAGRAM ── */
+.afterlife-steps{
+  counter-reset:step;
+  margin:28px 0;
+}
+.astep{
+  display:flex;gap:20px;
+  padding:18px 0;
+  border-bottom:1px solid var(--border2);
+  align-items:flex-start;
+}
+.astep:last-child{border-bottom:none;}
+.astep-num{
+  counter-increment:step;
+  width:36px;height:36px;
+  background:var(--ink);
+  color:var(--gold2);
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:2px;flex-shrink:0;
+  margin-top:2px;
+}
+.astep-content h4{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:600;
+  color:var(--ink);margin-bottom:4px;
+}
+.astep-content p{font-size:0.9rem;margin:0;color:var(--ink3);line-height:1.65;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #sidebar{transform:translateX(-100%);}
+  #sidebar.open{transform:translateX(0);}
+  #main{margin-left:0;}
+  .page{padding:0 24px 80px;}
+  #menu-toggle{display:flex;}
+  .hero-meta{gap:24px;}
+  .pullquote{margin:36px 0;padding:24px 28px;}
+  .god-grid{grid-template-columns:1fr;}
+}
+
+/* ── READING PROGRESS ── */
+.reading-time{
+  font-family:'Cinzel',serif;
+  font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--muted2);
+  display:inline-flex;align-items:center;gap:6px;
+  margin-bottom:20px;
+}
+
+/* ── SPECIAL SECTION: NETERU COLORS ── */
+.neter-color-strip{
+  display:flex;height:6px;margin:4px 0 16px;
+  border-radius:1px;overflow:hidden;
+  gap:2px;
+}
+.nc{flex:1;border-radius:1px;}
+
+/* Full god reference table */
+.full-table{
+  width:100%;border-collapse:collapse;
+  font-size:0.88rem;margin:24px 0;
+}
+.full-table thead tr{background:var(--ink);}
+.full-table th{
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--sand2);padding:10px 12px;text-align:left;font-weight:400;
+}
+.full-table td{
+  padding:10px 12px;border-bottom:1px solid var(--border2);
+  vertical-align:top;color:var(--ink3);line-height:1.55;
+}
+.full-table td:first-child{font-weight:600;color:var(--ink);white-space:nowrap;}
+.full-table tr:nth-child(even) td{background:rgba(212,196,154,0.2);}
+
+/* page footer */
+footer{
+  background:var(--ink);
+  padding:48px;text-align:center;
+}
+footer p{
+  font-family:'Cinzel',serif;
+  font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;
+  color:rgba(184,134,11,0.4);margin:0;
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- MOBILE TOGGLE -->
+<button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <span class="sidebar-logo-glyph">𓂀</span>
+    <span class="sidebar-logo-text">Mitologia Egípcia</span>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Introdução</span>
+    <a class="nav-link" href="#intro">O Mundo dos Deuses</a>
+    <a class="nav-link" href="#historia">Contexto Histórico</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Cosmologia</span>
+    <a class="nav-link" href="#criacao">A Criação do Mundo</a>
+    <a class="nav-link" href="#eneada">A Grande Enéada</a>
+    <a class="nav-link" href="#ma-at">Ma'at — A Ordem</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Os Deuses</span>
+    <a class="nav-link" href="#ra">Rá e o Sol</a>
+    <a class="nav-link" href="#osiris">Osíris — O Rei</a>
+    <a class="nav-link" href="#isis">Ísis — A Feiticeira</a>
+    <a class="nav-link" href="#set">Set — O Caos</a>
+    <a class="nav-link" href="#horus">Hórus — O Faraó</a>
+    <a class="nav-link" href="#outros">Outros Deuses</a>
+    <a class="nav-link" href="#referencia">Panteão Completo</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Mitos Centrais</span>
+    <a class="nav-link" href="#mito-osiris">O Assassinato de Osíris</a>
+    <a class="nav-link" href="#mito-horus">A Batalha de Hórus</a>
+    <a class="nav-link" href="#mito-ra">A Jornada de Rá</a>
+    <a class="nav-link" href="#mito-sekhmet">A Destruição da Humanidade</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Além da Morte</span>
+    <a class="nav-link" href="#alma">A Alma Egípcia</a>
+    <a class="nav-link" href="#julgamento">O Julgamento</a>
+    <a class="nav-link" href="#campo">Campo dos Juncos</a>
+    <a class="nav-link" href="#livro-mortos">Livro dos Mortos</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Práticas</span>
+    <a class="nav-link" href="#templos">Templos e Culto</a>
+    <a class="nav-link" href="#farao">O Faraó Divino</a>
+    <a class="nav-link" href="#mumificacao">Mumificação</a>
+    <a class="nav-link" href="#animais">Animais Sagrados</a>
+  </div>
+
+  <div class="nav-section">
+    <span class="nav-section-label">Legado</span>
+    <a class="nav-link" href="#legado">Influências</a>
+    <a class="nav-link" href="#textos">Textos Sagrados</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+<main id="main">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glyphs">𓂀 𓅓 𓆣 𓋴 𓏏 𓅱 𓇳 𓈖 𓂋 𓏏</div>
+  <h1>Mitologia<br><em>Egípcia</em></h1>
+  <p class="hero-subtitle">O Cosmos dos Faraós · 3000 a.C. — 400 d.C.</p>
+  <p class="hero-desc">Das margens eternas do Nilo, onde a vida nasce do deserto, surgiu uma das mais ricas e duradouras tradições míticas da humanidade — um cosmos de deuses com cabeças de animais, de mortos que viajam entre mundos, e de uma ordem universal tão frágil que precisa ser reinventada a cada amanhecer.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-num">3500</span>
+      <span class="hero-meta-label">Anos de tradição</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-num">2000+</span>
+      <span class="hero-meta-label">Divindades</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-num">42</span>
+      <span class="hero-meta-label">Leis de Ma'at</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-num">200+</span>
+      <span class="hero-meta-label">Textos sagrados</span>
+    </div>
+  </div>
+  <div class="scroll-cue">▾ &nbsp; role para ler &nbsp; ▾</div>
+</section>
+
+<div class="page">
+
+<!-- ═══════════════ CAP 1: INTRODUÇÃO ═══════════════ -->
+<section id="intro" class="chapter">
+  <div class="chapter-eyebrow">Capítulo I &nbsp;·&nbsp; Introdução</div>
+  <h2>O Mundo Onde os Deuses Caminham entre os Vivos</h2>
+  <p class="chapter-intro">Para os antigos egípcios, a separação entre o mundo dos deuses e o mundo dos humanos não era uma fronteira intransponível. Os deuses habitavam os templos, possuíam seus sacerdotes e interviam nos assuntos terrestres a todo momento. A mitologia não era história passada — era a realidade presente, renovada a cada ritual e a cada nascer do sol.</p>
+
+  <p>A mitologia egípcia não foi inventada num único momento. Ela se desenvolveu ao longo de mais de três mil e quinhentos anos — da era pré-dinástica (antes de 3100 a.C.) até o fechamento dos últimos templos pagãos pelo imperador Teodósio em 391 d.C. Neste trajeto, sofreu transformações, fusões e conflitos entre diferentes centros religiosos, cada um com sua própria versão das origens do cosmos.</p>
+
+  <p>O resultado é uma mitologia deliberadamente <strong>plural e contraditória</strong>. Os egípcios não se perturbavam com o fato de que Rá, Atum, Ptah e Khnum fossem todos considerados "criadores do mundo" — cada uma dessas versões capturava uma verdade diferente. O pensamento egípcio era <em>concreto e associativo</em>, não abstrato e lógico: múltiplas perspectivas podiam coexistir porque cada uma revelava um aspecto do divino.</p>
+
+  <div class="box box-gold">
+    <div class="box-title">Princípio do Multiplismo Egípcio</div>
+    <p>Quando um escriba egípcio escrevia "Rá é Osíris e Osíris é Rá", não estava cometendo um erro lógico. Estava expressando uma identidade mística: que dois princípios aparentemente opostos (o sol vivo e o deus morto) compartilham uma essência comum. Este modo de pensar é chamado pelos egiptólogos de "multiplismo" — a capacidade de segurar múltiplas verdades simultaneamente sem resolver a tensão entre elas.</p>
+  </div>
+
+  <h3 class="sec">A Centralidade do Nilo</h3>
+  <p>Compreender a mitologia egípcia sem compreender o Nilo é impossível. O Egito é o Nilo: uma faixa de terra fértil, nunca mais larga que 20 km, atravessando um deserto absoluto. Cada ano, no verão, o Nilo transbordava — suas águas carregadas de limo fertile cobriam os campos e depois recuavam, deixando a terra preta e úbere (<em>kemet</em>, "a terra negra") pronta para o plantio.</p>
+
+  <p>Este ciclo de inundação, plantio e colheita tornou-se o modelo de toda a mitologia egípcia. A morte de Osíris é a estiagem. O retorno de Hórus é a cheia. A ressurreição dos mortos espelha o renascer dos campos. O sol que mergulha no horizonte ao anoitecer e renasce ao amanhecer é o padrão cósmico universal: <strong>tudo que morre, renasce.</strong></p>
+
+  <p>O deserto, por outro lado, era a terra vermelha (<em>deshret</em>) — o domínio de Set, do caos, da morte sem renovação. Os egípcios viviam literalmente na fronteira entre a vida e a morte, entre a terra negra e a terra vermelha. Não é de se admirar que sua cosmologia fosse obcecada com a manutenção da ordem contra o caos.</p>
+
+</section>
+
+<!-- ═══════════════ CONTEXTO HISTÓRICO ═══════════════ -->
+<section id="historia" class="chapter">
+  <div class="chapter-eyebrow">Capítulo I &nbsp;·&nbsp; Contexto</div>
+  <h2>Três Mil Anos de Mitos — Uma Linha do Tempo</h2>
+  <p class="chapter-intro">A religião egípcia não permaneceu estática. Cada período da história do Egito trouxe novas ênfases, novos deuses ao centro, novas teologias. Conhecer esta evolução é essencial para entender por que as fontes às vezes parecem se contradizer.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">c. 5000–3100 a.C. — Período Pré-Dinástico</div>
+      <div class="tl-title">As Origens dos Cultos Locais</div>
+      <p class="tl-text">Cada cidade-estado do Vale do Nilo desenvolveu seu próprio deus protetor. Neit em Sais, Hórus em Hieracômpolis, Set em Ombos, Ptah em Mênfis, Thoth em Hermópolis. Estes cultos locais precedem qualquer escrita e são o substrato de toda a mitologia posterior. Muitas contradições da mitologia egípcia têm origem aqui.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 3100–2686 a.C. — Período Arcaico (Dinas. I–II)</div>
+      <div class="tl-title">Unificação do Egito e Primeira Teologia Real</div>
+      <p class="tl-text">A unificação do Alto e Baixo Egito pelo Rei Narmer cria a necessidade de uma mitologia unificada. Hórus torna-se o deus da realeza; o faraó é o "Hórus vivo". O culto de Osíris como rei dos mortos começa a se estruturar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 2686–2181 a.C. — Império Antigo (Dinas. III–VI)</div>
+      <div class="tl-title">Os Textos das Pirâmides e a Teologia Solar</div>
+      <p class="tl-text">A era das grandes pirâmides. Rá, o deus solar de Heliopólis, torna-se a divindade suprema. Os faraós são "filhos de Rá". Os <em>Textos das Pirâmides</em> (c. 2375 a.C.) são os textos religiosos mais antigos do mundo — inscrições nas câmaras internas das pirâmides para guiar a alma do faraó ao céu. A Grande Enéada de Heliopólis é codificada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 2055–1650 a.C. — Império Médio (Dinas. XI–XIII)</div>
+      <div class="tl-title">Democratização da Morte e Textos dos Sarcófagos</div>
+      <p class="tl-text">Os privilégios do além-túmulo, antes reservados ao faraó, se expandem para a nobreza e depois para qualquer egípcio que pudesse pagar. Os <em>Textos dos Sarcófagos</em> adaptam os Textos das Pirâmides para uso não-real. Osíris torna-se o deus dos mortos para toda a humanidade, não apenas para o faraó.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 1550–1070 a.C. — Novo Império (Dinas. XVIII–XX)</div>
+      <div class="tl-title">O Livro dos Mortos e o Apogeu Religioso</div>
+      <p class="tl-text">O período de maior sofisticação religiosa. O <em>Livro dos Mortos</em> (mais corretamente "Livro do Vir à Luz") é compilado. Amon de Tebas funde-se com Rá para se tornar Amon-Rá, deus supremo do Novo Império. A heresia do faraó Akhenaton (c. 1353 a.C.), que impôs o culto monoteísta de Aton, é rapidamente revertida após sua morte.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">332 a.C.–395 d.C. — Período Helenístico e Romano</div>
+      <div class="tl-title">Sincretismo e o Fim dos Deuses</div>
+      <p class="tl-text">Alexandre Magno conquista o Egito e é proclamado faraó. Os gregos identificam os deuses egípcios com os seus próprios (Osíris = Dioniso, Ísis = Deméter, Thoth = Hermes). O culto de Ísis espalha-se pelo mundo mediterrâneo. Com o Édito de Teodósio (391 d.C.) proibindo o paganismo, os últimos sacerdotes de Ísis em Fila apagam suas tochas por volta de 537 d.C.</p>
+    </div>
+  </div>
+
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 2: COSMOLOGIA ═══════════════ -->
+<section id="criacao" class="chapter">
+  <div class="chapter-eyebrow">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>A Criação do Mundo — Quatro Versões Sagradas</h2>
+  <p class="chapter-intro">Os egípcios não tinham uma única história da criação. Tinham quatro grandes tradições cosmogônicas, cada uma desenvolvida num centro religioso diferente, cada uma revelando um aspecto diferente do divino. Elas não se excluem — se complementam, como múltiplas janelas para o mesmo mistério.</p>
+
+  <h3 class="sec">I. A Cosmogonia de Heliopólis — O Atum Primordial</h3>
+  <p>A tradição mais influente, que deu origem à Grande Enéada. No princípio havia apenas <strong>Nun</strong> — o oceano primordial do caos, uma massa de águas escuras e sem forma, sem acima nem abaixo, sem luz nem tempo. Neste oceano informe existia, já presente, a potência criadora adormecida.</p>
+
+  <p>Desta potência, <strong>Atum</strong> surgiu — o deus auto-criado, "o completo", "o que é e o que não é". Atum emergiu do Nun e se levantou sobre o primeiríssimo montículo de terra firme: a <em>benben</em>, a pedra primordial sobre a qual se ergueria depois o templo de Heliopólis. Este ato de emergência é espelhado a cada ano pela inundação do Nilo: quando as águas recuam, os primeiros montículos de terra fértil que emergem reenactam a criação.</p>
+
+  <p>Sozinho, Atum criou os primeiros pares divinos: ao <strong>espirrar</strong> (ou ao se masturbar, na versão mais explícita dos textos), ele gerou <strong>Shu</strong> (o ar) e <strong>Tefnut</strong> (a umidade). Shu e Tefnut, por sua vez, geraram <strong>Geb</strong> (a Terra) e <strong>Nut</strong> (o Céu). Geb e Nut abraçavam-se tão intimamente que não havia espaço entre eles — foi Shu que os separou, levantando Nut acima de Geb, criando assim o espaço em que o cosmos poderia existir.</p>
+
+  <div class="box box-lapis">
+    <div class="box-title">A Imagem de Geb e Nut</div>
+    <p>A imagem de Geb (Terra) e Nut (Céu) é uma das mais poéticas de toda a mitologia egípcia. Geb jaz reclinado, o falo ereto em direção ao céu — as colinas e vales são seus membros. Nut arqueia-se sobre ele em arco, apoiada nas pontas dos pés e nas mãos, sua pele pontilhada de estrelas. O sol nasce da boca de Nut ao amanhecer e é engolido entre suas coxas ao entardecer — viajando por dentro de seu corpo durante a noite para renascer no dia seguinte. Ela era chamada "a que tem mil almas" pois cada estrela era a alma de um morto.</p>
+  </div>
+
+  <p>De Geb e Nut nasceram os quatro filhos que formariam o núcleo dramático de toda a mitologia egípcia: <strong>Osíris</strong>, <strong>Ísis</strong>, <strong>Set</strong> e <strong>Néftis</strong>. Com Atum e os quatro pares anteriores, formam-se as nove divindades da Grande Enéada de Heliopólis.</p>
+
+  <h3 class="sec">II. A Cosmogonia de Mênfis — A Criação pela Palavra</h3>
+  <p>Em Mênfis, o deus criador era <strong>Ptah</strong> — o artesão divino, o deus da criatividade. A teologia menfita, inscrita na chamada <em>Pedra de Shabaka</em> (c. 700 a.C., mas copiando um texto muito mais antigo), afirmava que Ptah criou o mundo pelo <strong>coração</strong> (sede do pensamento no Egito antigo) e pela <strong>língua</strong> (a palavra).</p>
+
+  <p>Este é um conceito extraordinariamente sofisticado: a criação não como ato físico, mas como ato mental e verbal. Ptah <em>concebeu</em> todas as coisas em seu coração e então as <em>nomeou</em> com sua língua — e ao nomeá-las, elas existiram. Estudiosos observam que esta teologia antecipa em milênios o conceito grego do <em>Logos</em> (a Palavra criadora) e o "No princípio era o Verbo" do Evangelho de João.</p>
+
+  <h3 class="sec">III. A Cosmogonia de Hermópolis — O Ogdôade</h3>
+  <p>Em Hermópolis, a cidade de Thoth, a criação era entendida como o produto de <strong>oito forças primordiais</strong> (o Ogdôade — em grego, "grupo de oito"). Estas oito forças existiam no caos antes da criação e eram representadas como quatro casais de serpentes e rãs, cada par encarnando um aspecto do caos primordial:</p>
+
+  <ul style="list-style:none;margin:16px 0 20px;padding-left:0;">
+    <li style="padding:8px 0;border-bottom:1px solid var(--border2);font-size:0.95rem;color:var(--ink3);">⬡ &nbsp;<strong>Nun e Naunet</strong> — as águas primordiais do caos</li>
+    <li style="padding:8px 0;border-bottom:1px solid var(--border2);font-size:0.95rem;color:var(--ink3);">⬡ &nbsp;<strong>Heh e Hauhet</strong> — o infinito e o ilimitado</li>
+    <li style="padding:8px 0;border-bottom:1px solid var(--border2);font-size:0.95rem;color:var(--ink3);">⬡ &nbsp;<strong>Kek e Kauket</strong> — a escuridão e a trevas</li>
+    <li style="padding:8px 0;font-size:0.95rem;color:var(--ink3);">⬡ &nbsp;<strong>Amun e Amaunet</strong> — o invisível e o oculto</li>
+  </ul>
+
+  <p>A interação destas forças caóticas produziu o <em>Ovo Primordial</em> ou o <em>Lótus Sagrado</em> — e deste emergiu o sol, que iluminou o mundo pela primeira vez. Esta cosmogonia enfatiza que a criação não foi um ato de um único criador, mas a consequência natural das tensões dentro do próprio caos.</p>
+
+  <h3 class="sec">IV. A Cosmogonia de Esna — Neit, a Tecelã Cósmica</h3>
+  <p>Em Esna (no Alto Egito), a criadora era <strong>Neit</strong> — a deusa da guerra e da caça, mas também da sabedoria e da criação. Segundo esta tradição, Neit existia antes de tudo, tecendo o mundo à existência com seu tear cósmico. Ela cuspiu as águas do Nilo, criando Nun, e então gerou Rá pronunciando seu nome. Neit é chamada "a que sempre foi, a que sempre é, a que sempre será" — uma divindade atemporal que precede a própria criação.</p>
+
+</section>
+
+<!-- ═══════════════ A GRANDE ENÉADA ═══════════════ -->
+<section id="eneada" class="chapter">
+  <div class="chapter-eyebrow">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>A Grande Enéada de Heliopólis</h2>
+  <p class="chapter-intro">A Enéada (do grego <em>ennea</em>, nove) é o panteão fundador da mitologia egípcia — nove divindades organizadas em três gerações que juntas representam a estrutura completa do cosmos egípcio, desde o caos primordial até a história humana.</p>
+
+  <div class="ennead-diagram">
+    <svg width="100%" height="280" viewBox="0 0 700 280" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="rgba(184,134,11,0.5)"/>
+        </marker>
+      </defs>
+      <!-- Generation lines -->
+      <line x1="350" y1="55" x2="210" y2="110" stroke="rgba(184,134,11,0.3)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="350" y1="55" x2="490" y2="110" stroke="rgba(184,134,11,0.3)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="210" y1="140" x2="140" y2="195" stroke="rgba(184,134,11,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="210" y1="140" x2="280" y2="195" stroke="rgba(184,134,11,0.25)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="280" y1="195" x2="210" y2="248" stroke="rgba(184,134,11,0.2)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="280" y1="195" x2="350" y2="248" stroke="rgba(184,134,11,0.2)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="280" y1="195" x2="490" y2="248" stroke="rgba(184,134,11,0.2)" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="280" y1="195" x2="630" y2="248" stroke="rgba(184,134,11,0.2)" stroke-width="1" marker-end="url(#arr)"/>
+
+      <!-- G1: Atum -->
+      <g transform="translate(350,30)">
+        <rect x="-45" y="-16" width="90" height="32" rx="2" fill="#b8860b" fill-opacity="0.2" stroke="#b8860b" stroke-opacity="0.6" stroke-width="1"/>
+        <text text-anchor="middle" y="5" font-family="'Cinzel',serif" font-size="13" fill="#d4a017" font-weight="600">ATUM</text>
+      </g>
+      <!-- G2: Shu, Tefnut -->
+      <g transform="translate(210,125)">
+        <rect x="-38" y="-16" width="76" height="28" rx="2" fill="#1a3a6e" fill-opacity="0.15" stroke="#1a3a6e" stroke-opacity="0.4" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#4a7ab8">SHU</text>
+      </g>
+      <g transform="translate(490,125)">
+        <rect x="-42" y="-16" width="84" height="28" rx="2" fill="#1a3a6e" fill-opacity="0.15" stroke="#1a3a6e" stroke-opacity="0.4" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#4a7ab8">TEFNUT</text>
+      </g>
+      <!-- G3: Geb, Nut -->
+      <g transform="translate(140,210)">
+        <rect x="-34" y="-16" width="68" height="28" rx="2" fill="#1a5c52" fill-opacity="0.15" stroke="#1a5c52" stroke-opacity="0.4" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#2e8b7a">GEB</text>
+      </g>
+      <g transform="translate(280,210)">
+        <rect x="-34" y="-16" width="68" height="28" rx="2" fill="#1a5c52" fill-opacity="0.15" stroke="#1a5c52" stroke-opacity="0.4" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#2e8b7a">NUT</text>
+      </g>
+      <!-- G4 -->
+      <g transform="translate(210,260)">
+        <rect x="-40" y="-14" width="80" height="26" rx="2" fill="#b8860b" fill-opacity="0.2" stroke="#b8860b" stroke-opacity="0.5" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#d4a017">OSÍRIS</text>
+      </g>
+      <g transform="translate(350,260)">
+        <rect x="-28" y="-14" width="56" height="26" rx="2" fill="#b8860b" fill-opacity="0.2" stroke="#b8860b" stroke-opacity="0.5" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#d4a017">ÍSIS</text>
+      </g>
+      <g transform="translate(490,260)">
+        <rect x="-28" y="-14" width="56" height="26" rx="2" fill="#8b1a1a" fill-opacity="0.2" stroke="#8b1a1a" stroke-opacity="0.5" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#c0392b">SET</text>
+      </g>
+      <g transform="translate(630,260)">
+        <rect x="-40" y="-14" width="80" height="26" rx="2" fill="#8b1a1a" fill-opacity="0.15" stroke="#8b1a1a" stroke-opacity="0.4" stroke-width="1"/>
+        <text text-anchor="middle" y="4" font-family="'Cinzel',serif" font-size="11" fill="#c0392b">NÉFTIS</text>
+      </g>
+
+      <!-- Labels -->
+      <text x="20" y="30" font-family="'Cinzel',serif" font-size="9" fill="rgba(184,134,11,0.4)" letter-spacing="2">1ª GERAÇÃO</text>
+      <text x="20" y="130" font-family="'Cinzel',serif" font-size="9" fill="rgba(184,134,11,0.4)" letter-spacing="2">2ª GERAÇÃO</text>
+      <text x="20" y="215" font-family="'Cinzel',serif" font-size="9" fill="rgba(184,134,11,0.4)" letter-spacing="2">3ª GERAÇÃO</text>
+      <text x="20" y="265" font-family="'Cinzel',serif" font-size="9" fill="rgba(184,134,11,0.4)" letter-spacing="2">4ª GERAÇÃO</text>
+    </svg>
+  </div>
+
+  <p>Note que a Enéada tem nove membros mas abrange quatro gerações. Atum é o criador auto-gerado; Shu e Tefnut são os primeiros filhos; Geb e Nut são os netos; e Osíris, Ísis, Set e Néftis são os bisnetos. Esta estrutura genealógica não é apenas familiar — é cosmológica: cada geração representa uma camada da realidade, do mais abstrato (o caos e o ar) ao mais concreto (os dramas humanos de amor, traição e poder).</p>
+
+</section>
+
+<!-- ═══════════════ MA'AT ═══════════════ -->
+<section id="ma-at" class="chapter">
+  <div class="chapter-eyebrow">Capítulo II &nbsp;·&nbsp; Cosmologia</div>
+  <h2>Ma'at — A Ordem do Cosmos</h2>
+  <p class="chapter-intro">Se há um conceito que resume toda a civilização egípcia, é Ma'at. Mais do que uma deusa, Ma'at era o princípio fundamental da realidade — a ordem, a verdade, a justiça, o equilíbrio cósmico que mantinha o universo existindo em vez de desmoronar no caos.</p>
+
+  <p>Ma'at era representada como uma mulher jovem com uma pena de avestruz na cabeça — a Pena da Verdade que seria usada para pesar os corações dos mortos. Ela era filha de Rá e estava presente na criação: quando Rá emergiu do Nun e criou o mundo, ele o fez <em>de acordo com Ma'at</em>. O cosmos existe porque Ma'at existe; se Ma'at fosse destruída, o cosmos voltaria ao caos.</p>
+
+  <p>Esta não era uma ideia abstrata. Ma'at tinha consequências práticas absolutamente concretas:</p>
+
+  <div class="box box-teal">
+    <div class="box-title">O que Ma'at significava na vida real</div>
+    <p>Para o faraó: governar de acordo com Ma'at significava fazer justiça, manter os rios irrigados, garantir alimento ao povo, derrotar os inimigos do Egito. Para o sacerdote: realizar os rituais corretamente, sem erros, para que os deuses continuassem a sustentar o cosmos. Para o trabalhador: honrar seus contratos, tratar sua família bem, não roubar, não mentir. Ma'at era simultaneamente lei cósmica, lei civil e lei moral — e a transgressão de qualquer uma delas ameaçava não apenas o transgressor, mas o equilíbrio do universo inteiro.</p>
+  </div>
+
+  <p>O oposto de Ma'at era <strong>Isfet</strong> — o caos, a injustiça, a mentira, a desordem. Isfet não era uma divindade como Set (que era o deus do caos útil, da tempestade fecunda), mas o estado de ausência de ordem: a noite absoluta, a cheia que não recua, a doença sem cura. O faraó era, por definição, o grande guardião de Ma'at — sua missão era, a cada dia, "apresentar Ma'at" aos deuses através dos rituais, confirmando que a ordem cósmica continuava a ser mantida.</p>
+
+  <p>As <strong>42 Confissões Negativas</strong> do Livro dos Mortos — as 42 declarações que o morto fazia no Salão do Julgamento ("Não matei", "Não roubei", "Não menti", etc.) — eram essencialmente uma lista das violações de Ma'at. Ao declará-las, o morto afirmava ter vivido em harmonia com o princípio fundamental do cosmos.</p>
+
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 3: DEUSES ═══════════════ -->
+<section id="ra" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Rá — O Deus Sol, Senhor de Todo o Que Existe</h2>
+  <p class="chapter-intro">Rá (também escrito Re) é a divindade solar suprema do Egito antigo — o deus mais importante do panteão desde o Império Antigo. Mais do que um deus do sol, Rá era a própria fonte da vida, da luz e da ordem cósmica. A cada amanhecer, ele renascia. A cada entardecer, ele morria. E nas horas de trevas, ele lutava contra as forças do caos para que o dia pudesse retornar.</p>
+
+  <h3 class="sec">As Três Formas de Rá</h3>
+  <p>Rá manifestava-se em três formas ao longo do dia, cada uma com nome e iconografia próprios:</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🌅</div>
+        <div>
+          <div class="god-name">Khepri</div>
+          <div class="god-epithet">"Aquele que vem a ser", o sol nascente</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Amanhecer</span>
+        <span class="tag tag-teal">Renovação</span>
+      </div>
+      <p>Representado como um escaravelho (<em>Scarabaeus sacer</em>) ou como um homem com cabeça de escaravelho. O besouro que empurra sua bola de esterco era visto como imagem perfeita do sol rolando pelo céu. Khepri era o sol que emerge do submundo, jovem e cheio de potência.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">☀️</div>
+        <div>
+          <div class="god-name">Rá</div>
+          <div class="god-epithet">"O Sol", o sol do meio-dia</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Meio-dia</span>
+        <span class="tag tag-red">Poder</span>
+      </div>
+      <p>Em seu apogeu, Rá é representado como homem com cabeça de falcão coroada pelo disco solar com a cobra-uraeus. É o sol no pico de seu poder — ardente, onipotente, senhor absoluto do cosmos. Neste momento, sua barca celestial navega pelo zênite dos céus.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🌇</div>
+        <div>
+          <div class="god-name">Atum</div>
+          <div class="god-epithet">"O Completo", o sol poente</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-lapis">Entardecer</span>
+        <span class="tag tag-teal">Completude</span>
+      </div>
+      <p>O sol que mergulha no horizonte é o velho Atum — o criador original tornando-se ao anoitecer o que foi no princípio. Representa a sabedoria acumulada, o ciclo completo. Ao entrar no horizonte, Atum-Rá começa sua perigosa viagem pelo Duat, o submundo, para emergir renascido ao amanhecer.</p>
+    </div>
+  </div>
+
+  <h3 class="sec">A Barca Solar e a Viagem Noturna</h3>
+  <p>Rá viajava pelo céu em sua <strong>Barca Mandjet</strong> (a Barca do Dia) — uma embarcação sagrada tripulada por outros deuses. À noite, transferia-se para a <strong>Barca Mesektet</strong> (a Barca da Noite) e navegava pelas doze câmaras do Duat — o submundo egípcio — cada uma correspondendo a uma hora da noite.</p>
+
+  <p>Esta jornada noturna era extremamente perigosa. Em cada câmara, Rá enfrentava diferentes horrores: portões guardados por serpentes, demônios que tentavam bloquear seu caminho, os gritos dos condenados ao tormento eterno. Mas a maior ameaça era a serpente <strong>Apófis</strong> (ou Apep) — um monstro cósmico de tamanho imensurável que habitava as profundezas do submundo e tentava, toda noite, engolir a barca solar e encerrar a criação.</p>
+
+  <div class="box box-red">
+    <div class="box-title">Apófis — O Inimigo Eterno</div>
+    <p>Apófis não era um deus que havia caído ou que pudesse ser derrotado definitivamente. Era a personificação do caos absoluto — <em>Isfet</em> encarnada em forma de serpente. Cada noite, Set — normalmente o deus do mal — tomava seu posto na proa da barca de Rá e usava seu poder do caos para combater Apófis. A ironia é que o mesmo Set que havia assassinado Osíris era indispensável para a sobrevivência do cosmos: apenas o caos poderia combater o caos. Em Karnak, existia um ritual diário em que sacerdotes desenhavam a imagem de Apófis no chão, cuspiam nela, a pisavam e a queimavam — um ato mágico de suporte à luta diária de Rá.</p>
+  </div>
+
+  <p>Ao chegar à sexta câmara (a meia-noite cósmica), algo extraordinário acontecia: o corpo de Rá e a alma de Osíris se uniam brevemente. <em>Rá é Osíris, Osíris é Rá</em> — o deus vivo e o deus morto se tornavam um, e desta união nascia a força necessária para a regeneração. A barca emergia do submundo no oriente, e Apófis era novamente repelido. O sol nascia mais uma vez. A criação sobrevivia mais um dia.</p>
+
+  <p>Os sacerdotes de Karnak realizavam o <strong>Ritual da Hora</strong> (<em>Staundenwachen</em>) — doze cerimônias ao longo da noite, uma por câmara, para apoiar magicamente a jornada de Rá. O Livro da Amduat, o Livro dos Portões, o Livro das Cavernas — todos estes textos funerários descrevem em detalhe esta viagem noturna, e eram inscritos nos sarcófagos e tumulos para que o morto pudesse acompanhar Rá em sua jornada.</p>
+
+  <h3 class="sec">Amon-Rá e o Monoteísmo Henotheísta</h3>
+  <p>No Novo Império, o deus tebano Amon ("o Oculto") fundiu-se com Rá para criar <strong>Amon-Rá</strong> — o "Rei dos Deuses", a divindade suprema do Egito por mais de mil anos. Esta fusão foi também política: a ascensão de Tebas como capital exigia a supremacia de seu deus local. Amon-Rá tornou-se uma divindade universal: invisível como o ar, manifestado como o sol, pai de todos os faraós.</p>
+
+  <p>Os hinos a Amon-Rá do Novo Império chegam perto do monoteísmo: "Tu és o único que fez tudo o que existe". Durante o reinado de Akhenaton (c. 1353–1336 a.C.), esta tendência foi radicalizada: o faraó aboliu todos os outros deuses e impôs o culto exclusivo de Aton (o disco solar) — o único caso documentado de monoteísmo estatal no Egito. Após sua morte, seus sucessores (incluindo Tutankamon, que mudou o nome de Tutanquaton) restauraram o antigo panteão e apagaram sistematicamente o nome de Akhenaton dos monumentos.</p>
+
+</section>
+
+<!-- ═══════════════ OSÍRIS ═══════════════ -->
+<section id="osiris" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Osíris — O Rei dos Mortos, Senhor da Ressurreição</h2>
+  <p class="chapter-intro">Se Rá governa o mundo dos vivos, Osíris governa o mundo dos mortos. Mas Osíris não é apenas um deus da morte — é o deus da ressurreição, da fertilidade, da renovação cíclica. Ele é o Nilo que morre no verão e retorna no outono. É o grão que é enterrado e renasce. É a esperança de que a morte não é o fim.</p>
+
+  <div class="god-card" style="margin:28px 0;">
+    <div class="god-card-head">
+      <div class="god-glyph">𓅱</div>
+      <div>
+        <div class="god-name">Osíris</div>
+        <div class="god-epithet">Wennefer, "O Belo Ser" · Khentimentiu, "Líder dos Ocidentais" · Neper, deus do grão</div>
+      </div>
+    </div>
+    <div class="god-domain">
+      <span class="tag tag-gold">Morte</span>
+      <span class="tag tag-gold">Ressurreição</span>
+      <span class="tag tag-teal">Fertilidade</span>
+      <span class="tag tag-lapis">Julgamento</span>
+      <span class="tag tag-teal">Realeza</span>
+    </div>
+    <p>Representado como uma figura mumificada de pele verde (simbolizando renovação e vegetação) ou preta (o limo fértil do Nilo), segurando o cajado e o flagelo cruzados sobre o peito. Coroado com a coroa Atef (uma coroa branca flanqueada por plumas de avestruz). O verde de sua pele não é a cor da morte — é a cor da vida que emerge da morte.</p>
+  </div>
+
+  <h3 class="sec">A Iconografia e os Símbolos de Osíris</h3>
+  <p>O cajado (<em>heka</em>) e o flagelo (<em>nekhakha</em>) que Osíris segura cruzados sobre o peito são as insígnias da realeza egípcia: o cajado para guiar o rebanho (o povo), o flagelo para debulhar o grão — mas também para punir. Estes símbolos passavam ao faraó vivo, que os segurava durante cerimônias, identificando-se tanto com Hórus (o rei vivo) quanto com Osíris (o rei morto mas ressurrecto).</p>
+
+  <p>A pele verde de Osíris é uma das imagens mais poderosas e aparentemente paradoxais da mitologia egípcia: um deus morto representado com a cor da vida. Mas para os egípcios, este paradoxo era o ponto central — Osíris está morto, mas precisamente por estar morto ele possui o poder de dar vida. O grão morre na terra e renasce como cereal. O Nilo morre na estiagem e renasce na cheia. Osíris morre e renasce como o juiz dos mortos que garante a imortalidade.</p>
+
+</section>
+
+<!-- ═══════════════ ÍSIS ═══════════════ -->
+<section id="isis" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Ísis — A Grande Mãe, Senhora da Magia</h2>
+  <p class="chapter-intro">Ísis é a divindade egípcia de maior influência e maior longevidade — seu culto se estendeu por todo o Mediterrâneo e sobreviveu até o século VI d.C. Ela é simultaneamente a esposa perfeita, a mãe protetora, a feiticeira suprema e a estrategista que supera os próprios deuses em astúcia.</p>
+
+  <div class="god-card" style="margin:28px 0;">
+    <div class="god-card-head">
+      <div class="god-glyph">𓋴</div>
+      <div>
+        <div class="god-name">Ísis</div>
+        <div class="god-epithet">Aset, "A que tem o Trono" · Mater Deorum · "Grande de Magia"</div>
+      </div>
+    </div>
+    <div class="god-domain">
+      <span class="tag tag-gold">Magia</span>
+      <span class="tag tag-gold">Cura</span>
+      <span class="tag tag-teal">Maternidade</span>
+      <span class="tag tag-lapis">Proteção</span>
+      <span class="tag tag-red">Luto</span>
+    </div>
+    <p>Representada como mulher com o hieróglifo do trono na cabeça, ou com chifres de vaca encurvados segurando o disco solar (na forma fundida com Hator). Em seu aspecto protetor, estende asas imensas sobre os sarcófagos e as câmaras funerárias. Às vezes representada como uma kite (milhafre) — o pássaro cujo grito lamentoso espelhava o luto da deusa por Osíris.</p>
+  </div>
+
+  <h3 class="sec">O Poder da Magia de Ísis</h3>
+  <p>A magia de Ísis (<em>heka</em>) era considerada a mais poderosa de todas as forças sobrenaturais — mais forte que os próprios deuses. Um episódio revelador: Ísis criou uma serpente de argila e a animou com poder mágico para picar o próprio Rá. Quando o velho deus solar, em agonia com o veneno, chamou por ajuda, Ísis concordou em curar sua ferida — mas apenas se Rá revelasse seu nome verdadeiro e secreto.</p>
+
+  <p>O <strong>nome verdadeiro</strong> (<em>ren</em>) era, para os egípcios, a essência mais íntima de um ser — conhecê-lo era ter poder absoluto sobre a criatura. Nenhum deus jamais revelava seu nome verdadeiro, pois fazê-lo era se tornar vulnerável. Mas Rá, sofrendo, cedeu: sussurrou seu nome secreto ao corpo de Ísis, que passou esse conhecimento a seu filho Hórus. Desta forma, Ísis detinha poder sobre o próprio criador.</p>
+
+  <div class="box box-gold">
+    <div class="box-title">Ísis e o Mundo Mediterrâneo</div>
+    <p>No período helenístico (após 332 a.C.), o culto de Ísis foi exportado para o mundo grego e romano com uma velocidade extraordinária. Os gregos a identificaram com Deméter (a deusa da fertilidade que perdeu sua filha) e Afrodite. Os romanos construíram templos de Ísis em Roma, Pompeia, Londres e no Reno. Seus mistérios eram célebres — rites de iniciação prometiam revelação divina e imortalidade. Estudiosos como Franz Cumont argumentam que muitos elementos do culto a Maria (a Mãe de Deus, protetora do filho divino) derivam diretamente da iconografia de Ísis amamentando Hórus.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ SET ═══════════════ -->
+<section id="set" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Set — O Deus do Caos, Inimigo e Guardião</h2>
+  <p class="chapter-intro">Set é o deus mais incompreendido do panteão egípcio. Frequentemente reduzido ao papel de "vilão" por leitores modernos, ele é na verdade uma divindade de natureza dual e paradoxal — simultaneamente o grande inimigo de Osíris e o guardião indispensável da barca solar de Rá.</p>
+
+  <div class="god-card" style="margin:28px 0;">
+    <div class="god-card-head">
+      <div class="god-glyph">⚡</div>
+      <div>
+        <div class="god-name">Set</div>
+        <div class="god-epithet">Sutekh · "O Confundidor" · Senhor da Tempestade e do Deserto</div>
+      </div>
+    </div>
+    <div class="god-domain">
+      <span class="tag tag-red">Caos</span>
+      <span class="tag tag-red">Guerra</span>
+      <span class="tag tag-gold">Tempestade</span>
+      <span class="tag tag-lapis">Deserto</span>
+      <span class="tag tag-teal">Força</span>
+    </div>
+    <p>Representado com a misteriosa "cabeça de Set" — um animal não identificado com focinho longo e curvo, orelhas quadradas e uma cauda bifurcada. Nenhum animal vivo corresponde exatamente a esta imagem; especula-se que seja um animal extinto, uma quimera ritual, ou um oryx estilizado. Sua cor é o vermelho da terra árida, do sangue e do perigo.</p>
+  </div>
+
+  <h3 class="sec">Set: Necessário e Destrutivo</h3>
+  <p>Set era o senhor da <em>deshret</em> — a terra vermelha do deserto, o espaço externo ao Egito, o âmbito dos estrangeiros e das tempestades de areia. Governava as tempestades, o vento do deserto (<em>khamsin</em>), o trovão, os terremotos e o caos. No contexto do cosmos egípcio, estas forças eram simultaneamente perigosas e necessárias: sem a cheia caótica do Nilo, não havia fertilidade; sem a tempestade, a terra ressequeria.</p>
+
+  <p>Esta ambiguidade é central para entender Set. No Período Arcaico, Set era apenas o deus protetor de Ombos, não mais "mau" que qualquer outro deus local. Com a unificação do Egito, o conflito entre Set (que representava o Sul) e Hórus (que representava o Norte) tornou-se mito fundador do próprio Estado egípcio. O faraó, ao unificar o Egito, reconciliava Set e Hórus em sua própria pessoa.</p>
+
+  <p>No Novo Império, Set atingiu uma proeminência extraordinária: os faraós Ramsessidas (Ramsés I, Seti I, Ramsés II) tinham Set em seus nomes e o veneravam como divindade guerreira. Apenas muito mais tarde — especialmente no período greco-romano, quando Osíris e Ísis tornaram-se figuras de culto universal — Set foi progressivamente demonizado, tornando-se cada vez mais assimilado à figura do diabo.</p>
+
+</section>
+
+<!-- ═══════════════ HÓRUS ═══════════════ -->
+<section id="horus" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>Hórus — O Falcão Celeste, O Faraó Eterno</h2>
+  <p class="chapter-intro">Hórus é o deus da realeza — o falcão que voa sobre tudo, cujos olhos são o sol e a lua, cujas asas são o horizonte. Cada faraó do Egito era considerado a manifestação viva de Hórus em seu reinado, e Osíris em sua morte. A monarquia egípcia existia porque Hórus existia.</p>
+
+  <div class="god-card" style="margin:28px 0;">
+    <div class="god-card-head">
+      <div class="god-glyph">𓅃</div>
+      <div>
+        <div class="god-name">Hórus</div>
+        <div class="god-epithet">Har-Wer "Hórus o Grande" · Harachte "Hórus do Horizonte" · Harpócrates "Hórus Criança"</div>
+      </div>
+    </div>
+    <div class="god-domain">
+      <span class="tag tag-gold">Realeza</span>
+      <span class="tag tag-lapis">Céu</span>
+      <span class="tag tag-gold">Sol e Lua</span>
+      <span class="tag tag-red">Guerra</span>
+      <span class="tag tag-teal">Proteção</span>
+    </div>
+    <p>Representado como falcão ou como homem com cabeça de falcão. Seus olhos são o sol (direito) e a lua (esquerdo). O Olho de Hórus — o <em>Udjat</em> ou Wedjat, o "Olho Íntegro" — é um dos amuletos mais poderosos e mais reproduzidos de toda a história, representando proteção, saúde e restauração.</p>
+  </div>
+
+  <h3 class="sec">Os Dois Olhos do Cosmos</h3>
+  <p>O mito dos olhos de Hórus é central para a cosmologia egípcia. Na batalha contra Set (descrita em detalhe na seção seguinte), Set arrancou o olho esquerdo de Hórus e o despedaçou em 64 partes, espalhando-as pelo Egito. Thoth as encontrou e reconstituiu o olho — mas faltava 1/64 da parte original. Thoth completou o olho com sua magia, tornando-o mais poderoso que antes.</p>
+
+  <p>Este olho restaurado — o <em>Udjat</em> — tornou-se o símbolo máximo de proteção, cura e inteireza. As 64 partes do olho correspondiam às frações do sistema de medidas egípcio (1/2, 1/4, 1/8, 1/16, 1/32, 1/64 = 63/64 — a parte faltante era completada magicamente por Thoth, representando a 1/64 que vai além da mensuração). O Udjat era inscrito em amuletos, pintado em sarcófagos, tatuado em navios. É possivelmente o símbolo mais reproduzido de toda a antiguidade.</p>
+
+</section>
+
+<!-- ═══════════════ OUTROS DEUSES ═══════════════ -->
+<section id="outros" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Os Deuses</div>
+  <h2>As Outras Divindades Essenciais</h2>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🦅</div>
+        <div>
+          <div class="god-name">Thoth</div>
+          <div class="god-epithet">Djehuty · Senhor de Hermópolis</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-lapis">Escrita</span>
+        <span class="tag tag-lapis">Sabedoria</span>
+        <span class="tag tag-teal">Lua</span>
+        <span class="tag tag-gold">Magia</span>
+      </div>
+      <p>O escriba dos deuses, inventor da escrita (hieróglifos) e da matemática. Cabeça de íbis ou de babuíno. Era o escriba do Julgamento de Osíris — registrava o peso do coração. Os gregos o identificaram com Hermes, criando Hermes Trismegistos ("o três vezes grande"), figura mítica atribuída ao Corpus Hermeticum. Na tradição alquímica medieval, "Hermes Trimegistos" era considerado o sábio supremo.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐺</div>
+        <div>
+          <div class="god-name">Anúbis</div>
+          <div class="god-epithet">Inpu · Senhor da Mumificação</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Morte</span>
+        <span class="tag tag-gold">Mumificação</span>
+        <span class="tag tag-lapis">Julgamento</span>
+      </div>
+      <p>O filho ilegítimo de Osíris e Néftis (não Set), representado com cabeça de chacal — o animal que espreitava os cemitérios. Anúbis foi o primeiro embalsamador: embalsamou o próprio Osíris após sua morte, estabelecendo o rito da mumificação. No Salão do Julgamento, era ele que pesava o coração do morto na balança com a pena de Ma'at. "Senhor da Terra Sagrada" — o cemitério.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐈</div>
+        <div>
+          <div class="god-name">Bastet</div>
+          <div class="god-epithet">Bast · "A de Baste" · Olho de Rá</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Gatos</span>
+        <span class="tag tag-teal">Lar</span>
+        <span class="tag tag-red">Proteção</span>
+        <span class="tag tag-gold">Música</span>
+      </div>
+      <p>Originalmente uma leoa feroz, foi amansada em gata doméstica ao longo dos séculos. Deusa da casa, da música, da dança, da gravidez e dos gatos. Seu templo em Bubástis era palco dos festivais mais animados do Egito, com música, dança e excessos de vinho. Heródoto escreveu que os egípcios choravam mais pela morte de um gato do que pela de um ser humano.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🦁</div>
+        <div>
+          <div class="god-name">Sekhmet</div>
+          <div class="god-epithet">"A Poderosa" · Olho de Rá</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-red">Guerra</span>
+        <span class="tag tag-red">Pestilência</span>
+        <span class="tag tag-gold">Cura</span>
+        <span class="tag tag-red">Fogo</span>
+      </div>
+      <p>A contrapartida violenta de Bastet — leoa feroz, cabeça de leoa, disco solar sangrento. Sekhmet era a deusa da guerra, das epidemias e da cura (os mesmos sacerdotes que invocavam a doença podiam curar). "O sopro de seu focinho é o vento quente do deserto". Paradoxalmente, era também invocada pelos médicos — pois apenas ela podia afastar as doenças que causava.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐊</div>
+        <div>
+          <div class="god-name">Sobek</div>
+          <div class="god-epithet">Senhor das Águas do Nilo</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-teal">Nilo</span>
+        <span class="tag tag-teal">Fertilidade</span>
+        <span class="tag tag-red">Força</span>
+      </div>
+      <p>Cabeça de crocodilo, deus do Nilo e da fertilidade. O medo dos crocodilos que habitavam o rio era transformado em veneração: ao adorar Sobek, o egípcio pedia proteção dos próprios crocodilos. No Faium e em Kom Ombo, crocodilos eram mumificados em seu honor. Sobek era também associado à potência do faraó.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐘</div>
+        <div>
+          <div class="god-name">Taweret</div>
+          <div class="god-epithet">"A Grande" · Protetora do Parto</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-teal">Parto</span>
+        <span class="tag tag-teal">Gravidez</span>
+        <span class="tag tag-gold">Proteção</span>
+      </div>
+      <p>Uma das divindades mais "feias" e mais amadas do panteão — hipopótama bípede com seios de mulher, garras de leão e cauda de crocodilo. Era a deusa do parto, das parturientes e dos bebês. Imagens de Taweret eram colocadas nos quartos durante o parto. Sua forma aterrorizante protegia mãe e filho dos demônios.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🌾</div>
+        <div>
+          <div class="god-name">Min</div>
+          <div class="god-epithet">Senhor das Colheitas e da Potência</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Fertilidade</span>
+        <span class="tag tag-gold">Colheitas</span>
+        <span class="tag tag-red">Virilidade</span>
+      </div>
+      <p>Uma das divindades mais antigas do Egito — um ithifálico deus da fertilidade masculina, protegendo as colheitas e as rotas comerciais do deserto. Seu festival da colheita era celebrado com a colheita ritual das primeiras espigas pelo faraó. Min também era invocado pelos viajantes que saíam para o deserto.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🏺</div>
+        <div>
+          <div class="god-name">Ptah</div>
+          <div class="god-epithet">Senhor de Mênfis · Criador</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-lapis">Criação</span>
+        <span class="tag tag-lapis">Artesanato</span>
+        <span class="tag tag-teal">Arquitetura</span>
+      </div>
+      <p>O criador pela Palavra em Mênfis. Representado como uma mumia ereta segurando um cetro composto (djed+was+ankh). Patrono dos artesãos, arquitetos e artistas. Seu sumo sacerdote tinha o título "Grande Chefe dos Artesãos". Os gregos o identificaram com Hefesto. O nome "Egito" em muitas línguas (Egypt, Egipte) deriva do egípcio <em>Hwt-ka-Ptah</em>, "Casa do Ka de Ptah" — o nome do templo de Ptah em Mênfis.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐍</div>
+        <div>
+          <div class="god-name">Néftis</div>
+          <div class="god-epithet">Nebthut · "Senhora da Mansão"</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-lapis">Morte</span>
+        <span class="tag tag-lapis">Luto</span>
+        <span class="tag tag-teal">Proteção</span>
+      </div>
+      <p>Irmã de Ísis e esposa de Set, Néftis é a deusa sombria e protetora dos mortos. Apesar de ser esposa do "vilão", ela se aliou com Ísis para reconstituir e ressuscitar Osíris. As duas irmãs, juntas, chorando pelos mortos, eram representadas nos dois extremos dos sarcófagos — seus braços alados envolvendo e protegendo o defunto para toda a eternidade.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🐄</div>
+        <div>
+          <div class="god-name">Hator</div>
+          <div class="god-epithet">Hwt-Hor · "Mansão de Hórus"</div>
+        </div>
+      </div>
+      <div class="god-domain">
+        <span class="tag tag-gold">Amor</span>
+        <span class="tag tag-gold">Beleza</span>
+        <span class="tag tag-teal">Música</span>
+        <span class="tag tag-red">Embriaguez</span>
+      </div>
+      <p>A grande deusa do amor, da beleza, da música, da dança, da maternidade e da embriaguez. Representada com chifres de vaca e disco solar, ou como vaca. Era a "mãe mítica" dos faraós — o faraó era amamentado pela vaca celeste Hator. Seu templo em Denderah é um dos mais bem preservados do Egito. A sistrum (chocalho ritual) era seu instrumento sagrado.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ PANTEÃO COMPLETO ═══════════════ -->
+<section id="referencia" class="chapter">
+  <div class="chapter-eyebrow">Capítulo III &nbsp;·&nbsp; Referência</div>
+  <h2>Tabela de Referência — O Panteão Completo</h2>
+
+  <table class="full-table">
+    <thead>
+      <tr>
+        <th>Divindade</th>
+        <th>Forma</th>
+        <th>Domínio Principal</th>
+        <th>Centro de Culto</th>
+        <th>Equivalente Grego</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Amon / Amon-Rá</td><td>Homem com coroa de plumas</td><td>Ar oculto, rei dos deuses</td><td>Tebas (Karnak)</td><td>Zeus</td></tr>
+      <tr><td>Anúbis</td><td>Cabeça de chacal</td><td>Morte, mumificação, julgamento</td><td>Licopólis</td><td>Hermes (psicopompo)</td></tr>
+      <tr><td>Atum</td><td>Homem com coroa dupla</td><td>Criação, sol poente</td><td>Heliopólis</td><td>—</td></tr>
+      <tr><td>Bastet</td><td>Cabeça de gata</td><td>Lar, gatos, música, parto</td><td>Bubástis</td><td>Ártemis</td></tr>
+      <tr><td>Bes</td><td>Anão feroz</td><td>Parto, proteção das crianças</td><td>Todo o Egito</td><td>—</td></tr>
+      <tr><td>Geb</td><td>Homem deitado, pele verde</td><td>Terra, vegetação, terremotos</td><td>Heliopólis</td><td>Gaia / Cronos</td></tr>
+      <tr><td>Hator</td><td>Vaca / mulher com chifres e disco solar</td><td>Amor, beleza, música, maternidade</td><td>Denderah</td><td>Afrodite / Hera</td></tr>
+      <tr><td>Hórus</td><td>Falcão / homem com cabeça de falcão</td><td>Realeza, céu, sol e lua</td><td>Edfu, Hieracômpolis</td><td>Apolo / Zeus</td></tr>
+      <tr><td>Imhotep</td><td>Escriba sentado (humano deificado)</td><td>Medicina, sabedoria, arquitetura</td><td>Mênfis, Fila</td><td>Asclépio</td></tr>
+      <tr><td>Ísis</td><td>Mulher com trono na cabeça / com asas</td><td>Magia, maternidade, proteção, cura</td><td>Fila, todo o Egito</td><td>Deméter / Afrodite</td></tr>
+      <tr><td>Khepri</td><td>Escaravelho / homem com cabeça de escaravelho</td><td>Sol nascente, renovação</td><td>Heliopólis</td><td>—</td></tr>
+      <tr><td>Khnum</td><td>Cabeça de carneiro</td><td>Criação da humanidade (argila), Nilo</td><td>Elefantina, Esna</td><td>Hefesto</td></tr>
+      <tr><td>Ma'at</td><td>Mulher com pena de avestruz</td><td>Verdade, justiça, ordem cósmica</td><td>Todo o Egito</td><td>Têmis / Diké</td></tr>
+      <tr><td>Min</td><td>Homem itifálico com plumas</td><td>Fertilidade, colheitas, viajantes</td><td>Koptos, Akhmim</td><td>Pan</td></tr>
+      <tr><td>Mut</td><td>Mulher com coroa dupla / abutre</td><td>Maternidade, realeza feminina</td><td>Tebas (Karnak)</td><td>Hera</td></tr>
+      <tr><td>Neit</td><td>Mulher com escudo e flechas</td><td>Caça, guerra, tecelagem, criação</td><td>Sais</td><td>Atena</td></tr>
+      <tr><td>Néftis</td><td>Mulher com hieróglifo da mansão</td><td>Morte, luto, proteção dos mortos</td><td>Todo o Egito</td><td>—</td></tr>
+      <tr><td>Nut</td><td>Mulher arqueada / vaca celeste</td><td>Céu, estrelas, almas dos mortos</td><td>Heliopólis</td><td>Gaia (céu)</td></tr>
+      <tr><td>Osíris</td><td>Múmia de pele verde com cajado e flagelo</td><td>Morte, ressurreição, fertilidade, julgamento</td><td>Abidos, Busíris</td><td>Dioniso / Hades</td></tr>
+      <tr><td>Ptah</td><td>Múmia ereta com cetro composto</td><td>Criação, artesanato, arquitetura</td><td>Mênfis</td><td>Hefesto</td></tr>
+      <tr><td>Rá</td><td>Falcão com disco solar / escaravelho / homem velho</td><td>Sol, criação, realeza</td><td>Heliopólis</td><td>Apolo / Hélio</td></tr>
+      <tr><td>Sekhmet</td><td>Cabeça de leoa com disco solar</td><td>Guerra, pestilência, cura, fogo</td><td>Mênfis</td><td>Ares / Ártemis</td></tr>
+      <tr><td>Set</td><td>Animal-Set (não identificado)</td><td>Caos, deserto, tempestade, guerra</td><td>Ombos, Avaris</td><td>Tifão / Ares</td></tr>
+      <tr><td>Shu</td><td>Homem com pena de avestruz</td><td>Ar, vento, separação do céu e terra</td><td>Heliopólis</td><td>Atlas</td></tr>
+      <tr><td>Sobek</td><td>Cabeça de crocodilo</td><td>Nilo, fertilidade, força</td><td>Faium, Kom Ombo</td><td>—</td></tr>
+      <tr><td>Taweret</td><td>Hipopótama bípede</td><td>Parto, gravidez, proteção</td><td>Todo o Egito</td><td>—</td></tr>
+      <tr><td>Tefnut</td><td>Cabeça de leoa / cobra</td><td>Umidade, chuva, orvalho</td><td>Heliopólis, Leontópolis</td><td>—</td></tr>
+      <tr><td>Thoth</td><td>Cabeça de íbis / babuíno</td><td>Escrita, sabedoria, lua, magia, julgamento</td><td>Hermópolis</td><td>Hermes</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 4: MITOS CENTRAIS ═══════════════ -->
+<section id="mito-osiris" class="chapter">
+  <div class="chapter-eyebrow">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>O Assassinato e Ressurreição de Osíris</h2>
+  <p class="chapter-intro">O mito de Osíris é o mito central de toda a mitologia egípcia — a narrativa que explica a morte, a ressurreição, a realeza, a fertilidade e a ordem moral do cosmos. Plutarco escreveu a versão mais completa que chegou até nós (em grego, século I d.C.), mas o mito é muito mais antigo — seus fragmentos aparecem já nos Textos das Pirâmides de 2400 a.C.</p>
+
+  <div class="myth-block">
+    <div class="myth-header">
+      <span class="myth-icon">𓅱</span>
+      <div>
+        <span>Mito Fundador</span>
+        <h3>A Paixão de Osíris</h3>
+      </div>
+    </div>
+    <div class="myth-body">
+      <p>No início dos tempos, Osíris era o rei do Egito — um monarca sábio e justo que ensinou aos humanos a agricultura, as leis e a civilização. Ísis, sua esposa e irmã, governava ao seu lado. Juntos, trouxeram a ordem e a prosperidade ao mundo. Mas seu irmão Set ardia de inveja e ressentimento.</p>
+
+      <p>Set tramou a morte de Osíris com engenhosa crueldade. Mandou construir um caixão exatamente às medidas do corpo de Osíris, o decorou com ouro e joias, e o levou a um banquete. Anunciou que daria o caixão como presente a quem melhor nele coubesse. Os convidados se experimentaram um a um — nenhum se encaixava. Quando chegou a vez de Osíris, o caixão o continha perfeitamente. Neste momento, Set e seus 72 cúmplices selaram a tampa, lançaram o caixão no Nilo, que o carregou até o mar.</p>
+
+      <p>O caixão foi parar em Biblos, na Fenícia, onde ficou preso nas raízes de uma tamareira que cresceu ao redor dele, incorporando-o ao tronco. O rei local usou a árvore como pilar em seu palácio, sem saber o que continha.</p>
+
+      <p>Ísis partiu em busca do marido. Disfarçada como serva, infiltrou-se no palácio de Biblos e se revelou ao rei, que lhe devolveu o caixão. Ísis o levou de volta ao Egito, mas Set o encontrou enquanto ela dormia — e desta vez desmembrou o corpo de Osíris em 14 (ou 16, conforme a versão) partes, espalhando-as por todo o Egito.</p>
+
+      <p>Ísis percorreu o Egito inteiro, encontrando e recolhendo cada parte do corpo. Ela e Néftis reconstituíram o corpo, e Anúbis o embalsamou — estabelecendo assim o rito da mumificação. Com seus poderes mágicos, Ísis transformou-se em kite e, batendo as asas sobre o corpo reconstituído, soprou o fôlego de vida de volta a Osíris por tempo suficiente para conceber um filho: Hórus. Osíris voltou à vida por apenas uma noite — e desta concepção milagrosa nasceu o herdeiro do trono.</p>
+
+      <p>Não podendo permanecer no mundo dos vivos, Osíris desceu ao Duat e tornou-se o Rei dos Mortos — o juiz supremo que pesaria as almas de toda a humanidade até o fim dos tempos. Sua ressurreição foi incompleta no mundo terrestre, mas total no além: ele reinou no reino subterrâneo com poder absoluto sobre o destino de todos os que morriam.</p>
+    </div>
+  </div>
+
+  <h3 class="sec">O Significado Mítico</h3>
+  <p>A morte de Osíris não é apenas um assassinato fratricida — é o modelo de toda morte e de toda esperança de ressurreição. Os mortos eram chamados de "Osíris [nome do falecido]" — ao morrer, cada egípcio tornava-se Osíris, participando de sua morte e de sua resurreição. O mito não era uma metáfora da fertilidade agrícola (embora também o fosse) — era a garantia concreta da imortalidade pessoal.</p>
+
+  <p>O mito também explica a estrutura dual do tempo egípcio: o Nilo <em>vive</em> (cheia, verde, abundância = Osíris vivo) e o Nilo <em>morre</em> (estiagem, seco, fome = Osíris morto). A transição de uma estação para outra era o momento em que o cosmos estava mais vulnerável — quando Ma'at precisava ser defendida com mais fervor.</p>
+
+</section>
+
+<!-- ═══════════════ BATALHA DE HÓRUS ═══════════════ -->
+<section id="mito-horus" class="chapter">
+  <div class="chapter-eyebrow">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>A Batalha de Hórus e Set — 80 Anos de Guerra</h2>
+  <p class="chapter-intro">Após a morte de Osíris, a disputa entre Hórus (filho legítimo, herdeiro do trono) e Set (tio assassino e usurpador) durou, segundo algumas tradições, oitenta anos — e envolveu o julgamento dos próprios deuses.</p>
+
+  <div class="myth-block">
+    <div class="myth-header">
+      <span class="myth-icon">𓅃</span>
+      <div>
+        <span>O Grande Conflito</span>
+        <h3>Hórus contra Set — O Julgamento dos Deuses</h3>
+      </div>
+    </div>
+    <div class="myth-body">
+      <p>Quando Hórus cresceu, pediu ao tribunal dos deuses — presidido pelo sol Ra e depois por Thoth — que julgasse sua disputa com Set pelo trono do Egito. O julgamento se arrastou por décadas. Cada deus tinha seus defensores: Ra inclinava-se para Set (o mais forte); Thoth e a maioria dos deuses apoiavam Hórus (o legítimo herdeiro).</p>
+
+      <p>Durante o processo, os dois contendores travaram batalhas físicas, cada uma mais estranha que a anterior. Set tentou seduzir Hórus para humilhá-lo; Hórus respondeu coletando o sêmen de Set e o apresentando ao tribunal como prova da vilania do tio. Em outra batalha, Set arranou o olho esquerdo de Hórus em 64 pedaços — a lua que se fragmenta. Hórus arrancou os testículos de Set. Thoth reconstituiu o olho de Hórus (criando o Udjat); as genitálias de Set também foram restauradas.</p>
+
+      <p>As batalhas também ocorreram no plano das transformações: os dois se tornaram hipopótamos e lutaram nas profundezas do Nilo. Ísis, tentando ajudar o filho, errou com um arpão e feriu o próprio Hórus — um episódio que revelava a ambiguidade do conflito: nenhuma das partes era simplesmente "boa" ou "má".</p>
+
+      <p>O julgamento foi finalmente resolvido quando Osiris, do submundo, enviou uma mensagem ameaçadora: se Hórus não fosse declarado vencedor, Osíris enviaria seus demônios para devorar os próprios deuses. Diante desta ameaça, o tribunal decidiu: Hórus herdaria o trono do Egito como rei dos vivos. Set recebeu como compensação o posto de senhor dos trovões e dos ventos — e o papel de defensor da barca solar de Rá contra Apófis.</p>
+
+      <p>Hórus então apresentou o Olho Udjat a seu pai Osíris no submundo. Ao comer o olho, Osíris reviveu completamente em seu reino subterrâneo. O rei morto estava completo; o rei vivo estava coroado. A ordem estava restaurada.</p>
+    </div>
+  </div>
+
+  <div class="box box-gold">
+    <div class="box-title">O Papiro Jumilhac e a Versão Completa</div>
+    <p>A versão mais detalhada e coerente do mito de Hórus e Set encontra-se no Papiro Jumilhac (período ptolomaico, c. séc. II a.C.) — um documento extraordinário que narra não apenas o conflito mas também as transformações geográficas do Egito como resultado das batalhas. Cada cicatriz da terra egípcia — cada curva do Nilo, cada montanha, cada ermos — era explicada como o resultado de um episódio específico da guerra entre os dois deuses.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ JORNADA DE RÁ ═══════════════ -->
+<section id="mito-ra" class="chapter">
+  <div class="chapter-eyebrow">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>A Jornada Noturna de Rá — O Livro da Amduat</h2>
+  <p class="chapter-intro">O <em>Livro Daquilo que Está no Mundo Subterrâneo</em> (Amduat) é um dos textos funerários mais importantes do Egito, descrevendo hora por hora a jornada de Rá através das doze câmaras do Duat durante a noite. É simultaneamente uma cosmologia, um mapa do além e um guia de sobrevivência espiritual.</p>
+
+  <div class="afterlife-steps">
+    <div class="astep">
+      <div class="astep-num">1</div>
+      <div class="astep-content">
+        <h4>Primeira Hora — A Entrada no Horizonte Ocidental</h4>
+        <p>Rá entra no Duat pelo horizonte ocidental na sua Barca Mesektet. Esta câmara é chamada <em>Wernes</em> — o "Lago de Lluz". Os mortos que habitam aqui recebem água e ar frescos de Rá ao passar. Outros deuses sobem a bordo para protegê-lo.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">2</div>
+      <div class="astep-content">
+        <h4>Segunda Hora — O Mar de Osíris</h4>
+        <p>A câmara chamada <em>Wernesut</em> — o Reino Oculto. Aqui Rá atravessa as terras dos que vivem da água. Osíris reina aqui como um enorme ser deitado, do qual emergem as sementes do cereal. Esta câmara é o ventre fértil de onde toda vida terrestre renasce.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">3</div>
+      <div class="astep-content">
+        <h4>Terceira até Quinta Horas</h4>
+        <p>Rá atravessa câmaras cada vez mais profundas e obscuras do submundo. Encontra os guardiões de cada portão — serpentes e demônios que só permitem a passagem de quem conhece seus nomes secretos. Os nomes corretos (registrados no Livro da Amduat) dão passagem livre; quem não os sabe é devorado.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">6</div>
+      <div class="astep-content">
+        <h4>Sexta Hora — A Meia-Noite Cósmica</h4>
+        <p>A hora mais perigosa e mais sagrada. A câmara contém o enorme corpo de Apófis, enrolado em espiral. É aqui que o Ka de Rá se une ao Ba de Osíris — o deus solar e o deus morto se fundem em um único ser por um instante eterno. Desta fusão nasce a energia para a renovação. A cobra Mehen envolve a barca solar para protegê-la.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">7</div>
+      <div class="astep-content">
+        <h4>Sétima Hora — A Batalha com Apófis</h4>
+        <p>A hora mais aterrorizante. Apófis ataca a barca com fúria total — sua voz soa como o trovão, seu corpo bloqueia o caminho. Set e os outros deuses guerreiros combatem a serpente. A deusa-serpente Serket (protetora dos venenos) amarra Apófis. Hórus decapita-o. Mas Apófis é imorrível — na próxima noite, voltará inteiro.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">8–11</div>
+      <div class="astep-content">
+        <h4>Oitava até Décima-Primeira Horas — A Renovação</h4>
+        <p>Rá passa por câmaras onde os mortos justos recebem recompensas e os ímpios são punidos. Os condenados têm os corpos invertidos, os pescoços cortados, são mergulhados em lagos de fogo. Os justos recebem luz, água e ar — as essências da vida. A barca começa a acelerar em direção ao leste.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">12</div>
+      <div class="astep-content">
+        <h4>Décima-Segunda Hora — O Renascimento</h4>
+        <p>A última câmara é o ventre do deus Nun — o oceano primordial. A barca passa por dentro de uma enorme serpente <em>Ankh-netjeru</em> ("Vida dos Deuses") — entrando pela cauda e saindo pela boca. Ao sair, Rá é renascido como o escaravelho Khepri. O sol emerge no horizonte oriental. A criação continua por mais um dia.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ DESTRUIÇÃO DA HUMANIDADE ═══════════════ -->
+<section id="mito-sekhmet" class="chapter">
+  <div class="chapter-eyebrow">Capítulo IV &nbsp;·&nbsp; Mitos Centrais</div>
+  <h2>A Destruição da Humanidade — O Olho de Rá</h2>
+
+  <div class="myth-block">
+    <div class="myth-header">
+      <span class="myth-icon">🦁</span>
+      <div>
+        <span>O Mito da Catástrofe</span>
+        <h3>Sekhmet e o Sangue da Humanidade</h3>
+      </div>
+    </div>
+    <div class="myth-body">
+      <p>Quando Rá envelheceu e seus ossos tornaram-se prata, seus músculos ouro e seus cabelos lápis-lazúli, os seres humanos começaram a conspirар contra ele — zombando de sua velhice e tramando sua queda. Rá soube das conspirações e convocou os deuses em segredo: o que devia fazer?</p>
+
+      <p>Os deuses aconselharam-no a enviar seu Olho — manifestado como Sekhmet, a leoa poderosa — para destruir os conspiradores. Rá concordou. Sekhmet desceu sobre a humanidade em fúria, massacrando e bebendo sangue com delícia, implacável como uma epidemia.</p>
+
+      <p>Rá, observando a carnificina, arrependeu-se — não pretendia destruir toda a humanidade, apenas os conspiradores. Mas Sekhmet estava em transe de destruição e não obedecia mais suas ordens. Para pará-la, Rá ordenou que fossem tingidos sete mil jarros de cerveja de vermelho com ocre (o sucedâneo do sangue). Os jarros foram espalhados nos campos.</p>
+
+      <p>Quando Sekhmet chegou, viu um campo de "sangue" e começou a beber vorazmente. Embriagou-se e caiu em sono profundo. Ao despertar, havia perdido o gosto pela destruição e voltou ao lado de Rá como protetora. A humanidade sobreviveu — mas Rá, desgostoso, abandonou a terra e foi viver no céu, sobre o dorso da vaca celeste Nut. Shu sustentou Nut para que ela não desabasse. Desde então, os deuses governam de longe, e os humanos precisam de sacerdotes para intermediar sua relação com o divino.</p>
+    </div>
+  </div>
+
+  <p>Este mito serve múltiplas funções: explica por que os deuses não caminham mais visivelmente entre os humanos; explica a necessidade dos sacerdotes e dos rituais; justifica a existência do festival de embriaguez de Hator (em que os fiéis bebiam cerveja em sua honra); e apresenta uma reflexão sobre a violência divina — mesmo os deuses podem ser "excessivos" e precisam ser contidos.</p>
+
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 5: ALÉM-TÚMULO ═══════════════ -->
+<section id="alma" class="chapter">
+  <div class="chapter-eyebrow">Capítulo V &nbsp;·&nbsp; O Além</div>
+  <h2>A Alma Egípcia — Cinco Partes de Um Ser</h2>
+  <p class="chapter-intro">Para os egípcios, a alma humana não era uma unidade simples — era uma composição de múltiplos elementos, cada um com seu papel específico na vida e na morte. Esta visão multifacetada da alma tem implicações profundas para entender por que a mumificação era tão importante e o que acontecia após a morte.</p>
+
+  <div class="god-grid">
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">𓂓</div>
+        <div>
+          <div class="god-name">Ka</div>
+          <div class="god-epithet">O Duplo Vital</div>
+        </div>
+      </div>
+      <p>O Ka era a força vital — a energia que distingue o vivo do morto. Era criado simultaneamente com o corpo por Khnum no torno dos oleiros divinos. O Ka precisava de sustento depois da morte: daí as oferendas de comida, bebida e incenso depositadas nas tumbas. Quando um egípcio morria, dizia-se que ele havia "ido para o seu Ka". As estátuas das tumbas eram receptáculos para o Ka.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">𓅃</div>
+        <div>
+          <div class="god-name">Ba</div>
+          <div class="god-epithet">A Personalidade Viajante</div>
+        </div>
+      </div>
+      <p>O Ba era o que poderíamos chamar de "personalidade" ou "caráter" — a essência única e individual de uma pessoa. Representado como um pássaro de cabeça humana (geralmente um falcão). Após a morte, o Ba poderia viajar livremente entre o mundo dos vivos e o mundo dos mortos — daí a importância de manter o corpo intacto (o Ba precisava reconhecer e retornar ao corpo). No Livro dos Mortos, o Ba e o Ka se reuniam para formar o Akh.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">✦</div>
+        <div>
+          <div class="god-name">Akh</div>
+          <div class="god-epithet">O Espírito Luminoso</div>
+        </div>
+      </div>
+      <p>O Akh era o estado final e glorificado da alma após o julgamento bem-sucedido — a fusão bem-sucedida do Ba e do Ka. Era representado como um íbis-criado ou como uma estrela. Os Akhu (plural) eram os espíritos bem-aventurados que habitavam o campo dos juncos com Osíris, ou as estrelas imperecíveis do norte. O objetivo de todos os ritos funerários era criar um Akh — uma alma glorificada e imortal.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">𓀔</div>
+        <div>
+          <div class="god-name">Ren</div>
+          <div class="god-epithet">O Nome</div>
+        </div>
+      </div>
+      <p>O nome era uma parte essencial da identidade — destruir o nome de alguém era aniquilar sua existência (daí os egípcios apagarem os nomes de inimigos dos monumentos). O nome secreto era a essência mais íntima. O Ren precisava ser preservado para que a alma sobrevivesse, o que explica a obsessão egípcia com inscrições nos monumentos — enquanto o nome fosse lido, a pessoa vivia.</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">🫀</div>
+        <div>
+          <div class="god-name">Ib</div>
+          <div class="god-epithet">O Coração</div>
+        </div>
+      </div>
+      <p>O coração era a sede da inteligência, da memória e da personalidade moral — não o cérebro (que os embalsamadores descartavam pela narina). Era o único órgão deixado no corpo durante a mumificação. No julgamento póstumo, era o coração que seria pesado contra a pena de Ma'at. Por isso, amuletos de escaravelho eram colocados sobre o coração para impedi-lo de "testemunhar contra o dono".</p>
+    </div>
+    <div class="god-card">
+      <div class="god-card-head">
+        <div class="god-glyph">👤</div>
+        <div>
+          <div class="god-name">Shuyet</div>
+          <div class="god-epithet">A Sombra</div>
+        </div>
+      </div>
+      <p>A sombra de uma pessoa era sua companhia constante e parte de sua essência. Era protegida e preservada com tanto cuidado quanto o corpo. Mágicos poderiam capturar a sombra de alguém para obter poder sobre essa pessoa. No além, a sombra acompanhava a alma em suas viagens pelo Duat.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ JULGAMENTO ═══════════════ -->
+<section id="julgamento" class="chapter">
+  <div class="chapter-eyebrow">Capítulo V &nbsp;·&nbsp; O Além</div>
+  <h2>O Julgamento de Osíris — A Pesagem do Coração</h2>
+  <p class="chapter-intro">O julgamento dos mortos é uma das cenas mais representadas e mais dramáticas de toda a arte egípcia. Acontecia no Salão das Duas Verdades (<em>Maet</em>) — um espaço cósmico onde cada alma era avaliada segundo seu comportamento em vida.</p>
+
+  <div class="afterlife-steps">
+    <div class="astep">
+      <div class="astep-num">1</div>
+      <div class="astep-content">
+        <h4>A Chegada ao Salão</h4>
+        <p>Após a morte, a alma era conduzida por Anúbis (ou pelo próprio Thoth, dependendo do texto) ao Salão das Duas Verdades. O morto devia ter recitado as fórmulas corretas do Livro dos Mortos ao longo do caminho para abrir os portões e passar pelos guardiões.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">2</div>
+      <div class="astep-content">
+        <h4>As 42 Confissões Negativas</h4>
+        <p>O morto se apresentava a um painel de 42 juízes — cada um responsável por um pecado específico. Perante cada juiz, o morto declarava: "Não fiz [pecado]". "Não matei." "Não roubei." "Não proferi mentiras." "Não forniquei no lugar sagrado." "Não retive a água em sua estação." "Não apaguei o nome de nenhum deus." Estas 42 confissões negativas cobriam crimes rituais, morais e sociais.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">3</div>
+      <div class="astep-content">
+        <h4>A Pesagem do Coração</h4>
+        <p>O coração do morto era colocado num dos pratos de uma balança. No outro prato, a Pena de Ma'at — a pena de avestruz da deusa da verdade e da justiça. Anúbis verificava a balança. Thoth registrava o resultado em seu papiro. Hórus observava. Os deuses assistiam. Um coração mais leve que a pena significava uma vida vivida em harmonia com Ma'at — o morto era declarado <em>Ma'a-kheru</em>, "justo de voz", e poderia passar.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">4</div>
+      <div class="astep-content">
+        <h4>Ammit — O Devorador</h4>
+        <p>Se o coração fosse mais pesado que a pena — carregado de transgressões, mentiras e maldades — uma criatura horrenda aguardava: <strong>Ammit</strong>, a "Devoradora dos Mortos". Corpo de hipopótamo, parte dianteira de leão ou leopardo, cabeça de crocodilo. Ammit devorava o coração impuro — e sem coração, a alma se dissolvia no nada. Não havia inferno eterno no Egito: apenas a aniquilação. Esta segunda morte era chamada <em>mekhit</em>.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">5</div>
+      <div class="astep-content">
+        <h4>A Introdução a Osíris</h4>
+        <p>O morto declarado justo era conduzido por Hórus à presença de Osíris, sentado em seu trono, flanqueado por Ísis e Néftis. Osíris anuncia o veredicto final: o morto é admitido ao Campo dos Juncos (Aaru) — o paraíso egípcio. Thoth registra o nome do bem-aventurado no Livro da Vida.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    "Hail to thee, great god, lord of the Two Truths! I have come to thee, my lord, that I may be brought to see thy beauties. I know thee, I know thy name... I have not sinned against men. I have not oppressed the poor... I have not committed murder... I have not caused suffering... Behold me — I have come to thee without sin, without guilt."
+    <cite>— Livro dos Mortos, Capítulo 125 (Confissão Negativa)</cite>
+  </div>
+
+</section>
+
+<!-- ═══════════════ CAMPO DOS JUNCOS ═══════════════ -->
+<section id="campo" class="chapter">
+  <div class="chapter-eyebrow">Capítulo V &nbsp;·&nbsp; O Além</div>
+  <h2>O Campo dos Juncos — O Paraíso Egípcio</h2>
+  <p class="chapter-intro">Aaru — o Campo dos Juncos — era a concepção egípcia de paraíso. Não um lugar de descanso eterno passivo, mas uma versão perfeita do Egito: com campos férteis para lavrar, água abundante, família reunida e os deuses como vizinhos.</p>
+
+  <p>Aaru era localizado a leste do sol nascente, além do horizonte, no horizonte eterno. Era descrito como uma série de ilhas separadas por canais de água cristalina, com campos de trigo e cevada que cresciam até três metros de altura (segundo alguns textos). O morto bem-aventurado trabalhava estes campos — mas para isso existiam os <strong>Ushabtis</strong>: estatuetas funerárias que serviriam como substitutos do morto nas tarefas mais pesadas.</p>
+
+  <div class="box box-teal">
+    <div class="box-title">Os Ushabtis — Servos do Além</div>
+    <p>Os Ushabtis (ou Shabtis) eram pequenas estatuetas de argila, faiança ou pedra, inscritas com o Capítulo 6 do Livro dos Mortos: "Ó Shabti, se o defunto [nome] for convocado para executar qualquer trabalho no reino dos mortos... diga 'Estou aqui, eu o farei!'". Quanto mais rico o morto, mais ushabtis tinha — faraós podiam ter centenas ou mesmo um ushabti para cada dia do ano. A ideia de que mesmo no paraíso o trabalho era necessário reflete profundamente a mentalidade egípcia: a vida boa não era ociosa, mas ativa e produtiva.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ LIVRO DOS MORTOS ═══════════════ -->
+<section id="livro-mortos" class="chapter">
+  <div class="chapter-eyebrow">Capítulo V &nbsp;·&nbsp; O Além</div>
+  <h2>O Livro dos Mortos — O Guia para a Imortalidade</h2>
+  <p class="chapter-intro">O que os egípcios chamavam de <em>Pert em Hru</em> — "Vir à Luz do Dia" ou "Livro do Vir à Existência à Luz" — é conhecido no mundo moderno como Livro dos Mortos. Era o manual de sobrevivência espiritual mais importante do Egito, usado durante o Novo Império e o período tardio.</p>
+
+  <p>O Livro dos Mortos era uma coleção de cerca de 200 fórmulas mágicas (capítulos), ilustradas com vinhetas coloridas, escritas em papiro e depositadas no sarcófago ou enroladas entre as bandagens da múmia. Cada fórmula servia a um propósito específico:</p>
+
+  <div class="comp-table" style="overflow-x:auto">
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Capítulos Importantes</th>
+        <th>Título / Função</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Cap. 1</td><td>O dia do funeral — passagem do morto ao além</td></tr>
+      <tr><td>Cap. 6</td><td>Fazer com que o Ushabti trabalhe pelo morto</td></tr>
+      <tr><td>Cap. 17</td><td>Fórmula para emergir ao dia — uma das mais complexas</td></tr>
+      <tr><td>Cap. 30B</td><td>Impedir o coração de testemunhar contra o morto</td></tr>
+      <tr><td>Cap. 64</td><td>Conhecer todos os capítulos — um capítulo "mestre"</td></tr>
+      <tr><td>Cap. 125</td><td>As 42 Confissões Negativas e a pesagem do coração</td></tr>
+      <tr><td>Cap. 126</td><td>Saudar os babuínos guardiões do lago de fogo</td></tr>
+      <tr><td>Cap. 175</td><td>Não morrer pela segunda vez — imortalidade garantida</td></tr>
+      <tr><td>Cap. 186</td><td>Adoration of Hathor — homenagem à deusa da bela morte</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>O texto mais famoso é o Papiro de Ani (c. 1275 a.C.), conservado no British Museum — um rolo de 24 metros de comprimento, ricamente ilustrado, pertencente a um escriba real chamado Ani. Suas vinhetas coloridas incluem a cena da pesagem do coração em detalhe extraordinário, e são a principal fonte de iconografia do além-egípcio para o mundo moderno.</p>
+
+  <p>O Livro dos Mortos era um objeto de luxo — apenas os ricos podiam encomendar uma cópia personalizada. Os pobres usavam versões abreviadas ou amuletos com fórmulas específicas. Mas a democratização do acesso ao além-túmulo (que começara com os Textos dos Sarcófagos no Império Médio) significava que qualquer egípcio com recursos suficientes podia aspirar à imortalidade de Osíris.</p>
+
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 6: PRÁTICAS ═══════════════ -->
+<section id="templos" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VI &nbsp;·&nbsp; Práticas Religiosas</div>
+  <h2>Templos — A Casa do Deus</h2>
+  <p class="chapter-intro">O templo egípcio não era um local de culto público como uma igreja ou mesquita. Era literalmente a <em>casa</em> do deus — um complexo onde a divindade residia em sua estátua, era alimentada, banhada, vestida e entretida diariamente por sacerdotes especialmente designados.</p>
+
+  <p>A arquitetura do templo refletia a cosmologia egípcia: o piso sobe progressivamente do exterior para o santuário interior (simbolizando a subida do montículo primordial). O teto baixava (a abóbada celeste se aproxima). O santuário mais interno era uma câmara escura e pequena — o ventre da criação, onde a estátua do deus residia. Apenas o sumo sacerdote podia entrar.</p>
+
+  <p>A rotina diária de um grande templo incluía três serviços — manhã, meio-dia e tarde. O sumo sacerdote, purificado e vestido de linho branco, entrava no santuário, quebrava o lacre da câmara da estátua, "acordava" o deus com hinos e incenso, o banhava com água pura, o ungia com óleos sagrados, o vestia com roupas novas, o oferecia alimentos (pão, cerveja, carnes, legumes, flores) e o reselava na câmara. O alimento das oferendas era depois dividido entre os sacerdotes — acreditava-se que o deus havia "consumido" sua essência espiritual.</p>
+
+</section>
+
+<!-- ═══════════════ O FARAÓ ═══════════════ -->
+<section id="farao" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VI &nbsp;·&nbsp; Práticas Religiosas</div>
+  <h2>O Faraó — A Divindade Encarnada</h2>
+  <p class="chapter-intro">O faraó não era meramente um rei — era o elo entre o divino e o humano, o nó que mantinha o cosmos coeso. Sem o faraó, Ma'at se desfaria e o caos prevaleceria.</p>
+
+  <p>O faraó possuía cinco nomes rituais, cada um revelando um aspecto de sua identidade divina. O mais importante era o <strong>nome de Hórus</strong> — afirmando que o faraó era a manifestação viva do falcão celeste. Ao morrer, tornava-se Osíris — o "Osíris [nome do faraó]", reinando no além.</p>
+
+  <p>Esta dupla identidade — Hórus em vida, Osíris na morte — é a estrutura central da teologia real egípcia. Cada faraó era simultaneamente filho e sucessor: filho de Rá (título que aparece no quarto nome), filho de Osíris (porque Hórus é filho de Osíris) e manifestação do próprio Hórus. Quando um faraó morria e o sucessor subia ao trono, o mito de Hórus e Osíris era reenactado: o morto tornava-se Osíris; o vivo tornava-se Hórus.</p>
+
+  <div class="box box-lapis">
+    <div class="box-title">A Coroação como Ritual Mítico</div>
+    <p>A cerimônia de coroação egípcia reencenava explicitamente o mito de Hórus. O novo faraó recebia as coroas duplas — a coroa branca do Alto Egito (associada a Hórus) e a coroa vermelha do Baixo Egito (associada a Set). Ao recebê-las, ele "reconciliava" Hórus e Set em sua pessoa, tornando-se o soberano de um Egito unificado tal como o cosmos unificado depois da resolução da batalha entre os dois deuses. A cerimônia incluía a circum-ambulation (a corrida em torno do perímetro da corte) que simbolizava a tomada de posse de toda a terra, e o ritual de "criação do fogo" que ligava o novo faraó ao sol nascente.</p>
+  </div>
+
+</section>
+
+<!-- ═══════════════ MUMIFICAÇÃO ═══════════════ -->
+<section id="mumificacao" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VI &nbsp;·&nbsp; Práticas Religiosas</div>
+  <h2>A Arte da Mumificação — Preservando o Corpo para a Eternidade</h2>
+  <p class="chapter-intro">A mumificação não era uma técnica médica — era um rito religioso de imitação do que Anúbis havia feito por Osíris. Ao preservar o corpo, os sacerdotes garantiam que o Ba pudesse continuar a retornar ao corpo, e que o Ka pudesse ter uma morada permanente.</p>
+
+  <div class="afterlife-steps">
+    <div class="astep">
+      <div class="astep-num">1</div>
+      <div class="astep-content">
+        <h4>A Lavagem Ritual — A Tenda da Purificação</h4>
+        <p>O corpo era lavado com água do Nilo e natron (carbonato de sódio natural) no <em>ibu</em> — a "tenda da purificação". Esta lavagem espelhava a inundação purificadora do Nilo e a lavagem ritual que Ísis havia feito ao corpo de Osíris.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">2</div>
+      <div class="astep-content">
+        <h4>A Remoção dos Órgãos — O Embalsamamento</h4>
+        <p>No <em>per-nefer</em> ("casa do belo"), os embalsamadores removiam os órgãos internos através de uma incisão no flanco esquerdo. Pulmões, fígado, estômago e intestinos eram separados, tratados e colocados em quatro <strong>vasos canópicos</strong> — jarros com tampas em forma de cabeça dos quatro filhos de Hórus. O cérebro era removido pela narina com um gancho de metal e descartado (os egípcios não conheciam sua função). O coração era deixado no corpo.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">3</div>
+      <div class="astep-content">
+        <h4>A Desidratação — 40 Dias no Natron</h4>
+        <p>O corpo era coberto e preenchido com natron (sal dessecante) por quarenta dias — o número ritual associado ao purgatório no Duat. O natron absorvia a umidade do corpo, impedindo a decomposição. Após os quarenta dias, o corpo estava completamente seco e mumificado naturalmente.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">4</div>
+      <div class="astep-content">
+        <h4>O Empacotamento — 15 Dias de Enfaixamento</h4>
+        <p>O corpo era ungido com óleos, resinas e mirra, e então envolto em centenas de metros de linho branco. Amuletos protetores eram colocados entre as camadas de bandagem em posições específicas — um escaravelho sobre o coração, Udjats nos pulsos, objetos de ouro nos dedos. O processo inteiro durava 70 dias — o tempo que Sirius (a estrela de Ísis) ficava ausente do céu antes do seu nascer heliaco, que anunciava a inundação.</p>
+      </div>
+    </div>
+    <div class="astep">
+      <div class="astep-num">5</div>
+      <div class="astep-content">
+        <h4>A Abertura da Boca — Restituindo os Sentidos</h4>
+        <p>Na entrada da tumba, o ritual da <em>Abertura da Boca</em> era realizado pelo filho mais velho (ou pelo sacerdote sem-sacerdote com máscara de chacal). Com instrumentos rituais de forma de anzol, o sacerdote tocava a boca, olhos, ouvidos e nariz da múmia ou da estátua — devolvendo-lhe magicamente a capacidade de ver, ouvir, respirar, comer e falar no além. Sem este ritual, a múmia era apenas um cadáver; com ele, tornava-se a morada de uma alma viva.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════ ANIMAIS SAGRADOS ═══════════════ -->
+<section id="animais" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VI &nbsp;·&nbsp; Práticas Religiosas</div>
+  <h2>Animais Sagrados — Os Deuses na Terra</h2>
+  <p class="chapter-intro">A relação dos egípcios com os animais é uma das características mais distintivas — e mais mal-compreendidas — de sua religião. Os deuses com cabeças de animais não eram primitivos ou pré-científicos: eram uma linguagem simbólica sofisticada para expressar qualidades divinas.</p>
+
+  <p>Cada deus era associado a um animal que encarnava suas qualidades essenciais: Hórus ao falcão (visão aguçada, voo alto, poder sobre o território). Anúbis ao chacal (guardião dos cemitérios, farejar os mortos). Thoth ao íbis (o bico curvo como o crescente da lua) e ao babuíno (que gritava ao nascer do sol). Bastet ao gato (independência, sensualidade, instinto caçador suave). Sekhmet à leoa (a caçadora implacável).</p>
+
+  <p>Além dos deuses com formas animais, existiam animais individuais criados como manifestações físicas do deus — o <strong>Touro Ápis de Mênfis</strong> era a manifestação viva de Ptah (e depois de Osíris): um touro real, selecionado por marcações específicas (mancha branca triangular na testa, mancha em forma de abutre nas costas, pêlos duplos na cauda), tratado como um deus vivo. Ao morrer, era mumificado e enterrado nos Serapeum — catacumbas enormes em Saqqara onde dezenas de touros Ápis repousam em sarcófagos de granito de 60 toneladas.</p>
+
+  <table class="comp-table">
+    <thead>
+      <tr><th>Animal</th><th>Divindade(s)</th><th>Qualidades Simbólicas</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Falcão</td><td>Hórus, Rá, Montu</td><td>Realeza, visão divina, poder celeste</td></tr>
+      <tr><td>Chacal</td><td>Anúbis, Wepwawet</td><td>Morte, passagem, guia dos mortos</td></tr>
+      <tr><td>Íbis</td><td>Thoth</td><td>Sabedoria, lua, escrita</td></tr>
+      <tr><td>Gato</td><td>Bastet</td><td>Proteção, lar, sensualidade</td></tr>
+      <tr><td>Leoa</td><td>Sekhmet, Tefnut</td><td>Guerra, fúria solar, poder feminino</td></tr>
+      <tr><td>Cobra</td><td>Wadjet, Renenutet, Meretseger</td><td>Realeza (uraeus), fertilidade, perigo</td></tr>
+      <tr><td>Escaravelho</td><td>Khepri</td><td>Renovação, sol nascente</td></tr>
+      <tr><td>Crocodilo</td><td>Sobek</td><td>Nilo, fertilidade, poder bruto</td></tr>
+      <tr><td>Hipopótamo</td><td>Taweret, Set</td><td>Parto (fêmea), caos/força (macho)</td></tr>
+      <tr><td>Touro</td><td>Ápis, Min, Montu</td><td>Força, fertilidade, potência real</td></tr>
+      <tr><td>Carneiro</td><td>Amon, Khnum</td><td>Criação, fertilidade, poder oculto</td></tr>
+      <tr><td>Babuíno</td><td>Thoth, Hapi</td><td>Sabedoria, lua, guardiões do além</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<div class="hdivider">𓂀 · 𓅓 · 𓆣 · 𓋴 · 𓏏</div>
+
+<!-- ═══════════════ CAP 7: LEGADO ═══════════════ -->
+<section id="legado" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VII &nbsp;·&nbsp; Legado</div>
+  <h2>O Legado — Como o Egito Moldou o Mundo</h2>
+  <p class="chapter-intro">A mitologia egípcia não morreu quando os últimos sacerdotes fecharam os templos. Ela sobreviveu transformada em filosofia, religião, arte e ciência — e continua a influenciar o mundo moderno de formas surpreendentes e às vezes invisíveis.</p>
+
+  <h3 class="sec">A Influência sobre o Judaísmo e o Cristianismo</h3>
+  <p>Os hebreus viveram no Egito (segundo o relato bíblico) durante gerações, e as marcas desta imersão são visíveis na Bíblia. O Salmo 104 é quase uma tradução do Grande Hino ao Aton de Akhenaton. O conceito de criação pela palavra (<em>fiat lux</em>) ecoa a teologia menfita de Ptah. O número quarenta (quarenta dias de Moisés no Sinai, quarenta anos no deserto, quarenta dias de Noé) corresponde ao período de mumificação e ao período de ausência de Sirius — o número sagrado do purgatório egípcio.</p>
+  <p>A própria figura de <strong>Ísis amamentando Hórus</strong> — a grande mãe com o filho divino nos braços — tornou-se o modelo iconográfico da Madonna com o Menino Cristo, através do culto de Ísis no mundo romano. A mandorla (Vesica Piscis) que envolve Cristo nos tímpanos das catedrais medievais é a mesma forma da Vesica Piscis egípcia que aparecia ao redor de Osíris.</p>
+
+  <h3 class="sec">A Influência sobre a Grécia e Roma</h3>
+  <p>Heródoto, Platão, Pitágoras (que teria estudado no Egito) — os maiores pensadores da Grécia antiga reconheciam o Egito como a fonte de todo o conhecimento. O que Pitágoras chamou de a alma imortal e seu ciclo de reencarnações muito provavelmente foi influenciado pelo Ba egípcio e sua viagem pelo Duat. A própria ideia platônica de que o cosmos é geométrico e ordenado — e que a alma aspira ao imaterial — tem paralelos diretos com a concepção egípcia de Ma'at como ordem cósmica e a jornada do Ba para o campo dos juncos.</p>
+
+  <h3 class="sec">O Hermetismo e a Alquimia</h3>
+  <p>O <strong>Corpus Hermeticum</strong> — um conjunto de textos filosóficos escritos em grego entre os séculos I e III d.C. no Egito greco-romano — atribuía-se ao mítico Hermes Trimegistos (Thoth-Hermes). Estes textos, redescobertos na Renascença e traduzidos por Marsilio Ficino em 1462, tornaram-se a base do hermetismo, da alquimia medieval e de muito do esoterismo ocidental. A fórmula <em>"como em cima, assim em baixo"</em> — que resume a visão hermética do cosmos — é uma reformulação direta do princípio egípcio de que o cosmos celeste e o cosmos terrestre se espelham mutuamente.</p>
+
+  <h3 class="sec">Influência na Cultura Contemporânea</h3>
+  <p>O Egito continua a fascinar porque oferece algo que poucos sistemas religiosos oferecem com tanta riqueza visual: uma cosmologia completa, dramaticamente narrada, com personagens de profundidade psicológica extraordinária. Set não é simplesmente o mal — é a necessidade do caos para que o cosmos sobreviva. Ísis não é simplesmente a mãe boa — é a feiticeira que engana o próprio Rá. Osíris não é simplesmente o morto — é a semente que precisa ser enterrada para renascer.</p>
+
+  <p>A maçonaria moderna herdou muito do simbolismo egípcio (especialmente através do mito de Osíris como o arquiteto morto e ressurrecto). A psicanálise junguiana usa os deuses egípcios como arquétipos da psique. O New Age reapropriou os chakras como Sephiroth egípcias. E o Olho de Hórus — o Udjat — continua a aparecer em notas de dólar, tatuagens, jóias e designs contemporâneos como símbolo de proteção e poder, três mil anos após ter sido gravado pela primeira vez nas paredes de uma tumba de um faraó esquecido.</p>
+
+</section>
+
+<!-- ═══════════════ TEXTOS SAGRADOS ═══════════════ -->
+<section id="textos" class="chapter">
+  <div class="chapter-eyebrow">Capítulo VII &nbsp;·&nbsp; Textos Sagrados</div>
+  <h2>Os Textos Sagrados — A Biblioteca dos Deuses</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">c. 2375–2191 a.C.</div>
+      <div class="tl-title">Textos das Pirâmides</div>
+      <p class="tl-text">O mais antigo corpus religioso do mundo inteiro — inscrições nas câmaras internas das pirâmides de Unas e outros faraós do Império Antigo. Contém 800+ fórmulas para guiar a alma do faraó ao céu, para sua transformação em estrela, para sua identificação com Osíris e Rá. A língua é arcaica e poética, às vezes impenetrável. Inclui os únicos fragmentos extensos do mito de Osíris em sua forma mais antiga.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 2055–1650 a.C.</div>
+      <div class="tl-title">Textos dos Sarcófagos</div>
+      <p class="tl-text">Derivados dos Textos das Pirâmides mas adaptados para uso não-real, escritos nas superfícies internas dos sarcófagos de madeira da nobreza. Democratizam o acesso ao além-túmulo: não apenas o faraó, mas qualquer rico que pudesse pagar um bom caixão tinha acesso às fórmulas sagradas. Incluem o Livro dos Dois Caminhos — o primeiro "mapa do além" com ilustrações coloridas.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 1550–50 a.C.</div>
+      <div class="tl-title">Livro dos Mortos (Pert em Hru)</div>
+      <p class="tl-text">Coleção de ~200 capítulos escritos em papiro e colocados nas tumbas. O Papiro de Ani (British Museum, c. 1275 a.C.) é o exemplar mais famoso e mais belo. Inclui as Confissões Negativas, a Cena da Pesagem do Coração, e fórmulas para todas as contingências do além.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 1550–1070 a.C.</div>
+      <div class="tl-title">Livro da Amduat (o que está no submundo)</div>
+      <p class="tl-text">Descreve as doze câmaras do Duat e a jornada noturna de Rá hora por hora. Reservado originalmente apenas à realeza, inscrito nas câmaras dos túmulos dos faraós no Vale dos Reis. É o guia mais completo para a jornada noturna do sol.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 1550–1070 a.C.</div>
+      <div class="tl-title">Livro dos Portões e Livro das Cavernas</div>
+      <p class="tl-text">Variantes do Livro da Amduat, com ênfases diferentes. O Livro dos Portões foca nos doze portões guardados por serpentes que Rá deve atravessar. O Livro das Cavernas descreve as câmaras do Duat como cavernas e inclui cenas mais detalhadas dos suplícios dos condenados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">c. 1500–700 a.C.</div>
+      <div class="tl-title">Textos dos Templos — Inscrições de Karnak, Luxor, Abidos</div>
+      <p class="tl-text">As paredes dos grandes templos do Novo Império são bibliotecas arquitetônicas — cobertas de hieróglifos que narram mitos, hinos, rituais e relatos históricos. Os relevos coloridos de Karnak, os hieros de Abidos, os textos astronômicos do teto do templo de Hathor em Denderah — cada parede é um texto sagrado gravado em pedra para durar a eternidade.</p>
+    </div>
+  </div>
+
+</section>
+
+</div><!-- .page -->
+
+<!-- FOOTER -->
+<footer>
+  <p>𓂀 &nbsp; Mitologia Egípcia — O Cosmos dos Faraós &nbsp; · &nbsp; c. 3100 a.C. — 537 d.C. &nbsp; 𓂀</p>
+</footer>
+
+</main><!-- #main -->
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('prog').style.width = pct + '%';
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Mobile sidebar
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+document.getElementById('main').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.remove('open');
+});
+</script>
+</body>
+</html>
