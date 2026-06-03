@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartografia dos Mundos Invisíveis — Volume II: A Geografia dos Mundos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#040f0e;
+  --ink:#e8f4ef;
+  --ink-soft:#a6c4ba;
+  --gold:#f5c542;
+  --violet:#b06bff;
+  --cyan:#2fe3cf;
+  --magenta:#ff5db1;
+  --crimson:#ff6a4d;
+  /* ACENTO DESTE VOLUME: CIANO/ESMERALDA — território, geografia, as cidades */
+  --accent:#2fe3cf;
+  --accent2:#36d97a;
+  --accent-soft:#0e5a52;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(47,227,207,.10), transparent 42%),
+    radial-gradient(circle at 86% 20%, rgba(54,217,122,.08), transparent 42%),
+    radial-gradient(circle at 50% 120%, rgba(176,107,255,.06), transparent 55%),
+    linear-gradient(180deg,#040f0e 0%, #07201d 55%, #040f0e 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:'Futura','Futura PT','Jost','Century Gothic',sans-serif;
+  font-weight:400;line-height:1.92;font-size:18px;letter-spacing:.2px;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff7, transparent),
+    radial-gradient(1px 1px at 70% 60%, #2fe3cf66, transparent),
+    radial-gradient(1px 1px at 40% 80%, #36d97a55, transparent),
+    radial-gradient(1px 1px at 85% 15%, #fff5, transparent),
+    radial-gradient(1px 1px at 55% 45%, #fff4, transparent),
+    radial-gradient(1px 1px at 10% 70%, #b06bff44, transparent);
+  background-size:cover;
+}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 26px 120px;}
+.cover{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 40px;}
+.cover .sigil{font-size:3.2rem;color:var(--accent);text-shadow:0 0 30px var(--accent2);margin-bottom:18px;letter-spacing:8px;}
+.cover .series{font-family:'Jost';font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--magenta);font-size:.8rem;margin-bottom:26px;}
+.cover h1{font-family:'Cinzel Decorative',serif;font-weight:900;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;margin:0;
+  background:linear-gradient(120deg,#d6fff6,var(--accent) 40%,var(--accent2) 70%,#d6fff6);
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 60px rgba(47,227,207,.25);}
+.cover .vol{font-family:'Cinzel',serif;font-weight:700;letter-spacing:4px;margin-top:30px;font-size:1.1rem;color:var(--ink);}
+.cover .voltitle{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.3rem,4vw,2rem);color:var(--accent);margin-top:8px;}
+.cover .tag{max-width:540px;margin:34px auto 0;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.6;}
+.divider{display:block;width:60%;max-width:340px;height:1px;margin:40px auto;border:0;background:linear-gradient(90deg,transparent,var(--accent),transparent);position:relative;}
+.divider::after{content:"✦";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 14px;color:var(--accent);}
+h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.18;color:var(--accent);margin:3.4em 0 .2em;padding-top:.4em;text-shadow:0 0 26px rgba(47,227,207,.18);}
+h2 .num{display:block;font-family:'Jost';font-weight:300;letter-spacing:6px;font-size:.7rem;color:var(--magenta);text-transform:uppercase;margin-bottom:.7em;}
+h2::after{content:"";display:block;width:90px;height:3px;margin-top:.45em;background:linear-gradient(90deg,var(--accent),transparent);border-radius:3px;}
+h3{font-family:'Cinzel',serif;font-weight:600;font-size:1.22rem;letter-spacing:1px;color:var(--accent2);margin:2.4em 0 .3em;}
+h4{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.92rem;color:var(--magenta);margin:1.8em 0 .2em;}
+p{margin:.9em 0;}
+em{color:#cffff5;} strong{color:#fff;font-weight:600;} a{color:var(--accent);}
+.opening>p:first-of-type::first-letter{font-family:'Cinzel Decorative',serif;font-size:4.4rem;line-height:.8;float:left;padding:8px 14px 0 0;color:var(--accent);text-shadow:0 0 20px var(--accent2);}
+.relato{border-left:3px solid var(--accent);background:linear-gradient(180deg,rgba(47,227,207,.08),rgba(47,227,207,.02));padding:18px 24px;margin:1.8em 0;border-radius:0 10px 10px 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;line-height:1.62;color:#e8fbf6;}
+.relato .who{display:block;font-family:'Jost';font-style:normal;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--magenta);margin-top:12px;}
+.padrao{border:1px solid var(--accent-soft);border-top:3px solid var(--accent);background:rgba(54,217,122,.05);padding:20px 24px;margin:2em 0;border-radius:10px;}
+.padrao .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--accent2);display:block;margin-bottom:8px;}
+.fonte{font-size:.86rem;color:var(--ink-soft);font-style:italic;border-top:1px dashed #ffffff22;padding-top:10px;margin-top:14px;}
+.fonte strong{color:var(--accent2);font-style:normal;}
+.aviso{border:1px solid var(--magenta);background:rgba(255,93,177,.08);border-radius:12px;padding:22px 26px;margin:2.4em 0;}
+.aviso .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--magenta);display:block;margin-bottom:8px;}
+blockquote{margin:2em 0;padding:0 0 0 26px;border-left:3px solid var(--magenta);font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;line-height:1.5;color:#fdeef7;}
+blockquote cite{display:block;font-family:'Jost';font-style:normal;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;color:var(--magenta);margin-top:12px;}
+.ficha{border:1px solid #ffffff1c;border-radius:12px;padding:6px 22px 18px;margin:1.8em 0;background:rgba(0,0,0,.22);}
+.ficha .ft{font-family:'Cinzel',serif;color:var(--accent);letter-spacing:1px;font-size:1.05rem;margin:14px 0 6px;}
+.ficha dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:0;font-size:.95rem;}
+.ficha dt{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem;color:var(--magenta);padding-top:5px;}
+.ficha dd{margin:0;color:var(--ink);}
+.tabela{width:100%;border-collapse:collapse;margin:2em 0;font-size:.92rem;}
+.tabela th{font-family:'Cinzel',serif;text-align:left;color:var(--accent);border-bottom:2px solid var(--accent-soft);padding:12px 10px;font-weight:600;}
+.tabela td{padding:11px 10px;border-bottom:1px solid #ffffff12;vertical-align:top;color:var(--ink);}
+.tabela tr:hover td{background:rgba(47,227,207,.05);}
+.nav{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:60px 0 0;}
+.nav a{font-family:'Jost';font-weight:500;text-decoration:none;letter-spacing:1px;font-size:.9rem;padding:12px 20px;border:1px solid #ffffff22;border-radius:30px;color:var(--ink);}
+.nav a.cur{border-color:var(--accent);color:var(--accent);background:rgba(47,227,207,.08);}
+.toc{columns:2;column-gap:34px;margin:1.5em 0;}
+.toc a{display:block;text-decoration:none;color:var(--ink-soft);padding:5px 0;border-bottom:1px solid #ffffff10;font-size:.94rem;break-inside:avoid;}
+.toc a:hover{color:var(--accent);}
+.toc a b{color:var(--accent);font-family:'Jost';font-weight:600;}
+footer{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:60px;padding-top:30px;border-top:1px solid #ffffff14;font-family:'Jost';letter-spacing:1px;}
+@media(max-width:640px){body{font-size:17px;}.toc{columns:1;}.ficha dl{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="sigil">✦ ☍ ✦</div>
+  <div class="series">Cartografia dos Mundos Invisíveis</div>
+  <h1>A Geografia dos Mundos Invisíveis</h1>
+  <div class="vol">— VOLUME&nbsp;II —</div>
+  <div class="voltitle">Regiões, Cidades, Escolas, Fraternidades e Portais</div>
+  <p class="tag">Saímos do mapa e descemos ao território. Aqui se anda pelas ruas das colônias astrais, se atravessa o Umbral, se bate à porta das cidades que ninguém vê de dia.</p>
+  <hr class="divider">
+  <nav class="nav">
+    <a href="I-os-grandes-mapas.html">I · Os Grandes Mapas</a>
+    <a class="cur" href="#">II · A Geografia dos Mundos</a>
+    <a href="III-testemunhos-e-habitantes.html">III · Testemunhos e Habitantes</a>
+  </nav>
+</header>
+
+<section class="aviso">
+  <span class="label">Como ler esta geografia</span>
+  <p>No Volume I montamos o esqueleto: a escada de planos, a faixa intermediária, a lei da afinidade. Agora colocamos carne nos ossos. Cada região recebe uma <strong>ficha</strong>: quem relatou, como é o ambiente, quem mora lá, como se entra, para que serve, e com que outros relatos ela rima. Quando uma mesma região aparece em tradições diferentes, mostramos lado a lado — porque a coincidência é o tesouro.</p>
+</section>
+
+<section>
+  <h2><span class="num">Sumário do Volume II</span>O território</h2>
+  <nav class="toc">
+    <a href="#c0"><b>Prólogo</b> · Do mapa ao território</a>
+    <a href="#c1"><b>I</b> · O Umbral espírita</a>
+    <a href="#c2"><b>II</b> · Umbral umbandista e reinos da Quimbanda</a>
+    <a href="#c3"><b>III</b> · As colônias e os hospitais espirituais</a>
+    <a href="#c4"><b>IV</b> · As regiões de sofrimento e obsessão</a>
+    <a href="#c5"><b>V</b> · As regiões paradisíacas e os planos mentais</a>
+    <a href="#c6"><b>VI</b> · Cidades, escolas, templos e bibliotecas astrais</a>
+    <a href="#c7"><b>VII</b> · As fraternidades e ordens ocultas</a>
+    <a href="#c8"><b>VIII</b> · Iniciação, sinais e o acesso restrito</a>
+    <a href="#c9"><b>IX</b> · SeteAlém e as cidades misteriosas</a>
+    <a href="#c10"><b>X</b> · Shambhala e Agartha</a>
+    <a href="#c11"><b>XI</b> · Reinos subterrâneos e mundos perdidos</a>
+    <a href="#c12"><b>XII</b> · Portais e passagens entre mundos</a>
+    <a href="#sint"><b>Síntese</b> · A geografia recorrente</a>
+  </nav>
+</section>
+
+<section class="opening" id="c0">
+  <h2><span class="num">Prólogo</span>Do mapa ao território</h2>
+  <p>Um mapa mostra que existe uma montanha. Só quem subiu sabe o cheiro do ar lá em cima, a cor das pedras, quem mora na encosta. Este volume é feito de relatos de quem afirma ter subido. Vamos tratar cada testemunho com o mesmo respeito que um geógrafo daria ao diário de um explorador: não para acreditar cegamente, mas para anotar com cuidado <em>o que foi descrito</em> e cruzar com o que outros descreveram do mesmo lugar.</p>
+  <p>A coisa mais surpreendente, quando você junta os diários, é que a geografia <strong>se repete</strong>. Pessoas que nunca leram umas às outras descrevem a mesma "zona cinzenta" logo depois da morte, as mesmas "cidades de luz" mais acima, os mesmos guardiões nas fronteiras. É como se vários exploradores, partindo de portos diferentes, voltassem com mapas da mesma costa. Vamos percorrê-la de baixo para cima — começando pelo lugar mais povoado e mais descrito de todo o invisível: a faixa logo acima do nosso mundo.</p>
+</section>
+
+<!-- ===== I — UMBRAL ===== -->
+<section class="opening" id="c1">
+  <h2><span class="num">Região I</span>O Umbral espírita</h2>
+  <p>De todos os lugares mapeados pela humanidade, o Umbral talvez seja o mais detalhado — porque foi descrito por um morto, com vocação de repórter, durante anos. André Luiz, espírito que se diz ter sido médico em vida, ditou através de Chico Xavier uma série de livros que funcionam quase como um <strong>documentário do pós-morte</strong>. E o primeiro lugar que ele descreve, ao "acordar" depois de morrer, é o Umbral.</p>
+  <p>O Umbral é a <strong>faixa densa que cerca a Terra</strong>, logo acima do plano físico — a "zona purgatorial" onde param os que morreram presos a vícios, ódios, remorsos e apegos que não conseguem soltar. Não é um castigo aplicado de fora. É, de novo, a lei da afinidade do Volume I: quem morre com a consciência pesada gravita para a faixa pesada, e fica ali até começar a se aliviar. André Luiz o descreve como uma região de neblina, de paisagens em ruínas que espelham o estado mental dos habitantes, de cavernas, charcos, trevas — e, no meio disso, sofrimento muito real.</p>
+
+  <div class="relato">
+    "Sombras espessas... uma neblina pegajosa que parecia brotar do próprio chão. Vultos arrastavam-se, lamentando-se. Era como se a paisagem inteira fosse feita do desespero de quem ali estava."
+    <span class="who">— paráfrase da chegada de André Luiz ao Umbral</span>
+  </div>
+
+  <div class="ficha">
+    <p class="ft">FICHA · O UMBRAL</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>O espírito André Luiz (via Chico Xavier); a doutrina kardecista em geral.</dd>
+      <dt>Localização</dt><dd>Faixa densa que envolve a Terra, logo acima do físico.</dd>
+      <dt>Ambiente</dt><dd>Neblina, ruínas, charcos, cavernas, trevas; paisagem moldada pelo estado mental dos que a habitam.</dd>
+      <dt>Habitantes</dt><dd>Espíritos sofredores, viciados, obsessores; organizações de "trevas" com hierarquia de força.</dd>
+      <dt>Como se entra</dt><dd>Por afinidade: quem morre com a consciência pesada gravita para lá automaticamente.</dd>
+      <dt>Função</dt><dd>Purgação e despertar. Não é eterno; é uma trégua dolorosa até a alma começar a se aliviar e subir.</dd>
+      <dt>Rima com</dt><dd>Kama-loka (Teosofia), purgatório (cristianismo), reino dos kiumbas (Quimbanda), bardo inferior (budismo).</dd>
+    </dl>
+  </div>
+
+  <p>O detalhe genial dos relatos de André Luiz é que o Umbral <strong>não tem grades</strong>. Ninguém está preso por muros. As pessoas ficam porque <em>acreditam</em> que devem ficar, porque não conseguem imaginar que merecem sair, porque o peso da culpa as cola ao chão. A "saída" sempre esteve aberta — o que falta é a percepção de que se pode ir embora. É a mesma chave gnóstica do Volume I: <strong>o cárcere é feito de esquecimento e de crença, não de pedra.</strong> E é por isso que existe um trabalho de resgate, feito por espíritos socorristas que descem ao Umbral para acordar os que dormem na neblina — o que nos leva direto às colônias.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> a série de André Luiz / Chico Xavier, em especial <em>Nosso Lar</em> (1944), <em>Os Mensageiros</em> e <em>Libertação</em> (esta dedicada quase inteira às regiões umbralinas); <em>O Céu e o Inferno</em> de Kardec, que já antecipava a região purgatorial sem o nome "Umbral".</p>
+</section>
+
+<!-- ===== II — UMBRAL UMBANDISTA / QUIMBANDA ===== -->
+<section class="opening" id="c2">
+  <h2><span class="num">Região II</span>Umbral umbandista e os reinos da Quimbanda</h2>
+  <p>A Umbanda herdou o Umbral do Espiritismo, mas o lê com lentes próprias. Para o umbandista, a zona densa é onde vagam os <strong>espíritos sofredores</strong> e os <strong>kiumbas</strong> — os mortos atrasados, viciados, ainda colados à vingança ou à matéria. O trabalho central de boa parte dos terreiros é justamente <em>descer energeticamente até essa faixa</em>, acolher esses espíritos, doutriná-los e encaminhá-los para cima. O preto-velho e o caboclo são, em grande parte, <strong>obreiros do Umbral</strong>: especialistas em entrar na neblina e tirar gente de lá.</p>
+  <p>Já a Quimbanda mapeia essa mesma faixa fronteiriça com outra coragem. Ela não foge da zona densa — ela <strong>trabalha dentro dela</strong>, com os Exus, que são os únicos que transitam ali sem se perder, porque são os senhores das encruzilhadas e dos limiares. Os <strong>reinos quimbandeiros</strong> — o Reino do Cemitério (de Exu Caveira e dos guardiões da morte), o Reino das Almas, o Reino das Encruzilhadas, o Reino do Cruzeiro — são regiões dessa fronteira, cada uma com sua função: lidar com os mortos sem rumo, desfazer demandas, abrir caminhos travados.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · OS REINOS DA FRONTEIRA</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>A tradição oral e iniciática umbandista e quimbandeira; obras de sistematização do séc. XX.</dd>
+      <dt>Localização</dt><dd>A faixa-limiar entre vivos e mortos — encruzilhadas, cemitérios, matas, o "cruzeiro das almas".</dd>
+      <dt>Ambiente</dt><dd>Zonas de passagem; cada reino tem uma "paisagem" própria (a cova, a estrada, o portão).</dd>
+      <dt>Habitantes</dt><dd>Exus e Pombagiras (de lei e crus), kiumbas, almas sem rumo, guardiões severos.</dd>
+      <dt>Como se entra</dt><dd>Pelo trabalho ritual e pela mediação obrigatória de Exu, o porteiro de todos os mundos.</dd>
+      <dt>Função</dt><dd>Encaminhar mortos, abrir e fechar caminhos, mediar o trânsito entre o Aiyê (Terra) e o invisível.</dd>
+      <dt>Rima com</dt><dd>O Umbral espírita (mesma faixa); os guardiões dos limiares gnósticos (mesma função de porteiro).</dd>
+    </dl>
+  </div>
+
+  <div class="padrao">
+    <span class="label">Três tradições, uma faixa</span>
+    <p>Repare no que está acontecendo: Espiritismo, Umbanda e Quimbanda descrevem <strong>exatamente a mesma região</strong> — a zona densa logo acima do físico — e a tratam de três jeitos. O espírita a vê como purgatório e manda socorristas. O umbandista a vê como campo de trabalho de pretos-velhos e caboclos. O quimbandeiro a vê como reino a ser dominado e mediado por Exu. Não é que existam três lugares. É um só, visto por três janelas. E todas as três concordam no essencial: <em>é a faixa mais próxima de nós, a mais povoada, e a que mais precisa de quem entre lá para tirar gente da neblina.</em></p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> a literatura umbandista sobre o trabalho de desobsessão; a tradição da Quimbanda nagô e angola sobre os reinos e tronos de Exu; e a continuidade direta com o Umbral kardecista, que a Umbanda absorveu na sua fundação.</p>
+</section>
+
+<!-- ===== III — COLÔNIAS / HOSPITAIS ===== -->
+<section class="opening" id="c3">
+  <h2><span class="num">Região III</span>As colônias e os hospitais espirituais</h2>
+  <p>Suba um degrau a partir do Umbral e a paisagem muda como quem sai de um pântano e chega a uma cidade iluminada. São as <strong>colônias espirituais</strong> — e a mais famosa de todas tem nome, endereço e planta baixa descritos em detalhe: <strong>Nosso Lar</strong>.</p>
+  <p>Nosso Lar é descrito por André Luiz como uma <strong>cidade espiritual</strong> situada na faixa que envolve a Terra, fundada por espíritos brasileiros, organizada como uma metrópole de cura e trabalho. Tem ruas, prédios, ministérios, hospitais, escolas, jardins, sistema de iluminação por energia espiritual, e uma governança de conselhos — exatamente a "república de serviço" que descrevemos no Volume I. Os recém-desencarnados chegam ali vindos do Umbral, debilitados, e passam por <strong>hospitais espirituais</strong> onde são tratados de suas feridas psíquicas antes de seguir.</p>
+
+  <div class="relato">
+    "A cidade estendia-se diante de mim como um vasto jardim onde se erguiam edifícios de linhas suaves. Tudo parecia vibrar com uma luz própria, e o ar trazia uma serenidade que eu havia esquecido que existia."
+    <span class="who">— paráfrase da chegada de André Luiz a Nosso Lar</span>
+  </div>
+
+  <div class="ficha">
+    <p class="ft">FICHA · NOSSO LAR E AS COLÔNIAS</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>André Luiz / Chico Xavier (Nosso Lar é o caso paradigmático); incontáveis médiuns descrevem colônias semelhantes.</dd>
+      <dt>Localização</dt><dd>Faixa espiritual que envolve a Terra, acima do Umbral.</dd>
+      <dt>Ambiente</dt><dd>Cidade organizada: ruas, prédios, hospitais, escolas, jardins, iluminação por energia espiritual.</dd>
+      <dt>Habitantes</dt><dd>Espíritos em recuperação; trabalhadores voluntários; médicos, professores, socorristas; conselhos de governo.</dd>
+      <dt>Como se entra</dt><dd>Resgatado do Umbral, ou por mérito; chega-se debilitado e passa-se pelo hospital antes de tudo.</dd>
+      <dt>Função</dt><dd>Curar, educar, reerguer; preparar a alma para nova encarnação ou para subir de plano.</dd>
+      <dt>Rima com</dt><dd>O Devachan teosófico (plano de descanso e estudo); as "cidades de luz" das EQM (Volume III); as colônias de cura de outras tradições mediúnicas.</dd>
+    </dl>
+  </div>
+
+  <p>O detalhe que faz Nosso Lar ser tão estudado é o realismo administrativo. André Luiz não descreve um céu de nuvens e harpas — descreve uma <strong>cidade que funciona</strong>, com problemas de organização, com gente cansada, com burocracia da bondade. Os hospitais espirituais tratam de doenças que são, na verdade, <em>marcas mentais</em>: a culpa vira ferida, o ódio vira tumor energético, o suicídio deixa cicatrizes que levam tempo para sarar. A medicina de lá opera sobre o corpo sutil — e o que cura, no fundo, é a mudança de estado interior do paciente, ajudada pelos cuidadores.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>Nosso Lar</em> (1944) e toda a série André Luiz; relatos de colônias espirituais em médiuns brasileiros posteriores (Divaldo Franco e o espírito Joanna de Ângelis, entre outros); e a correspondência clara com o Devachan descrito por Leadbeater na Teosofia.</p>
+</section>
+
+<!-- ===== IV — SOFRIMENTO / OBSESSÃO ===== -->
+<section class="opening" id="c4">
+  <h2><span class="num">Região IV</span>As regiões de sofrimento e obsessão</h2>
+  <p>Abaixo até do Umbral comum, os relatos descrevem regiões ainda mais densas — os <strong>"vales"</strong>, as <strong>"zonas inferiores"</strong>, os <strong>abismos</strong>. São o ponto onde a geografia espírita encosta nos infernos de Samael (Volume I) e nos talas inferiores hindus. Aqui ficam os espíritos completamente endurecidos no mal, e aqui se organizam as <strong>cortes das trevas</strong>: as falanges de obsessores, com seus chefes, suas legiões e suas estratégias.</p>
+  <p>É preciso entender o que é <strong>obsessão</strong> nesse mapa, porque ela é a ponte entre os mundos. Um obsessor é um espírito da zona densa que se <em>cola</em> a uma pessoa encarnada — por vingança de uma vida passada, por vampirismo de energia, ou simplesmente por afinidade de vício. Ele influencia os pensamentos, suga a vitalidade, induz a doença e a loucura. A obsessão é, literalmente, <strong>um habitante de outro plano agindo sobre este</strong>. É o exemplo mais concreto, no dia a dia, de que as fronteiras entre os mundos são porosas.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · OS VALES E AS CORTES DAS TREVAS</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>André Luiz (especialmente em <em>Libertação</em>); a fenomenologia da obsessão em toda a literatura mediúnica.</dd>
+      <dt>Ambiente</dt><dd>Abismos, cavernas, fortalezas sombrias, "covis"; densidade e frio crescentes quanto mais fundo.</dd>
+      <dt>Habitantes</dt><dd>Obsessores, vampiros energéticos, "magos negros" desencarnados, falanges organizadas com chefes.</dd>
+      <dt>Política</dt><dd>Tirania pela força — o domínio do mais cruel, como descrito no cap. XIII do Volume I.</dd>
+      <dt>Como age sobre nós</dt><dd>Por <strong>obsessão</strong>: o espírito denso se cola a um encarnado afim e o influencia, suga e adoece.</dd>
+      <dt>Rima com</dt><dd>As esferas infernais de Samael; os reinos crus da Quimbanda; o mundo dos <em>pretas</em> (espíritos famintos) budista.</dd>
+    </dl>
+  </div>
+
+  <div class="padrao">
+    <span class="label">O mecanismo da obsessão</span>
+    <p>A obsessão funciona pela mesma lei da afinidade que governa tudo. O obsessor só consegue se "colar" a você se houver, em você, uma <strong>corda da mesma nota</strong> — um vício, um rancor, um ponto fraco que vibre na frequência dele. Por isso a defesa, em todas as tradições, é sempre a mesma: <em>elevar a própria vibração</em>, mudar o estado interno, cortar a sintonia. Não se expulsa o invasor pela porta; tira-se o terreno debaixo dos pés dele mudando a frequência da casa. Isto une a "desobsessão" espírita, o "descarrego" umbandista e o exorcismo de outras tradições — todos são, no fundo, <strong>operações de mudança de frequência</strong>.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>Libertação</em> e <em>Ação e Reação</em> (André Luiz / Chico Xavier); a vasta casuística de obsessão e desobsessão da prática mediúnica; e o paralelo com as descrições de "ataque astral" na literatura ocultista (Dion Fortune, <em>Defesa Psíquica</em>).</p>
+</section>
+
+<!-- ===== V — PARADISÍACAS / MENTAIS ===== -->
+<section class="opening" id="c5">
+  <h2><span class="num">Região V</span>As regiões paradisíacas e os planos mentais</h2>
+  <p>Continue subindo, acima das colônias de cura, e os relatos ficam mais raros — não porque os lugares não existam, mas porque <strong>poucos viajantes chegam tão alto e voltam para contar</strong>. Ainda assim, os que chegam descrevem coisas notavelmente parecidas: regiões de luz crescente, onde a paisagem deixa de imitar a Terra e passa a ser feita de <em>cor, som e geometria viva</em>.</p>
+  <p>Esses são os <strong>planos mentais e causais</strong> do Volume I, descritos agora por dentro. Aqui as "construções" não são feitas de tijolos sutis, e sim de <strong>pensamento puro</strong>: um templo no plano mental é uma ideia tão concentrada que se torna visível. As cidades de luz, os "céus" das religiões, os mundos paradisíacos de Kardec — todos parecem morar nessa faixa. E há um detalhe recorrente que arrepia: viajantes desses planos relatam que <strong>o tempo se comporta diferente</strong>, que as coisas parecem acontecer "todas de uma vez", que passado e futuro perdem a separação rígida. Guarde isto — é o mesmo relato que pacientes de quase morte trarão, espontaneamente, no Volume III.</p>
+
+  <div class="relato">
+    "Não havia mais paredes, nem chão como o conhecemos. Havia luz que era música, e música que era forma. E eu compreendi que pensar, ali, era construir."
+    <span class="who">— síntese de relatos de planos mentais (projeção e mediunidade)</span>
+  </div>
+
+  <div class="padrao">
+    <span class="label">Por que há tão pouco relato do alto</span>
+    <p>Existe uma lei silenciosa na cartografia do invisível: <strong>você só consegue perceber o plano com o qual seu corpo sutil mais desenvolvido consegue sintonizar.</strong> Um espírito ainda preso à emoção "vê" apenas até o astral; quem desenvolveu a mente "vê" o mental; e assim por diante. Por isso o Umbral é tão descrito (quase todos passam por ele) e os planos altos tão pouco (poucos os alcançam conscientes). Não é que o céu seja vazio de relatos — é que a maioria dos relatores não tem ainda os "olhos" para enxergá-lo. A escassez de mapas do alto é, ela mesma, uma confirmação da lei da afinidade.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>O Plano Mental</em> de Leadbeater; descrições de planos superiores em projetores experientes (Robert Monroe e seus "Locais" mais elevados, no Volume III); os mundos felizes e celestes de Kardec; e a convergência com os relatos de "ausência de tempo" nas EQM.</p>
+</section>
+
+<!-- ===== VI — CIDADES / ESCOLAS / TEMPLOS ===== -->
+<section class="opening" id="c6">
+  <h2><span class="num">Região VI</span>Cidades, escolas, templos e bibliotecas astrais</h2>
+  <p>Este é o coração do volume, e merece o tamanho que vamos dar. Porque entre o Umbral lá embaixo e os planos divinos lá no alto, na vasta faixa intermediária, os relatos descrevem algo que aparece em <strong>tradições que não se conversam</strong> — e isso é o tipo de coincidência que faz um cartógrafo do oculto perder o sono: <strong>escolas, templos, cidades e bibliotecas invisíveis, onde se ensina e se aprende.</strong></p>
+
+  <h3>As escolas e templos astrais</h3>
+  <p>Teosofia, Gnose, Espiritismo, Projeciologia e relatos independentes descrevem, cada um a seu modo, o mesmo fenômeno: <strong>centros de ensino em outros planos</strong>. Lugares para onde a alma vai — durante o sono, na projeção astral, ou entre encarnações — para receber instrução que não cabe na vida desperta. São descritos templos onde se ensina simbolismo, salas onde se reveem as próprias vidas passadas, anfiteatros onde mestres falam a multidões de almas. Muita gente que estuda esoterismo relata "sonhos de aula" recorrentes — salas, professores, conteúdos que não lembram ao acordar mas deixam uma sensação de aprendizado. A tradição diz: essas aulas são reais, e acontecem nesses centros.</p>
+
+  <h3>As bibliotecas astrais e o Akasha</h3>
+  <p>E há as <strong>bibliotecas</strong>. A Teosofia deu o nome mais famoso: os <strong>Registros Akáshicos</strong> — uma espécie de "memória do universo", um arquivo vivo onde estaria gravado tudo que já aconteceu, todo pensamento, toda vida. Não é uma biblioteca de livros; é mais como um campo onde a informação está impressa e pode ser "lida" por quem aprende a sintonizar. Mas os relatos de projeção também descrevem <strong>bibliotecas literais</strong> — salões com volumes, guardiões, e o detalhe recorrente de que certos livros <em>não podem ser lidos por quem ainda não está pronto</em>: as letras se embaralham, as páginas se fecham, o guardião barra.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · OS CENTROS DE ENSINO INVISÍVEIS</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Teosofia (Blavatsky, Leadbeater); a Gnose; projetores astrais (Vieira, Monroe); incontáveis relatos independentes de "sonhos de aula".</dd>
+      <dt>Ambiente</dt><dd>Templos, anfiteatros, salões de estudo, bibliotecas, jardins de contemplação; arquitetura simbólica e luminosa.</dd>
+      <dt>Habitantes</dt><dd>Mestres, instrutores, guardiões; almas-alunas (encarnadas durante o sono e desencarnadas em estudo).</dd>
+      <dt>Como se entra</dt><dd>Pelo sono, pela projeção consciente, ou entre encarnações — sempre por <strong>nível de preparo</strong>, não por escolha.</dd>
+      <dt>Função</dt><dd>Ensinar o que a vida desperta não comporta; preservar e transmitir conhecimento; revisar a evolução da alma.</dd>
+      <dt>Rima com</dt><dd>O Devachan; as "salas de revisão da vida" das EQM; as "salas de estudo" relatadas em abduções (Volume III) — sim, até aí.</dd>
+    </dl>
+  </div>
+
+  <div class="padrao">
+    <span class="label">A coincidência impossível de ignorar</span>
+    <p>Aqui está um dos achados mais fortes deste atlas. A "sala de estudo com mestre que ensina e depois você esquece" aparece em <strong>quatro contextos que não têm nada a ver entre si</strong>: nos relatos teosóficos de escolas astrais, nos sonhos de aula de estudantes de esoterismo, nas "salas de aula" descritas por abduzidos por supostos extraterrestres, e nas revisões de vida das experiências de quase morte. Quatro portas diferentes, a mesma sala atrás de todas. Ou a humanidade inventou a mesma imagem quatro vezes por acaso — o que é estranho —, ou existe mesmo um lugar para onde se vai aprender, e cada tradição o alcança pela porta que tem.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> os Registros Akáshicos na Teosofia e em Edgar Cayce (que dizia "lê-los" em transe); as descrições de templos e bibliotecas astrais em Leadbeater e na Projeciologia de Waldo Vieira; e o material de Robert Monroe sobre "sistemas de aprendizado" no não-físico (Volume III).</p>
+</section>
+
+<!-- ===== VII — FRATERNIDADES ===== -->
+<section class="opening" id="c7">
+  <h2><span class="num">Região VII</span>As fraternidades e ordens ocultas em outros planos</h2>
+  <p>Se há escolas, há professores organizados. E aqui entramos numa das afirmações mais ousadas do ocultismo: a de que existe uma <strong>fraternidade de seres altamente evoluídos</strong>, alguns ainda encarnados, outros não, que coordena silenciosamente a evolução espiritual da humanidade a partir dos planos sutis. A Teosofia a chamou de <strong>Grande Fraternidade Branca</strong> ou Hierarquia — e a palavra "branca" aqui significa luz, não cor de pele.</p>
+  <p>Segundo esse mapa, há <strong>Mestres de Sabedoria</strong> (Blavatsky dizia receber instruções de dois deles, "Moria" e "Koot Hoomi", que ela situava no Tibete e nos planos sutis), e há <strong>retiros</strong> — locais físico-etéricos onde esses Mestres se reúnem e trabalham. Alguns são descritos como tendo um "endereço" terrestre encoberto (uma região do Himalaia, o templo etérico de Luxor no Egito), outros como existindo apenas no plano sutil. A ideia é que a humanidade não está sozinha nem solta: há uma <em>administração espiritual</em>, discreta, que abre e fecha portas da evolução conforme a época.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · A GRANDE FRATERNIDADE BRANCA</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>H. P. Blavatsky e a Teosofia; depois Alice Bailey (que sistematizou a "Hierarquia"); e correntes da Gnose e do Rosacrucianismo.</dd>
+      <dt>Ambiente</dt><dd>Retiros físico-etéricos (Himalaia, Shamballa, templo de Luxor) e centros nos planos sutis.</dd>
+      <dt>Habitantes</dt><dd>Mestres de Sabedoria; Chohans; adeptos que venceram o ciclo de reencarnações e ficaram para servir.</dd>
+      <dt>Política</dt><dd>Serviço sem coerção — a "hierarquia sem tirania" do Volume I; coordenam sem impor.</dd>
+      <dt>Função</dt><dd>Guiar discretamente a evolução da humanidade; preservar o conhecimento iniciático; inspirar (não controlar).</dd>
+      <dt>Rima com</dt><dd>Os "mestres ascensos" da New Age; os bodhisattvas que adiam o próprio nirvana para ajudar; o "governo oculto do mundo" de várias tradições.</dd>
+    </dl>
+  </div>
+
+  <p>Há, claro, todo um espectro de afirmações ao redor disso — das mais sóbrias (uma comunidade de almas avançadas que serve) às mais fantásticas (governos secretos, reis ocultos). Este atlas não decide quais são verdade. Mas anota o <strong>padrão</strong>: praticamente toda tradição esotérica afirma que existe um grupo de seres mais adiantados que <em>cuida</em>, de longe e em silêncio, e que se pode, com preparo, entrar em contato com eles. A imagem do "irmão mais velho invisível que guia sem aparecer" é universal.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>As Cartas dos Mahatmas</em> e a obra de Blavatsky; os livros de Alice Bailey sobre a Hierarquia; a tradição rosacruz dos "Irmãos Maiores"; e os paralelos com os mestres ascensos da New Age e os bodhisattvas budistas.</p>
+</section>
+
+<!-- ===== VIII — INICIAÇÃO / ACESSO ===== -->
+<section class="opening" id="c8">
+  <h2><span class="num">Região VIII</span>Iniciação, sinais e o acesso restrito</h2>
+  <p>Tudo o que vimos até aqui esbarra numa pergunta prática: <strong>se essas escolas, templos e fraternidades existem, por que não entra qualquer um?</strong> A resposta de todas as tradições é a mesma, e é dura: <em>há acesso restrito, e ele não se compra nem se força — se conquista por estado.</em></p>
+  <p>Os relatos descrevem, com uma constância impressionante, um sistema de <strong>reconhecimento</strong> nos planos sutis. Não é um cartão de sócio. É algo mais sutil: o iniciado carrega uma <strong>marca energética</strong>, um "selo" no corpo sutil, uma vibração que os guardiões dos locais reconhecem à distância. Em muitas tradições isso aparece como <strong>sinais e senhas</strong> — gestos, palavras de poder, símbolos — mas o segredo por trás do segredo é que os sinais externos só funcionam se houver, por dentro, o estado correspondente. A senha sem o estado não abre nada; o guardião não é enganável.</p>
+
+  <h3>Os graus e o que cada um "vê"</h3>
+  <p>E aqui está o ponto mais fascinante, ligado direto à lei da afinidade. Os relatos afirmam que, num mesmo local sagrado dos planos sutis, <strong>pessoas de graus diferentes veem coisas diferentes</strong>. Não porque o lugar mude, mas porque cada um só percebe o que sua vibração comporta. O não-iniciado entra num templo astral e vê uma sala bonita. O iniciado de grau médio vê os símbolos vivos nas paredes começarem a se mover e significar. O iniciado avançado vê a "presença" que mora no centro do templo, invisível para os outros dois. <strong>O mesmo lugar tem camadas de realidade, e você só acessa a camada da sua frequência.</strong></p>
+
+  <div class="padrao">
+    <span class="label">Por que a iniciação é "secreta"</span>
+    <p>Agora dá para entender por que tantas ordens guardam segredos e por que os textos antigos dizem coisas como "para quem tem olhos de ver". Não é elitismo gratuito. É que o conhecimento profundo, entregue a quem não tem o estado para sustentá-lo, ou não significa nada (as letras se embaralham, como nas bibliotecas astrais) ou faz mal (a corrente é forte demais para o fio). A "iniciação" verdadeira não é uma cerimônia que te dá um diploma — é uma <strong>mudança de frequência do ser</strong> que faz os portões reconhecerem você. O ritual externo só marca e acelera o que precisa acontecer por dentro. O guardião do limiar não guarda um lugar: guarda um nível de consciência.</p>
+  </div>
+
+  <p>É por isso que toda iniciação séria tem um <strong>guardião do limiar</strong> — uma figura, às vezes apavorante, que aparece na fronteira de cada grau. Em muitas tradições ele é descrito como um ser terrível, mas seu papel não é impedir por maldade: é <em>testar</em> se o candidato sustenta a próxima frequência sem se quebrar ou se corromper. Vencer o guardião não é derrotá-lo; é provar que você já não vibra no medo que ele encarna.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> a literatura iniciática da Maçonaria e da Rosacruz sobre graus, sinais e senhas; o conceito do "Guardião do Limiar" em Bulwer-Lytton (<em>Zanoni</em>) e na Antroposofia de Rudolf Steiner; e os relatos de projetores sobre locais astrais de acesso barrado por guardiões.</p>
+</section>
+
+<!-- ===== IX — SETEALÉM ===== -->
+<section class="opening" id="c9">
+  <h2><span class="num">Região IX</span>SeteAlém e as cidades misteriosas</h2>
+  <p>Há cidades invisíveis que não cabem direito em nenhum mapa anterior — cidades que aparecem em relatos brasileiros, em folclore, em visões mediúnicas isoladas, e que merecem ser registradas mesmo quando a documentação é escassa, porque o seu padrão é revelador. <strong>SeteAlém</strong> é uma delas.</p>
+  <p>O nome — "Sete Além" — já é um mapa em miniatura: o <em>sétimo</em> além, o que está depois de sete fronteiras, o mais profundo dos mundos ocultos. Nos relatos em que aparece, SeteAlém é descrita como uma <strong>cidade ou reino oculto de acesso extremamente restrito</strong>, situada não acima, mas "para dentro" — uma realidade interdimensional que se atravessa por portais, e não por subida vibratória simples. É um exemplo perfeito de uma categoria inteira de relatos: as <strong>cidades interdimensionais</strong>, que não estão nem no astral comum nem na Terra física, mas numa espécie de "dobra" entre os mundos.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · AS CIDADES INTERDIMENSIONAIS</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Visões mediúnicas isoladas, folclore, relatos independentes; documentação esparsa e oral.</dd>
+      <dt>Natureza</dt><dd>Cidades/reinos ocultos numa "dobra" entre planos — nem físicas, nem astral comum: interdimensionais.</dd>
+      <dt>Como se entra</dt><dd>Por portais específicos, senhas ou convite — não pela subida vibratória gradual das outras regiões.</dd>
+      <dt>Por que importam</dt><dd>Representam a ideia de "mundos paralelos laterais", não acima nem abaixo, mas ao lado, acessíveis por passagem.</dd>
+      <dt>Rima com</dt><dd>Shambhala e Agartha (próximo capítulo); as cidades ocultas do folclore (Marahuaca, a "cidade encantada"); os reinos feéricos celtas.</dd>
+    </dl>
+  </div>
+
+  <div class="aviso">
+    <span class="label">Honestidade sobre as fontes</span>
+    <p>Cidades como SeteAlém vivem mais na <strong>tradição oral e na visão pessoal</strong> do que em textos consolidados. Isso não as torna menos reais para quem as relata — mas exige que o cartógrafo seja honesto: aqui pisamos em terreno onde o relato individual pesa mais que o documento. Registramos o padrão (cidades ocultas "laterais", acessadas por portal) sem fingir uma bibliografia que não existe. O valor está justamente em notar que essa categoria — o reino oculto ao lado, não acima — aparece de forma independente em muitos lugares.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> relatos orais e mediúnicos da tradição brasileira; o folclore das "cidades encantadas"; e o paralelo estrutural com os reinos ocultos "laterais" de outras culturas, do <em>Sidhe</em> celta às cidades subterrâneas asiáticas do próximo capítulo.</p>
+</section>
+
+<!-- ===== X — SHAMBHALA / AGARTHA ===== -->
+<section class="opening" id="c10">
+  <h2><span class="num">Região X</span>Shambhala e Agartha</h2>
+  <p>Estas duas são as rainhas das cidades ocultas — as mais famosas, as mais antigas, as mais documentadas dentro do que é possível documentar de um reino que ninguém prova existir. E é importante separá-las, porque costumam ser confundidas.</p>
+
+  <h3>Shambhala — o reino de luz</h3>
+  <p><strong>Shambhala</strong> vem da tradição budista tibetana, sobretudo do ensinamento do <em>Kalachakra</em>. É descrita como um <strong>reino oculto de pureza e sabedoria</strong>, geralmente situado em algum lugar inacessível da Ásia central ou num plano sutil sobreposto a ela. Em Shambhala viveriam reis sábios e iniciados de altíssimo nível, preservando os ensinamentos mais profundos para uma era futura. A profecia diz que, quando o mundo mergulhar no caos final, um rei de Shambhala sairá com seu exército para restaurar a ordem espiritual. A Teosofia absorveu Shambhala como a morada do "Senhor do Mundo" e centro da Fraternidade Branca. É um reino de <strong>luz</strong> — o oposto do Umbral.</p>
+
+  <h3>Agartha — o reino sob a terra</h3>
+  <p><strong>Agartha</strong> (ou Agharta) é outra história. Esta é o <strong>reino subterrâneo</strong>, descrito por autores como Saint-Yves d'Alveydre e Ferdinand Ossendowski como uma vasta civilização oculta <em>sob a superfície da Terra</em>, governada por um <strong>"Rei do Mundo"</strong>, ligada à superfície por uma rede de túneis. Agartha guardaria sobreviventes de civilizações perdidas, conhecimento antiquíssimo, e seria acessível por entradas secretas — em cavernas remotas, em mosteiros, e, segundo as versões mais ousadas, pelos próprios <strong>polos terrestres</strong>.</p>
+
+  <table class="tabela">
+    <tr><th></th><th>Shambhala</th><th>Agartha</th></tr>
+    <tr><td>Natureza</td><td>reino de luz, espiritual</td><td>reino subterrâneo, físico-oculto</td></tr>
+    <tr><td>Localização</td><td>Ásia central ou plano sutil</td><td>sob a Terra, rede de túneis</td></tr>
+    <tr><td>Quem governa</td><td>reis-sábios, o Senhor do Mundo</td><td>o Rei do Mundo</td></tr>
+    <tr><td>Acesso</td><td>por mérito espiritual e iniciação</td><td>por entradas físicas secretas e polos</td></tr>
+    <tr><td>Função</td><td>preservar o ensinamento para o futuro</td><td>guardar civilizações e saber perdidos</td></tr>
+  </table>
+
+  <div class="padrao">
+    <span class="label">O que essas cidades revelam</span>
+    <p>Shambhala e Agartha encarnam duas intuições profundas e opostas da humanidade. Shambhala é a esperança de que <strong>existe um lugar onde a pureza foi preservada</strong> e voltará para nos salvar — o reino que sobreviveu à corrupção do mundo. Agartha é a suspeita de que <strong>há mais sob nossos pés do que admitimos</strong> — civilizações, saberes, seres, escondidos na profundeza. Uma olha para a luz lá no alto/à frente; a outra para o mistério lá embaixo/dentro. Juntas, elas mostram que o desejo humano por mundos ocultos se projeta em todas as direções: para cima como céu, para o lado como reino interdimensional, e para baixo como mundo subterrâneo.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> o tantra do <em>Kalachakra</em> e a tradição tibetana para Shambhala; <em>Mission de l'Inde en Europe</em> de Saint-Yves d'Alveydre e <em>Bestas, Homens e Deuses</em> de Ferdinand Ossendowski para Agartha e o Rei do Mundo; e a síntese teosófica que ligou Shambhala à Fraternidade Branca do capítulo VII.</p>
+</section>
+
+<!-- ===== XI — SUBTERRÂNEOS / TERRA OCA ===== -->
+<section class="opening" id="c11">
+  <h2><span class="num">Região XI</span>Reinos subterrâneos e mundos perdidos</h2>
+  <p>Agartha não está sozinha lá embaixo. A ideia de <strong>cidades e mundos sob a Terra</strong> é uma das mais teimosas e universais do folclore sobrenatural — e aparece em formas que vão do mito ancestral à teoria moderna da <strong>Terra Oca</strong>.</p>
+  <p>A hipótese da Terra Oca, na sua versão esotérica, afirma que o planeta seria oco, com um <strong>sol interior</strong> e uma civilização habitando a face interna da casca, acessível por aberturas nos polos. É uma ideia que mistura ciência marginal, ficção e relato visionário — e que se conecta diretamente a Agartha. Mais abaixo dela, no folclore de praticamente todos os continentes, há os <strong>reinos dos seres da terra</strong>: os anões e gnomos das tradições nórdicas, os elementais da terra, os "encantados" do folclore brasileiro que vivem em cidades sob rios e montanhas, os reinos feéricos que se acessam por colinas ocas.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · O QUE MORA SOB A SUPERFÍCIE</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Folclore universal; teóricos da Terra Oca; relatos de "cidades encantadas" no Brasil; tradições élficas e feéricas.</dd>
+      <dt>Natureza</dt><dd>Civilizações ou seres ocultos no interior da Terra ou numa dimensão sobreposta a ele.</dd>
+      <dt>Habitantes</dt><dd>Sobreviventes de mundos perdidos; elementais da terra (gnomos); "encantados"; seres da Terra Oca.</dd>
+      <dt>Como se entra</dt><dd>Cavernas, grutas, colinas ocas, fundos de rios; aberturas polares (na versão Terra Oca).</dd>
+      <dt>Rima com</dt><dd>Agartha; o mundo de baixo xamânico (Volume I); os reinos feéricos; as cidades interdimensionais como SeteAlém.</dd>
+    </dl>
+  </div>
+
+  <p>O fio comum aqui é o <strong>"mundo perdido"</strong>: a intuição de que houve civilizações grandiosas — Atlântida, Lemúria, Mu — que não foram destruídas de todo, mas <em>recuaram para o oculto</em>, para dentro da Terra ou para uma dimensão sutil, levando consigo seu conhecimento. É a mesma promessa de Shambhala, só que olhando para o passado em vez do futuro: <strong>o que era puro não se perdeu, apenas se escondeu</strong>, e um dia pode voltar. A humanidade não suporta a ideia de que a sabedoria antiga simplesmente acabou; precisa acreditar que ela está guardada em algum lugar, esperando.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> a literatura sobre a Terra Oca (de John Cleves Symmes ao romance <em>A Smoky God</em>); as tradições de Atlântida e Lemúria na Teosofia (Blavatsky, Scott-Elliot); o folclore brasileiro dos encantados e das cidades submersas; e a comparação com os reinos subterrâneos de Agartha.</p>
+</section>
+
+<!-- ===== XII — PORTAIS ===== -->
+<section class="opening" id="c12">
+  <h2><span class="num">Região XII</span>Portais e passagens entre mundos</h2>
+  <p>Para fechar a geografia, falta a pergunta que une tudo: <strong>como se passa de um mundo para outro?</strong> Os relatos da humanidade descrevem uma coleção espantosamente consistente de <em>passagens</em> — e elas se dividem em dois tipos: as que existem <strong>na consciência</strong> e as que existem (ou pareceriam existir) <strong>no espaço</strong>.</p>
+
+  <h3>Os portais simbólicos recorrentes</h3>
+  <p>Há imagens de passagem que reaparecem em relatos de gente que nunca se falou — tão constantes que parecem gravadas na própria arquitetura da mente. Vamos catalogá-las:</p>
+  <table class="tabela">
+    <tr><th>Portal</th><th>O que se atravessa</th><th>Onde aparece</th></tr>
+    <tr><td>O túnel</td><td>passagem para a luz, para o pós-morte</td><td>EQM (universal), projeção, xamanismo</td></tr>
+    <tr><td>A porta / o portão</td><td>limiar entre estados; guardado por alguém</td><td>iniciação, sonhos, mitologia (os portões do submundo)</td></tr>
+    <tr><td>O espelho</td><td>passagem para o "outro lado", o duplo</td><td>folclore universal, magia, relatos de assombração</td></tr>
+    <tr><td>O elevador / a escada</td><td>subida ou descida vibratória controlada</td><td>técnicas de projeção, sonhos lúcidos, visões</td></tr>
+    <tr><td>O corredor</td><td>transição entre regiões do astral</td><td>projeção astral, EQM, relatos de abdução</td></tr>
+    <tr><td>A floresta / a caverna / a montanha</td><td>entrada para o mundo de baixo ou o reino oculto</td><td>xamanismo, contos de fada, folclore</td></tr>
+    <tr><td>A água / o poço / o buraco</td><td>descida ao mundo inferior</td><td>mitologia, sonhos, folclore dos encantados</td></tr>
+  </table>
+
+  <p>Repare no segredo embutido nessa lista: <strong>quase todo portal é uma forma de "estreitamento" seguido de "abertura".</strong> O túnel aperta e desemboca na luz. A porta é uma fresta que dá num cômodo inteiro. O poço é estreito e leva a um mundo. É como se a consciência só conseguisse mudar de plano passando por um <em>funil</em> — comprimindo-se num ponto para então se expandir do outro lado. A própria experiência do nascimento (a passagem pelo canal estreito para a luz) é esse mesmo desenho. Talvez por isso a morte seja tão descrita como um túnel: o inconsciente usa o único modelo de "passagem para a luz" que conhece.</p>
+
+  <h3>As passagens "no espaço": as zonas anômalas</h3>
+  <p>E há os lugares físicos que a tradição e o folclore marcam como <strong>portais geográficos</strong> — pontos onde a fronteira entre os mundos seria fina. Regiões de <strong>desaparecimentos misteriosos</strong> (o Triângulo das Bermudas é o caso mais célebre, mas há muitos "triângulos" pelo mundo), montanhas consideradas sagradas e "vivas", florestas onde pessoas somem, os <strong>polos terrestres</strong> ligados a Agartha. A crença comum é que nesses pontos a "casca" entre o físico e o sutil está rasgada, e por isso coisas e pessoas escorregam entre os mundos.</p>
+
+  <div class="padrao">
+    <span class="label">A verdade sobre os portais</span>
+    <p>Juntando tudo, emerge um ensinamento que costura este volume inteiro: <strong>o portal verdadeiro nunca é o objeto — é o estado.</strong> O espelho, a porta, a caverna, a zona anômala: nenhum deles "abre" sozinho. Eles funcionam como <em>gatilhos</em> que ajudam a consciência a mudar de frequência — pelo medo, pela reverência, pelo transe, pelo deslocamento da rotina. É por isso que o mesmo espelho é só um espelho para um e uma porta para outro. A passagem entre mundos acontece, no fim, pela mesma lei que governa todo este atlas: você atravessa para o plano com o qual passa a vibrar. O portal de pedra é um andaime; quem cruza é a consciência.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> a universalidade do túnel nas EQM (Raymond Moody, <em>Vida Depois da Vida</em>, no Volume III); o motivo do espelho e da porta no folclore comparado; as técnicas de "portal" na projeção astral e no sonho lúcido; e a literatura sobre zonas anômalas e desaparecimentos. A travessia consciente em vida — a projeção astral — é o tema de abertura do próximo volume.</p>
+</section>
+
+<!-- ===== SÍNTESE ===== -->
+<section class="opening" id="sint">
+  <h2><span class="num">Síntese do Volume II</span>A geografia recorrente</h2>
+  <p>Percorremos o território do Umbral aos reinos de luz, das colônias de cura às cidades subterrâneas, das escolas astrais aos portais. E a mesma surpresa do Volume I se repete, agora no nível do detalhe: <strong>a geografia se repete entre tradições que não se conversam.</strong> Vamos fixar os marcos comuns:</p>
+
+  <div class="padrao">
+    <span class="label">Os marcos comuns do território invisível</span>
+    <p><strong>1. A zona densa logo acima de nós.</strong> Umbral, Kama-loka, reino dos kiumbas — todos descrevem a mesma faixa nebulosa de sofrimento, a mais povoada e a mais detalhada.</p>
+    <p><strong>2. As cidades de cura.</strong> Nosso Lar, o Devachan, as colônias — sempre há, acima do sofrimento, lugares organizados que curam, ensinam e reerguem.</p>
+    <p><strong>3. As escolas e bibliotecas.</strong> A "sala de aula com mestre" aparece na Teosofia, na projeção, na EQM e até na abdução. Quatro portas, uma sala.</p>
+    <p><strong>4. A fraternidade que cuida.</strong> Quase toda tradição afirma que há seres mais adiantados coordenando em silêncio, sem coerção.</p>
+    <p><strong>5. O acesso por estado, não por força.</strong> Guardiões reconhecem a frequência, não a senha. Cada grau vê o que sua vibração comporta.</p>
+    <p><strong>6. As cidades ocultas em todas as direções.</strong> Para cima (Shambhala), para o lado (SeteAlém), para baixo (Agartha) — o desejo de um reino preservado se projeta em todos os eixos.</p>
+    <p><strong>7. O portal como funil.</strong> Toda passagem é um estreitamento seguido de abertura, e o que cruza é sempre a consciência, nunca o corpo.</p>
+  </div>
+
+  <p>Temos o esqueleto (Volume I) e temos a carne (Volume II). Falta o sangue: <strong>as testemunhas</strong>. Quem são as pessoas que dizem ter estado nesses lugares? O que encontraram? E — a pergunta que dá sentido a todo o atlas — <em>por que descrições tão iguais saem de gente que nunca teve contato?</em> É o que vamos enfrentar no <strong>Volume III — Testemunhos, Habitantes e Padrões</strong>.</p>
+
+  <hr class="divider">
+  <nav class="nav">
+    <a href="I-os-grandes-mapas.html">← I · Os Grandes Mapas</a>
+    <a class="cur" href="#">II · A Geografia dos Mundos</a>
+    <a href="III-testemunhos-e-habitantes.html">III · Testemunhos e Habitantes →</a>
+  </nav>
+</section>
+
+<footer>
+  CARTOGRAFIA DOS MUNDOS INVISÍVEIS · VOLUME II · A GEOGRAFIA DOS MUNDOS INVISÍVEIS<br>
+  Do mapa ao território — as regiões, cidades e portais descritos por quem afirma tê-los cruzado.
+</footer>
+
+</div>
+</body>
+</html>

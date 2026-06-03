@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartografia dos Mundos Invisíveis — Volume III: Testemunhos, Habitantes e Padrões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0410;
+  --ink:#f3e9f4;
+  --ink-soft:#c2a8c8;
+  --gold:#f5c542;
+  --violet:#b06bff;
+  --cyan:#2fe3cf;
+  --magenta:#ff5db1;
+  --crimson:#ff6a4d;
+  /* ACENTO DESTE VOLUME: MAGENTA/VIOLETA — a testemunha, o habitante, o padrão revelado */
+  --accent:#ff5db1;
+  --accent2:#b06bff;
+  --accent-soft:#5a1a52;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(255,93,177,.11), transparent 42%),
+    radial-gradient(circle at 86% 20%, rgba(176,107,255,.09), transparent 42%),
+    radial-gradient(circle at 50% 120%, rgba(47,227,207,.06), transparent 55%),
+    linear-gradient(180deg,#0a0410 0%, #1a0a26 55%, #0a0410 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:'Futura','Futura PT','Jost','Century Gothic',sans-serif;
+  font-weight:400;line-height:1.92;font-size:18px;letter-spacing:.2px;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff7, transparent),
+    radial-gradient(1px 1px at 70% 60%, #ff5db166, transparent),
+    radial-gradient(1px 1px at 40% 80%, #b06bff55, transparent),
+    radial-gradient(1px 1px at 85% 15%, #fff5, transparent),
+    radial-gradient(1px 1px at 55% 45%, #fff4, transparent),
+    radial-gradient(1px 1px at 10% 70%, #2fe3cf44, transparent);
+  background-size:cover;
+}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 26px 120px;}
+.cover{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 40px;}
+.cover .sigil{font-size:3.2rem;color:var(--accent);text-shadow:0 0 30px var(--accent2);margin-bottom:18px;letter-spacing:8px;}
+.cover .series{font-family:'Jost';font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--cyan);font-size:.8rem;margin-bottom:26px;}
+.cover h1{font-family:'Cinzel Decorative',serif;font-weight:900;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;margin:0;
+  background:linear-gradient(120deg,#ffe3f3,var(--accent) 40%,var(--accent2) 70%,#ffe3f3);
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 60px rgba(255,93,177,.25);}
+.cover .vol{font-family:'Cinzel',serif;font-weight:700;letter-spacing:4px;margin-top:30px;font-size:1.1rem;color:var(--ink);}
+.cover .voltitle{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.3rem,4vw,2rem);color:var(--accent);margin-top:8px;}
+.cover .tag{max-width:540px;margin:34px auto 0;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.6;}
+.divider{display:block;width:60%;max-width:340px;height:1px;margin:40px auto;border:0;background:linear-gradient(90deg,transparent,var(--accent),transparent);position:relative;}
+.divider::after{content:"✦";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 14px;color:var(--accent);}
+h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.18;color:var(--accent);margin:3.4em 0 .2em;padding-top:.4em;text-shadow:0 0 26px rgba(255,93,177,.18);}
+h2 .num{display:block;font-family:'Jost';font-weight:300;letter-spacing:6px;font-size:.7rem;color:var(--cyan);text-transform:uppercase;margin-bottom:.7em;}
+h2::after{content:"";display:block;width:90px;height:3px;margin-top:.45em;background:linear-gradient(90deg,var(--accent),transparent);border-radius:3px;}
+h3{font-family:'Cinzel',serif;font-weight:600;font-size:1.22rem;letter-spacing:1px;color:var(--accent2);margin:2.4em 0 .3em;}
+h4{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.92rem;color:var(--cyan);margin:1.8em 0 .2em;}
+p{margin:.9em 0;}
+em{color:#ffe3f3;} strong{color:#fff;font-weight:600;} a{color:var(--accent);}
+.opening>p:first-of-type::first-letter{font-family:'Cinzel Decorative',serif;font-size:4.4rem;line-height:.8;float:left;padding:8px 14px 0 0;color:var(--accent);text-shadow:0 0 20px var(--accent2);}
+.relato{border-left:3px solid var(--accent);background:linear-gradient(180deg,rgba(255,93,177,.08),rgba(255,93,177,.02));padding:18px 24px;margin:1.8em 0;border-radius:0 10px 10px 0;font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;line-height:1.62;color:#fbeef6;}
+.relato .who{display:block;font-family:'Jost';font-style:normal;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-top:12px;}
+.padrao{border:1px solid var(--accent-soft);border-top:3px solid var(--accent);background:rgba(176,107,255,.06);padding:20px 24px;margin:2em 0;border-radius:10px;}
+.padrao .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--accent2);display:block;margin-bottom:8px;}
+.fonte{font-size:.86rem;color:var(--ink-soft);font-style:italic;border-top:1px dashed #ffffff22;padding-top:10px;margin-top:14px;}
+.fonte strong{color:var(--accent2);font-style:normal;}
+.aviso{border:1px solid var(--cyan);background:rgba(47,227,207,.07);border-radius:12px;padding:22px 26px;margin:2.4em 0;}
+.aviso .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--cyan);display:block;margin-bottom:8px;}
+blockquote{margin:2em 0;padding:0 0 0 26px;border-left:3px solid var(--accent2);font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;line-height:1.5;color:#f6ecfb;}
+blockquote cite{display:block;font-family:'Jost';font-style:normal;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-top:12px;}
+.ficha{border:1px solid #ffffff1c;border-radius:12px;padding:6px 22px 18px;margin:1.8em 0;background:rgba(0,0,0,.24);}
+.ficha .ft{font-family:'Cinzel',serif;color:var(--accent);letter-spacing:1px;font-size:1.05rem;margin:14px 0 6px;}
+.ficha dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;margin:0;font-size:.95rem;}
+.ficha dt{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:.7rem;color:var(--cyan);padding-top:5px;}
+.ficha dd{margin:0;color:var(--ink);}
+.tabela{width:100%;border-collapse:collapse;margin:2em 0;font-size:.92rem;}
+.tabela th{font-family:'Cinzel',serif;text-align:left;color:var(--accent);border-bottom:2px solid var(--accent-soft);padding:12px 10px;font-weight:600;}
+.tabela td{padding:11px 10px;border-bottom:1px solid #ffffff12;vertical-align:top;color:var(--ink);}
+.tabela tr:hover td{background:rgba(255,93,177,.05);}
+.mapa{margin:2.2em 0;border:1px solid #ffffff14;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.27);}
+.mapa .mt{font-family:'Cinzel',serif;font-weight:600;text-align:center;padding:14px;color:var(--accent);letter-spacing:2px;background:rgba(255,93,177,.06);border-bottom:1px solid #ffffff14;}
+.plano{display:flex;align-items:center;gap:14px;padding:13px 20px;border-bottom:1px solid #ffffff0e;}
+.plano:last-child{border-bottom:0;}
+.plano .lvl{font-family:'Jost';font-weight:700;font-size:.72rem;min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#0a0612;flex-shrink:0;}
+.plano .nm{font-family:'Jost';font-weight:600;letter-spacing:1px;flex:1;}
+.plano .ds{font-size:.86rem;color:var(--ink-soft);flex:2;}
+.s7 .lvl{background:#fff2c4;} .s6 .lvl{background:#f5c542;} .s5 .lvl{background:#ff9d3c;}
+.s4 .lvl{background:#2fe3cf;} .s3 .lvl{background:#b06bff;} .s2 .lvl{background:#ff5db1;} .s1 .lvl{background:#ff6a4d;}
+.nav{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:60px 0 0;}
+.nav a{font-family:'Jost';font-weight:500;text-decoration:none;letter-spacing:1px;font-size:.9rem;padding:12px 20px;border:1px solid #ffffff22;border-radius:30px;color:var(--ink);}
+.nav a.cur{border-color:var(--accent);color:var(--accent);background:rgba(255,93,177,.08);}
+.toc{columns:2;column-gap:34px;margin:1.5em 0;}
+.toc a{display:block;text-decoration:none;color:var(--ink-soft);padding:5px 0;border-bottom:1px solid #ffffff10;font-size:.94rem;break-inside:avoid;}
+.toc a:hover{color:var(--accent);}
+.toc a b{color:var(--accent);font-family:'Jost';font-weight:600;}
+footer{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:60px;padding-top:30px;border-top:1px solid #ffffff14;font-family:'Jost';letter-spacing:1px;}
+@media(max-width:640px){body{font-size:17px;}.toc{columns:1;}.ficha dl{grid-template-columns:1fr;}.plano{flex-wrap:wrap;}.plano .ds{flex-basis:100%;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="cover">
+  <div class="sigil">✦ ◬ ✦</div>
+  <div class="series">Cartografia dos Mundos Invisíveis</div>
+  <h1>Testemunhos, Habitantes e Padrões</h1>
+  <div class="vol">— VOLUME&nbsp;III —</div>
+  <div class="voltitle">As testemunhas, os seres e a coincidência que assombra</div>
+  <p class="tag">Tínhamos o esqueleto e tínhamos a carne. Agora vem o sangue: as pessoas que dizem ter estado lá. E a pergunta que dá sentido a tudo — por que descrições tão iguais saem de gente que nunca se falou?</p>
+  <hr class="divider">
+  <nav class="nav">
+    <a href="I-os-grandes-mapas.html">I · Os Grandes Mapas</a>
+    <a href="II-geografia-dos-mundos.html">II · A Geografia dos Mundos</a>
+    <a class="cur" href="#">III · Testemunhos e Habitantes</a>
+  </nav>
+</header>
+
+<section class="aviso">
+  <span class="label">Como ler este último volume</span>
+  <p>Os dois primeiros volumes foram desenhados por quem afirma morar nos mundos invisíveis: cosmólogos do além, espíritos-repórteres, ocultistas. Este volume inverte a câmera. Aqui falam os <strong>visitantes</strong> — os vivos que dizem ter cruzado por um momento e voltado. Quem quase morreu e viu. Quem projetou e andou. Quem foi levado por seres e devolvido. Quem emprestou o próprio corpo para um morto falar. Vamos ouvir cada um, catalogar os seres que eles encontraram, e então fazer a única coisa que importava desde a primeira página: <strong>colocar todos os relatos lado a lado e perguntar por que rimam.</strong></p>
+</section>
+
+<section>
+  <h2><span class="num">Sumário do Volume III</span>As testemunhas</h2>
+  <nav class="toc">
+    <a href="#prologo"><b>Prólogo</b> — A inversão da câmera</a>
+    <a href="#c1"><b>I</b> — A Experiência de Quase Morte</a>
+    <a href="#c2"><b>II</b> — A Projeção Astral e seus exploradores</a>
+    <a href="#c3"><b>III</b> — Abduções e contatos não-humanos</a>
+    <a href="#c4"><b>IV</b> — Os mortos falam: mediunidade e incorporação</a>
+    <a href="#c5"><b>V</b> — O Bestiário dos mundos invisíveis</a>
+    <a href="#c6"><b>VI</b> — A Grande Comparação</a>
+    <a href="#epilogo"><b>Epílogo</b> — A cartografia que sempre se refaz</a>
+  </nav>
+</section>
+
+<!-- ===== PRÓLOGO ===== -->
+<section class="opening" id="prologo">
+  <h2><span class="num">Prólogo</span>A inversão da câmera</h2>
+  <p>Há uma diferença enorme entre o mapa de um lugar e o relato de quem voltou de lá com lama no sapato. O Volume I e o Volume II foram, no fundo, mapas: cosmologias inteiras, geografias detalhadas, fichas de regiões. Mas todo mapa carrega uma pergunta embaraçosa — <em>quem mediu isto?</em> Quem subiu até o plano causal com uma trena? A resposta, em quase todos os casos, é a mesma: alguém esteve lá com a consciência, voltou, e descreveu. O mapa é a forma organizada de um amontoado de testemunhos. Neste volume, desmontamos a organização e ouvimos os testemunhos crus.</p>
+
+  <p>E os testemunhos vêm por quatro portas muito diferentes, que nunca combinaram nada entre si. A primeira porta é a <strong>morte que não foi até o fim</strong> — a experiência de quase morte, talvez o relato mais democrático da história, porque acontece com ateus, crianças, sábios e analfabetos, em todos os países, sem que ninguém tenha estudado para isso. A segunda porta é a <strong>saída voluntária do corpo</strong> — a projeção astral, onde gente treina anos para fazer de propósito o que o moribundo faz por acidente. A terceira porta é a mais estranha e a mais incômoda: o <strong>contato com seres não-humanos</strong> que levam a pessoa a naves, salas, cidades — a abdução. E a quarta porta é a mais antiga de todas: os <strong>mortos que voltam para falar</strong>, pela boca de um médium, pela mão de um psicógrafo, pelo corpo de quem incorpora numa gira.</p>
+
+  <p>Quatro portas. Quatro tipos de gente que, na maioria esmagadora dos casos, nunca leram uns aos outros, nunca se encontraram, muitas vezes nem sabiam que os outros existiam. E aqui está o motivo de este volume existir: <strong>quando você põe os quatro relatos na mesma mesa, eles descrevem os mesmos lugares, os mesmos seres e as mesmas regras.</strong> O túnel da quase morte é o mesmo corredor do projetor astral. A sala de estudos da abdução é a mesma escola do morto que psicografa. O guardião que barra o iniciado é o mesmo ser de luz que diz "ainda não é a sua hora" no fim do túnel. É essa coincidência que vamos perseguir até o último capítulo.</p>
+
+  <div class="padrao">
+    <span class="label">A regra deste volume</span>
+    <p>Não vamos provar que os mundos existem nem que não existem. Vamos fazer algo mais honesto e mais perturbador: <strong>mostrar o padrão e deixá-lo de pé.</strong> Se milhares de pessoas que nunca se falaram desenham o mesmo mapa, há só três saídas — ou existe um território real que todos visitam; ou existe na mente humana uma estrutura comum que todos projetam; ou as duas coisas são, no fim, a mesma. Guarde as três saídas. Vamos voltar a elas no Epílogo, depois de você ter visto o tamanho da coincidência.</p>
+  </div>
+</section>
+
+<!-- ===== I — EQM ===== -->
+<section class="opening" id="c1">
+  <h2><span class="num">Testemunho I</span>A Experiência de Quase Morte</h2>
+  <p>Comecemos pelo relato mais limpo, porque é o menos treinado. A experiência de quase morte — EQM — acontece com quem não pediu, não esperava e muitas vezes não acreditava. Uma parada cardíaca na mesa de cirurgia, um afogamento, um acidente, um parto que deu errado. A pessoa é declarada clinicamente morta, ou perto disso, e depois volta — e traz uma história. O que torna a EQM o tesouro da nossa cartografia é justamente esse "não pedi": a freira e o ateu, o japonês e o boliviano, a criança de seis anos e o velho de noventa, todos sem combinar, trazem peças do mesmo quebra-cabeça.</p>
+
+  <p>Foi um médico, Raymond Moody, quem em 1975 juntou cento e cinquenta desses relatos e percebeu que eles tinham uma <strong>sequência</strong>. Não eram histórias soltas; eram capítulos de uma mesma viagem, na mesma ordem, ditos por gente que não se conhecia. Vamos seguir essa sequência etapa por etapa, porque cada etapa rima com algo que já vimos nos volumes anteriores.</p>
+
+  <h3>A saída e a vista de cima</h3>
+  <p>O primeiro degrau quase sempre é o mesmo: a pessoa se vê <strong>de fora do próprio corpo</strong>, flutuando perto do teto, olhando para baixo, vendo os médicos trabalharem nela. Ouve o que se diz na sala, descreve depois objetos e cenas que não poderia ter visto deitada e inconsciente — o que os pesquisadores chamam de "percepção verídica". Note a coincidência: isto é, palavra por palavra, a saída do corpo que o projetor astral descreve quando deita para projetar. A EQM começa exatamente onde a projeção começa. A diferença é só a porta de entrada — um foi empurrado, o outro saiu andando.</p>
+
+  <div class="relato">
+    "Eu estava no canto da sala, perto do teto, e olhava para o meu próprio corpo na maca. Não tinha medo nenhum. Senti uma paz que eu nunca tinha sentido em toda a minha vida — como se a dor fosse uma roupa que eu tivesse acabado de tirar."
+    <span class="who">— relato típico de saída do corpo em EQM, paráfrase composta</span>
+  </div>
+
+  <h3>O túnel e a luz</h3>
+  <p>Depois vem a imagem que virou símbolo de toda a experiência: um <strong>túnel, um corredor escuro, um vórtice</strong>, e ao fim dele uma <strong>luz</strong> que atrai sem ofuscar. A pessoa é puxada ou flutua por esse túnel em direção à luz. Aqui o leitor dos dois primeiros volumes deve estar sentindo um arrepio de reconhecimento: o túnel é o <strong>portal-funil</strong> que fechou o Volume II — o estreitamento seguido de abertura, a passagem que sempre afunila antes de se abrir num outro mundo. O moribundo não foi avisado de que existia uma teoria dos portais. Ele só atravessou um.</p>
+
+  <h3>O encontro com seres</h3>
+  <p>Do outro lado da luz, a pessoa não está sozinha. Encontra <strong>parentes mortos</strong> que vêm recebê-la — a avó, o pai, às vezes alguém que ela nem sabia que tinha morrido. E encontra um <strong>ser de luz</strong>, uma presença de amor avassalador que algumas pessoas chamam de Cristo, outras de anjo, outras de "uma luz que era uma pessoa", e os que não têm religião chamam só de "o Ser". O detalhe que importa: o ser de luz nunca julga. Ele acolhe. O julgamento, quando vem, vem de outro jeito.</p>
+
+  <h3>A revisão da vida</h3>
+  <p>E aqui está, talvez, o momento mais filosoficamente explosivo de toda a EQM: a <strong>revisão de vida</strong>. A pessoa revê a própria existência inteira, não como um filme, mas <em>de dentro</em> — e, na descrição que mais se repete, ela revive cada ato <strong>sentindo o que as outras pessoas sentiram</strong>. Quando bateu em alguém, sente a dor de quem apanhou. Quando consolou alguém, sente o alívio de quem foi consolado. Não há um juiz externo lendo a sentença. A própria consciência se julga, vendo-se pelos olhos dos outros.</p>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto — o julgamento que é autoconhecimento</span>
+    <p>Segure este fio com força, porque ele atravessa toda a obra. No Volume I dissemos que a "lei da afinidade" faz a alma gravitar para o plano da própria frequência — que <em>o julgamento é o morto reconhecendo onde ele cabe</em>. O Rosacrucianismo descreveu a revisão de vida pós-morte décadas antes de Moody coletar os relatos. E agora a EQM, vinda de gente que nunca leu nem Kardec nem os rosacruzes, descreve <strong>exatamente</strong> isso: um julgamento que não é punição vinda de fora, mas a consciência se vendo sem máscara. Três fontes que não se falaram, uma só mecânica: ninguém te condena; você se reconhece.</p>
+  </div>
+
+  <h3>A fronteira e o retorno</h3>
+  <p>Quase sempre há um <strong>limite</strong> — uma cerca, um rio, uma linha, uma porta, uma fala: "se você cruzar, não volta mais". É o <strong>limiar</strong> do Volume II, o mesmo limiar guardado que separa o iniciado do não-iniciado, agora vivido como a beira de não-retorno. E há um <strong>conselho</strong> ou uma decisão: ou a pessoa escolhe voltar (em geral pelos filhos, por uma tarefa não terminada), ou lhe dizem que "ainda não é a sua hora" e a mandam de volta — quase sempre contra a vontade dela, porque a paz do outro lado era tão grande que ninguém queria voltar para a dor do corpo.</p>
+
+  <h3>O tempo que não existe lá</h3>
+  <p>E há um detalhe que aparece quase em todo relato e que vai ser decisivo na Grande Comparação: a <strong>ausência de tempo</strong>. As pessoas dizem que "tudo aconteceu ao mesmo tempo", que a revisão de vida inteira durou um instante e uma eternidade, que passado e futuro estavam ali simultaneamente. Não é figura de linguagem; é a queixa de quem tentou contar e não achou as palavras. Lembre do Volume I: dissemos que nos planos altos "a alma é livre do tempo comum", que o plano causal está acima da sucessão. O moribundo desce — ou sobe — para uma faixa onde o tempo não corre em fila. Ele não sabia da teoria. Ele só não conseguia mais separar antes de depois.</p>
+
+  <div class="relato">
+    "Não havia minutos. Eu vi minha vida inteira de uma vez só, e ao mesmo tempo cada momento durava o quanto eu quisesse. Quando voltei e me disseram que tinha 'passado' dois minutos, eu ri. Eu tinha vivido anos lá dentro."
+    <span class="who">— relato recorrente sobre a simultaneidade na EQM, paráfrase composta</span>
+  </div>
+
+  <h3>Nem toda EQM é paraíso</h3>
+  <p>Seria desonesto pintar a EQM só de luz. Os pesquisadores que ouviram muitos relatos — em especial o cardiologista Maurice Rawlings, que ressuscitava pacientes e os ouvia ainda em pânico — descrevem três grandes famílias de experiência, e nem todas são doces.</p>
+
+  <div class="mapa">
+    <div class="mt">AS FAMÍLIAS DA EXPERIÊNCIA DE QUASE MORTE</div>
+    <div class="plano s6"><span class="lvl">+</span><span class="nm">Paradisíaca / luminosa</span><span class="ds">A mais comum nos relatos coletados: paz, luz, reencontro, amor. A pessoa não quer voltar.</span></div>
+    <div class="plano s4"><span class="lvl">~</span><span class="nm">Neutra / vazia</span><span class="ds">Escuridão sem dor nem alegria, flutuação no nada, ou simples "apagão" sem cenário. Nem céu nem inferno.</span></div>
+    <div class="plano s1"><span class="lvl">−</span><span class="nm">Angustiante / infernal</span><span class="ds">Trevas, seres hostis, vazio aterrorizante, sensação de queda ou de aprisionamento. Menos relatada — talvez por vergonha.</span></div>
+  </div>
+
+  <p>As versões angustiantes são preciosas para a cartografia porque descrevem, sem querer, o <strong>Umbral</strong> do Volume II. Pessoas relatam ter caído numa região de neblina, de vultos lamentosos, de seres que agarram, de uma escuridão "habitada". Algumas relatam <strong>ciclos repetitivos</strong> — fazer a mesma coisa sem fim, percorrer o mesmo corredor que não acaba, ouvir o mesmo som — o que rima de modo arrepiante com a descrição umbralina de espíritos presos numa obsessão que se repete. E relatam <strong>aprisionamento</strong>: a sensação de estar preso sem grade, exatamente a chave do Volume II, onde o Umbral "não tem grades" e ninguém está preso por muros, só pela própria crença de que merece ficar.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · A EXPERIÊNCIA DE QUASE MORTE</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Sobreviventes de parada cardíaca, afogamento, acidente e cirurgia, em todas as culturas; sistematizado por Raymond Moody (1975), depois por Kenneth Ring, Pim van Lommel, Maurice Rawlings, Bruce Greyson.</dd>
+      <dt>Como se entra</dt><dd>Por acidente, sem treino e sem aviso — a parada das funções vitais.</dd>
+      <dt>Sequência típica</dt><dd>Saída do corpo → túnel → luz → seres queridos → ser de luz → revisão de vida → fronteira → retorno forçado.</dd>
+      <dt>Habitantes</dt><dd>Parentes mortos, o "Ser de luz", às vezes figuras religiosas; nas versões sombrias, seres hostis e vultos.</dd>
+      <dt>Marca registrada</dt><dd>A revisão de vida sentida pelos olhos dos outros; a ausência de tempo; o não querer voltar.</dd>
+      <dt>Rima com</dt><dd>A saída do corpo da projeção astral; o portal-funil; o limiar guardado; a revisão de vida rosacruz; o Umbral nas versões sombrias.</dd>
+    </dl>
+    <p class="fonte"><strong>Fontes:</strong> Raymond Moody, <em>Vida Depois da Vida</em> (1975); Kenneth Ring, <em>Life at Death</em>; Pim van Lommel, estudo holandês publicado em periódico médico (2001); Maurice Rawlings, <em>Beyond Death's Door</em>; Bruce Greyson e a escala de classificação de EQM.</p>
+  </div>
+</section>
+
+<!-- ===== II — PROJEÇÃO ASTRAL ===== -->
+<section class="opening" id="c2">
+  <h2><span class="num">Testemunho II</span>A Projeção Astral e seus exploradores</h2>
+  <p>Se a EQM é a porta que se abre por acidente, a projeção astral é a porta que alguém aprende a abrir de propósito. E é aqui que a cartografia ganha seus exploradores — porque, ao contrário do moribundo que vai uma vez, o projetor vai muitas vezes, toma notas, repete o caminho, compara. São os cartógrafos voluntários do invisível. O fascinante é que eles vêm de tradições e países diferentes, em épocas diferentes, e descrevem a mesma geografia que o moribundo viu sem treino.</p>
+
+  <p>Vamos comparar os grandes exploradores, porque a comparação <em>é</em> o método deste capítulo.</p>
+
+  <h3>Sylvan Muldoon — o doente que não conseguia ficar no corpo</h3>
+  <p>Nos anos 1920 e 30, um norte-americano de saúde frágil, Sylvan Muldoon, passou a vida saindo do corpo involuntariamente. Foi ele quem fixou a imagem que viraria clichê: o <strong>cordão de prata</strong>, o cordão luminoso que liga o corpo projetado ao corpo físico, elástico, que se estica ao infinito e puxa de volta quando o físico precisa do projetado. Muldoon descreveu o processo mecânico da saída — a vibração, a paralisia, a sensação de descolar — com uma precisão de engenheiro. E o cordão de prata rima direto com o "eixo que liga tudo" do Volume I: a coluna, a árvore, o fio que conecta os planos. No corpo individual, esse eixo vira um cordão.</p>
+
+  <h3>Oliver Fox — o sonho que se torna lúcido</h3>
+  <p>Mais ou menos na mesma época, o inglês Oliver Fox chegou ao astral por outra porta: o <strong>sonho</strong>. Descobriu que, se percebesse dentro do sonho que estava sonhando, ganhava o controle — o que hoje se chama sonho lúcido — e que a partir daí podia "sair" para regiões que não pareciam mais sonho nenhum. Fox é importante porque liga duas coisas que a cartografia trata como vizinhas: o sonho e o astral seriam o <strong>mesmo território</strong> visto com graus diferentes de consciência. Você vai lá toda noite; só não lembra, e não decide.</p>
+
+  <h3>Yram — o francês que mapeou o amor nos planos altos</h3>
+  <p>Sob o pseudônimo Yram, um francês escreveu nos anos 1920 um dos relatos mais ricos de projeção, descrevendo não só a saída mecânica mas as <strong>regiões sutis</strong> a que chegava — e, detalhe raro, encontros afetivos e até a descrição de planos onde a forma do corpo astral mudava conforme a elevação. Yram subia mais que Muldoon. Onde Muldoon descrevia a sala ao lado do corpo, Yram descrevia faixas inteiras, cada uma com sua "atmosfera" — o que bate com a escada de planos do Volume I, do astral denso ao mental.</p>
+
+  <h3>Robert Monroe — o empresário que virou laboratório</h3>
+  <p>O salto para a era moderna tem nome: Robert Monroe, um executivo de rádio americano que começou a sair do corpo nos anos 1950, sem querer e apavorado, e acabou fundando um instituto para estudar o fenômeno com método. Monroe trouxe um vocabulário que pegou: ele numerou os territórios. <strong>Localidade I</strong> é o mundo físico visto de fora do corpo (você projeta e vê seu quarto). <strong>Localidade II</strong> é o vasto mundo não-físico, governado pelo pensamento — onde pensar em alguém é ir até essa pessoa, onde a emoção molda a paisagem. <strong>Localidade III</strong> seria um mundo paralelo, quase físico, estranhamente parecido com o nosso mas não igual.</p>
+
+  <div class="relato">
+    "Lá, pensar em um lugar é estar nele. Pensar numa pessoa é estar diante dela. Não existe distância no sentido em que conhecemos. A emoção é a geografia. O que você é determina onde você está."
+    <span class="who">— síntese das descrições de Robert Monroe sobre a "Localidade II"</span>
+  </div>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto — a emoção é a geografia</span>
+    <p>Olhe o que Monroe diz da Localidade II: o pensamento move, a emoção molda, "o que você é determina onde você está". É a <strong>lei da afinidade do Volume I dita por um empresário cético de Virgínia</strong>, que nunca tinha lido um livro espírita. É a mesma frase, com outro sotaque. E é a mesma coisa que a EQM descobre na revisão de vida e que a doutrina espírita chama de sintonia. Quatro bocas, uma lei: nos mundos invisíveis você não viaja no espaço, você viaja na própria vibração.</p>
+  </div>
+
+  <h3>Waldo Vieira e a Projeciologia — a tentativa de virar ciência</h3>
+  <p>E chegamos ao Brasil, onde a projeção ganhou sua tentativa mais sistemática. Waldo Vieira, médico que tinha sido parceiro de psicografia de Chico Xavier, rompeu com a moldura religiosa e criou a <strong>Projeciologia</strong> e a Conscienciologia — um esforço de tratar a experiência fora do corpo como objeto de estudo, com vocabulário próprio (ele chama o corpo astral de "psicossoma", a saída de "projeção da consciência") e milhares de relatos catalogados. Vieira insiste num ponto que fecha este capítulo: a projeção seria <strong>treinável e verificável</strong>, não um dom de santo. Qualquer um, em princípio, poderia se tornar cartógrafo do invisível. É a democratização da viagem que o moribundo faz por acaso.</p>
+
+  <p>Repare no arco que acabamos de percorrer: do doente involuntário (Muldoon) ao sonhador lúcido (Fox), do explorador afetivo (Yram) ao laboratório (Monroe), até a tentativa de ciência (Vieira). Cinco abordagens, cinco temperamentos, cinco países. E todos descrevem: a saída com cordão, a paisagem moldada pela emoção, regiões em camadas do denso ao sutil, encontros com seres, e cidades e escolas lá em cima — exatamente as regiões do Volume II, agora visitadas por turistas voluntários.</p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · A PROJEÇÃO ASTRAL</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Sylvan Muldoon, Oliver Fox, Yram, Robert Monroe, Waldo Vieira (Projeciologia); a tradição teosófica e ocultista em geral.</dd>
+      <dt>Como se entra</dt><dd>Por treino voluntário: relaxamento profundo, vibração, intenção; ou espontaneamente, a partir do sono e do sonho lúcido.</dd>
+      <dt>Ambiente</dt><dd>Camadas do astral denso (parecido com o físico) ao astral sutil e mental; paisagem moldada por pensamento e emoção.</dd>
+      <dt>Marca registrada</dt><dd>O cordão de prata; a emoção como geografia; ir a um lugar pensando nele; lembrar de tudo ao voltar.</dd>
+      <dt>Habitantes</dt><dd>Mortos recentes, guias, outros projetores, formas-pensamento, e seres que os autores classificam como "não-humanos lúcidos".</dd>
+      <dt>Rima com</dt><dd>A saída do corpo na EQM; o cordão como o "eixo que liga tudo"; as cidades e escolas astrais do Volume II; a lei da afinidade do Volume I.</dd>
+    </dl>
+    <p class="fonte"><strong>Fontes:</strong> Sylvan Muldoon &amp; Hereward Carrington, <em>The Projection of the Astral Body</em> (1929); Oliver Fox, <em>Astral Projection</em>; Yram, <em>Le Médecin de l'Âme</em> / <em>Practical Astral Projection</em>; Robert Monroe, <em>Journeys Out of the Body</em> (1971) e sequências; Waldo Vieira, <em>Projeciologia</em>.</p>
+  </div>
+</section>
+
+<!-- ===== III — ABDUÇÕES E CONTATOS ===== -->
+<section class="opening" id="c3">
+  <h2><span class="num">Testemunho III</span>Abduções e contatos não-humanos</h2>
+  <p>Agora chegamos à porta mais incômoda — a que a maioria dos estudiosos do esoterismo tradicional preferiria fechar, e que por isso mesmo é a mais reveladora. Porque a pessoa que diz ter sido levada por seres a uma nave não estava buscando Deus, não estava meditando, não tinha lido Kardec nem Blavatsky. Ela estava dormindo, ou dirigindo numa estrada deserta, ou caminhando, e algo a tirou dali. E quando ela conta o que viu lá dentro, o relato — que deveria ser totalmente alienígena, vindo de "outro planeta" — descreve, de novo, <strong>os mesmos lugares e as mesmas regras dos volumes anteriores</strong>. É isto que faz da abdução um capítulo obrigatório de uma cartografia dos mundos invisíveis, e não um apêndice de ficção.</p>
+
+  <h3>A estrutura recorrente do contato</h3>
+  <p>Quando se juntam os relatos — e gente como o psiquiatra de Harvard John Mack e o ufólogo Jacques Vallée juntou muitos —, aparece uma sequência tão estável quanto a da EQM. Há uma <strong>luz</strong> ou uma presença que paralisa. Há uma <strong>passagem</strong> — a pessoa é levada para cima, atravessa paredes, flutua por um feixe — outra vez o portal-funil, outra vez a saída do "normal". Há uma <strong>sala</strong>, quase sempre branca, curva, sem cantos, iluminada sem fonte visível. Há <strong>seres</strong>. Há um <strong>exame</strong> ou um procedimento. Há, com enorme frequência, uma <strong>mensagem</strong> — sobre o destino da Terra, sobre o cuidado com o planeta, sobre uma transformação que vem. E há o <strong>retorno</strong>, em geral com lacunas de memória que só se abrem depois, às vezes sob hipnose.</p>
+
+  <h3>As naves, os planetas e as dimensões</h3>
+  <p>Os contatados antigos — os "contactees" dos anos 1950, como George Adamski — diziam ter sido levados a <strong>outros planetas</strong>, descreviam Vênus e Marte habitados por seres louros e angelicais que traziam mensagens de paz. À medida que a astronomia tornou Vênus e Marte inóspitos, o relato migrou: os seres passaram a vir de "outra dimensão", de "um plano vibratório diferente", de "uma realidade paralela". Repare bem nessa migração, porque ela é uma das chaves do volume: <strong>o destino do contato deixou de ser geográfico e virou vibratório.</strong> Os seres não vêm mais de um lugar no espaço; vêm de uma faixa de vibração — exatamente a linguagem dos planos do Volume I.</p>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto — a fada virou alienígena</span>
+    <p>Jacques Vallée, que estudou tanto OVNIs quanto folclore, notou uma coisa que assombra: as abduções modernas repetem, ponto por ponto, as antigas histórias de <strong>gente levada pelas fadas</strong>. O sujeito que entra no círculo de cogumelos e some por uma noite que lá dentro durou anos; o tempo que não passa igual; os seres pequenos de olhos grandes; a comida que não se pode comer sob pena de não voltar; a mensagem, o retorno alterado. Troque "monte das fadas" por "nave" e "povo encantado" por "grays", e é a mesma história. Isto sugere que a abdução não é um fenômeno novo trazido pela era espacial — é um <strong>contato antiquíssimo vestido com a roupa de cada época</strong>. Ontem, fadas e elfos. Hoje, naves e ETs. O figurino muda; o roteiro, não.</p>
+  </div>
+
+  <h3>As salas de estudo e as cidades extraterrestres</h3>
+  <p>E aqui o reconhecimento fica forte demais para ignorar. Uma quantidade enorme de abduzidos relata ter sido levada a <strong>salas onde lhes ensinam</strong> — telas com imagens, "downloads" de conhecimento, lições sobre o futuro da Terra, sobre ecologia, sobre a própria origem. Alguns relatam ter visto <strong>cidades</strong>, ambientes vastos e organizados, "bases" enormes. Outros descrevem terem sido levados a lugares que entendem como sob a terra ou sob o mar. Pare e compare: a <strong>sala de aula com um mestre</strong> que ensina o destino da alma já apareceu na Teosofia (as escolas do plano mental), nos sonhos de quem "estuda à noite", e na EQM (alguns relatam terem sido levados a um lugar de aprendizado). Agora aparece de novo, pela boca de quem jura ter entrado numa nave. <strong>Quatro contextos independentes, a mesma sala.</strong></p>
+
+  <div class="relato">
+    "Me levaram a uma sala curva, sem cantos. Numa parede passavam imagens da Terra — secas, mares subindo, florestas queimando. Um deles, mais alto, pôs algo na minha cabeça e eu simplesmente soube tudo aquilo de uma vez. Disseram que eu fora escolhido para lembrar. Quando acordei no carro, tinham se passado três horas que eu não tinha."
+    <span class="who">— composição de relatos de abdução com instrução e perda de tempo</span>
+  </div>
+
+  <p>E lá está, de novo, o <strong>tempo que não bate</strong>: as horas perdidas, o "missing time", a viagem que durou um instante e três horas ao mesmo tempo. O mesmo tempo dobrado da EQM, do astral, do monte das fadas. A consciência que entra no contato sai da fila do relógio.</p>
+
+  <h3>Os seres e suas tecnologias</h3>
+  <p>Os habitantes desses relatos formam um pequeno panteão moderno que vamos catalogar adiante: os <strong>grays</strong> pequenos e cinzentos de olhos enormes, os <strong>nórdicos</strong> altos e louros de aparência angelical, os <strong>reptilianos</strong> de descrição assustadora, os "louvadeuses" insetoides. As "tecnologias" descritas — telas que respondem ao pensamento, objetos que atravessam matéria, instrumentos que curam ou marcam o corpo — soam como ficção científica, mas têm um parentesco curioso com a <strong>magia descrita pelos ocultistas</strong>: operar a matéria pela vontade, mover sem tocar, ver à distância. Onde o ocultista diz "magia", o abduzido diz "tecnologia avançada". A terceira lei de Clarke, virada do avesso: <em>toda magia suficientemente eficaz é indistinguível de tecnologia.</em></p>
+
+  <div class="ficha">
+    <p class="ft">FICHA · ABDUÇÕES E CONTATOS NÃO-HUMANOS</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Contatados (Adamski e os "contactees" dos anos 50); abduzidos modernos (caso Betty &amp; Barney Hill, 1961, e milhares depois); sistematizado por John Mack (psiquiatra de Harvard), Budd Hopkins, Jacques Vallée.</dd>
+      <dt>Como se entra</dt><dd>Involuntariamente: luz paralisante, feixe, sensação de ser levado; muitas vezes durante o sono ou em estrada deserta.</dd>
+      <dt>Ambiente</dt><dd>Salas brancas e curvas sem fonte de luz visível; "naves"; cidades e bases vastas; outrora "outros planetas", hoje "outras dimensões".</dd>
+      <dt>Habitantes</dt><dd>Grays, nórdicos louros, reptilianos, insetoides; um "líder" que comunica por telepatia.</dd>
+      <dt>Marca registrada</dt><dd>A sala de instrução; a mensagem sobre o destino da Terra; o "missing time"; a comunicação telepática; as marcas no corpo.</dd>
+      <dt>Rima com</dt><dd>O monte das fadas e o povo encantado (folclore); o portal-funil; a sala de aula com mestre (Teosofia, EQM, sonhos); o tempo dobrado de toda experiência; a "magia" do ocultista virada "tecnologia".</dd>
+    </dl>
+    <p class="fonte"><strong>Fontes:</strong> John E. Mack, <em>Abduction</em> (1994); Jacques Vallée, <em>Passport to Magonia</em> (1969) — onde traça o paralelo fada/ET; Budd Hopkins, <em>Missing Time</em>; o caso Betty e Barney Hill; os relatos dos contactees clássicos. Tema sensível e contestado — aqui mapeamos o relato, não atestamos sua causa.</p>
+  </div>
+</section>
+
+<!-- ===== IV — OS MORTOS FALAM ===== -->
+<section class="opening" id="c4">
+  <h2><span class="num">Testemunho IV</span>Os mortos falam: mediunidade e incorporação</h2>
+  <p>As três primeiras portas tinham algo em comum: era um vivo que ia até o outro mundo. A quarta porta inverte o fluxo — é o <strong>outro mundo que vem até nós</strong>. E é a porta mais antiga da humanidade, mais velha que qualquer livro: desde sempre houve gente que servia de canal, que emprestava a voz, a mão ou o corpo inteiro para que algo que não tem corpo se manifestasse. Esta é também a porta a que o briefing desta obra pediu atenção redobrada, e com razão: é por ela que chega a maior parte de tudo o que sabemos sobre como funcionam os mundos invisíveis — porque foi pela boca de médiuns que os próprios habitantes descreveram suas regiões.</p>
+
+  <h3>As formas pelas quais o invisível fala</h3>
+  <p>Há uma gradação no grau de "entrega" do médium, e vale conhecê-la para não confundir fenômenos diferentes.</p>
+
+  <div class="mapa">
+    <div class="mt">OS GRAUS DA COMUNICAÇÃO COM O INVISÍVEL</div>
+    <div class="plano s3"><span class="lvl">a</span><span class="nm">Inspiração / intuição</span><span class="ds">O médium recebe ideias e impressões sem perder a consciência. A forma mais sutil e a mais comum.</span></div>
+    <div class="plano s3"><span class="lvl">b</span><span class="nm">Psicografia</span><span class="ds">A mão escreve textos ditados por um espírito — Chico Xavier e os centenas de livros de André Luiz, Emmanuel.</span></div>
+    <div class="plano s2"><span class="lvl">c</span><span class="nm">Canalização / psicofonia</span><span class="ds">A voz do médium é usada para falar; o ser comunica por ela, o médium semiconsciente.</span></div>
+    <div class="plano s2"><span class="lvl">d</span><span class="nm">Incorporação plena</span><span class="ds">O corpo inteiro é cedido; postura, voz, gestos e personalidade mudam. O médium "sai", o ser "entra".</span></div>
+    <div class="plano s1"><span class="lvl">e</span><span class="nm">Aparição espontânea</span><span class="ds">O morto se mostra sem médium — em sonho, em vigília, no luto. A forma mais antiga e universal.</span></div>
+  </div>
+
+  <h3>A psicografia: um morto com vocação de repórter</h3>
+  <p>Volte ao Volume II e lembre de André Luiz, o espírito que se dizia médico em vida e que, pela mão de Chico Xavier, ditou uma série de livros descrevendo o pós-morte como um documentarista. É a prova viva do que dissemos: <strong>quase tudo o que a cartografia espírita sabe sobre o Umbral e as colônias chegou por psicografia.</strong> O morto fala, o médium escreve, e o mapa se desenha. O que importa para este volume é notar que o relato do morto (de dentro) e o relato do projetor astral (de fora, visitando) <em>descrevem os mesmos lugares</em>. O morador e o turista concordam sobre a cidade.</p>
+
+  <h3>A incorporação nas religiões de matriz africana e no Espiritismo</h3>
+  <p>E agora o coração deste capítulo. Em várias tradições, a comunicação não é texto nem voz — é o corpo inteiro entregue. Vale comparar como cada uma entende o que acontece, porque a mecânica revela muito.</p>
+
+  <h4>Umbanda</h4>
+  <p>Na gira de Umbanda, o médium incorpora entidades que se apresentam em <strong>linhas</strong> ou falanges: os Pretos-Velhos (espíritos de antigos escravizados, sábios e pacientes), os Caboclos (espíritos de indígenas, firmes e ligados à natureza), as Crianças (Erês, alegres e curadoras), os Exus e Pombagiras (os guardiões das encruzilhadas, dos quais falaremos no bestiário). Cada linha tem seu jeito, sua fala, seu trabalho. E note: essas entidades, incorporadas, <strong>descrevem de onde vêm e como funcionam as coisas lá</strong> — falam de reinos, de aruanda (o "céu" umbandista), de como a caridade move o mundo. A Umbanda é, em parte, uma cartografia falada toda noite pela boca de quem incorpora.</p>
+
+  <h4>Candomblé</h4>
+  <p>No Candomblé, o que se incorpora não é exatamente um morto: é o <strong>Orixá</strong>, a força ancestral e divina ligada aos elementos e ao destino. Quando o Orixá "baixa", o iniciado (o filho ou filha de santo) entra em transe e o Orixá dança, é saudado, abençoa — mas, em geral, não conversa como os espíritos da Umbanda. É uma comunicação mais de <strong>presença</strong> que de palavra: a divindade se faz sentir no corpo. Há ainda os Eguns, os mortos, tratados em culto próprio e com enorme respeito e distância — porque misturar o mundo dos mortos com o dos vivos é perigoso. Aqui aparece um princípio que vamos reencontrar: <strong>o limiar entre vivos e mortos deve ser guardado</strong>, e há especialistas e ritos justamente para guardá-lo.</p>
+
+  <h4>Espiritismo (Kardecismo)</h4>
+  <p>No Espiritismo, a incorporação (psicofonia) acontece no contexto de uma <strong>sessão de desobsessão ou de doutrinação</strong>: o médium incorpora um espírito sofredor ou obsessor, e os trabalhadores conversam com ele — explicam que ele morreu, que pode se libertar, que há ajuda. É a forma mais "terapêutica" da incorporação: o objetivo declarado é <strong>esclarecer o morto</strong>, não recebê-lo para festa nem para força. E é nessas sessões que se colhem alguns dos relatos mais ricos sobre o Umbral — porque o próprio sofredor, incorporado, descreve onde estava.</p>
+
+  <h4>Santo Daime e as tradições da ayahuasca</h4>
+  <p>E há a porta da planta. Nas tradições do Santo Daime, da União do Vegetal e nas tradições indígenas amazônicas, a bebida (ayahuasca) abre o que os praticantes chamam de "mirações" — visões em que se viaja por reinos, se encontram seres, se recebem ensinamentos. Não é incorporação no sentido estrito, mas é a mesma família: a consciência sai da faixa comum e percorre regiões. E os xamãs amazônicos descrevem há séculos um mundo de espíritos da floresta, mães das plantas, cidades luminosas vistas na miração — que rimam, mais uma vez, com as cidades astrais dos volumes anteriores. A floresta, dissemos no Volume II, é um dos portais clássicos. Aqui ela é portal e território ao mesmo tempo.</p>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto — todos descrevem a mesma cidade por bocas diferentes</span>
+    <p>Junte o que cada porta diz sobre os mundos invisíveis: o Preto-Velho da Umbanda fala de aruanda e da lei da caridade; o espírito kardecista incorporado descreve o Umbral e as colônias; o morto que psicografa desenha a geografia do além; o xamã na miração anda pelas cidades luminosas da floresta. <strong>São tradições que não se conversam, usando corpos diferentes, descrevendo a mesma cartografia:</strong> uma faixa de sofrimento logo acima de nós, regiões de cura e estudo mais acima, uma lei que organiza tudo por afinidade, e seres encarregados de ajudar quem está preso. O testemunho que vem "de lá" confirma o mapa que montamos "daqui".</p>
+  </div>
+
+  <div class="ficha">
+    <p class="ft">FICHA · OS MORTOS FALAM</p>
+    <dl>
+      <dt>Quem relatou</dt><dd>Médiuns de toda tradição: psicógrafos (Chico Xavier), médiuns de incorporação da Umbanda, Candomblé e Espiritismo; canalizadores modernos; xamãs amazônicos; e qualquer pessoa que tenha tido uma aparição no luto.</dd>
+      <dt>Como acontece</dt><dd>Em gradação: da inspiração à psicografia, da canalização à incorporação plena, até a aparição espontânea sem médium.</dd>
+      <dt>Quem se manifesta</dt><dd>Espíritos humanos (Pretos-Velhos, Caboclos, sofredores), Orixás (força divina, no Candomblé), guias, mestres, mães das plantas (na ayahuasca).</dd>
+      <dt>O que descrevem</dt><dd>Aruanda e os reinos; o Umbral e as colônias; a lei da caridade e da afinidade; o destino da alma; como se libertar de onde se está preso.</dd>
+      <dt>Rima com</dt><dd>O relato do projetor (turista) e do morto que psicografa (morador) coincidem; o limiar guardado entre vivos e mortos; as cidades astrais e a floresta-portal do Volume II.</dd>
+    </dl>
+    <p class="fonte"><strong>Fontes:</strong> a série psicografada de André Luiz / Chico Xavier; a literatura e a prática vivas da Umbanda, do Candomblé e do Espiritismo kardecista; relatos das tradições da ayahuasca (Santo Daime, UDV, xamanismo amazônico). Tradições vivas e sagradas — descritas aqui com respeito e no plano do relato.</p>
+  </div>
+</section>
+
+<!-- ===== V — O BESTIÁRIO ===== -->
+<section class="opening" id="c5">
+  <h2><span class="num">Testemunho V</span>O Bestiário dos mundos invisíveis</h2>
+  <p>Percorremos as quatro portas e em todas encontramos gente — ou melhor, <strong>seres</strong>. É hora de catalogá-los. Este é o capítulo dos habitantes, o bestiário da cartografia. Mas note, desde já, uma surpresa que vai crescer à medida que descermos a lista: por mais variados que pareçam os nomes — anjos, guias, Éons, Exus, grays —, eles se organizam em <strong>poucas famílias funcionais</strong>. Não importa quantos nomes a humanidade inventou; os papéis são contados nos dedos. Há os que servem de degrau acima de nós, há os que guardam as portas, há os que prendem e confundem, há os que são forças da natureza, e há os de natureza incerta. Vamos por família.</p>
+
+  <h3>Os intermediários ascendentes — anjos, arcanjos, guias, mestres</h3>
+  <p>A primeira e maior família é a dos seres que estão um degrau (ou muitos) acima da consciência humana e que <strong>servem de ponte para cima</strong>. No Cristianismo e no Judaísmo, são os <strong>anjos</strong> (mensageiros) e os <strong>arcanjos</strong> (os de maior posto: Miguel, Gabriel, Rafael). Na Teosofia e no esoterismo, são os <strong>Mestres</strong> — seres que já completaram a evolução humana e ficaram para ajudar, os "Irmãos Maiores" da Grande Fraternidade Branca do Volume II. No Espiritismo e na Umbanda, são os <strong>guias</strong> e os mentores. A EQM os encontra como o "Ser de luz" e os parentes que recebem. O abduzido às vezes os encontra como os "nórdicos" benevolentes.</p>
+
+  <div class="ficha">
+    <p class="ft">FAMÍLIA I · OS INTERMEDIÁRIOS ASCENDENTES</p>
+    <dl>
+      <dt>Aparecem como</dt><dd>Anjos, arcanjos, Mestres, guias, mentores, "Ser de luz", Irmãos Maiores.</dd>
+      <dt>Função</dt><dd>Guiar, proteger, ensinar, socorrer; servir de degrau para cima. Não coagem — orientam.</dd>
+      <dt>Marca</dt><dd>Luz, amor que não julga, comunicação direta na mente, ausência de imposição.</dd>
+      <dt>Onde aparecem</dt><dd>Religiões abraâmicas, Teosofia, Espiritismo, Umbanda, EQM, contatos "nórdicos".</dd>
+    </dl>
+  </div>
+
+  <h3>Os guardiões do limiar — vigilantes, guardiões, sentinelas</h3>
+  <p>A segunda família foi protagonista do Volume II: os <strong>guardiões</strong> que ficam no limiar e decidem quem passa. Na cabala e no esoterismo, há o "Guardião do Limiar" — a figura que o iniciado precisa enfrentar e que muitas vezes é a própria sombra dele projetada. Nas ordens, são os que reconhecem o sinal e o grau. Na EQM, é a presença que diz "ainda não é a sua hora" na fronteira de não-retorno. No folclore, é o ser que barra a entrada do monte das fadas. <strong>Mesma função em todo lugar:</strong> o guardião não te julga por mérito moral abstrato; ele lê a tua frequência e te deixa ir só até onde tu comportas. É a lei da afinidade transformada em porteiro.</p>
+
+  <div class="ficha">
+    <p class="ft">FAMÍLIA II · OS GUARDIÕES DO LIMIAR</p>
+    <dl>
+      <dt>Aparecem como</dt><dd>Guardião do Limiar, vigilantes, sentinelas, porteiros das cidades ocultas, o ser da fronteira na EQM.</dd>
+      <dt>Função</dt><dd>Guardar a passagem; deixar passar só quem "comporta" o que há do outro lado.</dd>
+      <dt>Marca</dt><dd>Reconhecem estado/frequência, não senha; às vezes são a própria sombra do visitante.</dd>
+      <dt>Onde aparecem</dt><dd>Ordens iniciáticas, cabala, cidades ocultas (Vol. II), EQM, folclore das fadas.</dd>
+    </dl>
+  </div>
+
+  <h3>Os que prendem e confundem — Arcontes, obsessores, kiumbas, "demônios"</h3>
+  <p>A terceira família é a mais sombria, e a mais interessante filosoficamente. No <strong>Gnosticismo</strong>, são os <strong>Arcontes</strong>: os carcereiros cósmicos, servos do Demiurgo, que mantêm a alma presa na matéria e no esquecimento (lembre do Volume I — "o cárcere é feito de esquecimento e de crença, não de pedra"). No Espiritismo, são os <strong>obsessores</strong>; na Quimbanda e na Umbanda, os <strong>kiumbas</strong>, espíritos atrasados e parasitas; no Cristianismo, os <strong>demônios</strong>. A função é sempre uma variação: <strong>manter a consciência presa</strong> — pela ilusão, pelo vício, pelo medo, pela obsessão. Mas atenção a um ponto crucial e fácil de errar: na maioria das tradições sérias, esses seres <strong>não prendem por poder próprio</strong>, e sim por afinidade — eles se grudam a quem vibra na faixa deles. Tira-se um obsessor não com força, mas mudando a própria frequência. O carcereiro perde o preso quando o preso deixa de ter a cor da cela.</p>
+
+  <h3>Os Éons — uma nota gnóstica à parte</h3>
+  <p>Os <strong>Éons</strong> do Gnosticismo merecem distinção, porque não são da família dos carcereiros. São as <strong>emanações da Fonte</strong>, os seres-luz que habitam o Pleroma (a Plenitude), a hierarquia luminosa de onde o cosmos desce. Estão para o lado de cima da régua do Volume I — perto demais da Fonte para se importarem com as celas dos Arcontes lá embaixo. Quando o gnóstico fala de Éons, fala da mesma faixa que a Teosofia chama de planos espirituais e a EQM toca como "a luz que era uma pessoa".</p>
+
+  <div class="ficha">
+    <p class="ft">FAMÍLIA III · OS QUE PRENDEM E CONFUNDEM</p>
+    <dl>
+      <dt>Aparecem como</dt><dd>Arcontes (Gnosticismo), obsessores (Espiritismo), kiumbas (Umbanda/Quimbanda), demônios (Cristianismo), "seres hostis" da EQM sombria.</dd>
+      <dt>Função</dt><dd>Manter a consciência presa: ilusão, vício, medo, obsessão, esquecimento.</dd>
+      <dt>Marca</dt><dd>Prendem por afinidade, não por poder próprio; perdem o preso quando ele muda de frequência.</dd>
+      <dt>Onde aparecem</dt><dd>Gnosticismo, Espiritismo, Quimbanda, Cristianismo, versões angustiantes da EQM.</dd>
+    </dl>
+  </div>
+
+  <h3>Os guardiões das encruzilhadas — Exus e Pombagiras</h3>
+  <p>Um caso brasileiro pede capítulo próprio, porque é o mais incompreendido. Os <strong>Exus</strong> e as <strong>Pombagiras</strong> da Umbanda e da Quimbanda são frequentemente confundidos com "demônios" por quem olha de fora — e isso é um erro de tradução cósmica. Eles são, antes de tudo, <strong>guardiões das passagens</strong> — os senhores das encruzilhadas, dos limiares, dos lugares de fronteira (e a encruzilhada, lembre o Volume II, é um portal clássico). São os que transitam entre o mundo dos vivos e o dos mortos, entre a lei e o que está fora dela, entre a luz e a sombra — e justamente por isso têm acesso a lugares e a trabalhos que os seres "de luz pura" não alcançam. Não confundir com o Exu-Orixá do Candomblé (Èṣù), que é a divindade mensageira que abre os caminhos e leva o axé entre os mundos — sem ele, nada se comunica entre o céu e a terra. <strong>Em ambas as faces, o papel é o mesmo: abrir e guardar a passagem.</strong> O guardião do limiar, de novo — só que com nome, festa, bebida e gargalhada.</p>
+
+  <div class="ficha">
+    <p class="ft">FAMÍLIA IV · OS GUARDIÕES DAS ENCRUZILHADAS</p>
+    <dl>
+      <dt>Aparecem como</dt><dd>Exus e Pombagiras (Umbanda/Quimbanda); Èṣù-Orixá (Candomblé), o abridor de caminhos.</dd>
+      <dt>Função</dt><dd>Guardar e abrir passagens; transitar entre os mundos e as ordens; fazer o que os "de luz pura" não alcançam.</dd>
+      <dt>Marca</dt><dd>Senhores da encruzilhada e do limiar; mediadores entre vivos e mortos, lei e fora-da-lei.</dd>
+      <dt>Onde aparecem</dt><dd>Umbanda, Quimbanda, Candomblé; ecoam o "Guardião do Limiar" universal.</dd>
+    </dl>
+  </div>
+
+  <h3>As forças da natureza — elementais</h3>
+  <p>A quinta família é a mais antiga e a menos "humana": os <strong>elementais</strong>, os espíritos dos quatro elementos que Paracelso catalogou — <strong>gnomos</strong> (terra), <strong>ondinas</strong> (água), <strong>silfos</strong> (ar), <strong>salamandras</strong> (fogo). São a alma viva da matéria, nem ascendentes nem carcereiros: forças da natureza com um grau de consciência próprio. O folclore os conhece como fadas, duendes, encantados; o xamã os conhece como os espíritos das plantas e dos lugares; a magia cerimonial trabalha com eles. Estão fora da escala moral humana — não são bons nem maus, são <em>naturais</em>, como o fogo não é mau por queimar.</p>
+
+  <h3>Os habitantes não-humanos modernos — ETs e interdimensionais</h3>
+  <p>E a família mais nova: os seres do contato — <strong>grays, nórdicos, reptilianos, insetoides</strong> — e os "interdimensionais", os seres que não vêm de um planeta mas de uma faixa de vibração. Já vimos a suspeita de Vallée: muitos deles repetem os papéis das famílias antigas com figurino novo. O nórdico louro e benevolente que traz mensagem de paz é o <strong>anjo/guia</strong> com roupa espacial. O reptiliano que controla e usa é o <strong>arconte/obsessor</strong> de escamas. O gray que examina e instrui na sala curva é, ao mesmo tempo, o <strong>guardião</strong> que decide e o <strong>mestre</strong> que ensina. Os nomes são novos; as funções, não.</p>
+
+  <div class="ficha">
+    <p class="ft">FAMÍLIAS V e VI · ELEMENTAIS E HABITANTES NÃO-HUMANOS MODERNOS</p>
+    <dl>
+      <dt>Aparecem como</dt><dd>Gnomos, ondinas, silfos, salamandras, fadas (elementais); grays, nórdicos, reptilianos, insetoides, "interdimensionais" (contato).</dd>
+      <dt>Função</dt><dd>Elementais: a consciência viva da matéria e dos lugares, fora da moral humana. Modernos: repetem os papéis de guia, guardião e carcereiro com figurino novo.</dd>
+      <dt>Marca</dt><dd>Elementais: ligados a um elemento e a um lugar. Modernos: tecnologia que parece magia; comunicação telepática.</dd>
+      <dt>Onde aparecem</dt><dd>Paracelso, folclore, xamanismo, magia (elementais); ufologia e relatos de contato (modernos).</dd>
+    </dl>
+    <p class="fonte"><strong>Fontes:</strong> Paracelso sobre os elementais; o panteão gnóstico (Éons, Arcontes, Demiurgo) dos textos de Nag Hammadi; a literatura espírita sobre obsessores; a teologia das tradições afro-brasileiras sobre Exu, Pombagira e Èṣù; a tipologia ufológica moderna; Jacques Vallée sobre a continuidade fada–ET.</p>
+  </div>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto — o bestiário se reduz a cinco papéis</span>
+    <p>Olhe a lista inteira de longe e veja o milagre da economia: por baixo de centenas de nomes, há essencialmente <strong>cinco papéis</strong>. (1) Os que servem de degrau para cima — anjos, guias, Mestres, nórdicos, o Ser de luz. (2) Os que guardam as portas — guardiões do limiar, vigilantes, Exus, o ser da fronteira. (3) Os que prendem e confundem — Arcontes, obsessores, kiumbas, reptilianos. (4) As forças da natureza — elementais, encantados, mães das plantas. (5) E a Fonte e suas emanações diretas — Éons, o Uno, "a luz". A humanidade inteira, separada por oceanos e séculos, povoou o invisível com o mesmo elenco de cinco arquétipos. É o indício mais forte de que <strong>ou todos visitam o mesmo lugar, ou todos carregam dentro a mesma estrutura.</strong></p>
+  </div>
+</section>
+
+<!-- ===== VI — A GRANDE COMPARAÇÃO ===== -->
+<section class="opening" id="c6">
+  <h2><span class="num">Testemunho VI</span>A Grande Comparação</h2>
+  <p>Chegamos ao capítulo para o qual a obra inteira foi construída. Montamos os mapas no Volume I, andamos pelo território no Volume II, ouvimos as testemunhas e catalogamos os seres neste Volume III. Agora vamos pôr tudo na mesma mesa e responder à pergunta que o briefing colocou no centro de tudo: <strong>quais padrões aparecem repetidamente mesmo entre pessoas que nunca tiveram contato entre si?</strong></p>
+
+  <p>Para que o tamanho da coincidência fique nu, observe esta tabela. As colunas são as quatro portas deste volume mais as tradições dos volumes anteriores. As linhas são os elementos recorrentes. Onde houver um traço, é uma fonte que descreve aquele elemento sem ter combinado com as outras.</p>
+
+  <div class="tabela">
+  <table style="width:100%;border-collapse:collapse;">
+    <tr>
+      <th>Elemento recorrente</th>
+      <th>EQM</th>
+      <th>Projeção</th>
+      <th>Abdução</th>
+      <th>Mediunidade</th>
+    </tr>
+    <tr><td><strong>Saída do corpo / vista de cima</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Túnel / corredor / passagem-funil</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>A luz / o Ser de luz</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Encontro com seres / mortos</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Sala de instrução / mestre</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Mensagem sobre o destino</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Guardião do limiar / fronteira</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Tempo ausente / simultâneo</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Paisagem moldada pela emoção</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>Lei da afinidade / sintonia</strong></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  </table>
+  </div>
+
+  <p>A tabela está cheia. Cada elemento aparece nas quatro portas — e em todas as tradições dos volumes anteriores. Vamos destrinchar os padrões maiores, um a um, porque cada um deles é uma peça de evidência por si só.</p>
+
+  <h3>Padrão 1 — A passagem afunila antes de abrir</h3>
+  <p>O túnel da EQM, o corredor da projeção, o feixe da abdução, o "elevador" e a porta dos relatos de portal — todos descrevem a mesma forma: um <strong>estreitamento seguido de abertura</strong>. A consciência sempre passa por um gargalo antes de chegar ao outro lado. Quem nunca ouviu a palavra "portal" atravessa exatamente um portal. É o padrão mais limpo de todos, porque é geométrico — não depende de cultura, de língua, de crença. É a forma da própria transição.</p>
+
+  <h3>Padrão 2 — Você gravita para a sua frequência</h3>
+  <p>A lei da afinidade — que abriu o Volume I e atravessou tudo — é o padrão mais profundo. O espírita chama de sintonia; Monroe, empresário cético, descobre sozinho que "o que você é determina onde você está"; a EQM revela na revisão de vida que ninguém te condena, você se reconhece; o obsessor se gruda por afinidade, não por força; o guardião lê tua vibração, não tua senha. <strong>Não há, em toda a cartografia, um juiz com um livro.</strong> Há uma física moral: a consciência encontra o seu nível como a água encontra o seu. Quatro portas, todas as tradições, uma só lei. Se há uma "constante universal" dos mundos invisíveis, é esta.</p>
+
+  <h3>Padrão 3 — A sala de aula com um mestre</h3>
+  <p>Some os contextos onde aparece uma escola, uma instrução, um ser que ensina: a Teosofia (escolas do plano mental), os sonhos de quem "estuda à noite", a EQM (relatos de aprendizado), a abdução (a sala curva com telas), a mediunidade (os mortos que dizem frequentar cursos no além). <strong>Cinco contextos independentes descrevendo a mesma sala de aula.</strong> A humanidade insiste que o outro lado não é só repouso — é estudo. Que a morte e a viagem são, antes de tudo, escola.</p>
+
+  <h3>Padrão 4 — O tempo não corre em fila</h3>
+  <p>O "tudo ao mesmo tempo" da EQM, o "missing time" da abdução, a noite-que-foram-anos do monte das fadas, o instante eterno da revisão de vida, o plano causal "livre do tempo comum" do Volume I. <strong>Toda experiência profunda do invisível relata a quebra da sucessão temporal.</strong> Ninguém ensinou ao moribundo a teoria do tempo simultâneo; ele só voltou sem conseguir mais botar antes e depois em fila. Este é, talvez, o padrão mais filosoficamente pesado — sugere que o tempo linear é uma condição do corpo físico, não da consciência.</p>
+
+  <h3>Padrão 5 — A revisão sentida pelos olhos do outro</h3>
+  <p>O elemento mais moralmente comovente: reviver a própria vida sentindo o que causou nos outros. A EQM o relata em massa; o Rosacrucianismo o descreveu décadas antes; a lei da afinidade o pressupõe. <strong>A justiça do invisível não é retributiva, é empática</strong> — não se trata de pagar pelo que fez, mas de <em>sentir</em> o que fez, de dentro de quem sofreu. É a mesma intuição que move a Umbanda quando o Preto-Velho fala da caridade: o que você faz ao outro, faz a si.</p>
+
+  <h3>Padrão 6 — O elenco de cinco seres</h3>
+  <p>Já o desmontamos no bestiário: sob centenas de nomes, cinco papéis — o degrau para cima, o guardião da porta, o carcereiro, a força natural, a Fonte. <strong>O imaginário do invisível, em toda a Terra, usa o mesmo elenco.</strong></p>
+
+  <h3>Padrão 7 — A geografia em três faixas</h3>
+  <p>E o desenho macro, que vem dos dois primeiros volumes mas que as testemunhas confirmam: logo acima de nós, uma <strong>faixa densa de sofrimento</strong> (Umbral, Kama-loka, a EQM sombria, os ciclos repetitivos); acima dela, <strong>faixas de cura e estudo</strong> (colônias, escolas, a EQM luminosa, as salas de instrução); e, mais acima, faixas de <strong>luz crescente</strong> que se dissolvem na Fonte (os céus, o Pleroma, "a luz que era uma pessoa"). Todo testemunho cabe em algum lugar dessa escada.</p>
+
+  <div class="padrao">
+    <span class="label">A coincidência, posta em uma frase</span>
+    <p>Pessoas que nunca se falaram — separadas por séculos, oceanos, línguas, religiões, e por terem chegado lá por portas completamente diferentes (a morte, o treino, o sequestro, o transe) — descrevem: a mesma passagem-funil, a mesma lei de afinidade, a mesma sala de aula, o mesmo tempo dobrado, a mesma justiça empática, o mesmo elenco de cinco seres e a mesma geografia de três faixas. <strong>Esta é a descoberta central de toda a Cartografia dos Mundos Invisíveis.</strong> Não importa, para registrá-la, se os mundos existem ou não. O padrão existe. E é grande demais para ser acidente.</p>
+  </div>
+
+  <h3>As três saídas — retomadas</h3>
+  <p>No Prólogo guardamos três explicações possíveis para a coincidência. Agora, com o tamanho dela diante dos olhos, podemos olhá-las de frente — e, fiéis ao método desta obra, sem fingir que sabemos qual é a verdadeira.</p>
+
+  <p><strong>Saída A — o território é real.</strong> Existe de fato um conjunto de mundos, e todos esses relatos coincidem porque descrevem o mesmo lugar visitado por portas diferentes. O turista (projetor), o acidentado (EQM), o levado (abduzido) e o morador (espírito) concordam pela razão mais simples: a cidade existe.</p>
+
+  <p><strong>Saída B — a estrutura é interna.</strong> Não há território; há uma <strong>arquitetura comum da mente humana</strong> que, sob estresse extremo, falta de oxigênio, transe ou treino, produz sempre as mesmas imagens — porque o cérebro humano é o mesmo em toda parte. A coincidência seria a prova não de um mundo lá fora, mas de uma estrutura aqui dentro, igual em todos nós.</p>
+
+  <p><strong>Saída C — as duas são a mesma coisa.</strong> E há a hipótese que o Volume I já insinuava quando dizia que "o alto e o baixo não são direções no espaço, são níveis de consciência": que a separação entre "lá fora" e "aqui dentro" é justamente a ilusão que cai na passagem. Que a consciência <em>é</em> o território — que os mundos são feitos da mesma matéria-prima que sonha, e por isso visitá-los por dentro e por fora dá no mesmo. Esta foi, no fundo, a aposta secreta de quase todos os místicos que mapeamos: o cosmos é consciência, e o mapa do invisível é, ao mesmo tempo, um mapa de quem o desenha.</p>
+</section>
+
+<!-- ===== EPÍLOGO ===== -->
+<section class="opening" id="epilogo">
+  <h2><span class="num">Epílogo</span>A cartografia que sempre se refaz</h2>
+  <p>Um atlas comum se fecha quando o mundo está medido. Este não se fecha, e a razão é a parte mais honesta de tudo o que escrevemos: <strong>o território muda conforme quem o atravessa</strong>. O moribundo cristão encontra Cristo na luz; o budista encontra um Buda; o secular encontra "uma luz que era uma pessoa". Não porque um esteja certo e os outros errados — mas porque, se a paisagem é moldada pela emoção e pela frequência de quem chega (Padrão 2, Padrão 9 da nossa tabela), então cada um veste o indizível com as roupas que tem. O mapa do invisível é, em parte, um espelho.</p>
+
+  <p>E é por isso que ele se refaz a cada época. As fadas viraram alienígenas sem que o roteiro mudasse. O "outro planeta" dos contatados dos anos 50 virou "outra dimensão" quando a astronomia fechou a porta de Vênus. O purgatório virou Umbral, o Umbral foi descrito por um morto com voz de repórter, e o repórter confirmou o que o projetor astral via de fora. <strong>A cada geração, a humanidade redesenha o mesmo território com o vocabulário disponível</strong> — e a permanência das formas por baixo da troca de nomes é, ela mesma, a maior pista de todas.</p>
+
+  <p>Fizemos, ao longo de três volumes, uma escolha de método que vale repetir no fim: não viemos provar nem desmentir. Viemos <strong>mapear e comparar</strong>. Mostramos os grandes mapas, andamos pelo território, ouvimos as testemunhas, catalogamos os seres — e deixamos a coincidência de pé, sem domá-la com uma explicação fácil. Quem quiser a Saída A tem com que sonhar; quem quiser a Saída B tem com que pensar; quem quiser a Saída C tem com que meditar. A cartografia serve aos três.</p>
+
+  <blockquote>
+    Há mais coincidência entre os relatos do que jamais houve acordo entre os relatores. E é na coincidência sem acordo que mora o mistério inteiro.
+    <cite>— Encerramento da Cartografia dos Mundos Invisíveis</cite>
+  </blockquote>
+
+  <p>Resta uma última verdade, e ela não é triste: <strong>nenhum mapa do invisível está completo, e nenhum jamais estará.</strong> Porque sempre haverá mais uma testemunha voltando de mais uma porta, com mais um relato que rima com os anteriores e acrescenta um detalhe novo. O atlas que você acaba de ler não é um monumento fechado — é uma porta entreaberta. O que há do outro lado, cada um terá de ir ver com a própria consciência. E talvez seja essa, no fim, a única regra que todas as tradições, todas as testemunhas e todos os seres confirmam sem exceção: <strong>o mapa nunca é o território — mas, nestes mundos, o viajante e o território são feitos da mesma coisa.</strong></p>
+
+  <hr class="divider">
+  <nav class="nav">
+    <a href="I-os-grandes-mapas.html">← I · Os Grandes Mapas</a>
+    <a href="II-geografia-dos-mundos.html">II · A Geografia dos Mundos</a>
+    <a class="cur" href="#">III · Testemunhos e Habitantes</a>
+  </nav>
+</section>
+
+<footer>
+  CARTOGRAFIA DOS MUNDOS INVISÍVEIS · VOLUME III · TESTEMUNHOS, HABITANTES E PADRÕES<br>
+  As testemunhas que voltaram, os seres que encontraram e a coincidência que nenhuma explicação esgota.<br>
+  — Fim da obra —
+</footer>
+
+</div>
+</body>
+</html>

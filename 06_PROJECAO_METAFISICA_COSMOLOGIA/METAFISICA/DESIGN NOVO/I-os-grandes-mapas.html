@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartografia dos Mundos Invisíveis — Volume I: Os Grandes Mapas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0612;
+  --bg2:#170a26;
+  --bg3:#1f0f33;
+  --ink:#efe6d2;
+  --ink-soft:#c8bca2;
+  --gold:#f5c542;
+  --gold-deep:#c9941a;
+  --violet:#b06bff;
+  --cyan:#2fe3cf;
+  --magenta:#ff5db1;
+  --crimson:#ff6a4d;
+  /* ACENTO DESTE VOLUME: OURO/ÂMBAR — o esqueleto, a estrutura, os mapas */
+  --accent:#f5c542;
+  --accent2:#ff9d3c;
+  --accent-soft:#7a5a12;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(176,107,255,.10), transparent 40%),
+    radial-gradient(circle at 88% 22%, rgba(245,197,66,.08), transparent 42%),
+    radial-gradient(circle at 50% 120%, rgba(47,227,207,.06), transparent 55%),
+    linear-gradient(180deg,#0a0612 0%, #120822 55%, #0a0612 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:'Futura','Futura PT','Jost','Century Gothic',sans-serif;
+  font-weight:400;
+  line-height:1.92;
+  font-size:18px;
+  letter-spacing:.2px;
+  padding:0;
+}
+/* poeira de estrelas estática */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff7, transparent),
+    radial-gradient(1px 1px at 70% 60%, #fff5, transparent),
+    radial-gradient(1px 1px at 40% 80%, #ffd98a55, transparent),
+    radial-gradient(1px 1px at 85% 15%, #b06bff55, transparent),
+    radial-gradient(1px 1px at 55% 45%, #fff4, transparent),
+    radial-gradient(1px 1px at 10% 70%, #2fe3cf44, transparent);
+  background-size:cover;
+}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:0 26px 120px;}
+
+/* ---------- CAPA ---------- */
+.cover{min-height:96vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0 40px;}
+.cover .sigil{font-size:3.2rem;color:var(--accent);text-shadow:0 0 30px var(--accent2);margin-bottom:18px;letter-spacing:8px;}
+.cover .series{font-family:'Jost';font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--cyan);font-size:.8rem;margin-bottom:26px;}
+.cover h1{
+  font-family:'Cinzel Decorative',serif;font-weight:900;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;margin:0;
+  background:linear-gradient(120deg,#fff2c4,var(--accent) 40%,var(--accent2) 70%,#fff2c4);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(245,197,66,.25);
+}
+.cover .vol{font-family:'Cinzel',serif;font-weight:700;letter-spacing:4px;margin-top:30px;font-size:1.1rem;color:var(--ink);}
+.cover .voltitle{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.3rem,4vw,2rem);color:var(--accent);margin-top:8px;}
+.cover .tag{max-width:540px;margin:34px auto 0;color:var(--ink-soft);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.35rem;line-height:1.6;}
+.divider{display:block;width:60%;max-width:340px;height:1px;margin:40px auto;border:0;background:linear-gradient(90deg,transparent,var(--accent),transparent);position:relative;}
+.divider::after{content:"✦";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 14px;color:var(--accent);}
+
+/* ---------- TÍTULOS ---------- */
+h2{
+  font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.18;
+  color:var(--accent);margin:3.4em 0 .2em;padding-top:.4em;text-shadow:0 0 26px rgba(245,197,66,.18);
+}
+h2 .num{display:block;font-family:'Jost';font-weight:300;letter-spacing:6px;font-size:.7rem;color:var(--cyan);text-transform:uppercase;margin-bottom:.7em;}
+h2::after{content:"";display:block;width:90px;height:3px;margin-top:.45em;background:linear-gradient(90deg,var(--accent),transparent);border-radius:3px;}
+h3{font-family:'Cinzel',serif;font-weight:600;font-size:1.22rem;letter-spacing:1px;color:var(--accent2);margin:2.4em 0 .3em;}
+h4{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:3px;font-size:.92rem;color:var(--cyan);margin:1.8em 0 .2em;}
+p{margin:.9em 0;}
+em{color:#fff0c9;}
+strong{color:#fff;font-weight:600;}
+a{color:var(--cyan);}
+.lead{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.55;color:var(--ink);font-style:italic;}
+.opening>p:first-of-type::first-letter{
+  font-family:'Cinzel Decorative',serif;font-size:4.4rem;line-height:.8;float:left;padding:8px 14px 0 0;color:var(--accent);text-shadow:0 0 20px var(--accent2);
+}
+
+/* ---------- CAIXAS ---------- */
+.relato{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(180deg,rgba(245,197,66,.07),rgba(245,197,66,.02));
+  padding:18px 24px;margin:1.8em 0;border-radius:0 10px 10px 0;
+  font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;line-height:1.62;color:#f3ecd8;
+}
+.relato .who{display:block;font-family:'Jost';font-style:normal;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-top:12px;}
+.padrao{
+  border:1px solid var(--accent-soft);border-top:3px solid var(--accent);
+  background:rgba(255,157,60,.05);padding:20px 24px;margin:2em 0;border-radius:10px;
+}
+.padrao .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--accent2);display:block;margin-bottom:8px;}
+.fonte{font-size:.86rem;color:var(--ink-soft);font-style:italic;border-top:1px dashed #ffffff22;padding-top:10px;margin-top:14px;}
+.fonte strong{color:var(--accent2);font-style:normal;}
+.aviso{
+  border:1px solid var(--violet);background:rgba(176,107,255,.08);border-radius:12px;padding:22px 26px;margin:2.4em 0;
+}
+.aviso .label{font-family:'Jost';font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:var(--violet);display:block;margin-bottom:8px;}
+blockquote{
+  margin:2em 0;padding:0 0 0 26px;border-left:3px solid var(--cyan);
+  font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;line-height:1.5;color:#eef9f6;
+}
+blockquote cite{display:block;font-family:'Jost';font-style:normal;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-top:12px;}
+
+/* ---------- MAPA COSMOLÓGICO (vertical) ---------- */
+.mapa{margin:2.2em 0;border:1px solid #ffffff14;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.25);}
+.mapa .mt{font-family:'Cinzel',serif;font-weight:600;text-align:center;padding:14px;color:var(--accent);letter-spacing:2px;background:rgba(245,197,66,.06);border-bottom:1px solid #ffffff14;}
+.plano{display:flex;align-items:center;gap:14px;padding:13px 20px;border-bottom:1px solid #ffffff0e;}
+.plano:last-child{border-bottom:0;}
+.plano .lvl{font-family:'Jost';font-weight:700;font-size:.72rem;min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#0a0612;flex-shrink:0;}
+.plano .nm{font-family:'Jost';font-weight:600;letter-spacing:1px;flex:1;}
+.plano .ds{font-size:.86rem;color:var(--ink-soft);flex:2;}
+.p7 .lvl{background:#fff2c4;} .p6 .lvl{background:#f5c542;} .p5 .lvl{background:#ff9d3c;}
+.p4 .lvl{background:#2fe3cf;} .p3 .lvl{background:#b06bff;} .p2 .lvl{background:#ff5db1;} .p1 .lvl{background:#ff6a4d;}
+
+/* ---------- TABELA COMPARATIVA ---------- */
+.tabela{width:100%;border-collapse:collapse;margin:2em 0;font-size:.92rem;}
+.tabela th{font-family:'Cinzel',serif;text-align:left;color:var(--accent);border-bottom:2px solid var(--accent-soft);padding:12px 10px;font-weight:600;}
+.tabela td{padding:11px 10px;border-bottom:1px solid #ffffff12;vertical-align:top;color:var(--ink);}
+.tabela tr:hover td{background:rgba(245,197,66,.04);}
+
+/* ---------- NAV ENTRE VOLUMES ---------- */
+.nav{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:60px 0 0;}
+.nav a{font-family:'Jost';font-weight:500;text-decoration:none;letter-spacing:1px;font-size:.9rem;padding:12px 20px;border:1px solid #ffffff22;border-radius:30px;color:var(--ink);transition:none;}
+.nav a.cur{border-color:var(--accent);color:var(--accent);background:rgba(245,197,66,.08);}
+.toc{columns:2;column-gap:34px;margin:1.5em 0;}
+.toc a{display:block;text-decoration:none;color:var(--ink-soft);padding:5px 0;border-bottom:1px solid #ffffff10;font-size:.94rem;break-inside:avoid;}
+.toc a:hover{color:var(--accent);}
+.toc a b{color:var(--accent);font-family:'Jost';font-weight:600;}
+footer{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:60px;padding-top:30px;border-top:1px solid #ffffff14;font-family:'Jost';letter-spacing:1px;}
+@media(max-width:640px){
+  body{font-size:17px;} .toc{columns:1;} .plano{flex-wrap:wrap;} .plano .ds{flex-basis:100%;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ===================== CAPA ===================== -->
+<header class="cover">
+  <div class="sigil">✶ ☉ ✶</div>
+  <div class="series">Cartografia dos Mundos Invisíveis</div>
+  <h1>Os Grandes Mapas do Cosmos Oculto</h1>
+  <div class="vol">— VOLUME&nbsp;I —</div>
+  <div class="voltitle">As Cosmologias e a Arquitetura dos Planos</div>
+  <p class="tag">Um atlas dos andares da realidade, costurado a partir de tudo que místicos, médiuns, gnósticos e viajantes do invisível afirmaram ter visto do outro lado.</p>
+  <hr class="divider">
+  <nav class="nav">
+    <a class="cur" href="#">I · Os Grandes Mapas</a>
+    <a href="II-geografia-dos-mundos.html">II · A Geografia dos Mundos</a>
+    <a href="III-testemunhos-e-habitantes.html">III · Testemunhos e Habitantes</a>
+  </nav>
+</header>
+
+<!-- ===================== AVISO DE MÉTODO ===================== -->
+<section class="aviso">
+  <span class="label">Antes de abrir o atlas</span>
+  <p>Este livro não tenta provar nem desmentir nada. Não é cético, não é religioso, não defende uma escola só. Ele faz uma coisa mais antiga e mais honesta: <strong>recolhe os mapas que a humanidade desenhou do outro lado e os coloca lado a lado</strong> para ver onde eles se tocam.</p>
+  <p>Quando um espírita descreve o Umbral, um tibetano descreve os <em>bardos</em>, um gnóstico descreve as esferas dos Arcontes e um projetor astral descreve o "plano denso logo acima do físico" — eles podem estar usando palavras diferentes para apontar o mesmo degrau. Ou não. Nossa tarefa é olhar para os dois e deixar você decidir. Tratamos cada relato como o que ele é: o testemunho de alguém que diz ter estado lá.</p>
+</section>
+
+<!-- ===================== SUMÁRIO ===================== -->
+<section>
+  <h2><span class="num">Sumário do Volume I</span>O que você vai atravessar</h2>
+  <nav class="toc">
+    <a href="#c0"><b>Prólogo</b> · Por que tantos mapas?</a>
+    <a href="#c1"><b>I</b> · A Lei dos Planos (a régua hermética)</a>
+    <a href="#c2"><b>II</b> · Cosmologia Espírita</a>
+    <a href="#c3"><b>III</b> · Cosmologia Umbandista</a>
+    <a href="#c4"><b>IV</b> · Cosmologia Quimbandeira</a>
+    <a href="#c5"><b>V</b> · Cosmologia Gnóstica</a>
+    <a href="#c6"><b>VI</b> · Cosmologia Hermética e Neoplatônica</a>
+    <a href="#c7"><b>VII</b> · Cosmologia Teosófica</a>
+    <a href="#c8"><b>VIII</b> · Cosmologia Rosacruz</a>
+    <a href="#c9"><b>IX</b> · Cosmologias Orientais</a>
+    <a href="#c10"><b>X</b> · Cosmologias Xamânicas</a>
+    <a href="#c11"><b>XI</b> · Cosmologias Modernas</a>
+    <a href="#c12"><b>XII</b> · A Cosmologia de Samael Aun Weor</a>
+    <a href="#c13"><b>XIII</b> · Poder, Trabalho e Sociedade nos Planos</a>
+    <a href="#sint"><b>Síntese</b> · O esqueleto compartilhado</a>
+  </nav>
+</section>
+
+<!-- ===================== PRÓLOGO ===================== -->
+<section class="opening" id="c0">
+  <h2><span class="num">Prólogo</span>Por que tantos mapas?</h2>
+  <p>Pega qualquer povo, em qualquer século, e cava um pouco. Vai encontrar a mesma intuição teimosa: o mundo que tocamos não é o único, e ele não está sozinho. Há andares acima e andares abaixo. Há um lugar para onde os mortos vão, há um lugar de onde os sonhos vêm, há cidades que ninguém vê de dia. Essa intuição não nasceu em um lugar e viajou. Ela nasceu em toda parte, ao mesmo tempo, em gente que nunca se falou.</p>
+  <p>Isso, por si só, já é o primeiro grande indício. Se a ideia de "outros mundos" fosse só fantasia, ela seria caótica — cada cultura inventaria coisas completamente diferentes. Mas não é o que acontece. Quando você empilha os mapas, eles rimam. Quase todos descrevem uma <strong>escada</strong>: do mais pesado, escuro e sofrido embaixo, até o mais leve, luminoso e livre em cima. Quase todos colocam um <strong>limiar</strong> a ser cruzado, e alguém guardando esse limiar. Quase todos falam de um lugar <em>intermediário</em>, nebuloso, onde a maioria para por um tempo antes de seguir.</p>
+  <p>O segredo que este volume quer mastigar para você é simples de dizer e demorado de digerir: <strong>os "mundos" desses mapas não são lugares no sentido de endereços. São estados.</strong> São faixas de vibração da consciência. Quando uma tradição diz "subir aos planos superiores", ela não está falando de geografia, está falando de afinação. Você vai para o andar com o qual você vibra. É por isso que mapas tão diferentes coincidem: todos estão medindo a mesma coisa — graus de densidade da consciência — só que com réguas de nomes diferentes.</p>
+  <p>Guarda essa chave. Ela abre todas as portas dos doze mapas a seguir. Vamos começar pela régua que mede todos eles.</p>
+</section>
+
+<!-- ===================== I — LEI DOS PLANOS ===================== -->
+<section class="opening" id="c1">
+  <h2><span class="num">Capítulo I</span>A Lei dos Planos — a régua hermética</h2>
+  <p>Antes de qualquer cosmologia específica, existe um princípio que está por baixo de todas elas, como o solo está por baixo de casas de estilos diferentes. Os antigos hermetistas o cravaram numa frase que você já ouviu sem saber o tamanho dela: <em>"o que está em cima é como o que está embaixo"</em>. A maioria das pessoas lê isso como uma poesia bonitinha. É uma instrução de engenharia.</p>
+  <p>O que ela diz, mastigado, é o seguinte: a realidade é feita em <strong>camadas</strong>, e cada camada é uma versão da mesma coisa em outra densidade. Imagine a água. Ela pode ser gelo (duro, pesado, lento), líquido (móvel) ou vapor (leve, invisível, em todo lugar). É a mesma substância — só muda a vibração. O Hermetismo diz que <strong>tudo</strong> é assim. A matéria é a "vibração mais lenta" de algo que, mais rápido, vira emoção; mais rápido ainda, vira pensamento; e na velocidade máxima, vira espírito puro. Os planos são essas marchas.</p>
+
+  <div class="mapa">
+    <div class="mt">A RÉGUA UNIVERSAL — do mais denso ao mais sutil</div>
+    <div class="plano p1"><span class="lvl">1</span><span class="nm">Plano Físico</span><span class="ds">A vibração mais lenta. Matéria sólida, o corpo, o mundo que os cinco sentidos pegam.</span></div>
+    <div class="plano p2"><span class="lvl">2</span><span class="nm">Plano Astral / Emocional</span><span class="ds">A faixa do desejo e da emoção. Onde se está nos sonhos, na projeção, logo após a morte.</span></div>
+    <div class="plano p3"><span class="lvl">3</span><span class="nm">Plano Mental</span><span class="ds">A faixa do pensamento, das ideias-forma, das escolas e bibliotecas invisíveis.</span></div>
+    <div class="plano p4"><span class="lvl">4</span><span class="nm">Plano Causal / Superior</span><span class="ds">A faixa da causa por trás da causa. A alma "verdadeira", livre do tempo comum.</span></div>
+    <div class="plano p5"><span class="lvl">5</span><span class="nm">Planos Espirituais</span><span class="ds">Faixas onde a individualidade começa a se dissolver em algo maior. Os "céus".</span></div>
+    <div class="plano p6"><span class="lvl">6</span><span class="nm">Plano Monádico</span><span class="ds">A faísca divina individual em sua origem. A "centelha" de cada um.</span></div>
+    <div class="plano p7"><span class="lvl">7</span><span class="nm">O Uno / Divino</span><span class="ds">A fonte. Vibração máxima, sem forma, de onde tudo emana e para onde tudo volta.</span></div>
+  </div>
+
+  <p>Essa é a régua-mãe. Quase todas as cosmologias que você vai ler são variações dela: alguns dividem em sete, outros em nove, outros em três, mas a lógica é sempre a mesma — <strong>quanto mais sutil, mais alto; quanto mais denso, mais baixo</strong>. E o "alto" e o "baixo" não são direções no espaço. São níveis de consciência. O inferno de muitas tradições não fica "debaixo da terra" por geografia, fica embaixo porque é a vibração mais pesada que uma consciência pode ocupar: medo, ódio, remorso travado, apego que não solta.</p>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto</span>
+    <p>A "lei da afinidade", ou lei de sintonia, é o motor de toda a cartografia. Você não é mandado para um plano por um juiz externo — você <strong>gravita</strong> para o plano da sua própria frequência, como o som de uma corda faz outra corda igual vibrar à distância. Isto explica por que os relatos do "julgamento" depois da morte quase sempre acabam descobrindo que <em>o julgamento é o próprio morto reconhecendo onde ele cabe</em>. Segure este fio: ele vai reaparecer em cada capítulo deste volume e nos três volumes da obra.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes desta ideia:</strong> os sete princípios herméticos resumidos no <em>Caibalion</em> (publicado em 1908 por "Três Iniciados"); a tradição da Tábua de Esmeralda atribuída a Hermes Trismegisto; e a reformulação moderna dos "planos" feita pela Teosofia, que serviu de espinha dorsal para quase todo o ocultismo do século XX.</p>
+</section>
+
+<!-- ===================== II — ESPÍRITA ===================== -->
+<section class="opening" id="c2">
+  <h2><span class="num">Capítulo II</span>Cosmologia Espírita</h2>
+  <p>O Espiritismo de Allan Kardec, organizado na França em meados do século XIX, é talvez a cartografia mais detalhada que existe do "logo depois da morte" — porque foi montada de um jeito incomum: por <strong>entrevista</strong>. Kardec não inventou um mapa; ele fez milhares de perguntas a espíritos, através de médiuns diferentes, em lugares diferentes, e foi cruzando as respostas. Onde batiam, ele anotava. É um método quase de jornalista.</p>
+  <p>O mapa que saiu disso tem três ideias-mestras. A primeira: a morte não muda nada de imediato. Você continua exatamente a mesma pessoa, com os mesmos vícios, apegos e ideias — só que sem o corpo de carne, vestindo agora o <strong>perispírito</strong>, um corpo de matéria sutil que molda a sua aparência conforme o seu estado interior. A segunda: o espaço entre as encarnações chama-se <strong>erraticidade</strong>, e nele cada um ocupa a região que combina com o seu grau de evolução. A terceira, a grande: existem <strong>mundos habitados</strong> em escala, do mais bruto ao mais divino.</p>
+
+  <div class="mapa">
+    <div class="mt">OS CINCO GRAUS DE MUNDOS (segundo Kardec)</div>
+    <div class="plano p1"><span class="lvl">1</span><span class="nm">Mundos primitivos</span><span class="ds">Destinados a almas recém-saídas da animalidade. Vida dura, instintiva, embrionária.</span></div>
+    <div class="plano p2"><span class="lvl">2</span><span class="nm">Mundos de provas e expiações</span><span class="ds">Onde o mal e o bem se misturam. <strong>A Terra é um deles.</strong> Sofrimento como escola.</span></div>
+    <div class="plano p4"><span class="lvl">3</span><span class="nm">Mundos de regeneração</span><span class="ds">Trégua. As almas descansam e se reerguem entre uma prova e outra. Já predomina o bem.</span></div>
+    <div class="plano p5"><span class="lvl">4</span><span class="nm">Mundos felizes (ditosos)</span><span class="ds">O bem domina largamente. O mal é exceção. Corpos mais sutis, vida longa e serena.</span></div>
+    <div class="plano p7"><span class="lvl">5</span><span class="nm">Mundos celestes ou divinos</span><span class="ds">Morada dos espíritos puros. Sem mal algum. O topo da escada evolutiva.</span></div>
+  </div>
+
+  <p>Repara no detalhe que muita gente não percebe: <strong>a Terra está bem embaixo</strong>, no segundo degrau, o dos mundos de provação. Para o Espiritismo, este planeta é uma sala de aula difícil, quase um reformatório. Isso já reorganiza a cabeça — o sofrimento daqui não é castigo aleatório, é o currículo de uma escola dura. Acima de nós há mundos onde a maldade simplesmente quase não existe, e a ideia toda da reencarnação é a história de uma alma subindo, planeta por planeta, essa escadaria.</p>
+  <p>As regiões logo ao redor da Terra — o <strong>Umbral</strong>, as <strong>colônias espirituais</strong>, os <strong>vales</strong> de sofrimento — são o coração da geografia espírita, e elas merecem o tratamento detalhado que recebem no Volume II. Por enquanto, fixe a estrutura: <em>uma escada de mundos, e em volta de cada mundo um cinturão de regiões que correspondem aos estados de quem morre ali.</em></p>
+
+  <div class="relato">
+    "Os Espíritos habitam o espaço; circundam-nos, acotovelam-nos sem cessar. Há, em torno de vós, todo um mundo invisível que vos rodeia."
+    <span class="who">— resposta espiritual compilada n'O Livro dos Espíritos</span>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>O Livro dos Espíritos</em> (1857) e <em>O Céu e o Inferno</em> (1865), de Allan Kardec; e a vasta obra mediúnica brasileira de Francisco Cândido "Chico" Xavier, sobretudo a série do espírito André Luiz (<em>Nosso Lar</em>, <em>Os Mensageiros</em>, <em>Missionários da Luz</em>), que desce ao detalhe das regiões e será nossa fonte principal no próximo volume.</p>
+</section>
+
+<!-- ===================== III — UMBANDA ===================== -->
+<section class="opening" id="c3">
+  <h2><span class="num">Capítulo III</span>Cosmologia Umbandista</h2>
+  <p>A Umbanda nasceu no Brasil no início do século XX, costurando o Espiritismo de Kardec, as religiões de matriz africana, o catolicismo popular e o indígena num só tecido. Por isso seu mapa do invisível é, ao mesmo tempo, vertical (como o espírita) e <strong>organizado por forças</strong> (como as tradições africanas). Não é só "alto e baixo": é também "por qual corrente de energia".</p>
+  <p>O topo do mapa umbandista é <strong>Aruanda</strong> — uma palavra que ecoa "Luanda", a cidade angolana, mas que aqui virou nome de um lugar sagrado, a morada luminosa de onde descem os guias e para onde sobem as preces. Aruanda é o "céu" da Umbanda, a região de onde fluem os <strong>Orixás</strong>, que não são exatamente "deuses no céu", e sim grandes <em>vibrações da Natureza e do Divino</em>: forças vivas do mar, do raio, da mata, do vento, do fogo, dos rios.</p>
+
+  <h3>As sete linhas</h3>
+  <p>O grande organizador da cosmologia umbandista são as <strong>sete linhas</strong> (ou sete vibrações). Cada linha é uma "faixa" do invisível, regida por um Orixá e povoada por falanges de espíritos que trabalham naquela vibração. As listas variam de terreiro para terreiro — e isso é importante, a Umbanda não tem um único catecismo —, mas um arranjo bastante difundido é este:</p>
+  <table class="tabela">
+    <tr><th>Linha</th><th>Vibração / Orixá regente</th><th>Quem trabalha nela</th></tr>
+    <tr><td>Oxalá</td><td>A fé, a luz branca, o Cristo cósmico</td><td>guias de alta luz, missionários</td></tr>
+    <tr><td>Iemanjá / Águas</td><td>o mar, a maternidade, a emoção</td><td>caboclas do mar, sereias</td></tr>
+    <tr><td>Xangô</td><td>a justiça, a pedra, o fogo do raio</td><td>espíritos da justiça e do equilíbrio</td></tr>
+    <tr><td>Ogum</td><td>a batalha, o ferro, o caminho</td><td>guerreiros, abridores de caminho</td></tr>
+    <tr><td>Oxóssi</td><td>a mata, a caça, a cura pelas ervas</td><td>caboclos, espíritos da floresta</td></tr>
+    <tr><td>Ibejis / Crianças</td><td>a pureza, a alegria, o recomeço</td><td>os erês, espíritos-criança</td></tr>
+    <tr><td>Yorimá / Pretos-Velhos</td><td>a ancestralidade, a paciência, a humildade</td><td>pretos-velhos, espíritos de antigos escravizados</td></tr>
+  </table>
+
+  <p>Sob essas linhas trabalham os arquétipos mais conhecidos da Umbanda — os <strong>Caboclos</strong> (força da mata e da cura), os <strong>Pretos-Velhos</strong> (sabedoria ancestral, paciência infinita) e os <strong>Erês</strong> (a leveza da criança). Cada um desses não é "um espírito", é uma <em>função</em>, uma máscara que muitos espíritos diferentes podem vestir para trabalhar dentro daquela vibração. Aqui está um segredo que escapa a quem olha de fora: na Umbanda, o "Caboclo" que baixa não é necessariamente o espírito de um índio que viveu — é alguém trabalhando <strong>na linha</strong> do caboclo, vestindo aquela energia para poder atuar.</p>
+
+  <div class="padrao">
+    <span class="label">A geografia da Umbanda</span>
+    <p>O mapa umbandista tem dois eixos cruzados. O eixo <strong>vertical</strong> herdado de Kardec (Aruanda em cima, as zonas baixas embaixo) e o eixo <strong>horizontal</strong> das sete linhas, que são como sete "rios de energia" descendo de Aruanda até a Terra. Um espírito é localizado por <em>quão alto</em> ele está e por <em>qual linha</em> ele trabalha. É um mapa de duas coordenadas — e isso o torna mais rico que a maioria.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> a literatura mediúnica e doutrinária umbandista, em especial as obras psicografadas atribuídas ao Caboclo das Sete Encruzilhadas (a entidade fundadora, na noite de 1908 atribuída a Zélio de Moraes); os trabalhos de W. W. da Matta e Silva sobre a "Umbanda esotérica"; e a tradição oral viva dos terreiros, que varia muito e por isso resiste a qualquer mapa único.</p>
+</section>
+
+<!-- ===================== IV — QUIMBANDA ===================== -->
+<section class="opening" id="c4">
+  <h2><span class="num">Capítulo IV</span>Cosmologia Quimbandeira</h2>
+  <p>Se a Umbanda olha para Aruanda, a Quimbanda olha para a <strong>encruzilhada</strong>. E é preciso desfazer um mal-entendido logo de cara, porque ele contamina tudo: a Quimbanda não é "o lado do mal". Essa leitura nasceu de medo e de moralismo importado. A Quimbanda é a corrente que trabalha com os <strong>Exus</strong> e <strong>Pombagiras</strong> — as forças que operam no limiar, na fronteira, no cruzamento entre o mundo dos vivos e o dos mortos, entre a luz e a sombra.</p>
+  <p>O Exu, na sua raiz africana (Èṣù, dos iorubás), é o <strong>guardião dos caminhos e dos portais</strong>, o senhor da comunicação, aquele sem o qual nenhuma mensagem sobe e nenhuma força desce. Ele é o porteiro de todos os mundos. Por isso, na cosmologia quimbandeira, ele não está "embaixo" no sentido moral — ele está <em>na fronteira</em>, que é o lugar mais estratégico de qualquer mapa. Quem controla a porta controla o trânsito entre os planos.</p>
+
+  <h3>Os reinos e as falanges</h3>
+  <p>A Quimbanda organiza seu invisível em <strong>reinos</strong> e <strong>falanges</strong>, cada um regido por um Exu ou uma Pombagira "chefe", sob os quais trabalham legiões. Os nomes desses reinos já desenham a sua natureza: o <strong>Reino das Encruzilhadas</strong>, o <strong>Reino do Cemitério</strong> (de Exu Caveira e Omulu/Obaluaê), o <strong>Reino das Almas</strong>, o <strong>Reino da Lira</strong> (das matas), o <strong>Reino do Cruzeiro</strong>, o <strong>Reino das Praias</strong>. São zonas de trabalho energético, cada uma especializada — desfazer demandas, abrir caminhos travados, lidar com os mortos sem rumo.</p>
+
+  <div class="padrao">
+    <span class="label">Mecanismo oculto</span>
+    <p>Os <strong>kiumbas</strong> da Quimbanda — os espíritos atrasados, vingativos, ainda colados aos vícios — são o equivalente exato dos habitantes do <strong>Umbral</strong> espírita e das "larvas astrais" da Teosofia. Três tradições, três nomes, a mesma faixa de realidade: a zona densa logo acima do físico, onde param os que morreram cheios de ódio, medo ou apego. O trabalho do Exu, muitas vezes, é justamente <em>mexer com essa zona</em> — porque ele é o único que transita ali sem se perder. Onde o espírita vê um "obsessor" a ser doutrinado, o quimbandeiro vê um kiumba a ser dominado ou encaminhado por um Exu de luz. Mesma região, métodos diferentes.</p>
+  </div>
+
+  <p>Há, sim, dentro da Quimbanda, a distinção entre Exus "batizados" ou de lei — que trabalham para o bem, dentro de um código — e os espíritos crus, ainda presos à vingança. Mas isso é exatamente o eixo vertical de novo: até dentro da corrente da esquerda há graus, há os mais altos e os mais baixos. O reino não é uniforme. Há senhores e há subalternos, e nem todo habitante da fronteira é hostil — muitos são guardiões severos, não inimigos.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> a tradição da Quimbanda nagô e angola; obras de sistematização como as de Aluízio Fontenelle e a literatura iniciática moderna sobre os "tronos de Exu"; e, para a raiz, a teologia iorubá de Èṣù como senhor do <em>àse</em> (a força vital que faz tudo acontecer) e da comunicação entre o Orum (o céu) e o Aiyê (a Terra).</p>
+</section>
+
+<!-- ===================== V — GNÓSTICA ===================== -->
+<section class="opening" id="c5">
+  <h2><span class="num">Capítulo V</span>Cosmologia Gnóstica</h2>
+  <p>Agora entramos num mapa de outra natureza — talvez o mais perturbador de todos. As cosmologias anteriores são escadas que se sobe. A gnóstica é uma escada que se sobe <strong>fugindo</strong>. Para o gnóstico antigo, este mundo material não é uma escola amorosa: é uma <strong>prisão</strong>, e foi construída de propósito por uma força que não quer que você saia.</p>
+  <p>A história, mastigada, é assim. No topo absoluto está o <strong>Pleroma</strong> — a "plenitude", a luz total, o Deus verdadeiro que está tão acima de tudo que é quase indizível. Desse Pleroma emanam, em pares, seres luminosos chamados <strong>Éons</strong> — qualidades divinas vivas, como a Mente, a Verdade, a Sabedoria. Tudo perfeito, até que um Éon, <strong>Sophia</strong> (a Sabedoria), num impulso de querer conhecer a Fonte sozinha, sem o seu par, gera algo torto: um ser deforme, ignorante da sua própria origem.</p>
+
+  <h3>O Demiurgo e os Arcontes</h3>
+  <p>Esse ser é o <strong>Demiurgo</strong> — chamado em vários textos de Yaldabaoth, "Saklas" (o tolo) ou "Samael" (o deus cego). Ele acorda sozinho no vazio, não vê ninguém acima de si, e conclui o pior erro possível: <em>"Eu sou Deus, e não há outro além de mim"</em>. Cego para o Pleroma de onde, sem saber, ele veio, ele faz o que um deus faria: <strong>cria um mundo</strong>. Este mundo. E o povoa de servos, os <strong>Arcontes</strong> — os "governantes", os carcereiros cósmicos.</p>
+
+  <div class="mapa">
+    <div class="mt">A QUEDA E A SUBIDA (a escada gnóstica, de cima para baixo)</div>
+    <div class="plano p7"><span class="lvl">∞</span><span class="nm">O Pleroma</span><span class="ds">A plenitude luminosa. O Deus verdadeiro e desconhecido. A pátria perdida da alma.</span></div>
+    <div class="plano p6"><span class="lvl">●</span><span class="nm">Os Éons</span><span class="ds">As emanações divinas em pares. A última delas, Sophia, comete o "erro" que origina tudo.</span></div>
+    <div class="plano p3"><span class="lvl">▲</span><span class="nm">O Demiurgo</span><span class="ds">O falso deus criador, cego para sua origem. Pensa ser o único. Construtor da prisão.</span></div>
+    <div class="plano p2"><span class="lvl">7</span><span class="nm">As esferas dos Arcontes</span><span class="ds">Os sete céus planetários, cada um guardado por um Arconte. A muralha que prende a alma.</span></div>
+    <div class="plano p1"><span class="lvl">⊕</span><span class="nm">O mundo material</span><span class="ds">A prisão de carne. A alma, faísca do Pleroma, esqueceu quem é e dorme aqui.</span></div>
+  </div>
+
+  <p>Repara na inversão genial: para o gnóstico, os "sete céus" que outras tradições sobem como degraus de glória são, na verdade, <strong>sete muralhas</strong>. Cada esfera planetária é um posto de fronteira com um Arconte guardião que cobra pedágio. Quando a alma morre, ela tenta subir de volta ao Pleroma, mas em cada esfera um Arconte a barra, pergunta uma senha, tenta puxá-la de volta para reencarnar. Por isso os textos gnósticos guardam <strong>nomes e senhas dos Arcontes</strong> — palavras de poder para passar por cada portão sem ser detido. É um mapa de fuga, com as instruções de evasão escritas nele.</p>
+
+  <div class="padrao">
+    <span class="label">O segredo que o nome esconde</span>
+    <p>"Gnose" significa <em>conhecimento</em> — mas não conhecimento de fatos, e sim o <strong>despertar para quem você realmente é</strong>. A salvação gnóstica não vem de fé nem de boas obras: vem de <em>lembrar</em>. A alma é uma faísca caída do Pleroma que adormeceu na carne e esqueceu sua origem divina. Acordar — a <em>gnose</em> — é a única chave que abre todos os portões dos Arcontes de uma vez, porque o Arconte só tem poder sobre quem ainda acredita que pertence ao mundo dele. Quem lembra que veio de cima, a esfera não consegue segurar. Este é o mecanismo central: <strong>o cárcere é feito de esquecimento, e a chave é a memória.</strong></p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> os códices de Nag Hammadi, descobertos no Egito em 1945, sobretudo o <em>Apócrifo de João</em> (que narra Sophia, o Demiurgo e os Arcontes em detalhe) e o <em>Evangelho da Verdade</em>; os relatos dos hereseólogos cristãos como Irineu de Lyon (que, ao atacar os gnósticos, preservou suas doutrinas); e os sistemas de Valentim e Basilides. Guarde esses Arcontes — eles voltam no mapa de Samael Aun Weor, no fim deste volume.</p>
+</section>
+
+<!-- ===================== VI — HERMÉTICA/NEOPLATÔNICA ===================== -->
+<section class="opening" id="c6">
+  <h2><span class="num">Capítulo VI</span>Cosmologia Hermética e Neoplatônica</h2>
+  <p>Se o gnóstico vê uma prisão, o hermetista e o neoplatônico veem uma <strong>fonte transbordando</strong>. É a mesma estrutura em camadas, mas com o coração trocado: aqui a criação não é um erro a ser desfeito, é a luz divina se derramando para fora de si por puro excesso de ser.</p>
+  <p>Plotino, o grande neoplatônico, ofereceu a imagem que nunca mais saiu do ocultismo ocidental: o <strong>Uno</strong>. O Uno é a fonte além de toda forma e todo nome — tão pleno que transborda. Desse transbordamento nasce o <strong>Nous</strong> (a Inteligência divina, o mundo das Ideias perfeitas), e do Nous nasce a <strong>Alma do Mundo</strong>, e da Alma nasce a Natureza, e da Natureza a matéria — que é simplesmente a luz tão longe da fonte que quase apagou. Cada nível é um reflexo mais fraco do anterior, como círculos numa água parada que se afastam da pedra que caiu.</p>
+
+  <blockquote>
+    Tudo é Mente. O Universo é Mental.
+    <cite>— primeiro princípio hermético</cite>
+  </blockquote>
+
+  <p>O Hermetismo dá a esse cosmos uma lei de operação: o <strong>Mentalismo</strong>. Se tudo emana de uma Mente divina, então tudo é, no fundo, <em>pensamento solidificado</em>. Isto não é metáfora para o hermetista — é a explicação técnica de por que a magia funcionaria. Se a matéria é a marcha mais lenta do pensamento, então um pensamento muito concentrado, muito carregado de vontade e emoção, pode <strong>descer a escada</strong> e se imprimir nos planos mais densos. O mago não "viola" a natureza; ele usa a única alavanca que existe, que é o fato de que tudo, lá no fundo, é mente.</p>
+
+  <div class="padrao">
+    <span class="label">A ponte entre os mapas</span>
+    <p>Aqui está por que o Hermetismo é a coluna do ocultismo ocidental: ele é o <strong>idioma comum</strong> entre os outros mapas. A escada de emanações de Plotino é a mesma régua dos sete planos teosóficos; os "céus planetários" gnósticos são os mesmos da astrologia; a "Mente do Todo" é o Pleroma com outro nome. Quando você lê "como em cima, assim embaixo", você está segurando a chave que traduz uma cosmologia para a outra. É por isso que ocultistas de tradições rivais conseguem conversar: todos falam, por baixo, dialetos do hermetismo.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> o <em>Corpus Hermeticum</em> e a <em>Tábua de Esmeralda</em> (literatura atribuída a Hermes Trismegisto, compilada nos primeiros séculos da era cristã); as <em>Enéadas</em> de Plotino (séc. III); e a síntese moderna do <em>Caibalion</em>. Da fusão hermético-neoplatônica nasceram, na Renascença, Ficino e Pico della Mirandola — e dela descende, em linha reta, todo o ocultismo que vem a seguir.</p>
+</section>
+
+<!-- ===================== VII — TEOSÓFICA ===================== -->
+<section class="opening" id="c7">
+  <h2><span class="num">Capítulo VII</span>Cosmologia Teosófica</h2>
+  <p>Se o Hermetismo deu o idioma, a <strong>Teosofia</strong> deu o mapa-padrão moderno — aquele que quase todo mundo usa hoje sem saber a origem. Quando alguém fala em "plano astral", "plano mental", "corpo etérico" ou "registro akáshico", está usando vocabulário teosófico. A Sociedade Teosófica, fundada em 1875 por Helena Blavatsky, pegou as tradições do Oriente, o ocultismo ocidental e o hermetismo e os fundiu num sistema de uma precisão quase de engenharia.</p>
+  <p>O coração desse sistema são os <strong>sete planos</strong> — a régua hermética desdobrada em sete andares, cada um deles ainda dividido em sete subníveis. E a grande contribuição da Teosofia foi conectar esses planos ao <strong>ser humano</strong>: para cada plano, você tem um "corpo". Você não tem um corpo só; você tem uma roupa para cada andar da realidade.</p>
+
+  <div class="mapa">
+    <div class="mt">OS SETE PLANOS E OS SETE CORPOS</div>
+    <div class="plano p7"><span class="lvl">7</span><span class="nm">Ádico / Divino</span><span class="ds">O plano da própria divindade. Inacessível à consciência comum.</span></div>
+    <div class="plano p6"><span class="lvl">6</span><span class="nm">Monádico</span><span class="ds">A Mônada — a centelha divina individual, a "gota" eterna de cada ser.</span></div>
+    <div class="plano p5"><span class="lvl">5</span><span class="nm">Átmico / Espiritual</span><span class="ds">A Vontade espiritual pura. O corpo átmico.</span></div>
+    <div class="plano p4"><span class="lvl">4</span><span class="nm">Búdico / Intuicional</span><span class="ds">O amor-sabedoria, a unidade com tudo. O corpo búdico.</span></div>
+    <div class="plano p3"><span class="lvl">3</span><span class="nm">Mental</span><span class="ds">O pensamento. Tem um andar inferior (mente concreta) e superior (mente abstrata). Corpo mental.</span></div>
+    <div class="plano p2"><span class="lvl">2</span><span class="nm">Astral</span><span class="ds">O desejo e a emoção. Onde se vai nos sonhos e logo após a morte. Corpo astral.</span></div>
+    <div class="plano p1"><span class="lvl">1</span><span class="nm">Físico (denso + etérico)</span><span class="ds">A matéria sólida e seu "molde" etérico invisível. Corpo físico e duplo etérico.</span></div>
+  </div>
+
+  <p>O esquema da morte, na Teosofia, vira limpíssimo com esse mapa. Quando você morre, larga o corpo físico. Por um tempo, vive no corpo astral, no <strong>Kama-loka</strong> ("o lugar do desejo") — uma faixa que corresponde exato ao Umbral espírita: a região onde os desejos e paixões não resolvidos se dissolvem aos poucos. Quanto mais apegado e material você era, mais tempo fica preso ali. Depois, larga o corpo astral também e sobe ao <strong>Devachan</strong> — o "céu", o plano mental superior, onde a alma vive em felicidade digerindo o sentido da vida que passou, antes de descer de novo para uma nova encarnação.</p>
+
+  <div class="padrao">
+    <span class="label">As larvas e os clichés</span>
+    <p>A Teosofia descreveu no Kama-loka os <strong>"elementais artificiais"</strong> e <strong>"larvas astrais"</strong>: formas-pensamento criadas pelos desejos e medos humanos, que ganham uma vida própria temporária e vagam pelo plano astral. É a mesma população que o espírita chama de "miasmas" e "vampirizações", e que a Quimbanda trata como influências a serem cortadas. Repare como o <em>mesmo bairro</em> da realidade aparece em três mapas com três nomes — esse é o tipo de coincidência que este atlas existe para catalogar.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>A Doutrina Secreta</em> (1888) e <em>Ísis Sem Véu</em> de H. P. Blavatsky; <em>O Plano Astral</em> e <em>O Plano Mental</em> de C. W. Leadbeater (que dedicou livros inteiros a descrever cada andar); e os trabalhos de Annie Besant e, mais tarde, Alice Bailey, que estendeu o mapa com a "Grande Fraternidade Branca" e os Mestres de Sabedoria — tema do nosso Volume II.</p>
+</section>
+
+<!-- ===================== VIII — ROSACRUZ ===================== -->
+<section class="opening" id="c8">
+  <h2><span class="num">Capítulo VIII</span>Cosmologia Rosacruz</h2>
+  <p>O Rosacrucianismo moderno, sobretudo na forma que Max Heindel deu a ele, oferece uma variação muito clara do mesmo edifício de sete andares — mas com um foco lindo: ele insiste que <strong>cada mundo tem suas próprias "regiões" internas</strong>, e descreve com cuidado o que acontece com o morto ao atravessá-las. É quase um manual de viagem do pós-morte.</p>
+  <p>No mapa de Heindel, os mundos sutis logo acima do físico se dividem assim: o <strong>Mundo do Desejo</strong> (o astral) tem regiões inferiores, onde se purgam as paixões grosseiras — uma espécie de purgatório — e regiões superiores, luminosas, de bem-aventurança. Acima dele, o <strong>Mundo do Pensamento</strong> também se divide entre uma região concreta (das formas-pensamento, dos arquétipos das coisas) e uma região abstrata, sede do espírito.</p>
+
+  <h3>O purgatório como mecânica, não como castigo</h3>
+  <p>A grande contribuição rosacruz é desmontar a ideia infantil de céu e inferno. Para Heindel, o "purgatório" nas regiões inferiores do Mundo do Desejo não é uma punição decidida por um juiz. É um processo <strong>automático e terapêutico</strong>: depois da morte, você revive suas próprias ações sentindo, desta vez, o que as outras pessoas sentiram. Quem causou dor, sente a dor que causou; quem fez bem, sente a alegria que gerou. Não é vingança — é a consciência limpando a si mesma, gravando a lição na alma antes de subir. É exatamente o mesmo <em>mecanismo da afinidade</em> do Capítulo I, só que aplicado à emoção.</p>
+
+  <div class="relato">
+    "Após a morte, o homem percorre de novo, em sentido inverso, o panorama de sua vida — mas agora sentindo em si mesmo aquilo que fez sentir aos outros."
+    <span class="who">— síntese da doutrina rosacruz sobre o pós-morte</span>
+  </div>
+
+  <p>Note como isso conversa diretamente com a <strong>"revisão de vida"</strong> que vamos encontrar no Volume III, nos relatos de Experiência de Quase Morte — pessoas que "morreram" por minutos e voltaram dizendo que reviveram a vida inteira sentindo o impacto de cada ato sobre os outros. Os rosacruzes descreveram em livro, décadas antes, exatamente aquilo que milhares de pacientes de UTI iriam relatar espontaneamente. Esse tipo de eco entre uma doutrina antiga e um relato moderno espontâneo é um dos fios de ouro que este atlas persegue.</p>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>Conceito Rosacruz do Cosmos</em> (1909) de Max Heindel; a tradição da AMORC (Antiga e Mística Ordem Rosae Crucis) e os manifestos rosacruzes originais do século XVII (<em>Fama Fraternitatis</em>, <em>Confessio</em>). Heindel bebeu da Teosofia e a reorganizou num sistema cristão-esotérico próprio.</p>
+</section>
+
+<!-- ===================== IX — ORIENTAIS ===================== -->
+<section class="opening" id="c9">
+  <h2><span class="num">Capítulo IX</span>Cosmologias Orientais</h2>
+  <p>As tradições da Índia trabalham essa cartografia há milhares de anos, e com tanto detalhe que tornam os mapas ocidentais quase tímidos. Aqui os planos têm nomes, números, populações e regras. Vamos pegar os dois grandes sistemas: o hindu e o budista.</p>
+
+  <h3>Os quatorze lokas hindus</h3>
+  <p>A cosmologia hindu organiza a existência em <strong>lokas</strong> — "mundos" ou "planos". São quatorze: sete superiores e sete inferiores, com a Terra (<strong>Bhuloka</strong>) bem no meio. Subindo a partir daqui você atravessa o Bhuvarloka (o astral, dos espíritos), o Svarloka (o céu de Indra, dos prazeres celestiais), e vai subindo por mundos cada vez mais sutis até o <strong>Satyaloka</strong>, a morada da verdade, o topo. Descendo, você entra nos sete <strong>talas</strong> inferiores — mundos de paixão crescente e densidade, que culminam no <strong>Pātāla</strong>, o submundo.</p>
+
+  <div class="mapa">
+    <div class="mt">A COLUNA DOS QUATORZE LOKAS</div>
+    <div class="plano p7"><span class="lvl">↑</span><span class="nm">Satyaloka</span><span class="ds">A morada da Verdade. O ponto mais alto, a beira da libertação.</span></div>
+    <div class="plano p6"><span class="lvl">+</span><span class="nm">Tapas · Jana · Mahar</span><span class="ds">Mundos de sábios, santos e seres celestiais cada vez mais puros.</span></div>
+    <div class="plano p5"><span class="lvl">☼</span><span class="nm">Svarloka</span><span class="ds">O céu dos prazeres, morada de Indra e dos deuses menores. Recompensa temporária.</span></div>
+    <div class="plano p2"><span class="lvl">~</span><span class="nm">Bhuvarloka</span><span class="ds">O plano astral, dos espíritos e ancestrais (pitris). A faixa logo acima da Terra.</span></div>
+    <div class="plano p1"><span class="lvl">⊕</span><span class="nm">Bhuloka</span><span class="ds">A Terra. O ponto de equilíbrio entre o que sobe e o que desce.</span></div>
+    <div class="plano p3"><span class="lvl">↓</span><span class="nm">Os sete talas</span><span class="ds">Mundos inferiores de densidade e paixão, até o Pātāla, o submundo.</span></div>
+  </div>
+
+  <h3>Os trinta e um planos budistas e os bardos</h3>
+  <p>O budismo é ainda mais minucioso: descreve <strong>trinta e um planos de existência</strong>, agrupados em três grandes esferas. Embaixo, a <strong>Kāma-loka</strong>, a esfera do desejo — onde estão os infernos, o mundo dos espíritos famintos (os <em>pretas</em>, presos a uma fome que nunca sacia), os animais, os humanos e os deuses sensuais. No meio, a <strong>Rūpa-loka</strong>, a esfera da forma sutil, dos seres de luz. No topo, a <strong>Arūpa-loka</strong>, a esfera <em>sem forma</em>, de consciências puríssimas que existem como estados mentais sem corpo algum.</p>
+  <p>E o budismo tibetano deu ao mundo o seu mapa mais famoso: os <strong>bardos</strong>, os estados intermediários entre a morte e o renascimento, descritos no <em>Bardo Thödol</em> — o chamado "Livro Tibetano dos Mortos". É um guia para o morto: o que ele vai ver, as luzes que vão aparecer, os seres pacíficos e os seres terríveis que surgem, e — o detalhe crucial — o aviso repetido de que <strong>tudo aquilo é projeção da própria mente</strong>. O paraíso e o terror que o morto encontra são feitos do conteúdo da sua própria consciência.</p>
+
+  <div class="padrao">
+    <span class="label">O segredo budista que rege todos os mapas</span>
+    <p>O <em>Bardo Thödol</em> entrega o segredo mais radical de toda a cartografia: <strong>os mundos que você atravessa depois da morte são fabricados pela sua própria mente.</strong> A luz clara que aparece primeiro é a sua verdadeira natureza; se você a reconhece, está livre. Se tem medo dela, ela "esfria" em luzes mais fracas, depois em formas, depois em mundos inteiros — e você "cai" em um deles, que vira o seu próximo nascimento. Compare isto com a gnose ("acordar e lembrar liberta") e com a lei da afinidade ("você gravita para a sua própria frequência"). Três tradições, do Tibete ao Egito gnóstico, dizendo a <em>mesmíssima</em> coisa: o cosmos do além é um espelho da consciência.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> os Puranas e a literatura védica para os lokas; o <em>Abhidharma</em> budista para os 31 planos; e o <em>Bardo Thödol</em> (composto, segundo a tradição, por Padmasambhava no séc. VIII e revelado séculos depois), popularizado no Ocidente pela tradução de Evans-Wentz e pelos comentários de Carl Jung.</p>
+</section>
+
+<!-- ===================== X — XAMÂNICAS ===================== -->
+<section class="opening" id="c10">
+  <h2><span class="num">Capítulo X</span>Cosmologias Xamânicas</h2>
+  <p>Antes de qualquer livro, antes de qualquer doutrina escrita, o xamã já viajava entre os mundos. As cosmologias xamânicas — encontradas na Sibéria, nas Américas, na África, na Oceania, em culturas que jamais se cruzaram — chegam quase todas ao mesmo mapa de uma simplicidade desconcertante: <strong>três mundos, ligados por um eixo.</strong></p>
+  <p>Há o <strong>Mundo de Cima</strong> (o céu, morada dos espíritos elevados, dos ancestrais luminosos, das águias e dos seres de luz), o <strong>Mundo do Meio</strong> (este aqui, o mundo físico, mas visto na sua face espiritual, povoado de espíritos da natureza) e o <strong>Mundo de Baixo</strong> — que, atenção, <em>não é o inferno</em>. O mundo de baixo xamânico é a terra dos animais de poder, das raízes, dos ancestrais profundos. É um lugar de poder e cura, não de castigo. Essa é uma diferença importantíssima do mapa cristão.</p>
+
+  <h3>O eixo do mundo</h3>
+  <p>Ligando os três mundos há o <strong>Axis Mundi</strong> — o Eixo do Mundo — que aparece como uma <strong>Árvore Cósmica</strong> (a Yggdrasil dos nórdicos, a árvore xamânica siberiana), uma montanha, uma coluna de fumaça, um mastro, um cipó. O xamã sobe pela árvore para alcançar o céu e desce por suas raízes para alcançar o mundo de baixo. Ele é o ser humano que aprendeu a <strong>escalar o eixo nos dois sentidos</strong> e voltar inteiro — e essa, no fundo, é a definição de xamã.</p>
+
+  <div class="padrao">
+    <span class="label">A árvore que liga tudo</span>
+    <p>O Axis Mundi é o mesmo símbolo que reaparece na Árvore da Vida cabalística (a coluna que liga a matéria de baixo ao divino de cima), na coluna vertebral do iogue por onde sobe a <em>kundalini</em>, e no "cordão de prata" que os projetores astrais dizem ligar o corpo sutil ao físico. Sempre há <strong>um caminho central que liga os andares</strong>, e sempre há alguém que aprende a subir e descer por ele. A imagem é tão universal que parece estar gravada na própria estrutura da consciência — talvez porque a própria coluna vertebral humana <em>seja</em> esse eixo, em miniatura.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> o estudo clássico de Mircea Eliade, <em>O Xamanismo e as Técnicas Arcaicas do Êxtase</em>; os relatos etnográficos da Sibéria, da Amazônia (a cosmologia do cipó, a <em>ayahuasca</em> como veículo de viagem) e do Ártico; e a obra de Michael Harner sobre o "núcleo xamânico" — o conjunto de elementos que aparecem em culturas sem nenhum contato entre si.</p>
+</section>
+
+<!-- ===================== XI — MODERNAS ===================== -->
+<section class="opening" id="c11">
+  <h2><span class="num">Capítulo XI</span>Cosmologias Modernas</h2>
+  <p>O século XX e XXI não pararam de desenhar mapas — só trocaram o vocabulário. A linguagem ficou mais "técnica", mas a estrutura, repare, é a velha régua de sempre.</p>
+  <p>A <strong>Projeciologia</strong>, sistematizada pelo brasileiro Waldo Vieira, talvez seja a tentativa mais "laboratorial" de mapear o invisível. Vieira tratou a projeção da consciência fora do corpo como um <em>fenômeno a ser estudado e treinado</em>, com método, vocabulário próprio e milhares de relatos catalogados. No mapa dele, falamos de "dimensões": a <strong>dimensão intrafísica</strong> (esta), a <strong>extrafísica</strong> (o astral, para onde se projeta) e estados intermediários, com regiões luminosas e regiões densas — as mesmas faixas, agora chamadas de "comunexes" (comunidades extrafísicas) e descritas com linguagem quase de relatório de campo.</p>
+
+  <p>A <strong>New Age</strong> pegou a régua teosófica e a traduziu para o cotidiano: "elevar a vibração", "ascensão", "5ª dimensão", "frequência". Por baixo do jargão de autoajuda mora exatamente a lei da afinidade hermética — só que agora dita em entrevistas e canalizações. E há a aproximação ousada de alguns com a <strong>física</strong>: a ideia do <em>multiverso</em>, das dimensões extras das teorias de cordas, dos "universos paralelos", que muitos ocultistas modernos leem como uma confirmação científica, ainda que tímida e enviesada, da velha doutrina dos planos.</p>
+
+  <div class="aviso">
+    <span class="label">Uma honestidade necessária</span>
+    <p>A física do multiverso e os "planos" dos ocultistas <strong>não são a mesma coisa</strong>, e é desonesto fingir que são. A física fala de regiões do espaço-tempo ou de configurações matemáticas; o ocultismo fala de estados da consciência. Mas a sedução de juntá-los revela algo sobre a mente humana: nós queremos que o "andar de cima" exista de um jeito que possa ser tocado. Este atlas anota o desejo de ligar os dois — mas não confunde a metáfora com a medida.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> <em>Projeciologia</em> e <em>Projeções da Consciência</em> de Waldo Vieira; a vasta literatura de canalização da New Age (de Jane Roberts e o material "Seth" a Barbara Marciniak e os "Pleiadianos"); e as releituras esotéricas das teorias do multiverso. Os relatos de campo da projeção entram em detalhe no Volume III.</p>
+</section>
+
+<!-- ===================== XII — SAMAEL ===================== -->
+<section class="opening" id="c12">
+  <h2><span class="num">Capítulo XII</span>A Cosmologia de Samael Aun Weor</h2>
+  <p>Deixamos este por último de propósito, como pedido — porque ele é uma <strong>síntese</strong>. Samael Aun Weor, fundador do movimento gnóstico contemporâneo no século XX, costurou numa só doutrina o gnosticismo antigo, a cabala, o tantra, a alquimia, a teosofia e o cristianismo esotérico. O resultado é um dos mapas mais densos e mais sombrios que existem — e também um dos mais coerentes internamente.</p>
+  <p>O alicerce dele é a <strong>Árvore da Vida cabalística</strong> com seus dez Sephiroth, mas lida de um jeito tridimensional: cada Sephirah é também um <strong>mundo interno</strong>, uma região que se pode visitar em corpo astral. Acima de Malkuth (o mundo físico) abrem-se os mundos sutis e divinos. Mas a inovação aterrorizante de Samael está <em>embaixo</em>: ele desenvolveu, com detalhe, os <strong>Mundos Infernais</strong> — a Árvore da Vida <em>invertida</em>, mergulhada na matéria.</p>
+
+  <h3>As nove esferas dantescas</h3>
+  <p>Samael descreve <strong>nove esferas infernais</strong> dentro do interior simbólico da Terra, espelhando os nove círculos do <em>Inferno</em> de Dante — mas as relendo como <strong>estados de consciência cada vez mais densos e dissociados</strong>, e não como geografia subterrânea literal. Cada esfera é mais fria, mais pesada, mais distante da luz. É para lá que vão as almas que, vida após vida, em vez de evoluir, se cristalizaram no egoísmo, na crueldade, na luxúria descontrolada. O fundo dessa descida é a <strong>Segunda Morte</strong>: a dissolução final do ego, a desintegração dos "eus" defeituosos, depois da qual a essência, limpa, recomeça do zero. Para Samael, o inferno não é eterno — é uma <em>usina de reciclagem da alma</em>, terrível mas com saída.</p>
+
+  <div class="mapa">
+    <div class="mt">A ÁRVORE E SUA SOMBRA (mapa de Samael Aun Weor)</div>
+    <div class="plano p7"><span class="lvl">▲</span><span class="nm">Mundos superiores / Sephiroth de luz</span><span class="ds">Os céus, os planos divinos da Árvore da Vida. A meta da Auto-realização.</span></div>
+    <div class="plano p4"><span class="lvl">☉</span><span class="nm">Mundos internos sutis</span><span class="ds">Astral, mental e causal, visitáveis pelo desdobramento consciente.</span></div>
+    <div class="plano p1"><span class="lvl">⊕</span><span class="nm">Malkuth — o mundo físico</span><span class="ds">A Terra. O ponto de partida, onde se faz o "Trabalho".</span></div>
+    <div class="plano p2"><span class="lvl">▼</span><span class="nm">As nove esferas infernais</span><span class="ds">A Árvore invertida. Estados de densidade crescente, regidos por egos e tentadores.</span></div>
+    <div class="plano p3"><span class="lvl">✕</span><span class="nm">A Segunda Morte</span><span class="ds">O fundo. Dissolução do ego defeituoso. A alma, limpa, recomeça do zero.</span></div>
+  </div>
+
+  <div class="padrao">
+    <span class="label">O segredo central da Gnose de Samael</span>
+    <p>O mapa só faz sentido com a sua chave prática: para Samael, <strong>o "inferno" não está só embaixo da Terra — está dentro de você</strong>, na forma do <em>ego</em>, esse conjunto de "eus" (a raiva, o orgulho, a luxúria, a inveja) que ele chama de "agregados psicológicos". Subir a Árvore da Vida e descer às esferas infernais são, no fundo, a <em>mesma viagem interior</em>: você só sobe na medida em que dissolve, dentro de si, os egos que te puxam para baixo. Os Arcontes gnósticos do Capítulo V reaparecem aqui como esses tentadores internos. O cárcere e o carcereiro são feitos da sua própria psicologia — e libertar-se é desmontá-los um a um, num trabalho que ele chama de "morte mística". É a gnose antiga ("acordar liberta") transformada em método de demolição do ego.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> a obra de Víctor Manuel Gómez Rodríguez ("Samael Aun Weor"), especialmente <em>O Mistério do Áureo Florescer</em>, <em>As Três Montanhas</em> e os tratados sobre os mundos internos; sua releitura de Dante, da Cabala e do tantra. Note como ele fecha o círculo deste volume: começamos no Hermetismo e terminamos numa doutrina que funde <strong>todos</strong> os mapas anteriores num só.</p>
+</section>
+
+<!-- ===================== XIII — SOCIEDADE ===================== -->
+<section class="opening" id="c13">
+  <h2><span class="num">Capítulo XIII</span>Poder, Trabalho e Sociedade nos Planos</h2>
+  <p>Aqui está um capítulo que poucos atlas têm coragem de escrever, porque obriga a perguntar algo estranho: <strong>se há mundos lá em cima, eles têm governo? Têm leis? Alguém manda? Tem trabalho?</strong> E a resposta dos relatos, espantosamente, é <em>sim</em> — e com uma organização que dá para mapear.</p>
+
+  <h3>Os planos baixos: poder pela força</h3>
+  <p>Nas regiões densas — o Umbral espírita, os reinos crus da Quimbanda, os infernos de Samael — quase todos os relatos descrevem a mesma política: <strong>uma tirania pela força</strong>. Quem domina é o mais forte, o mais cruel, o mais astuto. Há "chefes", há legiões organizadas em torno deles, há exploração dos mais fracos, há territórios disputados. É um espelho sombrio da pior política humana — feudalismo de medo. Aqui, sim, <em>quem domina costuma ser "ruim"</em>, e a estrutura existe para perpetuar o domínio. André Luiz, nos livros psicografados por Chico Xavier, descreve organizações inteiras de espíritos das trevas com hierarquia militar, "generais" e "soldados" do mal.</p>
+
+  <h3>Os planos médios: a burocracia da cura</h3>
+  <p>Subindo um pouco, nas <strong>colônias espirituais</strong> e <strong>cidades astrais</strong>, a política muda completamente de natureza. Os relatos descrevem algo parecido com uma <strong>república de serviço</strong>: há <em>conselhos</em> de espíritos mais sábios, há <em>ministérios</em> ou departamentos (de comunicação, de assistência aos recém-desencarnados, de amparo aos encarnados), há <em>escolas</em>, <em>hospitais</em>, <em>tribunais</em> — mas tribunais sem castigo, mais parecidos com bancas de avaliação onde a própria pessoa, ajudada, reconhece o que precisa fazer. O trabalho aqui não é obrigado pela força; é <strong>vocação</strong>. Ninguém é escravo; cada um serve na função que combina com seu grau.</p>
+
+  <table class="tabela">
+    <tr><th>Faixa</th><th>Quem manda</th><th>Como se organiza</th><th>Há trabalho?</th></tr>
+    <tr><td>Regiões baixas (Umbral, infernos)</td><td>o mais forte e cruel</td><td>tirania, legiões, territórios em disputa</td><td>sim, escravo e forçado</td></tr>
+    <tr><td>Regiões médias (colônias, cidades)</td><td>conselhos de sábios</td><td>república de serviço, ministérios, escolas</td><td>sim, por vocação</td></tr>
+    <tr><td>Regiões altas (mundos felizes)</td><td>quase ninguém "manda"</td><td>harmonia espontânea, sem coerção</td><td>criação livre, não trabalho-fardo</td></tr>
+    <tr><td>Planos divinos</td><td>nenhuma hierarquia externa</td><td>unidade; a vontade individual já é a do Todo</td><td>o conceito de "trabalho" se dissolve</td></tr>
+  </table>
+
+  <h3>Os planos altos: quando a hierarquia some</h3>
+  <p>E aqui está a descoberta mais bonita, e a resposta direta à pergunta "será que em alguns lugares não existe hierarquia?". <strong>Sim — quanto mais alto, menos governo.</strong> Nas faixas elevadas, a hierarquia vai se dissolvendo, porque ela só existe para corrigir o desalinhamento. Onde todos já vibram em harmonia, não há o que ordenar: cada ser faz espontaneamente a coisa certa, como instrumentos de uma orquestra que dispensam o maestro porque já sabem a música de cor. A "Grande Fraternidade Branca" da Teosofia é descrita assim — não como um governo que impõe, mas como uma comunidade de mestres que <em>servem</em> sem coerção, coordenando sem mandar. No topo absoluto, a própria ideia de "indivíduo que obedece" e "indivíduo que comanda" perde o sentido, porque a separação que torna a obediência necessária já não existe.</p>
+
+  <div class="padrao">
+    <span class="label">A lei política dos mundos invisíveis</span>
+    <p>Existe uma regra que atravessa todos os relatos: <strong>a quantidade de coerção é proporcional à densidade.</strong> Quanto mais baixo o plano, mais força bruta, mais hierarquia rígida, mais dominação. Quanto mais alto, mais liberdade, mais cooperação espontânea, menos chefes. Isso inverte a política terrena, onde costumamos achar que "mais civilização = mais governo". Nos mundos invisíveis é o contrário: <em>o governo é a cicatriz da imperfeição.</em> Onde há perfeição, não há quem precise mandar. Guarde esta frase — ela é, talvez, o ensinamento político mais subversivo de toda a cartografia oculta.</p>
+  </div>
+
+  <p class="fonte"><strong>Fontes:</strong> a série André Luiz (Chico Xavier) para as organizações das trevas e das colônias; a literatura teosófica e de Alice Bailey para a Fraternidade Branca; e a estrutura recorrente — conselhos, tribunais sem castigo, trabalho-vocação — que aparece igualzinha em relatos de médiuns, projetores e pessoas que tiveram experiências de quase morte, como veremos no Volume III.</p>
+</section>
+
+<!-- ===================== SÍNTESE ===================== -->
+<section class="opening" id="sint">
+  <h2><span class="num">Síntese do Volume I</span>O esqueleto compartilhado</h2>
+  <p>Atravessamos doze mapas. Eles nasceram em continentes diferentes, em séculos diferentes, na boca de gente que nunca se falou — médiuns franceses, gnósticos egípcios, lamas tibetanos, xamãs siberianos, ocultistas anglo-saxões, mães-de-santo brasileiras. E, no entanto, quando você os empilha, eles desenham o <strong>mesmo esqueleto</strong>. Vamos nomear os ossos desse esqueleto, porque eles serão o chão dos próximos dois volumes:</p>
+
+  <div class="padrao">
+    <span class="label">Os ossos comuns de todos os mapas</span>
+    <p><strong>1. A escada.</strong> Sempre há uma gradação do denso ao sutil. Embaixo o pesado, escuro, sofrido; em cima o leve, luminoso, livre. Sempre.</p>
+    <p><strong>2. A faixa intermediária.</strong> Logo acima do físico há sempre uma zona nebulosa — Umbral, Kama-loka, Bhuvarloka, bardo, purgatório — onde a maioria para por um tempo. É a região mais povoada e mais descrita de todas.</p>
+    <p><strong>3. A lei da afinidade.</strong> Você não é colocado num plano por um juiz; você gravita para a sua própria frequência. O "céu" e o "inferno" são estados antes de serem lugares.</p>
+    <p><strong>4. O limiar e o guardião.</strong> Para subir é preciso atravessar fronteiras, e quase sempre há alguém guardando-as — o Arconte, o Exu, o ser do bardo, o vigilante.</p>
+    <p><strong>5. O eixo que liga tudo.</strong> Há sempre um caminho central entre os andares — a árvore, a coluna, o cordão de prata, a kundalini.</p>
+    <p><strong>6. A consciência como matéria-prima.</strong> No fundo, os mundos do além são feitos da própria mente de quem os atravessa. Acordar, lembrar, dissolver o ego — todas as tradições apontam para a mesma chave.</p>
+  </div>
+
+  <p>Esse é o esqueleto. Agora que conhecemos a <em>estrutura</em> dos mundos invisíveis, podemos descer ao detalhe: visitar as regiões uma a uma, andar pelas cidades astrais, encontrar os guardiões dos portais. É para onde vamos no <strong>Volume II — A Geografia dos Mundos Invisíveis</strong>.</p>
+
+  <hr class="divider">
+  <nav class="nav">
+    <a class="cur" href="#">I · Os Grandes Mapas</a>
+    <a href="II-geografia-dos-mundos.html">II · A Geografia dos Mundos →</a>
+    <a href="III-testemunhos-e-habitantes.html">III · Testemunhos e Habitantes</a>
+  </nav>
+</section>
+
+<footer>
+  CARTOGRAFIA DOS MUNDOS INVISÍVEIS · VOLUME I · OS GRANDES MAPAS DO COSMOS OCULTO<br>
+  Um atlas comparado das cosmologias ocultas — recolhido sem dogma, oferecido sem cobrança de fé.
+</footer>
+
+</div>
+</body>
+</html>
